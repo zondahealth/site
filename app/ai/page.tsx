@@ -8,28 +8,33 @@ export default function AIPage() {
 
       <main>
         {/* Hero Section */}
-        <section className="pt-40 pb-20 bg-gradient-to-br from-zonda-blue/5 to-zonda-blue/10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                Inteligencia Artificial y{' '}
-                <span className="text-zonda-blue">Datos</span>
-              </h1>
+        <section
+          className="pt-40 pb-20 relative min-h-screen flex items-center"
+          style={{
+            backgroundImage: 'url(/webshots/profile-background.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        >
+          <div className="absolute inset-0 bg-black/20"></div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center">
+              <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 lg:p-12 shadow-2xl border border-white/20">
+                <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                  Inteligencia Artificial y{' '}
+                  <span className="bg-gradient-to-r from-zonda-blue to-blue-600 bg-clip-text text-transparent">
+                    Datos
+                  </span>
+                </h1>
 
-              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
-                Mediante el uso de inteligencia artificial, Zonda interpreta
-                grandes volúmenes de datos clínicos y genera insights, alertas o
-                recomendaciones clínicas automáticas. Esta capacidad puede
-                ayudar a identificar patrones de riesgo en pacientes, anticipar
-                o incluso sugerir tratamientos.
-              </p>
-
-              <div className="flex justify-center">
-                <img
-                  src="/screens/perfil.png"
-                  alt="Perfil"
-                  className="max-w-3xl object-cover rounded-xl"
-                />
+                <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                  Mediante el uso de inteligencia artificial, Zonda interpreta
+                  grandes volúmenes de datos clínicos y genera insights, alertas
+                  o recomendaciones clínicas automáticas. Esta capacidad puede
+                  ayudar a identificar patrones de riesgo en pacientes,
+                  anticipar o incluso sugerir tratamientos.
+                </p>
               </div>
             </div>
           </div>
@@ -169,24 +174,28 @@ export default function AIPage() {
         </section>
 
         {/* Medical Notes Section */}
-        <section className="py-16 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-16 bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 Notas Médicas Inteligentes
               </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg text-gray-600">
                 Ayuda a los profesionales de la salud a escribir sus notas
                 flexiblemente, Zonda entiende, mejora y estructura las
                 evoluciones médicas para obtener mejores resultados luego
               </p>
             </div>
-
+          </div>
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="rounded-xl overflow-hidden flex justify-center">
-              <img
-                src="/screens/render-notes.gif"
-                alt="Sistema de Notas Inteligentes de Zonda"
-                className="max-w-[300px] object-cover"
+              <video
+                src="/appshots/notes.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="max-w-5xl w-full object-cover rounded-xl"
               />
             </div>
           </div>

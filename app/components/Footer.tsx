@@ -157,7 +157,7 @@ export function Footer() {
                   href="mailto:contacto@zondahealth.com"
                   className="text-white/80 hover:text-white transition-colors duration-200 text-sm"
                 >
-                  contacto@zondahealth.com
+                  support@zondahealth.com
                 </a>
               </li>
               <li>
