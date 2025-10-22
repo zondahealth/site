@@ -1,9 +1,7 @@
 'use client';
 
-import { Button } from './ui/button';
 import { ArrowRight, Play } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import Link from 'next/link';
 
 export function Hero() {
   const scrollToContact = () => {
@@ -17,7 +15,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative py-20 sm:py-24 lg:py-36 bg-gradient-to-br from-zonda-blue-dark via-zonda-blue to-zonda-blue-dark overflow-hidden">
+    <section className="relative py-24 sm:py-32 lg:py-36 bg-gradient-to-br from-zonda-blue-dark via-zonda-blue to-zonda-blue-dark overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(247,215,74,0.1),transparent_50%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(3,106,250,0.1),transparent_50%)]"></div>
@@ -26,24 +24,22 @@ export function Hero() {
           {/* Left Content */}
           <div className="space-y-8 lg:space-y-10 order-2 lg:order-1">
             <div className="space-y-6 lg:space-y-8">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-zonda-yellow/90 text-zonda-blue-dark text-sm font-bold shadow-lg">
-                <span className="w-2 h-2 bg-zonda-blue-dark rounded-full mr-3 animate-pulse"></span>
-                🚀 Revolucionando la Tecnología de la Salud
-              </div>
-
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-white font-bold leading-tight">
                 Transformando
-                <span className="text-zonda-yellow block drop-shadow-lg">
+                <span
+                  className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 bg-clip-text text-transparent font-extrabold animate-pulse hover:animate-none transition-all duration-1000 hover:scale-105 hover:drop-shadow-[0_0_20px_rgba(251,191,36,0.8)] block drop-shadow-lg"
+                  style={{ animationDuration: '3s' }}
+                >
                   la Salud.
                 </span>
               </h1>
 
               <div className="space-y-4 max-w-2xl">
-                <p className="text-xl sm:text-2xl text-white/95 leading-relaxed font-medium">
+                <p className="text-base sm:text-lg text-white leading-relaxed font-medium tracking-wide">
                   Promovemos la eficiencia de las instituciones de salud en
                   América Latina.
                 </p>
-                <p className="text-lg sm:text-xl text-white/90 leading-relaxed">
+                <p className="text-base sm:text-lg text-white leading-relaxed font-medium tracking-wide">
                   Empresas de todos los tamaños pueden gestionar sus operaciones
                   completas de manera rápida, segura y flexible usando el
                   software y API de Zonda.
