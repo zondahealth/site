@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from './ui/card';
+import { GlassButton } from './ui/glass-button';
 import { AppWindow, Brain, Cable, ChartLine, ArrowRight } from 'lucide-react';
 
 export function Solutions() {
@@ -17,6 +18,8 @@ export function Solutions() {
       description:
         'Centralizá la gestión de pacientes, turnos, tratamientos y profesionales en una plataforma integrada, con métricas y mayor control operativo.',
       link: '/management',
+      buttonVariant: 'blue' as const,
+      buttonGlow: 'blue' as const,
     },
     {
       icon: Cable,
@@ -24,6 +27,8 @@ export function Solutions() {
       description:
         'Nuestra API conecta sistemas existentes y facilita el intercambio seguro, estandarizado y eficiente de datos clínicos y administrativos.',
       link: '/interop',
+      buttonVariant: 'purple' as const,
+      buttonGlow: 'purple' as const,
     },
     {
       icon: ChartLine,
@@ -31,6 +36,8 @@ export function Solutions() {
       description:
         'Obtené reportes personalizados y visualización de datos por región, unidad, profesional, diagnóstico, tratamiento y mucho más.',
       link: '/data',
+      buttonVariant: 'green' as const,
+      buttonGlow: 'green' as const,
     },
     {
       icon: Brain,
@@ -38,6 +45,8 @@ export function Solutions() {
       description:
         'Convertimos datos en información clave mediante IA, ayudando a tomar mejores decisiones clínicas y optimizar procesos médicos.',
       link: '/ai',
+      buttonVariant: 'orange' as const,
+      buttonGlow: 'medium' as const,
     },
   ];
 
@@ -72,13 +81,16 @@ export function Solutions() {
                 </CardHeader>
 
                 <CardContent className="pt-0 mt-auto relative z-10">
-                  <button
-                    className="w-full inline-flex items-center justify-center px-6 py-4 bg-gradient-to-r from-zonda-blue to-zonda-blue-dark text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 transform hover:scale-105 group/btn shadow-md"
+                  <GlassButton
+                    variant="blue"
+                    size="lg"
+                    glow="blue"
+                    className="w-full group/btn"
                     onClick={() => (window.location.href = solution.link)}
                   >
                     <span>Conocer más</span>
                     <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                  </button>
+                  </GlassButton>
                 </CardContent>
               </Card>
             );

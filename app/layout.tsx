@@ -18,8 +18,8 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: 'Zonda Health',
-  description: 'Zonda Health',
+  title: 'zonda',
+  description: 'zonda',
 };
 
 export default function RootLayout({
