@@ -16,7 +16,7 @@ const navigationItems: NavItem[] = [
   {
     label: 'Soluciones',
     children: [
-      { label: 'Gestión', href: '/management' },
+      { label: 'Plataformas', href: '/management' },
       { label: 'Interoperabilidad', href: '/interop' },
       { label: 'Reportes y Datos', href: '/data' },
       { label: 'IA Razonamiento', href: '/ai' },
