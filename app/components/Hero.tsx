@@ -26,11 +26,13 @@ export function Hero() {
             <div className="space-y-6 lg:space-y-8">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-white font-bold leading-tight">
                 Transformando
-                <span
-                  className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 bg-clip-text text-transparent font-extrabold animate-pulse hover:animate-none transition-all duration-1000 hover:scale-105 hover:drop-shadow-[0_0_20px_rgba(251,191,36,0.8)] block drop-shadow-lg"
-                  style={{ animationDuration: '3s' }}
-                >
-                  la Salud.
+                <span className="relative inline-block">
+                  <span className="text-zonda-yellow font-extrabold block drop-shadow-lg">
+                    la Salud.
+                  </span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-200 to-transparent bg-[length:200%_100%] animate-gradient-x bg-clip-text text-transparent font-extrabold">
+                    la Salud.
+                  </span>
                 </span>
               </h1>
 
@@ -75,13 +77,15 @@ export function Hero() {
               style={{ animationDuration: '30s' }}
             ></div>
 
-            {/* Image container with subtle glow */}
+            {/* Image container with subtle glow and rocking motion */}
             <div className="relative z-10 p-4">
-              <ImageWithFallback
-                src="https://cdn.prod.website-files.com/678523f579864a099494bb62/685891a1ab9320c829afe285_zonda-health-mundo.png"
-                alt="Zonda Health Mundo"
-                className="w-full h-auto object-cover max-w-md mx-auto lg:max-w-none drop-shadow-2xl"
-              />
+              <div className="animate-rocking">
+                <ImageWithFallback
+                  src="https://cdn.prod.website-files.com/678523f579864a099494bb62/685891a1ab9320c829afe285_zonda-health-mundo.png"
+                  alt="Zonda Health Mundo"
+                  className="w-full h-auto object-cover max-w-md mx-auto lg:max-w-none drop-shadow-2xl"
+                />
+              </div>
             </div>
           </div>
         </div>

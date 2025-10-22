@@ -133,7 +133,7 @@ export default function App() {
             <img
               src="/webshots/metrics-floating.png"
               alt="Reportes y Datos"
-              className="w-[60%] md:w-[50%] lg:w-[40%] h-auto object-cover mx-auto"
+              className="w-[60%] md:w-[50%] lg:w-[40%] h-auto object-cover mx-auto drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]"
             />
             <h2 className="text-3xl font-bold mb-4 text-white">
               Reportes y Analítica Clínica
@@ -160,7 +160,7 @@ export default function App() {
             <img
               src="/misc/brain.png"
               alt="Razonamiento via IA"
-              className="w-[40%] md:w-[30%] lg:w-[25%] h-auto object-cover mx-auto"
+              className="w-[40%] md:w-[30%] lg:w-[25%] h-auto object-cover mx-auto drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]"
             />
             <h2 className="text-3xl font-bold mb-4 text-white">
               Inteligencia Artificial Clínica
