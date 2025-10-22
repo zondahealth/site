@@ -1,7 +1,16 @@
 'use client';
 
 import { Button } from './ui/button';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import {
+  Menu,
+  X,
+  ChevronDown,
+  User,
+  Building2,
+  Network,
+  BarChart3,
+  Brain,
+} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -10,17 +19,26 @@ interface NavItem {
   label: string;
   href?: string;
   children?: NavItem[];
+  icon?: React.ComponentType<{ className?: string }>;
 }
 
 const navigationItems: NavItem[] = [
   {
     label: 'Soluciones',
     children: [
-      { label: 'Plataforma Profesional', href: '/platform-professional' },
-      { label: 'Plataforma Organización', href: '/platform-org' },
-      { label: 'Interoperabilidad', href: '/interop' },
-      { label: 'Reportes y Datos', href: '/data' },
-      { label: 'IA Razonamiento', href: '/ai' },
+      {
+        label: 'Plataforma Profesional',
+        href: '/platform-professional',
+        icon: User,
+      },
+      {
+        label: 'Plataforma Organización',
+        href: '/platform-org',
+        icon: Building2,
+      },
+      { label: 'Interoperabilidad', href: '/interop', icon: Network },
+      { label: 'Reportes y Datos', href: '/data', icon: BarChart3 },
+      { label: 'IA Razonamiento', href: '/ai', icon: Brain },
     ],
   },
   {
@@ -32,6 +50,36 @@ const navigationItems: NavItem[] = [
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = (itemLabel: string) => {
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      setHoverTimeout(null);
+    }
+    setActiveDropdown(itemLabel);
+  };
+
+  const handleMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150); // 150ms delay
+    setHoverTimeout(timeout);
+  };
+
+  const handleDropdownMouseEnter = () => {
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      setHoverTimeout(null);
+    }
+  };
+
+  const handleDropdownMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150);
+    setHoverTimeout(timeout);
+  };
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 pointer-events-none">
@@ -63,9 +111,9 @@ export function Header() {
                     key={item.label}
                     className="relative"
                     onMouseEnter={() =>
-                      item.children && setActiveDropdown(item.label)
+                      item.children && handleMouseEnter(item.label)
                     }
-                    onMouseLeave={() => setActiveDropdown(null)}
+                    onMouseLeave={handleMouseLeave}
                   >
                     {item.href ? (
                       <a
@@ -98,16 +146,32 @@ export function Header() {
 
                     {/* Dropdown Menu */}
                     {item.children && activeDropdown === item.label && (
-                      <div className="absolute top-full left-0 mt-2 w-56 bg-white/70 backdrop-blur-md rounded-xl shadow-2xl border border-gray-200/50 py-3 z-50">
-                        {item.children.map((child) => (
-                          <a
-                            key={child.label}
-                            href={child.href}
-                            className="block px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-zonda-blue/5 hover:to-blue-50 hover:text-zonda-blue transition-all duration-300 font-semibold text-sm rounded-lg mx-2 hover:scale-105 transform"
-                          >
-                            {child.label}
-                          </a>
-                        ))}
+                      <div
+                        className="absolute top-full left-0 mt-4 w-96 bg-white rounded-xl shadow-2xl border border-gray-200 py-4 z-50"
+                        onMouseEnter={handleDropdownMouseEnter}
+                        onMouseLeave={handleDropdownMouseLeave}
+                      >
+                        <div className="grid grid-cols-3 gap-2 px-4">
+                          {item.children.map((child) => {
+                            const IconComponent = child.icon;
+                            return (
+                              <a
+                                key={child.label}
+                                href={child.href}
+                                className="flex flex-col items-center space-y-2 p-4 text-gray-700 hover:bg-gradient-to-r hover:from-zonda-blue/5 hover:to-blue-50 hover:text-zonda-blue transition-all duration-300 font-semibold text-sm rounded-lg hover:scale-[1.02] transform group"
+                              >
+                                {IconComponent && (
+                                  <div className="p-2 bg-gray-100 rounded-lg group-hover:bg-zonda-blue/10 transition-colors duration-300">
+                                    <IconComponent className="h-5 w-5 text-gray-500 group-hover:text-zonda-blue transition-colors duration-300" />
+                                  </div>
+                                )}
+                                <span className="text-center text-xs leading-tight">
+                                  {child.label}
+                                </span>
+                              </a>
+                            );
+                          })}
+                        </div>
                       </div>
                     )}
                   </div>
@@ -198,15 +262,23 @@ export function Header() {
                     {/* Mobile Submenu */}
                     {item.children && (
                       <div className="ml-4 space-y-1">
-                        {item.children.map((child) => (
-                          <a
-                            key={child.label}
-                            href={child.href}
-                            className="block px-4 py-3 text-sm text-gray-600 hover:bg-gradient-to-r hover:from-zonda-blue/5 hover:to-blue-50 hover:text-zonda-blue transition-all duration-300 rounded-lg font-semibold hover:scale-105 transform"
-                          >
-                            {child.label}
-                          </a>
-                        ))}
+                        {item.children.map((child) => {
+                          const IconComponent = child.icon;
+                          return (
+                            <a
+                              key={child.label}
+                              href={child.href}
+                              className="flex items-center space-x-3 px-4 py-3 text-sm text-gray-600 hover:bg-gradient-to-r hover:from-zonda-blue/5 hover:to-blue-50 hover:text-zonda-blue transition-all duration-300 rounded-lg font-semibold hover:scale-105 transform group"
+                            >
+                              {IconComponent && (
+                                <div className="p-1.5 bg-gray-100 rounded-md group-hover:bg-zonda-blue/10 transition-colors duration-300">
+                                  <IconComponent className="h-4 w-4 text-gray-500 group-hover:text-zonda-blue transition-colors duration-300" />
+                                </div>
+                              )}
+                              <span>{child.label}</span>
+                            </a>
+                          );
+                        })}
                       </div>
                     )}
                   </div>

@@ -1,9 +1,21 @@
+'use client';
+
 import { Button } from './ui/button';
 import { ArrowRight, Play } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import Link from 'next/link';
 
 export function Hero() {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
   return (
     <section className="relative py-20 sm:py-24 lg:py-36 bg-gradient-to-br from-zonda-blue-dark via-zonda-blue to-zonda-blue-dark overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
@@ -40,12 +52,12 @@ export function Hero() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link
+              <button
+                onClick={scrollToContact}
                 className="px-8 py-4 rounded-full bg-zonda-orange text-white flex items-center gap-3 w-fit hover:bg-zonda-yellow hover:text-zonda-blue-dark transition-all duration-300 font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 text-lg"
-                href="#contact"
               >
                 Contactanos <ArrowRight className="w-5 h-5" />
-              </Link>
+              </button>
             </div>
           </div>
 
