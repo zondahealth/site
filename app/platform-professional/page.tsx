@@ -8,19 +8,18 @@ export default function PlatformProfessionalPage() {
 
       <main>
         {/* Hero Section */}
-        <section className="pt-40 pb-24 bg-gradient-to-br from-zonda-blue/6 to-zonda-blue-dark/4 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-72 h-72 bg-zonda-blue/8 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-zonda-blue-dark/6 rounded-full blur-3xl"></div>
+        <section className="pt-40 bg-gradient-to-br from-zonda-blue-dark via-zonda-blue to-zonda-blue-dark relative overflow-hidden">
+          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(247,215,74,0.1),transparent_50%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(3,106,250,0.1),transparent_50%)]"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="text-center mb-16">
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
                 Plataforma{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-zonda-blue to-zonda-blue-dark">
-                  Profesional
-                </span>
+                <span className="text-zonda-yellow">Profesional</span>
               </h1>
 
-              <p className="text-lg lg:text-xl text-gray-800 max-w-4xl mx-auto leading-relaxed mb-8 font-medium">
+              <p className="text-lg lg:text-xl text-white/95 max-w-4xl mx-auto leading-relaxed mb-8 font-medium">
                 Herramientas especializadas para profesionales de la salud que
                 les permiten interactuar con la data de sus pacientes y
                 optimizar su práctica médica
@@ -28,66 +27,12 @@ export default function PlatformProfessionalPage() {
             </div>
 
             {/* Professional App Screenshot */}
-            <div className="relative max-w-5xl mx-auto rounded-3xl shadow-2xl overflow-hidden border border-zonda-blue/15 bg-gradient-to-br from-zonda-blue/5 via-zonda-blue/10 to-zonda-blue-dark/10 ring-1 ring-zonda-blue/10 backdrop-blur">
-              <div className="absolute -top-10 -left-10 w-56 h-56 bg-zonda-blue/20 rounded-full blur-3xl z-0"></div>
-              <div className="absolute bottom-0 right-0 w-72 h-48 bg-zonda-yellow/10 rounded-bl-3xl blur-2xl z-0"></div>
-              <div className="flex justify-center items-center w-full pt-8 pb-8">
-                <img
-                  src="/appshots/header.png"
-                  className="w-full lg:w-2/3 h-auto object-contain relative z-10"
-                  alt="Plataforma Profesional"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Professional Platform Section */}
-        <section className="py-20 bg-gradient-to-br from-zonda-blue via-zonda-blue-dark to-black relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div className="flex lg:flex-row flex-col gap-16 items-stretch">
-              {/* Left: Text Content */}
-              <div className="flex-1 flex flex-col gap-8 justify-between">
-                <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
-                  <h3 className="text-2xl font-bold text-white mb-6">
-                    Funcionalidades Clave
-                  </h3>
-                  <div className="space-y-4 text-white/90 font-medium">
-                    <p>• Interacción directa con data de pacientes</p>
-                    <p>• Organización con múltiples instituciones</p>
-                    <p>• Registro de nuevos registros médicos</p>
-                    <p>• Prescripción digital de medicamentos</p>
-                    <p>• Análisis del estado del paciente por visita</p>
-                    <p>• Historial médico completo y accesible</p>
-                  </div>
-                </div>
-
-                <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
-                  <h4 className="text-xl font-bold text-white mb-4">
-                    Beneficios Principales
-                  </h4>
-                  <div className="space-y-3 text-white/85 font-medium">
-                    <p>
-                      Acceso unificado a información de pacientes desde
-                      múltiples instituciones
-                    </p>
-                    <p>Registro eficiente de consultas y tratamientos</p>
-                    <p>Prescripción digital integrada</p>
-                    <p>Seguimiento detallado de la evolución del paciente</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right: Enhanced Image Container */}
-              <div className="flex-1 flex justify-center items-center">
-                <div className="relative w-full h-full flex items-center">
-                  <img
-                    src="/appshots/cool.png"
-                    alt="Plataforma Profesional"
-                    className="rounded-2xl object-contain w-full h-auto"
-                  />
-                </div>
-              </div>
+            <div className="flex justify-center items-center w-full">
+              <img
+                src="/appshots/header.png"
+                className="w-full lg:w-2/3 h-auto object-contain relative z-10"
+                alt="Plataforma Profesional"
+              />
             </div>
           </div>
         </section>
@@ -252,6 +197,140 @@ export default function PlatformProfessionalPage() {
                   Aplicación móvil optimizada para acceso desde cualquier
                   dispositivo.
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Professional Platform Section */}
+        <section className="py-20 bg-gradient-to-br from-zonda-yellow to-zonda-orange relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+                Plataforma Profesional
+              </h2>
+              <p className="text-lg text-white/90 max-w-3xl mx-auto font-medium">
+                Herramientas especializadas para profesionales de la salud que
+                les permiten interactuar con la data de sus pacientes y
+                optimizar su práctica médica.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-6 gap-16 items-center">
+              {/* Left: Content */}
+              <div className="lg:col-span-3">
+                {/* Key Features Grid */}
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/40 shadow-lg">
+                    <div className="w-10 h-10 bg-zonda-blue rounded-lg flex items-center justify-center mb-4">
+                      <svg
+                        className="w-5 h-5 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                    </div>
+                    <h4 className="text-lg font-bold text-gray-900 mb-2">
+                      Historial Médico
+                    </h4>
+                    <p className="text-gray-800 text-sm font-medium">
+                      Acceso completo al historial médico de pacientes desde
+                      múltiples instituciones
+                    </p>
+                  </div>
+
+                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/40 shadow-lg">
+                    <div className="w-10 h-10 bg-zonda-orange rounded-lg flex items-center justify-center mb-4">
+                      <svg
+                        className="w-5 h-5 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                        />
+                      </svg>
+                    </div>
+                    <h4 className="text-lg font-bold text-gray-900 mb-2">
+                      Registro de Consultas
+                    </h4>
+                    <p className="text-gray-800 text-sm font-medium">
+                      Registro eficiente y detallado de consultas médicas y
+                      tratamientos
+                    </p>
+                  </div>
+
+                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/40 shadow-lg">
+                    <div className="w-10 h-10 bg-zonda-blue-dark rounded-lg flex items-center justify-center mb-4">
+                      <svg
+                        className="w-5 h-5 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+                        />
+                      </svg>
+                    </div>
+                    <h4 className="text-lg font-bold text-gray-900 mb-2">
+                      Prescripción Digital
+                    </h4>
+                    <p className="text-gray-800 text-sm font-medium">
+                      Sistema integrado de prescripción digital de medicamentos
+                    </p>
+                  </div>
+
+                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/40 shadow-lg">
+                    <div className="w-10 h-10 bg-zonda-yellow rounded-lg flex items-center justify-center mb-4">
+                      <svg
+                        className="w-5 h-5 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                        />
+                      </svg>
+                    </div>
+                    <h4 className="text-lg font-bold text-gray-900 mb-2">
+                      Análisis de Datos
+                    </h4>
+                    <p className="text-gray-800 text-sm font-medium">
+                      Análisis detallado del estado del paciente por visita y
+                      evolución
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Image */}
+              <div className="lg:col-span-3 flex justify-center items-center">
+                <img
+                  src="/appshots/ontop.png"
+                  alt="Plataforma Profesional"
+                  className="w-3/4 max-w-md h-auto"
+                />
               </div>
             </div>
           </div>

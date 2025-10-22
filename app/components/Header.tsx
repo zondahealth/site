@@ -16,7 +16,8 @@ const navigationItems: NavItem[] = [
   {
     label: 'Soluciones',
     children: [
-      { label: 'Plataformas', href: '/management' },
+      { label: 'Plataforma Profesional', href: '/platform-professional' },
+      { label: 'Plataforma Organización', href: '/platform-org' },
       { label: 'Interoperabilidad', href: '/interop' },
       { label: 'Reportes y Datos', href: '/data' },
       { label: 'IA Razonamiento', href: '/ai' },
@@ -35,7 +36,7 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 pointer-events-none">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 py-4 pointer-events-auto">
-        <div className="bg-white/95 rounded-full px-6 py-3 shadow-2xl border border-zonda-blue/10 backdrop-blur-md">
+        <div className="bg-white/70 rounded-full px-6 py-3 shadow-2xl border border-zonda-blue/10 backdrop-blur-md">
           <div className="flex items-center justify-between">
             {/* Logo and Navigation */}
             <div className="flex items-center space-x-8">
@@ -97,7 +98,7 @@ export function Header() {
 
                     {/* Dropdown Menu */}
                     {item.children && activeDropdown === item.label && (
-                      <div className="absolute top-full left-0 mt-2 w-56 bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-gray-200/50 py-3 z-50">
+                      <div className="absolute top-full left-0 mt-2 w-56 bg-white/70 backdrop-blur-md rounded-xl shadow-2xl border border-gray-200/50 py-3 z-50">
                         {item.children.map((child) => (
                           <a
                             key={child.label}
@@ -160,7 +161,7 @@ export function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="lg:hidden mt-4">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 border-t border-zonda-blue/20 rounded-lg shadow-lg">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/70 border-t border-zonda-blue/20 rounded-lg shadow-lg backdrop-blur-md">
               {/* Mobile Navigation Items */}
               <div className="px-3 py-2 space-y-1">
                 {navigationItems.map((item) => (

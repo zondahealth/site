@@ -8,20 +8,17 @@ export default function PlatformOrgPage() {
 
       <main>
         {/* Hero Section */}
-        <section className="pt-40 pb-24 bg-gradient-to-br from-zonda-blue/6 to-zonda-blue-dark/4 relative overflow-hidden">
-          {/* Subtle background elements */}
-          <div className="absolute top-0 right-0 w-72 h-72 bg-zonda-blue/8 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-zonda-blue-dark/6 rounded-full blur-3xl"></div>
+        <section className="pt-40 pb-24 bg-gradient-to-br from-zonda-blue-dark via-zonda-blue to-zonda-blue-dark relative overflow-hidden">
+          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(247,215,74,0.1),transparent_50%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(3,106,250,0.1),transparent_50%)]"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="text-center mb-16">
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                Plataforma de{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-zonda-blue to-zonda-blue-dark">
-                  Gestión
-                </span>
+              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
+                Plataforma de <span className="text-zonda-yellow">Gestión</span>
               </h1>
 
-              <p className="text-lg lg:text-xl text-gray-800 max-w-4xl mx-auto leading-relaxed mb-8 font-medium">
+              <p className="text-lg lg:text-xl text-white/95 max-w-4xl mx-auto leading-relaxed mb-8 font-medium">
                 Ofrecemos una plataforma digital integral de gestión para
                 instituciones de salud que permite centralizar operaciones clave
                 como la administración de pacientes, turnos, tratamientos y
@@ -30,10 +27,10 @@ export default function PlatformOrgPage() {
             </div>
 
             {/* Platform Screenshot - Simple */}
-            <div className="relative max-w-5xl mx-auto rounded-3xl shadow-2xl overflow-hidden border border-zonda-blue/15 bg-gradient-to-br from-zonda-blue/5 via-zonda-blue/10 to-zonda-blue-dark/10 ring-1 ring-zonda-blue/10 backdrop-blur">
+            <div className="relative max-w-5xl mx-auto rounded-3xl shadow-2xl overflow-hidden border border-white/20 bg-white/5 ring-1 ring-white/10 backdrop-blur">
               {/* Decorative Background Shapes */}
-              <div className="absolute -top-10 -left-10 w-56 h-56 bg-zonda-blue/20 rounded-full blur-3xl z-0"></div>
-              <div className="absolute bottom-0 right-0 w-72 h-48 bg-zonda-yellow/10 rounded-bl-3xl blur-2xl z-0"></div>
+              <div className="absolute -top-10 -left-10 w-56 h-56 bg-zonda-yellow/20 rounded-full blur-3xl z-0"></div>
+              <div className="absolute bottom-0 right-0 w-72 h-48 bg-zonda-blue/20 rounded-bl-3xl blur-2xl z-0"></div>
               <video
                 src="/webshots/records-moving.mp4"
                 autoPlay
