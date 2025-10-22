@@ -15,17 +15,17 @@ export function Hero() {
   };
 
   return (
-    <section className="relative py-24 sm:py-32 lg:py-36 bg-gradient-to-br from-zonda-blue-dark via-zonda-blue to-zonda-blue-dark overflow-hidden">
+    <section className="relative py-16 sm:py-24 md:py-32 lg:py-36 bg-gradient-to-br from-zonda-blue-dark via-zonda-blue to-zonda-blue-dark overflow-hidden min-h-screen flex items-center">
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(247,215,74,0.1),transparent_50%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(3,106,250,0.1),transparent_50%)]"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-8 lg:space-y-10 order-2 lg:order-1">
-            <div className="space-y-6 lg:space-y-8">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-white font-bold leading-tight">
-                Transformando
+          <div className="space-y-12 sm:space-y-14 lg:space-y-10 order-2 lg:order-1">
+            <div className="space-y-8 sm:space-y-10 lg:space-y-8">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-white font-bold leading-tight">
+                <span className="block">Transformando</span>
                 <span className="relative inline-block">
                   <span className="text-zonda-yellow font-extrabold block drop-shadow-lg">
                     la Salud.
@@ -36,12 +36,12 @@ export function Hero() {
                 </span>
               </h1>
 
-              <div className="space-y-4 max-w-2xl">
-                <p className="text-base sm:text-lg text-white leading-relaxed font-medium tracking-wide">
+              <div className="space-y-6 sm:space-y-4 max-w-2xl">
+                <p className="text-lg sm:text-lg md:text-xl text-white leading-relaxed font-medium tracking-wide">
                   Promovemos la eficiencia de las instituciones de salud en
                   América Latina.
                 </p>
-                <p className="text-base sm:text-lg text-white leading-relaxed font-medium tracking-wide">
+                <p className="text-lg sm:text-lg md:text-xl text-white leading-relaxed font-medium tracking-wide">
                   Empresas de todos los tamaños pueden gestionar sus operaciones
                   completas de manera rápida, segura y flexible usando el
                   software y API de Zonda.
@@ -49,12 +49,12 @@ export function Hero() {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-6 sm:gap-4 pt-4">
               <button
                 onClick={scrollToContact}
-                className="px-8 py-4 rounded-full bg-zonda-orange text-white flex items-center gap-3 w-fit hover:bg-zonda-yellow hover:text-zonda-blue-dark transition-all duration-300 font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 text-lg"
+                className="px-10 py-5 sm:px-8 sm:py-4 rounded-full bg-zonda-orange text-white flex items-center justify-center gap-3 w-full sm:w-fit hover:bg-zonda-yellow hover:text-zonda-blue-dark transition-all duration-300 font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 text-xl sm:text-lg"
               >
-                Contactanos <ArrowRight className="w-5 h-5" />
+                Contactanos <ArrowRight className="w-6 h-6 sm:w-5 sm:h-5" />
               </button>
             </div>
           </div>

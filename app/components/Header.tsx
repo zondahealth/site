@@ -96,7 +96,7 @@ export function Header() {
                 aria-label="Zonda Health"
               >
                 <Image
-                  src="/zonda-full.svg"
+                  src="/Zonda_Isologotipo-Azul.png"
                   alt="Zonda Health"
                   width={180}
                   height={180}
