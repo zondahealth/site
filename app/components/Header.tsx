@@ -84,7 +84,7 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 pointer-events-none">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 py-4 pointer-events-auto">
-        <div className="bg-white/70 rounded-full px-6 py-3 shadow-2xl border border-zonda-blue/10 backdrop-blur-md">
+        <div className="bg-white/80 rounded-full px-6 py-3 shadow-2xl border border-zonda-blue/10 backdrop-blur-md">
           <div className="flex items-center justify-between">
             {/* Logo and Navigation */}
             <div className="flex items-center space-x-8">
@@ -225,7 +225,7 @@ export function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="lg:hidden mt-4">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/70 border-t border-zonda-blue/20 rounded-lg shadow-lg backdrop-blur-md">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/90 border-t border-zonda-blue/20 rounded-lg shadow-lg backdrop-blur-md">
               {/* Mobile Navigation Items */}
               <div className="px-3 py-2 space-y-1">
                 {navigationItems.map((item) => (
