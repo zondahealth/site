@@ -71,25 +71,38 @@ export function Header() {
                         href={item.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center space-x-1 text-gray-700 font-semibold hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200 py-2 px-3 rounded-md text-sm"
+                        className={`flex items-center space-x-1 transition-all duration-300 py-2 px-4 rounded-lg text-sm font-medium ${
+                          item.label === 'Desarrolladores'
+                            ? 'bg-gradient-to-r from-zonda-blue to-blue-600 text-white shadow-lg hover:shadow-xl hover:scale-105 transform hover:from-blue-600 hover:to-zonda-blue'
+                            : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+                        }`}
                       >
-                        <span>{item.label}</span>
+                        <span className="font-semibold tracking-wide">
+                          {item.label}
+                        </span>
+                        {item.label === 'Desarrolladores' && (
+                          <span className="ml-1 text-xs bg-white/20 px-1.5 py-0.5 rounded-full font-bold">
+                            API
+                          </span>
+                        )}
                       </a>
                     ) : (
-                      <button className="flex items-center space-x-1 text-gray-700 font-semibold hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200 py-2 px-3 rounded-md text-sm">
-                        <span>{item.label}</span>
+                      <button className="flex items-center space-x-1 text-gray-700 font-semibold hover:text-gray-900 hover:bg-gray-50 transition-all duration-300 py-2 px-4 rounded-lg text-sm hover:scale-105 transform">
+                        <span className="font-semibold tracking-wide">
+                          {item.label}
+                        </span>
                         {item.children && <ChevronDown className="h-3 w-3" />}
                       </button>
                     )}
 
                     {/* Dropdown Menu */}
                     {item.children && activeDropdown === item.label && (
-                      <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                      <div className="absolute top-full left-0 mt-2 w-56 bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-gray-200/50 py-3 z-50">
                         {item.children.map((child) => (
                           <a
                             key={child.label}
                             href={child.href}
-                            className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 font-semibold text-sm"
+                            className="block px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-zonda-blue/5 hover:to-blue-50 hover:text-zonda-blue transition-all duration-300 font-semibold text-sm rounded-lg mx-2 hover:scale-105 transform"
                           >
                             {child.label}
                           </a>
@@ -110,7 +123,7 @@ export function Header() {
               >
                 <Button
                   variant="outline"
-                  className="border-zonda-blue text-zonda-blue hover:bg-zonda-blue hover:text-white transition-colors duration-200 font-medium text-sm px-4 py-2"
+                  className="border-zonda-blue text-zonda-blue hover:bg-zonda-blue hover:text-white transition-all duration-300 font-semibold text-sm px-5 py-2.5 rounded-lg hover:scale-105 transform shadow-md hover:shadow-lg"
                 >
                   Iniciar Sesión
                 </Button>
@@ -120,7 +133,7 @@ export function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button className="bg-zonda-blue hover:bg-zonda-blue-dark text-white transition-colors duration-200 font-medium text-sm px-4 py-2">
+                <Button className="bg-gradient-to-r from-zonda-blue to-blue-600 hover:from-blue-600 hover:to-zonda-blue text-white transition-all duration-300 font-semibold text-sm px-5 py-2.5 rounded-lg hover:scale-105 transform shadow-lg hover:shadow-xl">
                   Crear Cuenta de Profesional
                 </Button>
               </Link>
@@ -157,13 +170,28 @@ export function Header() {
                         href={item.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block px-3 py-2 text-gray-700 font-semibold hover:bg-gray-50 hover:text-gray-900 transition-colors duration-200 rounded-md text-sm"
+                        className={`block px-4 py-3 font-semibold transition-all duration-300 rounded-lg text-sm ${
+                          item.label === 'Desarrolladores'
+                            ? 'bg-gradient-to-r from-zonda-blue to-blue-600 text-white shadow-lg hover:shadow-xl hover:scale-105 transform hover:from-blue-600 hover:to-zonda-blue'
+                            : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                        }`}
                       >
-                        {item.label}
+                        <div className="flex items-center justify-between">
+                          <span className="font-semibold tracking-wide">
+                            {item.label}
+                          </span>
+                          {item.label === 'Desarrolladores' && (
+                            <span className="text-xs bg-white/20 px-2 py-1 rounded-full font-bold">
+                              API
+                            </span>
+                          )}
+                        </div>
                       </a>
                     ) : (
-                      <div className="block px-3 py-2 text-gray-700 font-semibold text-sm">
-                        {item.label}
+                      <div className="block px-4 py-3 text-gray-700 font-semibold text-sm">
+                        <span className="font-semibold tracking-wide">
+                          {item.label}
+                        </span>
                       </div>
                     )}
                     {/* Mobile Submenu */}
@@ -173,7 +201,7 @@ export function Header() {
                           <a
                             key={child.label}
                             href={child.href}
-                            className="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-800 transition-colors duration-200 rounded-md font-semibold"
+                            className="block px-4 py-3 text-sm text-gray-600 hover:bg-gradient-to-r hover:from-zonda-blue/5 hover:to-blue-50 hover:text-zonda-blue transition-all duration-300 rounded-lg font-semibold hover:scale-105 transform"
                           >
                             {child.label}
                           </a>
@@ -185,7 +213,7 @@ export function Header() {
               </div>
 
               {/* Mobile CTA Buttons */}
-              <div className="px-3 py-2 space-y-2 border-t border-zonda-blue/10 mt-4 pt-4">
+              <div className="px-3 py-2 space-y-3 border-t border-zonda-blue/10 mt-4 pt-4">
                 <Link
                   href="https://app.zondahealth.com"
                   target="_blank"
@@ -193,7 +221,7 @@ export function Header() {
                 >
                   <Button
                     variant="outline"
-                    className="w-full border-zonda-blue text-zonda-blue hover:bg-zonda-blue hover:text-white transition-colors duration-200"
+                    className="w-full border-zonda-blue text-zonda-blue hover:bg-zonda-blue hover:text-white transition-all duration-300 font-semibold py-3 rounded-lg hover:scale-105 transform shadow-md hover:shadow-lg"
                   >
                     Iniciar Sesión
                   </Button>
@@ -203,7 +231,7 @@ export function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Button className="w-full bg-zonda-blue hover:bg-zonda-blue-dark text-white transition-colors duration-200">
+                  <Button className="w-full bg-gradient-to-r from-zonda-blue to-blue-600 hover:from-blue-600 hover:to-zonda-blue text-white transition-all duration-300 font-semibold py-3 rounded-lg hover:scale-105 transform shadow-lg hover:shadow-xl">
                     Crear Cuenta de Profesional
                   </Button>
                 </Link>
