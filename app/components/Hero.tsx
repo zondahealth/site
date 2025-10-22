@@ -58,12 +58,31 @@ export function Hero() {
           </div>
 
           {/* Right Content - Image - Hidden on mobile, visible on md and up */}
-          <div className="hidden lg:block lg:order-2">
-            <ImageWithFallback
-              src="https://cdn.prod.website-files.com/678523f579864a099494bb62/685891a1ab9320c829afe285_zonda-health-mundo.png"
-              alt="Zonda Health Mundo"
-              className="w-full h-auto object-cover max-w-md mx-auto lg:max-w-none"
-            />
+          <div className="hidden lg:block lg:order-2 relative">
+            {/* Subtle dark glow effects */}
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-slate-800/20 via-slate-700/15 to-slate-800/20 rounded-full blur-2xl animate-pulse opacity-40 scale-105"
+              style={{ animationDuration: '4s' }}
+            ></div>
+            <div
+              className="absolute inset-0 bg-gradient-to-l from-gray-800/25 via-slate-600/20 to-gray-800/25 rounded-full blur-xl animate-pulse opacity-30 scale-110"
+              style={{ animationDelay: '2s', animationDuration: '6s' }}
+            ></div>
+
+            {/* Single moving glow */}
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-slate-600/15 via-gray-800/20 to-slate-600/15 rounded-full blur-2xl opacity-25 scale-115 animate-spin"
+              style={{ animationDuration: '30s' }}
+            ></div>
+
+            {/* Image container with subtle glow */}
+            <div className="relative z-10 p-4">
+              <ImageWithFallback
+                src="https://cdn.prod.website-files.com/678523f579864a099494bb62/685891a1ab9320c829afe285_zonda-health-mundo.png"
+                alt="Zonda Health Mundo"
+                className="w-full h-auto object-cover max-w-md mx-auto lg:max-w-none drop-shadow-2xl"
+              />
+            </div>
           </div>
         </div>
       </div>
