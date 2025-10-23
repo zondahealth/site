@@ -2,13 +2,11 @@
 
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { Solutions } from './components/Solutions';
 import { WeHelp } from './components/WeHelp';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ColoredSection } from './components/ColoredSection';
 import { GlassButton } from './components/ui/glass-button';
-import { ArrowRight } from 'lucide-react';
 
 export default function App() {
   return (
