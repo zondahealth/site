@@ -1,6 +1,6 @@
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { ApiCodeContainer } from '../components/ApiCodeContainer';
+import { ColoredSection } from '../components/ColoredSection';
 
 export default function InteropPage() {
   return (
@@ -9,16 +9,19 @@ export default function InteropPage() {
 
       <main>
         {/* Hero Section */}
-        <section className="pt-40 pb-20 bg-gradient-to-br from-zonda-blue/5 to-zonda-blue/10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="pt-40 bg-gradient-to-br from-zonda-blue-dark via-zonda-blue to-zonda-blue-dark relative overflow-hidden">
+          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(247,215,74,0.1),transparent_50%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(3,106,250,0.1),transparent_50%)]"></div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="text-center mb-16">
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-zonda-blue to-zonda-blue-dark">
+              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
+                <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#ffe680,#f8d347,#f0b90b,#f8d347,#ffe680)] drop-shadow-[0_2px_10px_rgba(15,23,42,0.3)]">
                   Interoperabilidad
                 </span>
               </h1>
 
-              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
+              <p className="text-lg lg:text-xl text-white/95 max-w-4xl mx-auto leading-relaxed mb-8 font-medium">
                 Nuestra robusta API actúa como puente para integrar fuentes de
                 datos existentes. Permite que las instituciones mantengan sus
                 propios sistemas (facturación, turnos, historias clínicas, etc.)
@@ -27,7 +30,15 @@ export default function InteropPage() {
               </p>
 
               <div>
-                <ApiCodeContainer />
+                <img
+                  src="/misc/console.png"
+                  className="w-2/3 h-auto mx-auto"
+                  alt="Interop"
+                  style={{
+                    filter:
+                      'drop-shadow(0 0 40px rgba(36, 62, 147, 0.7)) drop-shadow(0 0 10px #040f2a)',
+                  }}
+                />
               </div>
 
               {/* API Documentation Section */}
@@ -58,66 +69,47 @@ export default function InteropPage() {
           </div>
         </section>
 
-        {/* Quote Section */}
-        <section className="py-16 relative overflow-hidden">
-          {/* Premium Background Elements */}
-          <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-zonda-blue/12 to-transparent rounded-full blur-2xl"></div>
-          <div className="absolute bottom-0 right-0 w-56 h-56 bg-gradient-to-tl from-zonda-blue-dark/12 to-transparent rounded-full blur-2xl"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-gradient-to-r from-zonda-yellow/8 to-transparent rounded-full blur-xl"></div>
+        <ColoredSection variant="light-yellow">
+          <div className="relative z-10">
+            {/* Main Quote */}
+            <blockquote className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-6 leading-tight text-center">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-zonda-blue to-zonda-blue-dark">
+                Dedica tiempo a ofrecer el mejor servicio
+              </span>
+              <br />
+              <span className="text-gray-800">
+                de prestación de salud, nosotros te proveemos
+              </span>
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-zonda-blue-dark to-zonda-blue">
+                la tecnología.
+              </span>
+            </blockquote>
 
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div className="relative">
-              {/* Premium Container */}
-              <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl border border-white/30 p-10 overflow-hidden">
-                {/* Decorative Elements */}
-                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-zonda-blue/15 to-transparent rounded-full blur-xl"></div>
-                <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-zonda-blue-dark/15 to-transparent rounded-full blur-lg"></div>
+            {/* Divider */}
+            <div className="flex justify-center mb-6">
+              <div className="w-16 h-1 bg-gradient-to-r from-zonda-blue to-zonda-blue-dark rounded-full"></div>
+            </div>
 
-                {/* Content */}
-                <div className="relative z-10">
-                  {/* Main Quote */}
-                  <blockquote className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-6 leading-tight text-center">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-zonda-blue to-zonda-blue-dark">
-                      Dedica tiempo a ofrecer el mejor servicio
-                    </span>
-                    <br />
-                    <span className="text-gray-800">
-                      de prestación de salud, nosotros te proveemos
-                    </span>
-                    <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-zonda-blue-dark to-zonda-blue">
-                      la tecnología.
-                    </span>
-                  </blockquote>
-
-                  {/* Divider */}
-                  <div className="flex justify-center mb-6">
-                    <div className="w-16 h-1 bg-gradient-to-r from-zonda-blue to-zonda-blue-dark rounded-full"></div>
-                  </div>
-
-                  {/* Mission Statement */}
-                  <div className="max-w-3xl mx-auto">
-                    <p className="text-lg lg:text-xl text-gray-700 leading-relaxed text-center font-medium">
-                      Nuestra misión es liberar a las instituciones de salud de
-                      las complejidades tecnológicas para que puedan enfocarse
-                      en lo que
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-zonda-blue to-zonda-blue-dark font-bold">
-                        {' '}
-                        más importa: cuidar a sus pacientes.
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </div>
+            {/* Mission Statement */}
+            <div className="max-w-3xl mx-auto">
+              <p className="text-lg lg:text-xl text-gray-700 leading-relaxed text-center font-medium">
+                Nuestra misión es liberar a las instituciones de salud de las
+                complejidades tecnológicas para que puedan enfocarse en lo que
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-zonda-blue to-zonda-blue-dark font-bold">
+                  {' '}
+                  más importa: cuidar a sus pacientes.
+                </span>
+              </p>
             </div>
           </div>
-        </section>
+        </ColoredSection>
 
         {/* API Integration Section */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                 API Robusta y Flexible
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -127,64 +119,155 @@ export default function InteropPage() {
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                  Características de la API
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-zonda-blue rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-gray-600">
-                      Integración con sistemas existentes (facturación, turnos,
-                      historias clínicas)
-                    </p>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-zonda-blue rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-gray-600">
-                      Mantenimiento de sistemas propios mientras se conectan con
-                      Zonda
-                    </p>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-zonda-blue rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-gray-600">
-                      Compartir y visualizar datos de forma segura y
-                      estandarizada
-                    </p>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-zonda-blue rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-gray-600">
-                      API extremadamente flexible y adaptable
-                    </p>
-                  </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
+                  <svg
+                    className="w-6 h-6 text-zonda-blue"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                    />
+                  </svg>
                 </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  Integración con Sistemas Existentes
+                </h3>
+                <p className="text-gray-600">
+                  Conecta sistemas de facturación, turnos, historias clínicas y
+                  otros sistemas existentes sin interrumpir operaciones.
+                </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  Beneficios de la Integración
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
+                  <svg
+                    className="w-6 h-6 text-zonda-blue"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  Seguridad y Estandarización
                 </h3>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex items-start">
-                    <span className="text-zonda-blue mr-2">✓</span>
-                    Intercambio fluido de información entre organizaciones
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-zonda-blue mr-2">✓</span>
-                    Conexión en estructuras complejas como redes de hospitales
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-zonda-blue mr-2">✓</span>
-                    Mantenimiento de sistemas existentes
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-zonda-blue mr-2">✓</span>
-                    Seguridad y estandarización de datos
-                  </li>
-                </ul>
+                <p className="text-gray-600">
+                  Compartir y visualizar datos de forma segura y estandarizada
+                  manteniendo la integridad y privacidad de la información.
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
+                  <svg
+                    className="w-6 h-6 text-zonda-blue"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  Flexibilidad Extrema
+                </h3>
+                <p className="text-gray-600">
+                  API extremadamente flexible y adaptable que se ajusta a las
+                  necesidades específicas de cada institución.
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
+                  <svg
+                    className="w-6 h-6 text-zonda-blue"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  Intercambio Fluido
+                </h3>
+                <p className="text-gray-600">
+                  Intercambio fluido de información entre organizaciones y
+                  dentro de estructuras complejas como redes de hospitales.
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
+                  <svg
+                    className="w-6 h-6 text-zonda-blue"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  Mantenimiento de Sistemas
+                </h3>
+                <p className="text-gray-600">
+                  Mantenimiento de sistemas propios mientras se conectan con
+                  Zonda, sin interrupciones en las operaciones diarias.
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
+                  <svg
+                    className="w-6 h-6 text-zonda-blue"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  Resultados Instantáneos
+                </h3>
+                <p className="text-gray-600">
+                  Obtén resultados en tiempo real para cualquier caso de uso que
+                  quieras integrar con nuestra API robusta.
+                </p>
               </div>
             </div>
           </div>

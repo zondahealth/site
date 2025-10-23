@@ -3,7 +3,17 @@ import React from 'react';
 interface ColoredSectionProps {
   children: React.ReactNode;
   className?: string;
-  variant?: 'yellow' | 'blue' | 'orange' | 'green' | 'purple' | 'pink' | 'teal';
+  variant?:
+    | 'yellow'
+    | 'blue'
+    | 'orange'
+    | 'green'
+    | 'purple'
+    | 'pink'
+    | 'teal'
+    | 'light-yellow'
+    | 'light-blue'
+    | 'light-green';
 }
 
 export const ColoredSection: React.FC<ColoredSectionProps> = ({
@@ -12,7 +22,17 @@ export const ColoredSection: React.FC<ColoredSectionProps> = ({
   variant = 'blue',
 }) => {
   const getBackgroundColor = (
-    variant: 'yellow' | 'blue' | 'orange' | 'green' | 'purple' | 'pink' | 'teal'
+    variant:
+      | 'yellow'
+      | 'blue'
+      | 'orange'
+      | 'green'
+      | 'purple'
+      | 'pink'
+      | 'teal'
+      | 'light-yellow'
+      | 'light-blue'
+      | 'light-green'
   ) => {
     switch (variant) {
       case 'yellow':
@@ -27,6 +47,12 @@ export const ColoredSection: React.FC<ColoredSectionProps> = ({
         return 'rgba(236, 72, 153, 0.1)'; // rosa muy pálido
       case 'teal':
         return 'rgba(20, 184, 166, 0.1)'; // teal muy pálido
+      case 'light-yellow':
+        return 'rgba(255, 248, 220, 0.08)'; // amarillo más visible
+      case 'light-blue':
+        return 'rgba(240, 248, 255, 0.08)'; // azul más visible
+      case 'light-green':
+        return 'rgba(240, 255, 240, 0.08)'; // verde más visible
       case 'blue':
       default:
         return 'rgba(3, 106, 250, 0.1)'; // zonda-blue muy pálido
@@ -34,7 +60,17 @@ export const ColoredSection: React.FC<ColoredSectionProps> = ({
   };
 
   const getGradientStyle = (
-    variant: 'yellow' | 'blue' | 'orange' | 'green' | 'purple' | 'pink' | 'teal'
+    variant:
+      | 'yellow'
+      | 'blue'
+      | 'orange'
+      | 'green'
+      | 'purple'
+      | 'pink'
+      | 'teal'
+      | 'light-yellow'
+      | 'light-blue'
+      | 'light-green'
   ) => {
     switch (variant) {
       case 'yellow':
@@ -78,6 +114,27 @@ export const ColoredSection: React.FC<ColoredSectionProps> = ({
             'linear-gradient(150deg, #009688 0%, #26A69A 25%, #4DB6AC 50%, #009688 75%, #00695C 100%)',
           boxShadow:
             '0 0 40px rgba(0, 150, 136, 0.3), 0 0 80px rgba(0, 105, 92, 0.2)',
+        };
+      case 'light-yellow':
+        return {
+          background:
+            'linear-gradient(60deg, #FFF59D 0%, #FFF9C4 25%, #FFF8E1 50%, #FFFDE7 75%, #FFF9C4 100%)',
+          boxShadow:
+            '0 0 30px rgba(255, 248, 220, 0.15), 0 0 60px rgba(255, 235, 59, 0.08)',
+        };
+      case 'light-blue':
+        return {
+          background:
+            'linear-gradient(30deg, #BBDEFB 0%, #E3F2FD 25%, #F3E5F5 50%, #E8F5E8 75%, #BBDEFB 100%)',
+          boxShadow:
+            '0 0 30px rgba(240, 248, 255, 0.15), 0 0 60px rgba(3, 106, 250, 0.08)',
+        };
+      case 'light-green':
+        return {
+          background:
+            'linear-gradient(330deg, #C8E6C9 0%, #F1F8E9 25%, #E8F5E8 50%, #E0F2F1 75%, #C8E6C9 100%)',
+          boxShadow:
+            '0 0 30px rgba(240, 255, 240, 0.15), 0 0 60px rgba(34, 197, 94, 0.08)',
         };
       case 'blue':
       default:
