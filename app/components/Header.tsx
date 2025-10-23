@@ -143,7 +143,6 @@ export function Header() {
                         <span className="font-semibold tracking-wide">
                           {item.label}
                         </span>
-                        {item.children && <ChevronDown className="h-3 w-3" />}
                       </button>
                     )}
 
@@ -168,33 +167,9 @@ export function Header() {
                                 className="flex flex-col items-center space-y-2 p-4 text-gray-700 hover:bg-gradient-to-r hover:from-zonda-blue/5 hover:to-blue-50 hover:text-zonda-blue transition-all duration-300 font-semibold text-sm rounded-lg transform group"
                               >
                                 {IconComponent && (
-                                  <div
-                                    className={`p-2 rounded-lg transition-all duration-300 ${
-                                      child.label === 'Plataforma Profesional'
-                                        ? 'bg-gradient-to-br from-blue-100 to-blue-200 group-hover:from-blue-500 group-hover:to-blue-600'
-                                        : child.label ===
-                                          'Plataforma Organización'
-                                        ? 'bg-gradient-to-br from-purple-100 to-purple-200 group-hover:from-purple-500 group-hover:to-purple-600'
-                                        : child.label === 'Interoperabilidad'
-                                        ? 'bg-gradient-to-br from-green-100 to-green-200 group-hover:from-green-500 group-hover:to-green-600'
-                                        : child.label === 'Reportes y Datos'
-                                        ? 'bg-gradient-to-br from-orange-100 to-orange-200 group-hover:from-orange-500 group-hover:to-orange-600'
-                                        : 'bg-gradient-to-br from-indigo-100 to-indigo-200 group-hover:from-indigo-500 group-hover:to-indigo-600'
-                                    }`}
-                                  >
+                                  <div className="p-2 rounded-lg transition-all duration-300 bg-gradient-to-br from-blue-600 via-blue-400 to-sky-300 hover:from-blue-700 hover:via-blue-500 hover:to-sky-400 shadow-lg hover:shadow-xl">
                                     <IconComponent
-                                      className={`h-5 w-5 transition-colors duration-300 ${
-                                        child.label === 'Plataforma Profesional'
-                                          ? 'text-blue-600 group-hover:text-white'
-                                          : child.label ===
-                                            'Plataforma Organización'
-                                          ? 'text-purple-600 group-hover:text-white'
-                                          : child.label === 'Interoperabilidad'
-                                          ? 'text-green-600 group-hover:text-white'
-                                          : child.label === 'Reportes y Datos'
-                                          ? 'text-orange-600 group-hover:text-white'
-                                          : 'text-indigo-600 group-hover:text-white'
-                                      }`}
+                                      className={`h-5 w-5 transition-colors duration-300 text-white`}
                                     />
                                   </div>
                                 )}
@@ -304,34 +279,8 @@ export function Header() {
                               className="flex items-center space-x-3 px-4 py-3 text-sm text-gray-600 hover:bg-gradient-to-r hover:from-zonda-blue/5 hover:to-blue-50 hover:text-zonda-blue transition-all duration-300 rounded-lg font-semibold transform group"
                             >
                               {IconComponent && (
-                                <div
-                                  className={`p-1.5 rounded-md transition-all duration-300 ${
-                                    child.label === 'Plataforma Profesional'
-                                      ? 'bg-gradient-to-br from-blue-100 to-blue-200 group-hover:from-blue-500 group-hover:to-blue-600'
-                                      : child.label ===
-                                        'Plataforma Organización'
-                                      ? 'bg-gradient-to-br from-purple-100 to-purple-200 group-hover:from-purple-500 group-hover:to-purple-600'
-                                      : child.label === 'Interoperabilidad'
-                                      ? 'bg-gradient-to-br from-green-100 to-green-200 group-hover:from-green-500 group-hover:to-green-600'
-                                      : child.label === 'Reportes y Datos'
-                                      ? 'bg-gradient-to-br from-orange-100 to-orange-200 group-hover:from-orange-500 group-hover:to-orange-600'
-                                      : 'bg-gradient-to-br from-indigo-100 to-indigo-200 group-hover:from-indigo-500 group-hover:to-indigo-600'
-                                  }`}
-                                >
-                                  <IconComponent
-                                    className={`h-4 w-4 transition-colors duration-300 ${
-                                      child.label === 'Plataforma Profesional'
-                                        ? 'text-blue-600 group-hover:text-white'
-                                        : child.label ===
-                                          'Plataforma Organización'
-                                        ? 'text-purple-600 group-hover:text-white'
-                                        : child.label === 'Interoperabilidad'
-                                        ? 'text-green-600 group-hover:text-white'
-                                        : child.label === 'Reportes y Datos'
-                                        ? 'text-orange-600 group-hover:text-white'
-                                        : 'text-indigo-600 group-hover:text-white'
-                                    }`}
-                                  />
+                                <div className="p-1.5 rounded-md transition-all duration-300 bg-gradient-to-br from-blue-600 via-blue-400 to-sky-300 group-hover:from-blue-700 group-hover:via-blue-500 group-hover:to-sky-400 shadow-lg group-hover:shadow-xl">
+                                  <IconComponent className="h-4 w-4 transition-colors duration-300 text-white" />
                                 </div>
                               )}
                               <span>{child.label}</span>
