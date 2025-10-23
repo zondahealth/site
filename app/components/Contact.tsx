@@ -5,9 +5,10 @@ import { Card, CardContent } from './ui/card';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { ArrowRight, Mail, CheckCircle, AlertCircle } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export function Contact() {
+  const [isMounted, setIsMounted] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -23,6 +24,10 @@ export function Contact() {
     'idle' | 'success' | 'error'
   >('idle');
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const contactInfo = {
     title: 'Contactanos',
@@ -87,6 +92,40 @@ export function Contact() {
       setIsSubmitting(false);
     }
   };
+
+  // Only render on client side to avoid hydration issues
+  if (!isMounted) {
+    return (
+      <section id="contact" className="py-26">
+        <div className="container mx-auto px-4">
+          <div
+            className="rounded-2xl p-8 lg:p-12 shadow-lg border border-blue-200/60 relative overflow-hidden"
+            style={{
+              background:
+                'linear-gradient(30deg, #036AFA 0%, #1E88E5 25%, #1976D2 50%, #1565C0 75%, #0D47A1 100%)',
+              boxShadow:
+                '0 0 40px rgba(3, 106, 250, 0.3), 0 0 80px rgba(25, 118, 210, 0.2)',
+            }}
+          >
+            <div className="text-center mb-16 flex flex-col gap-4">
+              <h2 className="text-3xl lg:text-4xl text-white mb-4 font-bold">
+                ¿Listo para Transformar tus Operaciones de{' '}
+                <span className="text-yellow-400">Salud?</span>
+              </h2>
+              <p className="text-xl text-white/90 max-w-5xl mx-auto">
+                Ponte en contacto con nuestro equipo para aprender cómo Zonda
+                Health puede ayudarte a brindar mejor atención al paciente a
+                través de soluciones tecnológicas innovadoras.
+              </p>
+            </div>
+            <div className="flex justify-center items-center h-64">
+              <div className="text-white text-lg">Cargando formulario...</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="contact" className="py-26">

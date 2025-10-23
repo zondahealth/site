@@ -1,0 +1,33 @@
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="stylishLines" x="0" y="0" width="150" height="150" patternUnits="userSpaceOnUse">
+      <!-- Main diagonal lines with gradient effect -->
+      <line x1="0" y1="0" x2="150" y2="150" stroke="#036AFA" stroke-width="1.5" opacity="0.4"/>
+      <line x1="0" y1="15" x2="150" y2="165" stroke="#036AFA" stroke-width="1" opacity="0.3"/>
+      <line x1="0" y1="30" x2="150" y2="180" stroke="#036AFA" stroke-width="0.8" opacity="0.2"/>
+      <line x1="0" y1="45" x2="150" y2="195" stroke="#036AFA" stroke-width="0.6" opacity="0.15"/>
+      
+      <!-- Secondary diagonal lines -->
+      <line x1="15" y1="0" x2="165" y2="150" stroke="#F7D74A" stroke-width="1" opacity="0.35"/>
+      <line x1="30" y1="0" x2="180" y2="150" stroke="#F7D74A" stroke-width="0.8" opacity="0.25"/>
+      <line x1="45" y1="0" x2="195" y2="150" stroke="#F7D74A" stroke-width="0.6" opacity="0.2"/>
+      
+      <!-- Horizontal accent lines -->
+      <line x1="0" y1="25" x2="150" y2="25" stroke="#036AFA" stroke-width="0.4" opacity="0.15"/>
+      <line x1="0" y1="75" x2="150" y2="75" stroke="#F7D74A" stroke-width="0.4" opacity="0.15"/>
+      <line x1="0" y1="125" x2="150" y2="125" stroke="#036AFA" stroke-width="0.3" opacity="0.1"/>
+      
+      <!-- Vertical accent lines -->
+      <line x1="25" y1="0" x2="25" y2="150" stroke="#036AFA" stroke-width="0.3" opacity="0.12"/>
+      <line x1="75" y1="0" x2="75" y2="150" stroke="#F7D74A" stroke-width="0.3" opacity="0.12"/>
+      <line x1="125" y1="0" x2="125" y2="150" stroke="#036AFA" stroke-width="0.25" opacity="0.08"/>
+      
+      <!-- Subtle dots for texture -->
+      <circle cx="37" cy="37" r="0.8" fill="#036AFA" opacity="0.1"/>
+      <circle cx="112" cy="112" r="0.6" fill="#F7D74A" opacity="0.12"/>
+      <circle cx="75" cy="25" r="0.5" fill="#036AFA" opacity="0.08"/>
+      <circle cx="25" cy="112" r="0.5" fill="#F7D74A" opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="300" height="300" fill="url(#stylishLines)"/>
+</svg>

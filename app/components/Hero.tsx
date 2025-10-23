@@ -16,6 +16,17 @@ export function Hero() {
 
   return (
     <section className="relative py-16 sm:py-24 md:py-32 lg:py-36 bg-gradient-to-br from-zonda-blue-dark via-zonda-blue to-zonda-blue-dark overflow-hidden min-h-screen flex items-center">
+      {/* Stylish lines background pattern */}
+      <div
+        className="absolute inset-0 opacity-15 animate-pulse"
+        style={{
+          backgroundImage: 'url(/background-lines.svg)',
+          backgroundSize: '300px 300px',
+          backgroundRepeat: 'repeat',
+          backgroundPosition: '0 0',
+          animationDuration: '8s',
+        }}
+      ></div>
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(247,215,74,0.1),transparent_50%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(3,106,250,0.1),transparent_50%)]"></div>
