@@ -24,7 +24,7 @@ export function Hero() {
           {/* Left Content */}
           <div className="space-y-12 sm:space-y-14 lg:space-y-10 order-2 lg:order-1">
             <div className="space-y-8 sm:space-y-10 lg:space-y-8">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-white font-bold leading-tight">
+              <h1 className="text-5xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-white font-bold leading-tight">
                 <span className="block">Transformando</span>
                 <span className="relative inline-block">
                   <span className="text-zonda-yellow font-extrabold block drop-shadow-lg">
@@ -37,11 +37,11 @@ export function Hero() {
               </h1>
 
               <div className="space-y-6 sm:space-y-4 max-w-2xl">
-                <p className="text-lg sm:text-lg md:text-xl text-white leading-relaxed font-medium tracking-wide">
+                <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed font-medium tracking-wide">
                   Promovemos la eficiencia de las instituciones de salud en
                   América Latina.
                 </p>
-                <p className="text-lg sm:text-lg md:text-xl text-white leading-relaxed font-medium tracking-wide">
+                <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed font-medium tracking-wide">
                   Empresas de todos los tamaños pueden gestionar sus operaciones
                   completas de manera rápida, segura y flexible usando el
                   software y API de Zonda.
@@ -49,12 +49,12 @@ export function Hero() {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-6 sm:gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-4 pt-2">
               <button
                 onClick={scrollToContact}
-                className="px-10 py-5 sm:px-8 sm:py-4 rounded-full bg-zonda-orange text-white flex items-center justify-center gap-3 w-full sm:w-fit hover:bg-zonda-yellow hover:text-zonda-blue-dark transition-all duration-300 font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 text-xl sm:text-lg"
+                className="px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-zonda-orange text-white flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-fit hover:bg-zonda-yellow hover:text-zonda-blue-dark transition-all duration-300 font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 text-base sm:text-lg"
               >
-                Contactanos <ArrowRight className="w-6 h-6 sm:w-5 sm:h-5" />
+                Contactanos <ArrowRight className="w-5 h-5 sm:w-5 sm:h-5" />
               </button>
             </div>
           </div>

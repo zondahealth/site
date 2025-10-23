@@ -94,7 +94,7 @@ export const ColoredSection: React.FC<ColoredSectionProps> = ({
     <section className={`relative py-8 px-4 ${className}`}>
       <div className="container mx-auto">
         <div
-          className="rounded-2xl h-[32rem] md:h-[36rem] flex items-center justify-center overflow-hidden"
+          className="rounded-2xl h-[32rem] md:h-[36rem] lg:h-[42rem] xl:h-[48rem] 2xl:h-[52rem] flex items-center justify-center overflow-hidden"
           style={getGradientStyle(variant)}
         >
           {children}
