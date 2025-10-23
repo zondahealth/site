@@ -16,21 +16,22 @@ export function Hero() {
 
   return (
     <section className="relative py-16 sm:py-24 md:py-32 lg:py-36 bg-gradient-to-br from-zonda-blue-dark via-zonda-blue to-zonda-blue-dark overflow-hidden min-h-screen flex items-center">
-      {/* Stylish lines background pattern */}
+      {/* Stylish wave background pattern - covers most of hero */}
       <div
-        className="absolute inset-0 opacity-15 animate-pulse"
+        className="absolute top-0 left-0 w-full h-full opacity-25"
         style={{
           backgroundImage: 'url(/background-lines.svg)',
-          backgroundSize: '300px 300px',
-          backgroundRepeat: 'repeat',
-          backgroundPosition: '0 0',
-          animationDuration: '8s',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'top right',
+          transform: 'scaleX(-1)',
+          zIndex: 1,
         }}
       ></div>
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(247,215,74,0.1),transparent_50%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(3,106,250,0.1),transparent_50%)]"></div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-12 sm:space-y-14 lg:space-y-10 order-2 lg:order-1">

@@ -1,33 +1,67 @@
-<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <pattern id="stylishLines" x="0" y="0" width="150" height="150" patternUnits="userSpaceOnUse">
-      <!-- Main diagonal lines with gradient effect -->
-      <line x1="0" y1="0" x2="150" y2="150" stroke="#036AFA" stroke-width="1.5" opacity="0.4"/>
-      <line x1="0" y1="15" x2="150" y2="165" stroke="#036AFA" stroke-width="1" opacity="0.3"/>
-      <line x1="0" y1="30" x2="150" y2="180" stroke="#036AFA" stroke-width="0.8" opacity="0.2"/>
-      <line x1="0" y1="45" x2="150" y2="195" stroke="#036AFA" stroke-width="0.6" opacity="0.15"/>
-      
-      <!-- Secondary diagonal lines -->
-      <line x1="15" y1="0" x2="165" y2="150" stroke="#F7D74A" stroke-width="1" opacity="0.35"/>
-      <line x1="30" y1="0" x2="180" y2="150" stroke="#F7D74A" stroke-width="0.8" opacity="0.25"/>
-      <line x1="45" y1="0" x2="195" y2="150" stroke="#F7D74A" stroke-width="0.6" opacity="0.2"/>
-      
-      <!-- Horizontal accent lines -->
-      <line x1="0" y1="25" x2="150" y2="25" stroke="#036AFA" stroke-width="0.4" opacity="0.15"/>
-      <line x1="0" y1="75" x2="150" y2="75" stroke="#F7D74A" stroke-width="0.4" opacity="0.15"/>
-      <line x1="0" y1="125" x2="150" y2="125" stroke="#036AFA" stroke-width="0.3" opacity="0.1"/>
-      
-      <!-- Vertical accent lines -->
-      <line x1="25" y1="0" x2="25" y2="150" stroke="#036AFA" stroke-width="0.3" opacity="0.12"/>
-      <line x1="75" y1="0" x2="75" y2="150" stroke="#F7D74A" stroke-width="0.3" opacity="0.12"/>
-      <line x1="125" y1="0" x2="125" y2="150" stroke="#036AFA" stroke-width="0.25" opacity="0.08"/>
-      
-      <!-- Subtle dots for texture -->
-      <circle cx="37" cy="37" r="0.8" fill="#036AFA" opacity="0.1"/>
-      <circle cx="112" cy="112" r="0.6" fill="#F7D74A" opacity="0.12"/>
-      <circle cx="75" cy="25" r="0.5" fill="#036AFA" opacity="0.08"/>
-      <circle cx="25" cy="112" r="0.5" fill="#F7D74A" opacity="0.08"/>
-    </pattern>
+    <!-- Gradient for opacity fade effect with lighter blue tones -->
+    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.4" />
+      <stop offset="30%" style="stop-color:#60a5fa;stop-opacity:0.3" />
+      <stop offset="60%" style="stop-color:#93c5fd;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#dbeafe;stop-opacity:0.05" />
+    </linearGradient>
   </defs>
-  <rect width="300" height="300" fill="url(#stylishLines)"/>
+  
+  <!-- Main curved lines with more wave movement and fluid curves -->
+  <path d="M0,50 Q120,100 250,150 Q380,200 500,250 Q620,300 750,350 Q800,370 800,380" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,60 Q130,110 260,160 Q390,210 510,260 Q630,310 760,360 Q800,380 800,390" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,70 Q140,120 270,170 Q400,220 520,270 Q640,320 770,370 Q800,390 800,400" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,80 Q150,130 280,180 Q410,230 530,280 Q650,330 780,380 Q800,400 800,410" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,90 Q160,140 290,190 Q420,240 540,290 Q660,340 790,390 Q800,410 800,420" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,100 Q170,150 300,200 Q430,250 550,300 Q670,350 800,400 Q800,420 800,430" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,110 Q180,160 310,210 Q440,260 560,310 Q680,360 810,410 Q800,430 800,440" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,120 Q190,170 320,220 Q450,270 570,320 Q690,370 820,420 Q800,440 800,450" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,130 Q200,180 330,230 Q460,280 580,330 Q700,380 830,430 Q800,450 800,460" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,140 Q210,190 340,240 Q470,290 590,340 Q710,390 840,440 Q800,460 800,470" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,150 Q220,200 350,250 Q480,300 600,350 Q720,400 850,450 Q800,470 800,480" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,160 Q230,210 360,260 Q490,310 610,360 Q730,410 860,460 Q800,480 800,490" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,170 Q240,220 370,270 Q500,320 620,370 Q740,420 870,470 Q800,490 800,500" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,180 Q250,230 380,280 Q510,330 630,380 Q750,430 880,480 Q800,500 800,510" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,190 Q260,240 390,290 Q520,340 640,390 Q760,440 890,490 Q800,510 800,520" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,200 Q270,250 400,300 Q530,350 650,400 Q770,450 900,500 Q800,520 800,530" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,210 Q280,260 410,310 Q540,360 660,410 Q780,460 910,510 Q800,530 800,540" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,220 Q290,270 420,320 Q550,370 670,420 Q790,470 920,520 Q800,540 800,550" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,230 Q300,280 430,330 Q560,380 680,430 Q800,480 930,530 Q800,550 800,560" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,240 Q310,290 440,340 Q570,390 690,440 Q810,490 940,540 Q800,560 800,570" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,250 Q320,300 450,350 Q580,400 700,450 Q820,500 950,550 Q800,570 800,580" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,260 Q330,310 460,360 Q590,410 710,460 Q830,510 960,560 Q800,580 800,590" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,270 Q340,320 470,370 Q600,420 720,470 Q840,520 970,570 Q800,590 800,600" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,280 Q350,330 480,380 Q610,430 730,480 Q850,530 980,580 Q800,600 800,610" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,290 Q360,340 490,390 Q620,440 740,490 Q860,540 990,590 Q800,610 800,620" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  <path d="M0,300 Q370,350 500,400 Q630,450 750,500 Q870,550 1000,600 Q800,620 800,630" stroke="url(#lineGradient)" stroke-width="0.8" fill="none"/>
+  
+  <!-- Additional fluid lines with more organic wave patterns -->
+  <path d="M10,40 Q140,90 270,140 Q400,190 520,240 Q640,290 770,340 Q800,360 800,370" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,55 Q150,105 280,155 Q410,205 530,255 Q650,305 780,355 Q800,375 800,385" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,65 Q160,115 290,165 Q420,215 540,265 Q660,315 790,365 Q800,385 800,395" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,75 Q170,125 300,175 Q430,225 550,275 Q670,325 800,375 Q800,395 800,405" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,85 Q180,135 310,185 Q440,235 560,285 Q680,335 810,385 Q800,405 800,415" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,95 Q190,145 320,195 Q450,245 570,295 Q690,345 820,395 Q800,415 800,425" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,105 Q200,155 330,205 Q460,255 580,305 Q700,355 830,405 Q800,425 800,435" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,115 Q210,165 340,215 Q470,265 590,315 Q710,365 840,415 Q800,435 800,445" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,125 Q220,175 350,225 Q480,275 600,325 Q720,375 850,425 Q800,445 800,455" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,135 Q230,185 360,235 Q490,285 610,335 Q730,385 860,435 Q800,455 800,465" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,145 Q240,195 370,245 Q500,295 620,345 Q740,395 870,445 Q800,465 800,475" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,155 Q250,205 380,255 Q510,305 630,355 Q750,405 880,455 Q800,475 800,485" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,165 Q260,215 390,265 Q520,315 640,365 Q760,415 890,465 Q800,485 800,495" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,175 Q270,225 400,275 Q530,325 650,375 Q770,425 900,475 Q800,495 800,505" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,185 Q280,235 410,285 Q540,335 660,385 Q780,435 910,485 Q800,505 800,515" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,195 Q290,245 420,295 Q550,345 670,395 Q790,445 920,495 Q800,515 800,525" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,205 Q300,255 430,305 Q560,355 680,405 Q800,455 930,505 Q800,525 800,535" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,215 Q310,265 440,315 Q570,365 690,415 Q810,465 940,515 Q800,535 800,545" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,225 Q320,275 450,325 Q580,375 700,425 Q820,475 950,525 Q800,545 800,555" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,235 Q330,285 460,335 Q590,385 710,435 Q830,485 960,535 Q800,555 800,565" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,245 Q340,295 470,345 Q600,395 720,445 Q840,495 970,545 Q800,565 800,575" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,255 Q350,305 480,355 Q610,405 730,455 Q850,505 980,555 Q800,575 800,585" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,265 Q360,315 490,365 Q620,415 740,465 Q860,515 990,565 Q800,585 800,595" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,275 Q370,325 500,375 Q630,425 750,475 Q870,525 1000,575 Q800,595 800,605" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,285 Q380,335 510,385 Q640,435 760,485 Q880,535 1010,585 Q800,605 800,615" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
+  <path d="M10,295 Q390,345 520,395 Q650,445 770,495 Q890,545 1020,595 Q800,615 800,625" stroke="url(#lineGradient)" stroke-width="0.6" fill="none"/>
 </svg>
