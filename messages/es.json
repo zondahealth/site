@@ -477,42 +477,6 @@
           "description": "El sistema mejora con el tiempo, aprendiendo de patrones y adaptándose a tu práctica médica específica y terminología."
         }
       }
-    },
-    "faq": {
-      "hero": {
-        "title": "Preguntas Frecuentes",
-        "description": "Encuentra respuestas a preguntas comunes sobre los Registros Médicos Digitales de Zonda y las soluciones de tecnología de salud."
-      },
-      "questions": {
-        "specialtySupport": {
-          "question": "¿Zonda soporta mi especialidad médica?",
-          "answer": "Zonda soporta más de 75 especialidades médicas, con plantillas y flujos de trabajo personalizables adaptados a cómo trabajas."
-        },
-        "dailyPractice": {
-          "question": "¿Cómo puede Zonda ayudarme en mi práctica clínica diaria?",
-          "answer": "Zonda pone todo lo que necesitas en un solo lugar. Comienza cada consulta con el historial completo de tu paciente y formularios pre-cita ya cargados. Usa nuestra integración de escriba médico con IA para manejar la toma de notas mientras te enfocas en la consulta. Prescribe, ordena pruebas de patología y haz referencias dentro del mismo sistema con soporte de prescripción integrado. El resultado es más tiempo con pacientes, menos trabajo administrativo y terminas a tiempo mientras brindas mejor atención."
-        },
-        "practiceManagement": {
-          "question": "¿Zonda es solo un sistema de gestión de práctica?",
-          "answer": "No, Zonda es un sistema completo de Registros Médicos Digitales (RMD). Va más allá de reservas y facturación para poder registrar notas de consulta estructuradas, prescripción, ordenar y recibir laboratorios, gestionar referencias, coordinación de atención y auditorías clínicas. Zonda también te permite construir un negocio escalable a través de integraciones con más de 1,200 herramientas de negocio para soportar crecimiento escalable sin limitaciones de software."
-        },
-        "differentiation": {
-          "question": "¿Qué hace diferente a Zonda de otros Registros Médicos Digitales?",
-          "answer": "Zonda está construido para soportar clínicos optimizando la atención con flujos de trabajo administrativos y de negocio. Esto te apoya en ejecutar un negocio escalable, ya sea que estés comenzando en práctica privada o entregando contratos a gran escala."
-        },
-        "integrations": {
-          "question": "¿Qué otras herramientas clínicas están integradas con Zonda?",
-          "answer": "Ya estamos integrados con IA para escriba médico y constantemente agregamos más herramientas clínicas, incluyendo herramientas de imágenes y diagnósticas (próximamente) para hacer tu flujo de trabajo más eficiente. En el lado del negocio, nos integramos con herramientas para contabilidad y herramientas de marketing (próximamente) para ayudarte a ejecutar tu práctica con Zonda. Obtén acceso a herramientas clínicas y de negocio integradas con Zonda para optimizar tus operaciones de negocio en un solo lugar."
-        },
-        "dataSafety": {
-          "question": "¿Los datos del paciente están seguros con Zonda?",
-          "answer": "Sí. Zonda sigue pautas de ciberseguridad, es completamente compatible con GDPR e incluye auditorías de seguimiento, controles de acceso y auditorías de seguridad regulares. Visita nuestro Centro de Confianza para aprender más."
-        },
-        "compliance": {
-          "question": "¿Cómo soporta Zonda auditorías y cumplimiento?",
-          "answer": "Zonda es seguro por diseño y te ayuda a mantenerte listo para inspecciones con plantillas de consulta estandarizadas, auditorías de seguimiento y controles de acceso construidos en cada flujo de trabajo. Puedes rastrear quién hizo qué, cuándo a través del sistema y acceder a una gama de reportes estandarizados en minutos."
-        }
-      }
     }
   },
   "patientExperience": {
@@ -638,5 +602,17 @@
     "description": "La página que buscas no existe o ha sido movida.",
     "goHome": "Ir al Inicio",
     "exploreSolutions": "Explorar Soluciones"
+  },
+  "faq": {
+    "hero": {
+      "title": "Preguntas Frecuentes",
+      "description": "Encuentra respuestas a preguntas comunes sobre la plataforma de Zonda y las soluciones de tecnología de salud."
+    },
+    "questions": {
+      "dataSafety": {
+        "question": "¿Los datos del paciente están seguros con Zonda?",
+        "answer": "Sí. Zonda sigue pautas de ciberseguridad, es completamente compatible con altas practicas de seguridad tanto en transito como en reposo, con controles de acceso."
+      }
+    }
   }
 }

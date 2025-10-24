@@ -7,6 +7,9 @@ import { useTranslations } from 'next-intl';
 export default function FAQPage() {
   const t = useTranslations('faq');
 
+  // Define FAQ questions as an array of objects
+  const faqQuestions = ['dataSafety'];
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -33,68 +36,19 @@ export default function FAQPage() {
         <section className="py-20 bg-gray-50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-y-8">
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('questions.specialtySupport.question')}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {t('questions.specialtySupport.answer')}
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('questions.dailyPractice.question')}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {t('questions.dailyPractice.answer')}
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('questions.practiceManagement.question')}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {t('questions.practiceManagement.answer')}
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('questions.differentiation.question')}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {t('questions.differentiation.answer')}
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('questions.integrations.question')}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {t('questions.integrations.answer')}
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('questions.dataSafety.question')}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {t('questions.dataSafety.answer')}
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('questions.compliance.question')}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {t('questions.compliance.answer')}
-                </p>
-              </div>
+              {faqQuestions.map((questionKey) => (
+                <div
+                  key={questionKey}
+                  className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
+                >
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                    {t(`questions.${questionKey}.question`)}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {t(`questions.${questionKey}.answer`)}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
