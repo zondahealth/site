@@ -12,6 +12,7 @@ import {
   BarChart3,
   Shield,
 } from 'lucide-react';
+import { ColoredSection } from '@/app/components/ColoredSection';
 
 export default function PlatformOrgPage() {
   const t = useTranslations('platformOrg');
@@ -92,7 +93,7 @@ export default function PlatformOrgPage() {
         </section>
 
         {/* Features Section */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -115,6 +116,16 @@ export default function PlatformOrgPage() {
             </div>
           </div>
         </section>
+
+        <ColoredSection variant="yellow" stretch={true} className="py-8">
+          Gestion de turnos y tratamientos
+        </ColoredSection>
+        <ColoredSection variant="purple" stretch={true} className="py-8">
+          Registros Médicos Digitales
+        </ColoredSection>
+        <ColoredSection variant="teal" className="py-8">
+          Patient Experience
+        </ColoredSection>
       </main>
 
       <Footer />

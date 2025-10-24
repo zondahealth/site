@@ -33,7 +33,7 @@ export default function FAQPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-y-8">
               {faqQuestions.map((questionKey) => (

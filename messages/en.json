@@ -396,8 +396,8 @@
   },
   "ehr": {
     "hero": {
-      "title": "Your Digital Medical Records, reimagined for",
-      "titleHighlight": "modern care",
+      "title": "Electronic",
+      "titleHighlight": "Medical Records",
       "description": "Zonda connects your patient medical records to clinical workflows and governance in one place, without the admin. Designed for clinics of every size, from solo practitioners to large multi-disciplinary teams.",
       "subtitle": "Start every appointment prepared with complete patient history, streamline documentation with AI-powered notes, and treat with confidence using integrated clinical decision support."
     },

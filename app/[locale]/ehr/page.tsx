@@ -17,6 +17,8 @@ import {
   Brain,
   Lightbulb,
 } from 'lucide-react';
+import { MedicalCardComponent } from '@/app/components/drawings/MedicalCardComponent';
+import { EHRComponent } from '@/app/components/drawings/EHRComponent';
 
 export default function EHRPage() {
   const t = useTranslations('ehr');
@@ -106,26 +108,25 @@ export default function EHRPage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(247,215,74,0.1),transparent_50%)]"></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(3,106,250,0.1),transparent_50%)]"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div className="text-center mb-16">
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight flex flex-col items-center justify-center">
-                <span className="text-zonda-yellow">
-                  {t('hero.titleHighlight')}
-                </span>
-                {t('hero.title')}
-              </h1>
+            <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px] pb-24">
+              {/* Left: Text Content */}
+              <div className="flex flex-col justify-center">
+                <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
+                  {t('hero.title')}{' '}
+                  <span className="text-zonda-yellow">
+                    {t('hero.titleHighlight')}
+                  </span>
+                </h1>
 
-              <p className="text-lg lg:text-xl text-white/95 max-w-4xl mx-auto leading-relaxed mb-6 font-medium">
-                {t('hero.description')}
-              </p>
-            </div>
+                <p className="text-lg lg:text-xl text-white/95 leading-relaxed font-medium">
+                  {t('hero.description')}
+                </p>
+              </div>
 
-            {/* EHR Screenshot */}
-            <div className="flex justify-center items-center w-full">
-              <img
-                src="/webshots/records.png"
-                className="w-full lg:w-2/3 h-auto object-contain relative z-10"
-                alt={t('hero.title')}
-              />
+              {/* Right: EHR Component */}
+              <div className="flex justify-center items-center">
+                <EHRComponent />
+              </div>
             </div>
           </div>
         </section>
@@ -167,7 +168,7 @@ export default function EHRPage() {
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-6 gap-16 items-center px-16">
+            <div className="grid lg:grid-cols-5 gap-8 items-center">
               {/* Left: Content */}
               <div className="lg:col-span-3">
                 {/* Key Features Grid */}
@@ -186,12 +187,8 @@ export default function EHRPage() {
               </div>
 
               {/* Right: Image */}
-              <div className="lg:col-span-3 flex justify-center items-center">
-                <img
-                  src="/webshots/records-bg.png"
-                  alt={t('intelligentProcessing.title')}
-                  className="w-3/4 max-w-md h-auto"
-                />
+              <div className="lg:col-span-2 flex justify-center items-center">
+                <MedicalCardComponent />
               </div>
             </div>
           </div>

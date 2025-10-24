@@ -18,6 +18,7 @@ import {
   Target,
   BarChart3,
 } from 'lucide-react';
+import { PatientExperienceComponent } from '@/app/components/drawings/PatientExperienceComponent';
 
 export default function PatientExperiencePage() {
   const t = useTranslations('patientExperience');
@@ -114,17 +115,13 @@ export default function PatientExperiencePage() {
 
             {/* Patient Experience Screenshot */}
             <div className="flex justify-center items-center w-full">
-              <img
-                src="/webshots/patients.png"
-                className="w-full lg:w-2/3 h-auto object-contain relative z-10"
-                alt={t('hero.title')}
-              />
+              <PatientExperienceComponent />
             </div>
           </div>
         </section>
 
         {/* Features Section */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -161,17 +158,8 @@ export default function PatientExperiencePage() {
             </div>
 
             <div className="grid lg:grid-cols-6 gap-16 items-center">
-              {/* Left: Image */}
-              <div className="lg:col-span-3">
-                <img
-                  src="/webshots/patients-cropped.png"
-                  alt={t('aiInsights.title')}
-                  className="w-full h-[500px] object-cover rounded-2xl shadow-2xl"
-                />
-              </div>
-
               {/* Right: Content */}
-              <div className="lg:col-span-3">
+              <div className="lg:col-span-4">
                 {/* Key Features Grid */}
                 <div className="grid md:grid-cols-2 gap-6">
                   {aiInsightsFeatures.map((feature, index) => (

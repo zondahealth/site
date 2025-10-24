@@ -341,39 +341,9 @@
       "titleHighlight": "Profesional",
       "description": "Herramientas especializadas para profesionales de la salud que les permiten interactuar con la data de sus pacientes y optimizar su práctica médica"
     },
-    "features": {
-      "title": "Características de la App Profesional",
-      "subtitle": "Diseñada específicamente para profesionales de la salud",
-      "items": {
-        "medicalHistory": {
-          "title": "Historial Médico Completo",
-          "description": "Acceso completo al historial médico de pacientes desde múltiples instituciones."
-        },
-        "consultationRecords": {
-          "title": "Registro de Consultas",
-          "description": "Registro eficiente y detallado de consultas médicas y tratamientos."
-        },
-        "digitalPrescription": {
-          "title": "Prescripción Digital",
-          "description": "Sistema integrado de prescripción digital de medicamentos."
-        },
-        "dataAnalysis": {
-          "title": "Análisis de Datos",
-          "description": "Análisis detallado del estado del paciente por visita y evolución."
-        },
-        "multiInstitutional": {
-          "title": "Multi-Institucional",
-          "description": "Trabajo con múltiples instituciones de salud desde una sola plataforma."
-        },
-        "mobileAccess": {
-          "title": "Acceso Móvil",
-          "description": "Aplicación móvil optimizada para acceso desde cualquier dispositivo."
-        }
-      }
-    },
     "platformSection": {
-      "title": "Plataforma Profesional",
-      "subtitle": "Herramientas especializadas para profesionales de la salud que les permiten interactuar con la data de sus pacientes y optimizar su práctica médica.",
+      "title": "Diseñada específicamente para profesionales de la salud",
+      "subtitle": "Permite a profesionales de la salud interactuar con la data de sus pacientes y optimizar su práctica médica.",
       "features": {
         "medicalHistory": {
           "title": "Historial Médico",
@@ -396,9 +366,9 @@
   },
   "ehr": {
     "hero": {
-      "titleHighlight": "Registros Médicos Digitales",
-      "title": "reimaginados para la atención moderna",
-      "description": "Zonda centraliza los registros médicos de tus pacientes, integrándolos con los flujos clínicos y centralizados en un solo lugar, sin necesidad de gestión manual. Diseñado para organizaciones de cualquier tamaño desde profesionales independientes hasta clínicas. Permite iniciar cada cita con el historial completo del paciente, optimizar la documentación mediante notas asistidas por IA y brindar atención con mayor seguridad gracias al soporte de decisiones clínicas integrado."
+      "title": "Registros",
+      "titleHighlight": "Médicos Digitales",
+      "description": "Zonda reúne los registros médicos de tus pacientes en un solo lugar, integrando flujos clínicos y documentación asistida por IA, para citas más preparadas y decisiones clínicas más seguras."
     },
     "workflowBenefits": {
       "title": "Mejora la atención a tus pacientes y trátalos con confianza",

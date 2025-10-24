@@ -21,40 +21,6 @@ import {
 export default function PlatformProfessionalPage() {
   const t = useTranslations('platformProfessional');
 
-  // Features data
-  const features = [
-    {
-      icon: FileText,
-      title: t('features.items.medicalHistory.title'),
-      description: t('features.items.medicalHistory.description'),
-    },
-    {
-      icon: Edit,
-      title: t('features.items.consultationRecords.title'),
-      description: t('features.items.consultationRecords.description'),
-    },
-    {
-      icon: Pill,
-      title: t('features.items.digitalPrescription.title'),
-      description: t('features.items.digitalPrescription.description'),
-    },
-    {
-      icon: TrendingUp,
-      title: t('features.items.dataAnalysis.title'),
-      description: t('features.items.dataAnalysis.description'),
-    },
-    {
-      icon: Users,
-      title: t('features.items.multiInstitutional.title'),
-      description: t('features.items.multiInstitutional.description'),
-    },
-    {
-      icon: Calendar,
-      title: t('features.items.mobileAccess.title'),
-      description: t('features.items.mobileAccess.description'),
-    },
-  ];
-
   // Platform section features data
   const platformFeatures = [
     {
@@ -126,34 +92,9 @@ export default function PlatformProfessionalPage() {
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="py-20 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                {t('features.title')}
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                {t('features.subtitle')}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {features.map((feature, index) => (
-                <FeatureBox
-                  key={index}
-                  icon={feature.icon}
-                  title={feature.title}
-                  description={feature.description}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Professional Platform Section */}
-        <ColoredSection variant="orange" stretch={true}>
-          <div className="relative z-10">
+        <ColoredSection variant="orange" stretch={true} className="py-32">
+          <div className="relative z-10 py-16">
             <div className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                 {t('platformSection.title')}
