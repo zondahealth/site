@@ -8,7 +8,11 @@
       "interoperability": "Interoperabilidad",
       "reportsData": "Reportes y Datos",
       "aiReasoning": "IA Razonamiento",
-      "api": "API"
+      "api": "API",
+      "ehr": "Registros Médicos Electrónicos",
+      "patientExperience": "Experiencia del Paciente",
+      "multiOrg": "Múltiples Organizaciones",
+      "modules": "Módulos"
     },
     "buttons": {
       "login": "Iniciar Sesión",
@@ -386,6 +390,183 @@
         "dataAnalysis": {
           "title": "Análisis de Datos",
           "description": "Análisis detallado del estado del paciente por visita y evolución"
+        }
+      }
+    }
+  },
+  "ehr": {
+    "hero": {
+      "title": "Registros Médicos",
+      "titleHighlight": "Electrónicos",
+      "description": "Zonda proporciona una capacidad flexible de Registros Médicos Electrónicos que puede acoplarse o desacoplarse de sistemas de agendamiento. Cada nuevo registro actualiza automáticamente el perfil de salud del paciente, habilitando alertas tempranas para cambios de salud."
+    },
+    "features": {
+      "title": "Capacidades de EHR",
+      "subtitle": "Gestión flexible e inteligente de registros médicos electrónicos",
+      "items": {
+        "flexibleCoupling": {
+          "title": "Integración Flexible de Sistemas",
+          "description": "Capacidad de EHR que puede acoplarse o desacoplarse de sistemas de agendamiento, adaptándose a tus necesidades operativas."
+        },
+        "autoProfileUpdate": {
+          "title": "Actualizaciones Automáticas de Perfil",
+          "description": "Cada nuevo registro actualiza automáticamente el perfil de salud del paciente (mensual, anual, de por vida), habilitando alertas tempranas para cambios de salud."
+        },
+        "completeHistory": {
+          "title": "Historial Completo del Paciente",
+          "description": "Los profesionales siempre tienen acceso a una vista completa y resumida del historial del paciente — clara, concisa y sin perder detalles."
+        },
+        "unstructuredInput": {
+          "title": "Procesamiento de Entrada Natural",
+          "description": "Zonda no requiere entrada estructurada — los profesionales médicos pueden agregar notas en cualquier formato, y Zonda entiende, estructura y registra automáticamente."
+        },
+        "earlyAlerts": {
+          "title": "Alertas Tempranas de Salud",
+          "description": "Monitoreo inteligente que detecta patrones y cambios en la salud del paciente, proporcionando alertas oportunas para atención proactiva."
+        },
+        "seamlessWorkflow": {
+          "title": "Flujo de Trabajo Fluido",
+          "description": "Proceso de documentación optimizado que mejora en lugar de obstaculizar el flujo de trabajo clínico y la toma de decisiones."
+        }
+      }
+    },
+    "intelligentProcessing": {
+      "title": "Documentación Médica Inteligente",
+      "subtitle": "Procesamiento avanzado con IA que entiende y estructura información médica naturalmente",
+      "features": {
+        "naturalLanguage": {
+          "title": "Comprensión de Lenguaje Natural",
+          "description": "Procesa notas médicas en cualquier formato usando IA avanzada que entiende contexto y terminología médica."
+        },
+        "automaticStructuring": {
+          "title": "Estructuración Automática",
+          "description": "Transforma notas médicas no estructuradas en registros organizados y buscables sin formato manual."
+        },
+        "contextualAnalysis": {
+          "title": "Análisis Contextual",
+          "description": "Analiza información médica en contexto, identificando relaciones y patrones para mejores insights clínicos."
+        },
+        "continuousLearning": {
+          "title": "Aprendizaje Continuo",
+          "description": "El sistema mejora con el tiempo, aprendiendo de patrones y adaptándose a tu práctica médica específica y terminología."
+        }
+      }
+    }
+  },
+  "patientExperience": {
+    "hero": {
+      "title": "Experiencia del Paciente",
+      "titleHighlight": "Integrada",
+      "description": "Zonda verifica la identidad del paciente y proporciona una plataforma integral de experiencia del paciente. Los pacientes reciben un historial clínico resumido para confirmación, recordatorios de citas y encuestas regulares de salud que enriquecen su perfil con insights procesados por IA."
+    },
+    "features": {
+      "title": "Características de Experiencia del Paciente",
+      "subtitle": "Plataforma integral de participación del paciente y verificación de datos",
+      "items": {
+        "identityVerification": {
+          "title": "Verificación de Identidad",
+          "description": "Proceso seguro de verificación de identidad del paciente que asegura datos precisos y construye confianza en la relación de salud."
+        },
+        "clinicalHistoryConfirmation": {
+          "title": "Confirmación de Historial Clínico",
+          "description": "Los pacientes reciben una versión resumida de su historial clínico para confirmación, asegurando datos precisos y confiables."
+        },
+        "appointmentReminders": {
+          "title": "Recordatorios de Citas",
+          "description": "Recordatorios opcionales y notificaciones para citas, visitas profesionales y confirmaciones para reducir citas perdidas."
+        },
+        "healthSurveys": {
+          "title": "Encuestas de Salud",
+          "description": "Encuestas regulares enviadas a pacientes sobre su experiencia, estilo de vida y salud — Zonda procesa respuestas y extrae insights clave."
+        },
+        "profileEnrichment": {
+          "title": "Enriquecimiento de Perfil",
+          "description": "La IA procesa respuestas de encuestas para extraer insights (historial familiar, hábitos, riesgos) y enriquece el perfil del paciente para profesionales."
+        },
+        "patientEngagement": {
+          "title": "Participación del Paciente",
+          "description": "Participación activa del paciente en su jornada de salud a través de herramientas accesibles e interacciones significativas."
+        }
+      }
+    },
+    "aiInsights": {
+      "title": "Insights del Paciente con IA",
+      "subtitle": "Transforma feedback del paciente en inteligencia clínica accionable",
+      "features": {
+        "surveyProcessing": {
+          "title": "Procesamiento Inteligente de Encuestas",
+          "description": "La IA analiza respuestas del paciente para identificar patrones, riesgos y oportunidades para mejor atención."
+        },
+        "lifestyleTracking": {
+          "title": "Seguimiento de Estilo de Vida",
+          "description": "Monitorea cambios en el estilo de vida del paciente, hábitos y patrones de salud a través de participación regular."
+        },
+        "riskIdentification": {
+          "title": "Identificación de Riesgos",
+          "description": "Identificación temprana de riesgos de salud y patrones de historial familiar a través de análisis integral de datos del paciente."
+        },
+        "personalizedCare": {
+          "title": "Planificación de Atención Personalizada",
+          "description": "Genera recomendaciones de atención personalizadas basadas en historial del paciente, estilo de vida e insights de encuestas."
+        }
+      }
+    }
+  },
+  "multiOrg": {
+    "hero": {
+      "title": "Gestión de Múltiples",
+      "titleHighlight": "Organizaciones",
+      "description": "Zonda está diseñado para grandes organizaciones con múltiples sub-organizaciones. La organización principal puede gestionar todas las sub-entidades a través de la integración API de Zonda, ya sea que usen Zonda o sistemas externos, con arquitectura escalable e interoperable."
+    },
+    "features": {
+      "title": "Capacidades Multi-Organizacionales",
+      "subtitle": "Arquitectura escalable para estructuras organizacionales complejas",
+      "items": {
+        "largeOrganizationSupport": {
+          "title": "Soporte para Grandes Organizaciones",
+          "description": "Diseñado para grandes organizaciones con múltiples sub-organizaciones (aseguradoras, hospitales, sistemas de atención domiciliaria)."
+        },
+        "unifiedManagement": {
+          "title": "Gestión Unificada",
+          "description": "La organización principal puede gestionar todas las sub-entidades, ya sea que usen Zonda o sistemas externos, vía integración API."
+        },
+        "crossOrganizationAssignment": {
+          "title": "Asignación Cruzada de Organizaciones",
+          "description": "Asigna pacientes, profesionales y tratamientos a través de sub-organizaciones con gestión flexible de acceso."
+        },
+        "independentAccess": {
+          "title": "Gestión de Acceso Independiente",
+          "description": "Gestiona acceso independientemente para cada sub-organización mientras mantienes supervisión y control centralizados."
+        },
+        "localGlobalReports": {
+          "title": "Reportes Locales y Globales",
+          "description": "Genera tanto reportes locales para sub-organizaciones individuales como reportes globales para toda la organización."
+        },
+        "scalableArchitecture": {
+          "title": "Arquitectura Escalable",
+          "description": "Arquitectura que se adapta a cualquier modelo operativo con escalabilidad e interoperabilidad ilimitadas."
+        }
+      }
+    },
+    "integrationFlexibility": {
+      "title": "Flexibilidad de Integración",
+      "subtitle": "Adaptable a cualquier modelo operativo con capacidades de integración fluidas",
+      "features": {
+        "apiIntegration": {
+          "title": "Integración API Robusta",
+          "description": "Conecta con sistemas existentes a través de la API integral de Zonda, manteniendo continuidad operativa."
+        },
+        "hybridDeployment": {
+          "title": "Despliegue Híbrido",
+          "description": "Soporte para entornos mixtos donde algunas sub-organizaciones usan Zonda mientras otras mantienen sistemas externos."
+        },
+        "operationalContinuity": {
+          "title": "Continuidad Operativa",
+          "description": "Integración fluida sin interrumpir operaciones existentes o requerir reemplazos de sistemas."
+        },
+        "customWorkflows": {
+          "title": "Flujos de Trabajo Personalizados",
+          "description": "Adapta a flujos de trabajo organizacionales únicos y procesos mientras mantiene consistencia y seguridad de datos."
         }
       }
     }

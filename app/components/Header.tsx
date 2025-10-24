@@ -13,6 +13,9 @@ import {
   Boxes,
   Box,
   MoreVertical,
+  FileText,
+  Users,
+  Layers,
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -51,6 +54,26 @@ export function Header() {
         { label: t('interoperability'), href: '/interop', icon: Network },
         { label: t('reportsData'), href: '/data', icon: BarChart3 },
         { label: t('aiReasoning'), href: '/ai', icon: Brain },
+      ],
+    },
+    {
+      label: t('modules'),
+      children: [
+        {
+          label: t('ehr'),
+          href: '/ehr',
+          icon: FileText,
+        },
+        {
+          label: t('patientExperience'),
+          href: '/patient-experience',
+          icon: Users,
+        },
+        {
+          label: t('multiOrg'),
+          href: '/multi-org',
+          icon: Layers,
+        },
       ],
     },
     {

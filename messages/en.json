@@ -8,7 +8,11 @@
       "interoperability": "Interoperability",
       "reportsData": "Reports & Data",
       "aiReasoning": "AI Reasoning",
-      "api": "API"
+      "api": "API",
+      "ehr": "Electronic Health Records",
+      "patientExperience": "Patient Experience",
+      "multiOrg": "Multi-Organization",
+      "modules": "Modules"
     },
     "buttons": {
       "login": "Sign In",
@@ -386,6 +390,183 @@
         "dataAnalysis": {
           "title": "Data Analysis",
           "description": "Detailed analysis of patient status by visit and evolution"
+        }
+      }
+    }
+  },
+  "ehr": {
+    "hero": {
+      "title": "Electronic Health",
+      "titleHighlight": "Records",
+      "description": "Zonda provides flexible Electronic Health Records capability that can be coupled or decoupled from scheduling systems. Each new record automatically updates the patient's health profile, enabling early alerts for health changes."
+    },
+    "features": {
+      "title": "EHR Capabilities",
+      "subtitle": "Flexible and intelligent electronic health record management",
+      "items": {
+        "flexibleCoupling": {
+          "title": "Flexible System Integration",
+          "description": "EHR capability that can be coupled or decoupled from scheduling systems, adapting to your operational needs."
+        },
+        "autoProfileUpdate": {
+          "title": "Automatic Profile Updates",
+          "description": "Each new record automatically updates the patient's health profile (monthly, annual, lifetime), enabling early alerts for health changes."
+        },
+        "completeHistory": {
+          "title": "Complete Patient History",
+          "description": "Professionals always have access to a complete, summarized view of the patient's history — clear, concise, and never losing details."
+        },
+        "unstructuredInput": {
+          "title": "Natural Input Processing",
+          "description": "Zonda does not require structured input — medical professionals can add notes in any format, and Zonda understands, structures, and records them automatically."
+        },
+        "earlyAlerts": {
+          "title": "Early Health Alerts",
+          "description": "Intelligent monitoring that detects patterns and changes in patient health, providing timely alerts for proactive care."
+        },
+        "seamlessWorkflow": {
+          "title": "Seamless Workflow",
+          "description": "Streamlined documentation process that enhances rather than hinders clinical workflow and decision-making."
+        }
+      }
+    },
+    "intelligentProcessing": {
+      "title": "Intelligent Medical Documentation",
+      "subtitle": "Advanced AI-powered processing that understands and structures medical information naturally",
+      "features": {
+        "naturalLanguage": {
+          "title": "Natural Language Understanding",
+          "description": "Process medical notes in any format using advanced AI that understands context and medical terminology."
+        },
+        "automaticStructuring": {
+          "title": "Automatic Structuring",
+          "description": "Transform unstructured medical notes into organized, searchable records without manual formatting."
+        },
+        "contextualAnalysis": {
+          "title": "Contextual Analysis",
+          "description": "Analyze medical information in context, identifying relationships and patterns for better clinical insights."
+        },
+        "continuousLearning": {
+          "title": "Continuous Learning",
+          "description": "System improves over time, learning from patterns and adapting to your specific medical practice and terminology."
+        }
+      }
+    }
+  },
+  "patientExperience": {
+    "hero": {
+      "title": "Integrated Patient",
+      "titleHighlight": "Experience",
+      "description": "Zonda verifies patient identity and provides a comprehensive patient experience platform. Patients receive summarized clinical history for confirmation, appointment reminders, and regular health surveys that enrich their profile with AI-processed insights."
+    },
+    "features": {
+      "title": "Patient Experience Features",
+      "subtitle": "Comprehensive patient engagement and data verification platform",
+      "items": {
+        "identityVerification": {
+          "title": "Identity Verification",
+          "description": "Secure patient identity verification process that ensures accurate data and builds trust in the healthcare relationship."
+        },
+        "clinicalHistoryConfirmation": {
+          "title": "Clinical History Confirmation",
+          "description": "Patients receive a summarized version of their clinical history for confirmation, ensuring accurate and trusted data."
+        },
+        "appointmentReminders": {
+          "title": "Appointment Reminders",
+          "description": "Optional reminders and notifications for appointments, professional visits, and confirmations to reduce missed appointments."
+        },
+        "healthSurveys": {
+          "title": "Health Surveys",
+          "description": "Regular surveys sent to patients about their experience, lifestyle, and health — Zonda processes responses and extracts key insights."
+        },
+        "profileEnrichment": {
+          "title": "Profile Enrichment",
+          "description": "AI processes survey responses to extract insights (family history, habits, risks) and enriches the patient profile for professionals."
+        },
+        "patientEngagement": {
+          "title": "Patient Engagement",
+          "description": "Active patient participation in their healthcare journey through accessible tools and meaningful interactions."
+        }
+      }
+    },
+    "aiInsights": {
+      "title": "AI-Powered Patient Insights",
+      "subtitle": "Transform patient feedback into actionable clinical intelligence",
+      "features": {
+        "surveyProcessing": {
+          "title": "Intelligent Survey Processing",
+          "description": "AI analyzes patient responses to identify patterns, risks, and opportunities for improved care."
+        },
+        "lifestyleTracking": {
+          "title": "Lifestyle Tracking",
+          "description": "Monitor changes in patient lifestyle, habits, and health patterns through regular engagement."
+        },
+        "riskIdentification": {
+          "title": "Risk Identification",
+          "description": "Early identification of health risks and family history patterns through comprehensive patient data analysis."
+        },
+        "personalizedCare": {
+          "title": "Personalized Care Planning",
+          "description": "Generate personalized care recommendations based on patient history, lifestyle, and survey insights."
+        }
+      }
+    }
+  },
+  "multiOrg": {
+    "hero": {
+      "title": "Multi-Organization",
+      "titleHighlight": "Management",
+      "description": "Zonda is designed for large organizations with multiple sub-organizations. The main organization can manage all sub-entities through Zonda's API integration, whether they use Zonda or external systems, with scalable and interoperable architecture."
+    },
+    "features": {
+      "title": "Multi-Organization Capabilities",
+      "subtitle": "Scalable architecture for complex organizational structures",
+      "items": {
+        "largeOrganizationSupport": {
+          "title": "Large Organization Support",
+          "description": "Designed for large organizations with multiple sub-organizations (insurers, hospitals, home-care systems)."
+        },
+        "unifiedManagement": {
+          "title": "Unified Management",
+          "description": "Main organization can manage all sub-entities, whether they use Zonda or external systems, via API integration."
+        },
+        "crossOrganizationAssignment": {
+          "title": "Cross-Organization Assignment",
+          "description": "Assign patients, professionals, and treatments across sub-organizations with flexible access management."
+        },
+        "independentAccess": {
+          "title": "Independent Access Management",
+          "description": "Manage access independently for each sub-organization while maintaining centralized oversight and control."
+        },
+        "localGlobalReports": {
+          "title": "Local and Global Reports",
+          "description": "Generate both local reports for individual sub-organizations and global reports for the entire organization."
+        },
+        "scalableArchitecture": {
+          "title": "Scalable Architecture",
+          "description": "Architecture that adapts to any operational model with unlimited scalability and interoperability."
+        }
+      }
+    },
+    "integrationFlexibility": {
+      "title": "Integration Flexibility",
+      "subtitle": "Adaptable to any operational model with seamless integration capabilities",
+      "features": {
+        "apiIntegration": {
+          "title": "Robust API Integration",
+          "description": "Connect with existing systems through Zonda's comprehensive API, maintaining operational continuity."
+        },
+        "hybridDeployment": {
+          "title": "Hybrid Deployment",
+          "description": "Support for mixed environments where some sub-organizations use Zonda while others maintain external systems."
+        },
+        "operationalContinuity": {
+          "title": "Operational Continuity",
+          "description": "Seamless integration without disrupting existing operations or requiring system replacements."
+        },
+        "customWorkflows": {
+          "title": "Custom Workflows",
+          "description": "Adapt to unique organizational workflows and processes while maintaining data consistency and security."
         }
       }
     }
