@@ -3,6 +3,7 @@ import React from 'react';
 interface ColoredSectionProps {
   children: React.ReactNode;
   className?: string;
+  stretch?: boolean;
   variant?:
     | 'yellow'
     | 'blue'
@@ -19,6 +20,7 @@ interface ColoredSectionProps {
 export const ColoredSection: React.FC<ColoredSectionProps> = ({
   children,
   className = '',
+  stretch = false,
   variant = 'blue',
 }) => {
   const getBackgroundColor = (
@@ -151,7 +153,11 @@ export const ColoredSection: React.FC<ColoredSectionProps> = ({
     <section className={`relative py-8 px-4 ${className}`}>
       <div className="container mx-auto">
         <div
-          className="rounded-2xl h-[32rem] md:h-[36rem] lg:h-[42rem] xl:h-[48rem] 2xl:h-[52rem] flex items-center justify-center overflow-hidden"
+          className={`px-6 md:px-12 lg:px-16 rounded-2xl flex items-center justify-center overflow-hidden ${
+            stretch
+              ? 'min-h-[32rem] md:min-h-[36rem] lg:min-h-[42rem] xl:min-h-[48rem] 2xl:min-h-[52rem] py-8'
+              : 'h-[32rem] md:h-[36rem] lg:h-[42rem] xl:h-[48rem] 2xl:h-[52rem]'
+          }`}
           style={getGradientStyle(variant)}
         >
           {children}

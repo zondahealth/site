@@ -151,6 +151,14 @@ export function Footer() {
                 </a>
               </li>
               <li>
+                <Link
+                  href="/faq"
+                  className="text-white/80 hover:text-white transition-colors duration-200 text-sm"
+                >
+                  FAQ
+                </Link>
+              </li>
+              <li>
                 <span className="text-white/60 text-sm">
                   San Juan, Argentina
                 </span>

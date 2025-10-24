@@ -9,7 +9,7 @@
       "reportsData": "Reportes y Datos",
       "aiReasoning": "IA Razonamiento",
       "api": "API",
-      "ehr": "Registros Médicos Electrónicos",
+      "ehr": "Registros Médicos Digitales",
       "patientExperience": "Experiencia del Paciente",
       "multiOrg": "Múltiples Organizaciones",
       "modules": "Módulos"
@@ -17,7 +17,7 @@
     "buttons": {
       "login": "Iniciar Sesión",
       "createAccount": "Crear Cuenta de Profesional",
-      "contactUs": "Contactanos",
+      "contactUs": "Contáctanos",
       "discoverSolution": "Descubrir Solución Integral",
       "explorePlatform": "Explorar Plataforma Profesional",
       "accessAnalytics": "Acceder a Analytics",
@@ -109,7 +109,7 @@
     "title": "¿Listo para Transformar tus Operaciones de Salud?",
     "subtitle": "Ponte en contacto con nuestro equipo para aprender cómo Zonda Health puede ayudarte a brindar mejor atención al paciente a través de soluciones tecnológicas innovadoras.",
     "contactInfo": {
-      "title": "Contactanos",
+      "title": "Contáctanos",
       "email": "support@zondahealth.com",
       "subtitle": "Responderemos dentro de 24 horas"
     },
@@ -396,17 +396,43 @@
   },
   "ehr": {
     "hero": {
-      "title": "Registros Médicos",
-      "titleHighlight": "Electrónicos",
-      "description": "Zonda proporciona una capacidad flexible de Registros Médicos Electrónicos que puede acoplarse o desacoplarse de sistemas de agendamiento. Cada nuevo registro actualiza automáticamente el perfil de salud del paciente, habilitando alertas tempranas para cambios de salud."
+      "titleHighlight": "Registros Médicos Digitales",
+      "title": "reimaginados para la atención moderna",
+      "description": "Zonda centraliza los registros médicos de tus pacientes, integrándolos con los flujos clínicos y centralizados en un solo lugar, sin necesidad de gestión manual. Diseñado para organizaciones de cualquier tamaño desde profesionales independientes hasta clínicas. Permite iniciar cada cita con el historial completo del paciente, optimizar la documentación mediante notas asistidas por IA y brindar atención con mayor seguridad gracias al soporte de decisiones clínicas integrado."
+    },
+    "workflowBenefits": {
+      "title": "Mejora la atención a tus pacientes y trátalos con confianza",
+      "subtitle": "Profesionales preparados para cada consulta, con el historial completo del paciente disponible de un vistazo. Toma decisiones más rápidas y seguras con asistencia de prescripción y alertas clínicas integradas. Gestiona tratamientos, notas y cartas desde un solo lugar.",
+      "benefits": {
+        "startPrepared": {
+          "title": "Comienza cada cita preparado",
+          "description": "Ve el historial médico completo de tu paciente al instante. Accede a resúmenes de pacientes, historial de tratamientos y cuestionarios pre-cita en una sola vista. Obtén la información que necesitas para brindar atención de calidad desde el primer minuto."
+        },
+        "regainTime": {
+          "title": "Recupera tiempo después de las consultas",
+          "description": "Usa nuestra integración de escriba médico con IA para transcribir instantáneamente tus consultas en notas médicamente estructuradas. Pasa menos tiempo escribiendo, más tiempo tratando pacientes y aún terminas a tiempo."
+        },
+        "treatFollowUp": {
+          "title": "Trata y da seguimiento en un solo lugar",
+          "description": "Prescribe con confianza. Toma decisiones más seguras y rápidas con soporte de decisiones clínicas integrado en tus notas de consulta. Ordena laboratorios, prescripciones y refiere pacientes sin salir de tu Registro Médico Digital."
+        },
+        "standardizeCare": {
+          "title": "Estandariza la atención en tu práctica",
+          "description": "Tu atención, tu manera. Usa plantillas de consulta específicas por especialidad para asegurar que cada clínico siga las mejores prácticas. Genera reportes listos para cumplimiento en minutos. Mantén gobernanza clínica sin administración extra."
+        },
+        "keepConnected": {
+          "title": "Mantén la atención conectada entre equipos",
+          "description": "Ya seas un profesional independiente o trabajes en un equipo multidisciplinario, Zonda ayuda a tu equipo a coordinar la atención. Comparte planes de atención, resultados de pruebas y cartas de referencia de forma segura desde un sistema."
+        }
+      }
     },
     "features": {
-      "title": "Capacidades de EHR",
-      "subtitle": "Gestión flexible e inteligente de registros médicos electrónicos",
+      "title": "Capacidades de Registros Médicos Digitales",
+      "subtitle": "Gestión flexible e inteligente de registros médicos digitales",
       "items": {
         "flexibleCoupling": {
           "title": "Integración Flexible de Sistemas",
-          "description": "Capacidad de EHR que puede acoplarse o desacoplarse de sistemas de agendamiento, adaptándose a tus necesidades operativas."
+          "description": "Capacidad de Registros Médicos Digitales que puede acoplarse o desacoplarse de sistemas de agendamiento, adaptándose a tus necesidades operativas."
         },
         "autoProfileUpdate": {
           "title": "Actualizaciones Automáticas de Perfil",
@@ -449,6 +475,42 @@
         "continuousLearning": {
           "title": "Aprendizaje Continuo",
           "description": "El sistema mejora con el tiempo, aprendiendo de patrones y adaptándose a tu práctica médica específica y terminología."
+        }
+      }
+    },
+    "faq": {
+      "hero": {
+        "title": "Preguntas Frecuentes",
+        "description": "Encuentra respuestas a preguntas comunes sobre los Registros Médicos Digitales de Zonda y las soluciones de tecnología de salud."
+      },
+      "questions": {
+        "specialtySupport": {
+          "question": "¿Zonda soporta mi especialidad médica?",
+          "answer": "Zonda soporta más de 75 especialidades médicas, con plantillas y flujos de trabajo personalizables adaptados a cómo trabajas."
+        },
+        "dailyPractice": {
+          "question": "¿Cómo puede Zonda ayudarme en mi práctica clínica diaria?",
+          "answer": "Zonda pone todo lo que necesitas en un solo lugar. Comienza cada consulta con el historial completo de tu paciente y formularios pre-cita ya cargados. Usa nuestra integración de escriba médico con IA para manejar la toma de notas mientras te enfocas en la consulta. Prescribe, ordena pruebas de patología y haz referencias dentro del mismo sistema con soporte de prescripción integrado. El resultado es más tiempo con pacientes, menos trabajo administrativo y terminas a tiempo mientras brindas mejor atención."
+        },
+        "practiceManagement": {
+          "question": "¿Zonda es solo un sistema de gestión de práctica?",
+          "answer": "No, Zonda es un sistema completo de Registros Médicos Digitales (RMD). Va más allá de reservas y facturación para poder registrar notas de consulta estructuradas, prescripción, ordenar y recibir laboratorios, gestionar referencias, coordinación de atención y auditorías clínicas. Zonda también te permite construir un negocio escalable a través de integraciones con más de 1,200 herramientas de negocio para soportar crecimiento escalable sin limitaciones de software."
+        },
+        "differentiation": {
+          "question": "¿Qué hace diferente a Zonda de otros Registros Médicos Digitales?",
+          "answer": "Zonda está construido para soportar clínicos optimizando la atención con flujos de trabajo administrativos y de negocio. Esto te apoya en ejecutar un negocio escalable, ya sea que estés comenzando en práctica privada o entregando contratos a gran escala."
+        },
+        "integrations": {
+          "question": "¿Qué otras herramientas clínicas están integradas con Zonda?",
+          "answer": "Ya estamos integrados con IA para escriba médico y constantemente agregamos más herramientas clínicas, incluyendo herramientas de imágenes y diagnósticas (próximamente) para hacer tu flujo de trabajo más eficiente. En el lado del negocio, nos integramos con herramientas para contabilidad y herramientas de marketing (próximamente) para ayudarte a ejecutar tu práctica con Zonda. Obtén acceso a herramientas clínicas y de negocio integradas con Zonda para optimizar tus operaciones de negocio en un solo lugar."
+        },
+        "dataSafety": {
+          "question": "¿Los datos del paciente están seguros con Zonda?",
+          "answer": "Sí. Zonda sigue pautas de ciberseguridad, es completamente compatible con GDPR e incluye auditorías de seguimiento, controles de acceso y auditorías de seguridad regulares. Visita nuestro Centro de Confianza para aprender más."
+        },
+        "compliance": {
+          "question": "¿Cómo soporta Zonda auditorías y cumplimiento?",
+          "answer": "Zonda es seguro por diseño y te ayuda a mantenerte listo para inspecciones con plantillas de consulta estandarizadas, auditorías de seguimiento y controles de acceso construidos en cada flujo de trabajo. Puedes rastrear quién hizo qué, cuándo a través del sistema y acceder a una gama de reportes estandarizados en minutos."
         }
       }
     }

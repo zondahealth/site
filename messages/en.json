@@ -9,7 +9,7 @@
       "reportsData": "Reports & Data",
       "aiReasoning": "AI Reasoning",
       "api": "API",
-      "ehr": "Electronic Health Records",
+      "ehr": "Digital Medical Records",
       "patientExperience": "Patient Experience",
       "multiOrg": "Multi-Organization",
       "modules": "Modules"
@@ -181,7 +181,7 @@
     },
     "medicalNotes": {
       "title": "Intelligent Medical Notes",
-      "description": "Helps healthcare professionals write their notes flexibly, Zonda understands, improves, and structures medical evolutions to achieve better results later"
+      "description": "Helps healthcare professionals write their notes flexibly. Zonda understands, improves, and structures medical evolutions to achieve better results later."
     }
   },
   "data": {
@@ -396,17 +396,44 @@
   },
   "ehr": {
     "hero": {
-      "title": "Electronic Health",
-      "titleHighlight": "Records",
-      "description": "Zonda provides flexible Electronic Health Records capability that can be coupled or decoupled from scheduling systems. Each new record automatically updates the patient's health profile, enabling early alerts for health changes."
+      "title": "Your Digital Medical Records, reimagined for",
+      "titleHighlight": "modern care",
+      "description": "Zonda connects your patient medical records to clinical workflows and governance in one place, without the admin. Designed for clinics of every size, from solo practitioners to large multi-disciplinary teams.",
+      "subtitle": "Start every appointment prepared with complete patient history, streamline documentation with AI-powered notes, and treat with confidence using integrated clinical decision support."
+    },
+    "workflowBenefits": {
+      "title": "Restore the joy of patient care, treat with confidence (and less clicks)",
+      "subtitle": "Start each consultation prepared, with an accurate patient history available at a glance. Make faster, safer decisions with built-in prescribing guidance and clinical alerts. Complete treatment plans and letters all from one place.",
+      "benefits": {
+        "startPrepared": {
+          "title": "Start every appointment prepared",
+          "description": "See your patient's full medical history instantly. Access patient summaries, treatment history and pre-appointment questionnaires in one view. Get the information you need to deliver quality care from the first minute."
+        },
+        "regainTime": {
+          "title": "Regain time after consultations",
+          "description": "Use our AI medical scribe integration to instantly transcribe your consultations into medically structured notes. Spend less time typing, more time treating patients and still finish work on time."
+        },
+        "treatFollowUp": {
+          "title": "Treat and follow up in one place",
+          "description": "Prescribe with confidence. Make safer decisions faster with clinical decision support integrated into your consultation notes. Order labs, prescriptions and refer patients without leaving your Digital Medical Records."
+        },
+        "standardizeCare": {
+          "title": "Standardize care across your practice",
+          "description": "Your care, your way. Use speciality-specific consultation templates to ensure every clinician follows best practices. Generate compliance-ready reports in minutes. Maintain clinical governance without extra admin."
+        },
+        "keepConnected": {
+          "title": "Keep care connected across teams",
+          "description": "Whether you're a solo practitioner or working across a multi-disciplinary team, Zonda helps your team coordinate care. Share care plans, test results and referral letters securely from one system."
+        }
+      }
     },
     "features": {
-      "title": "EHR Capabilities",
-      "subtitle": "Flexible and intelligent electronic health record management",
+      "title": "Digital Medical Records Capabilities",
+      "subtitle": "Flexible and intelligent digital medical record management",
       "items": {
         "flexibleCoupling": {
           "title": "Flexible System Integration",
-          "description": "EHR capability that can be coupled or decoupled from scheduling systems, adapting to your operational needs."
+          "description": "Digital Medical Records capability that can be coupled or decoupled from scheduling systems, adapting to your operational needs."
         },
         "autoProfileUpdate": {
           "title": "Automatic Profile Updates",
@@ -430,6 +457,12 @@
         }
       }
     },
+    "testimonial": {
+      "quote": "Before Zonda, it was a slow process. Now, for us to be able to say to regulators that lab reports are completed within one day is amazing. And that's all because of the integration we have with the labs in Zonda.",
+      "author": "Dr. María González",
+      "position": "Practice Manager",
+      "organization": "Centro Médico San José"
+    },
     "intelligentProcessing": {
       "title": "Intelligent Medical Documentation",
       "subtitle": "Advanced AI-powered processing that understands and structures medical information naturally",
@@ -449,6 +482,42 @@
         "continuousLearning": {
           "title": "Continuous Learning",
           "description": "System improves over time, learning from patterns and adapting to your specific medical practice and terminology."
+        }
+      }
+    },
+    "faq": {
+      "hero": {
+        "title": "Frequently Asked Questions",
+        "description": "Find answers to common questions about Zonda's Digital Medical Records and healthcare technology solutions."
+      },
+      "questions": {
+        "specialtySupport": {
+          "question": "Does Zonda support my medical specialty?",
+          "answer": "Zonda supports over 75 medical specialties, with customisable templates and workflows tailored to how you work."
+        },
+        "dailyPractice": {
+          "question": "How can Zonda help me in my day-to-day clinical practice?",
+          "answer": "Zonda puts everything you need in one place. Start each consultation with your patient's complete history and pre-appointment forms already loaded. Use our AI medical scribe integration to handle note taking while you focus on the consultation. Prescribe, order pathology tests and make referrals within the same system with built-in prescribing support. The result is more time with patients, less admin work and you finish on time while delivering better care."
+        },
+        "practiceManagement": {
+          "question": "Is Zonda just a practice management system?",
+          "answer": "No, Zonda is a full Digital Medical Records (DMR) system. It goes beyond bookings and billing to being able to record structured consultation notes, prescribing, ordering and receiving labs, managing referrals, care coordination and clinical audits. Zonda also lets you build a scalable business through integrations with over 1,200 business tools to support scalable growth without software limitations."
+        },
+        "differentiation": {
+          "question": "What makes Zonda different from other Digital Medical Records?",
+          "answer": "Zonda is built to support clinicians by streamlining care with admin and business workflows. This supports you with running a scalable business, whether you're just starting out in private practice or delivering large scale contracts."
+        },
+        "integrations": {
+          "question": "What other clinical tools are integrated with Zonda?",
+          "answer": "We're already integrated with AI for medical scribing and we're constantly adding more clinical tools, including imaging and diagnostic tools (coming soon) to make your workflow more efficient. On the business side, we integrate with tools for accounting and marketing tools (coming soon) to help you run your practice with Zonda. Get access to integrated clinical and business tools with Zonda to streamline your business operations in one place."
+        },
+        "dataSafety": {
+          "question": "Is patient data safe with Zonda?",
+          "answer": "Yes. Zonda follows cybersecurity guidelines, is fully GDPR-compliant and includes audit trails, access controls, and regular security audits. Visit our Trust Centre to learn more."
+        },
+        "compliance": {
+          "question": "How does Zonda support audits and compliance?",
+          "answer": "Zonda is secure by design and helps you stay ready for inspections with standardised consultation templates, audit trails and access controls built into every workflow. You can track who did what, when across the system and access a range of standardised reports in minutes."
         }
       }
     }

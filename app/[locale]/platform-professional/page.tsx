@@ -2,10 +2,94 @@
 
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
+import { ColoredSection } from '../../components/ColoredSection';
+import { FeatureBox, SmallFeatureBox } from '../../components/FeatureBox';
 import { useTranslations } from 'next-intl';
+import {
+  Users,
+  Calendar,
+  FileText,
+  UserCheck,
+  BarChart3,
+  Shield,
+  ClipboardList,
+  Edit,
+  Pill,
+  TrendingUp,
+} from 'lucide-react';
 
 export default function PlatformProfessionalPage() {
   const t = useTranslations('platformProfessional');
+
+  // Features data
+  const features = [
+    {
+      icon: FileText,
+      title: t('features.items.medicalHistory.title'),
+      description: t('features.items.medicalHistory.description'),
+    },
+    {
+      icon: Edit,
+      title: t('features.items.consultationRecords.title'),
+      description: t('features.items.consultationRecords.description'),
+    },
+    {
+      icon: Pill,
+      title: t('features.items.digitalPrescription.title'),
+      description: t('features.items.digitalPrescription.description'),
+    },
+    {
+      icon: TrendingUp,
+      title: t('features.items.dataAnalysis.title'),
+      description: t('features.items.dataAnalysis.description'),
+    },
+    {
+      icon: Users,
+      title: t('features.items.multiInstitutional.title'),
+      description: t('features.items.multiInstitutional.description'),
+    },
+    {
+      icon: Calendar,
+      title: t('features.items.mobileAccess.title'),
+      description: t('features.items.mobileAccess.description'),
+    },
+  ];
+
+  // Platform section features data
+  const platformFeatures = [
+    {
+      icon: ClipboardList,
+      title: t('platformSection.features.medicalHistory.title'),
+      description: t('platformSection.features.medicalHistory.description'),
+      iconBgColor: 'bg-zonda-blue',
+      iconColor: 'text-white',
+    },
+    {
+      icon: Edit,
+      title: t('platformSection.features.consultationRecords.title'),
+      description: t(
+        'platformSection.features.consultationRecords.description'
+      ),
+      iconBgColor: 'bg-zonda-orange',
+      iconColor: 'text-white',
+    },
+    {
+      icon: Pill,
+      title: t('platformSection.features.digitalPrescription.title'),
+      description: t(
+        'platformSection.features.digitalPrescription.description'
+      ),
+      iconBgColor: 'bg-zonda-blue-dark',
+      iconColor: 'text-white',
+    },
+    {
+      icon: TrendingUp,
+      title: t('platformSection.features.dataAnalysis.title'),
+      description: t('platformSection.features.dataAnalysis.description'),
+      iconBgColor: 'bg-zonda-yellow',
+      iconColor: 'text-white',
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -55,158 +139,21 @@ export default function PlatformProfessionalPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg
-                    className="w-6 h-6 text-zonda-blue"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('features.items.medicalHistory.title')}
-                </h3>
-                <p className="text-gray-600">
-                  {t('features.items.medicalHistory.description')}
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg
-                    className="w-6 h-6 text-zonda-blue"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('features.items.consultationRecords.title')}
-                </h3>
-                <p className="text-gray-600">
-                  {t('features.items.consultationRecords.description')}
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg
-                    className="w-6 h-6 text-zonda-blue"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('features.items.digitalPrescription.title')}
-                </h3>
-                <p className="text-gray-600">
-                  {t('features.items.digitalPrescription.description')}
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg
-                    className="w-6 h-6 text-zonda-blue"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('features.items.dataAnalysis.title')}
-                </h3>
-                <p className="text-gray-600">
-                  {t('features.items.dataAnalysis.description')}
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg
-                    className="w-6 h-6 text-zonda-blue"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('features.items.multiInstitutional.title')}
-                </h3>
-                <p className="text-gray-600">
-                  {t('features.items.multiInstitutional.description')}
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg
-                    className="w-6 h-6 text-zonda-blue"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('features.items.mobileAccess.title')}
-                </h3>
-                <p className="text-gray-600">
-                  {t('features.items.mobileAccess.description')}
-                </p>
-              </div>
+              {features.map((feature, index) => (
+                <FeatureBox
+                  key={index}
+                  icon={feature.icon}
+                  title={feature.title}
+                  description={feature.description}
+                />
+              ))}
             </div>
           </div>
         </section>
 
         {/* Professional Platform Section */}
-        <section className="py-20 bg-gradient-to-br from-zonda-yellow to-zonda-orange relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <ColoredSection variant="orange" stretch={true}>
+          <div className="relative z-10">
             <div className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                 {t('platformSection.title')}
@@ -221,105 +168,16 @@ export default function PlatformProfessionalPage() {
               <div className="lg:col-span-3">
                 {/* Key Features Grid */}
                 <div className="grid grid-cols-2 gap-6">
-                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/40 shadow-lg">
-                    <div className="w-10 h-10 bg-zonda-blue rounded-lg flex items-center justify-center mb-4">
-                      <svg
-                        className="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                        />
-                      </svg>
-                    </div>
-                    <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      {t('platformSection.features.medicalHistory.title')}
-                    </h4>
-                    <p className="text-gray-800 text-sm font-medium">
-                      {t('platformSection.features.medicalHistory.description')}
-                    </p>
-                  </div>
-
-                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/40 shadow-lg">
-                    <div className="w-10 h-10 bg-zonda-orange rounded-lg flex items-center justify-center mb-4">
-                      <svg
-                        className="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                        />
-                      </svg>
-                    </div>
-                    <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      {t('platformSection.features.consultationRecords.title')}
-                    </h4>
-                    <p className="text-gray-800 text-sm font-medium">
-                      {t(
-                        'platformSection.features.consultationRecords.description'
-                      )}
-                    </p>
-                  </div>
-
-                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/40 shadow-lg">
-                    <div className="w-10 h-10 bg-zonda-blue-dark rounded-lg flex items-center justify-center mb-4">
-                      <svg
-                        className="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-                        />
-                      </svg>
-                    </div>
-                    <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      {t('platformSection.features.digitalPrescription.title')}
-                    </h4>
-                    <p className="text-gray-800 text-sm font-medium">
-                      {t(
-                        'platformSection.features.digitalPrescription.description'
-                      )}
-                    </p>
-                  </div>
-
-                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/40 shadow-lg">
-                    <div className="w-10 h-10 bg-zonda-yellow rounded-lg flex items-center justify-center mb-4">
-                      <svg
-                        className="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                        />
-                      </svg>
-                    </div>
-                    <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      {t('platformSection.features.dataAnalysis.title')}
-                    </h4>
-                    <p className="text-gray-800 text-sm font-medium">
-                      {t('platformSection.features.dataAnalysis.description')}
-                    </p>
-                  </div>
+                  {platformFeatures.map((feature, index) => (
+                    <SmallFeatureBox
+                      key={index}
+                      icon={feature.icon}
+                      title={feature.title}
+                      description={feature.description}
+                      iconBgColor={feature.iconBgColor}
+                      iconColor={feature.iconColor}
+                    />
+                  ))}
                 </div>
               </div>
 
@@ -333,7 +191,7 @@ export default function PlatformProfessionalPage() {
               </div>
             </div>
           </div>
-        </section>
+        </ColoredSection>
       </main>
 
       <Footer />

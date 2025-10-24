@@ -2,10 +2,100 @@
 
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
+import { ColoredSection } from '../../components/ColoredSection';
+import { FeatureBox, SmallFeatureBox } from '../../components/FeatureBox';
 import { useTranslations } from 'next-intl';
+import {
+  BarChart3,
+  TrendingUp,
+  Users,
+  FileText,
+  Calendar,
+  Shield,
+  Activity,
+  PieChart,
+  LineChart,
+  Target,
+} from 'lucide-react';
 
 export default function DataPage() {
   const t = useTranslations('data');
+
+  // Features data
+  const features = [
+    {
+      icon: BarChart3,
+      title: t('features.interactiveDashboards.title'),
+      description: t('features.interactiveDashboards.description'),
+    },
+    {
+      icon: TrendingUp,
+      title: t('features.trendAnalysis.title'),
+      description: t('features.trendAnalysis.description'),
+    },
+    {
+      icon: Calendar,
+      title: t('features.realTime.title'),
+      description: t('features.realTime.description'),
+    },
+    {
+      icon: FileText,
+      title: t('features.customReports.title'),
+      description: t('features.customReports.description'),
+    },
+    {
+      icon: Users,
+      title: t('features.patientInsights.title'),
+      description: t('features.patientInsights.description'),
+    },
+    {
+      icon: Shield,
+      title: t('features.dataSecurity.title'),
+      description: t('features.dataSecurity.description'),
+    },
+    {
+      icon: PieChart,
+      title: t('features.advancedVisualizations.title'),
+      description: t('features.advancedVisualizations.description'),
+    },
+    {
+      icon: Activity,
+      title: t('features.dataExport.title'),
+      description: t('features.dataExport.description'),
+    },
+  ];
+
+  // Patient Reports section features data
+  const patientReportsFeatures = [
+    {
+      icon: Activity,
+      title: t('patientReports.features.healthMetrics.title'),
+      description: t('patientReports.features.healthMetrics.description'),
+      iconBgColor: 'bg-zonda-green',
+      iconColor: 'text-white',
+    },
+    {
+      icon: PieChart,
+      title: t('patientReports.features.treatmentProgress.title'),
+      description: t('patientReports.features.treatmentProgress.description'),
+      iconBgColor: 'bg-zonda-blue',
+      iconColor: 'text-white',
+    },
+    {
+      icon: LineChart,
+      title: t('patientReports.features.healthTrends.title'),
+      description: t('patientReports.features.healthTrends.description'),
+      iconBgColor: 'bg-zonda-orange',
+      iconColor: 'text-white',
+    },
+    {
+      icon: Target,
+      title: t('patientReports.features.goalTracking.title'),
+      description: t('patientReports.features.goalTracking.description'),
+      iconBgColor: 'bg-zonda-purple',
+      iconColor: 'text-white',
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -205,10 +295,8 @@ export default function DataPage() {
         </section>
 
         {/* Patient Reports Section */}
-        <section className="py-20 bg-gradient-to-br from-zonda-yellow to-zonda-orange relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <ColoredSection variant="green" stretch={true}>
+          <div className="relative z-10">
             <div className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                 {t('patientReports.title')}
@@ -333,7 +421,7 @@ export default function DataPage() {
               </div>
             </div>
           </div>
-        </section>
+        </ColoredSection>
 
         {/* Data Integration Section */}
         <section className="py-20 bg-gray-50">
