@@ -22,13 +22,15 @@ export const metadata: Metadata = {
   description: 'zonda',
 };
 
+// This file is required for the root layout
+// The actual layout is now in app/[locale]/layout.tsx
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="es">
+    <html>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} antialiased`}
       >

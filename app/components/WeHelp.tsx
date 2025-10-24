@@ -1,24 +1,30 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
+
 export function WeHelp() {
+  const t = useTranslations('weHelp');
+
   const stats = [
     {
-      label: 'Ahorro en costos operativos',
+      label: t('stats.costSavings.label'),
       value: '+30%',
-      description: 'Optimización de recursos',
+      description: t('stats.costSavings.description'),
     },
     {
-      label: 'Reducción en tiempos de espera',
+      label: t('stats.waitTimeReduction.label'),
       value: '+40%',
-      description: 'Eficiencia mejorada',
+      description: t('stats.waitTimeReduction.description'),
     },
     {
-      label: 'Reducción en errores médicos',
+      label: t('stats.medicalErrorsReduction.label'),
       value: '+35%',
-      description: 'Precisión aumentada',
+      description: t('stats.medicalErrorsReduction.description'),
     },
     {
-      label: 'Ahorro en fraude y prácticas inapropiadas',
+      label: t('stats.fraudSavings.label'),
       value: '+30%',
-      description: 'Seguridad garantizada',
+      description: t('stats.fraudSavings.description'),
     },
   ];
 
@@ -29,17 +35,11 @@ export function WeHelp() {
           {/* Text Content */}
           <div className="space-y-8">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-              Ayudamos a mejorar los{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                resultados
-              </span>{' '}
-              de tu negocio y a ofrecer una atención centrada en el paciente.
+              {t('title')}
             </h2>
 
             <p className="text-xl text-gray-600 leading-relaxed">
-              Somos un equipo de expertos en tecnología de la salud dedicados a
-              mejorar los resultados de tu negocio y a ofrecer una atención
-              centrada en el paciente.
+              {t('description')}
             </p>
           </div>
 

@@ -1,8 +1,13 @@
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
-import { ColoredSection } from '../components/ColoredSection';
+'use client';
+
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+import { ColoredSection } from '../../components/ColoredSection';
+import { useTranslations } from 'next-intl';
 
 export default function InteropPage() {
+  const t = useTranslations('interop');
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -17,23 +22,19 @@ export default function InteropPage() {
             <div className="text-center mb-16">
               <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
                 <span className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#ffe680,#f8d347,#f0b90b,#f8d347,#ffe680)] drop-shadow-[0_2px_10px_rgba(15,23,42,0.3)]">
-                  Interoperabilidad
+                  {t('hero.title')}
                 </span>
               </h1>
 
               <p className="text-lg lg:text-xl text-white/95 max-w-4xl mx-auto leading-relaxed mb-8 font-medium">
-                Nuestra robusta API actúa como puente para integrar fuentes de
-                datos existentes. Permite que las instituciones mantengan sus
-                propios sistemas (facturación, turnos, historias clínicas, etc.)
-                mientras se conectan con Zonda para compartir y visualizar datos
-                de forma segura y estandarizada.
+                {t('hero.description')}
               </p>
 
               <div>
                 <img
                   src="/misc/console.png"
                   className="w-2/3 h-auto mx-auto"
-                  alt="Interop"
+                  alt={t('hero.title')}
                   style={{
                     filter:
                       'drop-shadow(0 0 40px rgba(36, 62, 147, 0.7)) drop-shadow(0 0 10px #040f2a)',
@@ -62,7 +63,7 @@ export default function InteropPage() {
                       d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                     />
                   </svg>
-                  Ver Documentación de la API
+                  {t('hero.apiDocs')}
                 </a>
               </div>
             </div>
@@ -74,15 +75,13 @@ export default function InteropPage() {
             {/* Main Quote */}
             <blockquote className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-6 leading-tight text-center">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-zonda-blue to-zonda-blue-dark">
-                Dedica tiempo a ofrecer el mejor servicio
+                {t('quote.line1')}
               </span>
               <br />
-              <span className="text-gray-800">
-                de prestación de salud, nosotros te proveemos
-              </span>
+              <span className="text-gray-800">{t('quote.line2')}</span>
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-zonda-blue-dark to-zonda-blue">
-                la tecnología.
+                {t('quote.line3')}
               </span>
             </blockquote>
 
@@ -94,11 +93,10 @@ export default function InteropPage() {
             {/* Mission Statement */}
             <div className="max-w-3xl mx-auto">
               <p className="text-lg lg:text-xl text-gray-700 leading-relaxed text-center font-medium">
-                Nuestra misión es liberar a las instituciones de salud de las
-                complejidades tecnológicas para que puedan enfocarse en lo que
+                {t('quote.mission')}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-zonda-blue to-zonda-blue-dark font-bold">
                   {' '}
-                  más importa: cuidar a sus pacientes.
+                  {t('quote.mission')}
                 </span>
               </p>
             </div>
@@ -110,12 +108,10 @@ export default function InteropPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                API Robusta y Flexible
+                {t('apiIntegration.title')}
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                ¿El resultado? Facilitamos el intercambio fluido de información
-                entre organizaciones o dentro de estructuras complejas como
-                redes de hospitales.
+                {t('apiIntegration.subtitle')}
               </p>
             </div>
 
@@ -137,11 +133,10 @@ export default function InteropPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Integración con Sistemas Existentes
+                  {t('apiIntegration.existingSystems.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Conecta sistemas de facturación, turnos, historias clínicas y
-                  otros sistemas existentes sin interrumpir operaciones.
+                  {t('apiIntegration.existingSystems.description')}
                 </p>
               </div>
 
@@ -162,11 +157,10 @@ export default function InteropPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Seguridad y Estandarización
+                  {t('apiIntegration.security.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Compartir y visualizar datos de forma segura y estandarizada
-                  manteniendo la integridad y privacidad de la información.
+                  {t('apiIntegration.security.description')}
                 </p>
               </div>
 
@@ -187,11 +181,10 @@ export default function InteropPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Flexibilidad Extrema
+                  {t('apiIntegration.flexibility.title')}
                 </h3>
                 <p className="text-gray-600">
-                  API extremadamente flexible y adaptable que se ajusta a las
-                  necesidades específicas de cada institución.
+                  {t('apiIntegration.flexibility.description')}
                 </p>
               </div>
 
@@ -212,11 +205,10 @@ export default function InteropPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Intercambio Fluido
+                  {t('apiIntegration.fluidExchange.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Intercambio fluido de información entre organizaciones y
-                  dentro de estructuras complejas como redes de hospitales.
+                  {t('apiIntegration.fluidExchange.description')}
                 </p>
               </div>
 
@@ -237,11 +229,10 @@ export default function InteropPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Mantenimiento de Sistemas
+                  {t('apiIntegration.systemMaintenance.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Mantenimiento de sistemas propios mientras se conectan con
-                  Zonda, sin interrupciones en las operaciones diarias.
+                  {t('apiIntegration.systemMaintenance.description')}
                 </p>
               </div>
 
@@ -262,11 +253,10 @@ export default function InteropPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Resultados Instantáneos
+                  {t('apiIntegration.instantResults.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Obtén resultados en tiempo real para cualquier caso de uso que
-                  quieras integrar con nuestra API robusta.
+                  {t('apiIntegration.instantResults.description')}
                 </p>
               </div>
             </div>

@@ -17,6 +17,8 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface NavItem {
   label: string;
@@ -25,35 +27,37 @@ interface NavItem {
   icon?: React.ComponentType<{ className?: string }>;
 }
 
-const navigationItems: NavItem[] = [
-  {
-    label: 'Soluciones',
-    children: [
-      {
-        label: 'Plataforma Profesional',
-        href: '/platform-professional',
-        icon: User,
-      },
-      {
-        label: 'Plataforma Organización',
-        href: '/platform-org',
-        icon: Building2,
-      },
-      { label: 'Interoperabilidad', href: '/interop', icon: Network },
-      { label: 'Reportes y Datos', href: '/data', icon: BarChart3 },
-      { label: 'IA Razonamiento', href: '/ai', icon: Brain },
-    ],
-  },
-  {
-    label: 'Desarrolladores',
-    href: 'https://zondahealth.readme.io/reference/getpatients',
-  },
-];
-
 export function Header() {
+  const t = useTranslations('common.nav');
+  const tButtons = useTranslations('common.buttons');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
+
+  const navigationItems: NavItem[] = [
+    {
+      label: t('solutions'),
+      children: [
+        {
+          label: t('platformProfessional'),
+          href: '/platform-professional',
+          icon: User,
+        },
+        {
+          label: t('platformOrg'),
+          href: '/platform-org',
+          icon: Building2,
+        },
+        { label: t('interoperability'), href: '/interop', icon: Network },
+        { label: t('reportsData'), href: '/data', icon: BarChart3 },
+        { label: t('aiReasoning'), href: '/ai', icon: Brain },
+      ],
+    },
+    {
+      label: t('developers'),
+      href: 'https://zondahealth.readme.io/reference/getpatients',
+    },
+  ];
 
   const handleMouseEnter = (itemLabel: string) => {
     if (hoverTimeout) {
@@ -124,7 +128,7 @@ export function Header() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`flex items-center space-x-1 transition-all duration-300 py-2 px-4 rounded-lg text-sm font-medium ${
-                          item.label === 'Desarrolladores'
+                          item.label === t('developers')
                             ? 'bg-gradient-to-r from-zonda-blue to-blue-600 text-white shadow-lg hover:shadow-xl hover:scale-102 transform hover:from-blue-600 hover:to-zonda-blue'
                             : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
                         }`}
@@ -132,9 +136,9 @@ export function Header() {
                         <span className="font-semibold tracking-wide">
                           {item.label}
                         </span>
-                        {item.label === 'Desarrolladores' && (
+                        {item.label === t('developers') && (
                           <span className="ml-1 text-xs bg-white/20 px-1.5 py-0.5 rounded-full font-bold">
-                            API
+                            {t('api')}
                           </span>
                         )}
                       </a>
@@ -189,6 +193,7 @@ export function Header() {
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center space-x-3">
+              <LanguageSwitcher />
               <Link
                 href="https://app.zondahealth.com"
                 target="_blank"
@@ -198,7 +203,7 @@ export function Header() {
                   variant="outline"
                   className="border-zonda-blue text-zonda-blue hover:bg-zonda-blue hover:text-white transition-all duration-300 font-semibold text-sm px-5 py-2.5 rounded-lg hover:scale-102 transform shadow-md hover:shadow-lg"
                 >
-                  Iniciar Sesión
+                  {tButtons('login')}
                 </Button>
               </Link>
               <Link
@@ -207,7 +212,7 @@ export function Header() {
                 rel="noopener noreferrer"
               >
                 <Button className="bg-gradient-to-r from-zonda-blue to-blue-600 hover:from-blue-600 hover:to-zonda-blue text-white transition-all duration-300 font-semibold text-sm px-5 py-2.5 rounded-lg hover:scale-102 transform shadow-lg hover:shadow-xl">
-                  Crear Cuenta de Profesional
+                  {tButtons('createAccount')}
                 </Button>
               </Link>
             </div>
@@ -243,7 +248,7 @@ export function Header() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`block px-4 py-3 font-semibold transition-all duration-300 rounded-lg text-sm ${
-                          item.label === 'Desarrolladores'
+                          item.label === t('developers')
                             ? 'bg-gradient-to-r from-zonda-blue to-blue-600 text-white shadow-lg hover:shadow-xl hover:scale-102 transform hover:from-blue-600 hover:to-zonda-blue'
                             : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
                         }`}
@@ -253,9 +258,9 @@ export function Header() {
                             {item.label}
                           </span>
 
-                          {item.label === 'Desarrolladores' && (
+                          {item.label === t('developers') && (
                             <span className="text-xs bg-white/20 px-2 py-1 rounded-full font-bold">
-                              API
+                              {t('api')}
                             </span>
                           )}
                         </div>
@@ -295,6 +300,9 @@ export function Header() {
 
               {/* Mobile CTA Buttons */}
               <div className="px-3 py-2 space-y-3 border-t border-zonda-blue/10 mt-4 pt-4 flex flex-col gap-2">
+                <div className="flex justify-center">
+                  <LanguageSwitcher />
+                </div>
                 <Link
                   href="https://app.zondahealth.com"
                   target="_blank"
@@ -304,7 +312,7 @@ export function Header() {
                     variant="outline"
                     className="w-full border-zonda-blue text-zonda-blue hover:bg-zonda-blue hover:text-white transition-all duration-300 font-semibold py-3 rounded-lg transform shadow-md hover:shadow-lg"
                   >
-                    Iniciar Sesión
+                    {tButtons('login')}
                   </Button>
                 </Link>
                 <Link
@@ -313,7 +321,7 @@ export function Header() {
                   rel="noopener noreferrer"
                 >
                   <Button className="w-full bg-gradient-to-r from-zonda-blue to-blue-600 hover:from-blue-600 hover:to-zonda-blue text-white transition-all duration-300 font-semibold py-3 rounded-lg hover:scale-102 transform shadow-lg hover:shadow-xl">
-                    Crear Cuenta de Profesional
+                    {tButtons('createAccount')}
                   </Button>
                 </Link>
               </div>

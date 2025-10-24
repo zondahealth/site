@@ -1,7 +1,12 @@
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
+'use client';
+
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+import { useTranslations } from 'next-intl';
 
 export default function PlatformOrgPage() {
+  const t = useTranslations('platformOrg');
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -15,14 +20,14 @@ export default function PlatformOrgPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="text-center mb-16">
               <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
-                Plataforma de <span className="text-zonda-yellow">Gestión</span>
+                {t('hero.title')}{' '}
+                <span className="text-zonda-yellow">
+                  {t('hero.titleHighlight')}
+                </span>
               </h1>
 
               <p className="text-lg lg:text-xl text-white/95 max-w-4xl mx-auto leading-relaxed mb-8 font-medium">
-                Ofrecemos una plataforma digital integral de gestión para
-                instituciones de salud que permite centralizar operaciones clave
-                como la administración de pacientes, turnos, tratamientos y
-                profesionales.
+                {t('hero.description')}
               </p>
             </div>
 
@@ -48,11 +53,10 @@ export default function PlatformOrgPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Funcionalidades de la Plataforma
+                {t('features.title')}
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Herramientas completas para la gestión integral de instituciones
-                de salud
+                {t('features.subtitle')}
               </p>
             </div>
 
@@ -74,11 +78,10 @@ export default function PlatformOrgPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Gestión de Pacientes
+                  {t('features.items.patientManagement.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Administración centralizada de historias clínicas, datos
-                  personales y seguimiento de tratamientos.
+                  {t('features.items.patientManagement.description')}
                 </p>
               </div>
 
@@ -99,11 +102,10 @@ export default function PlatformOrgPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Gestión de Turnos
+                  {t('features.items.appointmentManagement.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Sistema completo de agendamiento y gestión de citas médicas
-                  con profesionales.
+                  {t('features.items.appointmentManagement.description')}
                 </p>
               </div>
 
@@ -124,11 +126,10 @@ export default function PlatformOrgPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Gestión de Tratamientos
+                  {t('features.items.treatmentManagement.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Seguimiento detallado de tratamientos médicos y evolución de
-                  pacientes.
+                  {t('features.items.treatmentManagement.description')}
                 </p>
               </div>
 
@@ -149,11 +150,10 @@ export default function PlatformOrgPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Gestión de Profesionales
+                  {t('features.items.professionalManagement.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Administración de personal médico y asignación de roles y
-                  permisos.
+                  {t('features.items.professionalManagement.description')}
                 </p>
               </div>
 
@@ -174,11 +174,10 @@ export default function PlatformOrgPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Reportes y Analytics
+                  {t('features.items.reportsAnalytics.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Generación de reportes y análisis de datos para la toma de
-                  decisiones.
+                  {t('features.items.reportsAnalytics.description')}
                 </p>
               </div>
 
@@ -199,11 +198,10 @@ export default function PlatformOrgPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Seguridad y Compliance
+                  {t('features.items.securityCompliance.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Cumplimiento de normativas de salud y protección de datos
-                  sensibles.
+                  {t('features.items.securityCompliance.description')}
                 </p>
               </div>
             </div>

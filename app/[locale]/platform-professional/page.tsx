@@ -1,7 +1,12 @@
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
+'use client';
+
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+import { useTranslations } from 'next-intl';
 
 export default function PlatformProfessionalPage() {
+  const t = useTranslations('platformProfessional');
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -15,14 +20,14 @@ export default function PlatformProfessionalPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="text-center mb-16">
               <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
-                Plataforma{' '}
-                <span className="text-zonda-yellow">Profesional</span>
+                {t('hero.title')}{' '}
+                <span className="text-zonda-yellow">
+                  {t('hero.titleHighlight')}
+                </span>
               </h1>
 
               <p className="text-lg lg:text-xl text-white/95 max-w-4xl mx-auto leading-relaxed mb-8 font-medium">
-                Herramientas especializadas para profesionales de la salud que
-                les permiten interactuar con la data de sus pacientes y
-                optimizar su práctica médica
+                {t('hero.description')}
               </p>
             </div>
 
@@ -31,7 +36,7 @@ export default function PlatformProfessionalPage() {
               <img
                 src="/appshots/header.png"
                 className="w-full lg:w-2/3 h-auto object-contain relative z-10"
-                alt="Plataforma Profesional"
+                alt={t('hero.title')}
               />
             </div>
           </div>
@@ -42,10 +47,10 @@ export default function PlatformProfessionalPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Características de la App Profesional
+                {t('features.title')}
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Diseñada específicamente para profesionales de la salud
+                {t('features.subtitle')}
               </p>
             </div>
 
@@ -67,11 +72,10 @@ export default function PlatformProfessionalPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Historial Médico Completo
+                  {t('features.items.medicalHistory.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Acceso completo al historial médico de pacientes desde
-                  múltiples instituciones.
+                  {t('features.items.medicalHistory.description')}
                 </p>
               </div>
 
@@ -92,11 +96,10 @@ export default function PlatformProfessionalPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Registro de Consultas
+                  {t('features.items.consultationRecords.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Registro eficiente y detallado de consultas médicas y
-                  tratamientos.
+                  {t('features.items.consultationRecords.description')}
                 </p>
               </div>
 
@@ -117,10 +120,10 @@ export default function PlatformProfessionalPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Prescripción Digital
+                  {t('features.items.digitalPrescription.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Sistema integrado de prescripción digital de medicamentos.
+                  {t('features.items.digitalPrescription.description')}
                 </p>
               </div>
 
@@ -141,11 +144,10 @@ export default function PlatformProfessionalPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Análisis de Datos
+                  {t('features.items.dataAnalysis.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Análisis detallado del estado del paciente por visita y
-                  evolución.
+                  {t('features.items.dataAnalysis.description')}
                 </p>
               </div>
 
@@ -166,11 +168,10 @@ export default function PlatformProfessionalPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Multi-Institucional
+                  {t('features.items.multiInstitutional.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Trabajo con múltiples instituciones de salud desde una sola
-                  plataforma.
+                  {t('features.items.multiInstitutional.description')}
                 </p>
               </div>
 
@@ -191,11 +192,10 @@ export default function PlatformProfessionalPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Acceso Móvil
+                  {t('features.items.mobileAccess.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Aplicación móvil optimizada para acceso desde cualquier
-                  dispositivo.
+                  {t('features.items.mobileAccess.description')}
                 </p>
               </div>
             </div>
@@ -209,12 +209,10 @@ export default function PlatformProfessionalPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                Plataforma Profesional
+                {t('platformSection.title')}
               </h2>
               <p className="text-lg text-white/90 max-w-3xl mx-auto font-medium">
-                Herramientas especializadas para profesionales de la salud que
-                les permiten interactuar con la data de sus pacientes y
-                optimizar su práctica médica.
+                {t('platformSection.subtitle')}
               </p>
             </div>
 
@@ -240,11 +238,10 @@ export default function PlatformProfessionalPage() {
                       </svg>
                     </div>
                     <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      Historial Médico
+                      {t('platformSection.features.medicalHistory.title')}
                     </h4>
                     <p className="text-gray-800 text-sm font-medium">
-                      Acceso completo al historial médico de pacientes desde
-                      múltiples instituciones
+                      {t('platformSection.features.medicalHistory.description')}
                     </p>
                   </div>
 
@@ -265,11 +262,12 @@ export default function PlatformProfessionalPage() {
                       </svg>
                     </div>
                     <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      Registro de Consultas
+                      {t('platformSection.features.consultationRecords.title')}
                     </h4>
                     <p className="text-gray-800 text-sm font-medium">
-                      Registro eficiente y detallado de consultas médicas y
-                      tratamientos
+                      {t(
+                        'platformSection.features.consultationRecords.description'
+                      )}
                     </p>
                   </div>
 
@@ -290,10 +288,12 @@ export default function PlatformProfessionalPage() {
                       </svg>
                     </div>
                     <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      Prescripción Digital
+                      {t('platformSection.features.digitalPrescription.title')}
                     </h4>
                     <p className="text-gray-800 text-sm font-medium">
-                      Sistema integrado de prescripción digital de medicamentos
+                      {t(
+                        'platformSection.features.digitalPrescription.description'
+                      )}
                     </p>
                   </div>
 
@@ -314,11 +314,10 @@ export default function PlatformProfessionalPage() {
                       </svg>
                     </div>
                     <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      Análisis de Datos
+                      {t('platformSection.features.dataAnalysis.title')}
                     </h4>
                     <p className="text-gray-800 text-sm font-medium">
-                      Análisis detallado del estado del paciente por visita y
-                      evolución
+                      {t('platformSection.features.dataAnalysis.description')}
                     </p>
                   </div>
                 </div>
@@ -328,7 +327,7 @@ export default function PlatformProfessionalPage() {
               <div className="lg:col-span-3 flex justify-center items-center">
                 <img
                   src="/appshots/ontop.png"
-                  alt="Plataforma Profesional"
+                  alt={t('platformSection.title')}
                   className="w-3/4 max-w-md h-auto"
                 />
               </div>

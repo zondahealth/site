@@ -1,0 +1,399 @@
+{
+  "common": {
+    "nav": {
+      "solutions": "Solutions",
+      "developers": "Developers",
+      "platformProfessional": "Professional Platform",
+      "platformOrg": "Organization Platform",
+      "interoperability": "Interoperability",
+      "reportsData": "Reports & Data",
+      "aiReasoning": "AI Reasoning",
+      "api": "API"
+    },
+    "buttons": {
+      "login": "Sign In",
+      "createAccount": "Create Professional Account",
+      "contactUs": "Contact Us",
+      "discoverSolution": "Discover Complete Solution",
+      "explorePlatform": "Explore Professional Platform",
+      "accessAnalytics": "Access Analytics",
+      "exploreAI": "Explore Clinical AI",
+      "integrateTech": "Integrate Technologies",
+      "sendMessage": "Send Message",
+      "sending": "Sending..."
+    },
+    "footer": {
+      "solutions": "Solutions",
+      "home": "Home",
+      "artificialIntelligence": "Artificial Intelligence",
+      "dataAnalysis": "Data Analysis",
+      "interoperability": "Interoperability",
+      "organizationalPlatform": "Organizational Platform",
+      "professionalPlatform": "Professional Platform",
+      "developers": "Developers",
+      "apiDocumentation": "API Documentation",
+      "apiReference": "API Reference",
+      "contact": "Contact",
+      "allRightsReserved": "All rights reserved",
+      "fromSanJuan": "From San Juan, Argentina",
+      "description": "Transforming health management with innovative technology. We simplify medical administration for professionals and patients."
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Transforming Health.",
+      "subtitle1": "We promote efficiency in health institutions across Latin America.",
+      "subtitle2": "Companies of all sizes can manage their complete operations quickly, securely, and flexibly using Zonda's software and API."
+    },
+    "mainContent": {
+      "title": "We Transform Healthcare Management with Advanced Technology",
+      "description1": "We develop interoperable digital infrastructures that unify fragmented systems, optimizing workflows and improving care quality.",
+      "description2": "Our comprehensive platform allows healthcare organizations to maximize their operational efficiency and profitability through intelligent integration of existing technologies, without the need to replace previous investments.",
+      "stats": {
+        "efficiency": "Operational Efficiency",
+        "managementTime": "Management Time",
+        "interoperability": "Interoperability"
+      }
+    },
+    "sections": {
+      "healthManagement": {
+        "title": "Comprehensive Healthcare Management",
+        "description": "Unifies patient administration, medical scheduling, clinical records, and human resources in a centralized solution with advanced analytics and real-time operational control."
+      },
+      "professionalPlatform": {
+        "title": "Platform",
+        "titleHighlight": "Professional",
+        "description": "Specialized technology for healthcare professionals with assisted diagnostic tools, consultation management, and predictive analysis to optimize clinical practice."
+      },
+      "reportsAnalytics": {
+        "title": "Reports and Clinical Analytics",
+        "description": "Executive dashboard with performance metrics, demand predictive analysis, care quality indicators, and customized reports by unit, professional, and medical specialty."
+      },
+      "clinicalAI": {
+        "title": "Clinical Artificial Intelligence",
+        "description": "We convert data into key information through AI, helping to make better clinical decisions and optimize medical processes."
+      },
+      "interoperability": {
+        "title": "Interoperability",
+        "description": "Our API connects existing systems and facilitates secure, standardized, and efficient exchange of clinical and administrative data, without the need to replace previous investments."
+      }
+    }
+  },
+  "weHelp": {
+    "title": "We help improve your business results and offer patient-centered care.",
+    "description": "We are a team of health technology experts dedicated to improving your business results and offering patient-centered care.",
+    "stats": {
+      "costSavings": {
+        "label": "Operational cost savings",
+        "description": "Resource optimization"
+      },
+      "waitTimeReduction": {
+        "label": "Reduction in wait times",
+        "description": "Improved efficiency"
+      },
+      "medicalErrorsReduction": {
+        "label": "Reduction in medical errors",
+        "description": "Increased precision"
+      },
+      "fraudSavings": {
+        "label": "Savings in fraud and inappropriate practices",
+        "description": "Guaranteed security"
+      }
+    }
+  },
+  "contact": {
+    "title": "Ready to Transform Your Health Operations?",
+    "subtitle": "Get in touch with our team to learn how Zonda Health can help you provide better patient care through innovative technological solutions.",
+    "contactInfo": {
+      "title": "Contact Us",
+      "email": "support@zondahealth.com",
+      "subtitle": "We will respond within 24 hours"
+    },
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "organization": "Organization",
+      "message": "Message",
+      "placeholders": {
+        "firstName": "Enter your first name",
+        "lastName": "Enter your last name",
+        "email": "Enter your email",
+        "phone": "Enter your phone number",
+        "organization": "Enter your organization name",
+        "message": "Tell us about your health technology needs..."
+      },
+      "privacy": "I agree with the Privacy Policy and Terms of Service",
+      "success": "Message sent successfully! We will contact you soon.",
+      "error": "Error sending message",
+      "connectionError": "Connection error. Please try again.",
+      "loading": "Loading form..."
+    }
+  },
+  "ai": {
+    "hero": {
+      "title": "and Data",
+      "titleHighlight": "Artificial Intelligence",
+      "description": "Through the use of artificial intelligence, Zonda interprets large volumes of clinical data and generates insights, alerts, or automatic clinical recommendations. This capability can help identify risk patterns in patients, anticipate or even suggest treatments."
+    },
+    "healthProfiles": {
+      "title": "Health Profiles and Intelligent Alerts",
+      "subtitle": "We create comprehensive health profiles and alert systems that keep all stakeholders informed",
+      "profiles": {
+        "title": "Health Profiles",
+        "description": "We build comprehensive health profiles that integrate information from multiple sources to create a unified view of the patient."
+      },
+      "patientAlerts": {
+        "title": "Patient Alerts",
+        "description": "Intelligent alert system that notifies about changes in patient status, treatments, and necessary follow-ups."
+      },
+      "organizationalAlerts": {
+        "title": "Organizational Alerts",
+        "description": "Organization-level alerts to optimize resources, manage capacity, and improve operational efficiency."
+      }
+    },
+    "advancedAI": {
+      "title": "Advanced Artificial Intelligence",
+      "subtitle": "Cutting-edge technology that transforms healthcare through dynamic profiles, intelligent prediction, and continuous monitoring.",
+      "features": {
+        "dynamicProfiles": {
+          "title": "Dynamic Health Profiles",
+          "description": "We create unique health profiles for each patient based on their medical records and habits. These profiles are constantly updated."
+        },
+        "prediction": {
+          "title": "Prediction and Prevention",
+          "description": "Thanks to the analysis of historical and current data, we can anticipate future behaviors and detect early alerts."
+        },
+        "surveys": {
+          "title": "Surveys and Monitoring",
+          "description": "Through periodic surveys, we collect new information about changes in lifestyle and symptoms."
+        },
+        "betterResults": {
+          "title": "Better Results",
+          "description": "The combination of clinical data, habits, and constant monitoring improves diagnostic accuracy and optimizes treatments."
+        }
+      }
+    },
+    "medicalNotes": {
+      "title": "Intelligent Medical Notes",
+      "description": "Helps healthcare professionals write their notes flexibly, Zonda understands, improves, and structures medical evolutions to achieve better results later"
+    }
+  },
+  "data": {
+    "hero": {
+      "title": "Reports, Metrics and",
+      "titleHighlight": "Data Visualization",
+      "description": "We convert data into useful information for decision-making. Through dashboards and visualization tools, you can access customized reports by region, unit, professional, diagnosis, and treatment."
+    },
+    "features": {
+      "title": "Data Visualization Features",
+      "subtitle": "Advanced tools for analysis and visualization of medical information",
+      "interactiveDashboards": {
+        "title": "Interactive Dashboards",
+        "description": "Dynamic visualizations that adapt to your specific analysis needs."
+      },
+      "trendAnalysis": {
+        "title": "Trend Analysis",
+        "description": "Automatic identification of patterns and trends in medical data."
+      },
+      "realTime": {
+        "title": "Real Time",
+        "description": "Real-time updates to keep information always current."
+      },
+      "customReports": {
+        "title": "Custom Reports",
+        "description": "Automatic generation of custom reports by region, unit, and professional."
+      },
+      "advancedVisualizations": {
+        "title": "Advanced Visualizations",
+        "description": "Charts, tables, and interactive visualizations for better data understanding."
+      },
+      "dataExport": {
+        "title": "Data Export",
+        "description": "Export your analyses in multiple formats for sharing and presentation."
+      }
+    },
+    "patientReports": {
+      "title": "Detailed Patient Reports",
+      "description": "Each patient has a personalized panel with metrics, alerts, and month-to-month evolution. Continuous health monitoring with clear visualizations and automatic trends.",
+      "features": {
+        "vitalSigns": {
+          "title": "Vital Signs",
+          "description": "Automatic monitoring of blood pressure and heart rate"
+        },
+        "automaticAlerts": {
+          "title": "Automatic Alerts",
+          "description": "Immediate notifications when out-of-range values are detected"
+        },
+        "temporalEvolution": {
+          "title": "Temporal Evolution",
+          "description": "Chronological visualization of records and procedures"
+        },
+        "visualTrends": {
+          "title": "Visual Trends",
+          "description": "Charts and colors that facilitate understanding of evolution"
+        }
+      }
+    },
+    "dataIntegration": {
+      "title": "Flexibility in Data Ingestion",
+      "subtitle": "No matter how you ingest data into Zonda's engine, whether using our management system or our API directly, we let you choose your own experience.",
+      "managementSystem": {
+        "title": "Management System",
+        "description": "Use our comprehensive management platform to enter data in a structured and organized way."
+      },
+      "directAPI": {
+        "title": "Direct API",
+        "description": "Connect your existing systems directly through our robust and flexible API."
+      },
+      "instantResults": {
+        "title": "Instant Results",
+        "description": "Get real-time results for any use case you want to integrate."
+      }
+    }
+  },
+  "interop": {
+    "hero": {
+      "title": "Interoperability",
+      "description": "Our robust API acts as a bridge to integrate existing data sources. It allows institutions to maintain their own systems (billing, appointments, medical records, etc.) while connecting with Zonda to share and visualize data securely and standardized.",
+      "apiDocs": "View API Documentation"
+    },
+    "quote": {
+      "line1": "Dedicate time to offering the best service",
+      "line2": "of health provision, we provide you with",
+      "line3": "the technology.",
+      "mission": "Our mission is to free health institutions from technological complexities so they can focus on what matters most: caring for their patients."
+    },
+    "apiIntegration": {
+      "title": "Robust and Flexible API",
+      "subtitle": "The result? We facilitate fluid information exchange between organizations or within complex structures such as hospital networks.",
+      "existingSystems": {
+        "title": "Integration with Existing Systems",
+        "description": "Connect billing, scheduling, medical records, and other existing systems without interrupting operations."
+      },
+      "security": {
+        "title": "Security and Standardization",
+        "description": "Share and visualize data securely and standardized while maintaining the integrity and privacy of information."
+      },
+      "flexibility": {
+        "title": "Extreme Flexibility",
+        "description": "Extremely flexible and adaptable API that adjusts to the specific needs of each institution."
+      },
+      "fluidExchange": {
+        "title": "Fluid Exchange",
+        "description": "Fluid information exchange between organizations and within complex structures such as hospital networks."
+      },
+      "systemMaintenance": {
+        "title": "System Maintenance",
+        "description": "Maintenance of own systems while connecting with Zonda, without interruptions in daily operations."
+      },
+      "instantResults": {
+        "title": "Instant Results",
+        "description": "Get real-time results for any use case you want to integrate with our robust API."
+      }
+    }
+  },
+  "platformOrg": {
+    "hero": {
+      "title": "Management",
+      "titleHighlight": "Platform",
+      "description": "We offer a comprehensive digital management platform for health institutions that allows centralizing key operations such as patient administration, appointments, treatments, and professionals."
+    },
+    "features": {
+      "title": "Platform Features",
+      "subtitle": "Complete tools for comprehensive management of health institutions",
+      "items": {
+        "patientManagement": {
+          "title": "Patient Management",
+          "description": "Centralized administration of medical records, personal data, and treatment follow-up."
+        },
+        "appointmentManagement": {
+          "title": "Appointment Management",
+          "description": "Complete scheduling and management system for medical appointments with professionals."
+        },
+        "treatmentManagement": {
+          "title": "Treatment Management",
+          "description": "Detailed follow-up of medical treatments and patient evolution."
+        },
+        "professionalManagement": {
+          "title": "Professional Management",
+          "description": "Administration of medical staff and assignment of roles and permissions."
+        },
+        "reportsAnalytics": {
+          "title": "Reports and Analytics",
+          "description": "Generation of reports and data analysis for decision-making."
+        },
+        "securityCompliance": {
+          "title": "Security and Compliance",
+          "description": "Compliance with health regulations and protection of sensitive data."
+        }
+      }
+    }
+  },
+  "platformProfessional": {
+    "hero": {
+      "title": "Professional",
+      "titleHighlight": "Platform",
+      "description": "Specialized tools for healthcare professionals that allow them to interact with their patients' data and optimize their medical practice"
+    },
+    "features": {
+      "title": "Professional App Features",
+      "subtitle": "Designed specifically for healthcare professionals",
+      "items": {
+        "medicalHistory": {
+          "title": "Complete Medical History",
+          "description": "Complete access to patients' medical history from multiple institutions."
+        },
+        "consultationRecords": {
+          "title": "Consultation Records",
+          "description": "Efficient and detailed recording of medical consultations and treatments."
+        },
+        "digitalPrescription": {
+          "title": "Digital Prescription",
+          "description": "Integrated digital prescription system for medications."
+        },
+        "dataAnalysis": {
+          "title": "Data Analysis",
+          "description": "Detailed analysis of patient status by visit and evolution."
+        },
+        "multiInstitutional": {
+          "title": "Multi-Institutional",
+          "description": "Work with multiple health institutions from a single platform."
+        },
+        "mobileAccess": {
+          "title": "Mobile Access",
+          "description": "Mobile application optimized for access from any device."
+        }
+      }
+    },
+    "platformSection": {
+      "title": "Professional Platform",
+      "subtitle": "Specialized tools for healthcare professionals that allow them to interact with their patients' data and optimize their medical practice.",
+      "features": {
+        "medicalHistory": {
+          "title": "Medical History",
+          "description": "Complete access to patients' medical history from multiple institutions"
+        },
+        "consultationRecords": {
+          "title": "Consultation Records",
+          "description": "Efficient and detailed recording of medical consultations and treatments"
+        },
+        "digitalPrescription": {
+          "title": "Digital Prescription",
+          "description": "Integrated digital prescription system for medications"
+        },
+        "dataAnalysis": {
+          "title": "Data Analysis",
+          "description": "Detailed analysis of patient status by visit and evolution"
+        }
+      }
+    }
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "goHome": "Go Home",
+    "exploreSolutions": "Explore Solutions"
+  }
+}

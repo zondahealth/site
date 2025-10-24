@@ -1,7 +1,12 @@
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
+'use client';
+
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+import { useTranslations } from 'next-intl';
 
 export default function AIPage() {
+  const t = useTranslations('ai');
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -17,16 +22,14 @@ export default function AIPage() {
               {/* Text Section */}
               <div>
                 <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
-                  Inteligencia Artificial y{' '}
-                  <span className="text-zonda-yellow">Datos</span>
+                  <span className="text-zonda-yellow">
+                    {t('hero.titleHighlight')}
+                  </span>{' '}
+                  {t('hero.title')}
                 </h1>
 
                 <p className="text-lg lg:text-xl text-white/95 leading-relaxed font-medium">
-                  Mediante el uso de inteligencia artificial, Zonda interpreta
-                  grandes volúmenes de datos clínicos y genera insights, alertas
-                  o recomendaciones clínicas automáticas. Esta capacidad puede
-                  ayudar a identificar patrones de riesgo en pacientes,
-                  anticipar o incluso sugerir tratamientos.
+                  {t('hero.description')}
                 </p>
               </div>
               {/* Image Section - Overlay */}
@@ -47,11 +50,10 @@ export default function AIPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Perfiles de Salud y Alertas Inteligentes
+                {t('healthProfiles.title')}
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Creamos perfiles de salud completos y sistemas de alertas que
-                mantienen a todos los actores informados
+                {t('healthProfiles.subtitle')}
               </p>
             </div>
 
@@ -73,12 +75,10 @@ export default function AIPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  Perfiles de Salud
+                  {t('healthProfiles.profiles.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Armamos perfiles de salud completos que integran información
-                  de múltiples fuentes para crear una visión unificada del
-                  paciente.
+                  {t('healthProfiles.profiles.description')}
                 </p>
               </div>
 
@@ -99,12 +99,10 @@ export default function AIPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  Alertas por Paciente
+                  {t('healthProfiles.patientAlerts.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Sistema inteligente de alertas que notifica sobre cambios en
-                  el estado del paciente, tratamientos y seguimientos
-                  necesarios.
+                  {t('healthProfiles.patientAlerts.description')}
                 </p>
               </div>
 
@@ -125,11 +123,10 @@ export default function AIPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  Alertas Organizacionales
+                  {t('healthProfiles.organizationalAlerts.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Alertas a nivel de organización para optimizar recursos,
-                  gestionar capacidades y mejorar la eficiencia operativa.
+                  {t('healthProfiles.organizationalAlerts.description')}
                 </p>
               </div>
             </div>
@@ -143,12 +140,10 @@ export default function AIPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                Inteligencia Artificial Avanzada
+                {t('advancedAI.title')}
               </h2>
               <p className="text-lg text-white/90 max-w-3xl mx-auto font-medium">
-                Tecnología de vanguardia que transforma la atención médica a
-                través de perfiles dinámicos, predicción inteligente y
-                seguimiento continuo.
+                {t('advancedAI.subtitle')}
               </p>
             </div>
 
@@ -183,12 +178,10 @@ export default function AIPage() {
                       </svg>
                     </div>
                     <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      Perfiles de Salud Dinámicos
+                      {t('advancedAI.features.dynamicProfiles.title')}
                     </h4>
                     <p className="text-gray-800 text-sm font-medium">
-                      Creamos perfiles de salud únicos por paciente a partir de
-                      sus registros médicos y hábitos. Estos perfiles se
-                      actualizan constantemente.
+                      {t('advancedAI.features.dynamicProfiles.description')}
                     </p>
                   </div>
 
@@ -209,12 +202,10 @@ export default function AIPage() {
                       </svg>
                     </div>
                     <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      Predicción y Prevención
+                      {t('advancedAI.features.prediction.title')}
                     </h4>
                     <p className="text-gray-800 text-sm font-medium">
-                      Gracias al análisis de datos históricos y actuales,
-                      podemos anticipar comportamientos futuros y detectar
-                      alertas tempranas.
+                      {t('advancedAI.features.prediction.description')}
                     </p>
                   </div>
 
@@ -235,11 +226,10 @@ export default function AIPage() {
                       </svg>
                     </div>
                     <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      Encuestas y Seguimiento
+                      {t('advancedAI.features.surveys.title')}
                     </h4>
                     <p className="text-gray-800 text-sm font-medium">
-                      A través de encuestas periódicas, recopilamos nueva
-                      información sobre cambios en el estilo de vida y síntomas.
+                      {t('advancedAI.features.surveys.description')}
                     </p>
                   </div>
 
@@ -260,12 +250,10 @@ export default function AIPage() {
                       </svg>
                     </div>
                     <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      Mejores Resultados
+                      {t('advancedAI.features.betterResults.title')}
                     </h4>
                     <p className="text-gray-800 text-sm font-medium">
-                      La combinación de datos clínicos, hábitos y seguimiento
-                      constante mejora la precisión del diagnóstico y optimiza
-                      tratamientos.
+                      {t('advancedAI.features.betterResults.description')}
                     </p>
                   </div>
                 </div>
@@ -280,12 +268,10 @@ export default function AIPage() {
             <div className="relative">
               <div className="relative z-10 text-center bg-white">
                 <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                  Notas Médicas Inteligentes
+                  {t('medicalNotes.title')}
                 </h2>
                 <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                  Ayuda a los profesionales de la salud a escribir sus notas
-                  flexiblemente, Zonda entiende, mejora y estructura las
-                  evoluciones médicas para obtener mejores resultados luego
+                  {t('medicalNotes.description')}
                 </p>
               </div>
 

@@ -6,8 +6,11 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { ArrowRight, Mail, CheckCircle, AlertCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 
 export function Contact() {
+  const t = useTranslations('contact');
+  const tButtons = useTranslations('common.buttons');
   const [isMounted, setIsMounted] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -30,9 +33,9 @@ export function Contact() {
   }, []);
 
   const contactInfo = {
-    title: 'Contactanos',
-    details: 'support@zondahealth.com',
-    subtitle: 'Responderemos dentro de 24 horas',
+    title: t('contactInfo.title'),
+    details: t('contactInfo.email'),
+    subtitle: t('contactInfo.subtitle'),
   };
 
   const handleInputChange = (
@@ -83,11 +86,11 @@ export function Contact() {
         });
       } else {
         setSubmitStatus('error');
-        setErrorMessage(result.error || 'Error al enviar el mensaje');
+        setErrorMessage(result.error || t('form.error'));
       }
     } catch (error) {
       setSubmitStatus('error');
-      setErrorMessage('Error de conexión. Por favor, inténtalo de nuevo.');
+      setErrorMessage(t('form.connectionError'));
     } finally {
       setIsSubmitting(false);
     }
@@ -109,17 +112,14 @@ export function Contact() {
           >
             <div className="text-center mb-16 flex flex-col gap-4">
               <h2 className="text-3xl lg:text-4xl text-white mb-4 font-bold">
-                ¿Listo para Transformar tus Operaciones de{' '}
-                <span className="text-yellow-400">Salud?</span>
+                {t('title')}
               </h2>
               <p className="text-xl text-white/90 max-w-5xl mx-auto">
-                Ponte en contacto con nuestro equipo para aprender cómo Zonda
-                Health puede ayudarte a brindar mejor atención al paciente a
-                través de soluciones tecnológicas innovadoras.
+                {t('subtitle')}
               </p>
             </div>
             <div className="flex justify-center items-center h-64">
-              <div className="text-white text-lg">Cargando formulario...</div>
+              <div className="text-white text-lg">{t('form.loading')}</div>
             </div>
           </div>
         </div>
@@ -141,13 +141,10 @@ export function Contact() {
         >
           <div className="text-center mb-16 flex flex-col gap-4">
             <h2 className="text-3xl lg:text-4xl text-white mb-4 font-bold">
-              ¿Listo para Transformar tus Operaciones de{' '}
-              <span className="text-yellow-400">Salud?</span>
+              {t('title')}
             </h2>
             <p className="text-xl text-white/90 max-w-5xl mx-auto">
-              Ponte en contacto con nuestro equipo para aprender cómo Zonda
-              Health puede ayudarte a brindar mejor atención al paciente a
-              través de soluciones tecnológicas innovadoras.
+              {t('subtitle')}
             </p>
           </div>
 
@@ -180,9 +177,7 @@ export function Contact() {
                   {submitStatus === 'success' && (
                     <div className="flex items-center space-x-2 text-green-600 bg-green-50 p-4 rounded-lg">
                       <CheckCircle className="w-5 h-5" />
-                      <span>
-                        ¡Mensaje enviado exitosamente! Te contactaremos pronto.
-                      </span>
+                      <span>{t('form.success')}</span>
                     </div>
                   )}
 
@@ -197,25 +192,25 @@ export function Contact() {
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-sm text-gray-700">
-                          Nombre *
+                          {t('form.firstName')} *
                         </label>
                         <Input
                           name="firstName"
                           value={formData.firstName}
                           onChange={handleInputChange}
-                          placeholder="Ingresa tu nombre"
+                          placeholder={t('form.placeholders.firstName')}
                           required
                         />
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm text-gray-700">
-                          Apellido *
+                          {t('form.lastName')} *
                         </label>
                         <Input
                           name="lastName"
                           value={formData.lastName}
                           onChange={handleInputChange}
-                          placeholder="Ingresa tu apellido"
+                          placeholder={t('form.placeholders.lastName')}
                           required
                         />
                       </div>
@@ -223,49 +218,53 @@ export function Contact() {
 
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="text-sm text-gray-700">Email *</label>
+                        <label className="text-sm text-gray-700">
+                          {t('form.email')} *
+                        </label>
                         <Input
                           name="email"
                           type="email"
                           value={formData.email}
                           onChange={handleInputChange}
-                          placeholder="Ingresa tu email"
+                          placeholder={t('form.placeholders.email')}
                           required
                         />
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm text-gray-700">
-                          Teléfono
+                          {t('form.phone')}
                         </label>
                         <Input
                           name="phone"
                           type="tel"
                           value={formData.phone}
                           onChange={handleInputChange}
-                          placeholder="Ingresa tu número de teléfono"
+                          placeholder={t('form.placeholders.phone')}
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       <label className="text-sm text-gray-700">
-                        Organización
+                        {t('form.organization')}
                       </label>
                       <Input
                         name="organization"
                         value={formData.organization}
                         onChange={handleInputChange}
-                        placeholder="Ingresa el nombre de tu organización"
+                        placeholder={t('form.placeholders.organization')}
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm text-gray-700">Mensaje *</label>
+                      <label className="text-sm text-gray-700">
+                        {t('form.message')} *
+                      </label>
                       <Textarea
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
-                        placeholder="Cuéntanos sobre tus necesidades de tecnología de la salud..."
+                        placeholder={t('form.placeholders.message')}
                         className="min-h-[120px] resize-none"
                         required
                       />
@@ -285,14 +284,7 @@ export function Contact() {
                         htmlFor="privacy"
                         className="text-sm text-gray-600"
                       >
-                        Estoy de acuerdo con la{' '}
-                        <a href="#" className="text-blue-600 hover:underline">
-                          Política de Privacidad
-                        </a>{' '}
-                        y los{' '}
-                        <a href="#" className="text-blue-600 hover:underline">
-                          Términos de Servicio
-                        </a>
+                        {t('form.privacy')}
                       </label>
                     </div>
 
@@ -303,7 +295,9 @@ export function Contact() {
                       disabled={isSubmitting}
                       onClick={() => console.log('Button clicked!')}
                     >
-                      {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
+                      {isSubmitting
+                        ? tButtons('sending')
+                        : tButtons('sendMessage')}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </form>

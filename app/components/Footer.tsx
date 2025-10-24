@@ -1,7 +1,12 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 export function Footer() {
+  const t = useTranslations('common.footer');
+
   function getCurrentYear() {
     return new Date().getFullYear();
   }
@@ -26,9 +31,7 @@ export function Footer() {
               />
             </div>
             <p className="text-white/80 text-sm leading-relaxed mb-4">
-              Transformando la gestión de salud con tecnología innovadora.
-              Simplificamos la administración médica para profesionales y
-              pacientes.
+              {t('description')}
             </p>
             <div className="flex space-x-4">
               <a
@@ -50,7 +53,7 @@ export function Footer() {
           {/* Product Links */}
           <div>
             <h3 className="text-white font-semibold text-lg mb-4">
-              Soluciones
+              {t('solutions')}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -58,7 +61,7 @@ export function Footer() {
                   href="/"
                   className="text-white/80 hover:text-white transition-colors duration-200 text-sm"
                 >
-                  Inicio
+                  {t('home')}
                 </Link>
               </li>
               <li>
@@ -66,7 +69,7 @@ export function Footer() {
                   href="/ai"
                   className="text-white/80 hover:text-white transition-colors duration-200 text-sm"
                 >
-                  Inteligencia Artificial
+                  {t('artificialIntelligence')}
                 </Link>
               </li>
               <li>
@@ -74,7 +77,7 @@ export function Footer() {
                   href="/data"
                   className="text-white/80 hover:text-white transition-colors duration-200 text-sm"
                 >
-                  Análisis de Datos
+                  {t('dataAnalysis')}
                 </Link>
               </li>
               <li>
@@ -82,7 +85,7 @@ export function Footer() {
                   href="/interop"
                   className="text-white/80 hover:text-white transition-colors duration-200 text-sm"
                 >
-                  Interoperabilidad
+                  {t('interoperability')}
                 </Link>
               </li>
               <li>
@@ -90,7 +93,7 @@ export function Footer() {
                   href="/platform-org"
                   className="text-white/80 hover:text-white transition-colors duration-200 text-sm"
                 >
-                  Plataforma Organizacional
+                  {t('organizationalPlatform')}
                 </Link>
               </li>
               <li>
@@ -98,7 +101,7 @@ export function Footer() {
                   href="/platform-professional"
                   className="text-white/80 hover:text-white transition-colors duration-200 text-sm"
                 >
-                  Plataforma Profesional
+                  {t('professionalPlatform')}
                 </Link>
               </li>
             </ul>
@@ -107,7 +110,7 @@ export function Footer() {
           {/* External Links */}
           <div>
             <h3 className="text-white font-semibold text-lg mb-4">
-              Desarrolladores
+              {t('developers')}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -117,7 +120,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="text-white/80 hover:text-white transition-colors duration-200 text-sm"
                 >
-                  Documentación API
+                  {t('apiDocumentation')}
                 </a>
               </li>
               <li>
@@ -127,7 +130,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="text-white/80 hover:text-white transition-colors duration-200 text-sm"
                 >
-                  Referencia API
+                  {t('apiReference')}
                 </a>
               </li>
             </ul>
@@ -135,7 +138,9 @@ export function Footer() {
 
           {/* Contact & Legal */}
           <div>
-            <h3 className="text-white font-semibold text-lg mb-4">Contacto</h3>
+            <h3 className="text-white font-semibold text-lg mb-4">
+              {t('contact')}
+            </h3>
             <ul className="space-y-3">
               <li>
                 <a
@@ -158,11 +163,11 @@ export function Footer() {
         <div className="border-t border-white/20 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-white/80 text-sm">
-              © {currentYear} Zonda Health. Todos los derechos reservados.
+              © {currentYear} Zonda Health. {t('allRightsReserved')}.
             </div>
             <div className="flex items-center space-x-6 mt-4 md:mt-0">
               <div className="flex items-center space-x-2 text-white/80 text-sm">
-                <span className="font-semibold">Desde San Juan, Argentina</span>
+                <span className="font-semibold">{t('fromSanJuan')}</span>
               </div>
             </div>
           </div>

@@ -1,7 +1,12 @@
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
+'use client';
+
+import { Header } from '../../components/Header';
+import { Footer } from '../../components/Footer';
+import { useTranslations } from 'next-intl';
 
 export default function DataPage() {
+  const t = useTranslations('data');
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -17,24 +22,21 @@ export default function DataPage() {
               {/* Text Section */}
               <div>
                 <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
-                  Reportes, Métricas y{' '}
+                  {t('hero.title')}{' '}
                   <span className="text-zonda-yellow">
-                    Visualización de Datos
+                    {t('hero.titleHighlight')}
                   </span>
                 </h1>
 
                 <p className="text-lg lg:text-xl text-white/95 leading-relaxed font-medium">
-                  Convertimos los datos en información útil para la toma de
-                  decisiones. A través de dashboards y herramientas de
-                  visualización, podrás acceder a reportes personalizados por
-                  región, unidad, profesional, diagnóstico y tratamiento.
+                  {t('hero.description')}
                 </p>
               </div>
               {/* Image Section */}
               <div className="flex justify-center">
                 <img
                   src="/webshots/metrics5.png"
-                  alt="Dashboard de Métricas"
+                  alt={t('hero.title')}
                   style={{ maxWidth: '600px', width: '100%', height: 'auto' }}
                 />
               </div>
@@ -47,11 +49,10 @@ export default function DataPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Características de Visualización de Datos
+                {t('features.title')}
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Herramientas avanzadas para el análisis y visualización de
-                información médica
+                {t('features.subtitle')}
               </p>
             </div>
 
@@ -73,11 +74,10 @@ export default function DataPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Dashboards Interactivos
+                  {t('features.interactiveDashboards.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Visualizaciones dinámicas que se adaptan a tus necesidades
-                  específicas de análisis.
+                  {t('features.interactiveDashboards.description')}
                 </p>
               </div>
 
@@ -98,11 +98,10 @@ export default function DataPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Análisis de Tendencias
+                  {t('features.trendAnalysis.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Identificación automática de patrones y tendencias en los
-                  datos médicos.
+                  {t('features.trendAnalysis.description')}
                 </p>
               </div>
 
@@ -123,11 +122,10 @@ export default function DataPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Tiempo Real
+                  {t('features.realTime.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Actualizaciones en tiempo real para mantener la información
-                  siempre actualizada.
+                  {t('features.realTime.description')}
                 </p>
               </div>
 
@@ -148,11 +146,10 @@ export default function DataPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Reportes Personalizados
+                  {t('features.customReports.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Generación automática de reportes personalizados por región,
-                  unidad y profesional.
+                  {t('features.customReports.description')}
                 </p>
               </div>
 
@@ -173,11 +170,10 @@ export default function DataPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Visualizaciones Avanzadas
+                  {t('features.advancedVisualizations.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Gráficos, tablas y visualizaciones interactivas para mejor
-                  comprensión de datos.
+                  {t('features.advancedVisualizations.description')}
                 </p>
               </div>
 
@@ -198,11 +194,10 @@ export default function DataPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Exportación de Datos
+                  {t('features.dataExport.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Exporta tus análisis en múltiples formatos para compartir y
-                  presentar.
+                  {t('features.dataExport.description')}
                 </p>
               </div>
             </div>
@@ -216,12 +211,10 @@ export default function DataPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                Reportes Detallados por Paciente
+                {t('patientReports.title')}
               </h2>
               <p className="text-lg text-white/90 max-w-3xl mx-auto font-medium">
-                Cada paciente tiene un panel personalizado con métricas, alertas
-                y evolución mes a mes. Seguimiento continuo de la salud con
-                visualizaciones claras y tendencias automáticas.
+                {t('patientReports.description')}
               </p>
             </div>
 
@@ -247,11 +240,10 @@ export default function DataPage() {
                       </svg>
                     </div>
                     <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      Signos Vitales
+                      {t('patientReports.features.vitalSigns.title')}
                     </h4>
                     <p className="text-gray-800 text-sm font-medium">
-                      Seguimiento automático de presión arterial y frecuencia
-                      cardíaca
+                      {t('patientReports.features.vitalSigns.description')}
                     </p>
                   </div>
 
@@ -272,11 +264,10 @@ export default function DataPage() {
                       </svg>
                     </div>
                     <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      Alertas Automáticas
+                      {t('patientReports.features.automaticAlerts.title')}
                     </h4>
                     <p className="text-gray-800 text-sm font-medium">
-                      Notificaciones inmediatas cuando se detectan valores fuera
-                      de rango
+                      {t('patientReports.features.automaticAlerts.description')}
                     </p>
                   </div>
 
@@ -297,10 +288,12 @@ export default function DataPage() {
                       </svg>
                     </div>
                     <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      Evolución Temporal
+                      {t('patientReports.features.temporalEvolution.title')}
                     </h4>
                     <p className="text-gray-800 text-sm font-medium">
-                      Visualización cronológica de registros y procedimientos
+                      {t(
+                        'patientReports.features.temporalEvolution.description'
+                      )}
                     </p>
                   </div>
 
@@ -321,11 +314,10 @@ export default function DataPage() {
                       </svg>
                     </div>
                     <h4 className="text-lg font-bold text-gray-900 mb-2">
-                      Tendencias Visuales
+                      {t('patientReports.features.visualTrends.title')}
                     </h4>
                     <p className="text-gray-800 text-sm font-medium">
-                      Gráficos y colores que facilitan la comprensión de la
-                      evolución
+                      {t('patientReports.features.visualTrends.description')}
                     </p>
                   </div>
                 </div>
@@ -335,7 +327,7 @@ export default function DataPage() {
               <div className="lg:col-span-3">
                 <img
                   src="/webshots/metrics1.png"
-                  alt="Panel de Paciente - Resumen Clínico"
+                  alt={t('patientReports.title')}
                   className=""
                 />
               </div>
@@ -348,12 +340,10 @@ export default function DataPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Flexibilidad en la Ingesta de Datos
+                {t('dataIntegration.title')}
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                No importa cómo ingestes los datos al motor de Zonda, si usando
-                nuestro sistema de gestión o nuestra API directamente, nosotros
-                dejamos que elijas tu propia experiencia.
+                {t('dataIntegration.subtitle')}
               </p>
             </div>
 
@@ -375,11 +365,10 @@ export default function DataPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  Sistema de Gestión
+                  {t('dataIntegration.managementSystem.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Utiliza nuestra plataforma integral de gestión para ingresar
-                  datos de forma estructurada y organizada.
+                  {t('dataIntegration.managementSystem.description')}
                 </p>
               </div>
 
@@ -400,11 +389,10 @@ export default function DataPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  API Directa
+                  {t('dataIntegration.directAPI.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Conecta tus sistemas existentes directamente a través de
-                  nuestra API robusta y flexible.
+                  {t('dataIntegration.directAPI.description')}
                 </p>
               </div>
 
@@ -425,11 +413,10 @@ export default function DataPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  Resultados Instantáneos
+                  {t('dataIntegration.instantResults.title')}
                 </h3>
                 <p className="text-gray-600">
-                  Obtén resultados en tiempo real para cualquier caso de uso que
-                  quieras integrar.
+                  {t('dataIntegration.instantResults.description')}
                 </p>
               </div>
             </div>
