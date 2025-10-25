@@ -116,16 +116,6 @@ export default function PlatformOrgPage() {
             </div>
           </div>
         </section>
-
-        <ColoredSection variant="yellow" stretch={true} className="py-8">
-          Gestion de turnos y tratamientos
-        </ColoredSection>
-        <ColoredSection variant="purple" stretch={true} className="py-8">
-          Registros Médicos Digitales
-        </ColoredSection>
-        <ColoredSection variant="teal" className="py-8">
-          Patient Experience
-        </ColoredSection>
       </main>
 
       <Footer />

@@ -260,9 +260,9 @@ export function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="lg:hidden mt-4">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/90 border-t border-zonda-blue/20 rounded-lg shadow-lg backdrop-blur-md">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/90 border-t border-zonda-blue/20 rounded-lg shadow-lg backdrop-blur-md max-h-[calc(100vh-8rem)] overflow-y-auto">
               {/* Mobile Navigation Items */}
-              <div className="px-3 py-2 flex flex-col gap-2">
+              <div className="px-3 py-2 flex flex-col gap-1">
                 {navigationItems.map((item) => (
                   <div key={item.label}>
                     {item.href ? (
@@ -270,7 +270,7 @@ export function Header() {
                         href={item.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`block px-4 py-3 font-semibold transition-all duration-300 rounded-lg text-sm ${
+                        className={`block px-4 py-2.5 font-semibold transition-all duration-300 rounded-lg text-sm ${
                           item.label === t('developers')
                             ? 'bg-gradient-to-r from-zonda-blue to-blue-600 text-white shadow-lg hover:shadow-xl hover:scale-102 transform hover:from-blue-600 hover:to-zonda-blue'
                             : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
@@ -289,7 +289,7 @@ export function Header() {
                         </div>
                       </a>
                     ) : (
-                      <div className="block px-4 py-3 text-gray-700 font-semibold text-sm">
+                      <div className="block px-4 py-2.5 text-gray-700 font-semibold text-sm">
                         <span className="font-semibold tracking-wide">
                           {item.label}
                         </span>
@@ -297,18 +297,18 @@ export function Header() {
                     )}
                     {/* Mobile Submenu */}
                     {item.children && (
-                      <div className="space-y-1">
+                      <div className="space-y-0.5 ml-2">
                         {item.children.map((child) => {
                           const IconComponent = child.icon;
                           return (
                             <a
                               key={child.label}
                               href={child.href}
-                              className="flex items-center space-x-3 px-4 py-3 text-sm text-gray-600 hover:bg-gradient-to-r hover:from-zonda-blue/5 hover:to-blue-50 hover:text-zonda-blue transition-all duration-300 rounded-lg font-semibold transform group"
+                              className="flex items-center space-x-3 px-4 py-2.5 text-sm text-gray-600 hover:bg-gradient-to-r hover:from-zonda-blue/5 hover:to-blue-50 hover:text-zonda-blue transition-all duration-300 rounded-lg font-semibold transform group"
                             >
                               {IconComponent && (
-                                <div className="p-1.5 rounded-md transition-all duration-300 bg-gradient-to-br from-blue-600 via-blue-400 to-sky-300 group-hover:from-blue-700 group-hover:via-blue-500 group-hover:to-sky-400 shadow-lg group-hover:shadow-xl">
-                                  <IconComponent className="h-4 w-4 transition-colors duration-300 text-white" />
+                                <div className="p-1 rounded-md transition-all duration-300 bg-gradient-to-br from-blue-600 via-blue-400 to-sky-300 group-hover:from-blue-700 group-hover:via-blue-500 group-hover:to-sky-400 shadow-lg group-hover:shadow-xl">
+                                  <IconComponent className="h-3.5 w-3.5 transition-colors duration-300 text-white" />
                                 </div>
                               )}
                               <span>{child.label}</span>
@@ -322,9 +322,11 @@ export function Header() {
               </div>
 
               {/* Mobile CTA Buttons */}
-              <div className="px-3 py-2 space-y-3 border-t border-zonda-blue/10 mt-4 pt-4 flex flex-col gap-2">
-                <div className="flex justify-center">
-                  <LanguageSwitcher />
+              <div className="px-3 py-2 space-y-2 border-t border-zonda-blue/10 mt-3 pt-3 flex flex-col gap-1.5">
+                <div className="flex justify-center mb-3">
+                  <div className="w-full max-w-xs">
+                    <LanguageSwitcher />
+                  </div>
                 </div>
                 <Link
                   href="https://app.zondahealth.com"
@@ -333,7 +335,7 @@ export function Header() {
                 >
                   <Button
                     variant="outline"
-                    className="w-full border-zonda-blue text-zonda-blue hover:bg-zonda-blue hover:text-white transition-all duration-300 font-semibold py-3 rounded-lg transform shadow-md hover:shadow-lg"
+                    className="w-full border-zonda-blue text-zonda-blue hover:bg-zonda-blue hover:text-white transition-all duration-300 font-semibold py-2.5 rounded-lg transform shadow-md hover:shadow-lg text-sm"
                   >
                     {tButtons('login')}
                   </Button>
@@ -343,7 +345,7 @@ export function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Button className="w-full bg-gradient-to-r from-zonda-blue to-blue-600 hover:from-blue-600 hover:to-zonda-blue text-white transition-all duration-300 font-semibold py-3 rounded-lg hover:scale-102 transform shadow-lg hover:shadow-xl">
+                  <Button className="w-full bg-gradient-to-r from-zonda-blue to-blue-600 hover:from-blue-600 hover:to-zonda-blue text-white transition-all duration-300 font-semibold py-2.5 rounded-lg hover:scale-102 transform shadow-lg hover:shadow-xl text-sm">
                     {tButtons('createAccount')}
                   </Button>
                 </Link>

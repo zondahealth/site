@@ -22,32 +22,41 @@ export function MultiOrgViewComponent() {
     title: string,
     icon: React.ComponentType<{ className?: string }>,
     iconColor: string = 'text-gray-600',
-    showStaffIcons: boolean = false
+    showStaffIcons: boolean = false,
+    gradient: string = 'from-gray-100 to-gray-200'
   ) => (
-    <div className="bg-gray-100 rounded-lg p-4 w-48 text-center border border-gray-200 shadow-sm">
-      {/* Icon and Title Row */}
-      <div className="flex items-center justify-center gap-3">
-        {/* Small circular avatar icon */}
-        <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center border border-gray-300 shadow-sm">
+    <div
+      className={`bg-gradient-to-br ${gradient} rounded-xl p-4 w-40 text-center border border-white/20 shadow-xl backdrop-blur-sm`}
+    >
+      {/* Icon */}
+      <div className="flex justify-center mb-3">
+        {/* Glass-like circular icon */}
+        <div className="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 shadow-lg">
           {React.createElement(icon, {
-            className: `w-5 h-5 ${iconColor}`,
+            className: `w-6 h-6 ${iconColor}`,
           })}
         </div>
-
-        {/* Title */}
-        <span className="text-lg font-semibold text-gray-800">{title}</span>
       </div>
+
+      {/* Title */}
+      {title && (
+        <div className="mb-3">
+          <span className="text-lg font-bold text-white drop-shadow-lg">
+            {title}
+          </span>
+        </div>
+      )}
 
       {/* Medical Staff Icons - only for sub-organizations */}
       {showStaffIcons && (
-        <div className="flex justify-center items-center mt-3">
+        <div className="flex justify-center items-center mt-2">
           <div className="flex -space-x-2">
             {medicalStaffIcons.map((staff, index) => (
               <div
                 key={index}
-                className="w-6 h-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/40 shadow-sm"
+                className="w-6 h-6 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-lg"
               >
-                <staff.Icon className="w-3 h-3 text-gray-700" />
+                <staff.Icon className="w-3 h-3 text-gray-600" />
               </div>
             ))}
           </div>
@@ -62,23 +71,47 @@ export function MultiOrgViewComponent() {
       <div className="relative w-[300px] h-[300px] mx-auto">
         {/* Main Organization in Center */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-          {createOrgCard('Aseguradora', Building2, 'text-gray-800')}
+          {createOrgCard(
+            'Aseguradora',
+            Building2,
+            'text-white',
+            false,
+            'from-blue-400 via-blue-600 to-blue-800'
+          )}
         </div>
 
         {/* Individual Orbital Cards */}
         {/* Hospital - Orbiting */}
         <div className="orbit-item orbit-hospital absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          {createOrgCard('Hospital', Hospital, 'text-blue-600', true)}
+          {createOrgCard(
+            '',
+            Hospital,
+            'text-gray-800',
+            true,
+            'from-white to-gray-100'
+          )}
         </div>
 
         {/* Médico - Orbiting */}
         <div className="orbit-item orbit-medico absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          {createOrgCard('Médico', User, 'text-green-600', true)}
+          {createOrgCard(
+            '',
+            User,
+            'text-gray-800',
+            true,
+            'from-white to-gray-100'
+          )}
         </div>
 
         {/* Domiciliario - Orbiting */}
         <div className="orbit-item orbit-domiciliario absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          {createOrgCard('Domiciliario', Ambulance, 'text-yellow-600', true)}
+          {createOrgCard(
+            '',
+            Ambulance,
+            'text-gray-800',
+            true,
+            'from-white to-gray-100'
+          )}
         </div>
       </div>
 

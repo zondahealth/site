@@ -295,7 +295,7 @@ export default function DataPage() {
         </section>
 
         {/* Patient Reports Section */}
-        <ColoredSection variant="green" stretch={true}>
+        <ColoredSection variant="yellow" stretch={true}>
           <div className="relative z-10">
             <div className="text-center mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">

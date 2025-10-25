@@ -216,6 +216,14 @@
       "dataExport": {
         "title": "Exportación de Datos",
         "description": "Exporta tus análisis en múltiples formatos para compartir y presentar."
+      },
+      "patientInsights": {
+        "title": "Insights del Paciente",
+        "description": "Genera insights personalizados y recomendaciones basadas en patrones de datos individuales del paciente."
+      },
+      "dataSecurity": {
+        "title": "Seguridad de Datos",
+        "description": "Medidas de seguridad de nivel empresarial para proteger información sensible del paciente y asegurar cumplimiento."
       }
     },
     "patientReports": {
@@ -237,6 +245,22 @@
         "visualTrends": {
           "title": "Tendencias Visuales",
           "description": "Gráficos y colores que facilitan la comprensión de la evolución"
+        },
+        "healthMetrics": {
+          "title": "Métricas de Salud",
+          "description": "Seguimiento integral de indicadores clave de salud y datos biométricos"
+        },
+        "treatmentProgress": {
+          "title": "Progreso del Tratamiento",
+          "description": "Monitorea la efectividad del tratamiento y la respuesta del paciente a las intervenciones médicas"
+        },
+        "healthTrends": {
+          "title": "Tendencias de Salud",
+          "description": "Análisis a largo plazo de patrones de salud e insights predictivos"
+        },
+        "goalTracking": {
+          "title": "Seguimiento de Objetivos",
+          "description": "Establece y monitorea objetivos de salud con seguimiento de progreso y métricas de logro"
         }
       }
     },
@@ -474,36 +498,6 @@
         "healthSurveys": {
           "title": "Encuestas de Salud",
           "description": "Encuestas regulares enviadas a pacientes sobre su experiencia, estilo de vida y salud — Zonda procesa respuestas y extrae insights clave."
-        },
-        "profileEnrichment": {
-          "title": "Enriquecimiento de Perfil",
-          "description": "La IA procesa respuestas de encuestas para extraer insights (historial familiar, hábitos, riesgos) y enriquece el perfil del paciente para profesionales."
-        },
-        "patientEngagement": {
-          "title": "Participación del Paciente",
-          "description": "Participación activa del paciente en su jornada de salud a través de herramientas accesibles e interacciones significativas."
-        }
-      }
-    },
-    "aiInsights": {
-      "title": "Insights del Paciente con IA",
-      "subtitle": "Transforma feedback del paciente en inteligencia clínica accionable",
-      "features": {
-        "surveyProcessing": {
-          "title": "Procesamiento Inteligente de Encuestas",
-          "description": "La IA analiza respuestas del paciente para identificar patrones, riesgos y oportunidades para mejor atención."
-        },
-        "lifestyleTracking": {
-          "title": "Seguimiento de Estilo de Vida",
-          "description": "Monitorea cambios en el estilo de vida del paciente, hábitos y patrones de salud a través de participación regular."
-        },
-        "riskIdentification": {
-          "title": "Identificación de Riesgos",
-          "description": "Identificación temprana de riesgos de salud y patrones de historial familiar a través de análisis integral de datos del paciente."
-        },
-        "personalizedCare": {
-          "title": "Planificación de Atención Personalizada",
-          "description": "Genera recomendaciones de atención personalizadas basadas en historial del paciente, estilo de vida e insights de encuestas."
         }
       }
     }
@@ -518,10 +512,6 @@
       "title": "Capacidades Multi-Organizacionales",
       "subtitle": "Arquitectura escalable para estructuras organizacionales complejas",
       "items": {
-        "largeOrganizationSupport": {
-          "title": "Soporte para Grandes Organizaciones",
-          "description": "Diseñado para grandes organizaciones con múltiples sub-organizaciones (aseguradoras, hospitales, sistemas de atención domiciliaria)."
-        },
         "unifiedManagement": {
           "title": "Gestión Unificada",
           "description": "La organización principal puede gestionar todas las sub-entidades, ya sea que usen Zonda o sistemas externos, vía integración API."
@@ -532,37 +522,11 @@
         },
         "independentAccess": {
           "title": "Gestión de Acceso Independiente",
-          "description": "Gestiona acceso independientemente para cada sub-organización mientras mantienes supervisión y control centralizados."
+          "description": "Gestiona acceso independientemente para cada sub-organización mientras mantienes supervisión y control centralizados. Soporte para entornos mixtos donde algunas sub-organizaciones usan Zonda mientras otras mantienen sistemas externos."
         },
         "localGlobalReports": {
           "title": "Reportes Locales y Globales",
-          "description": "Genera tanto reportes locales para sub-organizaciones individuales como reportes globales para toda la organización."
-        },
-        "scalableArchitecture": {
-          "title": "Arquitectura Escalable",
-          "description": "Arquitectura que se adapta a cualquier modelo operativo con escalabilidad e interoperabilidad ilimitadas."
-        }
-      }
-    },
-    "integrationFlexibility": {
-      "title": "Flexibilidad de Integración",
-      "subtitle": "Adaptable a cualquier modelo operativo con capacidades de integración fluidas",
-      "features": {
-        "apiIntegration": {
-          "title": "Integración API Robusta",
-          "description": "Conecta con sistemas existentes a través de la API integral de Zonda, manteniendo continuidad operativa."
-        },
-        "hybridDeployment": {
-          "title": "Despliegue Híbrido",
-          "description": "Soporte para entornos mixtos donde algunas sub-organizaciones usan Zonda mientras otras mantienen sistemas externos."
-        },
-        "operationalContinuity": {
-          "title": "Continuidad Operativa",
-          "description": "Integración fluida sin interrumpir operaciones existentes o requerir reemplazos de sistemas."
-        },
-        "customWorkflows": {
-          "title": "Flujos de Trabajo Personalizados",
-          "description": "Adapta a flujos de trabajo organizacionales únicos y procesos mientras mantiene consistencia y seguridad de datos."
+          "description": "Genera tanto reportes locales para sub-organizaciones individuales como reportes globales para toda la organización. para grandes organizaciones con múltiples sub-organizaciones (aseguradoras, hospitales, sistemas de atención domiciliaria)."
         }
       }
     }
