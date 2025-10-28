@@ -33,27 +33,23 @@ export function WeHelp() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Text Content */}
-          <div className="space-y-8">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-              {t('title')}
-            </h2>
-
-            <p className="text-xl text-gray-600 leading-relaxed">
-              {t('description')}
-            </p>
-          </div>
-
+          <h2 className="text-4xl text-center lg:text-5xl font-bold text-gray-900 leading-tight">
+            {t('title')}
+          </h2>
           {/* Premium Stats Grid */}
           <div className="grid grid-cols-2 gap-8 lg:gap-12">
             {stats.map((stat, index) => (
-              <div key={index} className="text-left space-y-3">
+              <div
+                key={index}
+                className="flex flex-col items-center text-center space-y-2"
+              >
                 {/* Large prominent number in purple */}
                 <div className="text-4xl lg:text-5xl font-bold text-purple-600">
                   {stat.value}
                 </div>
 
                 {/* Bold sub-heading in dark blue */}
-                <div className="text-lg font-bold text-gray-800">
+                <div className="text-lg font-bold text-gray-800 w-[90%]">
                   {stat.label}
                 </div>
 
