@@ -20,7 +20,7 @@ export const FeatureBox: React.FC<FeatureBoxProps> = ({
 }) => {
   return (
     <div
-      className={`bg-white rounded-lg p-8 shadow-lg border border-gray-100 ${className}`}
+      className={`bg-white rounded-lg p-8 border border-gray-200 flex flex-col items-center text-center ${className}`}
     >
       <div
         className={`w-12 h-12 ${iconBgColor} rounded-lg flex items-center justify-center mb-6`}
@@ -52,7 +52,7 @@ export const SmallFeatureBox: React.FC<SmallFeatureBoxProps> = ({
 }) => {
   return (
     <div
-      className={`bg-white rounded-lg p-6 shadow-lg border border-gray-100 ${className}`}
+      className={`bg-white rounded-lg p-6 shadow-none border border-gray-100 flex flex-col items-center text-center ${className}`}
     >
       <div
         className={`w-10 h-10 ${iconBgColor} rounded-lg flex items-center justify-center mb-4`}

@@ -4,6 +4,15 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { ColoredSection } from '../../components/ColoredSection';
 import { useTranslations } from 'next-intl';
+import { FeatureBox } from '@/app/components/FeatureBox';
+import {
+  Database,
+  Link2,
+  MonitorCog,
+  ShieldCheck,
+  Users,
+  Zap,
+} from 'lucide-react';
 
 export default function InteropPage() {
   const t = useTranslations('interop');
@@ -104,6 +113,7 @@ export default function InteropPage() {
         </ColoredSection>
 
         {/* API Integration Section */}
+
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
@@ -116,149 +126,41 @@ export default function InteropPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
-                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg
-                    className="w-6 h-6 text-zonda-blue"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('apiIntegration.existingSystems.title')}
-                </h3>
-                <p className="text-gray-600">
-                  {t('apiIntegration.existingSystems.description')}
-                </p>
-              </div>
+              <FeatureBox
+                icon={Link2}
+                title={t('apiIntegration.existingSystems.title')}
+                description={t('apiIntegration.existingSystems.description')}
+              />
 
-              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
-                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg
-                    className="w-6 h-6 text-zonda-blue"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('apiIntegration.security.title')}
-                </h3>
-                <p className="text-gray-600">
-                  {t('apiIntegration.security.description')}
-                </p>
-              </div>
+              <FeatureBox
+                icon={ShieldCheck}
+                title={t('apiIntegration.security.title')}
+                description={t('apiIntegration.security.description')}
+              />
 
-              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
-                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg
-                    className="w-6 h-6 text-zonda-blue"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('apiIntegration.flexibility.title')}
-                </h3>
-                <p className="text-gray-600">
-                  {t('apiIntegration.flexibility.description')}
-                </p>
-              </div>
+              <FeatureBox
+                icon={Database}
+                title={t('apiIntegration.flexibility.title')}
+                description={t('apiIntegration.flexibility.description')}
+              />
 
-              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
-                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg
-                    className="w-6 h-6 text-zonda-blue"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('apiIntegration.fluidExchange.title')}
-                </h3>
-                <p className="text-gray-600">
-                  {t('apiIntegration.fluidExchange.description')}
-                </p>
-              </div>
+              <FeatureBox
+                icon={Users}
+                title={t('apiIntegration.fluidExchange.title')}
+                description={t('apiIntegration.fluidExchange.description')}
+              />
 
-              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
-                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg
-                    className="w-6 h-6 text-zonda-blue"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('apiIntegration.systemMaintenance.title')}
-                </h3>
-                <p className="text-gray-600">
-                  {t('apiIntegration.systemMaintenance.description')}
-                </p>
-              </div>
+              <FeatureBox
+                icon={MonitorCog}
+                title={t('apiIntegration.systemMaintenance.title')}
+                description={t('apiIntegration.systemMaintenance.description')}
+              />
 
-              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
-                <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
-                  <svg
-                    className="w-6 h-6 text-zonda-blue"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {t('apiIntegration.instantResults.title')}
-                </h3>
-                <p className="text-gray-600">
-                  {t('apiIntegration.instantResults.description')}
-                </p>
-              </div>
+              <FeatureBox
+                icon={Zap}
+                title={t('apiIntegration.instantResults.title')}
+                description={t('apiIntegration.instantResults.description')}
+              />
             </div>
           </div>
         </section>
