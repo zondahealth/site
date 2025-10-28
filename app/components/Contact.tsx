@@ -102,7 +102,7 @@ export function Contact() {
       <section id="contact" className="py-26">
         <div className="container mx-auto px-4">
           <div
-            className="rounded-2xl p-8 lg:p-12 shadow-lg border border-blue-200/60 relative overflow-hidden"
+            className="rounded-lg p-8 lg:p-12 shadow-lg border border-blue-200/60 relative overflow-hidden"
             style={{
               background:
                 'linear-gradient(30deg, #036AFA 0%, #1E88E5 25%, #1976D2 50%, #1565C0 75%, #0D47A1 100%)',
@@ -131,7 +131,7 @@ export function Contact() {
     <section id="contact" className="py-26">
       <div className="container mx-auto px-4">
         <div
-          className="rounded-2xl p-8 lg:p-12 shadow-lg border border-blue-200/60 relative overflow-hidden"
+          className="rounded-lg p-8 lg:p-12 shadow-lg border border-blue-200/60 relative overflow-hidden"
           style={{
             background:
               'linear-gradient(30deg, #036AFA 0%, #1E88E5 25%, #1976D2 50%, #1565C0 75%, #0D47A1 100%)',

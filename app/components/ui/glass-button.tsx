@@ -5,7 +5,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from './utils';
 
 const glassButtonVariants = cva(
-  "inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-full text-xs font-semibold transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-3.5 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent relative overflow-hidden backdrop-blur-md border border-white/30 shadow-lg hover:shadow-xl active:scale-95 transform-gpu",
+  "inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-lg text-xs font-semibold transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-3.5 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent relative overflow-hidden backdrop-blur-md border border-white/30 shadow-lg hover:shadow-xl active:scale-95 transform-gpu",
   {
     variants: {
       variant: {
@@ -22,11 +22,11 @@ const glassButtonVariants = cva(
         light: 'bg-white/25 hover:bg-white/35 text-gray-800 border-white/40',
       },
       size: {
-        sm: 'h-7 px-2 py-1 text-xs rounded-full',
-        default: 'h-8 px-2.5 py-1.5 text-xs rounded-full',
-        lg: 'h-10 px-3 py-2 text-sm rounded-full',
-        xl: 'h-12 px-4 py-2.5 text-base rounded-full',
-        icon: 'size-8 rounded-full',
+        sm: 'h-7 px-2 py-1 text-xs rounded-lg',
+        default: 'h-8 px-2.5 py-1.5 text-xs rounded-lg',
+        lg: 'h-10 px-3 py-2 text-sm rounded-lg',
+        xl: 'h-12 px-4 py-2.5 text-base rounded-lg',
+        icon: 'size-8 rounded-lg',
       },
       glow: {
         none: '',

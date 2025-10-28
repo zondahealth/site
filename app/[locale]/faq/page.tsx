@@ -39,7 +39,7 @@ export default function FAQPage() {
               {faqQuestions.map((questionKey) => (
                 <div
                   key={questionKey}
-                  className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
+                  className="bg-white rounded-lg p-8 shadow-lg border border-gray-100"
                 >
                   <h3 className="text-xl font-bold text-gray-900 mb-4">
                     {t(`questions.${questionKey}.question`)}

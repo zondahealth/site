@@ -26,12 +26,12 @@ export function MultiOrgViewComponent() {
     gradient: string = 'from-gray-100 to-gray-200'
   ) => (
     <div
-      className={`bg-gradient-to-br ${gradient} rounded-xl p-4 w-40 text-center border border-white/20 shadow-xl backdrop-blur-sm`}
+      className={`bg-gradient-to-br ${gradient} rounded-lg p-4 w-40 text-center border border-white/20 shadow-xl backdrop-blur-sm`}
     >
       {/* Icon */}
       <div className="flex justify-center mb-3">
         {/* Glass-like circular icon */}
-        <div className="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 shadow-lg">
+        <div className="w-10 h-10 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center border border-white/30 shadow-lg">
           {React.createElement(icon, {
             className: `w-6 h-6 ${iconColor}`,
           })}
@@ -54,7 +54,7 @@ export function MultiOrgViewComponent() {
             {medicalStaffIcons.map((staff, index) => (
               <div
                 key={index}
-                className="w-6 h-6 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 shadow-lg"
+                className="w-6 h-6 bg-white/10 backdrop-blur-md rounded-lg flex items-center justify-center border border-white/20 shadow-lg"
               >
                 <staff.Icon className="w-3 h-3 text-gray-600" />
               </div>

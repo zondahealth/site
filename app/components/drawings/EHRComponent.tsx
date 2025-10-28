@@ -82,7 +82,7 @@ export function EHRComponent() {
 
   const renderHealthRecordCard = () => (
     <Card
-      className="bg-white shadow-xl border-5 border-white/50 rounded-2xl p-0"
+      className="bg-white shadow-xl border-5 border-white/50 rounded-lg p-0"
       style={{ boxShadow: '0 0 30px rgba(34, 197, 94, 0.15)' }}
     >
       <CardContent className="space-y-3 py-3">
@@ -142,7 +142,7 @@ export function EHRComponent() {
 
   const renderPrescriptionCard = () => (
     <Card
-      className="bg-white shadow-xl border-5 border-white/50 rounded-2xl p-0"
+      className="bg-white shadow-xl border-5 border-white/50 rounded-lg p-0"
       style={{ boxShadow: '0 0 30px rgba(168, 85, 247, 0.15)' }}
     >
       <CardContent className="space-y-3 p-3">

@@ -55,7 +55,7 @@ export function PatientExperienceComponent() {
           {/* 1. Professional Health Survey Card - Behind */}
           <div className="relative z-10">
             <Card
-              className="w-96 bg-white shadow-xl border border-white/20 rounded-2xl"
+              className="w-96 bg-white shadow-xl border border-white/20 rounded-lg"
               style={{ boxShadow: '0 0 30px rgba(59, 130, 246, 0.15)' }}
             >
               <CardHeader className="pb-4">
@@ -172,7 +172,7 @@ export function PatientExperienceComponent() {
             }}
           >
             <Card
-              className="w-64 bg-white shadow-md border border-white/20 rounded-xl"
+              className="w-64 bg-white shadow-md border border-white/20 rounded-lg"
               style={{ boxShadow: '0 0 20px rgba(249, 115, 22, 0.15)' }}
             >
               <CardContent className="pt-4 pb-4">
@@ -202,7 +202,7 @@ export function PatientExperienceComponent() {
             }}
           >
             <Card
-              className="w-64 bg-white shadow-lg border border-gray-200/50 rounded-xl"
+              className="w-64 bg-white shadow-lg border border-gray-200/50 rounded-lg"
               style={{ boxShadow: '0 0 20px rgba(59, 130, 246, 0.1)' }}
             >
               <CardContent className="pt-4 pb-4">
@@ -233,7 +233,7 @@ export function PatientExperienceComponent() {
             className="absolute bottom-4 -right-2 z-40 transition-all duration-300 ease-out"
             style={{ transform: `translateX(${scrollProgress * 40}px)` }}
           >
-            <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+            <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
               <Stethoscope className="w-8 h-8 text-white" />
             </div>
           </div>
@@ -243,7 +243,7 @@ export function PatientExperienceComponent() {
             className="absolute top-10 -left-10 z-40 transition-all duration-300 ease-out"
             style={{ transform: `translateX(${-scrollProgress * 40}px)` }}
           >
-            <div className="w-20 h-20 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-2xl flex items-center justify-center shadow-lg">
+            <div className="w-20 h-20 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-lg flex items-center justify-center shadow-lg">
               <BriefcaseMedical className="w-10 h-10 text-white" />
             </div>
           </div>

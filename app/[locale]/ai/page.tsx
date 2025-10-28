@@ -153,7 +153,7 @@ export default function AIPage() {
                 <img
                   src="/webshots/profile-background.png"
                   alt="Inteligencia Artificial en Acción"
-                  className="w-full h-[500px] object-cover rounded-2xl shadow-2xl"
+                  className="w-full h-[500px] object-cover rounded-lg shadow-2xl"
                 />
               </div>
 

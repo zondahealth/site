@@ -78,7 +78,7 @@ export default function PlatformOrgPage() {
             {/* Platform Screenshot - Simple */}
             <div className="relative max-w-5xl mx-auto rounded-3xl shadow-2xl overflow-hidden border border-white/20 bg-white/5 ring-1 ring-white/10 backdrop-blur">
               {/* Decorative Background Shapes */}
-              <div className="absolute -top-10 -left-10 w-56 h-56 bg-zonda-yellow/20 rounded-full blur-3xl z-0"></div>
+              <div className="absolute -top-10 -left-10 w-56 h-56 bg-zonda-yellow/20 rounded-lg blur-3xl z-0"></div>
               <div className="absolute bottom-0 right-0 w-72 h-48 bg-zonda-blue/20 rounded-bl-3xl blur-2xl z-0"></div>
               <video
                 src="/webshots/records-moving.mp4"

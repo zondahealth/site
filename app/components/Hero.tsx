@@ -65,7 +65,7 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-4 pt-2">
               <button
                 onClick={scrollToContact}
-                className="px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-zonda-orange text-white flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-fit hover:bg-zonda-yellow hover:text-zonda-blue-dark transition-all duration-300 font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 text-base sm:text-lg"
+                className="px-6 py-3 sm:px-8 sm:py-4 rounded-lg bg-zonda-orange text-white flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-fit hover:bg-zonda-yellow hover:text-zonda-blue-dark transition-all duration-300 font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 text-base sm:text-lg"
               >
                 {tButtons('contactUs')}{' '}
                 <ArrowRight className="w-5 h-5 sm:w-5 sm:h-5" />
@@ -77,17 +77,17 @@ export function Hero() {
           <div className="hidden lg:block lg:order-2 relative">
             {/* Subtle dark glow effects */}
             <div
-              className="absolute inset-0 bg-gradient-to-r from-slate-800/20 via-slate-700/15 to-slate-800/20 rounded-full blur-2xl animate-pulse opacity-40 scale-105"
+              className="absolute inset-0 bg-gradient-to-r from-slate-800/20 via-slate-700/15 to-slate-800/20 rounded-lg blur-2xl animate-pulse opacity-40 scale-105"
               style={{ animationDuration: '4s' }}
             ></div>
             <div
-              className="absolute inset-0 bg-gradient-to-l from-gray-800/25 via-slate-600/20 to-gray-800/25 rounded-full blur-xl animate-pulse opacity-30 scale-110"
+              className="absolute inset-0 bg-gradient-to-l from-gray-800/25 via-slate-600/20 to-gray-800/25 rounded-lg blur-xl animate-pulse opacity-30 scale-110"
               style={{ animationDelay: '2s', animationDuration: '6s' }}
             ></div>
 
             {/* Single moving glow */}
             <div
-              className="absolute inset-0 bg-gradient-to-r from-slate-600/15 via-gray-800/20 to-slate-600/15 rounded-full blur-2xl opacity-25 scale-115 animate-spin"
+              className="absolute inset-0 bg-gradient-to-r from-slate-600/15 via-gray-800/20 to-slate-600/15 rounded-lg blur-2xl opacity-25 scale-115 animate-spin"
               style={{ animationDuration: '30s' }}
             ></div>
 

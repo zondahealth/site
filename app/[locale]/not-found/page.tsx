@@ -67,17 +67,17 @@ export default function NotFoundPage() {
               <div className="relative z-10 p-4">
                 {/* Subtle dark glow effects */}
                 <div
-                  className="absolute inset-0 bg-gradient-to-r from-slate-800/20 via-slate-700/15 to-slate-800/20 rounded-full blur-2xl animate-pulse opacity-40 scale-105"
+                  className="absolute inset-0 bg-gradient-to-r from-slate-800/20 via-slate-700/15 to-slate-800/20 rounded-lg blur-2xl animate-pulse opacity-40 scale-105"
                   style={{ animationDuration: '4s' }}
                 ></div>
                 <div
-                  className="absolute inset-0 bg-gradient-to-l from-gray-800/25 via-slate-600/20 to-gray-800/25 rounded-full blur-xl animate-pulse opacity-30 scale-110"
+                  className="absolute inset-0 bg-gradient-to-l from-gray-800/25 via-slate-600/20 to-gray-800/25 rounded-lg blur-xl animate-pulse opacity-30 scale-110"
                   style={{ animationDelay: '2s', animationDuration: '6s' }}
                 ></div>
 
                 {/* Single moving glow */}
                 <div
-                  className="absolute inset-0 bg-gradient-to-r from-slate-600/15 via-gray-800/20 to-slate-600/15 rounded-full blur-2xl opacity-25 scale-115 animate-spin"
+                  className="absolute inset-0 bg-gradient-to-r from-slate-600/15 via-gray-800/20 to-slate-600/15 rounded-lg blur-2xl opacity-25 scale-115 animate-spin"
                   style={{ animationDuration: '30s' }}
                 ></div>
 

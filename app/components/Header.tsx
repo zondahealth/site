@@ -114,7 +114,7 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 pointer-events-none">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 py-4 pointer-events-auto">
-        <div className="bg-white/80 rounded-full px-6 py-3 shadow-2xl border border-zonda-blue/10 backdrop-blur-md">
+        <div className="bg-white/80 rounded-2xl px-6 py-3 shadow-2xl border border-zonda-blue/10 backdrop-blur-md">
           <div className="flex items-center justify-between">
             {/* Logo and Navigation */}
             <div className="flex items-center space-x-8">
@@ -160,7 +160,7 @@ export function Header() {
                           {item.label}
                         </span>
                         {item.label === t('developers') && (
-                          <span className="ml-1 text-xs bg-white/20 px-1.5 py-0.5 rounded-full font-bold">
+                          <span className="ml-1 text-xs bg-white/20 px-1.5 py-0.5 rounded-lg font-bold">
                             {t('api')}
                           </span>
                         )}
@@ -176,7 +176,7 @@ export function Header() {
                     {/* Dropdown Menu */}
                     {item.children && activeDropdown === item.label && (
                       <div
-                        className="absolute top-full left-0 mt-8 w-96 bg-white rounded-xl shadow-2xl border-4 border-zonda-blue/40 py-6 z-50"
+                        className="absolute top-full left-0 mt-8 w-96 bg-white rounded-lg shadow-2xl border-4 border-zonda-blue/40 py-6 z-50"
                         style={{
                           boxShadow:
                             '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.1)',
@@ -282,7 +282,7 @@ export function Header() {
                           </span>
 
                           {item.label === t('developers') && (
-                            <span className="text-xs bg-white/20 px-2 py-1 rounded-full font-bold">
+                            <span className="text-xs bg-white/20 px-2 py-1 rounded-lg font-bold">
                               {t('api')}
                             </span>
                           )}
@@ -307,7 +307,7 @@ export function Header() {
                               className="flex items-center space-x-3 px-4 py-2.5 text-sm text-gray-600 hover:bg-gradient-to-r hover:from-zonda-blue/5 hover:to-blue-50 hover:text-zonda-blue transition-all duration-300 rounded-lg font-semibold transform group"
                             >
                               {IconComponent && (
-                                <div className="p-1 rounded-md transition-all duration-300 bg-gradient-to-br from-blue-600 via-blue-400 to-sky-300 group-hover:from-blue-700 group-hover:via-blue-500 group-hover:to-sky-400 shadow-lg group-hover:shadow-xl">
+                                <div className="p-1 rounded-lg transition-all duration-300 bg-gradient-to-br from-blue-600 via-blue-400 to-sky-300 group-hover:from-blue-700 group-hover:via-blue-500 group-hover:to-sky-400 shadow-lg group-hover:shadow-xl">
                                   <IconComponent className="h-3.5 w-3.5 transition-colors duration-300 text-white" />
                                 </div>
                               )}

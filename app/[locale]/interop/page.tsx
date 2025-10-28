@@ -87,7 +87,7 @@ export default function InteropPage() {
 
             {/* Divider */}
             <div className="flex justify-center mb-6">
-              <div className="w-16 h-1 bg-gradient-to-r from-zonda-blue to-zonda-blue-dark rounded-full"></div>
+              <div className="w-16 h-1 bg-gradient-to-r from-zonda-blue to-zonda-blue-dark rounded-lg"></div>
             </div>
 
             {/* Mission Statement */}
@@ -116,7 +116,7 @@ export default function InteropPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
                 <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-zonda-blue"
@@ -140,7 +140,7 @@ export default function InteropPage() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
                 <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-zonda-blue"
@@ -164,7 +164,7 @@ export default function InteropPage() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
                 <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-zonda-blue"
@@ -188,7 +188,7 @@ export default function InteropPage() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
                 <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-zonda-blue"
@@ -212,7 +212,7 @@ export default function InteropPage() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
                 <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-zonda-blue"
@@ -236,7 +236,7 @@ export default function InteropPage() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
                 <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-zonda-blue"

@@ -147,7 +147,7 @@ export default function DataPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
                 <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-zonda-blue"
@@ -171,7 +171,7 @@ export default function DataPage() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
                 <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-zonda-blue"
@@ -195,7 +195,7 @@ export default function DataPage() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
                 <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-zonda-blue"
@@ -219,7 +219,7 @@ export default function DataPage() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
                 <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-zonda-blue"
@@ -243,7 +243,7 @@ export default function DataPage() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
                 <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-zonda-blue"
@@ -267,7 +267,7 @@ export default function DataPage() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
                 <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-zonda-blue"
@@ -311,7 +311,7 @@ export default function DataPage() {
               <div className="lg:col-span-3">
                 {/* Key Features Grid */}
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/40 shadow-lg">
+                  <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 border border-white/40 shadow-lg">
                     <div className="w-10 h-10 bg-zonda-blue rounded-lg flex items-center justify-center mb-4">
                       <svg
                         className="w-5 h-5 text-white"
@@ -335,7 +335,7 @@ export default function DataPage() {
                     </p>
                   </div>
 
-                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/40 shadow-lg">
+                  <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 border border-white/40 shadow-lg">
                     <div className="w-10 h-10 bg-zonda-orange rounded-lg flex items-center justify-center mb-4">
                       <svg
                         className="w-5 h-5 text-white"
@@ -359,7 +359,7 @@ export default function DataPage() {
                     </p>
                   </div>
 
-                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/40 shadow-lg">
+                  <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 border border-white/40 shadow-lg">
                     <div className="w-10 h-10 bg-zonda-blue-dark rounded-lg flex items-center justify-center mb-4">
                       <svg
                         className="w-5 h-5 text-white"
@@ -385,7 +385,7 @@ export default function DataPage() {
                     </p>
                   </div>
 
-                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/40 shadow-lg">
+                  <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 border border-white/40 shadow-lg">
                     <div className="w-10 h-10 bg-zonda-yellow rounded-lg flex items-center justify-center mb-4">
                       <svg
                         className="w-5 h-5 text-white"
@@ -436,7 +436,7 @@ export default function DataPage() {
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8">
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
                 <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-zonda-blue"
@@ -460,7 +460,7 @@ export default function DataPage() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
                 <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-zonda-blue"
@@ -484,7 +484,7 @@ export default function DataPage() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100">
                 <div className="w-12 h-12 bg-zonda-blue/10 rounded-lg flex items-center justify-center mb-6">
                   <svg
                     className="w-6 h-6 text-zonda-blue"

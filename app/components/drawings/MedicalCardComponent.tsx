@@ -58,7 +58,7 @@ export function MedicalCardComponent() {
 
   const renderOriginalCard = () => (
     <Card
-      className={`bg-white shadow-xl border border-white/20 rounded-2xl transition-all duration-700 ease-in-out ${
+      className={`bg-white shadow-xl border border-white/20 rounded-lg transition-all duration-700 ease-in-out ${
         showHealthRecord
           ? 'opacity-0 scale-95 -rotate-2 blur-sm z-10'
           : 'opacity-100 scale-100 rotate-0 blur-none z-20'
@@ -88,7 +88,7 @@ export function MedicalCardComponent() {
 
   const renderHealthRecordCard = () => (
     <Card
-      className={`bg-white shadow-xl border border-white/20 rounded-2xl transition-all duration-700 ease-in-out ${
+      className={`bg-white shadow-xl border border-white/20 rounded-lg transition-all duration-700 ease-in-out ${
         showHealthRecord
           ? 'opacity-100 scale-100 rotate-0 blur-none z-20'
           : 'opacity-0 scale-95 rotate-2 blur-sm z-10'
