@@ -8,7 +8,13 @@ import { Footer } from '../components/Footer';
 import { ColoredSection } from '../components/ColoredSection';
 import { GlassButton } from '../components/ui/glass-button';
 import { useTranslations } from 'next-intl';
-import { SectionLayout } from '../components/SectionLayout';
+import { SectionLayout, SectionVariant } from '../components/SectionLayout';
+import {
+  Body,
+  Heading,
+  HeadingVariant,
+  SmallText,
+} from '../components/Typography';
 
 export default function App() {
   const t = useTranslations('home.mainContent');
@@ -28,85 +34,65 @@ export default function App() {
       <main>
         <Hero />
 
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative pt-24">
-          <div className="text-center mb-20">
-            <SectionLayout title={t('title')} subtitle={t('description2')}>
-              <div className="align-elements-in-row">
-                {stats.map((stat) => {
-                  return (
-                    <div className="text-center" key={stat.label}>
-                      <div className="text-2xl font-bold text-zonda-blue">
-                        {stat.value}
-                      </div>
-                      <div className="text-sm text-gray-700 font-medium">
-                        {stat.label}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </SectionLayout>
+        <SectionLayout title={t('title')} subtitle={t('description2')}>
+          <div className="align-elements-in-row">
+            {stats.map((stat) => {
+              return (
+                <div className="text-center" key={stat.label}>
+                  <Heading
+                    variant={HeadingVariant.H3}
+                    className="text-2xl font-bold text-zonda-blue"
+                  >
+                    {stat.value}
+                  </Heading>
+                  <SmallText className="text-sm text-gray-700 font-medium">
+                    {stat.label}
+                  </SmallText>
+                </div>
+              );
+            })}
           </div>
-        </div>
+        </SectionLayout>
 
-        <ColoredSection variant="blue">
-          <div className="h-full flex flex-col">
-            <div className="text-center space-y-6 flex-1 flex flex-col justify-center px-6 sm:px-8 lg:px-12">
-              <h2 className="text-3xl font-bold mb-4 text-white">
-                {tSections('healthManagement.title')}
-              </h2>
-              <p className="text-base md:text-lg text-white mb-8 max-w-2xl mx-auto">
-                {tSections('healthManagement.description')}
-              </p>
-              <GlassButton
-                variant="blue"
-                size="lg"
-                glow="blue"
-                className="group/btn w-fit mx-auto"
-                onClick={() => (window.location.href = '/platform-org')}
-              >
-                <span>{tButtons('discoverSolution')}</span>
-              </GlassButton>
-            </div>
-            <div className="mt-auto flex justify-center">
-              <img
-                src="/webshots/patients-cropped.png"
-                alt="Plataforma de Gestión"
-                className="w-[70%] md:w-[60%] lg:w-[50%] h-auto object-cover drop-shadow-[0_0_40px_rgba(0,0,0,0.9)]"
-              />
-            </div>
-          </div>
-        </ColoredSection>
-        <ColoredSection variant="yellow">
-          <div className="h-full flex flex-col">
-            <div className="flex justify-center px-6 sm:px-8 lg:px-12">
-              <img
-                src="/appshots/app-down.png"
-                alt="Plataforma Profesional"
-                className="w-[50%] md:w-[40%] lg:w-[30%] h-auto object-cover drop-shadow-[0_0_60px_rgba(0,0,0,0.95)]"
-              />
-            </div>
-            <div className="text-center space-y-6 flex-1 flex flex-col justify-center px-6 sm:px-8 lg:px-12">
-              <h2 className="text-3xl font-bold mb-4 text-white">
-                {tSections('professionalPlatform.title')}
-              </h2>
-              <p className="text-base md:text-lg text-white mb-8 max-w-2xl mx-auto">
-                {tSections('professionalPlatform.description')}
-              </p>
-              <GlassButton
-                variant="orange"
-                size="lg"
-                glow="medium"
-                className="group/btn w-fit mx-auto"
-                onClick={() =>
-                  (window.location.href = '/platform-professional')
-                }
-              >
-                <span>{tButtons('explorePlatform')}</span>
-              </GlassButton>
-            </div>
-          </div>
-        </ColoredSection>
+        <SectionLayout
+          title={tSections('healthManagement.title')}
+          subtitle={tSections('healthManagement.description')}
+          variant={SectionVariant.COLOR}
+          imageBottom={{
+            src: '/webshots/patients-cropped.png',
+            alt: 'Plataforma de Gestión',
+          }}
+        >
+          <GlassButton
+            variant="dark"
+            size="xl"
+            glow="none"
+            onClick={() => (window.location.href = '/platform-org')}
+          >
+            {tButtons('discoverSolution')}
+          </GlassButton>
+        </SectionLayout>
+
+        <SectionLayout
+          title={tSections('healthManagement.title')}
+          subtitle={tSections('professionalPlatform.description')}
+          variant={SectionVariant.COLOR}
+          imageTop={{
+            src: '/appshots/app-down.png',
+            alt: 'Plataforma Profesional',
+          }}
+        >
+          <GlassButton
+            variant="orange"
+            size="lg"
+            glow="medium"
+            className="group/btn w-fit mx-auto"
+            onClick={() => (window.location.href = '/platform-professional')}
+          >
+            <span>{tButtons('explorePlatform')}</span>
+          </GlassButton>
+        </SectionLayout>
+
         <ColoredSection variant="orange">
           <div className="text-center space-y-6 px-6 sm:px-8 lg:px-12">
             <img

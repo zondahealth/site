@@ -1,7 +1,12 @@
 import React from 'react';
 import clsx from 'clsx';
 
-type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4';
+export enum HeadingVariant {
+  H1 = 'h1',
+  H2 = 'h2',
+  H3 = 'h3',
+  H4 = 'h4',
+}
 
 interface HeadingProps {
   variant?: HeadingVariant;
@@ -13,12 +18,12 @@ interface HeadingProps {
  * Heading — renders h1–h4 depending on `variant`
  */
 export const Heading: React.FC<HeadingProps> = ({
-  variant = 'h1',
+  variant = HeadingVariant.H1,
   children,
   className,
 }) => {
   const Tag = variant;
-  const base = 'font-bold text-[var(--text)]';
+  const base = 'font-bold';
   const styles = {
     h1: 'text-4xl lg:text-5xl xl:text-6xl',
     h2: 'text-2xl lg:text-3xl xl:text-4xl',
@@ -37,9 +42,7 @@ export const Heading: React.FC<HeadingProps> = ({
 export const Subtitle: React.FC<
   React.PropsWithChildren<{ className?: string }>
 > = ({ children, className }) => (
-  <p className={clsx('text-lg font-medium text-[var(--silver)]', className)}>
-    {children}
-  </p>
+  <p className={clsx('text-lg font-medium', className)}>{children}</p>
 );
 
 /**
@@ -48,7 +51,7 @@ export const Subtitle: React.FC<
 export const Description: React.FC<
   React.PropsWithChildren<{ className?: string }>
 > = ({ children, className }) => (
-  <p className={clsx('text-base text-[var(--gray)]', className)}>{children}</p>
+  <p className={clsx('text-base', className)}>{children}</p>
 );
 
 /**
@@ -57,7 +60,7 @@ export const Description: React.FC<
 export const Body: React.FC<
   React.PropsWithChildren<{ className?: string }>
 > = ({ children, className }) => (
-  <p className={clsx('text-base text-[var(--text)]', className)}>{children}</p>
+  <p className={clsx('text-base', className)}>{children}</p>
 );
 
 /**
@@ -66,5 +69,5 @@ export const Body: React.FC<
 export const SmallText: React.FC<
   React.PropsWithChildren<{ className?: string }>
 > = ({ children, className }) => (
-  <p className={clsx('text-sm text-[var(--silver)]', className)}>{children}</p>
+  <p className={clsx('text-sm', className)}>{children}</p>
 );
