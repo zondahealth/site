@@ -8,12 +8,19 @@ import { Footer } from '../components/Footer';
 import { ColoredSection } from '../components/ColoredSection';
 import { GlassButton } from '../components/ui/glass-button';
 import { useTranslations } from 'next-intl';
+import { SectionLayout } from '../components/SectionLayout';
 
 export default function App() {
   const t = useTranslations('home.mainContent');
   const tButtons = useTranslations('common.buttons');
   const tSections = useTranslations('home.sections');
   const tStats = useTranslations('home.mainContent.stats');
+
+  const stats = [
+    { value: '+40%', label: tStats('efficiency') },
+    { value: '-60%', label: tStats('managementTime') },
+    { value: '100%', label: tStats('interoperability') },
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -23,38 +30,22 @@ export default function App() {
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative pt-24">
           <div className="text-center mb-20">
-            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-8 leading-tight">
-              {t('title')}
-            </h2>
-
-            <div className="max-w-4xl mx-auto space-y-6">
-              <p className="text-xl text-gray-600 leading-relaxed">
-                {t('description1')}
-              </p>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                {t('description2')}
-              </p>
-              <div className="flex flex-wrap justify-center gap-6 mt-8">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-zonda-blue">+40%</div>
-                  <div className="text-sm text-gray-700 font-medium">
-                    {tStats('efficiency')}
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-zonda-blue">-60%</div>
-                  <div className="text-sm text-gray-700 font-medium">
-                    {tStats('managementTime')}
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-zonda-blue">100%</div>
-                  <div className="text-sm text-gray-700 font-medium">
-                    {tStats('interoperability')}
-                  </div>
-                </div>
+            <SectionLayout title={t('title')} subtitle={t('description2')}>
+              <div className="align-elements-in-row">
+                {stats.map((stat) => {
+                  return (
+                    <div className="text-center" key={stat.label}>
+                      <div className="text-2xl font-bold text-zonda-blue">
+                        {stat.value}
+                      </div>
+                      <div className="text-sm text-gray-700 font-medium">
+                        {stat.label}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            </div>
+            </SectionLayout>
           </div>
         </div>
 

@@ -1,0 +1,40 @@
+:root {
+    --gray: #545454;
+    --silver: #A5A5A5;
+    --blue: #2370FE;
+    --yellow: #FAE56A;
+    --navy: #090446;
+    --radius: 8px;
+    --padding: 1rem; /* 16px */
+    --gap: 1rem;     /* 16px */
+}
+
+
+html {
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+    overscroll-behavior-x: none;
+}
+
+body {
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+    overscroll-behavior-x: none;
+  }
+  
+* {
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+    overscroll-behavior-x: none;
+}
+
+@layer utilities {
+    .align-columns-center {
+      @apply flex flex-col items-center justify-center text-center;
+    }
+    .align-elements-in-row {
+      @apply flex flex-wrap justify-evenly w-full;
+    }
+  }
+  
+  
