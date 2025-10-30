@@ -15,17 +15,46 @@ import {
   HeadingVariant,
   SmallText,
 } from '../components/Typography';
+import { Carousel } from '../components/Carousel';
 
 export default function App() {
   const t = useTranslations('home.mainContent');
   const tButtons = useTranslations('common.buttons');
   const tSections = useTranslations('home.sections');
   const tStats = useTranslations('home.mainContent.stats');
+  const t2 = useTranslations('weHelp');
 
   const stats = [
     { value: '+40%', label: tStats('efficiency') },
     { value: '-60%', label: tStats('managementTime') },
     { value: '100%', label: tStats('interoperability') },
+  ];
+
+  const items = [
+    {
+      id: '1',
+      value: '+30%',
+      title: t2('stats.costSavings.label'),
+      subtitle: t2('stats.costSavings.description'),
+    },
+    {
+      id: '2',
+      title: t2('stats.waitTimeReduction.label'),
+      value: '+40%',
+      subtitle: t2('stats.waitTimeReduction.description'),
+    },
+    {
+      id: '3',
+      title: t2('stats.medicalErrorsReduction.label'),
+      value: '+35%',
+      subtitle: t2('stats.medicalErrorsReduction.description'),
+    },
+    {
+      id: '4',
+      title: t2('stats.fraudSavings.label'),
+      value: '+30%',
+      subtitle: t2('stats.fraudSavings.description'),
+    },
   ];
 
   return (
@@ -73,6 +102,9 @@ export default function App() {
           </GlassButton>
         </SectionLayout>
 
+        <Carousel items={items} />
+
+        {/* fix content */}
         <SectionLayout
           title={tSections('healthManagement.title')}
           subtitle={tSections('professionalPlatform.description')}
@@ -169,7 +201,7 @@ export default function App() {
             </div>
           </div>
         </ColoredSection>
-        <WeHelp />
+        {/* <WeHelp /> */}
         <Contact />
       </main>
       <Footer />

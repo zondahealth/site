@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties, HTMLAttributes } from 'react';
 import clsx from 'clsx';
 
 export enum HeadingVariant {
@@ -10,6 +10,7 @@ export enum HeadingVariant {
 
 interface HeadingProps {
   variant?: HeadingVariant;
+  style?: CSSProperties | undefined;
   children: React.ReactNode;
   className?: string;
 }
@@ -20,6 +21,7 @@ interface HeadingProps {
 export const Heading: React.FC<HeadingProps> = ({
   variant = HeadingVariant.H1,
   children,
+  style,
   className,
 }) => {
   const Tag = variant;
@@ -32,7 +34,9 @@ export const Heading: React.FC<HeadingProps> = ({
   };
 
   return (
-    <Tag className={clsx(base, styles[variant], className)}>{children}</Tag>
+    <Tag style={style} className={clsx(base, styles[variant], className)}>
+      {children}
+    </Tag>
   );
 };
 

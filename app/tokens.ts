@@ -4,6 +4,10 @@ export const colors = {
   'blue-gabi': 'var(--blue)',
   'yellow-gabi': 'var(--yellow)',
   'navy-gabi': 'var(--navy)',
+  orange: 'var(--orange)',
+  orangeLight: 'var(--orangeLight)',
+  purple: 'var(--purple)',
+  purpleLight: 'var(--purpleLight)',
 };
 
 export const layout = {

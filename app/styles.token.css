@@ -4,6 +4,10 @@
     --blue: #2370FE;
     --yellow: #FAE56A;
     --navy: #090446;
+    --orange: #FC8F0D;
+    --orangeLight: #FFDFD6;
+    --purple: #9486FF;
+    --purpleLight: #E0DAFF;
     --radius: 8px;
     --padding: 1rem; /* 16px */
     --gap: 1rem;     /* 16px */
@@ -35,4 +39,17 @@ body {
     .align-elements-in-row {
       @apply flex flex-wrap justify-evenly w-full;
     }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
   }

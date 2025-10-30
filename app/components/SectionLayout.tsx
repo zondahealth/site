@@ -1,5 +1,6 @@
 import { Heading, Subtitle, Description, HeadingVariant } from './Typography';
 import { colors } from '../tokens';
+import Image from 'next/image';
 
 export enum SectionVariant {
   COLOR = 'color',
@@ -41,10 +42,13 @@ export const SectionLayout = ({
     >
       {imageTop && (
         <div className="mt-auto flex justify-center">
-          <img
+          <Image
             src={imageTop.src}
             alt={imageTop.alt}
-            className="h-auto object-cover"
+            width={800}
+            height={1200}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="h-auto w-full object-cover"
           />
         </div>
       )}
@@ -56,10 +60,13 @@ export const SectionLayout = ({
       {children}
       {imageBottom && (
         <div className="mt-auto flex justify-center">
-          <img
+          <Image
             src={imageBottom.src}
             alt={imageBottom.alt}
-            className="h-auto object-cover"
+            width={1200}
+            height={800}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="h-auto w-full object-cover"
           />
         </div>
       )}
