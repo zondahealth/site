@@ -77,6 +77,10 @@ export function Header() {
       ],
     },
     {
+      label: t('caseStudies'),
+      href: '/case-studies',
+    },
+    {
       label: t('developers'),
       href: 'https://zondahealth.readme.io/reference/getpatients',
     },
@@ -146,25 +150,36 @@ export function Header() {
                     onMouseLeave={handleMouseLeave}
                   >
                     {item.href ? (
-                      <a
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`flex items-center space-x-1 transition-all duration-300 py-2 px-4 rounded-lg text-sm font-medium ${
-                          item.label === t('developers')
-                            ? 'bg-gradient-to-r from-zonda-blue to-blue-600 text-white shadow-lg hover:shadow-xl hover:scale-102 transform hover:from-blue-600 hover:to-zonda-blue'
-                            : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
-                        }`}
-                      >
-                        <span className="font-semibold tracking-wide">
-                          {item.label}
-                        </span>
-                        {item.label === t('developers') && (
-                          <span className="ml-1 text-xs bg-white/20 px-1.5 py-0.5 rounded-full font-bold">
-                            {t('api')}
+                      item.href.startsWith('http') ? (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`flex items-center space-x-1 transition-all duration-300 py-2 px-4 rounded-lg text-sm font-medium ${
+                            item.label === t('developers')
+                              ? 'bg-gradient-to-r from-zonda-blue to-blue-600 text-white shadow-lg hover:shadow-xl hover:scale-102 transform hover:from-blue-600 hover:to-zonda-blue'
+                              : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+                          }`}
+                        >
+                          <span className="font-semibold tracking-wide">
+                            {item.label}
                           </span>
-                        )}
-                      </a>
+                          {item.label === t('developers') && (
+                            <span className="ml-1 text-xs bg-white/20 px-1.5 py-0.5 rounded-full font-bold">
+                              {t('api')}
+                            </span>
+                          )}
+                        </a>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          className="flex items-center space-x-1 transition-all duration-300 py-2 px-4 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                        >
+                          <span className="font-semibold tracking-wide">
+                            {item.label}
+                          </span>
+                        </Link>
+                      )
                     ) : (
                       <button className="flex items-center space-x-1 text-gray-700 font-semibold hover:text-gray-900 hover:bg-gray-50 transition-all duration-300 py-2 px-4 rounded-lg text-sm hover:scale-102 transform">
                         <span className="font-semibold tracking-wide">
@@ -266,28 +281,39 @@ export function Header() {
                 {navigationItems.map((item) => (
                   <div key={item.label}>
                     {item.href ? (
-                      <a
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`block px-4 py-2.5 font-semibold transition-all duration-300 rounded-lg text-sm ${
-                          item.label === t('developers')
-                            ? 'bg-gradient-to-r from-zonda-blue to-blue-600 text-white shadow-lg hover:shadow-xl hover:scale-102 transform hover:from-blue-600 hover:to-zonda-blue'
-                            : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
-                        }`}
-                      >
-                        <div className="flex items-center justify-between">
+                      item.href.startsWith('http') ? (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`block px-4 py-2.5 font-semibold transition-all duration-300 rounded-lg text-sm ${
+                            item.label === t('developers')
+                              ? 'bg-gradient-to-r from-zonda-blue to-blue-600 text-white shadow-lg hover:shadow-xl hover:scale-102 transform hover:from-blue-600 hover:to-zonda-blue'
+                              : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between">
+                            <span className="font-semibold tracking-wide">
+                              {item.label}
+                            </span>
+
+                            {item.label === t('developers') && (
+                              <span className="text-xs bg-white/20 px-2 py-1 rounded-full font-bold">
+                                {t('api')}
+                              </span>
+                            )}
+                          </div>
+                        </a>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          className="block px-4 py-2.5 font-semibold transition-all duration-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                        >
                           <span className="font-semibold tracking-wide">
                             {item.label}
                           </span>
-
-                          {item.label === t('developers') && (
-                            <span className="text-xs bg-white/20 px-2 py-1 rounded-full font-bold">
-                              {t('api')}
-                            </span>
-                          )}
-                        </div>
-                      </a>
+                        </Link>
+                      )
                     ) : (
                       <div className="block px-4 py-2.5 text-gray-700 font-semibold text-sm">
                         <span className="font-semibold tracking-wide">

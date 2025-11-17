@@ -12,7 +12,8 @@
       "ehr": "Digital Medical Records",
       "patientExperience": "Patient Experience",
       "multiOrg": "Multiple Organizations",
-      "modules": "Modules"
+      "modules": "Modules",
+      "caseStudies": "Case Studies"
     },
     "buttons": {
       "login": "Login",
@@ -528,6 +529,308 @@
           "title": "Local and Global Reports",
           "description": "Generate both local reports for individual sub-organizations and global reports for the entire organization. for large organizations with multiple sub-organizations (insurers, hospitals, home care systems)."
         }
+      }
+    }
+  },
+  "caseStudies": {
+    "pageTitle": "Customer stories",
+    "pageSubtitle": "Real stories from clients using Zonda",
+    "healthSystemsMigration": {
+      "hero": {
+        "title": "Health Systems Migration",
+        "subtitle": "How to change systems without dying in the attempt",
+        "date": "January 2025"
+      },
+      "card": {
+        "category": "System Migration",
+        "cardSubtitle": "Healthcare Technology",
+        "author": "Zonda Health Team",
+        "description": "Many health institutions in Latin America face a recurring challenge: legacy systems hinder efficient information management. When clinical management systems are updated, providers are changed, or institutions merge, health teams often find themselves with multiple legacy systems, which slows operations and increases the risk of errors."
+      },
+      "atAGlance": {
+        "title": "At a glance",
+        "outcome": {
+          "title": "Outcome",
+          "item1": "Reduced internal team workload",
+          "item2": "Reliable and standardized data from day one",
+          "item3": "Uninterrupted continuity of care",
+          "item4": "Greater operational efficiency and reduced errors"
+        },
+        "solution": {
+          "title": "Solution",
+          "item1": "Personalized strategic planning",
+          "item2": "Comprehensive data cleaning and preparation",
+          "item3": "Supervised and secure migration",
+          "item4": "Validation and launch without interruptions"
+        },
+        "challenge": {
+          "title": "Challenge",
+          "item1": "Lack of data standardization",
+          "item2": "Duplicate records and clinical errors",
+          "item3": "Incomplete data and unlicensed professionals",
+          "item4": "Multiple fragmented legacy systems"
+        }
+      },
+      "introduction": "Many health institutions in Latin America face a recurring challenge: legacy systems hinder efficient information management. When clinical management systems are updated, providers are changed, or institutions merge, health teams often find themselves with multiple legacy systems, which slows operations and increases the risk of errors. At Zonda Health, we help institutions move faster, reduce costs, and maintain continuity of care, making system migration safe, reliable, and uninterrupted.",
+      "problems": {
+        "title": "What did we find?",
+        "intro": "When analyzing existing systems, we detected several critical problems:",
+        "conclusion": "These problems affected both operational efficiency and quality of care and required structured intervention.",
+        "lackOfStandardization": {
+          "title": "Lack of data standardization",
+          "description": "Patient and professional records followed inconsistent formats, complicating integration."
+        },
+        "duplicateRecords": {
+          "title": "Duplicate records",
+          "description": "Multiple entries for the same patient, generating confusion in treatments and appointments."
+        },
+        "clinicalErrors": {
+          "title": "Clinical errors",
+          "description": "Inverted vital signs or impossible values (for example, 0% oxygen saturation, 20°C body temperature)."
+        },
+        "incompleteData": {
+          "title": "Incomplete data or outliers",
+          "description": "Procedure records without key information."
+        },
+        "unlicensedProfessionals": {
+          "title": "Unlicensed professionals",
+          "description": "Making it difficult to comply with regulations and trust the data."
+        }
+      },
+      "solution": {
+        "title": "Solution: a comprehensive migration approach",
+        "subtitle": "A migration process was applied in four key phases, designed to ensure security, integrity, and operational continuity:",
+        "phase1": {
+          "title": "Strategic planning",
+          "description": "We worked with the client's team to evaluate timelines, data structure, and possible constraints, defining a clear and safe plan for migration."
+        },
+        "phase2": {
+          "title": "Data cleaning and preparation",
+          "description": "We analyzed and cleaned existing records:",
+          "bullet1": "We eliminated duplicates and corrected errors.",
+          "bullet2": "We standardized patient and professional information.",
+          "bullet3": "We detected and adjusted inconsistent or atypical clinical values.",
+          "conclusion": "This step ensured that data was reliable and usable from day one in the new system."
+        },
+        "phase3": {
+          "title": "Supervised migration",
+          "description": "We transferred data securely, ensuring that all clinical and administrative information was available from day one in the new system."
+        },
+        "phase4": {
+          "title": "Validation and launch",
+          "description": "We finished with final quality controls, confirming that all records were correct and complete, allowing the clinical team to resume their activities without interruptions."
+        }
+      },
+      "graph": {
+        "title": "Results Visualization",
+        "placeholder": "[Placeholder for graph - will be added later]"
+      },
+      "results": {
+        "title": "Results",
+        "intro": "Thanks to Zonda Health's structured approach, the clinic achieved:",
+        "reducedWorkload": {
+          "title": "Reduced internal workload",
+          "description": "IT and clinical staff could focus on their tasks while we managed the migration."
+        },
+        "reliableData": {
+          "title": "Reliable and standardized data",
+          "description": "All records were validated, eliminating duplicates and critical errors."
+        },
+        "continuity": {
+          "title": "Continuity of care",
+          "description": "Uninterrupted access to patient clinical history during and after migration."
+        },
+        "efficiency": {
+          "title": "Greater operational efficiency",
+          "description": "Integration between systems and elimination of redundancies, improving administrative and clinical management."
+        },
+        "reducedErrors": {
+          "title": "Reduced clinical errors",
+          "description": "Vital signs and records adjusted to ensure reliable information from day one."
+        },
+        "impact": {
+          "title": "Tangible impact",
+          "description": "Clinical teams could focus on patient care without needing to redo records or correct previous errors."
+        }
+      },
+      "conclusion": {
+        "title": "Conclusion",
+        "paragraph1": "This project demonstrates that modernizing health systems is possible without risks or interruptions. With planning, data cleaning, supervised migration, and final validation, health centers can:",
+        "bullet1": "Improve quality of care and patient safety.",
+        "bullet2": "Optimize administrative and clinical processes.",
+        "bullet3": "Ensure integrity and reliability of information.",
+        "paragraph2": "Zonda Health transforms migration processes into an opportunity to elevate efficiency, security, and clinical experience, allowing teams to focus on what really matters: caring for people."
+      }
+    },
+    "medicalRecordsMigrationValidation": {
+      "hero": {
+        "title": "Migration and Validation of 250,000 Medical Records",
+        "date": "January 2025"
+      },
+      "card": {
+        "category": "Data Migration",
+        "cardSubtitle": "Healthcare Data Management",
+        "author": "Zonda Health Team",
+        "description": "A health organization faced a critical challenge: its database contained more than 250,000 medical records with inconsistent formats and historical errors, making it difficult to generate reliable information for clinical decision-making. Zonda Health intervened to migrate, transform, and validate all information within our infrastructure."
+      },
+      "introduction": "A health organization faced a critical challenge: its database contained more than 250,000 medical records with inconsistent formats and historical errors, making it difficult to generate reliable information for clinical decision-making. Zonda Health intervened to migrate, transform, and validate all information within our infrastructure, ensuring that data was reliable, traceable, and compatible with advanced clinical models.",
+      "challenges": {
+        "title": "Identified challenges",
+        "intro": "During the initial analysis we detected several problems:",
+        "lowQuality": {
+          "title": "Low quality and lack of standardization:",
+          "description": "the original records had varied formats and many incomplete fields."
+        },
+        "criticalErrors": {
+          "title": "Critical recording errors:",
+          "description": "blood pressure alerts and other inconsistent vital signs that could impact clinical decisions."
+        },
+        "crossedData": {
+          "title": "Crossed or inverted data:",
+          "description": "for example, systolic and diastolic values exchanged (60/120 instead of 120/60), generating incorrect clinical interpretations."
+        },
+        "analysisRisk": {
+          "title": "Risk of incorrect analysis:",
+          "description": "any model or health profile based on these records was compromised by historical errors."
+        },
+        "conclusion": "These challenges required a safe, systematic migration process with automated clinical validation to ensure integrity and reliability."
+      },
+      "solution": {
+        "title": "Solution: migration, normalization and automated validation",
+        "subtitle": "We applied a comprehensive process in three main phases:",
+        "phase1": {
+          "title": "1. Data migration",
+          "bullet1": "Extraction of 250,000 records from the original database.",
+          "bullet2": "Transformation of information to our platform's structured format.",
+          "bullet3": "Secure indexing within our API infrastructure, maintaining complete traceability."
+        },
+        "phase2": {
+          "title": "2. Normalization and standardization",
+          "bullet1": "We applied automatic processes to clean incomplete or inconsistent records.",
+          "bullet2": "We standardized units and formats, ensuring compatibility with clinical models.",
+          "bullet3": "We identified historical error patterns, such as crossed blood pressure values, that affected previous analyses.",
+          "conclusion": ""
+        },
+        "phase3": {
+          "title": "3. Automated clinical validation",
+          "bullet1": "Our clinical AI executed anonymized health profiles on the entire patient population.",
+          "bullet2": "It detected critical alerts and systematic errors.",
+          "bullet3": "It automatically corrected and normalized data, ensuring clinical coherence and record quality.",
+          "conclusion": ""
+        }
+      },
+      "graph": {
+        "title": "Results Visualization",
+        "placeholder": "[Placeholder for graph - will be added later]"
+      },
+      "results": {
+        "title": "Results achieved",
+        "intro": "Thanks to this process, the organization achieved:",
+        "cleanDatabase": {
+          "title": "Clean and reliable database:",
+          "description": "250,000 verified, normalized and clinically coherent records."
+        },
+        "errorDetection": {
+          "title": "Detection and correction of historical errors:",
+          "description": "inverted vital sign values, duplicates and incomplete records were adjusted."
+        },
+        "completeProfiles": {
+          "title": "Complete and accurate health profiles:",
+          "description": "enabling more reliable and well-founded clinical analyses."
+        },
+        "fasterDecisions": {
+          "title": "Faster and safer decision-making:",
+          "description": "medical teams now have consistent data to prioritize care and detect risks."
+        },
+        "automation": {
+          "title": "Automation and scalability:",
+          "description": "the process can be repeated in other databases or integrated into continuous clinical data flows."
+        },
+        "tangibleImpact": {
+          "title": "Tangible impact:",
+          "description": "the company can now fully trust its clinical information, reducing errors and improving the efficiency of care processes."
+        }
+      },
+      "conclusion": {
+        "title": "Conclusion",
+        "paragraph1": "This project demonstrates that migrating large volumes of medical data is possible without compromising integrity or clinical accuracy. With controlled migration, automated normalization and AI validation, health centers and organizations can:",
+        "bullet1": "Ensure reliable and consistent clinical data.",
+        "bullet2": "Improve the accuracy of medical analyses and reports.",
+        "bullet3": "Optimize patient care based on verified information.",
+        "paragraph2": "Zonda Health converts historically problematic databases into useful, secure information ready for clinical decision-making, strengthening care quality and trust in data."
+      }
+    },
+    "fraudDetectionMedicalPractices": {
+      "hero": {
+        "title": "Fraud Detection in Medical Practices",
+        "date": "January 2025"
+      },
+      "card": {
+        "category": "Data & Analytics",
+        "cardSubtitle": "Artificial Intelligence and Data Analysis",
+        "author": "Zonda Health Team",
+        "description": "In an environment where economic sustainability and care quality must coexist, healthcare organizations face the challenge of balancing medical spending control with the guarantee of efficient and safe care. Zonda Health supported a major company in the sector in implementing a comprehensive analysis and control system, aimed at optimizing medical practice management and preventing operational fraud."
+      },
+      "introduction": "In an environment where economic sustainability and care quality must coexist, healthcare organizations face the challenge of balancing medical spending control with the guarantee of efficient and safe care. In this scenario, Zonda Health, through its Data & Analytics and Artificial Intelligence verticals, supported a major company in the sector in implementing a comprehensive analysis and control system, aimed at optimizing medical practice management and preventing operational fraud. The project was developed in two complementary stages that transformed the institution's audit and internal control processes.",
+      "implementation1": {
+        "title": "Implementation 1: Treatment Typification and Standardization of Consumption Curves by Diagnosis",
+        "challenge": {
+          "title": "Challenge",
+          "description": "The institution lacked a standardized model that would allow it to compare medical practice consumption among patients with the same diagnosis. This lack of reference created difficulties in detecting deviations, controlling costs, and evaluating the clinical efficiency of treatments. Additionally, information was fragmented across different systems, without an analytical tool that consolidated historical consumption data or allowed monitoring behaviors in real time."
+        },
+        "solution": {
+          "title": "Solution",
+          "description": "Zonda Health developed a statistical model for treatment typification, which allowed tracing historical consumption curves of medical practices by diagnosis. Based on this data, expected consumption standards were defined for each type of practice and pathology, and integrated into real-time control dashboards.",
+          "dashboards": "These dashboards allow:",
+          "bullet1": "Identifying and categorizing historical deviations, distinguishing cases of overconsumption or underutilization.",
+          "bullet2": "Detecting deviations in real time, enabling early and preventive intervention by the medical audit area."
+        },
+        "results": {
+          "title": "Results",
+          "bullet1": "Creation of evidence-based consumption standards.",
+          "bullet2": "Complete and real-time visibility of consumption curves.",
+          "bullet3": "Reduction in audit time and improvement in early detection of irregularities.",
+          "bullet4": "Better budget control and resource planning."
+        }
+      },
+      "implementation2": {
+        "title": "Implementation 2: Fraud Detection in Home Care Practices",
+        "challenge": {
+          "title": "Challenge",
+          "description": "Controlling home care practices represented a critical point for the company. Differences were detected between visits reported by professionals and those actually performed, which generated economic losses and put operational transparency at risk. The lack of traceability and automated validation meant that auditing depended on slow manual processes with high administrative burden."
+        },
+        "solution": {
+          "title": "Solution",
+          "description": "Zonda Health integrated a fraud detection module for home visits into the same platform, combining geographic data, automatic validations, and direct communication with patients.",
+          "controls": "The system applies two complementary controls:",
+          "control1": {
+            "title": "Excess visit control:",
+            "description": "Detects and automatically discounts visits reported above those authorized or outside the therapeutic plan range."
+          },
+          "control2": {
+            "title": "Unperformed visit control:",
+            "description": "Analyzes the recorded distance between the professional and the patient's home at the time of the visit. If an inconsistency is detected, the system automatically sends a message to the patient, requesting confirmation of the service through Zonda Health's secure messaging channel."
+          }
+        },
+        "results": {
+          "title": "Results",
+          "bullet1": "Detection and elimination of visits reported but not performed.",
+          "bullet2": "Automatic validation of the traceability of each practice.",
+          "bullet3": "Reduction of financial losses due to improper billing.",
+          "bullet4": "Greater trust and transparency in the relationship between institution, professionals, and patients."
+        }
+      },
+      "globalImpact": {
+        "title": "Global Impact of the Project",
+        "description": "The combination of both implementations allowed the company to:",
+        "bullet1": "Transform its medical control system into a data-based and predictive analytics model.",
+        "bullet2": "Reduce operational costs and fraud through automation and early detection.",
+        "bullet3": "Improve the efficiency, traceability, and quality of medical audits.",
+        "bullet4": "Have a scalable and rapidly integrable infrastructure that does not alter existing processes and adapts to the institutional ERP."
+      },
+      "conclusion": {
+        "title": "Conclusion",
+        "description": "Through the synergy between Data & Analytics and AI, Zonda Health helped this organization evolve towards an intelligent audit model and evidence-based management, in which data becomes knowledge and control becomes a strategic tool to improve the quality, transparency, and efficiency of the healthcare system."
       }
     }
   },

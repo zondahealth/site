@@ -12,7 +12,8 @@
       "ehr": "Registros Médicos Digitales",
       "patientExperience": "Experiencia del Paciente",
       "multiOrg": "Múltiples Organizaciones",
-      "modules": "Módulos"
+      "modules": "Módulos",
+      "caseStudies": "Casos de Estudio"
     },
     "buttons": {
       "login": "Iniciar Sesión",
@@ -528,6 +529,308 @@
           "title": "Reportes Locales y Globales",
           "description": "Genera tanto reportes locales para sub-organizaciones individuales como reportes globales para toda la organización. para grandes organizaciones con múltiples sub-organizaciones (aseguradoras, hospitales, sistemas de atención domiciliaria)."
         }
+      }
+    }
+  },
+  "caseStudies": {
+    "pageTitle": "Casos de estudio",
+    "pageSubtitle": "Historias reales de usuarios que usan Zonda",
+    "healthSystemsMigration": {
+      "hero": {
+        "title": "Migración de Sistemas en Salud",
+        "subtitle": "Cómo cambiar de sistemas y no morir en el intento",
+        "date": "Enero 2025"
+      },
+      "card": {
+        "category": "Migración de Sistemas",
+        "cardSubtitle": "Tecnología en Salud",
+        "author": "Equipo Zonda Health",
+        "description": "Muchas instituciones de salud en América Latina enfrentan un desafío recurrente: los sistemas heredados dificultan la gestión eficiente de la información. Cuando se actualizan los sistemas de gestión clínica, cambian de proveedor o se fusionan instituciones, los equipos de salud suelen encontrarse con múltiples sistemas heredados, lo que ralentiza la operación y aumenta el riesgo de errores."
+      },
+      "atAGlance": {
+        "title": "En resumen",
+        "outcome": {
+          "title": "Resultado",
+          "item1": "Reducción de la carga de trabajo interna del equipo",
+          "item2": "Datos confiables y estandarizados desde el primer día",
+          "item3": "Continuidad de atención sin interrupciones",
+          "item4": "Mayor eficiencia operativa y reducción de errores"
+        },
+        "solution": {
+          "title": "Solución",
+          "item1": "Planificación estratégica personalizada",
+          "item2": "Limpieza y preparación exhaustiva de datos",
+          "item3": "Migración supervisada y segura",
+          "item4": "Validación y puesta en marcha sin interrupciones"
+        },
+        "challenge": {
+          "title": "Desafío",
+          "item1": "Falta de estandarización de datos",
+          "item2": "Registros duplicados y errores clínicos",
+          "item3": "Datos incompletos y profesionales sin certificación",
+          "item4": "Múltiples sistemas heredados fragmentados"
+        }
+      },
+      "introduction": "Muchas instituciones de salud en América Latina enfrentan un desafío recurrente: los sistemas heredados dificultan la gestión eficiente de la información. Cuando se actualizan los sistemas de gestión clínica, cambian de proveedor o se fusionan instituciones, los equipos de salud suelen encontrarse con múltiples sistemas heredados, lo que ralentiza la operación y aumenta el riesgo de errores. En Zonda Health, ayudamos a las instituciones a moverse más rápido, reducir costos y mantener la continuidad de la atención, haciendo que la migración de sistemas sea segura, confiable y sin interrupciones.",
+      "problems": {
+        "title": "¿Con qué nos encontramos?",
+        "intro": "Al analizar los sistemas existentes, detectamos varios problemas críticos:",
+        "conclusion": "Estos problemas afectaban tanto la eficiencia operativa como la calidad de atención y requerían una intervención estructurada.",
+        "lackOfStandardization": {
+          "title": "Falta de estandarización de datos",
+          "description": "Los registros de pacientes y profesionales seguían formatos inconsistentes, complicando la integración."
+        },
+        "duplicateRecords": {
+          "title": "Registros duplicados",
+          "description": "Múltiples entradas para un mismo paciente, generando confusión en tratamientos y citas."
+        },
+        "clinicalErrors": {
+          "title": "Errores clínicos",
+          "description": "Signos vitales invertidos o valores imposibles (por ejemplo, saturación de oxígeno 0%, temperatura corporal 20°C)."
+        },
+        "incompleteData": {
+          "title": "Datos incompletos o outliers",
+          "description": "Registros de procedimientos sin información clave."
+        },
+        "unlicensedProfessionals": {
+          "title": "Profesionales sin certificación",
+          "description": "Dificultando el cumplimiento de normativas y la confianza en los datos."
+        }
+      },
+      "solution": {
+        "title": "Solución: un enfoque integral de migración",
+        "subtitle": "Se aplicó un proceso de migración en cuatro fases clave, diseñado para garantizar seguridad, integridad y continuidad operativa:",
+        "phase1": {
+          "title": "Planificación estratégica",
+          "description": "Trabajamos con el equipo del cliente para evaluar plazos, estructura de datos y posibles restricciones, definiendo un plan claro y seguro para la migración."
+        },
+        "phase2": {
+          "title": "Limpieza y preparación de datos",
+          "description": "Analizamos y depuramos los registros existentes:",
+          "bullet1": "Eliminamos duplicados y corregimos errores.",
+          "bullet2": "Estandarizamos la información de pacientes y profesionales.",
+          "bullet3": "Detectamos y ajustamos valores clínicos inconsistentes o atípicos.",
+          "conclusion": "Este paso garantizó que los datos fueran confiables y utilizables desde el primer día en el nuevo sistema."
+        },
+        "phase3": {
+          "title": "Migración supervisada",
+          "description": "Transferimos los datos de forma segura, asegurando que toda la información clínica y administrativa esté disponible desde el primer día en el nuevo sistema."
+        },
+        "phase4": {
+          "title": "Validación y puesta en marcha",
+          "description": "Finalizamos con controles de calidad finales, confirmando que todos los registros estuvieran correctos y completos, permitiendo al equipo clínico retomar sus actividades sin interrupciones."
+        }
+      },
+      "graph": {
+        "title": "Visualización de Resultados",
+        "placeholder": "[Placeholder para gráfico - será agregado posteriormente]"
+      },
+      "results": {
+        "title": "Resultados",
+        "intro": "Gracias al enfoque estructurado de Zonda Health, la clínica logró:",
+        "reducedWorkload": {
+          "title": "Reducción de la carga de trabajo interna",
+          "description": "El personal de IT y clínico pudo enfocarse en sus tareas mientras nosotros gestionábamos la migración."
+        },
+        "reliableData": {
+          "title": "Datos confiables y estandarizados",
+          "description": "Todos los registros fueron validados, eliminando duplicados y errores críticos."
+        },
+        "continuity": {
+          "title": "Continuidad de la atención",
+          "description": "Acceso ininterrumpido al historial clínico de pacientes durante y después de la migración."
+        },
+        "efficiency": {
+          "title": "Mayor eficiencia operativa",
+          "description": "Integración entre sistemas y eliminación de redundancias, mejorando la gestión administrativa y clínica."
+        },
+        "reducedErrors": {
+          "title": "Reducción de errores clínicos",
+          "description": "Signos vitales y registros ajustados para garantizar información confiable desde el primer día."
+        },
+        "impact": {
+          "title": "Impacto tangible",
+          "description": "Los equipos clínicos pudieron centrarse en la atención a pacientes sin necesidad de rehacer registros ni corregir errores previos."
+        }
+      },
+      "conclusion": {
+        "title": "Conclusión",
+        "paragraph1": "Este proyecto demuestra que modernizar sistemas en salud es posible sin riesgos ni interrupciones. Con planificación, limpieza de datos, migración supervisada y validación final, los centros de salud pueden:",
+        "bullet1": "Mejorar la calidad de atención y la seguridad de los pacientes.",
+        "bullet2": "Optimizar procesos administrativos y clínicos.",
+        "bullet3": "Garantizar la integridad y confiabilidad de la información.",
+        "paragraph2": "Zonda Health transforma los procesos de migración en una oportunidad para elevar la eficiencia, la seguridad y la experiencia clínica, permitiendo que los equipos se concentren en lo que realmente importa: cuidar de las personas."
+      }
+    },
+    "medicalRecordsMigrationValidation": {
+      "hero": {
+        "title": "Migración y Validación de 250.000 Registros Médicos",
+        "date": "Enero 2025"
+      },
+      "card": {
+        "category": "Migración de Datos",
+        "cardSubtitle": "Gestión de Datos en Salud",
+        "author": "Equipo Zonda Health",
+        "description": "Una organización de salud enfrentaba un desafío crítico: su base de datos contenía más de 250.000 registros médicos con formatos inconsistentes y errores históricos, dificultando la generación de información confiable para la toma de decisiones clínicas. Zonda Health intervino para migrar, transformar y validar toda la información dentro de nuestra infraestructura."
+      },
+      "introduction": "Una organización de salud enfrentaba un desafío crítico: su base de datos contenía más de 250.000 registros médicos con formatos inconsistentes y errores históricos, dificultando la generación de información confiable para la toma de decisiones clínicas. Zonda Health intervino para migrar, transformar y validar toda la información dentro de nuestra infraestructura, asegurando que los datos fueran confiables, trazables y compatibles con modelos clínicos avanzados.",
+      "challenges": {
+        "title": "Desafíos identificados",
+        "intro": "Durante el análisis inicial detectamos varios problemas:",
+        "lowQuality": {
+          "title": "Baja calidad y falta de estandarización:",
+          "description": "los registros originales tenían formatos variados y muchos campos incompletos."
+        },
+        "criticalErrors": {
+          "title": "Errores de registro críticos:",
+          "description": "alertas de presión arterial y otros signos vitales inconsistentes que podían impactar decisiones clínicas."
+        },
+        "crossedData": {
+          "title": "Datos cruzados o invertidos:",
+          "description": "por ejemplo, valores sistólicos y diastólicos intercambiados (60/120 en lugar de 120/60), generando interpretaciones clínicas incorrectas."
+        },
+        "analysisRisk": {
+          "title": "Riesgo de análisis incorrecto:",
+          "description": "cualquier modelo o perfil de salud basado en estos registros estaba comprometido por los errores históricos."
+        },
+        "conclusion": "Estos desafíos requerían un proceso de migración seguro, sistemático y con validación clínica automatizada para garantizar integridad y confiabilidad."
+      },
+      "solution": {
+        "title": "Solución: migración, normalización y validación automatizada",
+        "subtitle": "Aplicamos un proceso integral en tres fases principales:",
+        "phase1": {
+          "title": "1. Migración de datos",
+          "bullet1": "Extracción de los 250.000 registros desde la base de datos original.",
+          "bullet2": "Transformación de la información al formato estructurado de nuestra plataforma.",
+          "bullet3": "Indexación segura dentro de nuestra infraestructura de API, manteniendo trazabilidad completa."
+        },
+        "phase2": {
+          "title": "2. Normalización y estandarización",
+          "bullet1": "Aplicamos procesos automáticos para limpiar registros incompletos o inconsistentes.",
+          "bullet2": "Estandarizamos unidades y formatos, asegurando compatibilidad con modelos clínicos.",
+          "bullet3": "Identificamos patrones erróneos históricos, como valores de presión arterial cruzados, que afectaban análisis previos.",
+          "conclusion": ""
+        },
+        "phase3": {
+          "title": "3. Validación clínica automatizada",
+          "bullet1": "Nuestra IA clínica ejecutó perfiles de salud anonimizados sobre toda la población de pacientes.",
+          "bullet2": "Detectó alertas críticas y errores sistemáticos.",
+          "bullet3": "Corrigió y normalizó automáticamente los datos, garantizando coherencia clínica y calidad de los registros.",
+          "conclusion": ""
+        }
+      },
+      "graph": {
+        "title": "Visualización de Resultados",
+        "placeholder": "[Placeholder para gráfico - será agregado posteriormente]"
+      },
+      "results": {
+        "title": "Resultados alcanzados",
+        "intro": "Gracias a este proceso, la organización logró:",
+        "cleanDatabase": {
+          "title": "Base de datos limpia y confiable:",
+          "description": "250.000 registros verificados, normalizados y clínicamente coherentes."
+        },
+        "errorDetection": {
+          "title": "Detección y corrección de errores históricos:",
+          "description": "valores invertidos de signos vitales, duplicados y registros incompletos fueron ajustados."
+        },
+        "completeProfiles": {
+          "title": "Perfiles de salud completos y precisos:",
+          "description": "permitiendo análisis clínicos más confiables y fundamentados."
+        },
+        "fasterDecisions": {
+          "title": "Toma de decisiones más rápida y segura:",
+          "description": "los equipos médicos ahora cuentan con datos consistentes para priorizar atención y detectar riesgos."
+        },
+        "automation": {
+          "title": "Automatización y escalabilidad:",
+          "description": "el proceso puede repetirse en otras bases de datos o integrarse a flujos continuos de datos clínicos."
+        },
+        "tangibleImpact": {
+          "title": "Impacto tangible:",
+          "description": "la empresa ahora puede confiar plenamente en su información clínica, reduciendo errores y mejorando la eficiencia de los procesos de atención."
+        }
+      },
+      "conclusion": {
+        "title": "Conclusión",
+        "paragraph1": "Este proyecto demuestra que la migración de grandes volúmenes de datos médicos es posible sin comprometer la integridad ni la precisión clínica. Con migración controlada, normalización automatizada y validación con IA, los centros de salud y organizaciones pueden:",
+        "bullet1": "Garantizar datos clínicos confiables y consistentes.",
+        "bullet2": "Mejorar la precisión de análisis y reportes médicos.",
+        "bullet3": "Optimizar la atención al paciente basada en información verificada.",
+        "paragraph2": "Zonda Health convierte bases de datos históricamente problemáticas en información útil, segura y lista para la toma de decisiones clínicas, fortaleciendo la calidad de atención y la confianza en los datos."
+      }
+    },
+    "fraudDetectionMedicalPractices": {
+      "hero": {
+        "title": "Detección de fraude en prácticas médicas",
+        "date": "Enero 2025"
+      },
+      "card": {
+        "category": "Data & Analytics",
+        "cardSubtitle": "Inteligencia Artificial y Análisis de Datos",
+        "author": "Equipo Zonda Health",
+        "description": "En un entorno donde la sostenibilidad económica y la calidad asistencial deben coexistir, las organizaciones de salud enfrentan el desafío de equilibrar el control del gasto médico con la garantía de una atención eficiente y segura. Zonda Health acompañó a una importante empresa del sector en la implementación de un sistema integral de análisis y control, orientado a optimizar la gestión de prácticas médicas y prevenir el fraude operativo."
+      },
+      "introduction": "En un entorno donde la sostenibilidad económica y la calidad asistencial deben coexistir, las organizaciones de salud enfrentan el desafío de equilibrar el control del gasto médico con la garantía de una atención eficiente y segura. Frente a este escenario, Zonda Health, a través de sus verticales de Data & Analytics e Inteligencia Artificial, acompañó a una importante empresa del sector en la implementación de un sistema integral de análisis y control, orientado a optimizar la gestión de prácticas médicas y prevenir el fraude operativo. El proyecto se desarrolló en dos etapas complementarias que transformaron los procesos de auditoría y control interno de la institución.",
+      "implementation1": {
+        "title": "Implementación 1: Tipificación de tratamientos y estandarización de curvas de consumo por diagnóstico",
+        "challenge": {
+          "title": "Desafío",
+          "description": "La institución no contaba con un modelo estandarizado que le permitiera comparar el consumo de prácticas médicas entre pacientes con el mismo diagnóstico. Esta falta de referencia generaba dificultades para detectar desvíos, controlar costos y evaluar la eficiencia clínica de los tratamientos. Además, la información se encontraba fragmentada en distintos sistemas, sin una herramienta analítica que consolidara los datos históricos de consumo ni permitiera monitorear comportamientos en tiempo real."
+        },
+        "solution": {
+          "title": "Solución",
+          "description": "Zonda Health desarrolló un modelo estadístico de tipificación de tratamientos, que permitió trazar las curvas de consumo histórico de prácticas médicas por diagnóstico. A partir de esos datos, se definieron estándares de consumo esperados para cada tipo de práctica y patología, y se integraron en tableros de control en tiempo real.",
+          "dashboards": "Estos tableros permiten:",
+          "bullet1": "Identificar y categorizar desvíos históricos, distinguiendo casos de sobreconsumo o subutilización.",
+          "bullet2": "Detectar desvíos en tiempo real, habilitando una intervención temprana y preventiva por parte del área de auditoría médica."
+        },
+        "results": {
+          "title": "Resultados",
+          "bullet1": "Creación de estándares de consumo basados en evidencia.",
+          "bullet2": "Visibilidad completa y en tiempo real de las curvas de consumo.",
+          "bullet3": "Reducción del tiempo de auditoría y mejora en la detección temprana de irregularidades.",
+          "bullet4": "Mejor control presupuestario y planeamiento de recursos."
+        }
+      },
+      "implementation2": {
+        "title": "Implementación 2: Detección de fraude en prácticas domiciliarias",
+        "challenge": {
+          "title": "Desafío",
+          "description": "El control de las prácticas domiciliarias representaba un punto crítico para la empresa. Se detectaban diferencias entre las visitas reportadas por los profesionales y las efectivamente realizadas, lo que generaba pérdidas económicas y ponía en riesgo la transparencia operativa. La falta de trazabilidad y validación automatizada hacía que la auditoría dependiera de procesos manuales lentos y con alta carga administrativa."
+        },
+        "solution": {
+          "title": "Solución",
+          "description": "Zonda Health integró en la misma plataforma un módulo de detección de fraude en visitas domiciliarias, combinando datos geográficos, validaciones automáticas y comunicación directa con los pacientes.",
+          "controls": "El sistema aplica dos controles complementarios:",
+          "control1": {
+            "title": "Control de visitas en exceso:",
+            "description": "Detecta y descuenta automáticamente las visitas informadas por encima de las autorizadas o fuera del rango del plan terapéutico."
+          },
+          "control2": {
+            "title": "Control de visitas no realizadas:",
+            "description": "Analiza la distancia registrada entre el profesional y el domicilio del paciente al momento de la visita. Si se detecta una inconsistencia, el sistema envía un mensaje automático al paciente, solicitando confirmación de la prestación mediante el canal de mensajería segura de Zonda Health."
+          }
+        },
+        "results": {
+          "title": "Resultados",
+          "bullet1": "Detección y eliminación de visitas informadas pero no realizadas.",
+          "bullet2": "Validación automática de la trazabilidad de cada práctica.",
+          "bullet3": "Reducción de pérdidas financieras por facturación indebida.",
+          "bullet4": "Mayor confianza y transparencia en la relación entre institución, profesionales y pacientes."
+        }
+      },
+      "globalImpact": {
+        "title": "Impacto Global del Proyecto",
+        "description": "La combinación de ambas implementaciones permitió a la empresa:",
+        "bullet1": "Transformar su sistema de control médico en un modelo basado en datos y analítica predictiva.",
+        "bullet2": "Reducir costos operativos y fraudes mediante automatización y detección temprana.",
+        "bullet3": "Mejorar la eficiencia, trazabilidad y calidad de las auditorías médicas.",
+        "bullet4": "Contar con una infraestructura escalable y de rápida integración, que no altera los procesos existentes y se adapta al ERP institucional."
+      },
+      "conclusion": {
+        "title": "Conclusión",
+        "description": "A través de la sinergia entre Data & Analytics y AI, Zonda Health ayudó a esta organización a evolucionar hacia un modelo de auditoría inteligente y gestión basada en evidencia, en el cual los datos se transforman en conocimiento y el control en una herramienta estratégica para mejorar la calidad, la transparencia y la eficiencia del sistema de salud."
       }
     }
   },
