@@ -156,15 +156,6 @@
 
   html, body {
     @apply bg-background text-foreground;
-    overscroll-behavior: none;
-    overscroll-behavior-y: none;
-    overscroll-behavior-x: none;
-  }
-
-  body {
-    overscroll-behavior: none;
-    overscroll-behavior-y: none;
-    overscroll-behavior-x: none;
   }
 }
 
@@ -225,26 +216,30 @@
 
 html {
   font-size: var(--font-size);
-  overscroll-behavior: none;
-  overscroll-behavior-y: none;
-  overscroll-behavior-x: none;
+  /* Ensure html is the scroll container */
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-manrope), sans-serif;
-  overscroll-behavior: none;
-  overscroll-behavior-y: none;
-  overscroll-behavior-x: none;
+  /* Body should NOT be the scroll container - let html handle it */
+  overflow: visible;
+  position: relative;
+  min-height: 100vh;
+  height: auto;
 }
 
-/* Prevent bounce scroll on all elements */
-* {
-  overscroll-behavior: none;
-  overscroll-behavior-y: none;
-  overscroll-behavior-x: none;
+/* Ensure root wrapper divs don't block scrolling */
+body > div {
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 100vh;
 }
+
 
 /* Custom gradient animation */
 @keyframes gradient-x {
