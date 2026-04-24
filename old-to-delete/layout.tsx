@@ -1,6 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import { routing } from '../../i18n/routing';
+import { routing } from '../i18n/routing';
 import { hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 

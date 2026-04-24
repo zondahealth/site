@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Manrope } from 'next/font/google';
+import { Geist, Geist_Mono, Manrope, Space_Grotesk } from 'next/font/google';
 import './globals.css';
+import { Header } from './components/Header';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -17,10 +18,21 @@ const manrope = Manrope({
   subsets: ['latin'],
 });
 
+const spaceGrotesk = Space_Grotesk({
+  variable: '--font-space-grotesk-next',
+  subsets: ['latin'],
+});
+
 export const metadata: Metadata = {
   title: 'zonda',
   description: 'zonda',
 };
+
+const headerLinks = [
+  { href: '/', label: 'Product', active: true },
+  { href: '/solutions', label: 'Solutions' },
+  { href: '/about', label: 'About' },
+];
 
 // This file is required for the root layout
 // The actual layout is now in app/[locale]/layout.tsx
@@ -32,8 +44,9 @@ export default function RootLayout({
   return (
     <html>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${spaceGrotesk.variable} antialiased`}
       >
+        <Header links={headerLinks} />
         {children}
       </body>
     </html>
