@@ -126,7 +126,7 @@ This design system utilizes a high-frequency blue palette to establish trust and
 - **Deep Indigo (#0E3C75):** Used for primary text and grounding elements to ensure high contrast and readability.
 - **Accent Yellow (#F7C302):** A high-visibility highlight color used sparingly for critical data points, status changes, or tactical call-outs.
 - **Vitality Yellow (#E6FF1A):** A high-visibility electric yellow with a green edge, used sparingly for "live" data, connectivity status, and health "upswing" indicators.
-  - **Opacity scale:** 5% `rgba(230, 255, 26, 0.05)` · 8% `rgba(230, 255, 26, 0.08)` · 10% `rgba(230, 255, 26, 0.1)` · 15% `rgba(230, 255, 26, 0.15)` · 20% `rgba(230, 255, 26, 0.2)` · 25% `rgba(230, 255, 26, 0.25)` · 30% `rgba(230, 255, 26, 0.3)` · 40% `rgba(230, 255, 26, 0.4)` · 50% `rgba(230, 255, 26, 0.5)` · 100% `#E6FF1A`
+  - **Opacity scale:** 5% `rgba(230, 255, 26, 0.05)` · 8% `rgba(230, 255, 26, 0.08)` · 10% `rgba(230, 255, 26, 0.1)` · 15% `rgba(230, 255, 26, 0.15)` · 20% `rgba(230, 255, 26, 0.2)` · 25% `rgba(30, 30, 28, 0.25)` · 30% `rgba(230, 255, 26, 0.3)` · 40% `rgba(230, 255, 26, 0.4)` · 50% `rgba(230, 255, 26, 0.5)` · 100% `#E6FF1A`
 - **Neutrals:** The background is kept incredibly clean with `#F5F5F5`, while `#191F2F` serves as the primary ink color for a more sophisticated look than pure black.
 - **Supporting Tones:** Light washes like `#DBE8FF` are used for background grouping and container fills.
 

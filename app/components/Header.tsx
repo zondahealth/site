@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { Button } from './ui/button';
@@ -12,7 +13,6 @@ type HeaderProps = {
   links?: HeaderLink[];
   loginHref?: string;
   getStartedHref?: string;
-  logoText?: string;
 };
 
 const defaultLinks: HeaderLink[] = [
@@ -25,29 +25,36 @@ export function Header({
   links = defaultLinks,
   loginHref = '/login',
   getStartedHref = '/get-started',
-  logoText = 'Zonda Health',
 }: HeaderProps) {
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
-      <div className="mx-auto flex max-w-6xl items-center justify-between rounded-[1.75rem] border border-[color:oklch(0.88_0.02_258)] bg-[color:oklch(0.995_0.004_258_/_0.94)] px-4 py-3 shadow-[0_18px_60px_-28px_rgba(14,60,117,0.28)] backdrop-blur-sm pointer-events-auto sm:px-6">
+    <header className="fixed inset-x-0 top-0 z-50 bg-white">
+      <div className="layout-shell flex items-center justify-between py-3 sm:py-4">
         <Link
           href="/"
-          className="shrink-0 [font-family:var(--font-space-grotesk)] text-lg font-semibold tracking-[-0.03em] text-[color:oklch(0.27_0.03_258)] transition-colors duration-200 hover:text-[color:oklch(0.47_0.17_258)]"
+          className="flex shrink-0 items-center transition-opacity duration-200 hover:opacity-85"
+          aria-label="Zonda Health"
         >
-          {logoText}
+          <Image
+            src="/logo/blue-logo.png"
+            alt="Zonda Health"
+            width={38}
+            height={38}
+            className="h-9 w-9 rounded-xl sm:h-10 sm:w-10"
+            priority
+          />
         </Link>
 
-        <nav className="hidden items-center rounded-full border border-[color:oklch(0.92_0.012_258)] bg-[color:oklch(0.982_0.006_258)] p-1 md:flex">
+        <nav className="hidden items-center gap-8 md:flex [font-family:var(--font-display-family)]">
           {links.map((link) => (
             <Link
               key={`${link.href}-${link.label}`}
               href={link.href}
               aria-current={link.active ? 'page' : undefined}
               className={[
-                'rounded-full px-5 py-2 text-sm font-medium transition-colors duration-200',
+                'relative py-2 text-sm font-medium transition-colors duration-200',
                 link.active
-                  ? 'bg-[color:oklch(0.95_0.03_258)] text-[color:oklch(0.57_0.18_258)] shadow-[inset_0_-2px_0_0_rgba(34,111,253,0.65)]'
-                  : 'text-[color:oklch(0.5_0.02_258)] hover:text-[color:oklch(0.27_0.03_258)]',
+                  ? 'text-zonda-blue after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:rounded-full after:bg-zonda-blue'
+                  : 'text-[color:oklch(0.46_0.02_258)] hover:text-[color:oklch(0.27_0.03_258)]',
               ].join(' ')}
             >
               {link.label}
@@ -55,7 +62,7 @@ export function Header({
           ))}
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <Button
             asChild
             variant="ghost"
@@ -64,11 +71,7 @@ export function Header({
           >
             <Link href={loginHref}>Login</Link>
           </Button>
-          <Button
-            asChild
-            size="sm"
-            className="rounded-full px-4 shadow-[0_16px_32px_-18px_rgba(34,111,253,0.9)] sm:px-5"
-          >
+          <Button asChild size="sm" className="rounded-full px-5 sm:px-6">
             <Link href={getStartedHref}>Get Started</Link>
           </Button>
         </div>

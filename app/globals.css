@@ -62,7 +62,7 @@
 
   /* —— shadcn-style mapping (grounded in DESIGN.md) —— */
   --font-size: 16px;
-  --background: #faf8ff;
+  --background: #ffffff;
   --foreground: #151b2b;
   --card: #ffffff;
   --card-foreground: #151b2b;
@@ -113,6 +113,7 @@
   --gutter: 32px;
   --margin-page-mobile: 24px;
   --margin-page-desktop: 64px;
+  --font-display-family: var(--font-space-grotesk-next), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 @custom-variant dark (&:is(.dark *));
@@ -245,8 +246,7 @@
   /* Typography (DESIGN.md frontmatter) — Next font variables + Space Grotesk */
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --font-space-grotesk: var(--font-space-grotesk-next), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-space-grotesk);
+  --font-display: var(--font-display-family);
   /* Named text styles → utilities: text-display, text-h1, … */
   --text-display: 5rem;
   --text-h1: 3rem;
@@ -280,6 +280,35 @@
   --spacing-page-mobile: 24px;
   --spacing-page-desktop: 64px;
   --max-w-content: 1280px;
+  --layout-max-width: 34rem;
+  --layout-gutter: 1rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --layout-max-width: 42rem;
+    --layout-gutter: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --layout-max-width: 54rem;
+    --layout-gutter: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --layout-max-width: 68rem;
+    --layout-gutter: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --layout-max-width: 76rem;
+  }
 }
 
 @layer base {
@@ -293,12 +322,19 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-space-grotesk);
+    font-family: var(--font-display-family) !important;
   }
 
   html,
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .layout-shell {
+    width: min(calc(100% - (var(--layout-gutter) * 2)), var(--layout-max-width));
+    margin-inline: auto;
   }
 }
 
@@ -312,28 +348,28 @@
       font-weight: 600;
       line-height: var(--line-height-h1);
       letter-spacing: var(--letter-spacing-h1);
-      font-family: var(--font-space-grotesk);
+      font-family: var(--font-display-family);
     }
 
     h2 {
       font-size: var(--text-h2);
       font-weight: 600;
       line-height: var(--line-height-h2);
-      font-family: var(--font-space-grotesk);
+      font-family: var(--font-display-family);
     }
 
     h3 {
       font-size: var(--text-body-lg);
       font-weight: 600;
       line-height: var(--line-height-body-lg);
-      font-family: var(--font-space-grotesk);
+      font-family: var(--font-display-family);
     }
 
     h4 {
       font-size: var(--text-body-md);
       font-weight: 600;
       line-height: var(--line-height-body-md);
-      font-family: var(--font-space-grotesk);
+      font-family: var(--font-display-family);
     }
 
     p {
