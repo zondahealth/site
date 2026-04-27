@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono, Manrope, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -28,12 +29,6 @@ export const metadata: Metadata = {
   description: 'zonda',
 };
 
-const headerLinks = [
-  { href: '/', label: 'Product', active: true },
-  { href: '/solutions', label: 'Solutions' },
-  { href: '/about', label: 'About' },
-];
-
 // This file is required for the root layout
 // The actual layout is now in app/[locale]/layout.tsx
 export default function RootLayout({
@@ -42,12 +37,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="bg-white">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${spaceGrotesk.variable} antialiased`}
-      >
-        <Header links={headerLinks} />
+    <html
+      className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${spaceGrotesk.variable}`}
+    >
+      <body className="antialiased">
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

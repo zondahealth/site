@@ -1,102 +1,96 @@
 ---
-name: Zonda Health
+name: Zonda Health Brand Identity
 colors:
-  surface: '#faf8ff'
-  surface-dim: '#d4d9ef'
-  surface-bright: '#faf8ff'
-  surface-container-lowest: '#ffffff'
-  surface-container-low: '#f2f3ff'
-  surface-container: '#eaedff'
-  surface-container-high: '#e2e7fe'
-  surface-container-highest: '#dce2f8'
+  surface: '#f7f8fc'
+  surface-dim: '#eef1f8'
+  surface-bright: '#fcfcff'
+  surface-container-lowest: '#fdfdff'
+  surface-container-low: '#f4f6fd'
+  surface-container: '#edf1fb'
+  surface-container-high: '#e5ebfa'
+  surface-container-highest: '#dde5f7'
   on-surface: '#151b2b'
-  on-surface-variant: '#424655'
-  inverse-surface: '#2a3041'
-  inverse-on-surface: '#eef0ff'
-  outline: '#727787'
-  outline-variant: '#c2c6d8'
-  surface-tint: '#0055d2'
-  primary: '#0053cd'
-  on-primary: '#ffffff'
-  primary-container: '#1a6bf9'
-  on-primary-container: '#fefcff'
-  inverse-primary: '#b2c5ff'
-  secondary: '#395e99'
-  on-secondary: '#ffffff'
-  secondary-container: '#98bcfd'
-  on-secondary-container: '#234b84'
-  tertiary: '#755b00'
-  on-tertiary: '#ffffff'
-  tertiary-container: '#d2a500'
-  on-tertiary-container: '#503d00'
-  error: '#ba1a1a'
-  on-error: '#ffffff'
-  error-container: '#ffdad6'
-  on-error-container: '#93000a'
+  on-surface-variant: '#4a556f'
+  inverse-surface: '#1d2434'
+  inverse-on-surface: '#f7f8fc'
+  outline: '#9aa6bc'
+  outline-variant: '#d3dae8'
+  surface-tint: '#5c8cff'
+  primary: '#226ffd'
+  on-primary: '#f8f9ff'
+  primary-container: '#5c8cff'
+  on-primary-container: '#082861'
+  inverse-primary: '#0055d2'
+  secondary: '#5d74ab'
+  on-secondary: '#f8f9ff'
+  secondary-container: '#dce6ff'
+  on-secondary-container: '#294b84'
+  tertiary: '#cdcd00'
+  on-tertiary: '#323200'
+  tertiary-container: '#b1b100'
+  on-tertiary-container: '#424200'
+  error: '#ffb4ab'
+  on-error: '#690005'
+  error-container: '#93000a'
+  on-error-container: '#ffdad6'
   primary-fixed: '#dae2ff'
   primary-fixed-dim: '#b2c5ff'
   on-primary-fixed: '#001848'
   on-primary-fixed-variant: '#0040a1'
-  secondary-fixed: '#d6e3ff'
-  secondary-fixed-dim: '#aac7ff'
-  on-secondary-fixed: '#001b3e'
-  on-secondary-fixed-variant: '#1d4680'
-  tertiary-fixed: '#ffdf90'
-  tertiary-fixed-dim: '#f3c000'
-  on-tertiary-fixed: '#241a00'
-  on-tertiary-fixed-variant: '#584400'
-  background: '#faf8ff'
+  secondary-fixed: '#dbe1ff'
+  secondary-fixed-dim: '#b4c5ff'
+  on-secondary-fixed: '#00174c'
+  on-secondary-fixed-variant: '#003daa'
+  tertiary-fixed: '#eaea00'
+  tertiary-fixed-dim: '#cdcd00'
+  on-tertiary-fixed: '#1d1d00'
+  on-tertiary-fixed-variant: '#494900'
+  background: '#fcfcff'
   on-background: '#151b2b'
-  surface-variant: '#dce2f8'
-  vitality-yellow: '#E6FF1A'
-  vitality-yellow-5: 'rgba(230, 255, 26, 0.05)'
-  vitality-yellow-8: 'rgba(230, 255, 26, 0.08)'
-  vitality-yellow-10: 'rgba(230, 255, 26, 0.1)'
-  vitality-yellow-15: 'rgba(230, 255, 26, 0.15)'
-  vitality-yellow-20: 'rgba(230, 255, 26, 0.2)'
-  vitality-yellow-25: 'rgba(230, 255, 26, 0.25)'
-  vitality-yellow-30: 'rgba(230, 255, 26, 0.3)'
-  vitality-yellow-40: 'rgba(230, 255, 26, 0.4)'
-  vitality-yellow-50: 'rgba(230, 255, 26, 0.5)'
+  surface-variant: '#dde5f7'
 typography:
-  display:
+  h1:
     fontFamily: Space Grotesk
-    fontSize: 80px
+    fontSize: 48px
     fontWeight: '700'
     lineHeight: '1.1'
     letterSpacing: -0.02em
-  headline-h1:
-    fontFamily: Space Grotesk
-    fontSize: 48px
-    fontWeight: '600'
-    lineHeight: '1.2'
-    letterSpacing: -0.01em
-  headline-h2:
+  h2:
     fontFamily: Space Grotesk
     fontSize: 32px
+    fontWeight: '700'
+    lineHeight: '1.2'
+    letterSpacing: -0.01em
+  h3:
+    fontFamily: Space Grotesk
+    fontSize: 24px
     fontWeight: '600'
     lineHeight: '1.3'
+    letterSpacing: '0'
   body-lg:
-    fontFamily: Manrope
+    fontFamily: Space Grotesk
     fontSize: 18px
     fontWeight: '400'
     lineHeight: '1.6'
+    letterSpacing: '0'
   body-md:
-    fontFamily: Manrope
+    fontFamily: Space Grotesk
     fontSize: 16px
     fontWeight: '400'
-    lineHeight: '1.5'
+    lineHeight: '1.6'
+    letterSpacing: '0'
   label-caps:
     fontFamily: Space Grotesk
     fontSize: 12px
     fontWeight: '700'
     lineHeight: '1'
     letterSpacing: 0.1em
-  mono-data:
+  data-mono:
     fontFamily: Space Grotesk
     fontSize: 14px
     fontWeight: '500'
-    lineHeight: '1.4'
+    lineHeight: '1'
+    letterSpacing: -0.01em
 rounded:
   sm: 0.25rem
   DEFAULT: 0.5rem
@@ -105,69 +99,74 @@ rounded:
   xl: 1.5rem
   full: 9999px
 spacing:
-  unit: 8px
-  gutter: 32px
-  margin-mobile: 24px
-  margin-desktop: 64px
-  container-max: 1280px
+  base: 8px
+  xs: 4px
+  sm: 12px
+  md: 24px
+  lg: 48px
+  xl: 80px
+  grid_columns: '12'
+  grid_gutter: 24px
+  grid_margin: 32px
 ---
 
 ## Brand & Style
 
-The design system is engineered to project a sense of "Kinetic Intelligence." It bridges the gap between high-finance infrastructure and proactive health technology. The brand personality is confident and futuristic, moving away from traditional healthcare's "softness" toward a more precise, data-driven aesthetic.
+This design system is engineered for a high-tech healthtech environment where clinical precision meets cutting-edge data science. The brand personality is authoritative yet energetic, designed to evoke feelings of technological advancement, speed, and absolute clarity.
 
-The visual style is a hybrid of **High-Contrast Minimalism** and **Tech-Modern**. It prioritizes extreme clarity through massive typography and generous whitespace, while utilizing fluid "data-stream" motifs and abstract connectivity patterns to imply a constant state of movement and calculation. Every interface element should feel like a high-performance instrument rather than a clinical form.
+The visual style is a fusion of **High-Contrast Bold** and **Minimalism**. It now uses a bright, near-white foundation so the product feels crisp, legible, and trustworthy at first glance, while saturated cobalt and sharp yellow accents provide the energy. Inspired by the clarity of top-tier fintech platforms, the aesthetic prioritizes information density without sacrificing legibility, using vibrant accents to guide the user's eye through complex health metrics.
 
 ## Colors
 
-This design system utilizes a high-frequency blue palette to establish trust and technological authority.
+The color strategy for this design system is built on a "Clinical Paper + Signal Color" philosophy. The foundation is a cool, bright neutral that keeps the interface open, credible, and easy to scan, while still leaving room for strong color punctuation.
 
-- **Primary Blue (#226FFD):** The main driver for actions and brand presence. It is vibrant and digitally native.
-- **Deep Indigo (#0E3C75):** Used for primary text and grounding elements to ensure high contrast and readability.
-- **Accent Yellow (#F7C302):** A high-visibility highlight color used sparingly for critical data points, status changes, or tactical call-outs.
-- **Vitality Yellow (#E6FF1A):** A high-visibility electric yellow with a green edge, used sparingly for "live" data, connectivity status, and health "upswing" indicators.
-  - **Opacity scale:** 5% `rgba(230, 255, 26, 0.05)` · 8% `rgba(230, 255, 26, 0.08)` · 10% `rgba(230, 255, 26, 0.1)` · 15% `rgba(230, 255, 26, 0.15)` · 20% `rgba(230, 255, 26, 0.2)` · 25% `rgba(30, 30, 28, 0.25)` · 30% `rgba(230, 255, 26, 0.3)` · 40% `rgba(230, 255, 26, 0.4)` · 50% `rgba(230, 255, 26, 0.5)` · 100% `#E6FF1A`
-- **Neutrals:** The background is kept incredibly clean with `#F5F5F5`, while `#191F2F` serves as the primary ink color for a more sophisticated look than pure black.
-- **Supporting Tones:** Light washes like `#DBE8FF` are used for background grouping and container fills.
+The **Primary Blue** acts as the core brand driver, used for navigation emphasis, links, and status indicators. The **Tertiary and Accent Yellows** are reserved for high-impact moments: critical data points, active toggle states, and primary call-to-actions. These hits create urgency without overwhelming the page. Secondary blues are used to create depth within the light interface, providing subtle layering for containers and non-critical interactive elements.
 
 ## Typography
 
-The typography strategy relies on the juxtaposition of technical geometric forms and refined humanist readability.
+Space Grotesk is the sole typeface for this design system, chosen for its technical, geometric construction and distinctive "tech" personality. Its eccentricities—like the flared terminals and idiosyncratic curves—give the healthtech platform a futuristic, scientific edge.
 
-- **Space Grotesk** is used for headlines and data labels. Its geometric "tech" feel aligns with the futuristic brand narrative. Use the tightest letter spacing for large display type to create a "locked-in" architectural look.
-- **Manrope** is used for all body copy and long-form text. Its balanced, modern proportions ensure readability across health data visualizations and dense information layouts.
-- **Scale:** Headlines should be unapologetically large to create a strong hierarchy, often breaking the traditional 1:2 scale ratio for more dramatic impact.
+Headlines should be set with tight letter-spacing to emphasize the bold, high-impact nature of the brand. For data-heavy views, use the `label-caps` style to categorize information with institutional authority. While Space Grotesk is a proportional font, its geometric nature allows it to perform exceptionally well for numerical health data, providing the rhythmic clarity of a monospaced font with the readability of a modern sans-serif.
 
 ## Layout & Spacing
 
-The design system employs a **Fluid Grid** with wide margins and generous gutters to prevent the interface from feeling "medical" or cluttered.
+This design system utilizes a rigorous **Fixed Grid** model. The layout is structured on a 12-column grid system for desktop, ensuring that complex medical data dashboards remain aligned and scannable.
 
-- **The Rhythm:** Use an 8px base unit for all spacing.
-- **The Grid:** A 12-column system is standard for desktop, but the layout should prioritize "content islands"—centered containers that maximize whitespace to keep the user focused.
-- **Data Densities:** Use increased padding (48px+) for marketing-led sections and tighter, systematic padding (16px–24px) for dashboard and data-heavy environments.
+The spacing rhythm is strictly based on an 8px base unit. This ensures a mathematical consistency that mirrors the precision of the health sciences. For information-dense components, like patient records or lab results, the 'sm' (12px) and 'xs' (4px) units should be used to pack data efficiently while maintaining a clean, systematic appearance. Wide 'xl' (80px) vertical margins are reserved for high-impact landing areas to provide "breathable" luxury amidst the technical density.
 
 ## Elevation & Depth
 
-The design system uses **Ambient Shadows** and **Tonal Layering** to create a sense of organized depth without visual noise.
+In this design system, depth is communicated through **Tonal Layers** and crisp borders rather than heavy shadows. Because the background is light, elevation is achieved by stepping surfaces through cool whites and pale blue-grays.
 
-- **Layer 0 (Background):** Solid `#F5F5F5` or `#FFFFFF`.
-- **Layer 1 (Cards):** White surfaces with extra-diffused shadows. Shadows should use a slight blue tint (e.g., `rgba(14, 60, 117, 0.08)`) with a 20px–40px blur to feel soft and light.
-- **Layer 2 (Interactive):** Elements that are being hovered or dragged should increase shadow spread and slightly scale (1.02x).
-- **Glassmorphism:** Use sparingly for navigation bars or overlays. Use a `backdrop-filter: blur(12px)` with a high-transparency white fill to maintain the clean, "airy" feel.
+- **Level 0 (Base):** Near-white background (#fcfcff).
+- **Level 1 (Cards/Containers):** Soft paper neutral (#f4f6fd) with a subtle 1px border using a low-opacity Primary Blue.
+- **Level 2 (Modals/Popovers):** Bright neutral (#fdfdff) with a slightly stronger shadow and border to maintain clarity.
+- **Glow Effects:** Critical interactive elements or active states may use a restrained yellow glow to simulate signal intensity without darkening the whole interface.
 
 ## Shapes
 
-The shape language is defined by **Controlled Fluidity**.
+The shape language is defined by a consistent 8px (0.5rem) corner radius. This "Rounded" level strikes a balance between the clinical coldness of sharp corners and the overly playful nature of fully rounded pill shapes.
 
-- **Containers:** Standard cards use a `1rem` (16px) corner radius to feel approachable yet structured.
-- **Interactive Elements:** Buttons and tags use a higher degree of roundedness, bordering on pill-shaped, to signal interactivity.
-- **Abstract Shapes:** Background "data-blobs" and connectivity patterns should be organic and fluid, contrasting against the rigid grid of the UI components. These shapes should always feel like they are "flowing" across the screen.
+This 8px radius applies to buttons, input fields, cards, and modal windows, creating a cohesive visual thread. Small utility elements like tags or badges may use a "rounded-xl" (1.5rem) setting to create a distinct pill shape, specifically for status indicators to help them stand out against the more rigid, rectangular structure of data containers.
 
 ## Components
 
-- **Buttons:** Primary buttons use a solid `#226FFD` fill with white text. They are large (56px height for primary actions) and utilize the `Space Grotesk` font for high impact.
-- **Cards:** Rounded white containers with soft ambient shadows. Avoid borders; use depth to define edges.
-- **Input Fields:** Large, clean fields with `#D8D8D8` borders that transition to a `#226FFD` 2px border on focus. Labels should use the `label-caps` style for a technical feel.
-- **Chips & Tags:** Small, pill-shaped indicators using the supporting blue palette (e.g., `#DBE8FF` background with `#0E3C75` text).
-- **Data Visualizations:** Use "Kinetic Lines"—thin, glowing lines with `#226FFD` gradients. Avoid standard bar charts; prefer rounded, modern line graphs and circular progress indicators.
-- **Connectivity Patterns:** Use thin, 1px lines with small circular nodes at intersections to visually represent the "Plaid-like" data infrastructure.
+### Buttons
+
+Primary buttons use the high-impact Tertiary Yellow (#eaea00) with dark text for maximum contrast and "clickability." Secondary buttons are outlined in Primary Blue with a bright neutral fill. All buttons feature a 1px border and the 8px corner radius.
+
+### Input Fields
+
+Inputs are designed with a bright neutral background (#fdfdff) and a subtle Primary Blue border. On focus, the border transitions to the vibrant Accent Yellow, signaling an active data-entry state.
+
+### Cards
+
+Cards are the workhorse of the design system. Inspired by Plaid, they feature generous internal padding (24px) and clear, structured typography. Data points within cards should use the `data-mono` type style.
+
+### Chips & Badges
+
+Used for health status (e.g., "Normal", "Critical"). "Critical" badges should utilize the Accent Yellow as a background, while "Normal" status should use a subtle Primary Blue.
+
+### Lists
+
+Lists are separated by 1px borders in a muted version of the Neutral color, ensuring that row-based medical data is easily scannable without adding unnecessary visual bulk.

@@ -1,6 +1,5 @@
-import { redirect } from 'next/navigation';
+import { NotFoundPage } from './components/NotFoundPage';
 
 export default function NotFound() {
-  // Redirect to the default locale's custom 404 page
-  redirect('/es/not-found');
+  return <NotFoundPage />;
 }

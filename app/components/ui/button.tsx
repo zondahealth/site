@@ -5,19 +5,19 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from './utils';
 
 const buttonVariants = cva(
-  'inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full border-transparent [font-family:var(--font-geist-sans)] text-sm font-semibold tracking-[0.01em] transition-[box-shadow,background,background-color,filter,color,border-color] duration-200 ease-out outline-none ring-offset-white disabled:pointer-events-none disabled:opacity-45 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 focus-visible:ring-2 focus-visible:ring-zonda-blue/30 focus-visible:ring-offset-2',
+  'inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full border [font-family:var(--font-geist-sans)] text-sm font-semibold tracking-[0.01em] transition-[box-shadow,background,background-color,filter,color,border-color] duration-200 ease-out outline-none ring-offset-[color:var(--background)] disabled:pointer-events-none disabled:opacity-45 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 focus-visible:ring-2 focus-visible:ring-[color:rgba(234,234,0,0.38)] focus-visible:ring-offset-2',
   {
     variants: {
       variant: {
         primary:
-          'px-5 bg-gradient-to-br from-[var(--zonda-blue)] to-[var(--zonda-blue-dark)] text-white shadow-[0_18px_40px_-22px_rgba(5,62,170,0.9)] hover:from-[var(--zonda-yellow)] hover:to-[#ddb204] hover:text-[var(--zonda-dark)] hover:shadow-[0_0_0_1px_rgba(247,195,2,0.35),0_20px_44px_-16px_rgba(247,195,2,0.5)] hover:brightness-[1.02] active:brightness-[0.98]',
+          'border-[color:rgba(234,234,0,0.4)] bg-[color:var(--zonda-yellow)] px-5 text-[color:var(--ds-on-tertiary-fixed)] shadow-[0_16px_36px_-24px_rgba(234,234,0,0.8)] hover:shadow-[0_0_24px_6px_rgba(234,234,0,0.16),0_18px_40px_-24px_rgba(234,234,0,0.56)] hover:brightness-[1.03] active:brightness-[0.97]',
         outline:
-          'border-zonda-blue/15 bg-white/85 text-zonda-blue-dark shadow-[0_14px_34px_-26px_rgba(5,62,170,0.7)] hover:border-zonda-blue/35 hover:bg-zonda-blue/5 hover:text-zonda-blue',
+          'border-[color:rgba(34,111,253,0.14)] bg-[color:rgba(252,252,255,0.92)] text-[color:var(--ds-on-primary-fixed-variant)] shadow-[0_14px_34px_-28px_rgba(17,27,43,0.18)] hover:border-[color:rgba(34,111,253,0.28)] hover:bg-[color:rgba(218,226,255,0.52)] hover:text-[color:var(--ds-on-surface)]',
         ghost:
-          'text-zonda-blue-dark hover:bg-zonda-blue/8 hover:text-zonda-blue',
+          'border-transparent text-[color:var(--ds-on-primary-fixed-variant)] hover:bg-[color:rgba(92,140,255,0.08)] hover:text-[color:var(--ds-on-surface)]',
         subtle:
-          'bg-zonda-blue/8 text-zonda-blue-dark hover:bg-zonda-blue/12 hover:text-zonda-blue-dark',
-        link: 'h-auto rounded-none border-transparent px-0 py-0 text-zonda-blue-dark shadow-none hover:text-zonda-blue',
+          'border-[color:rgba(92,140,255,0.12)] bg-[color:rgba(92,140,255,0.08)] text-[color:var(--ds-on-primary-fixed-variant)] hover:bg-[color:rgba(92,140,255,0.14)] hover:text-[color:var(--ds-on-surface)]',
+        link: 'h-auto rounded-none border-transparent px-0 py-0 text-[color:var(--ds-on-primary-fixed-variant)] shadow-none hover:text-[color:var(--ds-primary-container)]',
       },
       size: {
         sm: 'h-10 px-4',

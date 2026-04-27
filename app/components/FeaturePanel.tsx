@@ -7,10 +7,12 @@ export enum FeaturePanelTone {
   DarkBlue = 'dark-blue',
   Blue = 'blue',
   Yellow = 'yellow',
+  Emerald = 'emerald',
   Green = 'green',
   Purple = 'purple',
   LightBlue = 'light-blue',
-  LightYellow = 'light-yellow',
+  Boca = 'light-yellow',
+  DarkYellow = 'dark-yellow',
   SolidGrey = 'solid-grey',
   SolidNeutral = 'solid-neutral',
   SolidBlue = 'solid-blue',
@@ -28,19 +30,22 @@ export enum FeaturePanelBackgroundStyling {
 const toneMovementImages: Partial<Record<FeaturePanelTone, string>> = {
   [FeaturePanelTone.DarkBlue]: '/bg/movement/indigo.png',
   [FeaturePanelTone.Blue]: '/bg/movement/blue.png',
+  [FeaturePanelTone.DarkYellow]: '/bg/movement/dark-yellow.png',
   [FeaturePanelTone.Yellow]: '/bg/movement/yellow.png',
-  [FeaturePanelTone.Green]: '/bg/movement/emerald.png',
+  [FeaturePanelTone.Emerald]: '/bg/movement/emerald.png',
+  [FeaturePanelTone.Green]: '/bg/movement/green.png',
   [FeaturePanelTone.Purple]: '/bg/movement/purple.webp',
   [FeaturePanelTone.LightBlue]: '/bg/movement/light-blue.webp',
-  [FeaturePanelTone.LightYellow]: '/bg/movement/boca.png',
+  [FeaturePanelTone.Boca]: '/bg/movement/boca.png',
+  [FeaturePanelTone.Black]: '/bg/movement/black.png',
 };
 
 const toneBackgrounds: Partial<Record<FeaturePanelTone, string>> = {
-  [FeaturePanelTone.SolidGrey]: `#F5F5F5`,
-  [FeaturePanelTone.SolidNeutral]: `#232634`,
-  [FeaturePanelTone.SolidBlue]: `#226FFD`,
-  [FeaturePanelTone.SolidYellow]: `#f7c302`,
-  [FeaturePanelTone.SolidGreen]: `#34D399`,
+  [FeaturePanelTone.SolidGrey]: `#f4f6fd`,
+  [FeaturePanelTone.SolidNeutral]: `#edf1fb`,
+  [FeaturePanelTone.SolidBlue]: `#004ed3`,
+  [FeaturePanelTone.SolidYellow]: `#eaea00`,
+  [FeaturePanelTone.SolidGreen]: `#dce6ff`,
 };
 
 type SharedProps = {
@@ -86,12 +91,7 @@ export function FeaturePanel(props: FeaturePanelProps) {
   const toneBackground = !isImagePanel ? toneBackgrounds[tone] : undefined;
 
   return (
-    <div
-      className={cn(
-        'relative overflow-hidden rounded-md shadow-[0_28px_90px_-36px_rgba(8,18,46,0.45)]',
-        props.className
-      )}
-    >
+    <div className={cn('relative overflow-hidden rounded-md', props.className)}>
       {isImagePanel ? (
         <Image
           src={props.imageSrc ?? ''}
@@ -137,7 +137,9 @@ export function FeaturePanel(props: FeaturePanelProps) {
         </div>
       ) : null}
 
-      <div className={cn('absolute inset-0', props.overlayClassName)} />
+      {props.overlayClassName && (
+        <div className={cn('absolute inset-0', props.overlayClassName)} />
+      )}
 
       <div className={cn('relative z-10 h-full', props.contentClassName)}>
         {props.children}
