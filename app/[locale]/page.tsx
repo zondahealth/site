@@ -2,7 +2,11 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { FeaturePanel, FeaturePanelTone } from '../components/FeaturePanel';
+import {
+  FeaturePanel,
+  FeaturePanelBackgroundStyling,
+  FeaturePanelTone,
+} from '../components/FeaturePanel';
 import { Hero } from '../components/Hero';
 import { Button } from '../components/ui/button';
 import { ArrowRightCircleIcon } from 'lucide-react';
@@ -15,7 +19,8 @@ const solutions = [
       'Un único lugar para gestionar pacientes, registrar evoluciones, organizar la agenda y controlar la práctica — esté o no ligado a una organización.',
     cta: 'Anotarse en la lista',
     ctaHref: '/waitlist',
-    tone: FeaturePanelTone.LightBlue,
+    tone: FeaturePanelTone.GradientBlue,
+    backgroundStyling: FeaturePanelBackgroundStyling.Right,
     image: '/assets/data.png',
     textColor: 'text-white',
   },
@@ -26,7 +31,8 @@ const solutions = [
       'Gestión centralizada, aplicación para profesionales en campo, LOE y auditoría en tiempo real. Todo conectado. Sin puntos ciegos entre la administración y el domicilio del paciente.',
     cta: 'Conocer más',
     ctaHref: '/solutions/home-health',
-    tone: FeaturePanelTone.Green,
+    tone: FeaturePanelTone.GradientGreen,
+    backgroundStyling: FeaturePanelBackgroundStyling.Left,
     image: '/assets/data.png',
     textColor: 'text-white',
   },
@@ -37,8 +43,9 @@ const solutions = [
       'Conectá sistemas fragmentados. Normalizá información clínica. Habilitá modelos de pago por resultado, reportes de impacto y auditoría sin fricción — sin reemplazar lo que ya existe.',
     cta: 'Explorar la API',
     ctaHref: '/docs',
-    tone: FeaturePanelTone.DarkBlue,
+    tone: FeaturePanelTone.Black,
     overlayClassName: '',
+    backgroundStyling: FeaturePanelBackgroundStyling.Full,
     image: '/assets/world-rings.png',
     textColor: 'text-white',
   },
@@ -75,33 +82,38 @@ export default function App() {
         <section id="products">
           <div className="layout-shell flex flex-col gap-14">
             <div className="flex w-full flex-col gap-16 text-center">
-              <div className=" text-4xl font-semibold flex flex-col gap-2">
+              <div className=" text-6xl font-semibold flex flex-col gap-2">
                 <span>Los sistemas de salud son complejos.</span>
                 <span className="text-zonda-blue">
                   Tenemos la infraestructura para resolverlo.
                 </span>
               </div>
-
-              <div className="flex flex-col gap-4">
-                <p className="text-pretty text-lg font-medium leading-relaxed text-on-surface-variant sm:text-xl">
-                  Cada organización opera en su propio silo. Los datos clínicos
-                  no se transfieren. Los profesionales trabajan con múltiples
-                  plataformas que no se hablan entre sí. Los pacientes pasan por
-                  decenas de puntos de contacto invisibles para todos.
-                </p>
-                <p className="text-pretty text-lg font-medium leading-relaxed text-on-surface-variant sm:text-xl">
-                  El resultado: US$ 112b perdidos por año en ineficiencias. Solo
-                  el 3% de los datos de salud se usa para tomar decisiones. El
-                  problema no es falta de inversión. Es que nada habla con nada.
-                </p>
-              </div>
+              <p className="text-pretty text-lg font-medium leading-relaxed text-on-surface-variant sm:text-xl max-w-4xl mx-auto">
+                Cada organización opera en su propio silo. Los datos clínicos no
+                se transfieren. Los profesionales trabajan con múltiples
+                plataformas que no se hablan entre sí. Los pacientes pasan por
+                decenas de puntos de contacto invisibles para todos.
+              </p>
+              <span
+                className="text-zonda-blue-dark font-bold text-4xl"
+                style={{ fontFamily: 'var(--font-display-family)' }}
+              >
+                La Ineficiencia es Sistemática
+              </span>
             </div>
           </div>
         </section>
 
+        <div className="layout-shell">
+          <div className="my-24 h-px w-full bg-[rgba(21,27,43,0.10)]" />
+        </div>
+
         {/* ── LO QUE ES POSIBLE CON ZONDA ── */}
         <section>
           <div className="layout-shell flex flex-col gap-16">
+            <h2 className="text-balance text-center text-3xl font-medium leading-[0.98] sm:text-4xl lg:text-5xl">
+              Lo que es posible con Zonda
+            </h2>
             <div className="flex w-full flex-col gap-6 text-center"></div>
             <div className="flex flex-col gap-24">
               {solutions.map((solution, i) => {
@@ -119,6 +131,7 @@ export default function App() {
                       className={`border border-[color:rgba(21,27,43,0.08)] shadow-[0_22px_44px_-34px_rgba(17,27,43,0.18)] ${solution.textColor}`}
                       contentClassName="flex h-full flex-col items-center justify-center px-8 py-12 sm:px-12 sm:py-14 lg:px-26 lg:py-30"
                       overlayClassName={solution.overlayClassName}
+                      backgroundStyling={solution.backgroundStyling}
                     >
                       <div
                         className={`grid grid-cols-1 gap-8 lg:grid-cols-2 ${i % 2 !== 0 ? 'lg:direction-rtl' : ''} ${solution.textColor}`}
@@ -128,7 +141,7 @@ export default function App() {
                         >
                           <div className="flex items-center gap-2.5">
                             <h3
-                              className={`text-4xl font-bold tracking-tight text-vitality-yellow`}
+                              className={`text-4xl font-bold tracking-tight ${solution.textColor}`}
                             >
                               {solution.title}
                             </h3>
@@ -176,7 +189,7 @@ export default function App() {
         <section id="use-cases">
           <div className="layout-shell flex flex-col gap-16">
             <h2 className="text-balance text-center text-3xl font-medium leading-[0.98] sm:text-4xl lg:text-5xl">
-              Cómo funciona
+              Procesá datos. Mejorá resultados.
             </h2>
             <div className="flex flex-col gap-2">
               <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -225,7 +238,7 @@ export default function App() {
                   className="flex flex-col items-start justify-center gap-8"
                   id="organizaciones"
                 >
-                  <h3 className="text-4xl font-semibold sm:text-5xl">
+                  <h3 className="text-4xl font-extrabold sm:text-5xl">
                     Mejorá tus resultados y el servicio a tus pacientes.
                   </h3>
                   <p className="text-xl font-semibold leading-relaxed">
@@ -284,11 +297,12 @@ export default function App() {
           <div className="layout-shell">
             <FeaturePanel
               tone={FeaturePanelTone.SolidGrey}
-              contentClassName="flex h-full flex-col items-center justify-center gap-8 px-8 py-16 sm:px-12 sm:py-20 lg:px-20 lg:py-32"
+              contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-16 sm:px-12 sm:py-20 lg:px-20 lg:py-32"
             >
-              <h2 className="mx-auto max-w-3xl text-balance text-center text-2xl font-bold leading-tight sm:text-3xl lg:text-4xl">
+              <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-3xl lg:text-4xl">
                 Datos que fluyen. Salud que funciona.
-              </h2>
+              </div>
+
               <Button asChild size="lg" className="min-w-48">
                 <Link href="/demo">Contáctanos</Link>
               </Button>

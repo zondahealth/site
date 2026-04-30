@@ -3,7 +3,9 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
+import { routing } from '../../i18n/routing';
 import { Button } from './ui/button';
 
 type ProductLink = {
@@ -24,11 +26,11 @@ type HeaderProps = {
 };
 
 const productLinks: ProductLink[] = [
-  { href: '#profesionales', label: 'Profesionales' },
-  { href: '#organizaciones', label: 'Organizaciones' },
-  { href: '#interoperabilidad', label: 'Interoperabilidad' },
+  { href: '/products/profesionales', label: 'Profesionales' },
+  { href: '/products/organizaciones', label: 'Organizaciones' },
+  { href: '/products/interoperabilidad', label: 'Interoperabilidad' },
   {
-    href: '#internacion-domiciliaria',
+    href: '/products/internacion-domiciliaria',
     label: 'Internación Domiciliaria',
   },
 ];
@@ -38,16 +40,41 @@ const navigationItems: NavigationItem[] = [
     label: 'Productos',
     products: productLinks,
   },
-  { label: 'Casos de uso', href: '#use-cases' },
-  { label: 'Desarrolladores', href: '#interoperabilidad' },
-  { label: 'Empresa', href: '#company' },
+  { label: 'Casos de uso', href: '/casos-de-uso' },
+  { label: 'Desarrolladores', href: '/desarrolladores' },
+  { label: 'Empresa', href: '/empresa' },
 ];
 
 export function Header({
   loginHref = '/login',
-  getStartedHref = '/get-started',
+  getStartedHref = '/contact-us',
 }: HeaderProps) {
   const [backgroundOpacity, setBackgroundOpacity] = useState(0);
+  const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const localeSegment = pathname.split('/').filter(Boolean)[0];
+  const locale =
+    routing.locales.find((supportedLocale) => supportedLocale === localeSegment) ??
+    routing.defaultLocale;
+
+  const getLocalizedHref = (href: string) => {
+    if (
+      href.startsWith('#') ||
+      href.startsWith('mailto:') ||
+      href.startsWith('tel:') ||
+      href.startsWith('http://') ||
+      href.startsWith('https://')
+    ) {
+      return href;
+    }
+
+    if (href === '/') {
+      return `/${locale}`;
+    }
+
+    return `/${locale}${href.startsWith('/') ? href : `/${href}`}`;
+  };
 
   useEffect(() => {
     const updateHeaderState = () => {
@@ -73,6 +100,10 @@ export function Header({
     };
   }, []);
 
+  useEffect(() => {
+    setIsProductMenuOpen(false);
+  }, [pathname]);
+
   const navItemClassName =
     'relative py-2 text-sm font-medium transition-colors duration-200';
   const inactiveNavItemClassName = 'text-black hover:text-black';
@@ -81,12 +112,14 @@ export function Header({
     <header
       className="fixed inset-x-0 top-0 z-50 transition-[background-color] duration-500 ease-out"
       style={{
-        backgroundColor: `rgba(255, 255, 255, ${backgroundOpacity})`,
+        backgroundColor: isProductMenuOpen
+          ? 'rgb(255, 255, 255)'
+          : `rgba(255, 255, 255, ${backgroundOpacity})`,
       }}
     >
       <div className="layout-shell flex items-center justify-between py-3 sm:py-4">
         <Link
-          href="/"
+          href={getLocalizedHref('/')}
           className="flex shrink-0 items-center transition-opacity duration-200 hover:opacity-85"
           aria-label="Inicio de Zonda Health"
         >
@@ -106,7 +139,27 @@ export function Header({
         >
           {navigationItems.map((item) =>
             item.products ? (
-              <div key={item.label} className="group">
+              <div
+                key={item.label}
+                onMouseEnter={() => setIsProductMenuOpen(true)}
+                onMouseLeave={(e) => {
+                  const ae = document.activeElement;
+                  if (
+                    ae?.tagName === 'A' &&
+                    e.currentTarget.contains(ae)
+                  ) {
+                    return;
+                  }
+                  setIsProductMenuOpen(false);
+                }}
+                onFocusCapture={() => setIsProductMenuOpen(true)}
+                onBlurCapture={(e) => {
+                  if (e.currentTarget.contains(e.relatedTarget as Node | null)) {
+                    return;
+                  }
+                  setIsProductMenuOpen(false);
+                }}
+              >
                 <button
                   type="button"
                   className={[
@@ -119,7 +172,14 @@ export function Header({
                   {item.label}
                 </button>
 
-                <div className="pointer-events-none absolute inset-x-0 top-full z-20 translate-y-2 border-t border-[color:rgba(21,27,43,0.08)] bg-[color:rgba(253,253,255,0.98)] opacity-0 shadow-[0_24px_48px_-28px_rgba(14,60,117,0.22)] transition-all duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                <div
+                  className={[
+                    'absolute inset-x-0 top-full z-20 border-t border-[color:rgba(21,27,43,0.08)] bg-[color:rgba(253,253,255,0.98)] shadow-[0_24px_48px_-28px_rgba(14,60,117,0.22)] transition-all duration-200',
+                    isProductMenuOpen
+                      ? 'pointer-events-auto translate-y-0 opacity-100'
+                      : 'pointer-events-none translate-y-2 opacity-0',
+                  ].join(' ')}
+                >
                   <div className="mx-auto flex w-full max-w-[1440px] px-10 py-12">
                     <div className="w-full max-w-xl">
                       <p className="mb-5 text-sm font-medium text-[color:rgba(21,27,43,0.58)]">
@@ -129,7 +189,8 @@ export function Header({
                         {item.products.map((product) => (
                           <Link
                             key={product.label}
-                            href={product.href}
+                            href={getLocalizedHref(product.href)}
+                            onClick={() => setIsProductMenuOpen(false)}
                             className="rounded-xl py-1 text-[1.75rem] font-medium tracking-[-0.03em] text-black transition-colors duration-200 hover:text-[color:var(--zonda-blue-dark)] focus-visible:text-[color:var(--zonda-blue-dark)] focus-visible:outline-none lg:text-[2.1rem]"
                           >
                             {product.label}
@@ -143,7 +204,7 @@ export function Header({
             ) : (
               <Link
                 key={item.label}
-                href={item.href ?? '#'}
+                href={item.href ? getLocalizedHref(item.href) : '#'}
                 className={[navItemClassName, inactiveNavItemClassName].join(
                   ' '
                 )}
@@ -164,10 +225,10 @@ export function Header({
               'text-black hover:bg-[color:rgba(92,140,255,0.08)] hover:text-black',
             ].join(' ')}
           >
-            <Link href={loginHref}>Iniciar sesión</Link>
+            <Link href={getLocalizedHref(loginHref)}>Iniciar sesión</Link>
           </Button>
           <Button asChild size="sm" className="rounded-full px-5 sm:px-6">
-            <Link href={getStartedHref}>Comenzar</Link>
+            <Link href={getLocalizedHref(getStartedHref)}>Comenzar</Link>
           </Button>
         </div>
       </div>

@@ -6,6 +6,10 @@ import { cn } from './ui/utils';
 export enum FeaturePanelTone {
   DarkBlue = 'dark-blue',
   Blue = 'blue',
+  GradientBlue = 'gradient-blue',
+  GradientDeepBlue = 'gradient-deep-blue',
+  GradientVitalityYellow = 'gradient-vitality-yellow',
+  GradientGreen = 'gradient-green',
   Yellow = 'yellow',
   Emerald = 'emerald',
   Green = 'green',
@@ -18,6 +22,7 @@ export enum FeaturePanelTone {
   SolidBlue = 'solid-blue',
   SolidYellow = 'solid-yellow',
   SolidGreen = 'solid-green',
+  GradientBlack = 'gradient-black',
   Black = 'black',
 }
 
@@ -25,6 +30,7 @@ export enum FeaturePanelBackgroundStyling {
   Left = 'LEFT',
   Right = 'RIGHT',
   Full = 'FULL',
+  Map = 'MAP',
 }
 
 const toneMovementImages: Partial<Record<FeaturePanelTone, string>> = {
@@ -41,6 +47,11 @@ const toneMovementImages: Partial<Record<FeaturePanelTone, string>> = {
 };
 
 const toneBackgrounds: Partial<Record<FeaturePanelTone, string>> = {
+  [FeaturePanelTone.GradientBlue]: `linear-gradient(135deg, #3b7aff 0%, #226ffd 52%, #1467f4 100%)`,
+  [FeaturePanelTone.GradientDeepBlue]: `linear-gradient(135deg, #10316f 0%, #082861 50%, #003daa 100%)`,
+  [FeaturePanelTone.GradientVitalityYellow]: `linear-gradient(135deg, #dddd00 0%,rgb(1, 30, 246) 52%, #c2c200 100%)`,
+  [FeaturePanelTone.GradientGreen]: `linear-gradient(135deg, #00b050 0%, #007d32 52%, #004d1a 100%)`,
+  [FeaturePanelTone.Black]: `linear-gradient(135deg,rgb(7, 6, 88) 0%, #000000 52%, #1a1a1a 100%)`,
   [FeaturePanelTone.SolidGrey]: `#f4f6fd`,
   [FeaturePanelTone.SolidNeutral]: `#edf1fb`,
   [FeaturePanelTone.SolidBlue]: `#004ed3`,
@@ -79,9 +90,10 @@ const backgroundStylingImages: Record<FeaturePanelBackgroundStyling, string> = {
   [FeaturePanelBackgroundStyling.Left]: '/misc/background-left.png',
   [FeaturePanelBackgroundStyling.Right]: '/misc/background-right.png',
   [FeaturePanelBackgroundStyling.Full]: '/misc/background.png',
+  [FeaturePanelBackgroundStyling.Map]: '/bg/waves/map.png',
 };
 
-export function FeaturePanel(props: FeaturePanelProps) {
+function FeaturePanelRoot(props: FeaturePanelProps) {
   const isImagePanel = 'imageSrc' in props;
   const tone = !isImagePanel
     ? (props.tone ?? FeaturePanelTone.Blue)
@@ -147,6 +159,21 @@ export function FeaturePanel(props: FeaturePanelProps) {
     </div>
   );
 }
+
+type FeaturePanelComponent = typeof FeaturePanelRoot & {
+  GRADIENT_BLUE: FeaturePanelTone;
+  GRADIENT_DEEP_BLUE: FeaturePanelTone;
+  GRADIENT_VITALITY_YELLOW: FeaturePanelTone;
+};
+
+export const FeaturePanel: FeaturePanelComponent = Object.assign(
+  FeaturePanelRoot,
+  {
+    GRADIENT_BLUE: FeaturePanelTone.GradientBlue,
+    GRADIENT_DEEP_BLUE: FeaturePanelTone.GradientDeepBlue,
+    GRADIENT_VITALITY_YELLOW: FeaturePanelTone.GradientVitalityYellow,
+  }
+);
 
 type FeaturePanelSquareProps = FeaturePanelProps & {
   size?: 'sm' | 'md' | 'lg';

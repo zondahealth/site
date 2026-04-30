@@ -7,9 +7,7 @@ export function Hero() {
   return (
     <section className="pt-20">
       <div className="layout-shell">
-        <div
-          className="relative flex min-h-[max(30rem,calc(100dvh-5rem))] flex-col overflow-hidden rounded-md bg-zonda-blue-dark sm:p-12 lg:p-16"
-        >
+        <div className="relative flex min-h-[max(30rem,calc(98dvh-5rem))] flex-col overflow-hidden rounded-md bg-zonda-blue-dark sm:p-12 lg:p-16">
           <video
             className="absolute inset-0 h-full w-full object-cover"
             src="/bg/waves/waves.mov"
@@ -34,9 +32,9 @@ export function Hero() {
             </h1>
             <div className="max-w-3xl">
               <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg font-bold leading-relaxed text-[color:rgba(248,250,255,0.82)] sm:text-xl">
-                Zonda conecta organizaciones, profesionales y pacientes en
-                una capa de inteligencia clínica unificada — sin reemplazar
-                lo que ya existe.
+                Zonda conecta organizaciones, profesionales y pacientes en una
+                capa de inteligencia clínica unificada sin reemplazar lo que ya
+                existe.
               </p>
 
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -49,7 +47,7 @@ export function Hero() {
                   size="lg"
                   className="min-w-44 !text-white border-[color:rgba(178,197,255,0.2)] bg-[color:rgba(17,19,28,0.24)] shadow-none hover:!text-white hover:border-[color:rgba(178,197,255,0.34)] hover:bg-[color:rgba(25,27,36,0.48)]"
                 >
-                  <Link href="/contact">Hablar con el equipo</Link>
+                  <Link href="/contact">Contactanos</Link>
                 </Button>
               </div>
             </div>
