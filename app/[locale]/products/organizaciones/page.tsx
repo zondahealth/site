@@ -12,7 +12,7 @@ export default function OrganizacionesPage() {
           className="flex min-h-0 w-full flex-1 flex-col rounded-none min-h-[clamp(30rem,100dvh,1000px)]"
           tone={FeaturePanelTone.Green}
           backgroundStyling={FeaturePanelBackgroundStyling.Full}
-          contentClassName="mx-auto grid min-h-0 max-w-2xl md:max-w-7xl flex-1 grid-cols-1 grid-rows-[auto_1fr] md:grid-cols-2 md:grid-rows-1 md:items-stretch px-6 py-24"
+          contentClassName="mx-auto grid min-h-0 max-w-2xl md:max-w-7xl flex-1 grid-cols-1 grid-rows-[auto_1fr] md:grid-cols-2 md:grid-rows-1 md:items-center px-12 lg:px-4 py-24 gap-6"
         >
           <div className="flex min-w-0 flex-col items-center justify-center px-6 py-10 text-center md:items-start md:text-left space-y-8">
             <h1 className="text-6xl font-bold text-zonda-blue-dark">
@@ -25,12 +25,12 @@ export default function OrganizacionesPage() {
               entre la administración y el domicilio del paciente.
             </p>
           </div>
-          <div className="relative md:h-full pt-24">
+          <div className="relative flex h-full w-full items-center justify-center md:justify-end">
             <Image
-              src="/assets/internacion-domiciliaria.png"
+              src="/assets/orgs/hero.png"
               alt="Internación domiciliaria"
-              width={500}
-              height={500}
+              fill
+              className="pointer-events-none max-h-none max-w-none shrink-0 object-contain"
             />
           </div>
         </FeaturePanel>

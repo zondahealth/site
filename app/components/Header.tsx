@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -24,6 +24,8 @@ type HeaderProps = {
   loginHref?: string;
   getStartedHref?: string;
 };
+
+const lightForegroundRoutes = ['/products/interoperabilidad'];
 
 const productLinks: ProductLink[] = [
   { href: '/products/profesionales', label: 'Profesionales' },
@@ -51,12 +53,27 @@ export function Header({
 }: HeaderProps) {
   const [backgroundOpacity, setBackgroundOpacity] = useState(0);
   const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
+  const productMenuCloseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null
+  );
   const pathname = usePathname();
 
-  const localeSegment = pathname.split('/').filter(Boolean)[0];
+  const pathSegments = pathname.split('/').filter(Boolean);
+  const localeSegment = pathSegments[0];
   const locale =
     routing.locales.find((supportedLocale) => supportedLocale === localeSegment) ??
     routing.defaultLocale;
+  const hasLocalePrefix = routing.locales.some(
+    (supportedLocale) => supportedLocale === localeSegment
+  );
+  const pathnameWithoutLocale = hasLocalePrefix
+    ? `/${pathSegments.slice(1).join('/')}`
+    : pathname;
+  const isOverDarkHero = lightForegroundRoutes.some(
+    (route) =>
+      pathnameWithoutLocale === route ||
+      pathnameWithoutLocale.startsWith(`${route}/`)
+  );
 
   const getLocalizedHref = (href: string) => {
     if (
@@ -74,6 +91,33 @@ export function Header({
     }
 
     return `/${locale}${href.startsWith('/') ? href : `/${href}`}`;
+  };
+
+  const cancelProductMenuClose = () => {
+    if (!productMenuCloseTimeoutRef.current) {
+      return;
+    }
+
+    clearTimeout(productMenuCloseTimeoutRef.current);
+    productMenuCloseTimeoutRef.current = null;
+  };
+
+  const openProductMenu = () => {
+    cancelProductMenuClose();
+    setIsProductMenuOpen(true);
+  };
+
+  const closeProductMenu = () => {
+    cancelProductMenuClose();
+    setIsProductMenuOpen(false);
+  };
+
+  const scheduleProductMenuClose = () => {
+    cancelProductMenuClose();
+    productMenuCloseTimeoutRef.current = setTimeout(() => {
+      setIsProductMenuOpen(false);
+      productMenuCloseTimeoutRef.current = null;
+    }, 160);
   };
 
   useEffect(() => {
@@ -104,9 +148,29 @@ export function Header({
     setIsProductMenuOpen(false);
   }, [pathname]);
 
-  const navItemClassName =
-    'relative py-2 text-sm font-medium transition-colors duration-200';
-  const inactiveNavItemClassName = 'text-black hover:text-black';
+  useEffect(() => {
+    return () => {
+      cancelProductMenuClose();
+    };
+  }, []);
+
+  const centralNavBold =
+    !isProductMenuOpen && backgroundOpacity < 0.85;
+  const navItemClassName = [
+    'relative py-2 text-sm transition-colors duration-200',
+    centralNavBold ? 'font-bold' : 'font-medium',
+  ].join(' ');
+  const useLightForeground =
+    isOverDarkHero && !isProductMenuOpen && backgroundOpacity < 0.62;
+  const inactiveNavItemClassName = useLightForeground
+    ? 'text-[color:rgba(248,250,255,0.82)] hover:text-[color:rgba(248,250,255,0.98)]'
+    : 'text-black hover:text-black';
+  const loginButtonClassName = useLightForeground
+    ? 'rounded-full px-3 text-[color:rgba(248,250,255,0.84)] hover:bg-[color:rgba(248,250,255,0.10)] hover:text-white sm:px-4'
+    : 'rounded-full px-3 text-black hover:bg-[color:rgba(92,140,255,0.08)] hover:text-black sm:px-4';
+  const logoSrc = useLightForeground
+    ? '/logo/yellow-logo.png'
+    : '/logo/blue-logo.png';
 
   return (
     <header
@@ -124,7 +188,7 @@ export function Header({
           aria-label="Inicio de Zonda Health"
         >
           <Image
-            src="/logo/blue-logo.png"
+            src={logoSrc}
             alt="Zonda Health"
             width={38}
             height={38}
@@ -141,7 +205,7 @@ export function Header({
             item.products ? (
               <div
                 key={item.label}
-                onMouseEnter={() => setIsProductMenuOpen(true)}
+                onMouseEnter={openProductMenu}
                 onMouseLeave={(e) => {
                   const ae = document.activeElement;
                   if (
@@ -150,14 +214,14 @@ export function Header({
                   ) {
                     return;
                   }
-                  setIsProductMenuOpen(false);
+                  scheduleProductMenuClose();
                 }}
-                onFocusCapture={() => setIsProductMenuOpen(true)}
+                onFocusCapture={openProductMenu}
                 onBlurCapture={(e) => {
                   if (e.currentTarget.contains(e.relatedTarget as Node | null)) {
                     return;
                   }
-                  setIsProductMenuOpen(false);
+                  closeProductMenu();
                 }}
               >
                 <button
@@ -168,11 +232,14 @@ export function Header({
                     inactiveNavItemClassName,
                   ].join(' ')}
                   aria-haspopup="menu"
+                  aria-expanded={isProductMenuOpen}
                 >
                   {item.label}
                 </button>
 
                 <div
+                  onMouseEnter={openProductMenu}
+                  onMouseLeave={scheduleProductMenuClose}
                   className={[
                     'absolute inset-x-0 top-full z-20 border-t border-[color:rgba(21,27,43,0.08)] bg-[color:rgba(253,253,255,0.98)] shadow-[0_24px_48px_-28px_rgba(14,60,117,0.22)] transition-all duration-200',
                     isProductMenuOpen
@@ -190,7 +257,7 @@ export function Header({
                           <Link
                             key={product.label}
                             href={getLocalizedHref(product.href)}
-                            onClick={() => setIsProductMenuOpen(false)}
+                            onClick={closeProductMenu}
                             className="rounded-xl py-1 text-[1.75rem] font-medium tracking-[-0.03em] text-black transition-colors duration-200 hover:text-[color:var(--zonda-blue-dark)] focus-visible:text-[color:var(--zonda-blue-dark)] focus-visible:outline-none lg:text-[2.1rem]"
                           >
                             {product.label}
@@ -220,10 +287,7 @@ export function Header({
             asChild
             variant="ghost"
             size="sm"
-            className={[
-              'rounded-full px-3 sm:px-4',
-              'text-black hover:bg-[color:rgba(92,140,255,0.08)] hover:text-black',
-            ].join(' ')}
+            className={loginButtonClassName}
           >
             <Link href={getLocalizedHref(loginHref)}>Iniciar sesión</Link>
           </Button>

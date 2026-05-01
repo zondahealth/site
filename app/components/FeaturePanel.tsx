@@ -50,7 +50,7 @@ const toneBackgrounds: Partial<Record<FeaturePanelTone, string>> = {
   [FeaturePanelTone.GradientBlue]: `linear-gradient(135deg, #3b7aff 0%, #226ffd 52%, #1467f4 100%)`,
   [FeaturePanelTone.GradientDeepBlue]: `linear-gradient(135deg, #10316f 0%, #082861 50%, #003daa 100%)`,
   [FeaturePanelTone.GradientVitalityYellow]: `linear-gradient(135deg, #dddd00 0%,rgb(1, 30, 246) 52%, #c2c200 100%)`,
-  [FeaturePanelTone.GradientGreen]: `linear-gradient(135deg, #00b050 0%, #007d32 52%, #004d1a 100%)`,
+  [FeaturePanelTone.GradientGreen]: `linear-gradient(135deg,rgb(86, 110, 247) 0%,rgb(13, 201, 88) 52%,rgb(149, 198, 14) 100%)`,
   [FeaturePanelTone.Black]: `linear-gradient(135deg,rgb(7, 6, 88) 0%, #000000 52%, #1a1a1a 100%)`,
   [FeaturePanelTone.SolidGrey]: `#f4f6fd`,
   [FeaturePanelTone.SolidNeutral]: `#edf1fb`,
@@ -87,10 +87,10 @@ type ImagePanelProps = SharedProps & {
 export type FeaturePanelProps = TonePanelProps | ImagePanelProps;
 
 const backgroundStylingImages: Record<FeaturePanelBackgroundStyling, string> = {
-  [FeaturePanelBackgroundStyling.Left]: '/misc/background-left.png',
-  [FeaturePanelBackgroundStyling.Right]: '/misc/background-right.png',
-  [FeaturePanelBackgroundStyling.Full]: '/misc/background.png',
-  [FeaturePanelBackgroundStyling.Map]: '/bg/waves/map.png',
+  [FeaturePanelBackgroundStyling.Left]: '/bg/styling/background-left.png',
+  [FeaturePanelBackgroundStyling.Right]: '/bg/styling/background-right.png',
+  [FeaturePanelBackgroundStyling.Full]: '/bg/styling/background.png',
+  [FeaturePanelBackgroundStyling.Map]: '/bg/styling/map.png',
 };
 
 function FeaturePanelRoot(props: FeaturePanelProps) {

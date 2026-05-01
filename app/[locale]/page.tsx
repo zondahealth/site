@@ -56,26 +56,41 @@ const steps = [
     number: '01',
     title: 'Captura',
     description:
-      'Datos desde cualquier fuente — aplicaciones móviles, integraciones con historias clínicas electrónicas, PDFs, Excel, dispositivos, chatbots y texto libre. En cualquier formato, desde cualquier sistema.',
+      'Datos desde cualquier fuente y formato, integrados fácilmente.',
   },
   {
     number: '02',
     title: 'Inteligencia',
     description:
-      'Zonda identifica al paciente, normaliza semánticamente la información, construye el historial longitudinal y corre inteligencia clínica — alertas, patrones, predicción de demanda.',
+      'Identificamos y normalizamos datos, aplicando inteligencia clínica.',
   },
   {
     number: '03',
     title: 'Acción',
     description:
-      'Auditoría en tiempo real, facturación automática, reportes de impacto, tableros por organización, región y profesional. Los datos limpios se exportan hacia cualquier sistema de destino.',
+      'Auditoría, reportes y exportación a cualquier sistema en tiempo real.',
+  },
+];
+
+const caseStudies = [
+  {
+    title: 'Interoperabilidad',
+    image: '/assets/cs/interop.png',
+  },
+  {
+    title: 'Cambio de Paradigma',
+    image: '/assets/cs/interop.png',
+  },
+  {
+    title: 'Fraude',
+    image: '/assets/cs/interop.png',
   },
 ];
 
 export default function App() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <main className="space-y-32 pb-26 pt-0">
+      <main className="space-y-32 pb-16 pt-0">
         <Hero />
 
         {/* ── EL PROBLEMA ── */}
@@ -89,17 +104,16 @@ export default function App() {
                 </span>
               </div>
               <p className="text-pretty text-lg font-medium leading-relaxed text-on-surface-variant sm:text-xl max-w-4xl mx-auto">
-                Cada organización opera en su propio silo. Los datos clínicos no
-                se transfieren. Los profesionales trabajan con múltiples
-                plataformas que no se hablan entre sí. Los pacientes pasan por
-                decenas de puntos de contacto invisibles para todos.
+                Cada organización gestiona sus propios datos de forma aislada,
+                dificultando la colaboración y el flujo de información. Los
+                profesionales deben adaptarse a múltiples plataformas que no se
+                comunican entre sí y los pacientes atraviesan numerosos puntos
+                de atención desconectados.{' '}
+                <strong>
+                  Esto no es una coincidencia: es una limitación estructural del
+                  sistema.
+                </strong>
               </p>
-              <span
-                className="text-zonda-blue-dark font-bold text-4xl"
-                style={{ fontFamily: 'var(--font-display-family)' }}
-              >
-                La Ineficiencia es Sistemática
-              </span>
             </div>
           </div>
         </section>
@@ -289,6 +303,28 @@ export default function App() {
                 </div>
               </div>
             </FeaturePanel>
+          </div>
+        </section>
+
+        <section id="case-studies">
+          <div className="layout-shell rounded-md overflow-hidden py-10">
+            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-8">
+              {caseStudies.map((caseStudy) => (
+                <div key={caseStudy.title} className="flex flex-col gap-4">
+                  <div className="rounded-md overflow-hidden">
+                    <Image
+                      src={caseStudy.image}
+                      alt={caseStudy.title}
+                      width={450}
+                      height={450}
+                      className="pointer-events-none max-h-none max-w-none shrink-0 object-contain"
+                      sizes="100%"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold">{caseStudy.title}</h3>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

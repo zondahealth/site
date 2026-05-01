@@ -10,7 +10,7 @@ export function Hero() {
         <div className="relative flex min-h-[max(30rem,calc(98dvh-5rem))] flex-col overflow-hidden rounded-md bg-zonda-blue-dark sm:p-12 lg:p-16">
           <video
             className="absolute inset-0 h-full w-full object-cover"
-            src="/bg/waves/waves.mov"
+            src="/bg/styling/waves.mov"
             autoPlay
             loop
             muted
