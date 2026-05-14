@@ -25,7 +25,12 @@ type HeaderProps = {
   getStartedHref?: string;
 };
 
-const lightForegroundRoutes = ['/products/interoperabilidad'];
+const lightForegroundRoutes = [
+  '/products/interoperabilidad',
+  '/desarrolladores',
+  '/empresa',
+];
+const activeHeaderBackground = '244, 246, 253';
 
 const productLinks: ProductLink[] = [
   { href: '/products/profesionales', label: 'Profesionales' },
@@ -48,21 +53,22 @@ const navigationItems: NavigationItem[] = [
 ];
 
 export function Header({
-  loginHref = '/login',
-  getStartedHref = '/contact-us',
+  loginHref = 'https://azul.zondahealth.com',
+  getStartedHref = '/contacto',
 }: HeaderProps) {
   const [backgroundOpacity, setBackgroundOpacity] = useState(0);
   const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
-  const productMenuCloseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
-    null
-  );
+  const productMenuCloseTimeoutRef = useRef<ReturnType<
+    typeof setTimeout
+  > | null>(null);
   const pathname = usePathname();
 
   const pathSegments = pathname.split('/').filter(Boolean);
   const localeSegment = pathSegments[0];
   const locale =
-    routing.locales.find((supportedLocale) => supportedLocale === localeSegment) ??
-    routing.defaultLocale;
+    routing.locales.find(
+      (supportedLocale) => supportedLocale === localeSegment
+    ) ?? routing.defaultLocale;
   const hasLocalePrefix = routing.locales.some(
     (supportedLocale) => supportedLocale === localeSegment
   );
@@ -154,8 +160,7 @@ export function Header({
     };
   }, []);
 
-  const centralNavBold =
-    !isProductMenuOpen && backgroundOpacity < 0.85;
+  const centralNavBold = !isProductMenuOpen && backgroundOpacity < 0.85;
   const navItemClassName = [
     'relative py-2 text-sm transition-colors duration-200',
     centralNavBold ? 'font-bold' : 'font-medium',
@@ -177,8 +182,8 @@ export function Header({
       className="fixed inset-x-0 top-0 z-50 transition-[background-color] duration-500 ease-out"
       style={{
         backgroundColor: isProductMenuOpen
-          ? 'rgb(255, 255, 255)'
-          : `rgba(255, 255, 255, ${backgroundOpacity})`,
+          ? `rgb(${activeHeaderBackground})`
+          : `rgba(${activeHeaderBackground}, ${backgroundOpacity})`,
       }}
     >
       <div className="layout-shell flex items-center justify-between py-3 sm:py-4">
@@ -208,17 +213,16 @@ export function Header({
                 onMouseEnter={openProductMenu}
                 onMouseLeave={(e) => {
                   const ae = document.activeElement;
-                  if (
-                    ae?.tagName === 'A' &&
-                    e.currentTarget.contains(ae)
-                  ) {
+                  if (ae?.tagName === 'A' && e.currentTarget.contains(ae)) {
                     return;
                   }
                   scheduleProductMenuClose();
                 }}
                 onFocusCapture={openProductMenu}
                 onBlurCapture={(e) => {
-                  if (e.currentTarget.contains(e.relatedTarget as Node | null)) {
+                  if (
+                    e.currentTarget.contains(e.relatedTarget as Node | null)
+                  ) {
                     return;
                   }
                   closeProductMenu();
@@ -241,7 +245,7 @@ export function Header({
                   onMouseEnter={openProductMenu}
                   onMouseLeave={scheduleProductMenuClose}
                   className={[
-                    'absolute inset-x-0 top-full z-20 border-t border-[color:rgba(21,27,43,0.08)] bg-[color:rgba(253,253,255,0.98)] shadow-[0_24px_48px_-28px_rgba(14,60,117,0.22)] transition-all duration-200',
+                    'absolute inset-x-0 top-full z-20 border-t border-[color:rgba(21,27,43,0.08)] bg-[color:rgba(244,246,253,0.98)] shadow-[0_24px_48px_-28px_rgba(14,60,117,0.22)] transition-all duration-200',
                     isProductMenuOpen
                       ? 'pointer-events-auto translate-y-0 opacity-100'
                       : 'pointer-events-none translate-y-2 opacity-0',
@@ -292,7 +296,7 @@ export function Header({
             <Link href={getLocalizedHref(loginHref)}>Iniciar sesión</Link>
           </Button>
           <Button asChild size="sm" className="rounded-full px-5 sm:px-6">
-            <Link href={getLocalizedHref(getStartedHref)}>Comenzar</Link>
+            <Link href={getLocalizedHref(getStartedHref)}>Contactanos</Link>
           </Button>
         </div>
       </div>

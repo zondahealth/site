@@ -1,6 +1,11 @@
 ---
 name: Zonda Health Brand Identity
 colors:
+  brand-blue: '#226ffd'
+  brand-blue-dark: '#0e3c75'
+  accent-yellow: '#eaea00'
+  ink: '#151b2b'
+  paper: '#fcfcff'
   surface: '#f7f8fc'
   surface-dim: '#eef1f8'
   surface-bright: '#fcfcff'
@@ -49,48 +54,54 @@ colors:
   on-background: '#151b2b'
   surface-variant: '#dde5f7'
 typography:
+  display:
+    fontFamily: Space Grotesk
+    fontSize: 80px
+    fontWeight: '700'
+    lineHeight: '0.96'
+    letterSpacing: '0'
   h1:
-    fontFamily: Space Grotesk
+    fontFamily: Manrope
     fontSize: 48px
-    fontWeight: '700'
+    fontWeight: '600'
     lineHeight: '1.1'
-    letterSpacing: -0.02em
+    letterSpacing: '0'
   h2:
-    fontFamily: Space Grotesk
+    fontFamily: Manrope
     fontSize: 32px
-    fontWeight: '700'
+    fontWeight: '600'
     lineHeight: '1.2'
-    letterSpacing: -0.01em
+    letterSpacing: '0'
   h3:
-    fontFamily: Space Grotesk
+    fontFamily: Manrope
     fontSize: 24px
     fontWeight: '600'
     lineHeight: '1.3'
     letterSpacing: '0'
   body-lg:
-    fontFamily: Space Grotesk
+    fontFamily: Manrope
     fontSize: 18px
     fontWeight: '400'
     lineHeight: '1.6'
     letterSpacing: '0'
   body-md:
-    fontFamily: Space Grotesk
+    fontFamily: Manrope
     fontSize: 16px
     fontWeight: '400'
     lineHeight: '1.6'
     letterSpacing: '0'
   label-caps:
-    fontFamily: Space Grotesk
+    fontFamily: Manrope
     fontSize: 12px
     fontWeight: '700'
     lineHeight: '1'
-    letterSpacing: 0.1em
+    letterSpacing: '0'
   data-mono:
-    fontFamily: Space Grotesk
+    fontFamily: Geist Mono
     fontSize: 14px
     fontWeight: '500'
     lineHeight: '1'
-    letterSpacing: -0.01em
+    letterSpacing: '0'
 rounded:
   sm: 0.25rem
   DEFAULT: 0.5rem
@@ -112,61 +123,89 @@ spacing:
 
 ## Brand & Style
 
-This design system is engineered for a high-tech healthtech environment where clinical precision meets cutting-edge data science. The brand personality is authoritative yet energetic, designed to evoke feelings of technological advancement, speed, and absolute clarity.
+This design system is engineered for a high-tech health infrastructure brand where clinical operations, regional networks, and data products feel precise, legible, and connected. The personality is clear, assured, practical, and technically credible. It should feel modern without drifting into vague futurism.
 
-The visual style is a fusion of **High-Contrast Bold** and **Minimalism**. It now uses a bright, near-white foundation so the product feels crisp, legible, and trustworthy at first glance, while saturated cobalt and sharp yellow accents provide the energy. Inspired by the clarity of top-tier fintech platforms, the aesthetic prioritizes information density without sacrificing legibility, using vibrant accents to guide the user's eye through complex health metrics.
+The visual lane is **Plaid-like infrastructure clarity adapted for healthcare**: near-white pages, dark-blue authority, vivid blue product signal, and a controlled yellow spark. The references are layered product screens, map systems, network diagrams, globe/ring motifs, floating identity cards, and engraved or line-art healthcare illustrations. The page should look like a real operating system for health data, not a generic SaaS landing page.
+
+White remains the default environment. Dark blue appears as a decisive panel, hero field, footer, or high-contrast product moment. Yellow is a vibrant accent, not the main brand field.
 
 ## Colors
 
-The color strategy for this design system is built on a "Clinical Paper + Signal Color" philosophy. The foundation is a cool, bright neutral that keeps the interface open, credible, and easy to scan, while still leaving room for strong color punctuation.
+The color strategy is **White Infrastructure + Blue System + Yellow Signal**.
 
-The **Primary Blue** acts as the core brand driver, used for navigation emphasis, links, and status indicators. The **Tertiary and Accent Yellows** are reserved for high-impact moments: critical data points, active toggle states, and primary call-to-actions. These hits create urgency without overwhelming the page. Secondary blues are used to create depth within the light interface, providing subtle layering for containers and non-critical interactive elements.
+- **Paper / Surface:** `#fcfcff`, `#f7f8fc`, and blue-tinted containers keep the interface bright and professional.
+- **Default Blue:** `#226ffd` is the primary brand color. Use it for core actions, product strokes, active navigation, links, diagrams, map paths, controls, and key highlights.
+- **Dark Blue:** `#0e3c75`, `#151b2b`, and related deep blues provide authority and contrast. Use them for hero panels, footers, text, dense product moments, and high-trust sections.
+- **Vibrant Yellow:** `#eaea00` is the accent. Use it for short emphasis, logo treatments, selected metric values, focus rings, signal lines, and occasional campaign-level panels. Keep it scarce so it stays valuable.
+
+Avoid letting purple, green, pink, or multicolor gradients become brand-defining. They can appear inside imported product artwork or isolated feature panels, but the durable system should read as white, blue, dark blue, and yellow.
 
 ## Typography
 
-Space Grotesk is the sole typeface for this design system, chosen for its technical, geometric construction and distinctive "tech" personality. Its eccentricities—like the flared terminals and idiosyncratic curves—give the healthtech platform a futuristic, scientific edge.
+Manrope is the primary interface and body typeface. It gives the brand a calm, operational voice and keeps Spanish and English copy readable across marketing and product pages.
 
-Headlines should be set with tight letter-spacing to emphasize the bold, high-impact nature of the brand. For data-heavy views, use the `label-caps` style to categorize information with institutional authority. While Space Grotesk is a proportional font, its geometric nature allows it to perform exceptionally well for numerical health data, providing the rhythmic clarity of a monospaced font with the readability of a modern sans-serif.
+Space Grotesk is reserved for large display moments, especially hero headlines or oversized product statements that need a more technical edge. Geist Sans is acceptable for compact controls. Geist Mono should be used only for code, identifiers, coordinates, IDs, and tabular data where the monospaced structure improves scanning.
+
+Headlines should rely on scale, weight, and line height rather than decorative effects. Avoid gradient text as a brand habit. Labels may use uppercase for short metadata, but body copy should stay sentence case and easy to scan.
 
 ## Layout & Spacing
 
-This design system utilizes a rigorous **Fixed Grid** model. The layout is structured on a 12-column grid system for desktop, ensuring that complex medical data dashboards remain aligned and scannable.
+This design system uses a rigorous grid, but the composition should feel like an assembled product ecosystem rather than a stack of generic sections. Use a 12-column desktop grid, clear alignments, and strong section pacing. Large visual modules should combine real product imagery, floating cards, maps, or network diagrams with concise copy.
 
-The spacing rhythm is strictly based on an 8px base unit. This ensures a mathematical consistency that mirrors the precision of the health sciences. For information-dense components, like patient records or lab results, the 'sm' (12px) and 'xs' (4px) units should be used to pack data efficiently while maintaining a clean, systematic appearance. Wide 'xl' (80px) vertical margins are reserved for high-impact landing areas to provide "breathable" luxury amidst the technical density.
+The spacing rhythm is based on an 8px unit. Dense product surfaces can use `xs` and `sm` spacing, while brand sections should use larger rhythm so the page has confidence and air. Prefer fewer, more decisive visual panels over many identical card grids.
 
 ## Elevation & Depth
 
-In this design system, depth is communicated through **Tonal Layers** and crisp borders rather than heavy shadows. Because the background is light, elevation is achieved by stepping surfaces through cool whites and pale blue-grays.
+Depth is communicated through **tonal layers, crisp borders, and composited assets** rather than heavy shadows. Because the background is light, elevation is achieved by stepping surfaces through cool whites and pale blue-grays, then using restrained blue or yellow signal lines.
 
 - **Level 0 (Base):** Near-white background (#fcfcff).
-- **Level 1 (Cards/Containers):** Soft paper neutral (#f4f6fd) with a subtle 1px border using a low-opacity Primary Blue.
-- **Level 2 (Modals/Popovers):** Bright neutral (#fdfdff) with a slightly stronger shadow and border to maintain clarity.
-- **Glow Effects:** Critical interactive elements or active states may use a restrained yellow glow to simulate signal intensity without darkening the whole interface.
+- **Level 1 (Containers):** Soft paper neutral (#f4f6fd) with a subtle 1px blue-tinted border.
+- **Level 2 (Overlays):** Bright neutral (#fdfdff) with a controlled shadow and stronger border to maintain clarity.
+- **Dark Field:** Dark blue panels may carry video, wave textures, network rings, or engraved assets when a section needs weight.
+- **Signal Effects:** Yellow may glow or pulse only for focused emphasis, never as ambient decoration across the whole page.
 
 ## Shapes
 
-The shape language is defined by a consistent 8px (0.5rem) corner radius. This "Rounded" level strikes a balance between the clinical coldness of sharp corners and the overly playful nature of fully rounded pill shapes.
+The shape language balances product precision with friendly healthcare accessibility. Large feature panels use modest 8px corners. Floating identity cards and system chips can use larger radii when they are behaving like overlaid UI artifacts.
 
-This 8px radius applies to buttons, input fields, cards, and modal windows, creating a cohesive visual thread. Small utility elements like tags or badges may use a "rounded-xl" (1.5rem) setting to create a distinct pill shape, specifically for status indicators to help them stand out against the more rigid, rectangular structure of data containers.
+Buttons are allowed to be pill-shaped because the current product language uses rounded, high-confidence actions. Cards and panels should not all become soft blobs. Keep structural modules more squared so the brand still feels precise.
+
+## Imagery & Art Direction
+
+The visual language should feel like infrastructure made visible:
+
+- Product maps, phone mockups, dashboards, patient lists, identity cards, and routing overlays.
+- Blue linework, rings, paths, and network diagrams over white or dark-blue fields.
+- Transparent PNG compositions that can float over sections without boxed stock-photo treatment.
+- Engraved or guilloche-style medical figures, globes, and verification motifs when the story is trust, identity, or interoperability.
+- Real interface details at inspection quality. Do not blur important product screens into atmosphere.
+
+Avoid generic doctors in stock-photo rooms, abstract gradient blobs, empty dashboard placeholders, and healthcare cliches that could belong to any clinic software.
 
 ## Components
 
 ### Buttons
 
-Primary buttons use the high-impact Tertiary Yellow (#eaea00) with dark text for maximum contrast and "clickability." Secondary buttons are outlined in Primary Blue with a bright neutral fill. All buttons feature a 1px border and the 8px corner radius.
+Primary buttons should default to Brand Blue (#226ffd) with light text. Use Dark Blue (#0e3c75) for heavier or more institutional actions. Yellow buttons are reserved for accent CTAs, launch moments, or short high-energy sections where the surrounding field is dark blue or otherwise controlled.
+
+Secondary buttons are outlined in Primary Blue with a bright neutral fill. Ghost and link buttons should use blue or dark blue text. Focus rings may use yellow because it is a strong accessibility signal.
 
 ### Input Fields
 
-Inputs are designed with a bright neutral background (#fdfdff) and a subtle Primary Blue border. On focus, the border transitions to the vibrant Accent Yellow, signaling an active data-entry state.
+Inputs use a bright neutral background (#fdfdff) and a subtle blue-tinted border. On focus, use Brand Blue for the border and a restrained yellow ring only when extra visibility is needed.
 
 ### Cards
 
-Cards are the workhorse of the design system. Inspired by Plaid, they feature generous internal padding (24px) and clear, structured typography. Data points within cards should use the `data-mono` type style.
+Cards are not the default answer. Use them for repeated items, identity panels, product snippets, and floating proof points. Inspired by Plaid, cards should feel like real interface fragments: named people, IDs, locations, network permissions, scores, dates, and status states. Data points can use the `data-mono` style.
 
 ### Chips & Badges
 
-Used for health status (e.g., "Normal", "Critical"). "Critical" badges should utilize the Accent Yellow as a background, while "Normal" status should use a subtle Primary Blue.
+Use chips and badges for states, permissions, specialties, and operational labels. Blue is the default status color. Yellow is for warnings, highlighted proof points, and selected metrics. Do not rely on color alone for critical meaning.
 
 ### Lists
 
 Lists are separated by 1px borders in a muted version of the Neutral color, ensuring that row-based medical data is easily scannable without adding unnecessary visual bulk.
+
+### Feature Panels
+
+Feature panels can carry the brand's expressive range: white product compositions, blue gradients, dark-blue wave fields, yellow campaign moments, and line-art assets. Their content should still be structured and inspectable. A panel earns its color by making a specific product capability easier to understand.

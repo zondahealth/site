@@ -39,15 +39,7 @@ export function Hero() {
 
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Button asChild size="lg" className="min-w-44">
-                  <Link href="/platform">Ver la plataforma</Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="min-w-44 !text-white border-[color:rgba(178,197,255,0.2)] bg-[color:rgba(17,19,28,0.24)] shadow-none hover:!text-white hover:border-[color:rgba(178,197,255,0.34)] hover:bg-[color:rgba(25,27,36,0.48)]"
-                >
-                  <Link href="/contact">Contactanos</Link>
+                  <Link href="/contacto">Hablemos</Link>
                 </Button>
               </div>
             </div>

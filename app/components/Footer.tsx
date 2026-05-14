@@ -15,7 +15,7 @@ const companyLinks = [
   { href: '/casos-de-uso', label: 'Casos de uso' },
   { href: '/desarrolladores', label: 'Desarrolladores' },
   { href: '/empresa', label: 'Empresa' },
-  { href: '/contact-us', label: 'Contactanos' },
+  { href: '/contacto', label: 'Contactanos' },
 ];
 
 export function Footer() {

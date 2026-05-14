@@ -1,40 +1,83 @@
-import { MarketingPage } from '../../../components/MarketingPage';
-import { FeaturePanel } from '@/app/components/FeaturePanel';
-import { FeaturePanelTone } from '@/app/components/FeaturePanel';
-import { FeaturePanelBackgroundStyling } from '@/app/components/FeaturePanel';
+import {
+  FeaturePanel,
+  FeaturePanelBackgroundStyling,
+  FeaturePanelTone,
+} from '@/app/components/FeaturePanel';
+import { ImageSection } from '@/app/components/ImageSection';
 import Image from 'next/image';
+
+const sections = [
+  {
+    tone: FeaturePanelTone.Blue,
+    title: 'Ingestá datos desde cualquier fuente',
+    description:
+      'Historias clínicas, evoluciones, turnos, encuestas, dispositivos y más. Zonda centraliza toda la información de tus pacientes y profesionales en un único lugar, sin importar de dónde venga. Conectá sistemas existentes, cargá datos manualmente o automatizá la ingesta. Toda tu operación en un solo panel.',
+    image: '/assets/orgs/hero.png',
+    imageClassName: 'p-6',
+  },
+  {
+    tone: FeaturePanelTone.Purple,
+    title: 'Detectá patrones, anomalías y fraude',
+    description:
+      'Dashboards interactivos que se adaptan a lo que necesitás ver. Identificación automática de tendencias en datos clínicos, alertas en tiempo real cuando algo se sale de rango, y reportes personalizados por región, unidad o profesional. Visualizá la evolución de cada paciente, detectá inconsistencias y tomá decisiones con datos, no con intuición.',
+    image: '/assets/orgs/hero.png',
+    imageClassName: 'p-6',
+  },
+  {
+    tone: FeaturePanelTone.Green,
+    title: 'Roles claros, equipos organizados, múltiples entidades',
+    description:
+      'Definí la estructura de tu organización: equipos, profesionales, pacientes, sedes y permisos. Si operás con más de una entidad jurídica, gestioná todo desde un mismo lugar sin perder trazabilidad. Exportá datos en el formato que necesites, compartí reportes con stakeholders y mantené el compliance sin esfuerzo.',
+    image: '/assets/orgs/hero.png',
+  },
+];
 
 export default function OrganizacionesPage() {
   return (
-    <div>
-      <section className="">
-        <FeaturePanel
-          className="flex min-h-0 w-full flex-1 flex-col rounded-none min-h-[clamp(30rem,100dvh,1000px)]"
-          tone={FeaturePanelTone.Green}
-          backgroundStyling={FeaturePanelBackgroundStyling.Full}
-          contentClassName="mx-auto grid min-h-0 max-w-2xl md:max-w-7xl flex-1 grid-cols-1 grid-rows-[auto_1fr] md:grid-cols-2 md:grid-rows-1 md:items-center px-12 lg:px-4 py-24 gap-6"
-        >
-          <div className="flex min-w-0 flex-col items-center justify-center px-6 py-10 text-center md:items-start md:text-left space-y-8">
-            <h1 className="text-6xl font-bold text-zonda-blue-dark">
-              Optimizá cada dato y minuto de tu empresa de atención
-              domiciliaria.
-            </h1>
-            <p className="text-lg font-semibold text-zonda-blue-dark">
-              Gestión centralizada, aplicación para profesionales en campo, LOE
-              y auditoría en tiempo real. Todo conectado. Sin puntos ciegos
-              entre la administración y el domicilio del paciente.
-            </p>
-          </div>
-          <div className="relative flex h-full w-full items-center justify-center md:justify-end">
-            <Image
-              src="/assets/orgs/hero.png"
-              alt="Internación domiciliaria"
-              fill
-              className="pointer-events-none max-h-none max-w-none shrink-0 object-contain"
-            />
-          </div>
-        </FeaturePanel>
+    <div className="space-y-32 pb-16">
+      <section className="flex min-h-[clamp(30rem,100dvh,1000px)] w-full flex-col">
+        <div className="layout-shell overflow-hidden pt-20">
+          <FeaturePanel
+            tone={FeaturePanelTone.Blue}
+            className="flex min-h-0 w-full flex-1 flex-col rounded-md"
+            backgroundStyling={FeaturePanelBackgroundStyling.Full}
+            contentClassName="grid grid-cols-1 lg:grid-cols-2 flex-1 pt-24 lg:py-12"
+          >
+            <div className="flex min-w-0 flex-col items-center justify-center px-16 lg:px-12 lg:py-24 text-center lg:items-start lg:text-left">
+              <h1 className="font-bold gap-4 lg:gap-6 flex flex-col">
+                <span className="bg-gradient-to-tr from-zonda-blue-dark to-black bg-clip-text text-transparent text-4xl md:text-5xl">
+                  Visibilidad total de tu operación de salud.
+                </span>
+                <span className="text-zonda-blue-dark text-3xl md:text-4xl">
+                  Cero puntos ciegos.
+                </span>
+              </h1>
+            </div>
+
+            <div className="relative md:h-full">
+              <div className="pointer-events-none h-full w-full justify-center flex">
+                <Image
+                  src="/assets/orgs/hero.png"
+                  alt="Organizaciones"
+                  width={500}
+                  height={500}
+                  className="pointer-events-none h-auto w-[min(450px,48vw)] max-h-none max-w-none shrink-0 object-cover object-bottom lg:w-[min(500px,45vw)] xl:w-[500px]"
+                  sizes="100%"
+                />
+              </div>
+            </div>
+          </FeaturePanel>
+        </div>
       </section>
+
+      {sections.map((section, idx) => (
+        <section key={section.title}>
+          <ImageSection
+            title={section.title}
+            description={section.description}
+          />
+        </section>
+      ))}
     </div>
   );
 }

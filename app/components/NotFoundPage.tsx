@@ -25,7 +25,7 @@ export function NotFoundPage() {
             <Link href="/">Volver al inicio</Link>
           </Button>
           <Button asChild size="lg" variant="outline">
-            <Link href="/contact-us">Contactanos</Link>
+            <Link href="/contacto">Contactanos</Link>
           </Button>
         </div>
       </section>
