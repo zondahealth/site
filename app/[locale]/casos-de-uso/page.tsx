@@ -33,7 +33,6 @@ export default function CasosDeUsoPage() {
     <div className="h-full w-full flex flex-1 flex-col bg-background space-y-16 md:space-y-26">
       {/* Hero */}
       <section className="flex flex-col">
-        <div className="layout-shell overflow-hidden pt-20">
           <FeaturePanel
             tone={FeaturePanelTone.White}
             backgroundImage={
@@ -44,8 +43,8 @@ export default function CasosDeUsoPage() {
                 className="object-cover opacity-10"
               />
             }
-            className="flex min-h-0 w-full flex-1 flex-col rounded-md"
-            contentClassName="flex-1 mx-auto max-w-7xl  min-h-[clamp(30rem,100dvh,1000px)] w-full gap-16 lg:gap-32 flex flex-col items-center justify-center py-26"
+            className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
+            contentClassName="flex-1 mx-auto max-w-7xl w-full gap-16 lg:gap-32 flex flex-col items-center justify-center py-26"
           >
             <div className="layout-shell space-y-4">
               <h1 className="text-5xl lg:text-6xl font-bold [font-family:var(--font-display-family)] text-center text-black">
@@ -84,7 +83,6 @@ export default function CasosDeUsoPage() {
               ))}
             </div>
           </FeaturePanel>
-        </div>
       </section>
 
       {/* CTA */}

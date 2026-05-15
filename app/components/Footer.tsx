@@ -1,5 +1,9 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { cn } from './ui/utils';
 
 const productLinks = [
   { href: '/products/profesionales', label: 'Profesionales' },
@@ -18,12 +22,28 @@ const companyLinks = [
   { href: '/contacto', label: 'Contactanos' },
 ];
 
+const blackFooterRoutes = ['/desarrolladores', '/products/interoperabilidad'];
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
+
+  // Strip locale prefix (e.g. /es/desarrolladores -> /desarrolladores)
+  const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}(?=\/)/, '');
+  const isBlack = blackFooterRoutes.some(
+    (route) => pathWithoutLocale === route || pathWithoutLocale.endsWith(route)
+  );
 
   return (
-    <footer className="relative overflow-hidden bg-zonda-blue-dark text-white">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(92,140,255,0.18),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(234,234,0,0.08),transparent_24%)]" />
+    <footer
+      className={cn(
+        'relative overflow-hidden text-white',
+        isBlack ? 'bg-black' : 'bg-[#081e3a]'
+      )}
+    >
+      {!isBlack && (
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(92,140,255,0.18),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(234,234,0,0.08),transparent_24%)]" />
+      )}
 
       <div className="layout-shell relative z-10 py-14 sm:py-16">
         <div className="grid gap-12 border-b border-[color:rgba(255,255,255,0.14)] pb-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)_minmax(0,0.9fr)]">
@@ -50,7 +70,7 @@ export function Footer() {
 
           <div>
             <h2 className="text-sm font-medium uppercase tracking-[0.12em] text-[color:rgba(248,250,255,0.7)]">
-              Productos
+              Soluciones
             </h2>
             <div className="mt-5 flex flex-col gap-3">
               {productLinks.map((link) => (

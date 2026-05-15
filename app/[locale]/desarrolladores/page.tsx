@@ -13,7 +13,7 @@ export default function DesarrolladoresPage() {
     <div className="h-full w-full flex flex-1 flex-col bg-black">
       {/* Hero */}
       <FeaturePanel
-        className="flex flex-1 min-h-0 w-full flex-col rounded-none min-h-[clamp(30rem,100dvh,1000px)]"
+        className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
         tone={FeaturePanelTone.Black}
         backgroundStyling={FeaturePanelBackgroundStyling.Lines}
         contentClassName="flex flex-1 min-h-0 w-full h-full items-center justify-center"

@@ -35,42 +35,38 @@ const sections = [
 export default function OrganizacionesPage() {
   return (
     <div className="space-y-32 pb-16">
-      <section className="flex min-h-[clamp(30rem,100dvh,1000px)] w-full flex-col">
-        <div className="layout-shell overflow-hidden pt-20">
-          <FeaturePanel
-            tone={FeaturePanelTone.Blue}
-            className="flex min-h-0 w-full flex-1 flex-col rounded-md"
-            backgroundStyling={FeaturePanelBackgroundStyling.Full}
-            contentClassName="grid grid-cols-1 lg:grid-cols-2 flex-1 pt-24 lg:py-12"
-          >
-            <div className="flex min-w-0 flex-col items-center justify-center px-16 lg:px-12 lg:py-24 text-center lg:items-start lg:text-left">
-              <h1 className="font-bold gap-4 lg:gap-6 flex flex-col">
-                <span className="bg-gradient-to-tr from-zonda-blue-dark to-black bg-clip-text text-transparent text-4xl md:text-5xl">
-                  Visibilidad total de tu operación de salud.
-                </span>
-                <span className="text-zonda-blue-dark text-3xl md:text-4xl">
-                  Cero puntos ciegos.
-                </span>
-              </h1>
-            </div>
+      <section className="flex w-full flex-col">
+        <FeaturePanel
+          className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
+          tone={FeaturePanelTone.DarkBlueLines}
+          backgroundStyling={FeaturePanelBackgroundStyling.WhiteLines}
+          contentClassName="grid grid-cols-1 lg:grid-cols-2 flex-1 pt-24 lg:py-12 mx-auto max-w-7xl w-full"
+        >
+          <div className="flex min-w-0 flex-col items-center justify-center px-16 lg:px-12 lg:py-24 text-center lg:items-start lg:text-left">
+            <h1 className="font-bold gap-4 lg:gap-6 flex flex-col text-white">
+              <span className="text-5xl lg:text-6xl xl:text-7xl font-bold [font-family:var(--font-display-family)] text-vitality-yellow">
+                Visibilidad total de tu operación de salud.
+              </span>
+              <span className="text-white/80 text-3xl md:text-4xl">
+                Cero puntos ciegos.
+              </span>
+            </h1>
+          </div>
 
-            <div className="relative md:h-full">
-              <div className="pointer-events-none h-full w-full justify-center flex">
-                <Image
-                  src="/assets/orgs/hero.png"
-                  alt="Organizaciones"
-                  width={500}
-                  height={500}
-                  className="pointer-events-none h-auto w-[min(450px,48vw)] max-h-none max-w-none shrink-0 object-cover object-bottom lg:w-[min(500px,45vw)] xl:w-[500px]"
-                  sizes="100%"
-                />
-              </div>
-            </div>
-          </FeaturePanel>
-        </div>
+          <div className="relative hidden lg:block h-full overflow-visible">
+            <Image
+              src="/assets/orgs/hero.png"
+              alt="Organizaciones"
+              width={500}
+              height={500}
+              className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 h-[85%] w-auto max-w-none object-contain object-bottom"
+              sizes="100%"
+            />
+          </div>
+        </FeaturePanel>
       </section>
 
-      {sections.map((section, idx) => (
+      {sections.map((section) => (
         <section key={section.title}>
           <ImageSection
             title={section.title}

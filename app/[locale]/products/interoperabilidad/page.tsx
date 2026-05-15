@@ -1,7 +1,10 @@
 import { FeaturePanel } from '@/app/components/FeaturePanel';
 import { FeaturePanelTone } from '@/app/components/FeaturePanel';
 import { FeaturePanelBackgroundStyling } from '@/app/components/FeaturePanel';
-import { InfoSection, type InfoSectionData } from '@/app/components/InfoSection';
+import {
+  InfoSection,
+  type InfoSectionData,
+} from '@/app/components/InfoSection';
 import Link from 'next/link';
 import { Button } from '@/app/components/ui/button';
 
@@ -91,7 +94,7 @@ export default function InteroperabilidadPage() {
     <div className="h-full w-full flex flex-1 flex-col">
       {/* Hero */}
       <FeaturePanel
-        className="flex flex-1 min-h-0 w-full flex-col rounded-none min-h-[clamp(30rem,100dvh,1000px)]"
+        className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
         tone={FeaturePanelTone.Black}
         backgroundStyling={FeaturePanelBackgroundStyling.Full}
         contentClassName="flex flex-1 min-h-0 w-full h-full items-center justify-center"
@@ -114,23 +117,28 @@ export default function InteroperabilidadPage() {
 
       {/* Sections */}
       {sections.map((section, i) => (
-        <InfoSection key={section.title} section={section} index={i} variant="dark" />
+        <InfoSection
+          key={section.title}
+          section={section}
+          index={i}
+          variant="dark"
+        />
       ))}
 
       {/* CTA */}
       <section className="bg-black">
         <div className="layout-shell py-20 md:py-28">
           <FeaturePanel
-            tone={FeaturePanelTone.Black}
-            backgroundStyling={FeaturePanelBackgroundStyling.YellowLines}
+            tone={FeaturePanelTone.YellowBlueLines}
+            lightenBackground="subtle"
             contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-24 sm:px-12 sm:py-32 lg:px-20 lg:py-48"
           >
-            <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-3xl lg:text-6xl text-white [font-family:var(--font-display-family)]">
+            <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-3xl lg:text-6xl text-black [font-family:var(--font-display-family)]">
               Conectá tus sistemas. <br />
-              <span className="text-vitality-yellow">Integrá tu empresa.</span>
+              <span className="text-black">Integrá tu empresa.</span>
             </div>
 
-            <Button asChild size="lg" className="min-w-48">
+            <Button asChild size="lg" className="min-w-48" variant="primary">
               <Link href="/contacto">Contáctanos</Link>
             </Button>
           </FeaturePanel>

@@ -6,14 +6,22 @@ import { cn } from './ui/utils';
 export enum FeaturePanelTone {
   DarkBlue = 'dark-blue',
   Blue = 'blue',
+  BlueLines = 'blue-lines',
+  DarkBlueLines = 'dark-blue-lines',
   GradientBlue = 'gradient-blue',
   GradientDeepBlue = 'gradient-deep-blue',
   GradientVitalityYellow = 'gradient-vitality-yellow',
   GradientGreen = 'gradient-green',
   Yellow = 'yellow',
+  YellowBlueLines = 'yellow-blue-lines',
   Green = 'green',
+  GreenLines = 'green-lines',
+  MalLightGreen = 'mal-light-green',
   Purple = 'purple',
   LightBlue = 'light-blue',
+  MapBlack = 'map-black',
+  MapGreen = 'map-green',
+  MapPlayful = 'map-playful',
   SolidGrey = 'solid-grey',
   SolidNeutral = 'solid-neutral',
   SolidBlue = 'solid-blue',
@@ -43,12 +51,20 @@ export enum FeaturePanelBackgroundStyling {
 
 const toneMovementImages: Partial<Record<FeaturePanelTone, string>> = {
   [FeaturePanelTone.Blue]: '/bg/movement/blue.png',
+  [FeaturePanelTone.BlueLines]: '/bg/movement/blue-lines.png',
+  [FeaturePanelTone.DarkBlueLines]: '/bg/movement/dark-blue-lines.png',
   [FeaturePanelTone.Yellow]: '/bg/movement/yellow.png',
+  [FeaturePanelTone.YellowBlueLines]: '/bg/movement/yellow-blue-lines.png',
   [FeaturePanelTone.Green]: '/bg/movement/green.png',
+  [FeaturePanelTone.GreenLines]: '/bg/movement/green-lines.png',
+  [FeaturePanelTone.MalLightGreen]: '/bg/movement/mal-light-green.png',
   [FeaturePanelTone.Purple]: '/bg/movement/purple.webp',
   [FeaturePanelTone.LightBlue]: '/bg/movement/light-blue.webp',
-  [FeaturePanelTone.Lines]: '/bg/movement/lines.png',
-  [FeaturePanelTone.Squares]: '/bg/movement/squares.png',
+  [FeaturePanelTone.MapBlack]: '/bg/movement/map-black.png',
+  [FeaturePanelTone.MapGreen]: '/bg/movement/map-green.png',
+  [FeaturePanelTone.MapPlayful]: '/bg/movement/map-playful.png',
+  [FeaturePanelTone.Lines]: '/bg/movement/blue-lines.png',
+  [FeaturePanelTone.YellowLines]: '/bg/movement/yellow-blue-lines.png',
 };
 
 const toneBackgrounds: Partial<Record<FeaturePanelTone, string>> = {
@@ -68,11 +84,36 @@ const toneBackgrounds: Partial<Record<FeaturePanelTone, string>> = {
   [FeaturePanelTone.Transparent]: `transparent`,
 };
 
+type BackgroundLighten = boolean | 'subtle' | 'medium' | 'strong';
+type BackgroundDarken = boolean | 'subtle' | 'medium' | 'strong';
+
+const backgroundLightenClasses: Record<
+  Exclude<BackgroundLighten, boolean>,
+  string
+> = {
+  subtle: 'bg-white/25',
+  medium: 'bg-white/45',
+  strong: 'bg-white/65',
+};
+
+const backgroundDarkenClasses: Record<
+  Exclude<BackgroundDarken, boolean>,
+  string
+> = {
+  subtle: 'bg-black/15',
+  medium: 'bg-black/35',
+  strong: 'bg-black/55',
+};
+
 type SharedProps = {
   children?: ReactNode;
   className?: string;
   contentClassName?: string;
   overlayClassName?: string;
+  lightenBackground?: BackgroundLighten;
+  lightenBackgroundClassName?: string;
+  darkenBackground?: BackgroundDarken;
+  darkenBackgroundClassName?: string;
   backgroundStyling?: FeaturePanelBackgroundStyling;
   backgroundStylingClassName?: string;
 
@@ -110,7 +151,7 @@ const backgroundStylingImages: Record<FeaturePanelBackgroundStyling, string> = {
   [FeaturePanelBackgroundStyling.Left]: '/bg/styling/background-left.png',
   [FeaturePanelBackgroundStyling.Right]: '/bg/styling/background-right.png',
   [FeaturePanelBackgroundStyling.Full]: '/bg/styling/background.png',
-  [FeaturePanelBackgroundStyling.Map]: '/bg/styling/map.png',
+  [FeaturePanelBackgroundStyling.Map]: '/bg/movement/map-green.png',
   [FeaturePanelBackgroundStyling.Lines]: '/bg/styling/lines.png',
   [FeaturePanelBackgroundStyling.WhiteLines]: '/bg/styling/white-lines.png',
   [FeaturePanelBackgroundStyling.YellowLines]: '/bg/styling/yellow-lines.png',
@@ -177,6 +218,10 @@ function FeaturePanelRoot(props: FeaturePanelProps) {
   const backgroundStyling = props.backgroundStyling;
   const movementImageSrc = !isImagePanel ? toneMovementImages[tone] : undefined;
   const toneBackground = !isImagePanel ? toneBackgrounds[tone] : undefined;
+  const backgroundLighten =
+    props.lightenBackground === true ? 'medium' : props.lightenBackground;
+  const backgroundDarken =
+    props.darkenBackground === true ? 'medium' : props.darkenBackground;
 
   const hasImageSlot = props.image != null;
   const reverse = props.reverse ?? false;
@@ -258,6 +303,26 @@ function FeaturePanelRoot(props: FeaturePanelProps) {
           />
         </div>
       ) : null}
+
+      {backgroundLighten && (
+        <div
+          className={cn(
+            'pointer-events-none absolute inset-0',
+            backgroundLightenClasses[backgroundLighten],
+            props.lightenBackgroundClassName
+          )}
+        />
+      )}
+
+      {backgroundDarken && (
+        <div
+          className={cn(
+            'pointer-events-none absolute inset-0',
+            backgroundDarkenClasses[backgroundDarken],
+            props.darkenBackgroundClassName
+          )}
+        />
+      )}
 
       {props.overlayClassName && (
         <div className={cn('absolute inset-0', props.overlayClassName)} />

@@ -26,6 +26,7 @@ type HeaderProps = {
 };
 
 const lightForegroundRoutes = [
+  // '/products/internacion-domiciliaria',
   '/products/interoperabilidad',
   '/desarrolladores',
   '/empresa',
@@ -44,7 +45,7 @@ const productLinks: ProductLink[] = [
 
 const navigationItems: NavigationItem[] = [
   {
-    label: 'Productos',
+    label: 'Soluciones',
     products: productLinks,
   },
   { label: 'Casos de uso', href: '/casos-de-uso' },
@@ -77,6 +78,7 @@ export function Header({
     : pathname;
   const isOverDarkHero = lightForegroundRoutes.some(
     (route) =>
+      pathnameWithoutLocale === '/' ||
       pathnameWithoutLocale === route ||
       pathnameWithoutLocale.startsWith(`${route}/`)
   );
@@ -254,7 +256,7 @@ export function Header({
                   <div className="mx-auto flex w-full max-w-[1440px] px-10 py-12">
                     <div className="w-full max-w-xl">
                       <p className="mb-5 text-sm font-medium text-[color:rgba(21,27,43,0.58)]">
-                        Explorar productos
+                        Explorar soluciones
                       </p>
                       <div className="flex flex-col items-start">
                         {item.products.map((product) => (

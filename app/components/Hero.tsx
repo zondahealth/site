@@ -5,9 +5,8 @@ import { Button } from './ui/button';
 
 export function Hero() {
   return (
-    <section className="pt-20">
-      <div className="layout-shell">
-        <div className="relative flex min-h-[max(30rem,calc(98dvh-5rem))] flex-col overflow-hidden rounded-md bg-zonda-blue-dark sm:p-12 lg:p-16">
+    <section className="pt-0">
+        <div className="relative flex h-[100dvh] min-h-[30rem] flex-col overflow-hidden bg-zonda-blue-dark sm:p-12 lg:p-16">
           <video
             className="absolute inset-0 h-full w-full object-cover"
             src="/bg/styling/waves.mov"
@@ -45,7 +44,6 @@ export function Hero() {
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 }

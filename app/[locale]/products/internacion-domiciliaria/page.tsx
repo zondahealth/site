@@ -76,45 +76,31 @@ export default function InternacionDomiciliariaPage() {
   return (
     <div className="flex flex-col space-y-20">
       <section className="flex w-full flex-col">
-        <div className="layout-shell overflow-hidden pt-20">
-          <FeaturePanel
-            tone={FeaturePanelTone.SolidGreen}
-            className="flex w-full flex-1 flex-col rounded-md h-[650px]"
-            backgroundStyling={FeaturePanelBackgroundStyling.Map}
-            contentClassName="grid grid-cols-1 lg:grid-cols-2 flex-1 mx-auto max-w-7xl"
-          >
-            <div className="flex min-w-0 flex-col items-center justify-center py-16 text-center lg:items-start lg:text-left space-y-4 lg:space-y-8 lg:py-32 xl:py-48 px-16">
-              <h1 className="md:text-5xl text-4xl font-bold gap-2 flex flex-col text-white">
-                Optimizá cada dato y minuto de tu empresa.
-              </h1>
-              <p className="text-md md:text-lg font-semibold text-white">
-                Gestión centralizada, aplicación para profesionales en campo,
-                LOE y auditoría en tiempo real. Todo conectado. Sin puntos
-                ciegos entre la administración y el domicilio del paciente.
-              </p>
-            </div>
-
-            <div className="relative hidden sm:block min-h-[25rem] md:h-full">
-              <div className="pointer-events-none min-h-[25rem] h-full w-full flex justify-center lg:items-end">
-                <Image
-                  src="/assets/id/hero.png"
-                  alt="Internación domiciliaria"
-                  width={1200}
-                  height={1200}
-                  className="pointer-events-none h-auto w-[min(450px,48vw)] max-h-none max-w-none shrink-0 object-cover object-bottom lg:w-[min(520px,45vw)] xl:w-[550px] overflow-visible"
-                />
-              </div>
-            </div>
-          </FeaturePanel>
-        </div>
+        <FeaturePanel
+          tone={FeaturePanelTone.SolidGreen}
+          className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
+          backgroundStyling={FeaturePanelBackgroundStyling.Map}
+          lightenBackground="medium"
+          contentClassName="flex flex-1 flex-col items-center justify-center px-8 py-20 sm:px-12 sm:py-28 lg:px-20 lg:py-36 text-center text-zonda-blue-dark "
+        >
+          <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold [font-family:var(--font-display-family)]">
+            Optimizá cada dato y minuto de tu empresa.
+          </h1>
+          <p className="mt-6 text-lg md:text-xl lg:text-2xl font-semibold max-w-3xl">
+            Gestión centralizada, aplicación para profesionales en campo, LOE y
+            auditoría en tiempo real. Todo conectado. Sin puntos ciegos entre la
+            administración y el domicilio del paciente.
+          </p>
+        </FeaturePanel>
       </section>
 
       {/* Scheduling */}
       <section>
         <div className="layout-shell">
           <FeaturePanel
-            tone={FeaturePanelTone.SolidGrey}
-            backgroundStyling={FeaturePanelBackgroundStyling.WhiteLines}
+            tone={FeaturePanelTone.SolidLightYellow}
+            backgroundStyling={FeaturePanelBackgroundStyling.Lines}
+            lightenBackground="medium"
             panelSize="lg"
             contentClassName="items-start gap-8 text-white"
             imageContainerClassName="min-h-[30rem]"
@@ -127,10 +113,10 @@ export default function InternacionDomiciliariaPage() {
               />
             }
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-zonda-blue font-space-grotesk">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-zonda-blue-dark font-space-grotesk">
               Gestión centralizada desde la oficina o en campo
             </h2>
-            <p className="text-md md:text-lg leading-relaxed  text-black">
+            <p className="text-md md:text-lg leading-relaxed  text-zonda-blue-dark">
               La plataforma configurable de Zonda permite que el control de la
               agenda esté donde lo necesites, coordinación centralizada desde la
               oficina o gestión autónoma por parte del profesional en campo,
@@ -154,8 +140,9 @@ export default function InternacionDomiciliariaPage() {
         <div className="layout-shell flex flex-col gap-16">
           <FeaturePanel
             key="por-que-zonda"
-            tone={FeaturePanelTone.Blue}
-            backgroundStyling={FeaturePanelBackgroundStyling.Full}
+            tone={FeaturePanelTone.SolidBlue}
+            lightenBackground="subtle"
+            backgroundStyling={FeaturePanelBackgroundStyling.Lines}
             contentClassName="flex h-full flex-col items-center justify-center px-8 py-12 sm:px-12 sm:py-14 lg:px-20 lg:py-32 text-white"
           >
             <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
@@ -163,10 +150,10 @@ export default function InternacionDomiciliariaPage() {
                 className="flex flex-col items-start justify-center gap-8"
                 id="organizaciones"
               >
-                <h3 className="text-4xl font-extrabold sm:text-5xl">
+                <h3 className="text-4xl font-extrabold sm:text-5xl text-vitality-yellow">
                   Mejorá tus resultados y el servicio a tus pacientes.
                 </h3>
-                <p className="text-xl font-medium leading-relaxed">
+                <p className="text-xl font-bold leading-relaxed text-white">
                   Organizaciones y profesionales eligen Zonda porque se integra
                   fácilmente, está operativo desde el primer día y genera
                   trazabilidad y reportes en tiempo real, adaptado a
