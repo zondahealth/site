@@ -82,7 +82,7 @@ export function PhoneFrame({
     >
       <div className="relative flex h-full w-full flex-col overflow-hidden rounded-[36px] bg-[#fcfcff]">
         {/* Status bar */}
-        <div className="flex items-center justify-between px-[22px] pt-2.5 pb-1 text-xs font-bold text-[color:var(--zonda-ink)]">
+        <div className="flex items-center justify-between px-[22px] pt-2.5 pb-1 text-xs font-bold text-[#0d1117]">
           <span>{time}</span>
           <div className="absolute left-1/2 top-2 h-[22px] w-20 -translate-x-1/2 rounded-full bg-[#0d0d0d]" />
           <span className="flex items-center gap-1">

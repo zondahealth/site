@@ -21,14 +21,14 @@ function SoapBlock({
 }) {
   return (
     <div
-      className={`rounded-lg border border-[color:rgba(122,62,255,0.10)] px-3 py-2.5 ${
-        dim ? 'bg-[color:rgba(122,62,255,0.04)]' : 'bg-[color:rgba(122,62,255,0.06)]'
+      className={`rounded-lg border border-[#e0d4ff] px-3 py-2.5 ${
+        dim ? 'bg-[#f8f5ff]' : 'bg-[#f0ebff]'
       }`}
     >
       <p className="m-0 text-[9px] font-bold uppercase tracking-[0.08em] text-[#7a3eff]">
         {label}
       </p>
-      <p className="mt-1 text-[11.5px] leading-snug text-[color:var(--zonda-ink)]">
+      <p className="mt-1 text-[11.5px] leading-snug text-[#0d1117]">
         {text}
       </p>
     </div>
@@ -45,13 +45,13 @@ export function PhoneRegistros() {
         <div className="flex items-center gap-2.5">
           <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[#9b7cff] to-[#bf95ff]" />
           <div>
-            <p className="m-0 text-xs font-bold">M. Etería</p>
-            <p className="m-0 text-[10px] text-[color:var(--fg-3)]">
+            <p className="m-0 text-xs font-bold text-[#0d1117]">M. Etería</p>
+            <p className="m-0 text-[10px] text-[#9ca3af]">
               Evolución · hoy
             </p>
           </div>
         </div>
-        <div className="h-6 w-6 rounded-md bg-[color:rgba(21,27,43,0.06)]" />
+        <div className="h-6 w-6 rounded-md bg-[#e5e7eb]" />
       </div>
 
       {/* AI badge */}
@@ -79,7 +79,7 @@ export function PhoneRegistros() {
       </div>
 
       {/* Voice recording bar */}
-      <div className="flex items-center gap-2.5 border-t border-[color:rgba(21,27,43,0.06)] px-[18px] py-3">
+      <div className="flex items-center gap-2.5 border-t border-[#e5e7eb] px-[18px] py-3">
         <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#7a3eff]">
           <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
             <rect x="4" y="2" width="6" height="9" rx="3" fill="#fff" />
@@ -109,7 +109,7 @@ export function PhoneRegistros() {
             />
           ))}
         </div>
-        <span className="font-mono text-[11px] text-[color:var(--fg-2)]">
+        <span className="font-mono text-[11px] text-[#6b7280]">
           0:34
         </span>
       </div>

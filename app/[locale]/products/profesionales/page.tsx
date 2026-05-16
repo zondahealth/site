@@ -1,15 +1,9 @@
-import {
-  FeaturePanel,
-  FeaturePanelTone,
-} from '@/app/components/FeaturePanel';
+import { FeaturePanel, FeaturePanelTone } from '@/app/components/FeaturePanel';
 import { PhoneAgenda } from '@/app/components/professionals/PhoneAgenda';
 import { PhoneOrganizaciones } from '@/app/components/professionals/PhoneOrganizaciones';
 import { PhoneRegistros } from '@/app/components/professionals/PhoneRegistros';
 import { ProFeature } from '@/app/components/professionals/ProFeature';
-import { ProObrasSociales } from '@/app/components/professionals/ProObrasSociales';
-import { ProFeatureGrid } from '@/app/components/professionals/ProFeatureGrid';
 import { ProTestimonial } from '@/app/components/professionals/ProTestimonial';
-import { ProPricing } from '@/app/components/professionals/ProPricing';
 import { ProDownload } from '@/app/components/professionals/ProDownload';
 import { ProFAQ } from '@/app/components/professionals/ProFAQ';
 import Image from 'next/image';
@@ -48,7 +42,9 @@ export default function ProfesionalesPage() {
         </FeaturePanel>
       </section>
 
-      <ProObrasSociales />
+      <ProTestimonial />
+
+      {/* <ProObrasSociales /> */}
 
       <ProFeature
         accent="blue"
@@ -93,9 +89,6 @@ export default function ProfesionalesPage() {
         phone={<PhoneRegistros />}
       />
 
-      <ProFeatureGrid />
-      <ProTestimonial />
-      <ProPricing />
       <ProDownload />
       <ProFAQ />
     </div>

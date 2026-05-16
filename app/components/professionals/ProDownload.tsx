@@ -67,49 +67,6 @@ export function ProDownload() {
               <StoreButton store="ios" />
               <StoreButton store="android" />
             </div>
-
-            {/* Stats */}
-            <div className="mt-10 flex items-center gap-6">
-              <div>
-                <p className="text-[32px] font-bold text-[color:var(--zonda-yellow)] [font-family:var(--font-display)]">
-                  4.8
-                </p>
-                <div className="mt-1 flex gap-0.5">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <svg
-                      key={i}
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                    >
-                      <path
-                        d="M6 0L7.5 4L12 4.5L8.5 7L9.5 11.5L6 9L2.5 11.5L3.5 7L0 4.5L4.5 4L6 0Z"
-                        fill="var(--zonda-yellow)"
-                      />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-              <div className="h-9 w-px bg-[color:rgba(255,255,255,0.18)]" />
-              <div>
-                <p className="text-[32px] font-bold text-[color:var(--zonda-yellow)] [font-family:var(--font-display)]">
-                  800+
-                </p>
-                <p className="mt-1 text-xs text-[color:rgba(248,250,255,0.7)]">
-                  profesionales activos
-                </p>
-              </div>
-              <div className="h-9 w-px bg-[color:rgba(255,255,255,0.18)]" />
-              <div>
-                <p className="text-[32px] font-bold text-[color:var(--zonda-yellow)] [font-family:var(--font-display)]">
-                  0$
-                </p>
-                <p className="mt-1 text-xs text-[color:rgba(248,250,255,0.7)]">
-                  para empezar
-                </p>
-              </div>
-            </div>
           </div>
 
           {/* Phone side */}

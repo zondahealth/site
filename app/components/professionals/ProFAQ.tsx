@@ -42,10 +42,10 @@ export function ProFAQ() {
           <p className="mt-4 max-w-[360px] text-base text-[color:var(--fg-2)]">
             Si no encontrás lo que buscás, escribinos a{' '}
             <a
-              href="mailto:hola@zonda.health"
+              href="mailto:support@zondahealth.com"
               className="font-semibold text-[color:var(--zonda-blue)]"
             >
-              hola@zonda.health
+              support@zondahealth.com
             </a>
             . Te respondemos en menos de un día hábil.
           </p>

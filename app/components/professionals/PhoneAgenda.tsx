@@ -15,18 +15,16 @@ const days = [
 const appointments = [
   { time: '09:00', name: 'María Etería', tag: 'Pre-consulta', color: '#226ffd' },
   { time: '10:30', name: 'Juan Martín', tag: 'Control', color: '#0dc958' },
-  { time: '12:00', name: 'Sofía Lugones', tag: 'Primera vez', color: '#eaea00' },
+  { time: '12:00', name: 'Sofía Lugones', tag: 'Primera vez', color: '#e6c800' },
 ];
-
-const tabs = ['agenda', 'pacientes', 'evol', 'perfil'];
 
 export function PhoneAgenda() {
   return (
     <PhoneFrame>
       {/* Month header */}
       <div className="flex items-center justify-between px-4 pt-2">
-        <span className="text-lg font-bold">Abril 2026</span>
-        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[color:rgba(34,111,253,0.1)] text-sm font-bold text-[color:var(--zonda-blue)]">
+        <span className="text-lg font-bold text-[#0d1117]">Abril 2026</span>
+        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#e8efff] text-sm font-bold text-[#226ffd]">
           +
         </div>
       </div>
@@ -38,8 +36,8 @@ export function PhoneAgenda() {
             key={day.n}
             className={`flex flex-col items-center rounded-[10px] py-2 ${
               day.active
-                ? 'bg-[color:var(--zonda-blue)] text-white'
-                : 'text-[color:var(--zonda-ink)]'
+                ? 'bg-[#226ffd] text-white'
+                : 'text-[#0d1117]'
             }`}
           >
             <span className="text-[10px] font-semibold opacity-70">
@@ -52,7 +50,7 @@ export function PhoneAgenda() {
 
       {/* Day label */}
       <div className="px-4 pt-4">
-        <p className="m-0 text-[11px] font-bold uppercase tracking-[0.08em] text-[color:var(--fg-3)]">
+        <p className="m-0 text-[11px] font-bold uppercase tracking-[0.08em] text-[#6b7280]">
           Jueves · 3 turnos
         </p>
       </div>
@@ -62,7 +60,7 @@ export function PhoneAgenda() {
         {appointments.map((appt) => (
           <div
             key={appt.time}
-            className="flex items-center gap-3 rounded-xl bg-[#f4f6fd] px-3.5 py-3"
+            className="flex items-center gap-3 rounded-xl bg-[#edf1fb] px-3.5 py-3"
           >
             <div
               className="h-9 w-1 rounded-sm"
@@ -70,30 +68,16 @@ export function PhoneAgenda() {
             />
             <div className="flex-1">
               <div className="flex items-baseline justify-between">
-                <span className="text-[13px] font-bold">{appt.name}</span>
-                <span className="font-mono text-[11px] text-[color:var(--fg-2)]">
+                <span className="text-[13px] font-bold text-[#0d1117]">
+                  {appt.name}
+                </span>
+                <span className="font-mono text-[11px] text-[#6b7280]">
                   {appt.time}
                 </span>
               </div>
-              <span className="text-[11px] text-[color:var(--fg-2)]">
-                {appt.tag}
-              </span>
+              <span className="text-[11px] text-[#6b7280]">{appt.tag}</span>
             </div>
           </div>
-        ))}
-      </div>
-
-      {/* Bottom tab bar */}
-      <div className="flex items-center justify-around border-t border-[color:rgba(21,27,43,0.06)] px-6 py-2.5">
-        {tabs.map((tab, i) => (
-          <div
-            key={tab}
-            className={`h-7 w-7 rounded-lg ${
-              i === 0
-                ? 'bg-[color:var(--zonda-blue)]'
-                : 'bg-[color:rgba(21,27,43,0.06)]'
-            }`}
-          />
         ))}
       </div>
     </PhoneFrame>
