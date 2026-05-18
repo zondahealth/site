@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 import { routing } from '../../i18n/routing';
 import { Button } from './ui/button';
@@ -26,7 +27,7 @@ type HeaderProps = {
 };
 
 const lightForegroundRoutes = [
-  // '/products/internacion-domiciliaria',
+  '/products/organizaciones',
   '/products/interoperabilidad',
   '/desarrolladores',
   '/empresa',
@@ -59,6 +60,8 @@ export function Header({
 }: HeaderProps) {
   const [backgroundOpacity, setBackgroundOpacity] = useState(0);
   const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
   const productMenuCloseTimeoutRef = useRef<ReturnType<
     typeof setTimeout
   > | null>(null);
@@ -154,6 +157,8 @@ export function Header({
 
   useEffect(() => {
     setIsProductMenuOpen(false);
+    setIsMobileMenuOpen(false);
+    setIsMobileProductsOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -162,13 +167,24 @@ export function Header({
     };
   }, []);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   const centralNavBold = !isProductMenuOpen && backgroundOpacity < 0.85;
   const navItemClassName = [
     'relative py-2 text-sm transition-colors duration-200',
     centralNavBold ? 'font-bold' : 'font-medium',
   ].join(' ');
   const useLightForeground =
-    isOverDarkHero && !isProductMenuOpen && backgroundOpacity < 0.62;
+    isOverDarkHero && !isProductMenuOpen && !isMobileMenuOpen && backgroundOpacity < 0.62;
   const inactiveNavItemClassName = useLightForeground
     ? 'text-[color:rgba(248,250,255,0.82)] hover:text-[color:rgba(248,250,255,0.98)]'
     : 'text-black hover:text-black';
@@ -183,7 +199,7 @@ export function Header({
     <header
       className="fixed inset-x-0 top-0 z-50 transition-[background-color] duration-500 ease-out"
       style={{
-        backgroundColor: isProductMenuOpen
+        backgroundColor: isProductMenuOpen || isMobileMenuOpen
           ? `rgb(${activeHeaderBackground})`
           : `rgba(${activeHeaderBackground}, ${backgroundOpacity})`,
       }}
@@ -297,8 +313,94 @@ export function Header({
           >
             <Link href={getLocalizedHref(loginHref)}>Iniciar sesión</Link>
           </Button>
-          <Button asChild size="sm" className="rounded-full px-5 sm:px-6">
+          <Button asChild size="sm" className="hidden rounded-full px-5 sm:px-6 md:inline-flex">
             <Link href={getLocalizedHref(getStartedHref)}>Contactanos</Link>
+          </Button>
+          <button
+            type="button"
+            className={[
+              'inline-flex items-center justify-center rounded-lg p-2 transition-colors duration-200 md:hidden',
+              useLightForeground
+                ? 'text-white hover:bg-[color:rgba(248,250,255,0.10)]'
+                : 'text-black hover:bg-[color:rgba(92,140,255,0.08)]',
+            ].join(' ')}
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      <div
+        className={[
+          'fixed inset-x-0 top-0 z-40 flex h-dvh flex-col overflow-y-auto bg-[rgb(244,246,253)] pt-[60px] transition-all duration-300 md:hidden',
+          isMobileMenuOpen
+            ? 'pointer-events-auto translate-y-0 opacity-100'
+            : 'pointer-events-none -translate-y-4 opacity-0',
+        ].join(' ')}
+      >
+        <nav className="flex flex-1 flex-col gap-1 px-6 py-6" aria-label="Navegación móvil">
+          {navigationItems.map((item) =>
+            item.products ? (
+              <div key={item.label}>
+                <button
+                  type="button"
+                  className="flex w-full items-center justify-between rounded-xl px-3 py-3 text-lg font-medium text-black transition-colors hover:bg-[color:rgba(92,140,255,0.08)]"
+                  onClick={() => setIsMobileProductsOpen((prev) => !prev)}
+                  aria-expanded={isMobileProductsOpen}
+                >
+                  {item.label}
+                  <ChevronDown
+                    className={[
+                      'h-5 w-5 transition-transform duration-200',
+                      isMobileProductsOpen ? 'rotate-180' : '',
+                    ].join(' ')}
+                  />
+                </button>
+                <div
+                  className={[
+                    'flex flex-col gap-1 overflow-hidden transition-all duration-200',
+                    isMobileProductsOpen
+                      ? 'max-h-96 opacity-100'
+                      : 'max-h-0 opacity-0',
+                  ].join(' ')}
+                >
+                  {item.products.map((product) => (
+                    <Link
+                      key={product.label}
+                      href={getLocalizedHref(product.href)}
+                      className="rounded-xl py-2.5 pl-6 pr-3 text-base font-medium text-[color:rgba(21,27,43,0.72)] transition-colors hover:bg-[color:rgba(92,140,255,0.08)] hover:text-black"
+                    >
+                      {product.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.label}
+                href={item.href ? getLocalizedHref(item.href) : '#'}
+                className="rounded-xl px-3 py-3 text-lg font-medium text-black transition-colors hover:bg-[color:rgba(92,140,255,0.08)]"
+              >
+                {item.label}
+              </Link>
+            )
+          )}
+        </nav>
+
+        <div className="flex flex-col gap-3 border-t border-[color:rgba(21,27,43,0.08)] px-6 py-6">
+          <Button asChild size="default" className="w-full rounded-full">
+            <Link href={getLocalizedHref(getStartedHref)}>Contactanos</Link>
+          </Button>
+          <Button asChild variant="outline" size="default" className="w-full rounded-full">
+            <Link href={getLocalizedHref(loginHref)}>Iniciar sesión</Link>
           </Button>
         </div>
       </div>

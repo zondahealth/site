@@ -3,43 +3,25 @@ import {
   FeaturePanelBackgroundStyling,
   FeaturePanelTone,
 } from '@/app/components/FeaturePanel';
-import { ImageSection } from '@/app/components/ImageSection';
+import { OrgFeature } from '@/app/components/organizations/OrgFeature';
+import { IngestaDiagram } from '@/app/components/organizations/IngestaDiagram';
+import { PatternsDashboard } from '@/app/components/organizations/PatternsDashboard';
+import { RolesVisual } from '@/app/components/organizations/RolesVisual';
+import { OrgUseCases } from '@/app/components/organizations/OrgUseCases';
+import Link from 'next/link';
 import Image from 'next/image';
-
-const sections = [
-  {
-    tone: FeaturePanelTone.Blue,
-    title: 'Ingestá datos desde cualquier fuente',
-    description:
-      'Historias clínicas, evoluciones, turnos, encuestas, dispositivos y más. Zonda centraliza toda la información de tus pacientes y profesionales en un único lugar, sin importar de dónde venga. Conectá sistemas existentes, cargá datos manualmente o automatizá la ingesta. Toda tu operación en un solo panel.',
-    image: '/assets/orgs/hero.png',
-    imageClassName: 'p-6',
-  },
-  {
-    tone: FeaturePanelTone.Purple,
-    title: 'Detectá patrones, anomalías y fraude',
-    description:
-      'Dashboards interactivos que se adaptan a lo que necesitás ver. Identificación automática de tendencias en datos clínicos, alertas en tiempo real cuando algo se sale de rango, y reportes personalizados por región, unidad o profesional. Visualizá la evolución de cada paciente, detectá inconsistencias y tomá decisiones con datos, no con intuición.',
-    image: '/assets/orgs/hero.png',
-    imageClassName: 'p-6',
-  },
-  {
-    tone: FeaturePanelTone.Green,
-    title: 'Roles claros, equipos organizados, múltiples entidades',
-    description:
-      'Definí la estructura de tu organización: equipos, profesionales, pacientes, sedes y permisos. Si operás con más de una entidad jurídica, gestioná todo desde un mismo lugar sin perder trazabilidad. Exportá datos en el formato que necesites, compartí reportes con stakeholders y mantené el compliance sin esfuerzo.',
-    image: '/assets/orgs/hero.png',
-  },
-];
+import { Button } from '@/app/components/ui/button';
 
 export default function OrganizacionesPage() {
   return (
-    <div className="space-y-32 pb-16">
+    <div className="pb-16">
+      {/* Hero — unchanged */}
       <section className="flex w-full flex-col">
         <FeaturePanel
           className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
           tone={FeaturePanelTone.DarkBlueLines}
-          backgroundStyling={FeaturePanelBackgroundStyling.WhiteLines}
+          darkenBackground="medium"
+          backgroundStyling={FeaturePanelBackgroundStyling.Lines}
           contentClassName="grid grid-cols-1 lg:grid-cols-2 flex-1 pt-24 lg:py-12 mx-auto max-w-7xl w-full"
         >
           <div className="flex min-w-0 flex-col items-center justify-center px-16 lg:px-12 lg:py-24 text-center lg:items-start lg:text-left">
@@ -47,33 +29,85 @@ export default function OrganizacionesPage() {
               <span className="text-5xl lg:text-6xl xl:text-7xl font-bold [font-family:var(--font-display-family)] text-vitality-yellow">
                 Visibilidad total de tu operación de salud.
               </span>
-              <span className="text-white/80 text-3xl md:text-4xl">
+              <span className="text-white text-3xl md:text-4xl">
                 Cero puntos ciegos.
               </span>
             </h1>
           </div>
 
-          <div className="relative hidden lg:block h-full overflow-visible">
+          <div className="hidden lg:flex h-full min-w-0 items-center justify-center overflow-hidden">
             <Image
               src="/assets/orgs/hero.png"
               alt="Organizaciones"
               width={500}
               height={500}
-              className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 h-[85%] w-auto max-w-none object-contain object-bottom"
-              sizes="100%"
+              className="pointer-events-none max-h-[70%] w-auto max-w-full object-contain"
+              sizes="90%"
             />
           </div>
         </FeaturePanel>
       </section>
 
-      {sections.map((section) => (
-        <section key={section.title}>
-          <ImageSection
-            title={section.title}
-            description={section.description}
-          />
-        </section>
-      ))}
+      <OrgFeature
+        eyebrow="CAPÍTULO 01 · INGESTA"
+        title="Ingestá datos desde cualquier fuente."
+        copy="Historias clínicas, evoluciones, turnos, encuestas, dispositivos y más. Zonda centraliza toda la información de tus pacientes y profesionales en un único lugar — sin importar de dónde venga."
+        bullets={[
+          'FHIR R4 · HL7v2 · CSV · API REST',
+          'Mapeo automático de esquemas legacy',
+          'Ingesta manual o automatizada por webhook',
+        ]}
+        cta="Ver integraciones soportadas"
+        visual={<IngestaDiagram />}
+      />
+
+      <OrgFeature
+        eyebrow="CAPÍTULO 02 · INTELIGENCIA"
+        title="Detectá patrones, anomalías y fraude."
+        copy="Dashboards interactivos que se adaptan a lo que necesitás ver. Identificación automática de tendencias en datos clínicos, alertas en tiempo real cuando algo se sale de rango, y reportes personalizados por región, unidad o profesional."
+        bullets={[
+          'Alertas configurables en tiempo real',
+          'Detección automática de outliers',
+          'Reportes exportables a PDF, Excel, FHIR',
+        ]}
+        cta="Ver casos de detección de fraude"
+        visual={<PatternsDashboard />}
+        flip
+      />
+
+      <OrgFeature
+        eyebrow="CAPÍTULO 03 · GOBIERNO"
+        title="Roles claros. Equipos organizados. Múltiples entidades."
+        copy="Definí la estructura de tu organización: equipos, profesionales, pacientes, sedes y permisos. Si operás con más de una entidad jurídica, gestioná todo desde un mismo lugar sin perder trazabilidad."
+        bullets={[
+          'Permisos granulares por rol y sede',
+          'Auditoría completa de quién hizo qué y cuándo',
+          'Compartí reportes con stakeholders sin romper el compliance',
+        ]}
+        cta="Ver matriz de permisos completa"
+        visual={<RolesVisual />}
+      />
+
+      <OrgUseCases />
+
+      {/* CTA */}
+      <section className="py-10">
+        <div className="layout-shell">
+          <FeaturePanel
+            tone={FeaturePanelTone.DarkBlueLines}
+            contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-24 sm:px-12 sm:py-32 lg:px-20 lg:py-48"
+          >
+            <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-3xl lg:text-6xl text-white [font-family:var(--font-display-family)]">
+              Conectá tu operación. <br />
+              <span className="text-vitality-yellow">Agendá una demo.</span>
+            </div>
+
+            <Button asChild size="lg" className="min-w-48" variant="primary">
+              <Link href="/contacto">Contáctanos</Link>
+            </Button>
+          </FeaturePanel>
+        </div>
+      </section>
     </div>
   );
 }
