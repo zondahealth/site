@@ -24,25 +24,25 @@ export default function OrganizacionesPage() {
           backgroundStyling={FeaturePanelBackgroundStyling.Lines}
           contentClassName="grid grid-cols-1 lg:grid-cols-2 flex-1 pt-24 lg:py-12 mx-auto max-w-7xl w-full"
         >
-          <div className="flex min-w-0 flex-col items-center justify-center px-16 lg:px-12 lg:py-24 text-center lg:items-start lg:text-left">
+          <div className="flex min-w-0 flex-col items-center justify-end lg:justify-center px-16 lg:px-12 lg:py-24 text-center lg:items-start lg:text-left">
             <h1 className="font-bold gap-4 lg:gap-6 flex flex-col text-white">
-              <span className="text-5xl lg:text-6xl xl:text-7xl font-bold [font-family:var(--font-display-family)] text-vitality-yellow">
+              <span className="text-6xl lg:text-7xl font-bold [font-family:var(--font-display-family)] text-vitality-yellow">
                 Visibilidad total de tu operación de salud.
               </span>
-              <span className="text-white text-3xl md:text-4xl">
+              <span className="text-white text-4xl md:text-5xl">
                 Cero puntos ciegos.
               </span>
             </h1>
           </div>
 
-          <div className="hidden lg:flex h-full min-w-0 items-center justify-center overflow-hidden">
+          <div className="flex items-center justify-center px-8 py-4 lg:relative lg:block lg:h-full lg:min-w-0 lg:overflow-visible lg:px-0 lg:py-0">
             <Image
               src="/assets/orgs/hero.png"
               alt="Organizaciones"
-              width={500}
-              height={500}
-              className="pointer-events-none max-h-[70%] w-auto max-w-full object-contain"
-              sizes="90%"
+              width={700}
+              height={700}
+              className="pointer-events-none min-h-[340px] max-h-[40vh] w-auto object-contain lg:absolute lg:top-1/2 lg:left-0 lg:-translate-y-1/2 lg:min-h-0 lg:max-h-none lg:h-[60%] xl:h-[85%] lg:max-w-none"
+              sizes="100%"
             />
           </div>
         </FeaturePanel>

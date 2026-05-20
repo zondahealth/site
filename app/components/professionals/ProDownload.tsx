@@ -1,5 +1,11 @@
 import { PhoneAgenda } from './PhoneAgenda';
 
+const storeLinks = {
+  ios: 'https://apps.apple.com/ar/app/zonda-profesionales/id6763732524?l=en-GB',
+  android:
+    'https://play.google.com/store/apps/details?id=com.zonda.professionals&pcampaignid=web_share',
+};
+
 function StoreButton({ store }: { store: 'ios' | 'android' }) {
   const icon =
     store === 'ios' ? (
@@ -22,7 +28,9 @@ function StoreButton({ store }: { store: 'ios' | 'android' }) {
 
   return (
     <a
-      href="#"
+      href={storeLinks[store]}
+      target="_blank"
+      rel="noopener noreferrer"
       className="inline-flex h-14 items-center gap-3 rounded-xl bg-[#fcfcff] px-[22px] text-[#0d0d0d] no-underline transition-opacity hover:opacity-90"
     >
       {icon}

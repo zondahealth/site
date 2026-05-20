@@ -28,6 +28,8 @@ export enum FeaturePanelTone {
   SolidYellow = 'solid-yellow',
   SolidLightYellow = 'solid-light-yellow',
   SolidGreen = 'solid-green',
+  SolidDarkBlue = 'solid-dark-blue',
+  SolidDarkGreen = 'solid-dark-green',
   GradientBlack = 'gradient-black',
   Black = 'black',
   White = 'white',
@@ -80,6 +82,8 @@ const toneBackgrounds: Partial<Record<FeaturePanelTone, string>> = {
   [FeaturePanelTone.SolidBlue]: `#004ed3`,
   [FeaturePanelTone.SolidYellow]: `#e6c800`, // darker, vibrant yellow that still allows white font
   [FeaturePanelTone.SolidGreen]: `#00a878`,
+  [FeaturePanelTone.SolidDarkBlue]: `#0e3c4a`,
+  [FeaturePanelTone.SolidDarkGreen]: `#005348`,
   [FeaturePanelTone.SolidLightYellow]: `#fff59d`,
   [FeaturePanelTone.Transparent]: `transparent`,
 };

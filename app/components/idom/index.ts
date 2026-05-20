@@ -1,0 +1,14 @@
+export { InternacionPage } from './InternacionPage';
+export { IntHeader } from './IntHeader';
+export { IntHero } from './IntHero';
+export { IntLogos } from './IntLogos';
+export { IntFlow } from './IntFlow';
+export { IntFeatureShell } from './IntFeatureShell';
+export { IntFeatureOffice } from './IntFeatureOffice';
+export { IntFeatureField } from './IntFeatureField';
+export { IntFeatureAudit } from './IntFeatureAudit';
+export { IntStatsBand } from './IntStatsBand';
+export { IntTestimonial } from './IntTestimonial';
+export { IntDemoCTA } from './IntDemoCTA';
+export { IntFAQ } from './IntFAQ';
+export { RoutePin } from './RoutePin';

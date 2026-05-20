@@ -37,7 +37,7 @@ const products = [
       'Evoluciones con firma digital y firma electrónica',
     ],
     cta: 'Conocer más',
-    href: '/platform/professional',
+    href: '/products/profesionales',
   },
   {
     number: '03',
@@ -260,7 +260,7 @@ export default function App() {
                     impacto y auditoría sin fricción, sin reemplazar lo que ya
                     existe.
                   </p>
-                  <ExploreButton href="/docs" title="Explorar la API" />
+                  <ExploreButton href="/desarrolladores" title="Explorar la API" />
                 </div>
                 <div className="relative min-h-[20rem] lg:min-h-[28rem] overflow-hidden rounded-md">
                   <Image

@@ -28,11 +28,12 @@ type HeaderProps = {
 
 const lightForegroundRoutes = [
   '/products/organizaciones',
+  '/products/internacion-domiciliaria',
   '/products/interoperabilidad',
   '/desarrolladores',
   '/empresa',
 ];
-const activeHeaderBackground = '244, 246, 253';
+const activeHeaderBackground = '255, 255, 255';
 
 const productLinks: ProductLink[] = [
   { href: '/products/profesionales', label: 'Profesionales' },
@@ -184,7 +185,10 @@ export function Header({
     centralNavBold ? 'font-bold' : 'font-medium',
   ].join(' ');
   const useLightForeground =
-    isOverDarkHero && !isProductMenuOpen && !isMobileMenuOpen && backgroundOpacity < 0.62;
+    isOverDarkHero &&
+    !isProductMenuOpen &&
+    !isMobileMenuOpen &&
+    backgroundOpacity < 0.62;
   const inactiveNavItemClassName = useLightForeground
     ? 'text-[color:rgba(248,250,255,0.82)] hover:text-[color:rgba(248,250,255,0.98)]'
     : 'text-black hover:text-black';
@@ -199,9 +203,10 @@ export function Header({
     <header
       className="fixed inset-x-0 top-0 z-50 transition-[background-color] duration-500 ease-out"
       style={{
-        backgroundColor: isProductMenuOpen || isMobileMenuOpen
-          ? `rgb(${activeHeaderBackground})`
-          : `rgba(${activeHeaderBackground}, ${backgroundOpacity})`,
+        backgroundColor:
+          isProductMenuOpen || isMobileMenuOpen
+            ? `rgb(${activeHeaderBackground})`
+            : `rgba(${activeHeaderBackground}, ${backgroundOpacity})`,
       }}
     >
       <div className="layout-shell flex items-center justify-between py-3 sm:py-4">
@@ -263,7 +268,7 @@ export function Header({
                   onMouseEnter={openProductMenu}
                   onMouseLeave={scheduleProductMenuClose}
                   className={[
-                    'absolute inset-x-0 top-full z-20 border-t border-[color:rgba(21,27,43,0.08)] bg-[color:rgba(244,246,253,0.98)] shadow-[0_24px_48px_-28px_rgba(14,60,117,0.22)] transition-all duration-200',
+                    'absolute inset-x-0 top-full z-20 border-t border-[color:rgba(21,27,43,0.08)] bg-[color:rgba(255,255,255,0.98)] shadow-[0_24px_48px_-28px_rgba(14,60,117,0.22)] transition-all duration-200',
                     isProductMenuOpen
                       ? 'pointer-events-auto translate-y-0 opacity-100'
                       : 'pointer-events-none translate-y-2 opacity-0',
@@ -313,7 +318,11 @@ export function Header({
           >
             <Link href={getLocalizedHref(loginHref)}>Iniciar sesión</Link>
           </Button>
-          <Button asChild size="sm" className="hidden rounded-full px-5 sm:px-6 md:inline-flex">
+          <Button
+            asChild
+            size="sm"
+            className="hidden rounded-full px-5 sm:px-6 md:inline-flex"
+          >
             <Link href={getLocalizedHref(getStartedHref)}>Contactanos</Link>
           </Button>
           <button
@@ -340,13 +349,16 @@ export function Header({
       {/* Mobile menu */}
       <div
         className={[
-          'fixed inset-x-0 top-0 z-40 flex h-dvh flex-col overflow-y-auto bg-[rgb(244,246,253)] pt-[60px] transition-all duration-300 md:hidden',
+          'fixed inset-x-0 bottom-0 top-[60px] flex flex-col overflow-y-auto bg-white transition-all duration-300 md:hidden',
           isMobileMenuOpen
             ? 'pointer-events-auto translate-y-0 opacity-100'
             : 'pointer-events-none -translate-y-4 opacity-0',
         ].join(' ')}
       >
-        <nav className="flex flex-1 flex-col gap-1 px-6 py-6" aria-label="Navegación móvil">
+        <nav
+          className="flex flex-1 flex-col gap-1 px-6 py-6"
+          aria-label="Navegación móvil"
+        >
           {navigationItems.map((item) =>
             item.products ? (
               <div key={item.label}>
@@ -399,7 +411,12 @@ export function Header({
           <Button asChild size="default" className="w-full rounded-full">
             <Link href={getLocalizedHref(getStartedHref)}>Contactanos</Link>
           </Button>
-          <Button asChild variant="outline" size="default" className="w-full rounded-full">
+          <Button
+            asChild
+            variant="outline"
+            size="default"
+            className="w-full rounded-full"
+          >
             <Link href={getLocalizedHref(loginHref)}>Iniciar sesión</Link>
           </Button>
         </div>
