@@ -1,10 +1,15 @@
+'use client';
+
+import { useLanguage } from '@/app/components/LanguageProvider';
 import { IntFeatureShell } from './IntFeatureShell';
 
 function PhoneVisitContent() {
+  const { t } = useLanguage();
+
   return (
     <div style={{ padding: '12px 12px 0', flex: 1, display: 'flex', flexDirection: 'column', gap: 10 }}>
       <p className="font-mono" style={{ margin: 0, fontSize: 9, color: 'var(--fg-3)', letterSpacing: '.06em' }}>
-        VISITA EN CURSO
+        {t('site.products.idom.ui.visitInProgress')}
       </p>
       <div>
         <p style={{ margin: 0, fontSize: 18, fontWeight: 700 }}>María Etería</p>
@@ -20,7 +25,9 @@ function PhoneVisitContent() {
           padding: '8px 10px',
         }}
       >
-        <p style={{ margin: 0, fontSize: 9, fontWeight: 700, color: '#0a7a4a' }}>✓ EN UBICACIÓN</p>
+        <p style={{ margin: 0, fontSize: 9, fontWeight: 700, color: '#0a7a4a' }}>
+          {t('site.products.idom.ui.inLocation')}
+        </p>
         <p style={{ margin: '2px 0 0', fontSize: 10, color: 'var(--zonda-ink)' }}>Av. Cabildo 3214 · 5°B</p>
       </div>
       <div style={{ marginTop: 6, display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -28,9 +35,9 @@ function PhoneVisitContent() {
         {(
           [
             ['Toma de signos', true],
-            ['Curación de úlcera', true],
+            [t('site.products.idom.ui.woundCare'), true],
             ['Insulina basal', false],
-            ['Aspiración', false],
+            [t('site.products.idom.ui.aspiration'), false],
           ] as const
         ).map(([l, done]) => (
           <div key={l} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 11 }}>
@@ -79,13 +86,15 @@ function PhoneVisitContent() {
 }
 
 function PhoneRecordContent() {
+  const { t } = useLanguage();
+
   return (
     <div style={{ padding: '12px 12px 0', flex: 1, display: 'flex', flexDirection: 'column', gap: 10 }}>
       <p className="font-mono" style={{ margin: 0, fontSize: 9, color: '#0a7a4a', letterSpacing: '.06em' }}>
-        ● GRABANDO EVOLUCIÓN
+        {t('site.products.idom.ui.recording')}
       </p>
       <p style={{ margin: 0, fontSize: 14, fontWeight: 700, lineHeight: 1.3 }}>
-        &quot;Paciente con buena tolerancia a la dieta. Saturación 96. Sin dolor reportado...&quot;
+        &quot;{t('site.products.idom.ui.voiceNote')}&quot;
       </p>
       <div
         style={{
@@ -97,7 +106,7 @@ function PhoneRecordContent() {
         }}
       >
         <p style={{ margin: 0, fontSize: 9, fontWeight: 700, color: '#7a3eff', letterSpacing: '.06em' }}>
-          ✦ IA ESTRUCTURÓ
+          {t('site.products.idom.ui.aiStructured')}
         </p>
         <div style={{ marginTop: 6, display: 'flex', flexDirection: 'column', gap: 4 }}>
           <p style={{ margin: 0, fontSize: 10, color: 'var(--zonda-ink)' }}>
@@ -222,16 +231,14 @@ function FieldPhoneCluster() {
 }
 
 export function IntFeatureField() {
+  const { raw, t } = useLanguage();
+
   return (
     <IntFeatureShell
-      eyebrow="EN CAMPO · APP MÓVIL"
-      title="El profesional tiene todo lo que necesita en su celular."
-      copy="Recibe la visita asignada, sigue la mejor ruta, registra lo que hizo hablándole al teléfono y obtiene la firma del paciente. Todo desde la app, incluso sin internet."
-      bullets={[
-        'Funciona sin conexión y se sincroniza después',
-        'Dicta la evolución por voz y la IA la organiza',
-        'Confirma presencia automáticamente por ubicación',
-      ]}
+      eyebrow={t('site.products.idom.field.eyebrow')}
+      title={t('site.products.idom.field.title')}
+      copy={t('site.products.idom.field.copy')}
+      bullets={raw<string[]>('site.products.idom.field.bullets')}
       visual={<FieldPhoneCluster />}
       flip={true}
     />

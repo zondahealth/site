@@ -2,30 +2,13 @@
 
 import { useState } from 'react';
 
-const INT_FAQ = [
-  [
-    '¿Funciona sin internet?',
-    'Sí. La app guarda todo lo que hace el profesional en el celular y lo sube cuando vuelve a tener señal. Nunca se pierde información ni se frena el trabajo.',
-  ],
-  [
-    '¿Se conecta con nuestro sistema de facturación?',
-    'Sí. Nos integramos con los sistemas de facturación más usados en Argentina. Nuestro equipo configura la conexión durante la implementación, sin costo adicional.',
-  ],
-  [
-    '¿Sirve para cualquier obra social?',
-    'Trabajamos con los formatos de OSDE, Swiss Medical, PAMI, IOMA y muchos más. Si tu obra social usa un formato distinto, lo agregamos rápidamente.',
-  ],
-  [
-    '¿Cada persona ve solo lo que le corresponde?',
-    'Sí. Cada rol tiene su vista: el profesional ve sus visitas, el coordinador ve su equipo, el director ve todo. Y queda registro de quién hizo qué.',
-  ],
-  [
-    '¿Cuánto tarda ponerlo en marcha?',
-    'Entre 2 y 4 semanas. Arrancamos con la configuración y la conexión a tu sistema, después hacemos una prueba con un equipo chico, y de ahí se extiende al resto.',
-  ],
-] as const;
+import { useLanguage } from '@/app/components/LanguageProvider';
+
+type FAQ = { q: string; a: string };
 
 export function IntFAQ() {
+  const { raw, t } = useLanguage();
+  const faqs = raw<FAQ[]>('site.products.idom.faqs');
   const [open, setOpen] = useState(0);
   return (
     <section className="py-24">
@@ -35,10 +18,10 @@ export function IntFAQ() {
             FAQ
           </p>
           <h2 className="mt-3 max-w-[360px] text-balance text-3xl font-bold leading-[1.05] tracking-tight lg:text-[44px]">
-            Preguntas frecuentes.
+            {t('site.products.idom.faqTitle')}
           </h2>
           <p className="mt-4 max-w-[360px] text-base text-[color:var(--fg-2)]">
-            ¿Tenés otra consulta? Escribinos a{' '}
+            {t('site.products.idom.faqPrefix')}{' '}
             <a
               href="mailto:support@zondahealth.com"
               className="font-semibold text-[color:var(--zonda-blue)]"
@@ -49,13 +32,13 @@ export function IntFAQ() {
           </p>
         </div>
         <div>
-          {INT_FAQ.map(([q, a], i) => (
+          {faqs.map((item, i) => (
             <div
-              key={q}
+              key={item.q}
               style={{
                 borderTop: '1px solid rgba(21,27,43,.10)',
                 borderBottom:
-                  i === INT_FAQ.length - 1
+                  i === faqs.length - 1
                     ? '1px solid rgba(21,27,43,.10)'
                     : '0',
               }}
@@ -79,7 +62,7 @@ export function IntFAQ() {
                     color: 'var(--zonda-ink)',
                   }}
                 >
-                  {q}
+                  {item.q}
                 </span>
                 <span
                   style={{
@@ -111,7 +94,7 @@ export function IntFAQ() {
                     maxWidth: 600,
                   }}
                 >
-                  {a}
+                  {item.a}
                 </p>
               )}
             </div>

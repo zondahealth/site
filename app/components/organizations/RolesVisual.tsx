@@ -1,27 +1,28 @@
+'use client';
+
+import { useLanguage } from '@/app/components/LanguageProvider';
+
 const rows = [
-  { role: 'Director Médico', cells: ['full', 'full', 'full', 'full'] },
-  { role: 'Médico', cells: ['read', 'edit', 'own', 'none'] },
-  { role: 'Enfermería', cells: ['read', 'edit', 'none', 'none'] },
-  { role: 'Administración', cells: ['read', 'none', 'edit', 'edit'] },
-  { role: 'Auditor externo', cells: ['read', 'read', 'read', 'read'] },
+  { cells: ['full', 'full', 'full', 'full'] },
+  { cells: ['read', 'edit', 'own', 'none'] },
+  { cells: ['read', 'edit', 'none', 'none'] },
+  { cells: ['read', 'none', 'edit', 'edit'] },
+  { cells: ['read', 'read', 'read', 'read'] },
 ] as const;
 
 const cellStyles: Record<
   string,
-  { bg: string; fg: string; label: string }
+  { bg: string; fg: string }
 > = {
-  full: { bg: 'bg-[color:var(--zonda-blue)]', fg: 'text-white', label: 'Total' },
+  full: { bg: 'bg-[color:var(--zonda-blue)]', fg: 'text-white' },
   edit: {
     bg: 'bg-[color:rgba(34,111,253,0.18)]',
     fg: 'text-[color:var(--zonda-blue)]',
-    label: 'Editar',
   },
-  read: { bg: 'bg-[color:rgba(21,27,43,0.06)]', fg: 'text-[color:var(--fg-2)]', label: 'Leer' },
-  own: { bg: 'bg-[color:rgba(234,234,0,0.22)]', fg: 'text-[#7a7a00]', label: 'Propios' },
-  none: { bg: 'bg-transparent', fg: 'text-[color:rgba(21,27,43,0.25)]', label: '—' },
+  read: { bg: 'bg-[color:rgba(21,27,43,0.06)]', fg: 'text-[color:var(--fg-2)]' },
+  own: { bg: 'bg-[color:rgba(234,234,0,0.22)]', fg: 'text-[#7a7a00]' },
+  none: { bg: 'bg-transparent', fg: 'text-[color:rgba(21,27,43,0.25)]' },
 };
-
-const headers = ['Pacientes', 'Evoluciones', 'Facturación', 'Auditoría'];
 
 function OrgTreeRow({
   indent,
@@ -65,14 +66,23 @@ function OrgTreeRow({
 }
 
 export function RolesVisual() {
+  const { raw, t } = useLanguage();
+  const headers = raw<string[]>('site.products.organizations.roles.headers');
+  const roleLabels = raw<string[]>('site.products.organizations.roles.rows');
+  const labels = raw<Record<string, string>>(
+    'site.products.organizations.roles.labels'
+  );
+
   return (
     <div className="flex flex-col gap-4">
       {/* Permissions matrix */}
       <div className="rounded-xl border border-[color:rgba(21,27,43,0.08)] bg-[#fcfcff] p-5 shadow-[0_20px_40px_-28px_rgba(7,17,48,0.15)]">
         <div className="mb-3.5 flex items-baseline justify-between">
-          <p className="text-xs font-bold">Matriz de permisos</p>
+          <p className="text-xs font-bold">
+            {t('site.products.organizations.roles.matrixTitle')}
+          </p>
           <p className="font-mono text-[10px] text-[color:var(--fg-3)]">
-            Sede Centro · 5 roles
+            {t('site.products.organizations.roles.matrixMeta')}
           </p>
         </div>
         <div className="grid grid-cols-[1.5fr_repeat(4,1fr)] gap-1">
@@ -85,10 +95,10 @@ export function RolesVisual() {
               {h}
             </p>
           ))}
-          {rows.map((r) => (
-            <div key={r.role} className="col-span-5 grid grid-cols-subgrid">
+          {rows.map((r, rowIndex) => (
+            <div key={roleLabels[rowIndex]} className="col-span-5 grid grid-cols-subgrid">
               <div className="flex items-center py-2 text-xs font-semibold">
-                {r.role}
+                {roleLabels[rowIndex]}
               </div>
               {r.cells.map((perm, i) => {
                 const s = cellStyles[perm];
@@ -97,7 +107,7 @@ export function RolesVisual() {
                     key={i}
                     className={`flex h-[30px] items-center justify-center rounded-md text-[10px] font-bold ${s.bg} ${s.fg}`}
                   >
-                    {s.label}
+                    {labels[perm]}
                   </div>
                 );
               })}
@@ -109,17 +119,19 @@ export function RolesVisual() {
       {/* Org tree */}
       <div className="rounded-xl border border-[color:rgba(21,27,43,0.08)] bg-[#fcfcff] p-5 shadow-[0_20px_40px_-28px_rgba(7,17,48,0.15)]">
         <div className="mb-3.5 flex items-baseline justify-between">
-          <p className="text-xs font-bold">Estructura · Red Salud Sur</p>
+          <p className="text-xs font-bold">
+            {t('site.products.organizations.roles.treeTitle')}
+          </p>
           <p className="font-mono text-[10px] text-[color:var(--fg-3)]">
-            3 entidades · 6 sedes
+            {t('site.products.organizations.roles.treeMeta')}
           </p>
         </div>
         <div className="flex flex-col gap-1.5">
-          <OrgTreeRow indent={0} icon="◆" name="Red Salud Sur S.A." sub="Holding" count="284" />
-          <OrgTreeRow indent={1} icon="●" name="Clínica Centro" sub="Entidad jurídica" count="142" />
-          <OrgTreeRow indent={2} icon="▸" name="Sede Centro" sub="6 profesionales" count="98" />
-          <OrgTreeRow indent={2} icon="▸" name="Sede Anexa" sub="3 profesionales" count="44" />
-          <OrgTreeRow indent={1} icon="●" name="HomeCare Sur" sub="Entidad jurídica" count="142" />
+          <OrgTreeRow indent={0} icon="◆" name={t('site.products.organizations.roles.holding')} sub={t('site.products.organizations.roles.holdingType')} count="284" />
+          <OrgTreeRow indent={1} icon="●" name={t('site.products.organizations.roles.clinic')} sub={t('site.products.organizations.roles.legalEntity')} count="142" />
+          <OrgTreeRow indent={2} icon="▸" name={t('site.products.organizations.roles.centerSite')} sub={t('site.products.organizations.roles.sixProfessionals')} count="98" />
+          <OrgTreeRow indent={2} icon="▸" name={t('site.products.organizations.roles.annexSite')} sub={t('site.products.organizations.roles.threeProfessionals')} count="44" />
+          <OrgTreeRow indent={1} icon="●" name={t('site.products.organizations.roles.homeCare')} sub={t('site.products.organizations.roles.legalEntity')} count="142" />
         </div>
       </div>
     </div>

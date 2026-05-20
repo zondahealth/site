@@ -2,30 +2,13 @@
 
 import { useState } from 'react';
 
-const FAQ_ITEMS: [string, string][] = [
-  [
-    '¿Necesito instalar algo en mi consultorio?',
-    'No. Zonda funciona en el navegador y en la app móvil. Lo único que necesitás es internet — incluso desde el celular.',
-  ],
-  [
-    '¿Mis datos están seguros?',
-    'Sí. Cifrado end-to-end, almacenamiento en Argentina y cumplimiento con la Ley 26.529 de Derechos del Paciente. Tu data es tuya.',
-  ],
-  [
-    '¿Cuánto tarda en estar operativo?',
-    '5 minutos. Te registrás, conectás tus organizaciones (OSDE, Swiss Medical, PAMI, etc.) y empezás a cargar pacientes.',
-  ],
-  [
-    '¿Puedo migrar mis pacientes desde otro sistema?',
-    'Sí. Importamos desde Excel, CSV o vía API desde la mayoría de los sistemas populares en Argentina. Te asistimos en la migración sin costo.',
-  ],
-  [
-    '¿Qué pasa si me quiero ir?',
-    'Te exportás toda tu información en formato estándar (FHIR, CSV). Sin candados, sin letra chica.',
-  ],
-];
+import { useLanguage } from '@/app/components/LanguageProvider';
+
+type FAQItem = { q: string; a: string };
 
 export function ProFAQ() {
+  const { raw, t } = useLanguage();
+  const faqItems = raw<FAQItem[]>('site.products.professionals.faqs');
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
@@ -34,30 +17,30 @@ export function ProFAQ() {
         {/* Left column */}
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.12em] text-[color:var(--fg-2)]">
-            Dudas frecuentes
+            {t('site.products.professionals.faqEyebrow')}
           </p>
           <h2 className="mt-3 max-w-[360px] text-3xl font-bold leading-tight tracking-tight lg:text-[44px]">
-            ¿Algo que te frena?
+            {t('site.products.professionals.faqTitle')}
           </h2>
           <p className="mt-4 max-w-[360px] text-base text-[color:var(--fg-2)]">
-            Si no encontrás lo que buscás, escribinos a{' '}
+            {t('site.products.professionals.faqCopyPrefix')}{' '}
             <a
               href="mailto:support@zondahealth.com"
               className="font-semibold text-[color:var(--zonda-blue)]"
             >
               support@zondahealth.com
             </a>
-            . Te respondemos en menos de un día hábil.
+            . {t('site.products.professionals.faqCopySuffix')}
           </p>
         </div>
 
         {/* Right column — accordion */}
         <div>
-          {FAQ_ITEMS.map(([question, answer], i) => (
+          {faqItems.map((item, i) => (
             <div
-              key={question}
+              key={item.q}
               className={`border-t border-[color:rgba(21,27,43,0.10)] ${
-                i === FAQ_ITEMS.length - 1
+                i === faqItems.length - 1
                   ? 'border-b border-b-[color:rgba(21,27,43,0.10)]'
                   : ''
               }`}
@@ -68,7 +51,7 @@ export function ProFAQ() {
                 className="flex w-full items-center justify-between gap-6 py-5 text-left"
               >
                 <span className="text-lg font-semibold text-[color:var(--zonda-ink)]">
-                  {question}
+                  {item.q}
                 </span>
                 <span
                   className={`inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-base font-semibold transition-all duration-200 ${
@@ -82,7 +65,7 @@ export function ProFAQ() {
               </button>
               {openIndex === i && (
                 <p className="max-w-[560px] pb-5 text-[15px] leading-relaxed text-[color:var(--fg-2)]">
-                  {answer}
+                  {item.a}
                 </p>
               )}
             </div>

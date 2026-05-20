@@ -13,7 +13,9 @@
       "patientExperience": "Patient Experience",
       "multiOrg": "Multiple Organizations",
       "modules": "Modules",
-      "caseStudies": "Case Studies"
+      "caseStudies": "Case Studies",
+      "homeCare": "Home Care",
+      "company": "Company"
     },
     "buttons": {
       "login": "Login",
@@ -41,6 +43,7 @@
       "contact": "Contact",
       "allRightsReserved": "All rights reserved",
       "fromSanJuan": "From San Juan, Argentina",
+      "navigation": "Navigation",
       "description": "Transforming health management with innovative technology. We simplify medical administration for professionals and patients."
     }
   },
@@ -831,6 +834,398 @@
       "conclusion": {
         "title": "Conclusion",
         "description": "Through the synergy between Data & Analytics and AI, Zonda Health helped this organization evolve towards an intelligent audit model and evidence-based management, in which data becomes knowledge and control becomes a strategic tool to improve the quality, transparency, and efficiency of the healthcare system."
+      }
+    }
+  },
+  "site": {
+    "common": {
+      "talk": "Let’s talk",
+      "contact": "Contact us",
+      "contactAlt": "Contact us",
+      "readMore": "Read more",
+      "exploreApi": "Explore the API",
+      "homeAria": "Zonda Health home",
+      "mainNavAria": "Main navigation",
+      "mobileNavAria": "Mobile navigation",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu"
+    },
+    "home": {
+      "hero": {
+        "titlePrefix": "The health data infrastructure for",
+        "titleHighlight": "Latin America",
+        "copy": "Zonda connects organizations, professionals and patients in one unified clinical intelligence layer without replacing what already exists.",
+        "cta": "Let’s talk"
+      },
+      "problem": {
+        "title": "Health systems are complex.",
+        "highlight": "We have the infrastructure to solve it.",
+        "copy": "Every organization manages its data in isolation. Professionals jump between platforms that do not talk to each other. Patients move through disconnected points of care.",
+        "statement": "It is not a coincidence. It is a structural limitation.",
+        "statement2": "And it can be solved.",
+        "imageAlt": "Health data infrastructure"
+      },
+      "stories": {
+        "eyebrow": "Stories",
+        "title": "Healthcare teams that have already changed how they operate."
+      },
+      "results": {
+        "eyebrow": "Results",
+        "title": "Improve your outcomes and the service you provide to patients.",
+        "copy": "Organizations choose Zonda because it integrates easily, is operational from day one, and creates real-time traceability built for Latin America.",
+        "stats": [
+          { "value": "+30%", "label": "Operational cost savings" },
+          { "value": "+40%", "label": "Reduction in waiting times" },
+          { "value": "+35%", "label": "Reduction in medical errors" },
+          { "value": "+30%", "label": "Fraud detection" }
+        ]
+      },
+      "platform": {
+        "eyebrow": "Platform",
+        "title": "Different solutions.",
+        "highlight": "Under one platform.",
+        "products": [
+          {
+            "number": "01",
+            "title": "Organizations",
+            "subtitle": "CLINICS, HOSPITALS AND MULTI-ORGANIZATION NETWORKS",
+            "description": "Digitize your organization without replacing existing systems. Know your patients, your staff and, most importantly, your business.",
+            "features": ["Unified medical record", "Progress note and database management", "Real-time interoperability"],
+            "cta": "Learn more",
+            "href": "/products/organizaciones"
+          },
+          {
+            "number": "02",
+            "title": "Professional Portal",
+            "subtitle": "INDEPENDENT PROFESSIONALS",
+            "description": "One place to manage patients, record progress notes, organize your schedule and control your practice, whether or not it is linked to an organization.",
+            "features": ["Scheduling and automatic reminders", "Progress notes with digital and electronic signature"],
+            "cta": "Learn more",
+            "href": "/products/profesionales"
+          },
+          {
+            "number": "03",
+            "title": "Home Care",
+            "subtitle": "HOME CARE COMPANIES",
+            "description": "Centralized management, an app for field professionals, and real-time auditing. No blind spots between administration and the patient’s home.",
+            "features": ["Smart professional assignment", "Service auditing"],
+            "cta": "Learn more",
+            "href": "/products/internacion-domiciliaria"
+          },
+          {
+            "number": "04",
+            "title": "Interoperability",
+            "subtitle": "TECHNICAL AND DATA TEAMS",
+            "description": "Connect fragmented systems. Normalize clinical information. Enable outcome-based payment models, impact reporting and frictionless auditing without replacing what already exists.",
+            "features": [],
+            "cta": "Explore Interoperability",
+            "href": "/products/interoperabilidad"
+          }
+        ]
+      },
+      "api": {
+        "title": "Discover our API",
+        "copy": "Connect fragmented systems. Normalize clinical information. Enable outcome-based payment models, impact reporting and frictionless auditing without replacing what already exists.",
+        "imageAlt": "API and interoperability"
+      },
+      "finalCta": {
+        "title": "Data that flows.",
+        "highlight": "Healthcare that works."
+      }
+    },
+    "contact": {
+      "metaTitle": "Contact | Zonda Health",
+      "metaDescription": "Contact the Zonda Health team to talk about operations, interoperability and digital infrastructure for healthcare.",
+      "eyebrow": "Contact",
+      "title": "Let’s talk about your healthcare operation.",
+      "copy": "Tell us what you want to connect, operate or measure. The Zonda team will respond with clear next steps.",
+      "success": "Message sent. We will contact you soon.",
+      "fallbackError": "We could not send the message. Please try again.",
+      "connectionError": "We could not connect to the server. Please try again in a few minutes.",
+      "fields": {
+        "firstName": "First name",
+        "lastName": "Last name",
+        "email": "Email",
+        "phone": "Phone",
+        "organization": "Organization",
+        "message": "Message"
+      },
+      "placeholders": {
+        "firstName": "Your first name",
+        "lastName": "Your last name",
+        "email": "name@organization.com",
+        "phone": "+1 ...",
+        "organization": "Clinic, payer, company or team",
+        "message": "Tell us what you need to solve, which systems you want to connect, or which operation you want to improve."
+      },
+      "privacy": "I agree that Zonda can use this data to respond to my inquiry."
+    },
+    "notFound": {
+      "title": "This page does not exist",
+      "copy": "The link may be outdated or the page may have moved. You can return home or contact the team if you need help finding something specific."
+    },
+    "company": {
+      "eyebrow": "Company",
+      "title": "Technology that helps healthcare work better",
+      "copy": "Zonda builds digital infrastructure for healthcare organizations in Latin America. We connect systems, organize data and make operations clearer.",
+      "missionEyebrow": "Mission",
+      "missionTitle": "What we do",
+      "missionCopy": "Zonda developed a set of tools designed to bring specialized technology to Latin American healthcare organizations. A management platform where data, teams, patients and processes are administered through one operating logic.",
+      "metrics": [
+        { "value": "−30%", "label": "Reduction in medical errors with AI applied to clinical data" },
+        { "value": "−15%", "label": "In diagnosis times thanks to automatic alerts and health profiles" },
+        { "value": "−30%", "label": "Administrative work freed up for healthcare professionals" }
+      ],
+      "originEyebrow": "Origin",
+      "originTitle": "Where we come from",
+      "originCopy1": "Zonda was born in San Juan, shaped by three generations and more than 25 years of healthcare management experience inside a home care company. From that real operation, one missing tool became clear: a system capable of connecting every area of an organization with multiple providers and broad geographic coverage.",
+      "originCopy2": "Interoperable technology could generate savings of almost 10% of healthcare spending in Latin America. That is the opportunity Zonda is building.",
+      "storiesTitle": "Stories from our customers",
+      "storiesCta": "See case studies",
+      "pressEyebrow": "Press",
+      "pressTitle": "In the media",
+      "readArticle": "Read article",
+      "articles": [
+        { "source": "El Cronista — Infotechnology", "title": "Healthtech: an Argentine startup applies AI to generate savings in the healthcare system", "href": "https://www.cronista.com/infotechnology/entreprenerds/healthtech-una-startup-argentina-aplica-la-ia-para-generar-ahorros-en-el-sistema-de-salud/" },
+        { "source": "Ecosistema Startup", "title": "Argentine startup applies AI in healthcare to reduce costs", "href": "https://ecosistemastartup.com/startup-argentina-aplica-ia-en-salud-para-reducir-costos/" }
+      ],
+      "ctaTitle": "Let’s talk"
+    },
+    "developers": {
+      "eyebrow": "Developers",
+      "title": "Build on Zonda",
+      "copy": "Open APIs, Personal Access Token authentication, and a platform designed so your technical team can integrate, automate and scale without friction.",
+      "terminalAlt": "Zonda API terminal",
+      "features": [
+        { "title": "API with Personal Access Token", "copy": "Authenticate with a PAT and start consuming the Zonda API in minutes. Generate your token, make your first request and build from there." },
+        { "title": "Model your organization", "copy": "Create and manage multiple organizations from the API. Define structures, assign roles and manage permissions programmatically." },
+        { "title": "Move data from anywhere", "copy": "Connect any source: HL7, FHIR, CSV, PDFs or proprietary systems. Zonda normalizes everything into a canonical model ready to use." }
+      ],
+      "apiCta": "Use the API",
+      "docs": "Documentation"
+    },
+    "caseStudies": {
+      "cards": [
+        { "title": "Interdom", "description": "Interdom, a home care company, uses Zonda to digitize its operation, track patients and professionals, and improve operational efficiency.", "href": "/casos-de-uso/interdom", "image": "/assets/cs/interdom.jpg" },
+        { "title": "Fraud detection", "description": "How to use Zonda to analyze patient claims and integrate that intelligence into day-to-day operations.", "href": "/casos-de-uso/fraude", "image": "/assets/cs/fraude.jpeg" }
+      ],
+      "imageAlt": "Case studies",
+      "title": "Healthcare organizations that transformed their operations with Zonda.",
+      "ctaTitle": "Help your organization grow and become more efficient.",
+      "detail": {
+        "fraude": {
+          "title": "Fraud detection",
+          "copy": "How to use Zonda to analyze patient claims and integrate that intelligence into day-to-day operations.",
+          "body": "Content in progress. The full story of how fraud detection was implemented in medical practices using Zonda data and intelligence will be published soon."
+        },
+        "interdom": {
+          "title": "Interdom",
+          "copy": "How a home care company left paper behind and transformed its operation with Zonda.",
+          "body": "Content in progress. The full story of how Interdom digitized its operation, stopped losing information and began tracking field staff with reliable data will be published soon."
+        }
+      }
+    },
+    "products": {
+      "professionals": {
+        "heroTitle": "Manage your clinical practice for the AI era.",
+        "heroCopy": "One place to manage patients, record progress notes, organize your schedule and administer the organizations you work with.",
+        "heroAlt": "Professionals",
+        "features": [
+          {
+            "accent": "blue",
+            "eyebrow": "Schedule + Patients",
+            "title": "Smart scheduling, informed patients.",
+            "copy": "Manage appointments, cancellations and follow-up from a weekly calendar. We notify patients about changes and reminders. Before every encounter, you have the information you need at hand: socioeconomic surveys, status changes and basic checks. You configure it, we run it.",
+            "bullets": ["Weekly calendar + daily list", "Automatic WhatsApp reminders", "Pre-consultation with configurable surveys"],
+            "cta": "See the schedule demo"
+          },
+          {
+            "accent": "green",
+            "eyebrow": "Multi-organization",
+            "title": "One entry, all your organizations.",
+            "copy": "Connect the companies you work with and use Zonda as the only place to register patient visits. Swiss Medical, OSDE, PAMI? No problem. Track your finances in real time, all in one place.",
+            "bullets": ["OSDE · Swiss Medical · PAMI · Galeno", "Automatic settlement and reconciliation", "Real-time reports by payer"],
+            "cta": "See supported payers"
+          },
+          {
+            "accent": "purple",
+            "eyebrow": "Clinical records",
+            "title": "Superintelligent clinical records.",
+            "copy": "Take notes as if you were writing on paper. We handle understanding, organizing and following up on your patients with artificial intelligence.",
+            "bullets": ["Voice dictation: instant transcription", "AI-structured summary (SOAP, PHI, progress note)", "Semantic search across the full history"],
+            "cta": "See how AI works"
+          }
+        ],
+        "testimonial": {
+          "quote": "I used to use three different tools to manage patients, organize my schedule and record sessions. Now with Zonda I have everything in one place, I organize my day in minutes and focus on my patients.",
+          "name": "Laura García",
+          "role": "Physical therapist · Buenos Aires, AR"
+        },
+        "download": {
+          "eyebrow": "Mobile app",
+          "title": "Your practice in your pocket.",
+          "copy": "Download Zonda and take your schedule, patients and clinical records wherever you go. Available for iOS and Android.",
+          "downloadOn": "Download on"
+        },
+        "faqEyebrow": "Common questions",
+        "faqTitle": "Anything holding you back?",
+        "faqCopyPrefix": "If you do not find what you are looking for, write to us at",
+        "faqCopySuffix": "We respond in less than one business day.",
+        "faqs": [
+          { "q": "Do I need to install anything in my office?", "a": "No. Zonda works in the browser and in the mobile app. All you need is internet, even from your phone." },
+          { "q": "Is my data secure?", "a": "Yes. End-to-end encryption, storage in Argentina and compliance with Law 26.529 on Patient Rights. Your data is yours." },
+          { "q": "How long does it take to get operational?", "a": "5 minutes. You register, connect your organizations (OSDE, Swiss Medical, PAMI, etc.) and start loading patients." },
+          { "q": "Can I migrate my patients from another system?", "a": "Yes. We import from Excel, CSV or via API from most popular systems in Argentina. We assist with migration at no cost." },
+          { "q": "What happens if I want to leave?", "a": "You can export all your information in standard formats (FHIR, CSV). No lock-in, no fine print." }
+        ],
+        "phone": {
+          "connectOrg": "Connect organization",
+          "pamiHelp": "Enter your PAMI username and password. They will only be used to authenticate you with PAMI during care flows, never shown on screen or shared with third parties.",
+          "password": "Password",
+          "pamiUser": "PAMI user",
+          "connectPami": "Connect with PAMI",
+          "month": "April 2026",
+          "dayLabel": "Thursday · 3 appointments",
+          "structuredByAi": "Structured by AI",
+          "subjective": "Subjective",
+          "objective": "Objective",
+          "plan": "Plan",
+          "objectiveText": "BP 130/85 · HR 78 · Negative bilateral Lasègue test.",
+          "days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+          "appointments": [
+            { "time": "09:00", "name": "Maria Eteria", "tag": "Pre-consultation" },
+            { "time": "10:30", "name": "Juan Martin", "tag": "Follow-up" },
+            { "time": "12:00", "name": "Sofia Lugones", "tag": "First visit" }
+          ],
+          "evolution": "Progress note · today",
+          "clinicalText": "Patient reports lower back pain for 3 days after exertion. No radiation.",
+          "treatmentText": "Ibuprofen 400mg q8h × 5 days. Follow-up in 7 days."
+        }
+      },
+      "organizations": {
+        "heroTitle": "Full visibility over your healthcare operation.",
+        "heroHighlight": "Zero blind spots.",
+        "heroAlt": "Organizations",
+        "features": [
+          { "eyebrow": "CHAPTER 01 · INGESTION", "title": "Ingest data from any source.", "copy": "Medical records, progress notes, appointments, surveys, devices and more. Zonda centralizes all information about your patients and professionals in one place, no matter where it comes from.", "bullets": ["FHIR R4 · HL7v2 · CSV · REST API", "Automatic mapping of legacy schemas", "Manual or automated webhook ingestion"], "cta": "See supported integrations" },
+          { "eyebrow": "CHAPTER 02 · INTELLIGENCE", "title": "Detect patterns, anomalies and fraud.", "copy": "Interactive dashboards that adapt to what you need to see. Automatic trend identification in clinical data, real-time alerts when something moves out of range, and custom reports by region, unit or professional.", "bullets": ["Configurable real-time alerts", "Automatic outlier detection", "Reports exportable to PDF, Excel, FHIR"], "cta": "See fraud detection cases" },
+          { "eyebrow": "CHAPTER 03 · GOVERNANCE", "title": "Clear roles. Organized teams. Multiple entities.", "copy": "Define your organization structure: teams, professionals, patients, locations and permissions. If you operate with more than one legal entity, manage everything from one place without losing traceability.", "bullets": ["Granular permissions by role and location", "Full audit trail of who did what and when", "Share reports with stakeholders without breaking compliance"], "cta": "See the full permissions matrix" }
+        ],
+        "useCasesTitle": "For your type of organization",
+        "useCasesHeadline": "One system, four ways to operate.",
+        "useCases": [
+          { "type": "Clinics", "desc": "Clinical operations + billing in one panel. Ideal for single entities with multiple specialties.", "bullets": ["1 legal entity", "Multiple specialties", "Integrated billing"] },
+          { "type": "Hospitals", "desc": "Multiple services, strict governance, and integration with legacy hospital systems.", "bullets": ["FHIR/HL7 integration", "Full audit trail", "Roles by service"] },
+          { "type": "Provider networks", "desc": "Multiple legal entities, multiple sites, one consolidated view for the holding company.", "bullets": ["Multi-entity", "Consolidated reports", "Permissions by site"] },
+          { "type": "Health companies", "desc": "Home care, telemedicine, small payers. You need to connect the administrative and clinical sides.", "bullets": ["Field operations", "Service control", "Complete traceability"] }
+        ],
+        "roles": {
+          "headers": ["Patients", "Progress notes", "Billing", "Auditing"],
+          "rows": ["Medical Director", "Physician", "Nursing", "Administration", "External auditor"],
+          "labels": { "full": "Full", "edit": "Edit", "read": "Read", "own": "Own", "none": "—" },
+          "matrixTitle": "Permissions matrix",
+          "matrixMeta": "Central Site · 5 roles",
+          "treeTitle": "Structure · South Health Network",
+          "treeMeta": "3 entities · 6 sites",
+          "holding": "South Health Network Inc.",
+          "holdingType": "Holding",
+          "centerSite": "Central Site",
+          "annexSite": "Annex Site",
+          "sixProfessionals": "6 professionals",
+          "threeProfessionals": "3 professionals",
+          "clinic": "Central Clinic",
+          "homeCare": "HomeCare South",
+          "legalEntity": "Legal entity"
+        },
+        "patterns": {
+          "title": "Anomaly Detection",
+          "subtitle": "Last 30 days · 6 sites",
+          "caption": "BILLING BY SITE — VARIANCE",
+          "alert": "38% billing variation at North Site",
+          "alertCount": "⚠ 3 ALERTS",
+          "alerts": [
+            { "severity": "high", "text": "38% billing variation at North Site", "time": "12 min ago" },
+            { "severity": "medium", "text": "Wait time > 30min · Room 4", "time": "1h ago" },
+            { "severity": "low", "text": "Visit spike resolved · Central Site", "time": "3h ago" }
+          ]
+        },
+        "ctaTitle": "Connect your operation.",
+        "ctaHighlight": "Schedule a demo."
+      },
+      "interop": {
+        "title": "Interoperability",
+        "heroLines": ["Any system.", "Any data source.", "Any format."],
+        "sections": [
+          { "title": "The platform", "description": "Zonda was designed as integration infrastructure. A secure, scalable and extensible layer that connects systems, processes data with artificial intelligence and builds applications on a unified foundation.", "items": [{ "label": "AI processing", "text": "Integrated models that process, classify and extract structured clinical information from any data source in real time." }, { "label": "Operational analytics", "text": "Full observability over data flow, transaction volume and the performance of each active integration." }, { "label": "Platform as a Service", "text": "Open APIs, webhooks and SDKs that allow healthcare organizations to build their own solutions on Zonda infrastructure." }] },
+          { "title": "Ways to connect", "image": "/assets/interop/flow.png", "description": "Cloud-native architecture with encryption in transit and at rest, granular permission management and multi-tenant isolation. Security is the responsibility of the platform, not the integrator.", "items": [{ "label": "Zonda Connectors", "text": "Native connectors for the most widely used healthcare systems. Declarative configuration, immediate activation and data exchange without custom development." }, { "label": "REST APIs", "text": "RESTful interface documented with OpenAPI. Standard authentication, intelligent rate limiting and compatibility with any technology stack." }, { "label": "FileSystems & DataDrop", "text": "Bulk ingestion through secure filesystems and DataDrop. Native support for HL7, FHIR, CSV and arbitrary formats with automatic transformation." }] },
+          { "title": "Canonical model", "description": "Zonda consumes data in any format: plain text, PDFs, CSVs, HL7, FHIR, XMLs, and produces a single canonical data model. A structured, normalized output ready to be consumed by any downstream system.", "items": [{ "label": "LOINC", "text": "Automatic normalization of observations and lab results under the LOINC standard. Semantic mapping from proprietary terminology to universal codes." }, { "label": "ICD-10", "text": "Diagnosis classification and coding under ICD-10. Code extraction from free clinical text through natural language processing." }, { "label": "Flexible output", "text": "Export the canonical model in the format you need: JSON, FHIR, CSV, HL7 or custom schemas. One input, multiple outputs adapted to each consumer." }] },
+          { "title": "Security and Identity", "description": "Zonda models the structure of the healthcare business. It provides unified identity for professionals, patients and members of each organization, with defined roles and granular permissions.", "items": [{ "label": "Inbound OAuth2", "text": "External applications authenticate against Zonda through OAuth 2.0 to operate on platform APIs with scoped tokens and standard flows." }, { "label": "Outbound OAuth2", "text": "Zonda acts as an OAuth 2.0 client when connecting to third-party systems, delegating authentication without exposing end-user credentials." }, { "label": "Adaptive integration", "text": "Integration capability at every level of the architecture. From out-of-the-box connectors to programmable extensions on top of the API." }] }
+        ],
+        "ctaTitle": "Connect your systems.",
+        "ctaHighlight": "Integrate your company."
+      },
+      "idom": {
+        "heroTitle": "Your whole team connected, from the office to the patient’s home.",
+        "heroCopy": "Organize visits, coordinate professionals and control every step of home care from one place. No spreadsheets, no calls, no surprises.",
+        "flowTitle": "How it works",
+        "flowHeadline": "From office to home in four steps.",
+        "flowCopy": "One platform for the whole journey. No paper, no phone calls.",
+        "flow": [
+          { "title": "Assignment", "where": "Central office", "desc": "From a single screen, the day’s visits are assigned to each professional with the best route and no duplicates." },
+          { "title": "Notice", "where": "Professional app", "desc": "The professional receives patient data, the address and care instructions on their phone before leaving." },
+          { "title": "Visit", "where": "Patient home", "desc": "Arrival is confirmed automatically, everything performed is recorded, and the patient signs from the phone." },
+          { "title": "Control", "where": "Real time", "desc": "Every visit is logged instantly with location, time and detail. Ready to present to the payer." }
+        ],
+        "office": { "eyebrow": "OFFICE · COORDINATION", "title": "Organize every visit of the day from one screen.", "copy": "Assign professionals by zone, availability and specialty. If someone gets sick or an emergency appears, reassign with one click. Everything is recorded.", "bullets": ["Map or list view to organize the day", "Fast reassignment for urgent changes", "Know each professional’s load in real time"] },
+        "field": { "eyebrow": "FIELD · MOBILE APP", "title": "The professional records the visit from the patient’s home.", "copy": "They receive the assigned visit, follow the best route, record what they did by speaking to the phone and get the patient’s signature. All from the app, even without internet.", "bullets": ["Works offline and syncs later", "Dictate the progress note by voice and AI organizes it", "Presence is confirmed automatically by location"] },
+        "audit": { "eyebrow": "CONTROL · AUDIT", "title": "Audit-ready before the day closes.", "copy": "Know exactly what was done, where and when. If something does not match, you find out immediately, before it becomes a problem with the payer.", "bullets": ["Automatic record with exact location and time", "Checklist of services performed", "Report ready for billing and auditing"] },
+        "ui": {
+          "done": "✓ DONE",
+          "ongoing": "IN PROGRESS",
+          "next": "NEXT",
+          "scheduled": "SCHEDULED",
+          "route": "AGUIRRE ROUTE",
+          "routeEta": "3 visits · ETA 16:40",
+          "visitListTitle": "Visits — Thu 04/16",
+          "assigned": "14 assigned",
+          "visitInProgress": "VISIT IN PROGRESS",
+          "inLocation": "✓ ON LOCATION",
+          "woundCare": "Ulcer wound care",
+          "aspiration": "Aspiration",
+          "recording": "● RECORDING NOTE",
+          "voiceNote": "Patient tolerating diet well. Saturation 96. No pain reported...",
+          "aiStructured": "✦ AI STRUCTURED",
+          "visitTitle": "Visit · Maria Eteria · LOE #2841",
+          "visitMeta": "Apr 16, 2026 · Home care level 2",
+          "audited": "✓ AUDITED",
+          "auditEvents": [
+            { "l": "Professional leaves office", "mono": "GPS verified" },
+            { "l": "Arrives at home · Cabildo 3214", "mono": "Geofence 50m · OK" },
+            { "l": "Visit in progress (26 min)", "mono": "Within range" },
+            { "l": "Patient digital signature captured", "mono": "Hash 0x4a9...c3f" },
+            { "l": "Services recorded (4 of 4)", "mono": "Prescription match" },
+            { "l": "LOE #2841 issued", "mono": "Sent to OSDE" },
+            { "l": "Visit confirmed · Ready for audit", "mono": "Average time: 27 min" }
+          ]
+        },
+        "statsTitle": "What companies using Zonda achieve.",
+        "statsEyebrow": "Real results",
+        "stats": [{ "v": "+30%", "t": "Lower operating costs" }, { "v": "+40%", "t": "Less patient waiting time" }, { "v": "+35%", "t": "Fewer care errors" }, { "v": "+30%", "t": "More control over irregularities" }],
+        "faqPrefix": "Have another question? Write to us at",
+        "faqTitle": "Frequently asked questions.",
+        "faqs": [
+          { "q": "Does it work without internet?", "a": "Yes. The app stores everything the professional does on the phone and uploads it when signal returns. Information is never lost and work does not stop." },
+          { "q": "Does it connect with our billing system?", "a": "Yes. We integrate with the most commonly used billing systems in Argentina. Our team configures the connection during implementation at no additional cost." },
+          { "q": "Does it work for any payer?", "a": "We work with OSDE, Swiss Medical, PAMI, IOMA and many more formats. If your payer uses a different format, we add it quickly." },
+          { "q": "Does each person only see what they should?", "a": "Yes. Each role has its own view: the professional sees their visits, the coordinator sees their team, and the director sees everything. There is also a record of who did what." },
+          { "q": "How long does implementation take?", "a": "Between 2 and 4 weeks. We start with configuration and connection to your system, then run a test with a small team, and from there expand to the rest." }
+        ],
+        "testimonial": {
+          "name": "Lic. Fernanda Casás",
+          "quote": "We used to argue with the payer at the end of the month over poorly documented visits. Today every visit is recorded before the professional returns to the office. We collect faster and audit with much less friction."
+        },
+        "demoTitle": "Your operation, optimized.",
+        "demoHighlight": "From day one."
       }
     }
   },

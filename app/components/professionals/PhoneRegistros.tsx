@@ -1,6 +1,7 @@
 'use client';
 
 import { PhoneFrame } from './PhoneFrame';
+import { useLanguage } from '@/app/components/LanguageProvider';
 
 function SparkleIcon() {
   return (
@@ -38,6 +39,8 @@ function SoapBlock({
 const waveformHeights = [8, 14, 10, 18, 6, 12, 16, 9, 14, 11, 7, 13, 17, 10, 6, 12];
 
 export function PhoneRegistros() {
+  const { t } = useLanguage();
+
   return (
     <PhoneFrame time="16:38">
       {/* Patient header */}
@@ -47,7 +50,7 @@ export function PhoneRegistros() {
           <div>
             <p className="m-0 text-xs font-bold text-[#0d1117]">M. Etería</p>
             <p className="m-0 text-[10px] text-[#9ca3af]">
-              Evolución · hoy
+              {t('site.products.professionals.phone.evolution')}
             </p>
           </div>
         </div>
@@ -57,23 +60,23 @@ export function PhoneRegistros() {
       {/* AI badge */}
       <div className="px-[18px] pt-4">
         <p className="m-0 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.08em] text-[#7a3eff]">
-          <SparkleIcon /> Estructurado por IA
+          <SparkleIcon /> {t('site.products.professionals.phone.structuredByAi')}
         </p>
       </div>
 
       {/* SOAP blocks */}
       <div className="flex flex-1 flex-col gap-2.5 px-[18px] pt-2">
         <SoapBlock
-          label="Subjetivo"
-          text="Paciente refiere dolor lumbar de 3 días tras esfuerzo. Sin irradiación."
+          label={t('site.products.professionals.phone.subjective')}
+          text={t('site.products.professionals.phone.clinicalText')}
         />
         <SoapBlock
-          label="Objetivo"
-          text="TA 130/85 · FC 78 · Maniobra Lasègue negativa bilateral."
+          label={t('site.products.professionals.phone.objective')}
+          text={t('site.products.professionals.phone.objectiveText')}
         />
         <SoapBlock
-          label="Plan"
-          text="Ibuprofeno 400mg c/8h × 5 días. Control en 7 días."
+          label={t('site.products.professionals.phone.plan')}
+          text={t('site.products.professionals.phone.treatmentText')}
           dim
         />
       </div>

@@ -1,9 +1,10 @@
+'use client';
+
+import { useLanguage } from '@/app/components/LanguageProvider';
+
 const FLOW_STEPS = [
   {
     n: '01',
-    title: 'Asignación',
-    where: 'Oficina central',
-    desc: 'Desde una sola pantalla se asignan las visitas del día a cada profesional, con la mejor ruta y sin duplicaciones.',
     icon: 'office',
     color: '#226ffd',
     align: 'left',
@@ -11,9 +12,6 @@ const FLOW_STEPS = [
   },
   {
     n: '02',
-    title: 'Aviso',
-    where: 'App del profesional',
-    desc: 'El profesional recibe en su celular los datos del paciente, la dirección y las indicaciones antes de salir.',
     icon: 'phone',
     color: '#7bd9b3',
     align: 'center',
@@ -21,9 +19,6 @@ const FLOW_STEPS = [
   },
   {
     n: '03',
-    title: 'Visita',
-    where: 'Domicilio del paciente',
-    desc: 'Se confirma la llegada automáticamente, se registra todo lo realizado y el paciente firma desde el celular.',
     icon: 'home',
     color: '#0dc958',
     align: 'center',
@@ -31,15 +26,14 @@ const FLOW_STEPS = [
   },
   {
     n: '04',
-    title: 'Control',
-    where: 'Tiempo real',
-    desc: 'Cada visita queda registrada al instante con ubicación, horario y detalle. Lista para presentar a la obra social.',
     icon: 'shield',
     color: 'var(--zonda-yellow)',
     align: 'right',
     justify: 'top',
   },
 ] as const;
+
+type FlowCopy = { title: string; where: string; desc: string };
 
 function FlowIcon({ kind, color }: { kind: string; color: string }) {
   if (kind === 'office')
@@ -109,19 +103,21 @@ function FlowIcon({ kind, color }: { kind: string; color: string }) {
 }
 
 export function IntFlow() {
+  const { raw, t } = useLanguage();
+  const copy = raw<FlowCopy[]>('site.products.idom.flow');
+
   return (
     <section className="py-24">
       <div className="layout-shell">
         <div className="mx-auto mb-16 max-w-[720px] text-center">
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[color:var(--zonda-blue)]">
-            Cómo funciona
+            {t('site.products.idom.flowTitle')}
           </p>
           <h2 className="mt-3 text-balance text-3xl font-bold leading-[1.05] tracking-tight lg:text-[48px]">
-            De la oficina al domicilio en cuatro pasos.
+            {t('site.products.idom.flowHeadline')}
           </h2>
           <p className="mt-4 text-[17px] text-[color:var(--fg-2)]">
-            Una sola plataforma para todo el recorrido. Sin papeles, sin
-            llamados.
+            {t('site.products.idom.flowCopy')}
           </p>
         </div>
         <div style={{ position: 'relative' }}>
@@ -134,7 +130,7 @@ export function IntFlow() {
             }}
           />
           <div className="relative grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {FLOW_STEPS.map((s) => (
+            {FLOW_STEPS.map((s, index) => (
               <div
                 key={s.n}
                 style={{
@@ -196,11 +192,11 @@ export function IntFlow() {
                         letterSpacing: '.06em',
                       }}
                     >
-                      {s.where}
+                      {copy[index].where}
                     </span>
                   </div>
                   <h3 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>
-                    {s.title}
+                    {copy[index].title}
                   </h3>
                   <p
                     style={{
@@ -210,7 +206,7 @@ export function IntFlow() {
                       color: 'var(--fg-2)',
                     }}
                   >
-                    {s.desc}
+                    {copy[index].desc}
                   </p>
                 </div>
               </div>

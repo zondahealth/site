@@ -1,7 +1,12 @@
+'use client';
+
+import { useLanguage } from '@/app/components/LanguageProvider';
 import { IntFeatureShell } from './IntFeatureShell';
 import { RoutePin } from './RoutePin';
 
 function DispatchDashboard() {
+  const { t } = useLanguage();
+
   return (
     <div
       style={{
@@ -66,17 +71,21 @@ function DispatchDashboard() {
             }}
           >
             <p className="font-mono" style={{ margin: 0, fontSize: 10, color: 'var(--zonda-yellow)' }}>
-              RUTA AGUIRRE
+              {t('site.products.idom.ui.route')}
             </p>
-            <p style={{ margin: 0, fontSize: 11, fontWeight: 600 }}>3 visitas · ETA 16:40</p>
+            <p style={{ margin: 0, fontSize: 11, fontWeight: 600 }}>
+              {t('site.products.idom.ui.routeEta')}
+            </p>
           </div>
         </div>
         {/* List side */}
         <div style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 8 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4 }}>
-            <p style={{ margin: 0, fontSize: 12, fontWeight: 700 }}>Visitas — Jueves 16/04</p>
+            <p style={{ margin: 0, fontSize: 12, fontWeight: 700 }}>
+              {t('site.products.idom.ui.visitListTitle')}
+            </p>
             <p className="font-mono" style={{ margin: 0, fontSize: 10, color: 'var(--fg-3)' }}>
-              14 asignadas
+              {t('site.products.idom.ui.assigned')}
             </p>
           </div>
           {[
@@ -131,13 +140,7 @@ function DispatchDashboard() {
                           : 'var(--fg-2)',
                 }}
               >
-                {v.status === 'done'
-                  ? '✓ HECHA'
-                  : v.status === 'ongoing'
-                    ? 'EN CURSO'
-                    : v.status === 'next'
-                      ? 'PRÓX.'
-                      : 'AGENDADA'}
+                {t(`site.products.idom.ui.${v.status}`)}
               </span>
             </div>
           ))}
@@ -148,16 +151,14 @@ function DispatchDashboard() {
 }
 
 export function IntFeatureOffice() {
+  const { raw, t } = useLanguage();
+
   return (
     <IntFeatureShell
-      eyebrow="OFICINA · COORDINACIÓN"
-      title="Organizá todas las visitas del día desde una sola pantalla."
-      copy="Asigná profesionales según zona, disponibilidad y especialidad. Si alguien se enferma o surge una urgencia, reasigná en un click. Todo queda registrado."
-      bullets={[
-        'Vista de mapa o lista para organizar el día',
-        'Cambios en un click ante imprevistos',
-        'Sabé cuánto tiene cada profesional en tiempo real',
-      ]}
+      eyebrow={t('site.products.idom.office.eyebrow')}
+      title={t('site.products.idom.office.title')}
+      copy={t('site.products.idom.office.copy')}
+      bullets={raw<string[]>('site.products.idom.office.bullets')}
       visual={<DispatchDashboard />}
       flip={false}
     />

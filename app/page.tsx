@@ -6,65 +6,32 @@ import {
   FeaturePanel,
   FeaturePanelBackgroundStyling,
   FeaturePanelTone,
-} from '../components/FeaturePanel';
-import { Hero } from '../components/Hero';
-import { Button } from '../components/ui/button';
-import ExploreButton from '../components/ExploreButton';
+} from './components/FeaturePanel';
+import { Hero } from './components/Hero';
+import { Button } from './components/ui/button';
+import ExploreButton from './components/ExploreButton';
+import { useLanguage } from './components/LanguageProvider';
 
-const products = [
-  {
-    number: '01',
-    title: 'Organizaciones',
-    subtitle: 'CLÍNICAS, HOSPITALES Y REDES MULTI-ORGANIZACIÓN',
-    description:
-      'Digitalizá tu organización sin reemplazar sistemas existentes. Conocé a tus pacientes, tus empleados y, más importante, tu negocio.',
-    features: [
-      'Historia clínica unificada',
-      'Gestión de evoluciones y base de datos',
-      'Interoperabilidad en tiempo real',
-    ],
-    cta: 'Conocer más',
-    href: '/products/organizaciones',
-  },
-  {
-    number: '02',
-    title: 'Portal Profesional',
-    subtitle: 'PROFESIONALES INDEPENDIENTES',
-    description:
-      'Un único lugar para gestionar pacientes, registrar evoluciones, organizar la agenda y controlar la práctica — esté o no ligado a una organización.',
-    features: [
-      'Agenda y recordatorios automáticos',
-      'Evoluciones con firma digital y firma electrónica',
-    ],
-    cta: 'Conocer más',
-    href: '/products/profesionales',
-  },
-  {
-    number: '03',
-    title: 'Internación Domiciliaria',
-    subtitle: 'EMPRESAS DE ATENCIÓN DOMICILIARIA',
-    description:
-      'Gestión centralizada, aplicación para profesionales en campo, auditoría en tiempo real. Sin puntos ciegos entre la administración y el domicilio del paciente.',
-    features: [
-      'Asignación inteligente de profesionales',
-      'Auditoría de prestaciones',
-    ],
-    cta: 'Conocer más',
-    href: '/products/internacion-domiciliaria',
-  },
-  {
-    number: '04',
-    title: 'Interoperabilidad',
-    subtitle: 'EQUIPOS TÉCNICOS Y DE DATOS',
-    description:
-      'Conectá sistemas fragmentados. Normalizá información clínica. Habilitá modelos de pago por resultado, reportes de impacto y auditoría sin fricción — sin reemplazar lo que ya existe.',
-    features: [],
-    cta: 'Explorar Interoperabilidad',
-    href: '/products/interoperabilidad',
-  },
-];
+type HomeProduct = {
+  number: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  features: string[];
+  cta: string;
+  href: string;
+};
+
+type Stat = {
+  value: string;
+  label: string;
+};
 
 export default function App() {
+  const { raw, t } = useLanguage();
+  const products = raw<HomeProduct[]>('site.home.platform.products');
+  const stats = raw<Stat[]>('site.home.results.stats');
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <main className="pb-0 pt-0">
@@ -75,27 +42,26 @@ export default function App() {
           <div className="layout-shell">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 justify-start">
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold [font-family:var(--font-display-family)]">
-                Los sistemas de salud son complejos.{' '}
+                {t('site.home.problem.title')}{' '}
                 <span className="text-zonda-blue">
-                  Tenemos la infraestructura para resolverlo.
+                  {t('site.home.problem.highlight')}
                 </span>
               </h2>
               <div className="flex flex-col justify-start gap-6">
                 <p className="text-2xl text-neutral-600 leading-relaxed">
-                  Cada organización gestiona sus datos de forma aislada. Los
-                  profesionales saltan entre plataformas que no se hablan. Los
-                  pacientes atraviesan puntos de atención desconectados.
+                  {t('site.home.problem.copy')}
                 </p>
                 <p className="text-2xl font-semibold text-neutral-900 leading-relaxed">
-                  No es coincidencia. Es una limitación estructural.
-                  <br />Y se puede resolver.
+                  {t('site.home.problem.statement')}
+                  <br />
+                  {t('site.home.problem.statement2')}
                 </p>
               </div>
             </div>
             <div className="mt-16 sm:mt-20 lg:mt-20">
               <Image
                 src="/assets/base/infra.png"
-                alt="Infraestructura de datos de salud"
+                alt={t('site.home.problem.imageAlt')}
                 width={1920}
                 height={1080}
                 className="w-full h-auto object-contain"
@@ -115,14 +81,16 @@ export default function App() {
             <div className="layout-shell">
               <div className="flex flex-col justify-center gap-4">
                 <span className="text-lg uppercase text-white font-bold">
-                  Historias
+                  {t('site.home.stories.eyebrow')}
                 </span>
                 <h2 className="text-3xl sm:text-4xl lg:text-6xl font-semibold text-white  max-w-2xl">
-                  Equipos de salud que ya cambiaron cómo operan.
+                  {t('site.home.stories.title')}
                 </h2>
                 <div className="flex justify-start mt-6">
                   <Button asChild size="lg" className="min-w-48">
-                    <Link href="/casos-de-uso">Leer más</Link>
+                    <Link href="/casos-de-uso">
+                      {t('site.common.readMore')}
+                    </Link>
                   </Button>
                 </div>
               </div>
@@ -141,24 +109,17 @@ export default function App() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
                 <div className="flex flex-col items-start gap-8">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400">
-                    Resultados
+                    {t('site.home.results.eyebrow')}
                   </p>
                   <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white [font-family:var(--font-display-family)] leading-[1.05]">
-                    Mejorá tus resultados y el servicio a tus pacientes.
+                    {t('site.home.results.title')}
                   </h2>
                   <p className="text-lg text-white font-semibold leading-relaxed">
-                    Organizaciones eligen Zonda porque se integra fácilmente,
-                    está operativo desde el primer día y genera trazabilidad en
-                    tiempo real — adaptado a Latinoamérica.
+                    {t('site.home.results.copy')}
                   </p>
                 </div>
                 <div className="grid grid-cols-2 gap-px">
-                  {[
-                    { value: '+30%', label: 'Ahorro en costos operativos' },
-                    { value: '+40%', label: 'Reducción en tiempos de espera' },
-                    { value: '+35%', label: 'Reducción en errores médicos' },
-                    { value: '+30%', label: 'Detección de fraude' },
-                  ].map((stat) => (
+                  {stats.map((stat) => (
                     <div
                       key={stat.label}
                       className="flex flex-col gap-2 border-t border-white/15 py-8 pr-6"
@@ -188,14 +149,14 @@ export default function App() {
           <div className="layout-shell">
             <div className="mb-14">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400 mb-4">
-                Platform
+                {t('site.home.platform.eyebrow')}
               </p>
               <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
                 <h2 className="text-4xl sm:text-5xl font-bold leading-[1.08] [font-family:var(--font-display-family)]">
-                  Diversas soluciones.
+                  {t('site.home.platform.title')}
                   <br />
                   <span className="text-zonda-blue">
-                    Bajo una misma plataforma.
+                    {t('site.home.platform.highlight')}
                   </span>
                 </h2>
               </div>
@@ -252,20 +213,20 @@ export default function App() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <div className="flex flex-col items-start gap-4">
                   <h3 className="text-5xl font-bold tracking-tight text-vitality-yellow">
-                    Descubrí nuestra API
+                    {t('site.home.api.title')}
                   </h3>
                   <p className="text-lg font-semibold leading-relaxed sm:text-xl text-white">
-                    Conectá sistemas fragmentados. Normalizá información
-                    clínica. Habilitá modelos de pago por resultado, reportes de
-                    impacto y auditoría sin fricción, sin reemplazar lo que ya
-                    existe.
+                    {t('site.home.api.copy')}
                   </p>
-                  <ExploreButton href="/desarrolladores" title="Explorar la API" />
+                  <ExploreButton
+                    href="/desarrolladores"
+                    title={t('site.common.exploreApi')}
+                  />
                 </div>
                 <div className="relative min-h-[20rem] lg:min-h-[28rem] overflow-hidden rounded-md">
                   <Image
                     src="/assets/base/terminal.png"
-                    alt="API & Interoperabilidad"
+                    alt={t('site.home.api.imageAlt')}
                     fill
                     className="object-cover object-center"
                     sizes="(min-width: 1024px) 50vw, 100vw"
@@ -286,12 +247,14 @@ export default function App() {
             contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-20 sm:px-12 sm:py-28 lg:px-20 lg:py-46"
           >
             <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-3xl lg:text-6xl text-white">
-              Datos que fluyen. <br />
-              <span className="text-vitality-yellow">Salud que funciona.</span>
+              {t('site.home.finalCta.title')} <br />
+              <span className="text-vitality-yellow">
+                {t('site.home.finalCta.highlight')}
+              </span>
             </div>
 
             <Button asChild size="lg" className="min-w-48">
-              <Link href="/contacto">Contáctanos</Link>
+              <Link href="/contacto">{t('site.common.contact')}</Link>
             </Button>
           </FeaturePanel>
         </section>

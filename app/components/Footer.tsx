@@ -4,34 +4,34 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from './ui/utils';
+import { useLanguage } from './LanguageProvider';
 
 const productLinks = [
-  { href: '/products/profesionales', label: 'Profesionales' },
-  { href: '/products/organizaciones', label: 'Organizaciones' },
-  { href: '/products/interoperabilidad', label: 'Interoperabilidad' },
+  { href: '/products/profesionales', label: 'common.nav.platformProfessional' },
+  { href: '/products/organizaciones', label: 'common.nav.platformOrg' },
+  { href: '/products/interoperabilidad', label: 'common.nav.interoperability' },
   {
     href: '/products/internacion-domiciliaria',
-    label: 'Internación domiciliaria',
+    label: 'common.nav.homeCare',
   },
 ];
 
 const companyLinks = [
-  { href: '/casos-de-uso', label: 'Casos de uso' },
-  { href: '/desarrolladores', label: 'Desarrolladores' },
-  { href: '/empresa', label: 'Empresa' },
-  { href: '/contacto', label: 'Contactanos' },
+  { href: '/casos-de-uso', label: 'common.nav.caseStudies' },
+  { href: '/desarrolladores', label: 'common.nav.developers' },
+  { href: '/empresa', label: 'common.nav.company' },
+  { href: '/contacto', label: 'common.buttons.contactUs' },
 ];
 
 const blackFooterRoutes = ['/desarrolladores', '/products/interoperabilidad'];
 
 export function Footer() {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
   const pathname = usePathname();
 
-  // Strip locale prefix (e.g. /es/desarrolladores -> /desarrolladores)
-  const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}(?=\/)/, '');
   const isBlack = blackFooterRoutes.some(
-    (route) => pathWithoutLocale === route || pathWithoutLocale.endsWith(route)
+    (route) => pathname === route || pathname.endsWith(route)
   );
 
   return (
@@ -50,7 +50,7 @@ export function Footer() {
           <div className="max-w-md">
             <Link
               href="/"
-              aria-label="Inicio de Zonda Health"
+              aria-label={t('site.common.homeAria')}
               className="inline-flex items-center"
             >
               <Image
@@ -62,15 +62,13 @@ export function Footer() {
               />
             </Link>
             <p className="mt-6 text-base leading-relaxed text-[color:rgba(248,250,255,0.76)]">
-              Infraestructura digital para salud en América Latina, diseñada
-              para conectar operación, interoperabilidad y decisiones clínicas
-              con más claridad.
+              {t('common.footer.description')}
             </p>
           </div>
 
           <div>
             <h2 className="text-sm font-medium uppercase tracking-[0.12em] text-[color:rgba(248,250,255,0.7)]">
-              Soluciones
+              {t('common.footer.solutions')}
             </h2>
             <div className="mt-5 flex flex-col gap-3">
               {productLinks.map((link) => (
@@ -79,7 +77,7 @@ export function Footer() {
                   href={link.href}
                   className="text-base font-medium text-white/88 transition-colors duration-200 hover:text-white"
                 >
-                  {link.label}
+                  {t(link.label)}
                 </Link>
               ))}
             </div>
@@ -87,7 +85,7 @@ export function Footer() {
 
           <div>
             <h2 className="text-sm font-medium uppercase tracking-[0.12em] text-[color:rgba(248,250,255,0.7)]">
-              Navegación
+              {t('common.footer.navigation')}
             </h2>
             <div className="mt-5 flex flex-col gap-3">
               {companyLinks.map((link) => (
@@ -96,21 +94,23 @@ export function Footer() {
                   href={link.href}
                   className="text-base font-medium text-white/88 transition-colors duration-200 hover:text-white"
                 >
-                  {link.label}
+                  {t(link.label)}
                 </Link>
               ))}
               <a
                 href="https://azul.zondahealth.com"
                 className="text-base font-medium text-white/88 transition-colors duration-200 hover:text-white"
               >
-                Iniciar sesión
+                {t('common.buttons.login')}
               </a>
             </div>
           </div>
         </div>
 
         <div className="flex flex-col gap-4 pt-6 text-sm text-[color:rgba(248,250,255,0.68)] sm:flex-row sm:items-center sm:justify-between">
-          <p>© {currentYear} Zonda Health. Todos los derechos reservados.</p>
+          <p>
+            © {currentYear} Zonda Health. {t('common.footer.allRightsReserved')}.
+          </p>
           <div className="flex flex-col gap-1 sm:items-end">
             <a
               href="mailto:support@zondahealth.com"

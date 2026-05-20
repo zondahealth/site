@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
 import { Geist, Geist_Mono, Manrope, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { LanguageProvider } from './components/LanguageProvider';
+import { getSupportedLocale, localeCookieName } from './lib/locale';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -29,21 +32,26 @@ export const metadata: Metadata = {
   description: 'zonda',
 };
 
-// This file is required for the root layout
-// The actual layout is now in app/[locale]/layout.tsx
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const locale = getSupportedLocale(
+    (await cookies()).get(localeCookieName)?.value
+  );
+
   return (
     <html
+      lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${spaceGrotesk.variable}`}
     >
       <body className="antialiased">
-        <Header />
-        {children}
-        <Footer />
+        <LanguageProvider initialLocale={locale}>
+          <Header />
+          {children}
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

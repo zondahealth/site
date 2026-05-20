@@ -6,7 +6,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
-import { routing } from '../../i18n/routing';
+import { Locale, supportedLocales } from '../lib/locale';
+import { useLanguage } from './LanguageProvider';
 import { Button } from './ui/button';
 
 type ProductLink = {
@@ -36,29 +37,39 @@ const lightForegroundRoutes = [
 const activeHeaderBackground = '255, 255, 255';
 
 const productLinks: ProductLink[] = [
-  { href: '/products/profesionales', label: 'Profesionales' },
-  { href: '/products/organizaciones', label: 'Organizaciones' },
-  { href: '/products/interoperabilidad', label: 'Interoperabilidad' },
+  {
+    href: '/products/profesionales',
+    label: 'common.nav.platformProfessional',
+  },
+  {
+    href: '/products/organizaciones',
+    label: 'common.nav.platformOrg',
+  },
+  {
+    href: '/products/interoperabilidad',
+    label: 'common.nav.interoperability',
+  },
   {
     href: '/products/internacion-domiciliaria',
-    label: 'Internación Domiciliaria',
+    label: 'common.nav.homeCare',
   },
 ];
 
 const navigationItems: NavigationItem[] = [
   {
-    label: 'Soluciones',
+    label: 'common.nav.solutions',
     products: productLinks,
   },
-  { label: 'Casos de uso', href: '/casos-de-uso' },
-  { label: 'Desarrolladores', href: '/desarrolladores' },
-  { label: 'Empresa', href: '/empresa' },
+  { label: 'common.nav.caseStudies', href: '/casos-de-uso' },
+  { label: 'common.nav.developers', href: '/desarrolladores' },
+  { label: 'common.nav.company', href: '/empresa' },
 ];
 
 export function Header({
   loginHref = 'https://azul.zondahealth.com',
   getStartedHref = '/contacto',
 }: HeaderProps) {
+  const { locale, setLocale, t, forceLightHeader } = useLanguage();
   const [backgroundOpacity, setBackgroundOpacity] = useState(0);
   const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -68,26 +79,16 @@ export function Header({
   > | null>(null);
   const pathname = usePathname();
 
-  const pathSegments = pathname.split('/').filter(Boolean);
-  const localeSegment = pathSegments[0];
-  const locale =
-    routing.locales.find(
-      (supportedLocale) => supportedLocale === localeSegment
-    ) ?? routing.defaultLocale;
-  const hasLocalePrefix = routing.locales.some(
-    (supportedLocale) => supportedLocale === localeSegment
-  );
-  const pathnameWithoutLocale = hasLocalePrefix
-    ? `/${pathSegments.slice(1).join('/')}`
-    : pathname;
-  const isOverDarkHero = lightForegroundRoutes.some(
-    (route) =>
-      pathnameWithoutLocale === '/' ||
-      pathnameWithoutLocale === route ||
-      pathnameWithoutLocale.startsWith(`${route}/`)
-  );
+  const isOverDarkHero =
+    forceLightHeader ||
+    lightForegroundRoutes.some(
+      (route) =>
+        pathname === '/' ||
+        pathname === route ||
+        pathname.startsWith(`${route}/`)
+    );
 
-  const getLocalizedHref = (href: string) => {
+  const getHref = (href: string) => {
     if (
       href.startsWith('#') ||
       href.startsWith('mailto:') ||
@@ -98,11 +99,7 @@ export function Header({
       return href;
     }
 
-    if (href === '/') {
-      return `/${locale}`;
-    }
-
-    return `/${locale}${href.startsWith('/') ? href : `/${href}`}`;
+    return href.startsWith('/') ? href : `/${href}`;
   };
 
   const cancelProductMenuClose = () => {
@@ -211,9 +208,9 @@ export function Header({
     >
       <div className="layout-shell flex items-center justify-between py-3 sm:py-4">
         <Link
-          href={getLocalizedHref('/')}
+          href={getHref('/')}
           className="flex shrink-0 items-center transition-opacity duration-200 hover:opacity-85"
-          aria-label="Inicio de Zonda Health"
+          aria-label={t('site.common.homeAria')}
         >
           <Image
             src={logoSrc}
@@ -227,7 +224,7 @@ export function Header({
 
         <nav
           className="hidden items-center gap-6 font-sans md:flex"
-          aria-label="Navegación principal"
+          aria-label={t('site.common.mainNavAria')}
         >
           {navigationItems.map((item) =>
             item.products ? (
@@ -261,7 +258,7 @@ export function Header({
                   aria-haspopup="menu"
                   aria-expanded={isProductMenuOpen}
                 >
-                  {item.label}
+                  {t(item.label)}
                 </button>
 
                 <div
@@ -283,11 +280,11 @@ export function Header({
                         {item.products.map((product) => (
                           <Link
                             key={product.label}
-                            href={getLocalizedHref(product.href)}
+                            href={getHref(product.href)}
                             onClick={closeProductMenu}
                             className="rounded-xl py-1 text-[1.75rem] font-medium tracking-[-0.03em] text-black transition-colors duration-200 hover:text-[color:var(--zonda-blue-dark)] focus-visible:text-[color:var(--zonda-blue-dark)] focus-visible:outline-none lg:text-[2.1rem]"
                           >
-                            {product.label}
+                            {t(product.label)}
                           </Link>
                         ))}
                       </div>
@@ -298,32 +295,72 @@ export function Header({
             ) : (
               <Link
                 key={item.label}
-                href={item.href ? getLocalizedHref(item.href) : '#'}
+                href={item.href ? getHref(item.href) : '#'}
                 className={[navItemClassName, inactiveNavItemClassName].join(
                   ' '
                 )}
               >
-                {item.label}
+                {t(item.label)}
               </Link>
             )
           )}
         </nav>
 
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+        <div className="flex shrink-0 items-center gap-4">
+          <div className="flex items-center gap-1 mb-0.5">
+            {supportedLocales.map((option, index) => (
+              <div key={option}>
+                <Link
+                  key={option}
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setLocale(option as Locale);
+                  }}
+                  className={[
+                    'py-1 font-bold uppercase transition-colors duration-200 text-sm',
+                    locale === option
+                      ? useLightForeground
+                        ? 'text-vitality-yellow'
+                        : 'text-zonda-blue'
+                      : useLightForeground
+                        ? 'text-white/50'
+                        : 'text-black',
+                  ].join(' ')}
+                  aria-current={locale === option ? 'true' : undefined}
+                  tabIndex={0}
+                >
+                  {option}
+                </Link>
+                {index < supportedLocales.length - 1 && (
+                  <span
+                    className={[
+                      'ml-1 text-sm font-bold',
+                      useLightForeground ? 'text-white/50' : 'text-black',
+                    ].join(' ')}
+                  >
+                    |
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
           <Button
             asChild
             variant="ghost"
             size="sm"
             className={loginButtonClassName}
           >
-            <Link href={getLocalizedHref(loginHref)}>Iniciar sesión</Link>
+            <Link href={getHref(loginHref)}>{t('common.buttons.login')}</Link>
           </Button>
           <Button
             asChild
             size="sm"
             className="hidden rounded-full px-5 sm:px-6 md:inline-flex"
           >
-            <Link href={getLocalizedHref(getStartedHref)}>Contactanos</Link>
+            <Link href={getHref(getStartedHref)}>
+              {t('common.buttons.contactUs')}
+            </Link>
           </Button>
           <button
             type="button"
@@ -334,7 +371,11 @@ export function Header({
                 : 'text-black hover:bg-[color:rgba(92,140,255,0.08)]',
             ].join(' ')}
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-label={
+              isMobileMenuOpen
+                ? t('site.common.closeMenu')
+                : t('site.common.openMenu')
+            }
             aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? (
@@ -357,7 +398,7 @@ export function Header({
       >
         <nav
           className="flex flex-1 flex-col gap-1 px-6 py-6"
-          aria-label="Navegación móvil"
+          aria-label={t('site.common.mobileNavAria')}
         >
           {navigationItems.map((item) =>
             item.products ? (
@@ -368,7 +409,7 @@ export function Header({
                   onClick={() => setIsMobileProductsOpen((prev) => !prev)}
                   aria-expanded={isMobileProductsOpen}
                 >
-                  {item.label}
+                  {t(item.label)}
                   <ChevronDown
                     className={[
                       'h-5 w-5 transition-transform duration-200',
@@ -387,10 +428,10 @@ export function Header({
                   {item.products.map((product) => (
                     <Link
                       key={product.label}
-                      href={getLocalizedHref(product.href)}
+                      href={getHref(product.href)}
                       className="rounded-xl py-2.5 pl-6 pr-3 text-base font-medium text-[color:rgba(21,27,43,0.72)] transition-colors hover:bg-[color:rgba(92,140,255,0.08)] hover:text-black"
                     >
-                      {product.label}
+                      {t(product.label)}
                     </Link>
                   ))}
                 </div>
@@ -398,18 +439,38 @@ export function Header({
             ) : (
               <Link
                 key={item.label}
-                href={item.href ? getLocalizedHref(item.href) : '#'}
+                href={item.href ? getHref(item.href) : '#'}
                 className="rounded-xl px-3 py-3 text-lg font-medium text-black transition-colors hover:bg-[color:rgba(92,140,255,0.08)]"
               >
-                {item.label}
+                {t(item.label)}
               </Link>
             )
           )}
         </nav>
 
         <div className="flex flex-col gap-3 border-t border-[color:rgba(21,27,43,0.08)] px-6 py-6">
+          <div className="flex items-center justify-center rounded-full border border-[color:rgba(21,27,43,0.12)] bg-[color:rgba(244,246,253,0.84)] p-1 text-sm font-bold uppercase text-[color:rgba(21,27,43,0.68)]">
+            {supportedLocales.map((option) => (
+              <button
+                key={option}
+                type="button"
+                onClick={() => setLocale(option as Locale)}
+                className={[
+                  'flex-1 rounded-full px-4 py-2 transition-colors duration-200',
+                  locale === option
+                    ? 'bg-[color:var(--zonda-blue)] text-white'
+                    : 'hover:bg-[color:rgba(92,140,255,0.10)] hover:text-black',
+                ].join(' ')}
+                aria-pressed={locale === option}
+              >
+                {option}
+              </button>
+            ))}
+          </div>
           <Button asChild size="default" className="w-full rounded-full">
-            <Link href={getLocalizedHref(getStartedHref)}>Contactanos</Link>
+            <Link href={getHref(getStartedHref)}>
+              {t('common.buttons.contactUs')}
+            </Link>
           </Button>
           <Button
             asChild
@@ -417,7 +478,7 @@ export function Header({
             size="default"
             className="w-full rounded-full"
           >
-            <Link href={getLocalizedHref(loginHref)}>Iniciar sesión</Link>
+            <Link href={getHref(loginHref)}>{t('common.buttons.login')}</Link>
           </Button>
         </div>
       </div>

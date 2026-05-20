@@ -1,4 +1,7 @@
+'use client';
+
 import { FeaturePanel, FeaturePanelTone } from '@/app/components/FeaturePanel';
+import { useLanguage } from '@/app/components/LanguageProvider';
 import { PhoneAgenda } from '@/app/components/professionals/PhoneAgenda';
 import { PhoneOrganizaciones } from '@/app/components/professionals/PhoneOrganizaciones';
 import { PhoneRegistros } from '@/app/components/professionals/PhoneRegistros';
@@ -8,7 +11,21 @@ import { ProDownload } from '@/app/components/professionals/ProDownload';
 import { ProFAQ } from '@/app/components/professionals/ProFAQ';
 import Image from 'next/image';
 
+type ProFeatureContent = {
+  accent: 'blue' | 'green' | 'purple';
+  eyebrow: string;
+  title: string;
+  copy: string;
+  bullets: string[];
+  cta: string;
+};
+
 export default function ProfesionalesPage() {
+  const { raw, t } = useLanguage();
+  const features = raw<ProFeatureContent[]>(
+    'site.products.professionals.features'
+  );
+
   return (
     <div className="pb-16">
       {/* Hero — unchanged */}
@@ -20,19 +37,17 @@ export default function ProfesionalesPage() {
         >
           <div className="flex min-w-0 flex-col items-center justify-center px-6 py-24 text-center lg:items-start lg:text-left space-y-8 px-16">
             <h1 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold [font-family:var(--font-display-family)] text-zonda-blue-dark">
-              Gestioná tu práctica clínica como se merece la era de la IA.
+              {t('site.products.professionals.heroTitle')}
             </h1>
             <p className="text-md md:text-lg lg:text-2xl font-semibold text-zonda-blue-dark">
-              Un único lugar para gestionar pacientes, registrar evoluciones,
-              organizar la agenda y administrar las organizaciones con las que
-              trabajás.
+              {t('site.products.professionals.heroCopy')}
             </p>
           </div>
 
           <div className="relative hidden lg:block h-full overflow-visible">
             <Image
               src="/assets/doctor.png"
-              alt="Profesionales"
+              alt={t('site.products.professionals.heroAlt')}
               width={700}
               height={700}
               className="pointer-events-none absolute bottom-0 left-0 h-[85%] w-auto max-w-none object-contain object-bottom"
@@ -47,45 +62,33 @@ export default function ProfesionalesPage() {
       {/* <ProObrasSociales /> */}
 
       <ProFeature
-        accent="blue"
-        eyebrow="Agenda + Pacientes"
-        title="Agenda inteligente, pacientes informados."
-        copy="Gestioná turnos, cancelaciones y seguimiento desde un calendario semanal. Te encargamos de notificar al paciente sobre cambios y recordatorios. Antes de cada encuentro, tenés toda la información en la palma de la mano: encuestas socioeconómicas, cambios de estado, chequeos básicos. Vos lo configurás, nosotros lo ejecutamos."
-        bullets={[
-          'Calendario semanal + lista del día',
-          'Recordatorios automáticos por WhatsApp',
-          'Pre-consulta con encuestas configurables',
-        ]}
-        cta="Ver demo de la agenda"
+        accent={features[0].accent}
+        eyebrow={features[0].eyebrow}
+        title={features[0].title}
+        copy={features[0].copy}
+        bullets={features[0].bullets}
+        cta={features[0].cta}
         phone={<PhoneAgenda />}
       />
 
       <ProFeature
-        accent="green"
-        eyebrow="Multi-organización"
-        title="Una sola carga, todas tus organizaciones."
-        copy="Conectá las empresas con las que trabajás y usá únicamente Zonda para registrar las visitas de tus pacientes. Swiss Medical, OSDE, PAMI? No hay problema. Seguí tus finanzas en tiempo real, todo en un único lugar."
-        bullets={[
-          'OSDE · Swiss Medical · PAMI · Galeno',
-          'Liquidación y conciliación automática',
-          'Reportes por obra social en tiempo real',
-        ]}
-        cta="Ver obras sociales soportadas"
+        accent={features[1].accent}
+        eyebrow={features[1].eyebrow}
+        title={features[1].title}
+        copy={features[1].copy}
+        bullets={features[1].bullets}
+        cta={features[1].cta}
         phone={<PhoneOrganizaciones />}
         flip
       />
 
       <ProFeature
-        accent="purple"
-        eyebrow="Registros clínicos"
-        title="Registros clínicos superinteligentes."
-        copy="Tomá nota como si escribieras en un papel. Nosotros nos encargamos de entender, ordenar y hacer el seguimiento clínico de tus pacientes con inteligencia artificial."
-        bullets={[
-          'Dictado por voz — transcripción al instante',
-          'Resúmen estructurado por IA (SOAP, PHI, evolución)',
-          'Búsqueda semántica en toda la historia',
-        ]}
-        cta="Ver cómo funciona la IA"
+        accent={features[2].accent}
+        eyebrow={features[2].eyebrow}
+        title={features[2].title}
+        copy={features[2].copy}
+        bullets={features[2].bullets}
+        cta={features[2].cta}
         phone={<PhoneRegistros />}
       />
 

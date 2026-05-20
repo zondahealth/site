@@ -1,10 +1,15 @@
+'use client';
+
 import {
   FeaturePanel,
   FeaturePanelBackgroundStyling,
   FeaturePanelTone,
 } from '@/app/components/FeaturePanel';
+import { useLanguage } from '@/app/components/LanguageProvider';
 
 export function ProTestimonial() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-10">
       <div className="layout-shell">
@@ -27,16 +32,14 @@ export function ProTestimonial() {
             />
           </svg>
           <p className="max-w-3xl text-balance text-2xl font-bold leading-snug tracking-tight text-white lg:text-[32px] lg:leading-[1.25]">
-            Antes usaba tres apps distintas para armar mi recorrido, ver la
-            agenda y registrar las sesiones. Ahora con Zonda tengo todo en una
-            sola — organizo mi día en minutos y me enfoco en mis pacientes.
+            {t('site.products.professionals.testimonial.quote')}
           </p>
           <div className="mt-10">
             <p className="text-2xl font-bold text-white lg:text-3xl">
-              Laura García
+              {t('site.products.professionals.testimonial.name')}
             </p>
             <p className="mt-1 text-base text-white/80">
-              Kinesióloga · Buenos Aires, AR
+              {t('site.products.professionals.testimonial.role')}
             </p>
           </div>
         </FeaturePanel>

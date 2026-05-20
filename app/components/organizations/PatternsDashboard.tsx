@@ -1,3 +1,7 @@
+'use client';
+
+import { useLanguage } from '@/app/components/LanguageProvider';
+
 function AreaChart() {
   return (
     <svg
@@ -75,58 +79,56 @@ function AreaChart() {
   );
 }
 
-const alerts = [
+const alertColors = [
   {
-    severity: 'alta',
     color: '#eaea00',
-    text: 'Variación 38% facturación Sede Norte',
-    time: 'hace 12 min',
   },
   {
-    severity: 'media',
     color: '#ff9433',
-    text: 'Tiempo de espera > 30min · Sala 4',
-    time: 'hace 1h',
   },
   {
-    severity: 'baja',
     color: '#0dc958',
-    text: 'Pico de consultas resuelto · Sede Centro',
-    time: 'hace 3h',
   },
 ];
 
+type Alert = { severity: string; text: string; time: string };
+
 export function PatternsDashboard() {
+  const { raw, t } = useLanguage();
+  const alerts = raw<Alert[]>('site.products.organizations.patterns.alerts');
+
   return (
     <div className="overflow-hidden rounded-xl border border-[color:rgba(21,27,43,0.08)] bg-[#fcfcff] p-6 shadow-[0_30px_60px_-30px_rgba(7,17,48,0.12)]">
       {/* Header */}
       <div className="mb-4 flex items-center justify-between">
         <div>
-          <p className="text-[13px] font-bold">Detección de Anomalías</p>
+          <p className="text-[13px] font-bold">
+            {t('site.products.organizations.patterns.title')}
+          </p>
           <p className="font-mono text-[10px] text-[color:var(--fg-3)]">
-            Últimos 30 días · 6 sedes
+            {t('site.products.organizations.patterns.subtitle')}
           </p>
         </div>
         <span className="rounded-full border border-[color:rgba(234,234,0,0.5)] bg-[color:rgba(234,234,0,0.18)] px-2 py-0.5 text-[10px] font-bold text-[#7a7a00]">
-          ⚠ 3 ALERTAS
+          {t('site.products.organizations.patterns.alertCount')}
         </span>
       </div>
 
       {/* Chart */}
       <div className="mb-3 rounded-lg border border-[color:rgba(21,27,43,0.06)] bg-gradient-to-b from-[#f7f8fc] to-[#fcfcff] p-4">
         <p className="mb-2 font-mono text-[10px] text-[color:var(--fg-3)]">
-          FACTURACIÓN POR SEDE — VARIANZA
+          {t('site.products.organizations.patterns.caption')}
         </p>
         <AreaChart />
       </div>
 
       {/* Alert rows */}
       <div className="flex flex-col gap-1.5">
-        {alerts.map((a) => (
+        {alerts.map((a, index) => (
           <div
             key={a.text}
             className="flex items-center gap-2.5 rounded-md bg-[#f7f8fc] px-3 py-2.5"
-            style={{ borderLeft: `3px solid ${a.color}` }}
+            style={{ borderLeft: `3px solid ${alertColors[index].color}` }}
           >
             <div className="flex-1">
               <p className="text-xs font-semibold">{a.text}</p>
@@ -136,7 +138,7 @@ export function PatternsDashboard() {
             </div>
             <span
               className="text-[10px] font-bold uppercase"
-              style={{ color: a.color }}
+              style={{ color: alertColors[index].color }}
             >
               {a.severity}
             </span>

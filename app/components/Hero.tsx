@@ -1,9 +1,12 @@
 'use client';
 
 import Link from 'next/link';
+import { useLanguage } from './LanguageProvider';
 import { Button } from './ui/button';
 
 export function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className="pt-0">
         <div className="relative flex h-[100dvh] min-h-[30rem] flex-col overflow-hidden bg-zonda-blue-dark sm:p-12 lg:p-16">
@@ -24,21 +27,19 @@ export function Hero() {
 
           <div className="relative z-10 flex min-h-0 flex-1 flex-col items-center justify-center px-6 text-center sm:px-10">
             <h1 className="w-full max-w-3xl text-balance [font-family:var(--font-display-family)] text-4xl font-bold leading-[0.96] text-[color:rgba(248,250,255,0.96)] sm:text-5xl lg:text-7xl">
-              La infraestructura de datos de salud para{' '}
+              {t('site.home.hero.titlePrefix')}{' '}
               <span className="text-[color:var(--color-vitality-yellow)]">
-                Latinoamérica
+                {t('site.home.hero.titleHighlight')}
               </span>
             </h1>
             <div className="max-w-3xl">
               <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg font-bold leading-relaxed text-[color:rgba(248,250,255,0.82)] sm:text-xl">
-                Zonda conecta organizaciones, profesionales y pacientes en una
-                capa de inteligencia clínica unificada sin reemplazar lo que ya
-                existe.
+                {t('site.home.hero.copy')}
               </p>
 
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Button asChild size="lg" className="min-w-44">
-                  <Link href="/contacto">Hablemos</Link>
+                  <Link href="/contacto">{t('site.home.hero.cta')}</Link>
                 </Button>
               </div>
             </div>

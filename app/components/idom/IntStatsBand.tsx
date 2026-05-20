@@ -1,10 +1,18 @@
+'use client';
+
 import {
   FeaturePanel,
   FeaturePanelBackgroundStyling,
   FeaturePanelTone,
 } from '@/app/components/FeaturePanel';
+import { useLanguage } from '@/app/components/LanguageProvider';
+
+type Stat = { v: string; t: string };
 
 export function IntStatsBand() {
+  const { raw, t } = useLanguage();
+  const stats = raw<Stat[]>('site.products.idom.stats');
+
   return (
     <section>
       <div className="layout-shell">
@@ -17,19 +25,14 @@ export function IntStatsBand() {
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_1.6fr]">
             <div className="flex flex-col items-start justify-center gap-4">
               <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-vitality-yellow">
-                Resultados reales
+                {t('site.products.idom.statsEyebrow')}
               </p>
               <h2 className="text-balance text-3xl font-bold leading-tight text-white sm:text-4xl">
-                Lo que logran las empresas que usan Zonda.
+                {t('site.products.idom.statsTitle')}
               </h2>
             </div>
             <div className="grid grid-cols-2 gap-8 gap-y-12">
-              {[
-                { v: '+30%', t: 'Menos costos operativos' },
-                { v: '+40%', t: 'Menos tiempo de espera para el paciente' },
-                { v: '+35%', t: 'Menos errores en la atención' },
-                { v: '+30%', t: 'Más control sobre irregularidades' },
-              ].map((s) => (
+              {stats.map((s) => (
                 <div key={s.t} className="border-t border-white/20 pt-4">
                   <p className="text-5xl font-extrabold leading-none text-vitality-yellow lg:text-6xl">
                     {s.v}

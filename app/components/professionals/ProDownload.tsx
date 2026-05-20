@@ -1,3 +1,6 @@
+'use client';
+
+import { useLanguage } from '@/app/components/LanguageProvider';
 import { PhoneAgenda } from './PhoneAgenda';
 
 const storeLinks = {
@@ -7,6 +10,7 @@ const storeLinks = {
 };
 
 function StoreButton({ store }: { store: 'ios' | 'android' }) {
+  const { t } = useLanguage();
   const icon =
     store === 'ios' ? (
       <svg width="22" height="26" viewBox="0 0 22 26" fill="none">
@@ -35,7 +39,9 @@ function StoreButton({ store }: { store: 'ios' | 'android' }) {
     >
       {icon}
       <div>
-        <p className="text-[10px] leading-none opacity-70">Descargar en</p>
+        <p className="text-[10px] leading-none opacity-70">
+          {t('site.products.professionals.download.downloadOn')}
+        </p>
         <p className="mt-[3px] text-[17px] font-bold leading-none">{label}</p>
       </div>
     </a>
@@ -43,6 +49,8 @@ function StoreButton({ store }: { store: 'ios' | 'android' }) {
 }
 
 export function ProDownload() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-10">
       <div className="layout-shell">
@@ -60,16 +68,13 @@ export function ProDownload() {
           {/* Text side */}
           <div className="relative flex flex-col justify-center px-10 py-16 lg:px-16">
             <p className="text-xs font-bold uppercase tracking-[0.12em] text-[color:var(--zonda-yellow)]">
-              App móvil
+              {t('site.products.professionals.download.eyebrow')}
             </p>
             <h2 className="mt-4 text-balance text-4xl font-bold leading-[0.98] text-white [font-family:var(--font-display)] lg:text-[64px]">
-              Tu consultorio
-              <br />
-              en el bolsillo.
+              {t('site.products.professionals.download.title')}
             </h2>
             <p className="mt-5 max-w-[460px] text-[17px] leading-relaxed text-[color:rgba(248,250,255,0.82)]">
-              Descargá Zonda y llevá tu agenda, tus pacientes y tus registros
-              clínicos a donde vayas. Disponible para iOS y Android.
+              {t('site.products.professionals.download.copy')}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <StoreButton store="ios" />

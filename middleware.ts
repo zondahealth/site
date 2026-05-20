@@ -1,56 +1,25 @@
-import createMiddleware from 'next-intl/middleware';
-import { routing } from './i18n/routing';
 import { NextRequest, NextResponse } from 'next/server';
-
-const intlMiddleware = createMiddleware(routing);
 
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const localeMatch = pathname.match(/^\/(en|es)(\/.*)?$/);
 
-  // Handle duplicate locale segments (e.g., /en/en, /es/es)
-  const duplicateLocalePattern = /^\/([a-z]{2})\/\1(\/.*)?$/;
-  const duplicateMatch = pathname.match(duplicateLocalePattern);
+  if (localeMatch) {
+    const [, locale, rest] = localeMatch;
+    const url = request.nextUrl.clone();
+    url.pathname = rest || '/';
 
-  if (duplicateMatch) {
-    const [, locale, remainingPath] = duplicateMatch;
-    const redirectPath = `/${locale}${remainingPath || ''}`;
-    return NextResponse.redirect(new URL(redirectPath, request.url));
+    const response = NextResponse.redirect(url);
+    response.cookies.set('zonda-locale', locale, {
+      maxAge: 60 * 60 * 24 * 365,
+      path: '/',
+      sameSite: 'lax',
+    });
+
+    return response;
   }
 
-  // Handle mixed locale segments (e.g., /es/en, /en/es)
-  const mixedLocalePattern = /^\/([a-z]{2})\/([a-z]{2})(\/.*)?$/;
-  const mixedMatch = pathname.match(mixedLocalePattern);
-
-  if (mixedMatch) {
-    const [, firstLocale, secondLocale, remainingPath] = mixedMatch;
-    // If both are valid locales, redirect to the second one (the intended locale)
-    if (
-      routing.locales.includes(firstLocale as any) &&
-      routing.locales.includes(secondLocale as any)
-    ) {
-      const redirectPath = `/${secondLocale}${remainingPath || ''}`;
-      return NextResponse.redirect(new URL(redirectPath, request.url));
-    }
-  }
-
-  // Handle non-localized routes by redirecting to default locale
-  if (
-    !pathname.startsWith('/api') &&
-    !pathname.startsWith('/_next') &&
-    !pathname.includes('.')
-  ) {
-    const hasLocale = routing.locales.some((locale) =>
-      pathname.startsWith(`/${locale}`)
-    );
-    if (!hasLocale) {
-      const redirectPath = `/${routing.defaultLocale}${
-        pathname === '/' ? '' : pathname
-      }`;
-      return NextResponse.redirect(new URL(redirectPath, request.url));
-    }
-  }
-
-  return intlMiddleware(request);
+  return NextResponse.next();
 }
 
 export const config = {

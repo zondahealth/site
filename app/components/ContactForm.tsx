@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 
 import { Button } from './ui/button';
+import { useLanguage } from './LanguageProvider';
 
 type FormData = {
   firstName: string;
@@ -61,6 +62,7 @@ function Field({
 }
 
 export function ContactForm() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
@@ -108,14 +110,10 @@ export function ContactForm() {
       }
 
       setSubmitStatus('error');
-      setErrorMessage(
-        result.error || 'No pudimos enviar el mensaje. Probá de nuevo.'
-      );
+      setErrorMessage(result.error || t('site.contact.fallbackError'));
     } catch {
       setSubmitStatus('error');
-      setErrorMessage(
-        'No pudimos conectar con el servidor. Probá de nuevo en unos minutos.'
-      );
+      setErrorMessage(t('site.contact.connectionError'));
     } finally {
       setIsSubmitting(false);
     }
@@ -128,15 +126,14 @@ export function ContactForm() {
         <div className="relative flex h-full flex-col justify-between gap-14">
           <div className="flex flex-col gap-5">
             <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[color:rgba(248,250,255,0.68)]">
-              Contacto
+              {t('site.contact.eyebrow')}
             </p>
             <div className="flex flex-col gap-4">
               <h1 className="max-w-xl text-balance text-4xl font-semibold leading-[0.98] sm:text-5xl">
-                Hablemos de tu operación de salud.
+                {t('site.contact.title')}
               </h1>
               <p className="max-w-lg text-pretty text-base font-medium leading-relaxed text-[color:rgba(248,250,255,0.76)] sm:text-lg">
-                Contanos qué querés conectar, operar o medir. El equipo de Zonda
-                te responde con próximos pasos claros.
+                {t('site.contact.copy')}
               </p>
             </div>
           </div>
@@ -152,7 +149,7 @@ export function ContactForm() {
             >
               <CheckCircle2 className="mt-0.5 size-5 shrink-0" />
               <p className="text-sm font-semibold leading-relaxed">
-                Mensaje enviado. Te vamos a contactar pronto.
+                {t('site.contact.success')}
               </p>
             </div>
           ) : null}
@@ -170,24 +167,24 @@ export function ContactForm() {
           ) : null}
 
           <div className="grid gap-5 md:grid-cols-2">
-            <Field id="firstName" label="Nombre" required>
+            <Field id="firstName" label={t('site.contact.fields.firstName')} required>
               <input
                 id="firstName"
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleInputChange}
-                placeholder="Tu nombre"
+                placeholder={t('site.contact.placeholders.firstName')}
                 required
                 className={inputClassName}
               />
             </Field>
-            <Field id="lastName" label="Apellido" required>
+            <Field id="lastName" label={t('site.contact.fields.lastName')} required>
               <input
                 id="lastName"
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleInputChange}
-                placeholder="Tu apellido"
+                placeholder={t('site.contact.placeholders.lastName')}
                 required
                 className={inputClassName}
               />
@@ -195,49 +192,49 @@ export function ContactForm() {
           </div>
 
           <div className="grid gap-5 md:grid-cols-2">
-            <Field id="email" label="Email" required>
+            <Field id="email" label={t('site.contact.fields.email')} required>
               <input
                 id="email"
                 name="email"
                 type="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                placeholder="nombre@organizacion.com"
+                placeholder={t('site.contact.placeholders.email')}
                 required
                 className={inputClassName}
               />
             </Field>
-            <Field id="phone" label="Teléfono">
+            <Field id="phone" label={t('site.contact.fields.phone')}>
               <input
                 id="phone"
                 name="phone"
                 type="tel"
                 value={formData.phone}
                 onChange={handleInputChange}
-                placeholder="+54 9 ..."
+                placeholder={t('site.contact.placeholders.phone')}
                 className={inputClassName}
               />
             </Field>
           </div>
 
-          <Field id="organization" label="Organización">
+          <Field id="organization" label={t('site.contact.fields.organization')}>
             <input
               id="organization"
               name="organization"
               value={formData.organization}
               onChange={handleInputChange}
-              placeholder="Clínica, financiador, empresa o equipo"
+              placeholder={t('site.contact.placeholders.organization')}
               className={inputClassName}
             />
           </Field>
 
-          <Field id="message" label="Mensaje" required>
+          <Field id="message" label={t('site.contact.fields.message')} required>
             <textarea
               id="message"
               name="message"
               value={formData.message}
               onChange={handleInputChange}
-              placeholder="Contanos qué necesitás resolver, qué sistemas querés conectar o qué operación querés mejorar."
+              placeholder={t('site.contact.placeholders.message')}
               required
               rows={6}
               className={`${inputClassName} h-auto min-h-36 resize-y py-3 leading-relaxed`}
@@ -258,7 +255,7 @@ export function ContactForm() {
               className="text-sm font-medium leading-relaxed text-on-surface-variant"
               htmlFor="privacyAccepted"
             >
-              Acepto que Zonda use estos datos para responder mi consulta.
+              {t('site.contact.privacy')}
             </label>
           </div>
 
@@ -268,7 +265,9 @@ export function ContactForm() {
             className="mt-1 w-full sm:w-fit sm:min-w-56"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
+            {isSubmitting
+              ? t('common.buttons.sending')
+              : t('common.buttons.sendMessage')}
             <ArrowRight />
           </Button>
         </form>
