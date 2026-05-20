@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -29,8 +31,20 @@ type Stat = {
 
 export default function App() {
   const { raw, t } = useLanguage();
+  const searchParams = useSearchParams();
   const products = raw<HomeProduct[]>('site.home.platform.products');
   const stats = raw<Stat[]>('site.home.results.stats');
+
+  useEffect(() => {
+    const src = searchParams.get('src');
+    if (src) {
+      fetch('/api/visit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ src }),
+      }).catch(() => {});
+    }
+  }, [searchParams]);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
