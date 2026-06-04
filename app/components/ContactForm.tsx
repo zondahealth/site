@@ -10,6 +10,8 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 
+import Link from 'next/link';
+
 import { Button } from './ui/button';
 import { useLanguage } from './LanguageProvider';
 
@@ -255,7 +257,13 @@ export function ContactForm() {
               className="text-sm font-medium leading-relaxed text-on-surface-variant"
               htmlFor="privacyAccepted"
             >
-              {t('site.contact.privacy')}
+              {t('site.contact.privacy')}{' '}
+              <Link
+                href="/privacy-policy"
+                className="text-zonda-blue underline underline-offset-2 hover:text-zonda-blue-dark"
+              >
+                {t('site.contact.privacyLink')}
+              </Link>
             </label>
           </div>
 

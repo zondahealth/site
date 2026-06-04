@@ -21,6 +21,7 @@ const companyLinks = [
   { href: '/desarrolladores', label: 'common.nav.developers' },
   { href: '/empresa', label: 'common.nav.company' },
   { href: '/contacto', label: 'common.buttons.contactUs' },
+  { href: '/privacy-policy', label: 'common.nav.privacyPolicy' },
 ];
 
 const blackFooterRoutes = ['/desarrolladores', '/products/interoperabilidad'];

@@ -15,7 +15,8 @@
       "modules": "Módulos",
       "caseStudies": "Casos de uso",
       "homeCare": "Internación Domiciliaria",
-      "company": "Empresa"
+      "company": "Empresa",
+      "privacyPolicy": "Política de Privacidad"
     },
     "buttons": {
       "login": "Iniciar Sesión",
@@ -958,7 +959,40 @@
         "organization": "Clínica, financiador, empresa o equipo",
         "message": "Contanos qué necesitás resolver, qué sistemas querés conectar o qué operación querés mejorar."
       },
-      "privacy": "Acepto que Zonda use estos datos para responder mi consulta."
+      "privacy": "Acepto la",
+      "privacyLink": "Política de Privacidad"
+    },
+    "privacyPolicy": {
+      "metaTitle": "Política de Privacidad | Zonda Health",
+      "metaDescription": "Conocé cómo Zonda Health recopila, utiliza y protege tus datos personales.",
+      "title": "Política de Privacidad",
+      "lastUpdated": "Última actualización: junio 2025",
+      "sections": [
+        {
+          "title": "Recopilación de Datos",
+          "content": "Recopilamos información personal que proporcionás al usar nuestro formulario de contacto, crear una cuenta o interactuar con nuestra plataforma. Esto puede incluir tu nombre, dirección de correo electrónico, número de teléfono, nombre de tu organización y los mensajes que nos envíes."
+        },
+        {
+          "title": "Cómo Usamos tus Datos",
+          "content": "Usamos la información que recopilamos para responder a tus consultas, proporcionar y mejorar nuestros servicios, enviar comunicaciones relevantes sobre nuestra plataforma y cumplir con obligaciones legales. No utilizamos tus datos para fines no relacionados con los servicios que solicitaste."
+        },
+        {
+          "title": "Compartir Datos",
+          "content": "No vendemos tus datos personales. Podemos compartir información con proveedores de servicios de confianza que nos ayudan a operar nuestra plataforma, siempre que acepten mantener tu información confidencial. También podemos divulgar información cuando la ley lo requiera."
+        },
+        {
+          "title": "Seguridad de los Datos",
+          "content": "Implementamos medidas de seguridad estándar de la industria para proteger tu información personal, incluyendo cifrado en tránsito y en reposo, controles de acceso y auditorías de seguridad periódicas. Nuestra infraestructura está diseñada para cumplir con los requisitos de protección de datos de salud."
+        },
+        {
+          "title": "Tus Derechos",
+          "content": "Tenés derecho a acceder, corregir o eliminar tus datos personales. También podés solicitar una copia de los datos que tenemos sobre vos o pedirnos que restrinjamos su procesamiento. Para ejercer cualquiera de estos derechos, contactanos a support@zondahealth.com."
+        },
+        {
+          "title": "Contacto",
+          "content": "Si tenés preguntas sobre esta política de privacidad o cómo manejamos tus datos, contactanos a support@zondahealth.com."
+        }
+      ]
     },
     "notFound": {
       "title": "Esta página no existe",
