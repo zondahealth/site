@@ -1,6 +1,12 @@
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 
+import {
+  BACKGROUNDS,
+  extractSolidColor,
+  SPOTLIGHT_GRADIENTS,
+} from './ui/colors';
+import type { SpotlightSize } from './ui/colors';
 import { cn } from './ui/utils';
 
 export enum FeaturePanelTone {
@@ -69,23 +75,105 @@ const toneMovementImages: Partial<Record<FeaturePanelTone, string>> = {
   [FeaturePanelTone.YellowLines]: '/bg/movement/yellow-blue-lines.png',
 };
 
-const toneBackgrounds: Partial<Record<FeaturePanelTone, string>> = {
-  [FeaturePanelTone.GradientBlue]: `linear-gradient(135deg,rgb(19, 105, 211) 0%,rgb(10, 34, 214) 52%, #1467f4 100%)`,
-  [FeaturePanelTone.GradientDeepBlue]: `linear-gradient(135deg, #10316f 0%, #082861 50%, #003daa 100%)`,
-  [FeaturePanelTone.GradientVitalityYellow]: `linear-gradient(135deg, #dddd00 0%,rgb(209, 222, 28) 52%, #c2c200 100%)`,
-  [FeaturePanelTone.GradientGreen]: `linear-gradient(135deg,rgb(7, 130, 66) 0%,rgb(21, 201, 96) 52%,rgb(5, 116, 75) 100%)`,
-  [FeaturePanelTone.GradientBlack]: `linear-gradient(135deg,rgb(0, 0, 0) 0%,rgb(13, 2, 59) 52%, #1a1a1a 100%)`,
-  [FeaturePanelTone.Black]: `#000000`,
-  [FeaturePanelTone.White]: `#ffffff`,
-  [FeaturePanelTone.SolidGrey]: `#f4f6fd`,
-  [FeaturePanelTone.SolidNeutral]: `#edf1fb`,
-  [FeaturePanelTone.SolidBlue]: `#004ed3`,
-  [FeaturePanelTone.SolidYellow]: `#e6c800`, // darker, vibrant yellow that still allows white font
-  [FeaturePanelTone.SolidGreen]: `#00a878`,
-  [FeaturePanelTone.SolidDarkBlue]: `#0e3c4a`,
-  [FeaturePanelTone.SolidDarkGreen]: `#005348`,
-  [FeaturePanelTone.SolidLightYellow]: `#fff59d`,
-  [FeaturePanelTone.Transparent]: `transparent`,
+const toneColors: Partial<
+  Record<
+    FeaturePanelTone,
+    {
+      background?: string;
+      spotlightColor: string;
+    }
+  >
+> = {
+  [FeaturePanelTone.Black]: {
+    background: BACKGROUNDS.black,
+    spotlightColor: BACKGROUNDS.black,
+  },
+  [FeaturePanelTone.MapBlack]: { spotlightColor: BACKGROUNDS.black },
+  [FeaturePanelTone.GradientBlack]: {
+    background: BACKGROUNDS['gradient-black'],
+    spotlightColor: BACKGROUNDS.black,
+  },
+  [FeaturePanelTone.DarkBlue]: {
+    spotlightColor: BACKGROUNDS['visual-darkblue'],
+  },
+  [FeaturePanelTone.DarkBlueLines]: {
+    background: BACKGROUNDS.darkblue,
+    spotlightColor: BACKGROUNDS['darkblue'],
+  },
+  [FeaturePanelTone.GradientDeepBlue]: {
+    background: BACKGROUNDS['dark-blue'],
+    spotlightColor: BACKGROUNDS['visual-darkblue'],
+  },
+  [FeaturePanelTone.SolidDarkBlue]: {
+    background: BACKGROUNDS['solid-dark-blue'],
+    spotlightColor: BACKGROUNDS['visual-darkblue'],
+  },
+  [FeaturePanelTone.Blue]: { spotlightColor: BACKGROUNDS.blue },
+  [FeaturePanelTone.BlueLines]: { spotlightColor: BACKGROUNDS.blue },
+  [FeaturePanelTone.SolidBlue]: {
+    background: BACKGROUNDS.blue,
+    spotlightColor: BACKGROUNDS.blue,
+  },
+  [FeaturePanelTone.GradientBlue]: {
+    background: BACKGROUNDS['gradient-blue'],
+    spotlightColor: BACKGROUNDS.blue,
+  },
+  [FeaturePanelTone.Lines]: { spotlightColor: BACKGROUNDS.blue },
+  [FeaturePanelTone.WhiteLines]: { spotlightColor: BACKGROUNDS.blue },
+  [FeaturePanelTone.Yellow]: { spotlightColor: BACKGROUNDS.yellow },
+  [FeaturePanelTone.YellowLines]: { spotlightColor: BACKGROUNDS.yellow },
+  [FeaturePanelTone.YellowBlueLines]: { spotlightColor: BACKGROUNDS.yellow },
+  [FeaturePanelTone.SolidYellow]: {
+    background: BACKGROUNDS.yellow,
+    spotlightColor: BACKGROUNDS.yellow,
+  },
+  [FeaturePanelTone.GradientVitalityYellow]: {
+    background: BACKGROUNDS['gradient-vitality-yellow'],
+    spotlightColor: BACKGROUNDS.yellow,
+  },
+  [FeaturePanelTone.SolidLightYellow]: {
+    background: BACKGROUNDS['light-yellow'],
+    spotlightColor: BACKGROUNDS['light-yellow'],
+  },
+  [FeaturePanelTone.Green]: { spotlightColor: BACKGROUNDS.green },
+  [FeaturePanelTone.GreenLines]: {
+    spotlightColor: BACKGROUNDS['vitality-green'],
+  },
+  [FeaturePanelTone.MapGreen]: { spotlightColor: BACKGROUNDS.green },
+  [FeaturePanelTone.MapPlayful]: { spotlightColor: BACKGROUNDS.green },
+  [FeaturePanelTone.SolidGreen]: {
+    background: BACKGROUNDS.green,
+    spotlightColor: BACKGROUNDS.green,
+  },
+  [FeaturePanelTone.GradientGreen]: {
+    background: BACKGROUNDS['gradient-green'],
+    spotlightColor: BACKGROUNDS.green,
+  },
+  [FeaturePanelTone.SolidDarkGreen]: {
+    background: BACKGROUNDS['dark-green'],
+    spotlightColor: BACKGROUNDS['dark-green'],
+  },
+  [FeaturePanelTone.MalLightGreen]: {
+    spotlightColor: BACKGROUNDS['vitality-green'],
+  },
+  [FeaturePanelTone.Purple]: { spotlightColor: BACKGROUNDS.purple },
+  [FeaturePanelTone.LightBlue]: { spotlightColor: BACKGROUNDS['light-blue'] },
+  [FeaturePanelTone.SolidGrey]: {
+    background: BACKGROUNDS.grey,
+    spotlightColor: BACKGROUNDS.grey,
+  },
+  [FeaturePanelTone.SolidNeutral]: {
+    background: BACKGROUNDS.neutral,
+    spotlightColor: BACKGROUNDS.neutral,
+  },
+  [FeaturePanelTone.White]: {
+    background: BACKGROUNDS.white,
+    spotlightColor: BACKGROUNDS.white,
+  },
+  [FeaturePanelTone.Transparent]: {
+    background: BACKGROUNDS.transparent,
+    spotlightColor: BACKGROUNDS.transparent,
+  },
 };
 
 type BackgroundLighten = boolean | 'subtle' | 'medium' | 'strong';
@@ -118,6 +206,8 @@ type SharedProps = {
   lightenBackgroundClassName?: string;
   darkenBackground?: BackgroundDarken;
   darkenBackgroundClassName?: string;
+  spotlight?: SpotlightSize;
+  spotlightColor?: string;
   backgroundStyling?: FeaturePanelBackgroundStyling;
   backgroundStylingClassName?: string;
 
@@ -217,11 +307,20 @@ const imageSlotStyles: Record<
 function FeaturePanelRoot(props: FeaturePanelProps) {
   const isImagePanel = 'imageSrc' in props;
   const tone = !isImagePanel
-    ? (props.tone ?? FeaturePanelTone.Blue)
-    : FeaturePanelTone.Blue;
+    ? (props.tone ?? FeaturePanelTone.White)
+    : FeaturePanelTone.White;
   const backgroundStyling = props.backgroundStyling;
   const movementImageSrc = !isImagePanel ? toneMovementImages[tone] : undefined;
-  const toneBackground = !isImagePanel ? toneBackgrounds[tone] : undefined;
+  const toneColor = !isImagePanel ? toneColors[tone] : undefined;
+  const toneBackground = toneColor?.background;
+  const toneSpotlightColor = toneColor?.spotlightColor;
+  const spotlightBackground =
+    props.spotlight &&
+    SPOTLIGHT_GRADIENTS[props.spotlight](
+      props.spotlightColor ??
+        toneSpotlightColor ??
+        (toneBackground ? extractSolidColor(toneBackground) : '#000000')
+    );
   const backgroundLighten =
     props.lightenBackground === true ? 'medium' : props.lightenBackground;
   const backgroundDarken =
@@ -306,6 +405,13 @@ function FeaturePanelRoot(props: FeaturePanelProps) {
             className="object-cover"
           />
         </div>
+      ) : null}
+
+      {spotlightBackground ? (
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: spotlightBackground }}
+        />
       ) : null}
 
       {backgroundLighten && (
