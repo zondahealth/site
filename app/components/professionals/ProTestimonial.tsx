@@ -14,9 +14,9 @@ export function ProTestimonial() {
     <section className="py-10">
       <div className="layout-shell">
         <FeaturePanel
-          tone={FeaturePanelTone.YellowBlueLines}
+          tone={FeaturePanelTone.GradientVitalityYellow}
+          backgroundStyling={FeaturePanelBackgroundStyling.Lines}
           className="rounded-md"
-          darkenBackground="subtle"
           contentClassName="px-10 py-16 lg:px-20 lg:py-20"
         >
           <svg
@@ -31,14 +31,14 @@ export function ProTestimonial() {
               fill="var(--zonda-blue-dark)"
             />
           </svg>
-          <p className="max-w-3xl text-balance text-2xl font-bold leading-snug tracking-tight text-white lg:text-[32px] lg:leading-[1.25]">
+          <p className="max-w-3xl text-balance text-2xl font-bold leading-snug tracking-tight text-zonda-blue-dark lg:text-[32px] lg:leading-[1.25]">
             {t('site.products.professionals.testimonial.quote')}
           </p>
           <div className="mt-10">
-            <p className="text-2xl font-bold text-white lg:text-3xl">
+            <p className="text-2xl font-bold text-zonda-blue-dark lg:text-3xl">
               {t('site.products.professionals.testimonial.name')}
             </p>
-            <p className="mt-1 text-base text-white/80">
+            <p className="mt-1 text-base text-zonda-blue-dark/80">
               {t('site.products.professionals.testimonial.role')}
             </p>
           </div>

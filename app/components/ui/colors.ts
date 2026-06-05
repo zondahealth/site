@@ -17,8 +17,8 @@ export const BACKGROUNDS = {
   'gradient-black':
     'linear-gradient(135deg, rgb(0,0,0) 0%, rgb(13,2,59) 52%, #1a1a1a 100%)',
   'gradient-vitality-yellow':
-    'linear-gradient(135deg, #dddd00 0%, rgb(209,222,28) 52%, #c2c200 100%)',
-  yellow: '#e6c800',
+    'linear-gradient(135deg,rgb(242, 255, 0) 0%, rgb(230, 245, 31) 52%,rgba(255, 234, 72, 0.76) 100%)',
+  yellow: '#ffe066',
   'light-yellow': '#fff59d',
   grey: '#f4f6fd',
   neutral: '#edf1fb',

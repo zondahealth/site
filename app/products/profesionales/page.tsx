@@ -1,6 +1,10 @@
 'use client';
 
-import { FeaturePanel, FeaturePanelTone } from '@/app/components/FeaturePanel';
+import {
+  FeaturePanel,
+  FeaturePanelBackgroundStyling,
+  FeaturePanelTone,
+} from '@/app/components/FeaturePanel';
 import { useLanguage } from '@/app/components/LanguageProvider';
 import { PhoneAgenda } from '@/app/components/professionals/PhoneAgenda';
 import { PhoneOrganizaciones } from '@/app/components/professionals/PhoneOrganizaciones';
@@ -10,6 +14,8 @@ import { ProTestimonial } from '@/app/components/professionals/ProTestimonial';
 import { ProDownload } from '@/app/components/professionals/ProDownload';
 import { ProFAQ } from '@/app/components/professionals/ProFAQ';
 import Image from 'next/image';
+import { GradientDividerBar } from '@/app/components/GradientDividerBar';
+import { ShaderFeaturePanel } from '@/app/components/ShaderFeaturePanel';
 
 type ProFeatureContent = {
   accent: 'blue' | 'green' | 'purple';
@@ -32,11 +38,13 @@ export default function ProfesionalesPage() {
       <section className="flex flex-col">
         <FeaturePanel
           tone={FeaturePanelTone.Yellow}
+          backgroundStyling={FeaturePanelBackgroundStyling.Lines}
+          spotlight="lg"
           className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
           contentClassName="grid grid-cols-1 lg:grid-cols-2 flex-1 mx-auto max-w-7xl w-full"
         >
           <div className="flex min-w-0 flex-col items-center justify-center px-6 py-24 text-center lg:items-start lg:text-left space-y-8 px-16">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold [font-family:var(--font-display-family)] text-zonda-blue-dark">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold [font-family:var(--font-display-family)] text-zonda-blue-dark">
               {t('site.products.professionals.heroTitle')}
             </h1>
             <p className="text-md md:text-lg lg:text-2xl font-semibold text-zonda-blue-dark">
@@ -55,9 +63,9 @@ export default function ProfesionalesPage() {
             />
           </div>
         </FeaturePanel>
-      </section>
 
-      <ProTestimonial />
+        <GradientDividerBar variant="dynamic" />
+      </section>
 
       {/* <ProObrasSociales /> */}
 
@@ -91,6 +99,8 @@ export default function ProfesionalesPage() {
         cta={features[2].cta}
         phone={<PhoneRegistros />}
       />
+
+      <ProTestimonial />
 
       <ProDownload />
       <ProFAQ />

@@ -129,7 +129,7 @@ const toneColors: Partial<
   },
   [FeaturePanelTone.GradientVitalityYellow]: {
     background: BACKGROUNDS['gradient-vitality-yellow'],
-    spotlightColor: BACKGROUNDS.yellow,
+    spotlightColor: BACKGROUNDS['vitality-yellow'],
   },
   [FeaturePanelTone.SolidLightYellow]: {
     background: BACKGROUNDS['light-yellow'],
