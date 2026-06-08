@@ -1043,6 +1043,12 @@
         { "title": "Interdom", "description": "Interdom empresa de Internación Domiciliaria, utiliza zonda para digitalizar su operación, trackear pacientes, profesionales y mejorar la eficiencia operativa.", "href": "/casos-de-uso/interdom", "image": "/assets/cs/interdom.jpg" },
         { "title": "Detección de fraude", "description": "Cómo usar Zonda para analizar reclamos de pacientes e integrarlo a la operatoria del día a día.", "href": "/casos-de-uso/fraude", "image": "/assets/cs/fraude.jpeg" }
       ],
+      "eyebrow": "Casos reales",
+      "featuredLabel": "Caso destacado",
+      "readCase": "Ver caso",
+      "backToCases": "Volver a casos de uso",
+      "comingSoon": "Esta página está reservada para la historia completa. El contenido se publicará próximamente.",
+      "proofPoints": ["Operación digitalizada", "Datos confiables", "Ejecución medible"],
       "imageAlt": "Casos de uso",
       "title": "Organizaciones de salud que transformaron su operación con Zonda.",
       "ctaTitle": "Ayudá a tu organización a crecer y ser más eficiente.",

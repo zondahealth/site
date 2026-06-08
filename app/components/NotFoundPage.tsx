@@ -3,7 +3,11 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 
-import { FeaturePanel, FeaturePanelTone } from './FeaturePanel';
+import {
+  FeaturePanel,
+  FeaturePanelPattern,
+  FeaturePanelTone,
+} from './panel';
 import { useLanguage } from './LanguageProvider';
 import { Button } from './ui/button';
 
@@ -17,8 +21,8 @@ export function NotFoundPage() {
 
   return (
     <FeaturePanel
-      tone={FeaturePanelTone.Lines}
-      darkenBackground="subtle"
+      tone={FeaturePanelTone.DarkBlue}
+      pattern={FeaturePanelPattern.FullWhite}
       className="min-h-screen w-screen rounded-none"
       contentClassName="flex min-h-screen items-center justify-center"
     >

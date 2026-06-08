@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 
-import { FeaturePanel, FeaturePanelTone } from './FeaturePanel';
+import { FeaturePanel, FeaturePanelTone } from './panel';
 import { cn } from './ui/utils';
 
 export type ImageSectionProps = {
@@ -66,13 +66,13 @@ export function ImageSection({
 
   const imagePanel = backgroundImage ? (
     <FeaturePanel
-      imageSrc={backgroundImage}
-      imageAlt={
+      backgroundImageSrc={backgroundImage}
+      backgroundImageAlt={
         backgroundImageAlt ??
         imageAlt ??
         (typeof title === 'string' ? title : '')
       }
-      imageClassName={cn(
+      backgroundImageClassName={cn(
         'object-cover object-center',
         backgroundImageClassName
       )}

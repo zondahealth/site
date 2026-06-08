@@ -2,9 +2,9 @@
 
 import {
   FeaturePanel,
-  FeaturePanelBackgroundStyling,
+  FeaturePanelPattern,
   FeaturePanelTone,
-} from '@/app/components/FeaturePanel';
+} from '@/app/components/panel';
 import { useLanguage } from '@/app/components/LanguageProvider';
 import { PhoneAgenda } from '@/app/components/professionals/PhoneAgenda';
 import { PhoneOrganizaciones } from '@/app/components/professionals/PhoneOrganizaciones';
@@ -15,7 +15,6 @@ import { ProDownload } from '@/app/components/professionals/ProDownload';
 import { ProFAQ } from '@/app/components/professionals/ProFAQ';
 import Image from 'next/image';
 import { GradientDividerBar } from '@/app/components/GradientDividerBar';
-import { ShaderFeaturePanel } from '@/app/components/ShaderFeaturePanel';
 
 type ProFeatureContent = {
   accent: 'blue' | 'green' | 'purple';
@@ -37,9 +36,8 @@ export default function ProfesionalesPage() {
       {/* Hero — unchanged */}
       <section className="flex flex-col">
         <FeaturePanel
-          tone={FeaturePanelTone.Yellow}
-          backgroundStyling={FeaturePanelBackgroundStyling.Lines}
-          spotlight="lg"
+          backgroundImageSrc="/bg/gradients/blueyellow.png"
+          pattern={FeaturePanelPattern.FullWhite}
           className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
           contentClassName="grid grid-cols-1 lg:grid-cols-2 flex-1 mx-auto max-w-7xl w-full"
         >

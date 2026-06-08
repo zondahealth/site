@@ -1,71 +1,7 @@
-'use client';
-
-import Link from 'next/link';
-import {
-  FeaturePanel,
-  FeaturePanelBackgroundStyling,
-  FeaturePanelTone,
-} from '@/app/components/FeaturePanel';
-import { useLanguage } from '@/app/components/LanguageProvider';
-import { Button } from '@/app/components/ui/button';
+import { CaseStudyPlaceholderPage } from '@/app/components/CaseStudyPlaceholderPage';
 
 export default function InterdomPage() {
-  const { t } = useLanguage();
-
   return (
-    <div className="h-full w-full flex flex-1 flex-col bg-background space-y-16 md:space-y-26">
-      {/* Hero */}
-      <FeaturePanel
-        className="flex w-full flex-col rounded-none"
-        tone={FeaturePanelTone.SolidGreen}
-        backgroundStyling={FeaturePanelBackgroundStyling.WhiteLines}
-        backgroundStylingClassName="opacity-30"
-        contentClassName="flex w-full items-end"
-      >
-        <div className="layout-shell w-full py-28 md:py-40 lg:py-48">
-          <div className="max-w-4xl space-y-6">
-            <p className="text-sm font-semibold uppercase tracking-widest text-white/70">
-              {t('common.nav.caseStudies')}
-            </p>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold [font-family:var(--font-display-family)] text-white max-w-3xl">
-              {t('site.caseStudies.detail.interdom.title')}
-            </h1>
-            <p className="text-lg md:text-xl leading-relaxed text-white/80 max-w-2xl">
-              {t('site.caseStudies.detail.interdom.copy')}
-            </p>
-          </div>
-        </div>
-      </FeaturePanel>
-
-      {/* Content placeholder */}
-      <section>
-        <div className="layout-shell">
-          <div className="mx-auto max-w-3xl space-y-8">
-            <p className="text-lg md:text-xl leading-relaxed text-neutral-700">
-              {t('site.caseStudies.detail.interdom.body')}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section>
-        <div className="layout-shell pb-16 md:pb-26">
-          <FeaturePanel
-            tone={FeaturePanelTone.SolidBlue}
-            backgroundStyling={FeaturePanelBackgroundStyling.WhiteLines}
-            contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-24 sm:px-12 sm:py-32 lg:px-20 lg:py-40"
-          >
-            <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-4xl lg:text-6xl text-white [font-family:var(--font-display-family)]">
-              {t('site.common.talk')}
-            </div>
-
-            <Button asChild size="lg" className="min-w-48">
-              <Link href="/contacto">{t('site.common.contactAlt')}</Link>
-            </Button>
-          </FeaturePanel>
-        </div>
-      </section>
-    </div>
+    <CaseStudyPlaceholderPage titleKey="site.caseStudies.detail.interdom.title" />
   );
 }

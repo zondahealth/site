@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import {
   FeaturePanel,
-  FeaturePanelBackgroundStyling,
+  FeaturePanelPattern,
   FeaturePanelTone,
-} from '@/app/components/FeaturePanel';
+} from '@/app/components/panel';
 import { useLanguage } from '@/app/components/LanguageProvider';
 import { Button } from '@/app/components/ui/button';
 import ExploreButton from '@/app/components/ExploreButton';
@@ -24,8 +24,8 @@ export default function EmpresaPage() {
       <FeaturePanel
         className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
         tone={FeaturePanelTone.GradientBlue}
-        backgroundStyling={FeaturePanelBackgroundStyling.Full}
-        backgroundStylingClassName="opacity-30"
+        pattern={FeaturePanelPattern.FullMap}
+        patternClassName="opacity-30"
         contentClassName="flex flex-1 min-h-0 w-full h-full items-center justify-center"
       >
         <div className="flex flex-1 w-full h-full flex-col items-center justify-center px-6 py-10 text-center md:items-start md:text-left space-y-8 max-w-2xl md:max-w-7xl mx-auto">
@@ -97,7 +97,9 @@ export default function EmpresaPage() {
       {/* ── HISTORIAS ── */}
       <section>
         <FeaturePanel
-          tone={FeaturePanelTone.YellowBlueLines}
+          tone={FeaturePanelTone.Yellow}
+          pattern={FeaturePanelPattern.FullBlack}
+          patternClassName="opacity-25 mix-blend-multiply"
           className="rounded-none"
           contentClassName="py-28 sm:py-36 lg:py-48"
         >
@@ -157,10 +159,9 @@ export default function EmpresaPage() {
       {/* ── CTA ── */}
       <section>
         <FeaturePanel
-          tone={FeaturePanelTone.DarkBlueLines}
-          darkenBackground="medium"
+          tone={FeaturePanelTone.DarkBlue}
           className="rounded-none"
-          backgroundStyling={FeaturePanelBackgroundStyling.Lines}
+          pattern={FeaturePanelPattern.FullWhite}
           contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-28 sm:px-12 sm:py-36 lg:px-20 lg:py-48"
         >
           <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-3xl lg:text-6xl text-white [font-family:var(--font-display-family)]">

@@ -2,8 +2,9 @@
 
 import {
   FeaturePanel,
+  FeaturePanelPattern,
   FeaturePanelTone,
-} from '@/app/components/FeaturePanel';
+} from '@/app/components/panel';
 import { useLanguage } from '@/app/components/LanguageProvider';
 import Link from 'next/link';
 import { Button } from '@/app/components/ui/button';
@@ -15,7 +16,9 @@ export function IntDemoCTA() {
     <section className="py-10">
       <div className="layout-shell">
         <FeaturePanel
-          tone={FeaturePanelTone.DarkBlueLines}
+          tone={FeaturePanelTone.DarkBlue}
+          pattern={FeaturePanelPattern.SideLarge}
+          patternPlacement="both"
           contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-24 sm:px-12 sm:py-32 lg:px-20 lg:py-48"
         >
           <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-3xl lg:text-6xl text-white [font-family:var(--font-display-family)]">

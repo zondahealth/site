@@ -1,8 +1,10 @@
 'use client';
 
-import { FeaturePanel } from '@/app/components/FeaturePanel';
-import { FeaturePanelTone } from '@/app/components/FeaturePanel';
-import { FeaturePanelBackgroundStyling } from '@/app/components/FeaturePanel';
+import {
+  FeaturePanelPattern,
+  FeaturePanel,
+  FeaturePanelTone,
+} from '@/app/components/panel';
 import {
   InfoSection,
   type InfoSectionData,
@@ -22,7 +24,7 @@ export default function InteroperabilidadPage() {
       <FeaturePanel
         className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
         tone={FeaturePanelTone.Black}
-        backgroundStyling={FeaturePanelBackgroundStyling.Full}
+        pattern={FeaturePanelPattern.FullMap}
         contentClassName="flex flex-1 min-h-0 w-full h-full items-center justify-center"
       >
         <div className="flex flex-1 w-full h-full flex-col items-center justify-center px-6 py-10 text-center md:items-start md:text-left space-y-8 max-w-2xl md:max-w-7xl mx-auto">
@@ -56,8 +58,9 @@ export default function InteroperabilidadPage() {
       <section className="bg-black">
         <div className="layout-shell py-20 md:py-28">
           <FeaturePanel
-            tone={FeaturePanelTone.YellowBlueLines}
-            lightenBackground="subtle"
+            tone={FeaturePanelTone.Yellow}
+            pattern={FeaturePanelPattern.FullBlack}
+            patternClassName="opacity-25 mix-blend-multiply"
             contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-24 sm:px-12 sm:py-32 lg:px-20 lg:py-48"
           >
             <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-3xl lg:text-6xl text-black [font-family:var(--font-display-family)]">

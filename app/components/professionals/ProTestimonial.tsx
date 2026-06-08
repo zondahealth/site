@@ -2,9 +2,9 @@
 
 import {
   FeaturePanel,
-  FeaturePanelBackgroundStyling,
+  FeaturePanelPattern,
   FeaturePanelTone,
-} from '@/app/components/FeaturePanel';
+} from '@/app/components/panel';
 import { useLanguage } from '@/app/components/LanguageProvider';
 
 export function ProTestimonial() {
@@ -15,7 +15,8 @@ export function ProTestimonial() {
       <div className="layout-shell">
         <FeaturePanel
           tone={FeaturePanelTone.GradientVitalityYellow}
-          backgroundStyling={FeaturePanelBackgroundStyling.Lines}
+          pattern={FeaturePanelPattern.FullWhite}
+          patternPlacement="both"
           className="rounded-md"
           contentClassName="px-10 py-16 lg:px-20 lg:py-20"
         >

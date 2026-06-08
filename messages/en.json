@@ -1043,6 +1043,12 @@
         { "title": "Interdom", "description": "Interdom, a home care company, uses Zonda to digitize its operation, track patients and professionals, and improve operational efficiency.", "href": "/casos-de-uso/interdom", "image": "/assets/cs/interdom.jpg" },
         { "title": "Fraud detection", "description": "How to use Zonda to analyze patient claims and integrate that intelligence into day-to-day operations.", "href": "/casos-de-uso/fraude", "image": "/assets/cs/fraude.jpeg" }
       ],
+      "eyebrow": "Real cases",
+      "featuredLabel": "Featured case",
+      "readCase": "View case",
+      "backToCases": "Back to case studies",
+      "comingSoon": "This page is reserved for the full story. Content will be published soon.",
+      "proofPoints": ["Digitized operations", "Reliable data", "Measurable execution"],
       "imageAlt": "Case studies",
       "title": "Healthcare organizations that transformed their operations with Zonda.",
       "ctaTitle": "Help your organization grow and become more efficient.",

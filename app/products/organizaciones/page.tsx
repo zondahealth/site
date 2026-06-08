@@ -2,9 +2,9 @@
 
 import {
   FeaturePanel,
-  FeaturePanelBackgroundStyling,
+  FeaturePanelPattern,
   FeaturePanelTone,
-} from '@/app/components/FeaturePanel';
+} from '@/app/components/panel';
 import { useLanguage } from '@/app/components/LanguageProvider';
 import { OrgFeature } from '@/app/components/organizations/OrgFeature';
 import { IngestaDiagram } from '@/app/components/organizations/IngestaDiagram';
@@ -35,9 +35,8 @@ export default function OrganizacionesPage() {
       <section className="flex w-full flex-col">
         <FeaturePanel
           className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
-          tone={FeaturePanelTone.DarkBlueLines}
-          darkenBackground="medium"
-          backgroundStyling={FeaturePanelBackgroundStyling.Lines}
+          tone={FeaturePanelTone.DarkBlue}
+          pattern={FeaturePanelPattern.FullWhite}
           contentClassName="grid grid-cols-1 lg:grid-cols-2 flex-1 pt-24 lg:py-12 mx-auto max-w-7xl w-full"
         >
           <div className="flex min-w-0 flex-col items-center justify-end lg:justify-center px-16 lg:px-12 lg:py-24 text-center lg:items-start lg:text-left">
@@ -98,7 +97,9 @@ export default function OrganizacionesPage() {
       <section className="py-10">
         <div className="layout-shell">
           <FeaturePanel
-            tone={FeaturePanelTone.DarkBlueLines}
+            tone={FeaturePanelTone.DarkBlue}
+            pattern={FeaturePanelPattern.SideLarge}
+            patternPlacement="both"
             contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-24 sm:px-12 sm:py-32 lg:px-20 lg:py-48"
           >
             <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-3xl lg:text-6xl text-white [font-family:var(--font-display-family)]">
