@@ -6,10 +6,10 @@ import {
   FeaturePanel,
   FeaturePanelPattern,
   FeaturePanelTone,
-} from '@/app/components/panel';
-import { useLanguage } from '@/app/components/LanguageProvider';
-import { Button } from '@/app/components/ui/button';
-import ExploreButton from '@/app/components/ExploreButton';
+} from '@/components/panel';
+import { useLanguage } from '@/components/LanguageProvider';
+import { Button } from '@/components/ui/button';
+import ExploreButton from '@/components/ExploreButton';
 
 type DeveloperFeature = { title: string; copy: string };
 
@@ -23,7 +23,7 @@ export default function DesarrolladoresPage() {
       <FeaturePanel
         className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
         tone={FeaturePanelTone.Black}
-        pattern={FeaturePanelPattern.FullWhite}
+        pattern={FeaturePanelPattern.Tide}
         contentClassName="flex flex-1 min-h-0 w-full h-full items-center justify-center"
       >
         <div className="flex flex-1 w-full h-full flex-col items-center justify-center px-6 py-10 text-center md:items-start md:text-left space-y-8 max-w-2xl md:max-w-7xl mx-auto">
@@ -59,7 +59,7 @@ export default function DesarrolladoresPage() {
         <div className="layout-shell flex flex-col items-center gap-16 py-20 md:py-28">
           <div className="relative w-full max-w-5xl overflow-hidden rounded-lg">
             <Image
-              src="/assets/base/terminal.png"
+              src="/assets/home/images/terminal.png"
               alt={t('site.developers.terminalAlt')}
               width={1920}
               height={1080}
@@ -87,7 +87,7 @@ export default function DesarrolladoresPage() {
         <div className="layout-shell py-20 md:py-28">
           <FeaturePanel
             tone={FeaturePanelTone.Black}
-            pattern={FeaturePanelPattern.FullWhite}
+            pattern={FeaturePanelPattern.Tide}
             contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-24 sm:px-12 sm:py-32 lg:px-20 lg:py-40 text-vitality-yellow"
           >
             <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-4xl lg:text-6xl [font-family:var(--font-display-family)]">

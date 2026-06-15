@@ -8,12 +8,12 @@ import {
   FeaturePanel,
   FeaturePanelPattern,
   FeaturePanelTone,
-} from './components/panel';
-import { Hero } from './components/Hero';
-import { Button } from './components/ui/button';
-import ExploreButton from './components/ExploreButton';
-import { useLanguage } from './components/LanguageProvider';
-import { GradientDividerBar } from './components/GradientDividerBar';
+} from '@/components/panel';
+import { Hero } from '@/components/Hero';
+import { Button } from '@/components/ui/button';
+import ExploreButton from '@/components/ExploreButton';
+import { useLanguage } from '@/components/LanguageProvider';
+import { GradientDividerBar } from '@/components/GradientDividerBar';
 
 type HomeProduct = {
   number: string;
@@ -55,25 +55,26 @@ export default function App() {
         {/* ── EL PROBLEMA ── */}
         <section id="tesis">
           <FeaturePanel
-            backgroundImageSrc="/bg/gradients/blueyellow.png"
             backgroundImageClassName="opacity-40 mix-blend-multiply"
-            patternClassName="opacity-50 mix-blend-multiply"
+            pattern={FeaturePanelPattern.Tide}
+            patternColor="rgb(5, 17, 180, 0.20)"
+            patternFrame={10}
             className="rounded-none "
             contentClassName="overflow-hidden pb-0 pt-20 sm:pt-28 lg:pt-36"
           >
             <div className="layout-shell">
-              <div className="flex justify-center items-center flex-col gap-4">
+              <div className="flex justify-center items-center flex-col gap-1">
                 <h2 className="text-center text-4xl sm:text-5xl lg:text-6xl font-bold [font-family:var(--font-display-family)] text-zonda-blue-dark">
                   {t('site.home.problem.title')}{' '}
                 </h2>
-                <h2 className="text-center text-zonda-blue text-4xl sm:text-5xl lg:text-6xl font-bold [font-family:var(--font-display-family)]">
+                <h2 className="text-center text-zonda-blue-dark text-4xl sm:text-5xl lg:text-6xl font-bold [font-family:var(--font-display-family)]">
                   {t('site.home.problem.highlight')}
                 </h2>
               </div>
             </div>
             <div className="layout-shell relative z-10 mt-16 sm:mt-20 lg:mt-20 -mb-16 sm:-mb-24 lg:-mb-48">
               <Image
-                src="/assets/base/infra.png"
+                src="/assets/home/images/infra.png"
                 alt={t('site.home.problem.imageAlt')}
                 width={1920}
                 height={1080}
@@ -81,14 +82,15 @@ export default function App() {
               />
             </div>
           </FeaturePanel>
-          <GradientDividerBar variant="cool" />
+          <GradientDividerBar variant="dynamic" />
         </section>
 
         <section>
           <FeaturePanel
             tone={FeaturePanelTone.GradientVitalityYellow}
-            pattern={FeaturePanelPattern.CornersBlack}
-            patternClassName="opacity-10 mix-blend-multiply"
+            pattern={FeaturePanelPattern.Drift}
+            patternColor="rgba(14, 60, 117, 0.34)"
+            patternClassName="opacity-40 mix-blend-multiply"
             className="rounded-none py-20 sm:py-46 lg:py-62"
             contentClassName=""
           >
@@ -116,7 +118,7 @@ export default function App() {
         <section>
           <FeaturePanel
             tone={FeaturePanelTone.DarkBlue}
-            pattern={FeaturePanelPattern.SideLarge}
+            pattern={FeaturePanelPattern.Tide}
             patternPlacement="both"
             className="rounded-none"
             contentClassName="py-20 sm:py-40 lg:py-62"
@@ -158,8 +160,10 @@ export default function App() {
         {/* ── PLATAFORMA ── */}
         <section>
           <FeaturePanel
-            pattern={FeaturePanelPattern.SideLarge}
-            backgroundImageSrc="/bg/gradients/bluepurple.png"
+            pattern={FeaturePanelPattern.Tide}
+            patternColor="rgb(5, 17, 180, 0.20)"
+            patternFrame={10}
+            backgroundImageSrc="/assets/home/images/blue-purple-gradient.png"
             backgroundImageClassName="opacity-40 mix-blend-multiply"
             patternPlacement="both"
             patternClassName="opacity-40 mix-blend-multiply"
@@ -226,7 +230,9 @@ export default function App() {
         <section id="api-interoperabilidad">
           <FeaturePanel
             tone={FeaturePanelTone.Black}
-            pattern={FeaturePanelPattern.CornersWhite}
+            pattern={FeaturePanelPattern.Tide}
+            patternFrame={100}
+            patternColor="rgba(244, 241, 234, 0.44)"
             className="rounded-none"
             imagePosition="bleed"
             contentClassName="py-20 sm:py-28 lg:py-46"
@@ -247,7 +253,7 @@ export default function App() {
                 </div>
                 <div className="relative min-h-[20rem] lg:min-h-[28rem] overflow-hidden rounded-md">
                   <Image
-                    src="/assets/base/terminal.png"
+                    src="/assets/home/images/terminal.png"
                     alt={t('site.home.api.imageAlt')}
                     fill
                     className="object-cover object-center"
@@ -263,13 +269,14 @@ export default function App() {
         {/* ── CTA FINAL ── */}
         <section>
           <FeaturePanel
-            backgroundImageSrc="/bg/gradients/bluepurple.png"
+            backgroundImageSrc="/assets/home/images/blue-purple-gradient.png"
             patternClassName="opacity-10 mix-blend-multiply"
           >
             <div className="py-20 sm:py-28 lg:py-36">
               <FeaturePanel
                 tone={FeaturePanelTone.DarkBlue}
-                pattern={FeaturePanelPattern.SideLarge}
+                pattern={FeaturePanelPattern.Drift}
+                patternColor="rgba(141, 179, 225, 0.34)"
                 patternPlacement="both"
                 className="layout-shell"
                 contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-20 sm:px-12 sm:py-28 lg:px-20 lg:py-46"

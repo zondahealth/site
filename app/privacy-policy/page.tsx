@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 
-import { getSupportedLocale, localeCookieName } from '@/app/lib/locale';
+import { getSupportedLocale, localeCookieName } from '@/lib/locale';
 import enMessages from '@/messages/en.json';
 import esMessages from '@/messages/es.json';
 

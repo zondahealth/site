@@ -1,0 +1,51 @@
+'use client';
+
+import {
+  FeaturePanel,
+  FeaturePanelPattern,
+  FeaturePanelTone,
+} from '@/components/panel';
+import { useLanguage } from '@/components/LanguageProvider';
+
+export function ProTestimonial() {
+  const { t } = useLanguage();
+
+  return (
+    <section className="py-10">
+      <div className="layout-shell">
+        <FeaturePanel
+          tone={FeaturePanelTone.GradientVitalityYellow}
+          pattern={FeaturePanelPattern.Tide}
+          patternColor="rgba(10, 10, 18, 0.42)"
+          patternPlacement="both"
+          className="rounded-md"
+          contentClassName="px-10 py-16 lg:px-20 lg:py-20"
+        >
+          <svg
+            width="42"
+            height="32"
+            viewBox="0 0 42 32"
+            fill="none"
+            className="mb-6 opacity-35"
+          >
+            <path
+              d="M18 0H6C2.7 0 0 2.7 0 6v12c0 3.3 2.7 6 6 6h6c-1 4-4 6-6 8h4c8-2 12-7 12-14V0zM42 0H30c-3.3 0-6 2.7-6 6v12c0 3.3 2.7 6 6 6h6c-1 4-4 6-6 8h4c8-2 12-7 12-14V0z"
+              fill="var(--zonda-blue-dark)"
+            />
+          </svg>
+          <p className="max-w-3xl text-balance text-2xl font-bold leading-snug tracking-tight text-zonda-blue-dark lg:text-[32px] lg:leading-[1.25]">
+            {t('site.products.professionals.testimonial.quote')}
+          </p>
+          <div className="mt-10">
+            <p className="text-2xl font-bold text-zonda-blue-dark lg:text-3xl">
+              {t('site.products.professionals.testimonial.name')}
+            </p>
+            <p className="mt-1 text-base text-zonda-blue-dark/80">
+              {t('site.products.professionals.testimonial.role')}
+            </p>
+          </div>
+        </FeaturePanel>
+      </div>
+    </section>
+  );
+}

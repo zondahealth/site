@@ -1,6 +1,6 @@
 'use client';
 
-import { useLanguage } from '@/app/components/LanguageProvider';
+import { useLanguage } from '@/components/LanguageProvider';
 
 type Section = {
   title: string;

@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useLanguage } from '@/app/components/LanguageProvider';
-import { Button } from '@/app/components/ui/button';
-import ExploreButton from '@/app/components/ExploreButton';
+import { useLanguage } from '@/components/LanguageProvider';
+import { Button } from '@/components/ui/button';
+import ExploreButton from '@/components/ExploreButton';
 
 type CaseStudy = {
   title: string;
@@ -22,7 +22,7 @@ export default function CasosDeUsoPage() {
     <div className="min-h-screen bg-background text-foreground">
       <section className="relative overflow-hidden border-b border-outline-variant bg-[linear-gradient(180deg,#fcfcff_0%,#f4f6fd_100%)] pt-32 pb-14 sm:pt-40 sm:pb-20 lg:pt-44">
         <Image
-          src="/bg/styling/white-lines.png"
+          src="/assets/casos-de-uso/images/white-lines.png"
           alt=""
           fill
           priority

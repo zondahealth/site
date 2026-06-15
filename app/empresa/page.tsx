@@ -5,10 +5,10 @@ import {
   FeaturePanel,
   FeaturePanelPattern,
   FeaturePanelTone,
-} from '@/app/components/panel';
-import { useLanguage } from '@/app/components/LanguageProvider';
-import { Button } from '@/app/components/ui/button';
-import ExploreButton from '@/app/components/ExploreButton';
+} from '@/components/panel';
+import { useLanguage } from '@/components/LanguageProvider';
+import { Button } from '@/components/ui/button';
+import ExploreButton from '@/components/ExploreButton';
 
 type Metric = { value: string; label: string };
 type Article = { source: string; title: string; href: string };
@@ -24,7 +24,7 @@ export default function EmpresaPage() {
       <FeaturePanel
         className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
         tone={FeaturePanelTone.GradientBlue}
-        pattern={FeaturePanelPattern.FullMap}
+        pattern={FeaturePanelPattern.Drift}
         patternClassName="opacity-30"
         contentClassName="flex flex-1 min-h-0 w-full h-full items-center justify-center"
       >
@@ -98,7 +98,8 @@ export default function EmpresaPage() {
       <section>
         <FeaturePanel
           tone={FeaturePanelTone.Yellow}
-          pattern={FeaturePanelPattern.FullBlack}
+          pattern={FeaturePanelPattern.Tide}
+          patternColor="rgba(10, 10, 18, 0.46)"
           patternClassName="opacity-25 mix-blend-multiply"
           className="rounded-none"
           contentClassName="py-28 sm:py-36 lg:py-48"
@@ -161,7 +162,7 @@ export default function EmpresaPage() {
         <FeaturePanel
           tone={FeaturePanelTone.DarkBlue}
           className="rounded-none"
-          pattern={FeaturePanelPattern.FullWhite}
+          pattern={FeaturePanelPattern.Tide}
           contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-28 sm:px-12 sm:py-36 lg:px-20 lg:py-48"
         >
           <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-3xl lg:text-6xl text-white [font-family:var(--font-display-family)]">

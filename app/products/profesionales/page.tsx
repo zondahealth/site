@@ -4,17 +4,17 @@ import {
   FeaturePanel,
   FeaturePanelPattern,
   FeaturePanelTone,
-} from '@/app/components/panel';
-import { useLanguage } from '@/app/components/LanguageProvider';
-import { PhoneAgenda } from '@/app/components/professionals/PhoneAgenda';
-import { PhoneOrganizaciones } from '@/app/components/professionals/PhoneOrganizaciones';
-import { PhoneRegistros } from '@/app/components/professionals/PhoneRegistros';
-import { ProFeature } from '@/app/components/professionals/ProFeature';
-import { ProTestimonial } from '@/app/components/professionals/ProTestimonial';
-import { ProDownload } from '@/app/components/professionals/ProDownload';
-import { ProFAQ } from '@/app/components/professionals/ProFAQ';
+} from '@/components/panel';
+import { useLanguage } from '@/components/LanguageProvider';
+import { PhoneAgenda } from '@/components/professionals/PhoneAgenda';
+import { PhoneOrganizaciones } from '@/components/professionals/PhoneOrganizaciones';
+import { PhoneRegistros } from '@/components/professionals/PhoneRegistros';
+import { ProFeature } from '@/components/professionals/ProFeature';
+import { ProTestimonial } from '@/components/professionals/ProTestimonial';
+import { ProDownload } from '@/components/professionals/ProDownload';
+import { ProFAQ } from '@/components/professionals/ProFAQ';
 import Image from 'next/image';
-import { GradientDividerBar } from '@/app/components/GradientDividerBar';
+import { GradientDividerBar } from '@/components/GradientDividerBar';
 
 type ProFeatureContent = {
   accent: 'blue' | 'green' | 'purple';
@@ -36,8 +36,9 @@ export default function ProfesionalesPage() {
       {/* Hero — unchanged */}
       <section className="flex flex-col">
         <FeaturePanel
-          backgroundImageSrc="/bg/gradients/blueyellow.png"
-          pattern={FeaturePanelPattern.FullWhite}
+          backgroundImageSrc="/assets/profesionales/images/blue-yellow-gradient.png"
+          pattern={FeaturePanelPattern.Tide}
+          patternColor="rgba(34, 111, 253, 0.75)"
           className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
           contentClassName="grid grid-cols-1 lg:grid-cols-2 flex-1 mx-auto max-w-7xl w-full"
         >
@@ -52,7 +53,7 @@ export default function ProfesionalesPage() {
 
           <div className="relative hidden lg:block h-full overflow-visible">
             <Image
-              src="/assets/doctor.png"
+              src="/assets/profesionales/images/doctor.png"
               alt={t('site.products.professionals.heroAlt')}
               width={700}
               height={700}

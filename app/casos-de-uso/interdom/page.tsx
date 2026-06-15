@@ -1,4 +1,4 @@
-import { CaseStudyPlaceholderPage } from '@/app/components/CaseStudyPlaceholderPage';
+import { CaseStudyPlaceholderPage } from '@/components/CaseStudyPlaceholderPage';
 
 export default function InterdomPage() {
   return (

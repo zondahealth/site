@@ -4,16 +4,17 @@ import {
   FeaturePanel,
   FeaturePanelPattern,
   FeaturePanelTone,
-} from '@/app/components/panel';
-import { useLanguage } from '@/app/components/LanguageProvider';
-import { OrgFeature } from '@/app/components/organizations/OrgFeature';
-import { IngestaDiagram } from '@/app/components/organizations/IngestaDiagram';
-import { PatternsDashboard } from '@/app/components/organizations/PatternsDashboard';
-import { RolesVisual } from '@/app/components/organizations/RolesVisual';
-import { OrgUseCases } from '@/app/components/organizations/OrgUseCases';
+} from '@/components/panel';
+import { GradientDividerBar } from '@/components/GradientDividerBar';
+import { useLanguage } from '@/components/LanguageProvider';
+import { OrgFeature } from '@/components/organizations/OrgFeature';
+import { IngestaDiagram } from '@/components/organizations/IngestaDiagram';
+import { PatternsDashboard } from '@/components/organizations/PatternsDashboard';
+import { RolesVisual } from '@/components/organizations/RolesVisual';
+import { OrgUseCases } from '@/components/organizations/OrgUseCases';
+import { TopographicShaderBackground } from '@/components/shaders/TopographicShaderBackground';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Button } from '@/app/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 type OrgFeatureContent = {
   eyebrow: string;
@@ -31,36 +32,20 @@ export default function OrganizacionesPage() {
 
   return (
     <div className="pb-16">
-      {/* Hero — unchanged */}
-      <section className="flex w-full flex-col">
-        <FeaturePanel
-          className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
-          tone={FeaturePanelTone.DarkBlue}
-          pattern={FeaturePanelPattern.FullWhite}
-          contentClassName="grid grid-cols-1 lg:grid-cols-2 flex-1 pt-24 lg:py-12 mx-auto max-w-7xl w-full"
-        >
-          <div className="flex min-w-0 flex-col items-center justify-end lg:justify-center px-16 lg:px-12 lg:py-24 text-center lg:items-start lg:text-left">
-            <h1 className="font-bold gap-4 lg:gap-6 flex flex-col text-white">
-              <span className="text-6xl lg:text-7xl font-bold [font-family:var(--font-display-family)] text-vitality-yellow">
-                {t('site.products.organizations.heroTitle')}
-              </span>
-              <span className="text-white text-4xl md:text-5xl">
-                {t('site.products.organizations.heroHighlight')}
-              </span>
-            </h1>
-          </div>
-
-          <div className="flex items-center justify-center px-8 py-4 lg:relative lg:block lg:h-full lg:min-w-0 lg:overflow-visible lg:px-0 lg:py-0">
-            <Image
-              src="/assets/orgs/hero.png"
-              alt={t('site.products.organizations.heroAlt')}
-              width={700}
-              height={700}
-              className="pointer-events-none min-h-[340px] max-h-[40vh] w-auto object-contain lg:absolute lg:top-1/2 lg:left-0 lg:-translate-y-1/2 lg:min-h-0 lg:max-h-none lg:h-[50%] xl:h-[65%] lg:max-w-none"
-              sizes="100%"
-            />
-          </div>
-        </FeaturePanel>
+      <section className="pt-0">
+        <div className="relative flex h-[100dvh] min-h-[30rem] flex-col overflow-hidden bg-zonda-blue-dark">
+          <div className="absolute inset-0 bg-[radial-gradient(1100px_760px_at_58%_28%,rgba(34,111,253,0.76),transparent_62%),radial-gradient(900px_680px_at_16%_82%,rgba(4,17,48,0.56),transparent_58%),linear-gradient(180deg,rgba(30,75,199,0.96)_0%,rgba(10,35,94,0.92)_42%,rgba(7,17,48,0.98)_100%)]" />
+          <TopographicShaderBackground
+            shaderId="tide"
+            inkColor="rgba(255, 255, 251, 0.5)"
+            className="absolute inset-0 h-full w-full touch-none opacity-100"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_36%,rgba(230,255,26,0.07),transparent_24%),radial-gradient(circle_at_72%_54%,rgba(34,111,253,0.16),transparent_34%),linear-gradient(180deg,rgba(3,13,40,0.08)_0%,rgba(3,13,40,0.16)_100%)]" />
+          <GradientDividerBar
+            variant="cool"
+            className="absolute inset-x-0 bottom-0"
+          />
+        </div>
       </section>
 
       <OrgFeature
@@ -98,7 +83,7 @@ export default function OrganizacionesPage() {
         <div className="layout-shell">
           <FeaturePanel
             tone={FeaturePanelTone.DarkBlue}
-            pattern={FeaturePanelPattern.SideLarge}
+            pattern={FeaturePanelPattern.Tide}
             patternPlacement="both"
             contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-24 sm:px-12 sm:py-32 lg:px-20 lg:py-48"
           >
