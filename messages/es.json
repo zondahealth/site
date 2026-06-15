@@ -1272,8 +1272,7 @@
   "notFound": {
     "title": "Página no encontrada",
     "description": "La página que buscas no existe o ha sido movida.",
-    "goHome": "Ir al Inicio",
-    "exploreSolutions": "Explorar Soluciones"
+    "goHome": "Ir al Inicio"
   },
   "faq": {
     "hero": {

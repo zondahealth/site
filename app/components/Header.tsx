@@ -273,9 +273,6 @@ export function Header({
                 >
                   <div className="mx-auto flex w-full max-w-[1440px] px-10 py-12">
                     <div className="w-full max-w-xl">
-                      <p className="mb-5 text-sm font-medium text-[color:rgba(21,27,43,0.58)]">
-                        Explorar soluciones
-                      </p>
                       <div className="flex flex-col items-start">
                         {item.products.map((product) => (
                           <Link

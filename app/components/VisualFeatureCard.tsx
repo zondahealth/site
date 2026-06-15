@@ -16,15 +16,15 @@ type VisualFeatureCardColor =
 
 type VisualFeatureCardWaves =
   | 'none'
-  | 'elastic'
-  | 'elastic-inverted'
-  | 'elastic-alt'
-  | 'liquid'
-  | 'liquid-inverted'
-  | 'liquid-alt'
-  | 'vdrift'
-  | 'vdrift-inverted'
-  | 'vdrift-alt';
+  | 'tide'
+  | 'tide-inverted'
+  | 'tide-alt'
+  | 'low-tide'
+  | 'low-tide-inverted'
+  | 'low-tide-alt'
+  | 'drift'
+  | 'drift-inverted'
+  | 'drift-alt';
 
 type VisualFeatureCardLineColor = 'default' | 'black' | 'white';
 type VisualFeatureCardGlow = boolean;
@@ -62,6 +62,13 @@ const colorBackgrounds: Record<VisualFeatureCardColor, string> = {
   'vitality-green': BACKGROUNDS['vitality-green'],
 };
 
+const shaderBackgrounds: Record<VisualFeatureCardColor, string> = {
+  black: '#0a0a12',
+  darkblue: '#072351',
+  'vitality-yellow': '#cdcd00',
+  'vitality-green': '#08271c',
+};
+
 const waveSettings: Record<
   Exclude<VisualFeatureCardWaves, 'none'>,
   {
@@ -70,15 +77,15 @@ const waveSettings: Record<
     inverted?: boolean;
   }
 > = {
-  elastic: { shaderId: 'elastic', staticFrame: 64 },
-  'elastic-inverted': { shaderId: 'elastic', staticFrame: 64, inverted: true },
-  'elastic-alt': { shaderId: 'elastic', staticFrame: 128 },
-  liquid: { shaderId: 'liquid', staticFrame: 64 },
-  'liquid-inverted': { shaderId: 'liquid', staticFrame: 64, inverted: true },
-  'liquid-alt': { shaderId: 'liquid', staticFrame: 128 },
-  vdrift: { shaderId: 'vdrift', staticFrame: 64 },
-  'vdrift-inverted': { shaderId: 'vdrift', staticFrame: 64, inverted: true },
-  'vdrift-alt': { shaderId: 'vdrift', staticFrame: 128 },
+  tide: { shaderId: 'tide', staticFrame: 64 },
+  'tide-inverted': { shaderId: 'tide', staticFrame: 64, inverted: true },
+  'tide-alt': { shaderId: 'tide', staticFrame: 128 },
+  'low-tide': { shaderId: 'low-tide', staticFrame: 64 },
+  'low-tide-inverted': { shaderId: 'low-tide', staticFrame: 64, inverted: true },
+  'low-tide-alt': { shaderId: 'low-tide', staticFrame: 128 },
+  drift: { shaderId: 'drift', staticFrame: 64 },
+  'drift-inverted': { shaderId: 'drift', staticFrame: 64, inverted: true },
+  'drift-alt': { shaderId: 'drift', staticFrame: 128 },
 };
 
 const lineColors: Record<
@@ -124,7 +131,7 @@ export function VisualFeatureCard({
   imageSizes = '(min-width: 1024px) 45vw, 100vw',
   priority,
   color = 'darkblue',
-  waves = 'elastic',
+  waves = 'tide',
   lineColor = 'default',
   glow = false,
   showWaves = true,
@@ -162,13 +169,15 @@ export function VisualFeatureCard({
         {showWaves && wave ? (
           <StaticTopographicShaderBackground
             shaderId={wave.shaderId}
+            bgColor={shaderBackgrounds[color]}
+            inkColor={shaderLineColor}
             lineColor={shaderLineColor}
             lineOpacity={isFlatLineColor ? 1 : undefined}
             staticFrame={wave.staticFrame}
             className={cn(
               'pointer-events-none absolute inset-0 h-full w-full',
               wave.inverted && '-scale-x-100',
-              isFlatLineColor ? 'opacity-100' : 'opacity-70 mix-blend-screen'
+              isFlatLineColor ? 'opacity-100' : 'opacity-70'
             )}
           />
         ) : null}
