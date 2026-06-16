@@ -882,45 +882,45 @@
         ]
       },
       "platform": {
-        "eyebrow": "Platform",
-        "title": "Different solutions.",
-        "highlight": "Under one platform.",
+        "eyebrow": "Solutions",
+        "title": "Strengthen every stage of the healthcare ecosystem",
+        "highlight": "",
         "products": [
           {
-            "number": "01",
-            "title": "Organizations",
-            "subtitle": "CLINICS, HOSPITALS AND MULTI-ORGANIZATION NETWORKS",
-            "description": "Digitize your organization without replacing existing systems. Know your patients, your staff and, most importantly, your business.",
-            "features": ["Unified medical record", "Progress note and database management", "Real-time interoperability"],
+            "name": "Organizations",
+            "title": "Digitize without replacing what already works",
+            "subtitle": "Your entire clinical operation, in one place",
             "cta": "Learn more",
-            "href": "/products/organizaciones"
+            "href": "/products/organizaciones",
+            "image": "/assets/home/images/solutions/orgs.png",
+            "imageAlt": "Product view for healthcare organizations"
           },
           {
-            "number": "02",
-            "title": "Professional Portal",
-            "subtitle": "INDEPENDENT PROFESSIONALS",
-            "description": "One place to manage patients, record progress notes, organize your schedule and control your practice, whether or not it is linked to an organization.",
-            "features": ["Scheduling and automatic reminders", "Progress notes with digital and electronic signature"],
-            "cta": "Learn more",
-            "href": "/products/profesionales"
-          },
-          {
-            "number": "03",
-            "title": "Home Care",
-            "subtitle": "HOME CARE COMPANIES",
-            "description": "Centralized management, an app for field professionals, and real-time auditing. No blind spots between administration and the patient’s home.",
-            "features": ["Smart professional assignment", "Service auditing"],
-            "cta": "Learn more",
-            "href": "/products/internacion-domiciliaria"
-          },
-          {
-            "number": "04",
-            "title": "Interoperability",
-            "subtitle": "TECHNICAL AND DATA TEAMS",
-            "description": "Connect fragmented systems. Normalize clinical information. Enable outcome-based payment models, impact reporting and frictionless auditing without replacing what already exists.",
-            "features": [],
+            "name": "Interoperability",
+            "title": "Turn fragmented systems into usable information",
+            "subtitle": "The data layer that connects your ecosystem",
             "cta": "Explore Interoperability",
-            "href": "/products/interoperabilidad"
+            "href": "/products/interoperabilidad",
+            "image": "/assets/home/images/solutions/interop.png",
+            "imageAlt": "Interoperability and clinical data view"
+          },
+          {
+            "name": "Home Care",
+            "title": "Track every visit, even outside the institution",
+            "subtitle": "No blind spots between office and home",
+            "cta": "Learn more",
+            "href": "/products/internacion-domiciliaria",
+            "image": "/assets/home/images/solutions/adi.png",
+            "imageAlt": "Operational view for home care"
+          },
+          {
+            "name": "Professional Portal",
+            "title": "Run your practice without losing time to operations",
+            "subtitle": "Less administration. More patient care",
+            "cta": "Learn more",
+            "href": "/products/profesionales",
+            "image": "/assets/home/images/solutions/profesionales.png",
+            "imageAlt": "Professional portal for clinical practice"
           }
         ]
       },

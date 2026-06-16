@@ -5,8 +5,8 @@ import Link from 'next/link';
 
 import {
   FeaturePanel,
-  FeaturePanelPattern,
-  FeaturePanelTone,
+  FeaturePanelBackgroundStyle,
+  FeaturePanelColor,
 } from './panel';
 import { useLanguage } from './LanguageProvider';
 import { Button } from './ui/button';
@@ -21,8 +21,8 @@ export function NotFoundPage() {
 
   return (
     <FeaturePanel
-      tone={FeaturePanelTone.DarkBlue}
-      pattern={FeaturePanelPattern.Tide}
+      color={FeaturePanelColor.DarkBlue}
+      backgroundStyle={FeaturePanelBackgroundStyle.WaveBlueLeft}
       className="min-h-screen w-screen rounded-none"
       contentClassName="flex min-h-screen items-center justify-center"
     >

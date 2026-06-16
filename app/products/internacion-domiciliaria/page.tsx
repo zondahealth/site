@@ -2,8 +2,8 @@
 
 import {
   FeaturePanel,
-  FeaturePanelPattern,
-  FeaturePanelTone,
+  FeaturePanelBackgroundStyle,
+  FeaturePanelColor,
 } from '@/components/panel';
 import { useLanguage } from '@/components/LanguageProvider';
 import {
@@ -23,8 +23,8 @@ export default function InternacionDomiciliariaPage() {
     <div className="pb-16">
       <section className="flex w-full flex-col">
         <FeaturePanel
-          tone={FeaturePanelTone.GradientDeepBlue}
-          pattern={FeaturePanelPattern.Drift}
+          color={FeaturePanelColor.DarkBlue}
+          backgroundStyle={FeaturePanelBackgroundStyle.FullDrift}
           className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
           contentClassName="flex flex-1 flex-col items-center justify-center px-8 py-20 sm:px-12 sm:py-28 lg:px-20 lg:py-36 text-center text-white "
         >

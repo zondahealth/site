@@ -2,7 +2,14 @@
 
 import { useEffect, useRef } from 'react';
 
-export type ShaderId = 'tide' | 'low-tide' | 'drift';
+export type ShaderId =
+  | 'tide'
+  | 'tide-dense'
+  | 'low-tide'
+  | 'drift'
+  | 'weave'
+  | 'weave-dense'
+  | 'weave-mist';
 
 type Rgb = readonly [number, number, number];
 type ResolvedColor = {
@@ -17,7 +24,7 @@ type ShaderDefinition = {
   fragment: string;
 };
 
-type TopographicShaderBackgroundProps = {
+export type TopographicShaderBackgroundProps = {
   shaderId: ShaderId;
   className?: string;
   animated?: boolean;
@@ -27,12 +34,11 @@ type TopographicShaderBackgroundProps = {
   lineColor?: Rgb;
   lineOpacity?: number;
   staticFrame?: number;
+  angle?: number;
 };
 
 const DEFAULT_INK = '#f4f1ea';
 const DEFAULT_BG = '#072351';
-const DEFAULT_LINE_COLOR = [0.96, 0.95, 0.92] as const;
-
 const FRAGMENT_PREAMBLE = `#version 300 es
 precision highp float;
 
@@ -108,6 +114,47 @@ void main(){
   float density = bandMask * patches;
   float radius = density * 0.30;
   float dotMask = smoothstep(radius, radius - 0.08, length(gf)) * step(0.02, density);
+
+  float ink = clamp(dotMask * u_lineOpacity, 0.0, 1.0);
+  col = mix(col, INK, ink);
+
+  vec2 vp = uv - 0.5; vp.x *= aspect;
+  col *= 1.0 - dot(vp, vp) * 0.25;
+
+  gl_FragColor = u_backgroundOpacity < 0.999
+    ? vec4(INK, ink)
+    : vec4(col, 1.0);
+}`,
+  'tide-dense': `
+void main(){
+  vec2 uv = v_uv;
+  float aspect = u_resolution.x / u_resolution.y;
+
+  vec3 col = NAVY_DEEP * 0.85 + NAVY * 0.15;
+
+  float bandMask = 0.0;
+  const int N = 5;
+  for(int i = 0; i < N; i++){
+    float fi = float(i);
+    float x0 = (fi + 0.5) / float(N);
+    float amp = 0.045 + 0.018 * sin(fi * 1.7 + 0.3);
+    float freq = 4.5 + fi * 0.55;
+    float speed = 0.22 + fi * 0.06;
+    amp *= 1.0 + (u_mouseSmooth.y - 0.5) * 0.9;
+    float phase = u_time * speed + fi + (u_mouseSmooth.x - 0.5) * 1.8;
+    float xline = x0 + amp * sin(uv.y * freq + phase)
+                    + amp * 0.4 * sin(uv.y * freq * 0.43 - phase * 0.7);
+    float band = abs(uv.x - xline);
+    bandMask = max(bandMask, smoothstep(0.30, 0.0, band));
+  }
+
+  vec2 g = uv * vec2(aspect, 1.0) * 165.0;
+  vec2 gf = fract(g) - 0.5;
+  float n = fbm(uv * vec2(1.6, 2.2) + vec2(u_time * 0.04, -u_time * 0.07));
+  float patches = smoothstep(0.34, 0.78, n);
+  float density = clamp(bandMask * patches + bandMask * 0.18, 0.0, 1.0);
+  float radius = density * 0.34;
+  float dotMask = smoothstep(radius, radius - 0.08, length(gf)) * step(0.015, density);
 
   float ink = clamp(dotMask * u_lineOpacity, 0.0, 1.0);
   col = mix(col, INK, ink);
@@ -226,16 +273,150 @@ void main(){
     ? vec4(INK, ink)
     : vec4(col, 1.0);
 }`,
+  weave: `
+void main(){
+  vec2 uv = v_uv;
+  float aspect = u_resolution.x / u_resolution.y;
+
+  float clickSwell = 0.0;
+  for(int i = 0; i < 4; i++){
+    vec3 c = u_clicks[i];
+    if(c.z < 2.4){
+      float life = 1.0 - smoothstep(0.0, 2.4, c.z);
+      clickSwell += life * exp(-pow((uv.x - c.x) - (c.z * 0.4 - 0.2), 2.0) * 6.0) * 0.06;
+    }
+  }
+
+  float omega = 6.5 + 1.5 * sin(u_time * 0.05);
+  float phaseR = u_time * 0.20 + (u_mouseSmooth.x - 0.5) * 3.2;
+  float phaseL = -u_time * 0.16 - (u_mouseSmooth.x - 0.5) * 2.2;
+  float twist = 0.7 + (u_mouseSmooth.y - 0.5) * 1.4;
+  float center = 0.5 + (u_mouseSmooth.y - 0.5) * 0.34
+                + 0.045 * sin(uv.x * 3.1 + u_time * 0.5)
+                + 0.030 * sin(uv.x * 5.7 - u_time * 0.37);
+  float thick = 0.17;
+  float ampBase = 0.15 + u_mouseVel * 0.02 + clickSwell;
+
+  const int N = 60;
+  float ink = 0.0;
+
+  for(int i = 0; i < N; i++){
+    float t = float(i) / float(N - 1);
+    float yb = center + (t - 0.5) * thick;
+    float amp = ampBase * mix(0.12, 1.0, t);
+    float aR = omega * uv.x + phaseR + t * twist;
+    float aL = omega * 0.82 * uv.x + phaseL + t * twist * 0.7;
+    float wave = 0.62 * sin(aR) + 0.52 * sin(aL) + 0.18 * sin(2.1 * aR + 0.7);
+    float y = yb + amp * wave;
+    float d = abs(uv.y - y) * u_resolution.y;
+    ink += smoothstep(1.5, 0.3, d);
+  }
+
+  vec2 d = uv - u_mouseSmooth; d.x *= aspect;
+  float env = exp(-(d.x * d.x * 1.1 + d.y * d.y * 2.6));
+  env = clamp(env * 1.25 + 0.18, 0.0, 1.0);
+
+  float coverage = clamp(ink * 0.85, 0.0, 1.0) * env * u_lineOpacity;
+  vec3 strand = mix(INK, NAVY, smoothstep(0.1, 0.95, uv.x) * 0.7);
+  vec3 col = mix(NAVY_DEEP, strand, coverage);
+
+  gl_FragColor = u_backgroundOpacity < 0.999
+    ? vec4(strand, coverage)
+    : vec4(col, 1.0);
+}`,
+  'weave-dense': `
+void main(){
+  vec2 uv = v_uv;
+  float aspect = u_resolution.x / u_resolution.y;
+  float t = u_time;
+
+  float warp = 0.0;
+  warp += 0.060 * sin(uv.x * 4.3 + t * 0.30);
+  warp += 0.040 * sin(uv.x * 7.7 - t * 0.24 + uv.y * 2.0);
+  warp += 0.075 * fbm(vec2(uv.x * 1.8 + t * 0.05, uv.y * 1.3 - t * 0.04));
+
+  float nLines = 80.0;
+  float field = (uv.y + warp) * nLines;
+  float fr = fract(field);
+  float dist = min(fr, 1.0 - fr);
+  float px = dist * (u_resolution.y / nLines);
+  float strand = smoothstep(1.4, 0.25, px);
+
+  float coverage = clamp(strand, 0.0, 1.0);
+  vec2 vp = uv - 0.5; vp.x *= aspect;
+  coverage *= 1.0 - dot(vp, vp) * 0.18;
+
+  vec2 dm = uv - u_mouseSmooth; dm.x *= aspect;
+  float hover = exp(-dot(dm, dm) * 3.5);
+  coverage = clamp(coverage * (1.0 + hover * 0.5), 0.0, 1.0) * u_lineOpacity;
+
+  vec3 strandCol = mix(INK, NAVY, smoothstep(0.0, 1.0, uv.y) * 0.6);
+  strandCol = mix(strandCol, min(INK * 1.4, vec3(1.0)), hover * 0.85);
+  vec3 col = mix(NAVY_DEEP, strandCol, coverage);
+
+  gl_FragColor = u_backgroundOpacity < 0.999
+    ? vec4(strandCol, coverage)
+    : vec4(col, 1.0);
+}`,
+  'weave-mist': `
+void main(){
+  vec2 uv = v_uv;
+  float aspect = u_resolution.x / u_resolution.y;
+  float t = u_time;
+
+  vec2 q = uv * vec2(2.2, 1.8);
+  q += vec2(fbm(q + vec2(0.0, t * 0.05)), fbm(q + vec2(5.2, -t * 0.04))) * 1.2;
+  float swirl = fbm(q);
+
+  float warp = 0.0;
+  warp += 0.10 * sin(uv.x * 3.2 + t * 0.28);
+  warp += 0.34 * swirl;
+  warp += 0.12 * sin(uv.y * 4.0 - t * 0.22);
+
+  float nLines = 78.0;
+  float field = (uv.y + warp) * nLines;
+  float fr = fract(field);
+  float dist = min(fr, 1.0 - fr);
+  float px = dist * (u_resolution.y / nLines);
+  float strand = smoothstep(1.3, 0.25, px);
+
+  float n = fbm(uv * vec2(1.3, 1.0) + vec2(-t * 0.04, t * 0.05));
+  n = n * 0.7 + swirl * 0.3;
+  float mist = smoothstep(0.56, 0.80, n);
+
+  float coverage = clamp(strand * mist, 0.0, 1.0);
+  vec2 vp = uv - 0.5; vp.x *= aspect;
+  coverage *= 1.0 - dot(vp, vp) * 0.15;
+
+  vec2 dm = uv - u_mouseSmooth; dm.x *= aspect;
+  float hover = exp(-dot(dm, dm) * 3.5);
+  coverage = clamp(coverage * (1.0 + hover * 0.5), 0.0, 1.0) * u_lineOpacity;
+
+  vec3 strandCol = mix(INK, NAVY, smoothstep(0.0, 1.0, uv.y) * 0.6);
+  strandCol = mix(strandCol, min(INK * 1.4, vec3(1.0)), hover * 0.85);
+  vec3 col = mix(NAVY_DEEP, strandCol, coverage);
+
+  gl_FragColor = u_backgroundOpacity < 0.999
+    ? vec4(strandCol, coverage)
+    : vec4(col, 1.0);
+}`,
 };
 
 export const TOPOGRAPHIC_SHADERS: ShaderDefinition[] = [
   { id: 'tide', num: '01', name: 'Tide', fragment: FRAGMENT_PREAMBLE + SHADER_FRAGMENTS.tide },
+  { id: 'tide-dense', num: '01C', name: 'Tide Dense', fragment: FRAGMENT_PREAMBLE + SHADER_FRAGMENTS['tide-dense'] },
   { id: 'low-tide', num: '01B', name: 'Low Tide', fragment: FRAGMENT_PREAMBLE + SHADER_FRAGMENTS['low-tide'] },
   { id: 'drift', num: '02', name: 'Drift', fragment: FRAGMENT_PREAMBLE + SHADER_FRAGMENTS.drift },
+  { id: 'weave', num: '03', name: 'Weave', fragment: FRAGMENT_PREAMBLE + SHADER_FRAGMENTS.weave },
+  { id: 'weave-dense', num: '03B', name: 'Weave Dense', fragment: FRAGMENT_PREAMBLE + SHADER_FRAGMENTS['weave-dense'] },
+  { id: 'weave-mist', num: '03C', name: 'Weave Mist', fragment: FRAGMENT_PREAMBLE + SHADER_FRAGMENTS['weave-mist'] },
 ];
 
 const VERTEX_SHADER = `#version 300 es
 precision highp float;
+
+uniform vec2 u_resolution;
+uniform float u_angle;
 
 const vec2 POSITIONS[3] = vec2[3](
   vec2(-1.0, -1.0),
@@ -247,7 +428,13 @@ out vec2 v_uv;
 
 void main(){
   vec2 position = POSITIONS[gl_VertexID];
-  v_uv = position * 0.5 + 0.5;
+  vec2 uv = position * 0.5 + 0.5;
+  float aspect = u_resolution.x / u_resolution.y;
+  vec2 p = uv - 0.5; p.x *= aspect;
+  float s = sin(u_angle), c = cos(u_angle);
+  p = vec2(p.x * c - p.y * s, p.x * s + p.y * c);
+  p.x /= aspect;
+  v_uv = p + 0.5;
   gl_Position = vec4(position, 0.0, 1.0);
 }
 `;
@@ -367,6 +554,7 @@ export function TopographicShaderBackground({
   lineColor,
   lineOpacity = 1,
   staticFrame = 64,
+  angle = 0,
 }: TopographicShaderBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const shaderIdRef = useRef(shaderId);
@@ -376,6 +564,7 @@ export function TopographicShaderBackground({
   const backgroundOpacityRef = useRef(backgroundOpacity);
   const lineOpacityRef = useRef(lineOpacity);
   const staticFrameRef = useRef(staticFrame);
+  const angleRef = useRef(angle);
 
   useEffect(() => { shaderIdRef.current = shaderId; }, [shaderId]);
   useEffect(() => { animatedRef.current = animated; }, [animated]);
@@ -384,6 +573,7 @@ export function TopographicShaderBackground({
   useEffect(() => { backgroundOpacityRef.current = backgroundOpacity; }, [backgroundOpacity]);
   useEffect(() => { lineOpacityRef.current = lineOpacity; }, [lineOpacity]);
   useEffect(() => { staticFrameRef.current = staticFrame; }, [staticFrame]);
+  useEffect(() => { angleRef.current = angle; }, [angle]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -439,7 +629,7 @@ export function TopographicShaderBackground({
       for (const name of [
         'u_time', 'u_resolution', 'u_mouse', 'u_mouseSmooth',
         'u_mouseVel', 'u_clicks[0]', 'u_ink', 'u_bg', 'u_lineOpacity',
-        'u_backgroundOpacity',
+        'u_backgroundOpacity', 'u_angle',
       ]) {
         loc[name] = gl.getUniformLocation(prog, name);
       }
@@ -512,14 +702,36 @@ export function TopographicShaderBackground({
 
       const timeScale = reducedMotion.matches ? 0.08 : 1;
       const time = isAnimated ? ((now - startedAt) / 1000) * timeScale : staticFrameRef.current / 24;
+      const angleRadians = (angleRef.current * Math.PI) / 180;
+      const aspect = canvas.width / canvas.height;
+      const cosAngle = Math.cos(angleRadians);
+      const sinAngle = Math.sin(angleRadians);
+      const rotatePoint = (x: number, y: number) => {
+        const px = (x - 0.5) * aspect;
+        const py = y - 0.5;
+        return [
+          ((px * cosAngle - py * sinAngle) / aspect) + 0.5,
+          (px * sinAngle + py * cosAngle) + 0.5,
+        ] as const;
+      };
 
       gl.useProgram(program);
       gl.uniform1f(loc.u_time, time);
       gl.uniform2f(loc.u_resolution, canvas.width, canvas.height);
-      gl.uniform2f(loc.u_mouse, mouse.x, mouse.y);
-      gl.uniform2f(loc.u_mouseSmooth, smoothMouse.x, smoothMouse.y);
+      gl.uniform1f(loc.u_angle, angleRadians);
+      const [mouseX, mouseY] = rotatePoint(mouse.x, mouse.y);
+      const [smoothX, smoothY] = rotatePoint(smoothMouse.x, smoothMouse.y);
+      gl.uniform2f(loc.u_mouse, mouseX, mouseY);
+      gl.uniform2f(loc.u_mouseSmooth, smoothX, smoothY);
       gl.uniform1f(loc.u_mouseVel, reducedMotion.matches ? 0 : mouseVelocity);
-      gl.uniform3fv(loc['u_clicks[0]'], clicks);
+      const rotatedClicks = new Float32Array(clicks);
+      for (let i = 0; i < 4; i++) {
+        const offset = i * 3;
+        const [clickX, clickY] = rotatePoint(clicks[offset], clicks[offset + 1]);
+        rotatedClicks[offset] = clickX;
+        rotatedClicks[offset + 1] = clickY;
+      }
+      gl.uniform3fv(loc['u_clicks[0]'], rotatedClicks);
       gl.uniform3fv(loc.u_ink, inkColorRef.current.rgb);
       gl.uniform3fv(loc.u_bg, bgColorRef.current.rgb);
       gl.uniform1f(loc.u_lineOpacity, lineOpacityRef.current * inkColorRef.current.alpha);
@@ -620,10 +832,11 @@ export function StaticTopographicShaderBackground({
   lineColor,
   lineOpacity,
   staticFrame,
+  angle,
 }: Partial<
   Pick<
     TopographicShaderBackgroundProps,
-    'shaderId' | 'className' | 'inkColor' | 'bgColor' | 'backgroundOpacity' | 'lineColor' | 'lineOpacity' | 'staticFrame'
+    'shaderId' | 'className' | 'inkColor' | 'bgColor' | 'backgroundOpacity' | 'lineColor' | 'lineOpacity' | 'staticFrame' | 'angle'
   >
 >) {
   return (
@@ -637,6 +850,7 @@ export function StaticTopographicShaderBackground({
       lineColor={lineColor}
       lineOpacity={lineOpacity}
       staticFrame={staticFrame}
+      angle={angle}
     />
   );
 }

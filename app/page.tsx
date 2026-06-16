@@ -6,23 +6,26 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   FeaturePanel,
-  FeaturePanelPattern,
-  FeaturePanelTone,
+  FeaturePanelBackgroundStyle,
+  FeaturePanelColor,
 } from '@/components/panel';
 import { Hero } from '@/components/Hero';
+import ImageCtaBlock from '@/components/ImageCtaBlock';
 import { Button } from '@/components/ui/button';
 import ExploreButton from '@/components/ExploreButton';
 import { useLanguage } from '@/components/LanguageProvider';
 import { GradientDividerBar } from '@/components/GradientDividerBar';
+import { Strip } from '@/components/Strip';
+import { BACKGROUNDS } from '@/components/ui/colors';
 
 type HomeProduct = {
-  number: string;
+  name: string;
   title: string;
   subtitle: string;
-  description: string;
-  features: string[];
   cta: string;
   href: string;
+  image: string;
+  imageAlt: string;
 };
 
 type Stat = {
@@ -52,233 +55,167 @@ export default function App() {
       <main className="pb-0 pt-0">
         <Hero />
 
-        {/* ── EL PROBLEMA ── */}
-        <section id="tesis">
-          <FeaturePanel
-            backgroundImageClassName="opacity-40 mix-blend-multiply"
-            pattern={FeaturePanelPattern.Tide}
-            patternColor="rgb(5, 17, 180, 0.20)"
-            patternFrame={10}
-            className="rounded-none "
-            contentClassName="overflow-hidden pb-0 pt-20 sm:pt-28 lg:pt-36"
-          >
-            <div className="layout-shell">
-              <div className="flex justify-center items-center flex-col gap-1">
-                <h2 className="text-center text-4xl sm:text-5xl lg:text-6xl font-bold [font-family:var(--font-display-family)] text-zonda-blue-dark">
+        {/* ── PLATAFORMA ── */}
+        <section>
+          <Strip />
+          <FeaturePanel backgroundImageSrc="/assets/home/images/bg/bg-container.png">
+            <div className="py-28 sm:py-36 lg:py-56">
+              <div className="layout-shell">
+                <div className="flex justify-center items-center mb-32">
+                  <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.08] text-zonda-blue-dark text-center [font-family:var(--font-display-family)]">
+                    {t('site.home.platform.title')}
+                  </h2>
+                </div>
+
+                <div className="grid grid-cols-1 gap-x-16 gap-y-28 md:grid-cols-2 md:gap-x-24 md:gap-y-32">
+                  {products.map((product) => (
+                    <ImageCtaBlock
+                      key={product.name}
+                      img={product.image}
+                      alt={product.imageAlt}
+                      title={
+                        <>
+                          <span className="mb-3 block text-[11px] font-semibold uppercase tracking-[0.15em] text-on-surface-variant">
+                            {product.name}
+                          </span>
+                          <span>{product.title}</span>
+                        </>
+                      }
+                      sub={product.subtitle}
+                      ctaText={product.cta}
+                      link={product.href}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="layout-shell flex flex-col gap-20">
+              <div className="flex justify-center items-center flex-col gap-12 max-w-4xl mx-auto">
+                <h2 className="text-center text-4xl sm:text-5xl lg:text-7xl font-bold [font-family:var(--font-display-family)] text-zonda-blue-dark">
                   {t('site.home.problem.title')}{' '}
                 </h2>
-                <h2 className="text-center text-zonda-blue-dark text-4xl sm:text-5xl lg:text-6xl font-bold [font-family:var(--font-display-family)]">
+                <h2 className="text-center text-zonda-blue-dark text-4xl sm:text-5xl lg:text-7xl font-bold [font-family:var(--font-display-family)]">
                   {t('site.home.problem.highlight')}
                 </h2>
               </div>
-            </div>
-            <div className="layout-shell relative z-10 mt-16 sm:mt-20 lg:mt-20 -mb-16 sm:-mb-24 lg:-mb-48">
-              <Image
-                src="/assets/home/images/infra.png"
-                alt={t('site.home.problem.imageAlt')}
-                width={1920}
-                height={1080}
-                className="w-full h-auto object-contain"
-              />
-            </div>
-          </FeaturePanel>
-          <GradientDividerBar variant="dynamic" />
-        </section>
-
-        <section>
-          <FeaturePanel
-            tone={FeaturePanelTone.GradientVitalityYellow}
-            pattern={FeaturePanelPattern.Drift}
-            patternColor="rgba(14, 60, 117, 0.34)"
-            patternClassName="opacity-40 mix-blend-multiply"
-            className="rounded-none py-20 sm:py-46 lg:py-62"
-            contentClassName=""
-          >
-            <div className="layout-shell">
-              <div className="flex flex-col justify-center items-center gap-4">
-                <span className="text-lg uppercase font-bold ">
-                  {t('site.home.stories.eyebrow')}
-                </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-6xl font-semibold  text-center max-w-2xl">
-                  {t('site.home.stories.title')}
-                </h2>
-                <div className="flex justify-start mt-6">
-                  <Button asChild size="lg" className="min-w-48">
-                    <Link href="/casos-de-uso">
-                      {t('site.common.readMore')}
-                    </Link>
-                  </Button>
-                </div>
+              <div className="layout-shell relative z-10 mt-16 sm:mt-20 lg:mt-20 -mb-16 sm:-mb-24 lg:-mb-48">
+                <Image
+                  src="/assets/home/images/infra.png"
+                  alt={t('site.home.problem.imageAlt')}
+                  width={1920}
+                  height={1080}
+                  className="w-full h-auto object-contain"
+                />
               </div>
             </div>
           </FeaturePanel>
-          <GradientDividerBar variant="cool" />
+
+          <Strip />
         </section>
 
-        <section>
+        <section id="datax">
           <FeaturePanel
-            tone={FeaturePanelTone.DarkBlue}
-            pattern={FeaturePanelPattern.Tide}
-            patternPlacement="both"
-            className="rounded-none"
-            contentClassName="py-20 sm:py-40 lg:py-62"
+            className="py-28 sm:py-36 lg:py-46"
+            backgroundImageSrc="/assets/home/images/bg/bg-container.png"
+            background={BACKGROUNDS.transparent}
           >
-            <div className="layout-shell">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-                <div className="flex flex-col items-start gap-8">
-                  <p className="text-sm font-bold uppercase tracking-[0.2em] text-vitality-yellow">
-                    {t('site.home.results.eyebrow')}
-                  </p>
-                  <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white [font-family:var(--font-display-family)] leading-[1.05]">
-                    {t('site.home.results.title')}
-                  </h2>
-                  <p className="text-lg text-white font-semibold leading-relaxed">
-                    {t('site.home.results.copy')}
-                  </p>
-                </div>
-                <div className="grid grid-cols-2 gap-px">
-                  {stats.map((stat) => (
-                    <div
-                      key={stat.label}
-                      className="flex flex-col gap-2 border-t border-white/15 py-8 pr-6"
-                    >
-                      <span className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-vitality-yellow">
-                        {stat.value}
-                      </span>
-                      <span className="text-base font-semibold text-white">
-                        {stat.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </FeaturePanel>
-          <GradientDividerBar variant="dynamic" />
-        </section>
-
-        {/* ── PLATAFORMA ── */}
-        <section>
-          <FeaturePanel
-            pattern={FeaturePanelPattern.Tide}
-            patternColor="rgb(5, 17, 180, 0.20)"
-            patternFrame={10}
-            backgroundImageSrc="/assets/home/images/blue-purple-gradient.png"
-            backgroundImageClassName="opacity-40 mix-blend-multiply"
-            patternPlacement="both"
-            patternClassName="opacity-40 mix-blend-multiply"
-          >
-            <div className="py-20 sm:py-28 lg:py-46">
-              <div className="layout-shell">
-                <div className="mb-14">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400 mb-4">
-                    {t('site.home.platform.eyebrow')}
-                  </p>
-                  <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
-                    <h2 className="text-4xl sm:text-5xl font-bold leading-[1.08] [font-family:var(--font-display-family)]">
-                      {t('site.home.platform.title')}
-                      <br />
-                      <span className="text-zonda-blue">
-                        {t('site.home.platform.highlight')}
-                      </span>
+            {/* ── HISTORIAS ── */}
+            <FeaturePanel
+              className="relative layout-shell "
+              backgroundImageSrc="/assets/home/images/bg/bg-stories.png"
+              background={BACKGROUNDS.transparent}
+            >
+              <div className="relative py-20 sm:py-36 lg:py-40">
+                <div className="relative z-10">
+                  <div className="flex flex-col gap-4">
+                    <span className="text-lg uppercase font-bold text-zonda-blue-dark">
+                      {t('site.home.stories.eyebrow')}
+                    </span>
+                    <h2 className="text-3xl sm:text-4xl lg:text-6xl font-semibold max-w-2xl text-zonda-blue-dark">
+                      {t('site.home.stories.title')}
                     </h2>
+                    <div className="flex justify-start mt-6">
+                      <Button asChild size="lg" className="min-w-48">
+                        <Link href="/casos-de-uso">
+                          {t('site.common.readMore')}
+                        </Link>
+                      </Button>
+                    </div>
                   </div>
                 </div>
+              </div>
+            </FeaturePanel>
 
-                <div className="divide-y divide-neutral-200 border-t border-neutral-200">
-                  {products.map((product) => (
-                    <div
-                      key={product.number}
-                      className="grid grid-cols-1 lg:grid-cols-[280px_1fr_auto] gap-6 lg:gap-10 py-10 lg:py-12"
-                    >
-                      <div className="flex flex-col gap-1">
-                        <span className="text-sm text-neutral-400 font-mono">
-                          {product.number}
-                        </span>
-                        <h3 className="text-2xl font-bold">{product.title}</h3>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-neutral-400 mt-1">
-                          {product.subtitle}
-                        </p>
-                      </div>
-                      <div className="flex flex-col gap-4">
-                        <p className="text-base text-neutral-600 leading-relaxed max-w-xl">
-                          {product.description}
-                        </p>
-                        <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-400">
-                          {product.features.map((f) => (
-                            <span key={f}>• {f}</span>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="flex items-start lg:pt-1">
-                        <ExploreButton
-                          href={product.href}
-                          title={product.cta}
-                          color="black"
-                        />
-                      </div>
+            {/* ── RESULTADOS ── */}
+            <div className="relative py-20 sm:py-40 lg:py-46">
+              <div className="layout-shell relative z-10">
+                <FeaturePanel
+                  backgroundImageSrc="/assets/home/images/bg/bg-results.png"
+                  background={BACKGROUNDS.transparent}
+                  contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-20 sm:px-12 sm:py-28 lg:px-20 lg:py-46"
+                >
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+                    <div className="flex flex-col items-start gap-8">
+                      <p className="text-sm font-bold uppercase tracking-[0.2em] text-zonda-blue-dark">
+                        {t('site.home.results.eyebrow')}
+                      </p>
+                      <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-zonda-blue-dark [font-family:var(--font-display-family)] leading-[1.05]">
+                        {t('site.home.results.title')}
+                      </h2>
+                      <p className="text-lg text-zonda-blue-dark font-semibold leading-relaxed">
+                        {t('site.home.results.copy')}
+                      </p>
                     </div>
-                  ))}
-                </div>
+                    <div className="grid grid-cols-2 gap-px">
+                      {stats.map((stat) => (
+                        <div
+                          key={stat.label}
+                          className="flex flex-col gap-2 py-8 pr-6"
+                        >
+                          <span className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-zonda-blue">
+                            {stat.value}
+                          </span>
+                          <span className="text-base font-semibold text-zonda-blue">
+                            {stat.label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </FeaturePanel>
               </div>
             </div>
-          </FeaturePanel>
-          <GradientDividerBar variant="cool" />
-        </section>
 
-        {/* API & Interoperabilidad */}
-        <section id="api-interoperabilidad">
-          <FeaturePanel
-            tone={FeaturePanelTone.Black}
-            pattern={FeaturePanelPattern.Tide}
-            patternFrame={100}
-            patternColor="rgba(244, 241, 234, 0.44)"
-            className="rounded-none"
-            imagePosition="bleed"
-            contentClassName="py-20 sm:py-28 lg:py-46"
-          >
-            <div className="layout-shell">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                <div className="flex flex-col items-start gap-4">
-                  <h3 className="text-5xl font-bold tracking-tight text-vitality-yellow">
-                    {t('site.home.api.title')}
-                  </h3>
-                  <p className="text-lg font-semibold leading-relaxed sm:text-xl text-white">
-                    {t('site.home.api.copy')}
-                  </p>
-                  <ExploreButton
-                    href="/desarrolladores"
-                    title={t('site.common.exploreApi')}
-                  />
-                </div>
-                <div className="relative min-h-[20rem] lg:min-h-[28rem] overflow-hidden rounded-md">
-                  <Image
-                    src="/assets/home/images/terminal.png"
-                    alt={t('site.home.api.imageAlt')}
-                    fill
-                    className="object-cover object-center"
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                  />
-                </div>
-              </div>
-            </div>
-          </FeaturePanel>
-          <GradientDividerBar variant="signal" />
-        </section>
+            {/* API & Interoperabilidad */}
 
-        {/* ── CTA FINAL ── */}
-        <section>
-          <FeaturePanel
-            backgroundImageSrc="/assets/home/images/blue-purple-gradient.png"
-            patternClassName="opacity-10 mix-blend-multiply"
-          >
-            <div className="py-20 sm:py-28 lg:py-36">
+            {/* <div className="relative py-20 sm:py-28 lg:py-46">
               <FeaturePanel
-                tone={FeaturePanelTone.DarkBlue}
-                pattern={FeaturePanelPattern.Drift}
-                patternColor="rgba(141, 179, 225, 0.34)"
-                patternPlacement="both"
                 className="layout-shell"
+                backgroundImageSrc="/assets/home/images/console.png"
+              >
+                <div className="w-full">
+                  <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 px-6 text-center max-w-xl md:max-w-2xl mx-auto">
+                    <h3 className="text-2xl sm:text-3xl lg:text-5xl font-bold tracking-tight text-vitality-yellow">
+                      {t('site.home.api.title')}
+                    </h3>
+                    <p className="text-xs sm:text-lg lg:text-xl font-semibold leading-relaxed text-white">
+                      {t('site.home.api.copy')}
+                    </p>
+                    <ExploreButton
+                      href="/desarrolladores"
+                      title={t('site.common.exploreApi')}
+                    />
+                  </div>
+                </div>
+              </FeaturePanel>
+            </div> */}
+
+            <div className="py-10 sm:py-16 lg:py-20">
+              <FeaturePanel
+                color={FeaturePanelColor.DarkBlue}
+                backgroundStyle={FeaturePanelBackgroundStyle.FullDrift}
+                backgroundClassName="opacity-30"
+                className="layout-shell rounded-xl"
                 contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-20 sm:px-12 sm:py-28 lg:px-20 lg:py-46"
               >
                 <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-3xl lg:text-6xl text-white">
@@ -294,8 +231,8 @@ export default function App() {
               </FeaturePanel>
             </div>
           </FeaturePanel>
-          <GradientDividerBar variant="cool" />
         </section>
+        <Strip />
       </main>
     </div>
   );

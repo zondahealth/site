@@ -1,89 +1,140 @@
-import { BACKGROUNDS } from '../ui/colors';
-
-export enum FeaturePanelTone {
-  Black = 'black',
-  DarkBlue = 'dark-blue',
-  GradientBlack = 'gradient-black',
-  GradientBlue = 'gradient-blue',
-  GradientDeepBlue = 'gradient-deep-blue',
-  GradientGreen = 'gradient-green',
-  GradientVitalityYellow = 'gradient-vitality-yellow',
-  SolidBlue = 'solid-blue',
-  SolidDarkBlue = 'solid-dark-blue',
-  SolidDarkGreen = 'solid-dark-green',
-  SolidGreen = 'solid-green',
-  SolidGrey = 'solid-grey',
-  SolidLightYellow = 'solid-light-yellow',
-  SolidNeutral = 'solid-neutral',
-  SolidYellow = 'solid-yellow',
-  Transparent = 'transparent',
+export enum FeaturePanelColor {
+  Navy = 'navy',
+  Ink = 'ink',
+  Teal = 'teal',
+  Plum = 'plum',
+  Forest = 'forest',
+  Slate = 'slate',
+  Gold = 'gold',
+  Paper = 'paper',
+  BluePurpleGradient = 'bluePurpleGradient',
+  BlueYellowGradient = 'blueYellowGradient',
+  BlueGreenGradient = 'blueGreenGradient',
   White = 'white',
+  DarkBlue = 'darkBlue',
   Yellow = 'yellow',
 }
 
-export enum FeaturePanelPattern {
-  Tide = 'tide',
-  LowTide = 'low-tide',
-  Drift = 'drift',
+export enum FeaturePanelInkColor {
+  Cream = 'cream',
+  White = 'white',
+  Amber = 'amber',
+  Sky = 'sky',
+  Azure = 'azure',
+  Mint = 'mint',
+  Coral = 'coral',
+}
+
+export enum FeaturePanelBackgroundStyle {
+  Wave = 'wave',
+  FullDrift = 'fullDrift',
+  WaveBlueLeft = 'waveBlueLeft',
 }
 
 type PanelColorDefinition = {
   background: string;
+  imageSrc?: string;
+  imageClassName?: string;
+};
+
+type PanelInkColorDefinition = {
+  color: string;
+};
+
+type PanelBackgroundStyleDefinition = {
+  src: string;
+  className: string;
 };
 
 export const FEATURE_PANEL_COLORS = {
-  [FeaturePanelTone.Black]: {
-    background: BACKGROUNDS.black,
+  [FeaturePanelColor.Navy]: {
+    background: '#072351',
   },
-  [FeaturePanelTone.DarkBlue]: {
-    background: BACKGROUNDS.darkblue,
+  [FeaturePanelColor.Ink]: {
+    background: '#0a0a12',
   },
-  [FeaturePanelTone.GradientBlack]: {
-    background: BACKGROUNDS['gradient-black'],
+  [FeaturePanelColor.Teal]: {
+    background: '#06303a',
   },
-  [FeaturePanelTone.GradientBlue]: {
-    background: BACKGROUNDS['gradient-blue'],
+  [FeaturePanelColor.Plum]: {
+    background: '#241032',
   },
-  [FeaturePanelTone.GradientDeepBlue]: {
-    background: BACKGROUNDS['dark-blue'],
+  [FeaturePanelColor.Forest]: {
+    background: '#08271c',
   },
-  [FeaturePanelTone.GradientGreen]: {
-    background: BACKGROUNDS['gradient-green'],
+  [FeaturePanelColor.Slate]: {
+    background: '#171f2e',
   },
-  [FeaturePanelTone.GradientVitalityYellow]: {
-    background: BACKGROUNDS['gradient-vitality-yellow'],
+  [FeaturePanelColor.Gold]: {
+    background: '#d8b53a',
   },
-  [FeaturePanelTone.SolidBlue]: {
-    background: BACKGROUNDS.blue,
+  [FeaturePanelColor.Paper]: {
+    background: '#f4f5f7',
   },
-  [FeaturePanelTone.SolidDarkBlue]: {
-    background: BACKGROUNDS['solid-dark-blue'],
+  [FeaturePanelColor.BluePurpleGradient]: {
+    background: '#072351',
+    imageSrc: '/assets/background-gradients/blue-purple-gradient.png',
+    imageClassName: 'object-cover',
   },
-  [FeaturePanelTone.SolidDarkGreen]: {
-    background: BACKGROUNDS['dark-green'],
+  [FeaturePanelColor.BlueYellowGradient]: {
+    background: '#d8b53a',
+    imageSrc: '/assets/background-gradients/blue-yellow-gradient.png',
+    imageClassName: 'object-cover',
   },
-  [FeaturePanelTone.SolidGreen]: {
-    background: BACKGROUNDS.green,
+  [FeaturePanelColor.BlueGreenGradient]: {
+    background: '#06303a',
+    imageSrc: '/assets/background-gradients/bluegreen.png',
+    imageClassName: 'object-cover',
   },
-  [FeaturePanelTone.SolidGrey]: {
-    background: BACKGROUNDS.grey,
+  [FeaturePanelColor.White]: {
+    background: '#f4f5f7',
   },
-  [FeaturePanelTone.SolidLightYellow]: {
-    background: BACKGROUNDS['light-yellow'],
+  [FeaturePanelColor.DarkBlue]: {
+    background: '#072351',
   },
-  [FeaturePanelTone.SolidNeutral]: {
-    background: BACKGROUNDS.neutral,
+  [FeaturePanelColor.Yellow]: {
+    background: '#d8b53a',
   },
-  [FeaturePanelTone.SolidYellow]: {
-    background: BACKGROUNDS.yellow,
+} satisfies Record<FeaturePanelColor, PanelColorDefinition>;
+
+export const FEATURE_PANEL_INK_COLORS = {
+  [FeaturePanelInkColor.Cream]: {
+    color: '#f4f1ea',
   },
-  [FeaturePanelTone.Transparent]: {
-    background: BACKGROUNDS.transparent,
+  [FeaturePanelInkColor.White]: {
+    color: '#ffffff',
   },
-  [FeaturePanelTone.White]: {
-    background: BACKGROUNDS.white,
+  [FeaturePanelInkColor.Amber]: {
+    color: '#e6a93c',
   },
-  [FeaturePanelTone.Yellow]: {
-    background: BACKGROUNDS.yellow,
+  [FeaturePanelInkColor.Sky]: {
+    color: '#8fc7f0',
   },
-} satisfies Record<FeaturePanelTone, PanelColorDefinition>;
+  [FeaturePanelInkColor.Azure]: {
+    color: '#2f7fc4',
+  },
+  [FeaturePanelInkColor.Mint]: {
+    color: '#8fe0c0',
+  },
+  [FeaturePanelInkColor.Coral]: {
+    color: '#f0876b',
+  },
+} satisfies Record<FeaturePanelInkColor, PanelInkColorDefinition>;
+
+export const FEATURE_PANEL_BACKGROUND_STYLES = {
+  [FeaturePanelBackgroundStyle.Wave]: {
+    src: '/assets/styling/wave.png',
+    className: 'object-cover',
+  },
+  [FeaturePanelBackgroundStyle.FullDrift]: {
+    src: '/assets/styling/full-drift.png',
+    className: 'object-cover',
+  },
+  [FeaturePanelBackgroundStyle.WaveBlueLeft]: {
+    src: '/assets/styling/wave-blue-left.png',
+    className: 'object-cover',
+  },
+} satisfies Record<
+  FeaturePanelBackgroundStyle,
+  PanelBackgroundStyleDefinition
+>;

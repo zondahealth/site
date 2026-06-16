@@ -882,45 +882,45 @@
         ]
       },
       "platform": {
-        "eyebrow": "Platform",
-        "title": "Diversas soluciones.",
-        "highlight": "Bajo una misma plataforma.",
+        "eyebrow": "Soluciones",
+        "title": "Potenciá cada etapa del ecosistema de salud",
+        "highlight": "",
         "products": [
           {
-            "number": "01",
-            "title": "Organizaciones",
-            "subtitle": "CLÍNICAS, HOSPITALES Y REDES MULTI-ORGANIZACIÓN",
-            "description": "Digitalizá tu organización sin reemplazar sistemas existentes. Conocé a tus pacientes, tus empleados y, más importante, tu negocio.",
-            "features": ["Historia clínica unificada", "Gestión de evoluciones y base de datos", "Interoperabilidad en tiempo real"],
+            "name": "Organizaciones",
+            "title": "Digitalizá sin reemplazar lo que ya funciona",
+            "subtitle": "Toda tu operación clínica, en un solo lugar",
             "cta": "Conocer más",
-            "href": "/products/organizaciones"
+            "href": "/products/organizaciones",
+            "image": "/assets/home/images/solutions/orgs.png",
+            "imageAlt": "Vista de producto para organizaciones de salud"
           },
           {
-            "number": "02",
-            "title": "Portal Profesional",
-            "subtitle": "PROFESIONALES INDEPENDIENTES",
-            "description": "Un único lugar para gestionar pacientes, registrar evoluciones, organizar la agenda y controlar la práctica, esté o no ligado a una organización.",
-            "features": ["Agenda y recordatorios automáticos", "Evoluciones con firma digital y firma electrónica"],
-            "cta": "Conocer más",
-            "href": "/products/profesionales"
-          },
-          {
-            "number": "03",
-            "title": "Internación Domiciliaria",
-            "subtitle": "EMPRESAS DE ATENCIÓN DOMICILIARIA",
-            "description": "Gestión centralizada, aplicación para profesionales en campo, auditoría en tiempo real. Sin puntos ciegos entre la administración y el domicilio del paciente.",
-            "features": ["Asignación inteligente de profesionales", "Auditoría de prestaciones"],
-            "cta": "Conocer más",
-            "href": "/products/internacion-domiciliaria"
-          },
-          {
-            "number": "04",
-            "title": "Interoperabilidad",
-            "subtitle": "EQUIPOS TÉCNICOS Y DE DATOS",
-            "description": "Conectá sistemas fragmentados. Normalizá información clínica. Habilitá modelos de pago por resultado, reportes de impacto y auditoría sin fricción, sin reemplazar lo que ya existe.",
-            "features": [],
+            "name": "Interoperabilidad",
+            "title": "Convertí sistemas fragmentados en información útil",
+            "subtitle": "La capa de datos que conecta tu ecosistema",
             "cta": "Explorar Interoperabilidad",
-            "href": "/products/interoperabilidad"
+            "href": "/products/interoperabilidad",
+            "image": "/assets/home/images/solutions/interop.png",
+            "imageAlt": "Vista de interoperabilidad y datos clínicos"
+          },
+          {
+            "name": "Internación Domiciliaria",
+            "title": "Controlá cada visita, incluso fuera de la institución",
+            "subtitle": "Sin puntos ciegos entre oficina y domicilio",
+            "cta": "Conocer más",
+            "href": "/products/internacion-domiciliaria",
+            "image": "/assets/home/images/solutions/adi.png",
+            "imageAlt": "Vista operativa de internación domiciliaria"
+          },
+          {
+            "name": "Portal Profesional",
+            "title": "Gestioná tu práctica sin perder tiempo operativo",
+            "subtitle": "Menos administración. Más atención médica",
+            "cta": "Conocer más",
+            "href": "/products/profesionales",
+            "image": "/assets/home/images/solutions/profesionales.png",
+            "imageAlt": "Vista de portal profesional para práctica clínica"
           }
         ]
       },

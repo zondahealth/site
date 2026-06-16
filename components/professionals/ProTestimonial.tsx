@@ -2,8 +2,8 @@
 
 import {
   FeaturePanel,
-  FeaturePanelPattern,
-  FeaturePanelTone,
+  FeaturePanelBackgroundStyle,
+  FeaturePanelColor,
 } from '@/components/panel';
 import { useLanguage } from '@/components/LanguageProvider';
 
@@ -14,10 +14,8 @@ export function ProTestimonial() {
     <section className="py-10">
       <div className="layout-shell">
         <FeaturePanel
-          tone={FeaturePanelTone.GradientVitalityYellow}
-          pattern={FeaturePanelPattern.Tide}
-          patternColor="rgba(10, 10, 18, 0.42)"
-          patternPlacement="both"
+          color={FeaturePanelColor.Yellow}
+          backgroundStyle={FeaturePanelBackgroundStyle.WaveBlueLeft}
           className="rounded-md"
           contentClassName="px-10 py-16 lg:px-20 lg:py-20"
         >

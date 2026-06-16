@@ -1,7 +1,11 @@
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 
-import { FeaturePanel, FeaturePanelTone } from './panel';
+import {
+  FeaturePanel,
+  FeaturePanelBackgroundStyle,
+  FeaturePanelColor,
+} from './panel';
 import { cn } from './ui/utils';
 
 export type ImageSectionProps = {
@@ -10,10 +14,9 @@ export type ImageSectionProps = {
   image?: string;
   imageAlt?: string;
   imagePosition?: 'left' | 'right';
-  tone?: FeaturePanelTone;
-  backgroundImage?: string;
-  backgroundImageAlt?: string;
-  backgroundImageClassName?: string;
+  color?: FeaturePanelColor;
+  backgroundStyle?: FeaturePanelBackgroundStyle;
+  backgroundClassName?: string;
   className?: string;
   contentClassName?: string;
   imageClassName?: string;
@@ -25,10 +28,9 @@ export function ImageSection({
   image,
   imageAlt,
   imagePosition = 'right',
-  tone,
-  backgroundImage,
-  backgroundImageAlt,
-  backgroundImageClassName,
+  color,
+  backgroundStyle,
+  backgroundClassName,
   className,
   contentClassName,
   imageClassName,
@@ -64,26 +66,11 @@ export function ImageSection({
     </div>
   ) : null;
 
-  const imagePanel = backgroundImage ? (
+  const imagePanel = (
     <FeaturePanel
-      backgroundImageSrc={backgroundImage}
-      backgroundImageAlt={
-        backgroundImageAlt ??
-        imageAlt ??
-        (typeof title === 'string' ? title : '')
-      }
-      backgroundImageClassName={cn(
-        'object-cover object-center',
-        backgroundImageClassName
-      )}
-      className="flex aspect-square min-h-0 w-full flex-1 flex-col rounded-md"
-      contentClassName="flex items-center justify-center"
-    >
-      {imageContent}
-    </FeaturePanel>
-  ) : (
-    <FeaturePanel
-      tone={tone ?? FeaturePanelTone.White}
+      color={color ?? FeaturePanelColor.White}
+      backgroundStyle={backgroundStyle}
+      backgroundClassName={backgroundClassName}
       className="flex aspect-square min-h-0 w-full flex-1 flex-col rounded-md"
       contentClassName="flex items-center justify-center"
     >

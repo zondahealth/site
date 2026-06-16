@@ -2,8 +2,8 @@
 
 import {
   FeaturePanel,
-  FeaturePanelPattern,
-  FeaturePanelTone,
+  FeaturePanelBackgroundStyle,
+  FeaturePanelColor,
 } from '@/components/panel';
 import { useLanguage } from '@/components/LanguageProvider';
 
@@ -17,8 +17,8 @@ export function IntStatsBand() {
     <section>
       <div className="layout-shell">
         <FeaturePanel
-          tone={FeaturePanelTone.SolidDarkBlue}
-          pattern={FeaturePanelPattern.Tide}
+          color={FeaturePanelColor.DarkBlue}
+          backgroundStyle={FeaturePanelBackgroundStyle.WaveBlueLeft}
           contentClassName="flex h-full flex-col items-center justify-center px-8 py-12 sm:px-12 sm:py-14 lg:px-20 lg:py-24 text-white"
         >
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_1.6fr]">

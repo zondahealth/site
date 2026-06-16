@@ -20,10 +20,6 @@ export function Hero() {
           className="absolute inset-0 h-full w-full touch-none opacity-100"
         />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_36%,rgba(230,255,26,0.07),transparent_24%),radial-gradient(circle_at_50%_75%,rgba(34,111,253,0.1),transparent_32%),linear-gradient(180deg,rgba(3,13,40,0.08)_0%,rgba(3,13,40,0.16)_100%)]" />
-        <GradientDividerBar
-          variant="cool"
-          className="absolute inset-x-0 bottom-0"
-        />
         <div className="relative z-10 flex min-h-0 flex-1 flex-col items-center justify-center px-6 text-center sm:px-10">
           <h1 className="w-full max-w-3xl text-balance [font-family:var(--font-display-family)] text-4xl font-bold leading-[0.96] text-[color:rgba(248,250,255,0.96)] sm:text-5xl lg:text-7xl">
             {t('site.home.hero.titlePrefix')}{' '}

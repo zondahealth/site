@@ -1,94 +1,71 @@
 import Image from 'next/image';
-import type { CSSProperties } from 'react';
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 
-import {
-  StaticTopographicShaderBackground,
-  type ShaderId,
-} from '../shaders/TopographicShaderBackground';
 import { cn } from '../ui/utils';
 import {
+  FEATURE_PANEL_BACKGROUND_STYLES,
   FEATURE_PANEL_COLORS,
-  FeaturePanelPattern,
-  FeaturePanelTone,
+  FEATURE_PANEL_INK_COLORS,
+  FeaturePanelBackgroundStyle,
+  FeaturePanelColor,
+  FeaturePanelInkColor,
 } from './FeaturePanel.tokens';
 
 export {
+  FEATURE_PANEL_BACKGROUND_STYLES,
   FEATURE_PANEL_COLORS,
-  FeaturePanelPattern,
-  FeaturePanelTone,
+  FEATURE_PANEL_INK_COLORS,
+  FeaturePanelBackgroundStyle,
+  FeaturePanelColor,
+  FeaturePanelInkColor,
 } from './FeaturePanel.tokens';
 
 type PanelChromeProps = {
   overlayClassName?: string;
 };
 
-type PanelContentProps = {
+type FeaturePanelBackgroundLayer = {
+  src: string;
+  className: string;
+};
+
+type FeaturePanelPropsBase = PanelChromeProps & {
   children?: ReactNode;
   className?: string;
   contentClassName?: string;
+  color?: FeaturePanelColor;
+  inkColor?: FeaturePanelInkColor;
+  background?: CSSProperties['background'];
+  backgroundStyle?: FeaturePanelBackgroundStyle;
+  backgroundClassName?: string;
+  image?: ReactNode;
+  imagePosition?: 'bleed' | 'center' | 'inset' | 'bottom';
+  reverse?: boolean;
+  panelSize?: 'sm' | 'md' | 'lg' | 'xl';
+  imageContainerClassName?: string;
+  backgroundContent?: ReactNode;
+  backgroundContentClassName?: string;
+  backgroundImageSrc?: string;
+  backgroundImageAlt?: string;
+  backgroundImageClassName?: string;
+  backgroundImagePriority?: boolean;
 };
 
-function PanelChrome({ overlayClassName }: PanelChromeProps) {
-  return overlayClassName ? (
-    <div className={cn('absolute inset-0', overlayClassName)} />
-  ) : null;
-}
-
-type FeaturePanelPatternPlacement =
-  | 'full'
-  | 'left'
-  | 'right'
-  | 'both'
-  | 'corners'
-  | 'corners-inverted';
-
-type FeaturePanelPatternSize = 'short' | 'large';
-
-type SharedFeaturePanelProps = PanelContentProps &
-  PanelChromeProps & {
-    tone?: FeaturePanelTone;
-    background?: CSSProperties['background'];
-    pattern?: FeaturePanelPattern;
-    patterns?: FeaturePanelPattern[];
-    patternColor?: string;
-    patternColors?: Partial<Record<FeaturePanelPattern, string>>;
-    patternFrame?: number;
-    patternFrames?: Partial<Record<FeaturePanelPattern, number>>;
-    patternPlacement?: FeaturePanelPatternPlacement;
-    patternSize?: FeaturePanelPatternSize;
-    patternClassName?: string;
-    patternClassNames?: Partial<Record<FeaturePanelPattern, string>>;
-    backgroundImageSrc?: string;
-    backgroundImageAlt?: string;
-    backgroundImage?: ReactNode;
-    backgroundImageClassName?: string;
-    backgroundImagePriority?: boolean;
-    image?: ReactNode;
-    imagePosition?: 'bleed' | 'center' | 'inset' | 'bottom';
-    reverse?: boolean;
-    panelSize?: 'sm' | 'md' | 'lg' | 'xl';
-    imageContainerClassName?: string;
-  };
-
-type FeaturePanelToneProps = SharedFeaturePanelProps & {
+type FeaturePanelColorProps = FeaturePanelPropsBase & {
   imageSrc?: never;
   imageAlt?: never;
   imageClassName?: never;
   priority?: never;
 };
 
-type FeaturePanelImageProps = SharedFeaturePanelProps & {
-  backgroundImageSrc?: never;
-  backgroundImageAlt?: never;
-  backgroundImagePriority?: never;
+type FeaturePanelImageProps = FeaturePanelPropsBase & {
   imageSrc: string;
   imageAlt: string;
   imageClassName?: string;
   priority?: boolean;
 };
 
-export type FeaturePanelProps = FeaturePanelToneProps | FeaturePanelImageProps;
+export type FeaturePanelProps = FeaturePanelColorProps | FeaturePanelImageProps;
 
 const panelSizes = {
   sm: 'lg:h-[28rem]',
@@ -105,7 +82,7 @@ const panelPaddings = {
 };
 
 type ImagePositionKey = Exclude<
-  NonNullable<SharedFeaturePanelProps['imagePosition']>,
+  NonNullable<FeaturePanelPropsBase['imagePosition']>,
   'bottom'
 >;
 
@@ -138,104 +115,106 @@ const imageSlotStyles: Record<
   },
 };
 
-const patternPlacementStyles: Record<
-  FeaturePanelPatternPlacement,
-  {
-    layers: Array<{
-      className: string;
-      imageClassName?: string;
-    }>;
-  }
-> = {
-  full: {
-    layers: [{ className: 'inset-0', imageClassName: 'object-cover' }],
-  },
-  left: {
-    layers: [
-      {
-        className: 'inset-y-0 left-0',
-        imageClassName: 'object-cover object-left',
-      },
-    ],
-  },
-  right: {
-    layers: [
-      {
-        className: 'inset-y-0 right-0',
-        imageClassName: 'object-cover object-right',
-      },
-    ],
-  },
-  both: {
-    layers: [
-      {
-        className: 'inset-y-0 left-0',
-        imageClassName: 'object-cover object-left',
-      },
-      {
-        className: 'inset-y-0 right-0',
-        imageClassName: 'object-cover object-right scale-x-[-1]',
-      },
-    ],
-  },
-  corners: {
-    layers: [{ className: 'inset-0', imageClassName: 'object-cover' }],
-  },
-  'corners-inverted': {
-    layers: [
-      {
-        className: 'inset-0',
-        imageClassName: 'object-cover rotate-180',
-      },
-    ],
-  },
-};
+function PanelChrome({ overlayClassName }: PanelChromeProps) {
+  return overlayClassName ? (
+    <div className={cn('absolute inset-0', overlayClassName)} />
+  ) : null;
+}
 
-const patternSizeStyles: Record<FeaturePanelPatternSize, string> = {
-  short: 'w-[34%] min-w-[14rem] max-w-[26rem]',
-  large: 'w-[52%] min-w-[18rem] max-w-[44rem]',
-};
+function BackgroundStyleLayer({
+  layer,
+  className,
+}: {
+  layer: FeaturePanelBackgroundLayer;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        'pointer-events-none absolute inset-0',
+        className
+      )}
+    >
+      <Image
+        src={layer.src}
+        alt=""
+        fill
+        className={cn(layer.className)}
+        sizes="100vw"
+      />
+    </div>
+  );
+}
 
-const panelPatternShaders: Record<
-  FeaturePanelPattern,
-  {
-    shaderId: ShaderId;
-    lineOpacity: number;
-    staticFrame: number;
-  }
-> = {
-  [FeaturePanelPattern.Tide]: {
-    shaderId: 'tide',
-    lineOpacity: 1,
-    staticFrame: 96,
-  },
-  [FeaturePanelPattern.LowTide]: {
-    shaderId: 'low-tide',
-    lineOpacity: 1,
-    staticFrame: 72,
-  },
-  [FeaturePanelPattern.Drift]: {
-    shaderId: 'drift',
-    lineOpacity: 1,
-    staticFrame: 112,
-  },
-};
+function ColorImageLayer({
+  src,
+  className,
+}: {
+  src: string;
+  className?: string;
+}) {
+  return (
+    <div className="pointer-events-none absolute inset-0">
+      <Image
+        src={src}
+        alt=""
+        fill
+        className={cn('object-cover', className)}
+        sizes="100vw"
+      />
+    </div>
+  );
+}
 
-const DEFAULT_PATTERN_COLOR = 'rgba(244, 241, 234, 0.48)';
+function hexToRgb(hex: string) {
+  const cleanHex = hex.replace('#', '');
+  const value =
+    cleanHex.length === 3
+      ? cleanHex
+          .split('')
+          .map((digit) => `${digit}${digit}`)
+          .join('')
+      : cleanHex;
+
+  return {
+    r: parseInt(value.slice(0, 2), 16),
+    g: parseInt(value.slice(2, 4), 16),
+    b: parseInt(value.slice(4, 6), 16),
+  };
+}
+
+function brightenHex(hex: string, factor: number) {
+  const { r, g, b } = hexToRgb(hex);
+
+  return `rgb(${Math.min(Math.round(r * factor), 255)}, ${Math.min(
+    Math.round(g * factor),
+    255
+  )}, ${Math.min(Math.round(b * factor), 255)})`;
+}
+
+function getPerceivedLuminance(hex: string) {
+  const { r, g, b } = hexToRgb(hex);
+
+  return Math.round((r * 299 + g * 587 + b * 114) / 1000);
+}
 
 export function FeaturePanel(props: FeaturePanelProps) {
-  const isImagePanel = 'imageSrc' in props;
-  const tone = props.tone ?? FeaturePanelTone.White;
-  const toneColor = FEATURE_PANEL_COLORS[tone];
-  const background = props.background ?? toneColor.background;
-
-  const patterns = [
-    ...(props.pattern ? [props.pattern] : []),
-    ...(props.patterns ?? []),
-  ];
-  const patternPlacement = props.patternPlacement ?? 'full';
-  const patternSize = props.patternSize ?? 'large';
-  const placement = patternPlacementStyles[patternPlacement];
+  const isImagePanel = typeof props.imageSrc === 'string';
+  const color = props.color ?? FeaturePanelColor.Navy;
+  const inkColor = props.inkColor ?? FeaturePanelInkColor.Cream;
+  const colorDefinition = FEATURE_PANEL_COLORS[color] as {
+    background: string;
+    imageSrc?: string;
+    imageClassName?: string;
+  };
+  const inkColorDefinition = FEATURE_PANEL_INK_COLORS[inkColor];
+  const backgroundColor = colorDefinition.background;
+  const background = props.background ?? backgroundColor;
+  const accentColor = brightenHex(backgroundColor, 1.9);
+  const isLightBackground = getPerceivedLuminance(backgroundColor) > 140;
+  const backgroundLayer = props.backgroundStyle
+    ? FEATURE_PANEL_BACKGROUND_STYLES[props.backgroundStyle]
+    : null;
 
   const hasImageSlot = props.image != null;
   const reverse = props.reverse ?? false;
@@ -265,81 +244,72 @@ export function FeaturePanel(props: FeaturePanelProps) {
         hasImageSlot && panelSizes[sizeKey],
         props.className
       )}
+      data-light-background={isLightBackground ? 'true' : undefined}
+      style={
+        {
+          '--feature-panel-bg': backgroundColor,
+          '--feature-panel-ink': inkColorDefinition.color,
+          '--feature-panel-accent': accentColor,
+          '--feature-panel-u-bg': backgroundColor,
+          '--feature-panel-u-ink': inkColorDefinition.color,
+          '--feature-panel-navy': accentColor,
+        } as CSSProperties
+      }
     >
       {isImagePanel ? (
         <Image
-          src={props.imageSrc ?? ''}
+          src={props.imageSrc}
           alt={props.imageAlt ?? ''}
           fill
           priority={props.priority}
           className={cn('object-cover', props.imageClassName)}
         />
       ) : (
-        <div className="absolute inset-0" style={{ background }} />
+        <>
+          <div className="absolute inset-0" style={{ background }} />
+          {props.backgroundImageSrc ? (
+            <div className="pointer-events-none absolute inset-0">
+              <Image
+                src={props.backgroundImageSrc}
+                alt={props.backgroundImageAlt ?? ''}
+                fill
+                priority={props.backgroundImagePriority}
+                className={cn(
+                  'object-cover',
+                  props.backgroundImageClassName
+                )}
+                sizes="100vw"
+              />
+            </div>
+          ) : null}
+          {colorDefinition.imageSrc && (
+            <ColorImageLayer
+              src={colorDefinition.imageSrc}
+              className={colorDefinition.imageClassName}
+            />
+          )}
+        </>
       )}
 
-      {props.backgroundImageSrc && (
-        <Image
-          src={props.backgroundImageSrc}
-          alt={props.backgroundImageAlt ?? ''}
-          fill
-          priority={props.backgroundImagePriority}
-          className={cn('object-cover', props.backgroundImageClassName)}
+      {props.backgroundContent ? (
+        <div
+          className={cn(
+            'absolute inset-0 overflow-hidden',
+            props.backgroundContentClassName
+          )}
+        >
+          {props.backgroundContent}
+        </div>
+      ) : null}
+
+      {backgroundLayer && (
+        <BackgroundStyleLayer
+          layer={backgroundLayer}
+          className={props.backgroundClassName}
         />
       )}
 
-      {props.backgroundImage && (
-        <div className={cn('absolute inset-0', props.backgroundImageClassName)}>
-          {props.backgroundImage}
-        </div>
-      )}
-
-      {patterns.flatMap((pattern, index) =>
-        placement.layers.map((layer, layerIndex) => {
-          const shader = panelPatternShaders[pattern];
-
-          return (
-            <div
-              key={`${pattern}-${index}-${layerIndex}`}
-              className={cn(
-                'pointer-events-none absolute opacity-90',
-                layer.className,
-                patternPlacement !== 'full' &&
-                  patternPlacement !== 'corners' &&
-                  patternPlacement !== 'corners-inverted' &&
-                  patternSizeStyles[patternSize],
-                props.patternClassName,
-                props.patternClassNames?.[pattern]
-              )}
-            >
-              <StaticTopographicShaderBackground
-                shaderId={shader.shaderId}
-                inkColor={
-                  props.patternColors?.[pattern] ??
-                  props.patternColor ??
-                  DEFAULT_PATTERN_COLOR
-                }
-                backgroundOpacity={0}
-                lineOpacity={shader.lineOpacity}
-                staticFrame={
-                  (props.patternFrames?.[pattern] ??
-                    props.patternFrame ??
-                    shader.staticFrame) + layerIndex * 16
-                }
-                className={cn(
-                  'h-full w-full',
-                  layer.imageClassName?.includes('scale-x-[-1]') && 'scale-x-[-1]',
-                  layer.imageClassName?.includes('rotate-180') && 'rotate-180'
-                )}
-              />
-            </div>
-          );
-        })
-      )}
-
-      <PanelChrome
-        overlayClassName={props.overlayClassName}
-      />
+      <PanelChrome overlayClassName={props.overlayClassName} />
 
       {hasImageSlot && isBottom ? (
         <div className="relative z-10 flex h-full flex-col">
