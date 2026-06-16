@@ -1,5 +1,6 @@
 export { InternacionPage } from './InternacionPage';
 export { IntHeader } from './IntHeader';
+export { IdomHero } from './IdomHero';
 export { IntHero } from './IntHero';
 export { IntLogos } from './IntLogos';
 export { IntFlow } from './IntFlow';

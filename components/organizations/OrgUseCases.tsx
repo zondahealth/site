@@ -15,7 +15,7 @@ export function OrgUseCases() {
   const useCases = raw<UseCase[]>('site.products.organizations.useCases');
 
   return (
-    <section className="bg-[#f7f8fc] py-24">
+    <section className="py-40">
       <div className="layout-shell">
         <div className="mb-14 text-center">
           <p className="text-xs font-bold uppercase tracking-[0.12em] text-[color:var(--fg-2)]">

@@ -1,5 +1,5 @@
 import { IntHeader } from './IntHeader';
-import { IntHero } from './IntHero';
+import { IdomHero } from './IdomHero';
 import { IntLogos } from './IntLogos';
 import { IntFlow } from './IntFlow';
 import { IntFeatureOffice } from './IntFeatureOffice';
@@ -14,7 +14,7 @@ export function InternacionPage() {
   return (
     <div style={{ background: '#fcfcff', color: 'var(--zonda-ink)', overflow: 'hidden', position: 'relative' }}>
       <IntHeader />
-      <IntHero />
+      <IdomHero />
       <IntLogos />
       <IntFlow />
       <IntFeatureOffice />

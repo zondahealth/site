@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { DevelopersHero } from '@/components/desarrolladores/DevelopersHero';
 import {
   FeaturePanel,
   FeaturePanelBackgroundStyle,
@@ -9,7 +10,6 @@ import {
 } from '@/components/panel';
 import { useLanguage } from '@/components/LanguageProvider';
 import { Button } from '@/components/ui/button';
-import ExploreButton from '@/components/ExploreButton';
 
 type DeveloperFeature = { title: string; copy: string };
 
@@ -19,31 +19,7 @@ export default function DesarrolladoresPage() {
 
   return (
     <div className="h-full w-full flex flex-1 flex-col bg-black">
-      {/* Hero */}
-      <FeaturePanel
-        className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
-        color={FeaturePanelColor.DarkBlue}
-        backgroundStyle={FeaturePanelBackgroundStyle.WaveBlueLeft}
-        contentClassName="flex flex-1 min-h-0 w-full h-full items-center justify-center"
-      >
-        <div className="flex flex-1 w-full h-full flex-col items-center justify-center px-6 py-10 text-center md:items-start md:text-left space-y-8 max-w-2xl md:max-w-7xl mx-auto">
-          <p className="text-sm font-semibold uppercase tracking-widest text-vitality-yellow">
-            {t('site.developers.eyebrow')}
-          </p>
-          <h1 className="font-bold text-white flex flex-col gap-2 [font-family:var(--font-display-family)]">
-            <span className="text-5xl md:text-7xl lg:text-8xl">
-              {t('site.developers.title')}
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl lg:text-3xl font-semibold text-white max-w-2xl">
-            {t('site.developers.copy')}
-          </p>
-          <ExploreButton
-            href="https://zondahealth.readme.io/reference/getpatients"
-            title={t('site.common.exploreApi')}
-          />
-        </div>
-      </FeaturePanel>
+      <DevelopersHero />
 
       {/* Rainbow divider */}
       <div
@@ -86,9 +62,10 @@ export default function DesarrolladoresPage() {
       <section className="bg-black">
         <div className="layout-shell py-20 md:py-28">
           <FeaturePanel
-            color={FeaturePanelColor.DarkBlue}
-            backgroundStyle={FeaturePanelBackgroundStyle.WaveBlueLeft}
-            contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-24 sm:px-12 sm:py-32 lg:px-20 lg:py-40 text-vitality-yellow"
+            color={FeaturePanelColor.Yellow}
+            backgroundStyle={FeaturePanelBackgroundStyle.FullDrift}
+            backgroundClassName="opacity-30"
+            contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-24 sm:px-12 sm:py-32 lg:px-20 lg:py-40 "
           >
             <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-4xl lg:text-6xl [font-family:var(--font-display-family)]">
               {t('site.developers.apiCta')}

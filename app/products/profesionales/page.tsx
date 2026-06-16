@@ -1,11 +1,7 @@
 'use client';
 
-import {
-  FeaturePanel,
-  FeaturePanelBackgroundStyle,
-  FeaturePanelColor,
-} from '@/components/panel';
 import { useLanguage } from '@/components/LanguageProvider';
+import { ProHero } from '@/components/professionals/ProHero';
 import { PhoneAgenda } from '@/components/professionals/PhoneAgenda';
 import { PhoneOrganizaciones } from '@/components/professionals/PhoneOrganizaciones';
 import { PhoneRegistros } from '@/components/professionals/PhoneRegistros';
@@ -13,8 +9,8 @@ import { ProFeature } from '@/components/professionals/ProFeature';
 import { ProTestimonial } from '@/components/professionals/ProTestimonial';
 import { ProDownload } from '@/components/professionals/ProDownload';
 import { ProFAQ } from '@/components/professionals/ProFAQ';
-import Image from 'next/image';
 import { GradientDividerBar } from '@/components/GradientDividerBar';
+import { Strip } from '@/components/Strip';
 
 type ProFeatureContent = {
   accent: 'blue' | 'green' | 'purple';
@@ -26,43 +22,16 @@ type ProFeatureContent = {
 };
 
 export default function ProfesionalesPage() {
-  const { raw, t } = useLanguage();
+  const { raw } = useLanguage();
   const features = raw<ProFeatureContent[]>(
     'site.products.professionals.features'
   );
 
   return (
     <div className="pb-16">
-      {/* Hero — unchanged */}
-      <section className="flex flex-col">
-        <FeaturePanel
-          backgroundStyle={FeaturePanelBackgroundStyle.WaveBlueLeft}
-          className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
-          contentClassName="grid grid-cols-1 lg:grid-cols-2 flex-1 mx-auto max-w-7xl w-full"
-        >
-          <div className="flex min-w-0 flex-col items-center justify-center px-6 py-24 text-center lg:items-start lg:text-left space-y-8 px-16">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold [font-family:var(--font-display-family)] text-zonda-blue-dark">
-              {t('site.products.professionals.heroTitle')}
-            </h1>
-            <p className="text-md md:text-lg lg:text-2xl font-semibold text-zonda-blue-dark">
-              {t('site.products.professionals.heroCopy')}
-            </p>
-          </div>
+      <ProHero />
 
-          <div className="relative hidden lg:block h-full overflow-visible">
-            <Image
-              src="/assets/profesionales/images/doctor.png"
-              alt={t('site.products.professionals.heroAlt')}
-              width={700}
-              height={700}
-              className="pointer-events-none absolute bottom-0 left-0 h-[85%] w-auto max-w-none object-contain object-bottom"
-              sizes="100%"
-            />
-          </div>
-        </FeaturePanel>
-
-        <GradientDividerBar variant="dynamic" />
-      </section>
+      <Strip />
 
       {/* <ProObrasSociales /> */}
 
@@ -97,7 +66,7 @@ export default function ProfesionalesPage() {
         phone={<PhoneRegistros />}
       />
 
-      <ProTestimonial />
+      {/* <ProTestimonial />w */}
 
       <ProDownload />
       <ProFAQ />

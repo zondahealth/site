@@ -2,6 +2,7 @@ export { PhoneFrame } from './PhoneFrame';
 export { PhoneAgenda } from './PhoneAgenda';
 export { PhoneOrganizaciones } from './PhoneOrganizaciones';
 export { PhoneRegistros } from './PhoneRegistros';
+export { ProHero } from './ProHero';
 export { ProFeature } from './ProFeature';
 export type { ProFeatureAccent } from './ProFeature';
 export { ProObrasSociales } from './ProObrasSociales';

@@ -122,7 +122,7 @@ export function ContactForm() {
   };
 
   return (
-    <div className="grid overflow-hidden rounded-md border border-[color:rgba(21,27,43,0.08)] bg-[color:rgba(244,246,253,0.86)] shadow-[0_24px_60px_-46px_rgba(14,60,117,0.38)] lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.35fr)]">
+    <div className="grid overflow-hidden rounded-xl bg-white">
       <aside className="relative overflow-hidden bg-zonda-blue-dark px-6 py-8 text-white sm:px-8 lg:px-10 lg:py-12">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(234,234,0,0.12),transparent_28%),radial-gradient(circle_at_90%_80%,rgba(92,140,255,0.22),transparent_32%)]" />
         <div className="relative flex h-full flex-col justify-between gap-14">
@@ -146,7 +146,7 @@ export function ContactForm() {
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           {submitStatus === 'success' ? (
             <div
-              className="flex items-start gap-3 rounded-md border border-[color:rgba(0,168,120,0.24)] bg-[color:rgba(0,168,120,0.08)] p-4 text-[color:rgb(5,116,75)]"
+              className="flex items-start gap-3 rounded-xl border border-[color:rgba(0,168,120,0.24)] bg-[color:rgba(0,168,120,0.08)] p-4 text-[color:rgb(5,116,75)]"
               role="status"
             >
               <CheckCircle2 className="mt-0.5 size-5 shrink-0" />
@@ -169,7 +169,11 @@ export function ContactForm() {
           ) : null}
 
           <div className="grid gap-5 md:grid-cols-2">
-            <Field id="firstName" label={t('site.contact.fields.firstName')} required>
+            <Field
+              id="firstName"
+              label={t('site.contact.fields.firstName')}
+              required
+            >
               <input
                 id="firstName"
                 name="firstName"
@@ -180,7 +184,11 @@ export function ContactForm() {
                 className={inputClassName}
               />
             </Field>
-            <Field id="lastName" label={t('site.contact.fields.lastName')} required>
+            <Field
+              id="lastName"
+              label={t('site.contact.fields.lastName')}
+              required
+            >
               <input
                 id="lastName"
                 name="lastName"
@@ -219,7 +227,10 @@ export function ContactForm() {
             </Field>
           </div>
 
-          <Field id="organization" label={t('site.contact.fields.organization')}>
+          <Field
+            id="organization"
+            label={t('site.contact.fields.organization')}
+          >
             <input
               id="organization"
               name="organization"

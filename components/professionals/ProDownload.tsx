@@ -2,7 +2,11 @@
 
 import { useLanguage } from '@/components/LanguageProvider';
 import { PhoneAgenda } from './PhoneAgenda';
-import { FeaturePanel, FeaturePanelBackgroundStyle, FeaturePanelColor } from '../panel';
+import {
+  FeaturePanel,
+  FeaturePanelBackgroundStyle,
+  FeaturePanelColor,
+} from '../panel';
 
 const storeLinks = {
   ios: 'https://apps.apple.com/ar/app/zonda-profesionales/id6763732524?l=en-GB',
@@ -39,7 +43,8 @@ export function ProDownload() {
       <div className="layout-shell">
         <FeaturePanel
           color={FeaturePanelColor.DarkBlue}
-          backgroundStyle={FeaturePanelBackgroundStyle.WaveBlueLeft}
+          backgroundStyle={FeaturePanelBackgroundStyle.Wave}
+          backgroundClassName="opacity-30"
           className="rounded-md"
           contentClassName="px-10 py-16 lg:px-20 lg:py-20 grid grid-cols-1 lg:grid-cols-2"
         >

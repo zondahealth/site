@@ -5,6 +5,12 @@ import { ContactForm } from '@/components/ContactForm';
 import { getSupportedLocale, localeCookieName } from '@/lib/locale';
 import enMessages from '@/messages/en.json';
 import esMessages from '@/messages/es.json';
+import {
+  FeaturePanel,
+  FeaturePanelBackgroundStyle,
+  FeaturePanelColor,
+} from '@/components/panel';
+import { BACKGROUNDS } from '@/components/ui/colors';
 
 const metadataMessages = {
   en: enMessages,
@@ -24,10 +30,17 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function ContactoPage() {
   return (
-    <main className="min-h-screen bg-background pb-20 pt-32 text-foreground">
-      <section className="layout-shell">
-        <ContactForm />
-      </section>
-    </main>
+    <div className="min-h-screen bg-background text-foreground">
+      <FeaturePanel
+        backgroundImageSrc="/assets/shared/bg/bg-platform.png"
+        background={BACKGROUNDS.transparent}
+        backgroundImageClassName="object-cover"
+        contentClassName="flex h-full flex-col items-center justify-center py-20 md:py-42 lg:py-62 "
+      >
+        <section className="layout-shell rounded-xl">
+          <ContactForm />
+        </section>
+      </FeaturePanel>
+    </div>
   );
 }

@@ -1,17 +1,17 @@
 'use client';
 
 import {
-  FeaturePanelBackgroundStyle,
   FeaturePanel,
   FeaturePanelColor,
+  FeaturePanelBackgroundStyle,
 } from '@/components/panel';
-import {
-  InfoSection,
-  type InfoSectionData,
-} from '@/components/InfoSection';
+import { InfoSection, type InfoSectionData } from '@/components/InfoSection';
 import { useLanguage } from '@/components/LanguageProvider';
+import { TopographicShaderBackground } from '@/components/shaders/TopographicShaderBackground';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { GradientDividerBar } from '@/components/GradientDividerBar';
+import { Strip } from '@/components/Strip';
 
 export default function InteroperabilidadPage() {
   const { raw, t } = useLanguage();
@@ -21,28 +21,40 @@ export default function InteroperabilidadPage() {
   return (
     <div className="h-full w-full flex flex-1 flex-col">
       {/* Hero */}
-      <FeaturePanel
-        className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
-        color={FeaturePanelColor.DarkBlue}
-        backgroundStyle={FeaturePanelBackgroundStyle.FullDrift}
-        contentClassName="flex flex-1 min-h-0 w-full h-full items-center justify-center"
-      >
-        <div className="flex flex-1 w-full h-full flex-col items-center justify-center px-6 py-10 text-center md:items-start md:text-left space-y-8 max-w-2xl md:max-w-7xl mx-auto">
-          <h1 className="font-bold text-vitality-yellow flex flex-col gap-2 [font-family:var(--font-display-family)]">
-            <span className="text-vitality-yellow text-5xl md:text-7xl lg:text-8xl">
-              {t('site.products.interop.title')}
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl lg:text-3xl font-semibold text-white">
-            {heroLines.map((line) => (
-              <span key={line}>
-                {line}
-                <br />
-              </span>
-            ))}
-          </p>
+      <section className="pt-0">
+        <div className="relative flex h-[100dvh] min-h-[30rem] flex-col overflow-hidden bg-black">
+          <div className="absolute inset-0 bg-black" />
+
+          <TopographicShaderBackground
+            shaderId="tide"
+            inkColor="rgba(255, 255, 0, 0.98)"
+            backgroundOpacity={0}
+            angle={-0.2}
+            className="absolute inset-0 h-full w-full touch-none opacity-80"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.22)_0%,transparent_26%,transparent_74%,rgba(0,0,0,0.3)_100%),linear-gradient(180deg,rgba(255,255,255,0.02)_0%,rgba(255,255,255,0)_24%,rgba(0,0,0,0.16)_100%)]" />
+
+          <div className="relative z-10 flex min-h-0 flex-1 items-center justify-center px-6 py-10 md:px-10 lg:px-16">
+            <div className="flex w-full max-w-7xl flex-col items-center justify-center space-y-8 text-center md:items-start md:text-left">
+              <h1 className="flex flex-col gap-2 font-bold text-white [font-family:var(--font-display-family)]">
+                <span className="text-5xl md:text-7xl lg:text-8xl">
+                  {t('site.products.interop.title')}
+                </span>
+              </h1>
+              <p className="max-w-2xl text-xl font-semibold text-white md:text-2xl lg:text-3xl">
+                {heroLines.map((line) => (
+                  <span key={line}>
+                    {line}
+                    <br />
+                  </span>
+                ))}
+              </p>
+            </div>
+          </div>
         </div>
-      </FeaturePanel>
+      </section>
+
+      <Strip />
 
       {/* Sections */}
       {sections.map((section, i) => (
@@ -59,8 +71,8 @@ export default function InteroperabilidadPage() {
         <div className="layout-shell py-20 md:py-28">
           <FeaturePanel
             color={FeaturePanelColor.Yellow}
-            backgroundStyle={FeaturePanelBackgroundStyle.WaveBlueLeft}
-            backgroundClassName="opacity-25 mix-blend-multiply"
+            backgroundStyle={FeaturePanelBackgroundStyle.FullDrift}
+            backgroundClassName="opacity-30"
             contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-24 sm:px-12 sm:py-32 lg:px-20 lg:py-48"
           >
             <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-3xl lg:text-6xl text-black [font-family:var(--font-display-family)]">
