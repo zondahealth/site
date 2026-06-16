@@ -29,8 +29,8 @@ export function OrganizationsHero() {
           className="absolute inset-0 h-full w-full touch-none opacity-100 mix-blend-screen"
         />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_620px_at_22%_58%,rgba(7,17,48,0.34),transparent_58%),linear-gradient(180deg,rgba(5,16,44,0.14)_0%,rgba(5,16,44,0.28)_100%)]" />
-        <div className="relative z-10 mx-auto grid h-full w-full max-w-7xl grid-cols-1 lg:grid-cols-2">
-          <div className="flex min-w-0 flex-col items-center justify-end px-8 pb-20 pt-24 text-center lg:items-start lg:justify-center lg:px-12 lg:py-24 lg:text-left">
+        <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl">
+          <div className="flex min-w-0 max-w-3xl flex-col items-start justify-end px-8 pb-16 pt-24 text-left lg:px-12 lg:pb-24 lg:pt-24">
             <h1 className="flex flex-col gap-4 font-bold text-white lg:gap-6">
               <span className="text-5xl font-bold text-vitality-yellow [font-family:var(--font-display-family)] md:text-6xl lg:text-7xl">
                 {t('site.products.organizations.heroTitle')}
