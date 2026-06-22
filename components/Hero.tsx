@@ -12,23 +12,22 @@ export function Hero() {
   return (
     <section className="pt-0">
       <div className="relative flex h-[100dvh] min-h-[30rem] flex-col overflow-hidden bg-zonda-blue-dark sm:p-12 lg:p-16">
-        <div className="absolute inset-0 bg-[radial-gradient(1100px_760px_at_58%_28%,rgba(34,111,253,0.76),transparent_62%),radial-gradient(900px_680px_at_16%_82%,rgba(4,17,48,0.56),transparent_58%),linear-gradient(180deg,rgba(30, 75, 199, 0.96)_0%,rgba(10,35,94,0.92)_42%,rgba(7,17,48,0.98)_100%)]" />
         <TopographicShaderBackground
           shaderId="drift"
-          inkColor="rgba(243, 243, 32, 0.6)"
+          inkColor="rgba(240, 240, 38, 0.8)"
           backgroundOpacity={0}
           className="absolute inset-0 h-full w-full touch-none opacity-100"
         />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_36%,rgba(230,255,26,0.07),transparent_24%),radial-gradient(circle_at_50%_75%,rgba(34,111,253,0.1),transparent_32%),linear-gradient(180deg,rgba(3,13,40,0.08)_0%,rgba(3,13,40,0.16)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_36%,rgba(230,255,26,0.07),transparent_24%),radial-gradient(circle_at_50%_75%,rgba(34,111,253,0.1),transparent_32%),linear-gradient(180deg,rgba(3,13,40,0.03)_0%,rgba(3,13,40,0.08)_100%)]" />
         <div className="relative z-10 flex min-h-0 flex-1 flex-col items-center justify-center px-6 text-center sm:px-10">
-          <h1 className="w-full max-w-3xl text-balance [font-family:var(--font-display-family)] text-4xl font-bold leading-[0.96] text-[color:rgba(248,250,255,0.96)] sm:text-5xl lg:text-7xl">
+          <h1 className="w-full max-w-5xl text-balance [font-family:var(--font-sans)] text-5xl font-bold leading-[0.94] tracking-[-0.045em] text-[color:rgba(248,250,255,0.96)] sm:text-6xl lg:text-[5.5rem] xl:text-8xl">
             {t('site.home.hero.titlePrefix')}{' '}
             <span className="text-[color:var(--color-vitality-yellow)]">
               {t('site.home.hero.titleHighlight')}
             </span>
           </h1>
           <div className="max-w-3xl">
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg font-bold leading-relaxed text-[color:rgba(248,250,255,0.82)] sm:text-xl">
+            <p className="mx-auto mt-7 max-w-2xl text-pretty text-lg font-bold leading-relaxed text-[color:rgba(248,250,255,0.86)] sm:text-xl">
               {t('site.home.hero.copy')}
             </p>
 

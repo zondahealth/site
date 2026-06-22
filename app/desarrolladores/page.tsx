@@ -3,19 +3,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { DevelopersHero } from '@/components/desarrolladores/DevelopersHero';
-import {
-  FeaturePanel,
-  FeaturePanelBackgroundStyle,
-  FeaturePanelColor,
-} from '@/components/panel';
+import { FeaturePanel } from '@/components/panel';
 import { useLanguage } from '@/components/LanguageProvider';
 import { Button } from '@/components/ui/button';
 
 type DeveloperFeature = { title: string; copy: string };
 
 export default function DesarrolladoresPage() {
-  const { raw, t } = useLanguage();
+  const { locale, raw, t } = useLanguage();
   const features = raw<DeveloperFeature[]>('site.developers.features');
+  const terminalImage =
+    locale === 'en'
+      ? '/assets/shared/images/terminal-devs-en.png'
+      : '/assets/shared/images/terminal-devs-sp.png';
 
   return (
     <div className="h-full w-full flex flex-1 flex-col bg-black">
@@ -35,10 +35,10 @@ export default function DesarrolladoresPage() {
         <div className="layout-shell flex flex-col items-center gap-16 py-20 md:py-28">
           <div className="relative w-full max-w-5xl overflow-hidden rounded-lg">
             <Image
-              src="/assets/home/images/terminal.png"
+              src={terminalImage}
               alt={t('site.developers.terminalAlt')}
-              width={1920}
-              height={1080}
+              width={1536}
+              height={1024}
               className="w-full h-auto"
             />
           </div>
@@ -62,9 +62,7 @@ export default function DesarrolladoresPage() {
       <section className="bg-black">
         <div className="layout-shell py-20 md:py-28">
           <FeaturePanel
-            color={FeaturePanelColor.Yellow}
-            backgroundStyle={FeaturePanelBackgroundStyle.FullDrift}
-            backgroundClassName="opacity-30"
+            background="yellow"
             contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-24 sm:px-12 sm:py-32 lg:px-20 lg:py-40 "
           >
             <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-4xl lg:text-6xl [font-family:var(--font-display-family)]">

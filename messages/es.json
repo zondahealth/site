@@ -290,7 +290,7 @@
     "hero": {
       "title": "Interoperabilidad",
       "description": "Nuestra robusta API actúa como puente para integrar fuentes de datos existentes. Permite que las instituciones mantengan sus propios sistemas (facturación, turnos, historias clínicas, etc.) mientras se conectan con Zonda para compartir y visualizar datos de forma segura y estandarizada.",
-      "apiDocs": "Ver Documentación de la API"
+      "apiDocs": "Ver Documentación de nuestra API"
     },
     "quote": {
       "line1": "Dedica tiempo a ofrecer el mejor servicio",
@@ -844,7 +844,7 @@
       "contact": "Contáctanos",
       "contactAlt": "Contactanos",
       "readMore": "Leer más",
-      "exploreApi": "Explorar la API",
+      "exploreApi": "Explorar nuestra API",
       "homeAria": "Inicio de Zonda Health",
       "mainNavAria": "Navegación principal",
       "mobileNavAria": "Navegación móvil",
@@ -868,23 +868,26 @@
       },
       "stories": {
         "eyebrow": "Historias",
-        "title": "Equipos de salud que ya cambiaron cómo operan."
+        "titlePrefix": "Equipos de salud que",
+        "titleHighlight": "ya cambiaron",
+        "titleSuffix": "cómo operan."
       },
       "results": {
         "eyebrow": "Resultados",
-        "title": "Mejorá tus resultados y el servicio a tus pacientes.",
+        "titlePrefix": "Mejorá tus resultados y el servicio a tus",
+        "titleHighlight": "pacientes.",
         "copy": "Organizaciones eligen Zonda porque se integra fácilmente, está operativo desde el primer día y genera trazabilidad en tiempo real, adaptado a Latinoamérica.",
         "stats": [
-          { "value": "+30%", "label": "Ahorro en costos operativos" },
-          { "value": "+40%", "label": "Reducción en tiempos de espera" },
-          { "value": "+35%", "label": "Reducción en errores médicos" },
-          { "value": "+30%", "label": "Detección de fraude" }
+          { "value": "+30%", "labelPrefix": "Ahorro en", "labelHighlight": "costos operativos" },
+          { "value": "+40%", "labelPrefix": "Reducción en", "labelHighlight": "tiempos de espera" },
+          { "value": "+35%", "labelPrefix": "Reducción en", "labelHighlight": "errores médicos" },
+          { "value": "+30%", "labelPrefix": "Detección de", "labelHighlight": "fraude" }
         ]
       },
       "platform": {
         "eyebrow": "Soluciones",
-        "title": "Potenciá cada etapa del ecosistema de salud",
-        "highlight": "",
+        "title": "Potenciá cada etapa del",
+        "highlight": "ecosistema de salud",
         "products": [
           {
             "name": "Organizaciones",
@@ -1029,13 +1032,13 @@
       "eyebrow": "Desarrolladores",
       "title": "Construí sobre Zonda",
       "copy": "APIs abiertas, autenticación con Personal Access Tokens y una plataforma pensada para que tu equipo técnico integre, automatice y escale sin fricciones.",
-      "terminalAlt": "Terminal de la API de Zonda",
+      "terminalAlt": "Terminal de nuestra API",
       "features": [
-        { "title": "API con Personal Access Token", "copy": "Autenticá con un PAT y empezá a consumir la API de Zonda en minutos. Generá tu token, hacé tu primer request y construí desde ahí." },
-        { "title": "Modelá tu organización", "copy": "Creá y administrá múltiples organizaciones desde la API. Definí estructuras, asigná roles y gestioná permisos de forma programática." },
+        { "title": "API con Personal Access Token", "copy": "Autenticá con un PAT y empezá a consumir nuestra API en minutos. Generá tu token, hacé tu primer request y construí desde ahí." },
+        { "title": "Modelá tu organización", "copy": "Creá y administrá múltiples organizaciones desde nuestra API. Definí estructuras, asigná roles y gestioná permisos de forma programática." },
         { "title": "Mové datos de cualquier lado", "copy": "Conectá cualquier fuente: HL7, FHIR, CSV, PDFs o sistemas propietarios. Zonda normaliza todo en un modelo canónico listo para usar." }
       ],
-      "apiCta": "Usá la API",
+      "apiCta": "Usá nuestra API",
       "docs": "Documentación"
     },
     "caseStudies": {
@@ -1085,11 +1088,11 @@
             },
             {
               "title": "Infraestructura para construir",
-              "copy": "La API y la capacidad de procesamiento de Zonda permiten crear herramientas propias sobre datos ya conectados, sin tener que desarrollar desde cero la infraestructura clínica y operativa."
+              "copy": "Nuestra API y la capacidad de procesamiento de Zonda permiten crear herramientas propias sobre datos ya conectados, sin tener que desarrollar desde cero la infraestructura clínica y operativa."
             }
           ],
           "platformImageAlt": "Monitor operativo de Interdom construido sobre Zonda con mapa de profesionales, vehículos GPS, alertas y pacientes sin asignar",
-          "platformImageCaption": "Sobre la API de Zonda, Interdom construyó un monitor que combina ubicación, especialidades, alertas y asignaciones, además de un sistema automatizado de resolución de reclamos y capacidades de auditoría en cada punto de la organización. Esto simplifica la operatoria para los profesionales de la salud y el equipo administrativo, y brinda a los pacientes mucha más visibilidad sobre su atención.",
+          "platformImageCaption": "Sobre nuestra API, Interdom construyó un monitor que combina ubicación, especialidades, alertas y asignaciones, además de un sistema automatizado de resolución de reclamos y capacidades de auditoría en cada punto de la organización. Esto simplifica la operatoria para los profesionales de la salud y el equipo administrativo, y brinda a los pacientes mucha más visibilidad sobre su atención.",
           "testimonial": {
             "quote": "Lo que más nos sorprendió no fue la tecnología en sí, sino todo lo que pudimos construir sobre ella. Procesos que hacíamos a mano desde siempre, como coordinación, reclamos y asignación de pacientes, de repente los teníamos integrados en un solo lugar. Zonda se convirtió en el sistema nervioso de nuestra operación.",
             "name": "Gabriel Alonso",
@@ -1108,10 +1111,10 @@
             {
               "title": "Algoritmos de optimización de recorridos",
               "copy": "La asignación combina especialidad, disponibilidad y eficiencia del recorrido para seleccionar al profesional adecuado. Los recorridos optimizados reducen traslados y permiten coordinar más visitas con menos intervención administrativa."
-            },
+            },  
             {
               "title": "Integraciones unificadas con financiadores y sistemas externos",
-              "copy": "Doce integraciones conectan financiadores, facturación y herramientas operativas mediante la API de Zonda. Las validaciones que antes eran manuales ahora se ejecutan automáticamente, reduciendo errores, débitos y tiempos de cobro."
+              "copy": "Doce integraciones conectan financiadores, facturación y herramientas operativas mediante nuestra API. Las validaciones que antes eran manuales ahora se ejecutan automáticamente, reduciendo errores, débitos y tiempos de cobro."
             }
           ],
           "resultsTitle": "Resultados visibles desde los primeros tres meses",
@@ -1261,7 +1264,7 @@
           { "title": "La plataforma", "description": "Zonda fue diseñado como infraestructura de integración. Una capa segura, escalable y extensible que permite conectar sistemas, procesar datos con inteligencia artificial y construir aplicaciones sobre una base unificada.", "items": [{ "label": "Procesamiento AI", "text": "Modelos integrados que procesan, clasifican y extraen información clínica estructurada a partir de cualquier fuente de datos, en tiempo real." }, { "label": "Analíticas operativas", "text": "Observabilidad completa sobre el flujo de datos, volumen de transacciones y performance de cada integración activa." }, { "label": "Platform as a Service", "text": "APIs abiertas, webhooks y SDKs que permiten a organizaciones de salud desarrollar soluciones propias sobre la infraestructura de Zonda." }] },
           { "title": "Formas de conectar", "image": "/assets/interoperabilidad/images/flow.png", "description": "Arquitectura cloud-native con cifrado en tránsito y at rest, gestión granular de permisos y aislamiento multi-tenant. La seguridad es responsabilidad de la plataforma, no del integrador.", "items": [{ "label": "Zonda Connectors", "text": "Conectores nativos para los sistemas más utilizados en salud. Configuración declarativa, activación inmediata e intercambio de datos sin desarrollo custom." }, { "label": "REST APIs", "text": "Interfaz RESTful documentada con OpenAPI. Autenticación estándar, rate limiting inteligente y compatibilidad con cualquier stack tecnológico." }, { "label": "FileSystems & DataDrop", "text": "Ingesta masiva a través de filesystems seguros y DataDrop. Soporte nativo para HL7, FHIR, CSV y formatos arbitrarios con transformación automática." }] },
           { "title": "Modelo canónico", "description": "Zonda consume datos en cualquier formato: texto plano, PDFs, CSVs, HL7, FHIR, XMLs, y produce un único modelo de datos canónico. Un output estructurado, normalizado y listo para ser consumido por cualquier sistema downstream.", "items": [{ "label": "LOINC", "text": "Normalización automática de observaciones y resultados de laboratorio bajo el estándar LOINC. Mapeo semántico de terminología propietaria a códigos universales." }, { "label": "ICD-10", "text": "Clasificación y codificación de diagnósticos bajo ICD-10. Extracción de códigos a partir de texto clínico libre mediante procesamiento de lenguaje natural." }, { "label": "Output flexible", "text": "Exporta el modelo canónico al formato que necesites: JSON, FHIR, CSV, HL7 o esquemas custom. Un único input, múltiples outputs adaptados a cada consumidor." }] },
-          { "title": "Seguridad e Identidad", "description": "Zonda modela la estructura del negocio de salud. Provee identidad unificada para profesionales, pacientes y miembros de cada organización, con roles definidos y permisos granulares.", "items": [{ "label": "Inbound OAuth2", "text": "Aplicaciones externas se autentican contra Zonda vía OAuth 2.0 para operar sobre las APIs de la plataforma con tokens scoped y flujos estándar." }, { "label": "Outbound OAuth2", "text": "Zonda actúa como cliente OAuth 2.0 al conectarse a sistemas de terceros, delegando autenticación sin exponer credenciales del usuario final." }, { "label": "Integración adaptativa", "text": "Capacidad de integración en cada nivel de la arquitectura. Desde conectores out-of-the-box hasta extensiones programáticas sobre la API." }] }
+          { "title": "Seguridad e Identidad", "description": "Zonda modela la estructura del negocio de salud. Provee identidad unificada para profesionales, pacientes y miembros de cada organización, con roles definidos y permisos granulares.", "items": [{ "label": "Inbound OAuth2", "text": "Aplicaciones externas se autentican contra Zonda vía OAuth 2.0 para operar sobre las APIs de la plataforma con tokens scoped y flujos estándar." }, { "label": "Outbound OAuth2", "text": "Zonda actúa como cliente OAuth 2.0 al conectarse a sistemas de terceros, delegando autenticación sin exponer credenciales del usuario final." }, { "label": "Integración adaptativa", "text": "Capacidad de integración en cada nivel de la arquitectura. Desde conectores out-of-the-box hasta extensiones sobre nuestra API." }] }
         ],
         "ctaTitle": "Conectá tus sistemas.",
         "ctaHighlight": "Integrá tu empresa."

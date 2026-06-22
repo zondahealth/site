@@ -844,7 +844,7 @@
       "contact": "Contact us",
       "contactAlt": "Contact us",
       "readMore": "Read more",
-      "exploreApi": "Explore the API",
+      "exploreApi": "Explore our API",
       "homeAria": "Zonda Health home",
       "mainNavAria": "Main navigation",
       "mobileNavAria": "Mobile navigation",
@@ -868,23 +868,26 @@
       },
       "stories": {
         "eyebrow": "Stories",
-        "title": "Healthcare teams that have already changed how they operate."
+        "titlePrefix": "Healthcare teams that have",
+        "titleHighlight": "already changed",
+        "titleSuffix": "how they operate."
       },
       "results": {
         "eyebrow": "Results",
-        "title": "Improve your outcomes and the service you provide to patients.",
+        "titlePrefix": "Improve your outcomes and the service you provide to",
+        "titleHighlight": "patients.",
         "copy": "Organizations choose Zonda because it integrates easily, is operational from day one, and creates real-time traceability built for Latin America.",
         "stats": [
-          { "value": "+30%", "label": "Operational cost savings" },
-          { "value": "+40%", "label": "Reduction in waiting times" },
-          { "value": "+35%", "label": "Reduction in medical errors" },
-          { "value": "+30%", "label": "Fraud detection" }
+          { "value": "+30%", "labelPrefix": "Savings in", "labelHighlight": "operational costs" },
+          { "value": "+40%", "labelPrefix": "Reduction in", "labelHighlight": "waiting times" },
+          { "value": "+35%", "labelPrefix": "Reduction in", "labelHighlight": "medical errors" },
+          { "value": "+30%", "labelPrefix": "Detection of", "labelHighlight": "fraud" }
         ]
       },
       "platform": {
         "eyebrow": "Solutions",
-        "title": "Strengthen every stage of the healthcare ecosystem",
-        "highlight": "",
+        "title": "Strengthen every stage of the",
+        "highlight": "healthcare ecosystem",
         "products": [
           {
             "name": "Organizations",
@@ -1032,10 +1035,10 @@
       "terminalAlt": "Zonda API terminal",
       "features": [
         { "title": "API with Personal Access Token", "copy": "Authenticate with a PAT and start consuming the Zonda API in minutes. Generate your token, make your first request and build from there." },
-        { "title": "Model your organization", "copy": "Create and manage multiple organizations from the API. Define structures, assign roles and manage permissions programmatically." },
+        { "title": "Model your organization", "copy": "Create and manage multiple organizations from our API. Define structures, assign roles and manage permissions programmatically." },
         { "title": "Move data from anywhere", "copy": "Connect any source: HL7, FHIR, CSV, PDFs or proprietary systems. Zonda normalizes everything into a canonical model ready to use." }
       ],
-      "apiCta": "Use the API",
+      "apiCta": "Use our API",
       "docs": "Documentation"
     },
     "caseStudies": {
@@ -1261,7 +1264,7 @@
           { "title": "The platform", "description": "Zonda was designed as integration infrastructure. A secure, scalable and extensible layer that connects systems, processes data with artificial intelligence and builds applications on a unified foundation.", "items": [{ "label": "AI processing", "text": "Integrated models that process, classify and extract structured clinical information from any data source in real time." }, { "label": "Operational analytics", "text": "Full observability over data flow, transaction volume and the performance of each active integration." }, { "label": "Platform as a Service", "text": "Open APIs, webhooks and SDKs that allow healthcare organizations to build their own solutions on Zonda infrastructure." }] },
           { "title": "Ways to connect", "image": "/assets/interoperabilidad/images/flow.png", "description": "Cloud-native architecture with encryption in transit and at rest, granular permission management and multi-tenant isolation. Security is the responsibility of the platform, not the integrator.", "items": [{ "label": "Zonda Connectors", "text": "Native connectors for the most widely used healthcare systems. Declarative configuration, immediate activation and data exchange without custom development." }, { "label": "REST APIs", "text": "RESTful interface documented with OpenAPI. Standard authentication, intelligent rate limiting and compatibility with any technology stack." }, { "label": "FileSystems & DataDrop", "text": "Bulk ingestion through secure filesystems and DataDrop. Native support for HL7, FHIR, CSV and arbitrary formats with automatic transformation." }] },
           { "title": "Canonical model", "description": "Zonda consumes data in any format: plain text, PDFs, CSVs, HL7, FHIR, XMLs, and produces a single canonical data model. A structured, normalized output ready to be consumed by any downstream system.", "items": [{ "label": "LOINC", "text": "Automatic normalization of observations and lab results under the LOINC standard. Semantic mapping from proprietary terminology to universal codes." }, { "label": "ICD-10", "text": "Diagnosis classification and coding under ICD-10. Code extraction from free clinical text through natural language processing." }, { "label": "Flexible output", "text": "Export the canonical model in the format you need: JSON, FHIR, CSV, HL7 or custom schemas. One input, multiple outputs adapted to each consumer." }] },
-          { "title": "Security and Identity", "description": "Zonda models the structure of the healthcare business. It provides unified identity for professionals, patients and members of each organization, with defined roles and granular permissions.", "items": [{ "label": "Inbound OAuth2", "text": "External applications authenticate against Zonda through OAuth 2.0 to operate on platform APIs with scoped tokens and standard flows." }, { "label": "Outbound OAuth2", "text": "Zonda acts as an OAuth 2.0 client when connecting to third-party systems, delegating authentication without exposing end-user credentials." }, { "label": "Adaptive integration", "text": "Integration capability at every level of the architecture. From out-of-the-box connectors to programmable extensions on top of the API." }] }
+          { "title": "Security and Identity", "description": "Zonda models the structure of the healthcare business. It provides unified identity for professionals, patients and members of each organization, with defined roles and granular permissions.", "items": [{ "label": "Inbound OAuth2", "text": "External applications authenticate against Zonda through OAuth 2.0 to operate on platform APIs with scoped tokens and standard flows." }, { "label": "Outbound OAuth2", "text": "Zonda acts as an OAuth 2.0 client when connecting to third-party systems, delegating authentication without exposing end-user credentials." }, { "label": "Adaptive integration", "text": "Integration capability at every level of the architecture. From out-of-the-box connectors to programmable extensions on top of our API." }] }
         ],
         "ctaTitle": "Connect your systems.",
         "ctaHighlight": "Integrate your company."

@@ -1,11 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import {
-  FeaturePanel,
-  FeaturePanelBackgroundStyle,
-  FeaturePanelColor,
-} from '@/components/panel';
+import { FeaturePanel } from '@/components/panel';
 import { useLanguage } from '@/components/LanguageProvider';
 import { Button } from '@/components/ui/button';
 import ExploreButton from '@/components/ExploreButton';
@@ -23,9 +19,7 @@ export default function EmpresaPage() {
       {/* Hero */}
       <FeaturePanel
         className="flex w-full flex-col rounded-none h-[100dvh] min-h-[30rem]"
-        color={FeaturePanelColor.DarkBlue}
-        backgroundStyle={FeaturePanelBackgroundStyle.FullDrift}
-        backgroundClassName="opacity-30"
+        background="blue"
         contentClassName="flex flex-1 min-h-0 w-full h-full items-center justify-center"
       >
         <div className="flex flex-1 w-full h-full flex-col items-center justify-center px-6 py-10 text-center md:items-start md:text-left space-y-8 max-w-2xl md:max-w-7xl mx-auto">
@@ -97,9 +91,7 @@ export default function EmpresaPage() {
       {/* ── HISTORIAS ── */}
       <section>
         <FeaturePanel
-          color={FeaturePanelColor.Yellow}
-          backgroundStyle={FeaturePanelBackgroundStyle.WaveBlueLeft}
-          backgroundClassName="opacity-25 mix-blend-multiply"
+          background="yellow"
           className="rounded-none"
           contentClassName="py-28 sm:py-36 lg:py-48"
         >
@@ -159,9 +151,8 @@ export default function EmpresaPage() {
       {/* ── CTA ── */}
       <section>
         <FeaturePanel
-          color={FeaturePanelColor.DarkBlue}
           className="rounded-none"
-          backgroundStyle={FeaturePanelBackgroundStyle.WaveBlueLeft}
+          background="blue"
           contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-28 sm:px-12 sm:py-36 lg:px-20 lg:py-48"
         >
           <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-3xl lg:text-6xl text-white [font-family:var(--font-display-family)]">

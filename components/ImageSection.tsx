@@ -3,8 +3,7 @@ import type { ReactNode } from 'react';
 
 import {
   FeaturePanel,
-  FeaturePanelBackgroundStyle,
-  FeaturePanelColor,
+  type FeaturePanelBackground,
 } from './panel';
 import { cn } from './ui/utils';
 
@@ -14,9 +13,7 @@ export type ImageSectionProps = {
   image?: string;
   imageAlt?: string;
   imagePosition?: 'left' | 'right';
-  color?: FeaturePanelColor;
-  backgroundStyle?: FeaturePanelBackgroundStyle;
-  backgroundClassName?: string;
+  background?: FeaturePanelBackground;
   className?: string;
   contentClassName?: string;
   imageClassName?: string;
@@ -28,9 +25,7 @@ export function ImageSection({
   image,
   imageAlt,
   imagePosition = 'right',
-  color,
-  backgroundStyle,
-  backgroundClassName,
+  background,
   className,
   contentClassName,
   imageClassName,
@@ -68,10 +63,8 @@ export function ImageSection({
 
   const imagePanel = (
     <FeaturePanel
-      color={color ?? FeaturePanelColor.White}
-      backgroundStyle={backgroundStyle}
-      backgroundClassName={backgroundClassName}
-      className="flex aspect-square min-h-0 w-full flex-1 flex-col rounded-md"
+      background={background}
+      className="flex aspect-square min-h-0 w-full flex-1 flex-col rounded-md bg-white"
       contentClassName="flex items-center justify-center"
     >
       {imageContent}

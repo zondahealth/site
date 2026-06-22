@@ -1,9 +1,6 @@
 'use client';
 
-import {
-  FeaturePanel,
-  FeaturePanelColor,
-} from '@/components/panel';
+import { FeaturePanel } from '@/components/panel';
 import { GradientDividerBar } from '@/components/GradientDividerBar';
 import { useLanguage } from '@/components/LanguageProvider';
 import { OrgFeature } from '@/components/organizations/OrgFeature';
@@ -67,7 +64,7 @@ export default function OrganizacionesPage() {
       <section className="py-10">
         <div className="layout-shell">
           <FeaturePanel
-            color={FeaturePanelColor.DarkBlue}
+            background="blue"
             contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-24 sm:px-12 sm:py-32 lg:px-20 lg:py-48"
           >
             <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-3xl lg:text-6xl text-white [font-family:var(--font-display-family)]">

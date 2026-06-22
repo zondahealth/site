@@ -1,10 +1,6 @@
 'use client';
 
-import {
-  FeaturePanel,
-  FeaturePanelColor,
-  FeaturePanelBackgroundStyle,
-} from '@/components/panel';
+import { FeaturePanel } from '@/components/panel';
 import { InfoSection, type InfoSectionData } from '@/components/InfoSection';
 import { useLanguage } from '@/components/LanguageProvider';
 import { TopographicShaderBackground } from '@/components/shaders/TopographicShaderBackground';
@@ -70,9 +66,7 @@ export default function InteroperabilidadPage() {
       <section className="bg-black">
         <div className="layout-shell py-20 md:py-28">
           <FeaturePanel
-            color={FeaturePanelColor.Yellow}
-            backgroundStyle={FeaturePanelBackgroundStyle.FullDrift}
-            backgroundClassName="opacity-30"
+            background="yellow"
             contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-24 sm:px-12 sm:py-32 lg:px-20 lg:py-48"
           >
             <div className="mx-auto max-w-3xl text-center text-3xl font-bold sm:text-3xl lg:text-6xl text-black [font-family:var(--font-display-family)]">

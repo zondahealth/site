@@ -4,11 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRightCircleIcon } from 'lucide-react';
 import { useLanguage } from '@/components/LanguageProvider';
-import {
-  FeaturePanel,
-  FeaturePanelBackgroundStyle,
-  FeaturePanelColor,
-} from '@/components/panel';
+import { FeaturePanel } from '@/components/panel';
 import { Button } from '@/components/ui/button';
 
 type CaseStudy = {
@@ -69,9 +65,7 @@ export default function CasosDeUsoPage() {
 
         <div className="py-10 sm:py-32 lg:py-48">
           <FeaturePanel
-            color={FeaturePanelColor.DarkBlue}
-            backgroundStyle={FeaturePanelBackgroundStyle.FullDrift}
-            backgroundClassName="opacity-30"
+            background="blue"
             className="layout-shell rounded-xl"
             contentClassName="flex h-full flex-col items-center justify-center gap-16 px-8 py-20 sm:px-12 sm:py-28 lg:px-20 lg:py-46"
           >

@@ -1,10 +1,6 @@
 'use client';
 
-import {
-  FeaturePanel,
-  FeaturePanelBackgroundStyle,
-  FeaturePanelColor,
-} from '@/components/panel';
+import { FeaturePanel } from '@/components/panel';
 import { useLanguage } from '@/components/LanguageProvider';
 
 export function ProTestimonial() {
@@ -14,8 +10,7 @@ export function ProTestimonial() {
     <section className="py-10">
       <div className="layout-shell">
         <FeaturePanel
-          color={FeaturePanelColor.Yellow}
-          backgroundStyle={FeaturePanelBackgroundStyle.WaveBlueLeft}
+          background="yellow"
           className="rounded-md"
           contentClassName="px-10 py-16 lg:px-20 lg:py-20"
         >

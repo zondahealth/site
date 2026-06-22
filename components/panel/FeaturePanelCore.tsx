@@ -1,43 +1,19 @@
 import Image from 'next/image';
-import type { CSSProperties, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { cn } from '../ui/utils';
-import {
-  FEATURE_PANEL_BACKGROUND_STYLES,
-  FEATURE_PANEL_COLORS,
-  FEATURE_PANEL_INK_COLORS,
-  FeaturePanelBackgroundStyle,
-  FeaturePanelColor,
-  FeaturePanelInkColor,
-} from './FeaturePanel.tokens';
 
-export {
-  FEATURE_PANEL_BACKGROUND_STYLES,
-  FEATURE_PANEL_COLORS,
-  FEATURE_PANEL_INK_COLORS,
-  FeaturePanelBackgroundStyle,
-  FeaturePanelColor,
-  FeaturePanelInkColor,
-} from './FeaturePanel.tokens';
+export type FeaturePanelBackground = 'blue' | 'yellow' | 'white';
 
 type PanelChromeProps = {
   overlayClassName?: string;
-};
-
-type FeaturePanelBackgroundLayer = {
-  src: string;
-  className: string;
 };
 
 type FeaturePanelPropsBase = PanelChromeProps & {
   children?: ReactNode;
   className?: string;
   contentClassName?: string;
-  color?: FeaturePanelColor;
-  inkColor?: FeaturePanelInkColor;
-  background?: CSSProperties['background'];
-  backgroundStyle?: FeaturePanelBackgroundStyle;
-  backgroundClassName?: string;
+  background?: FeaturePanelBackground;
   image?: ReactNode;
   imagePosition?: 'bleed' | 'center' | 'inset' | 'bottom';
   reverse?: boolean;
@@ -45,13 +21,9 @@ type FeaturePanelPropsBase = PanelChromeProps & {
   imageContainerClassName?: string;
   backgroundContent?: ReactNode;
   backgroundContentClassName?: string;
-  backgroundImageSrc?: string;
-  backgroundImageAlt?: string;
-  backgroundImageClassName?: string;
-  backgroundImagePriority?: boolean;
 };
 
-type FeaturePanelColorProps = FeaturePanelPropsBase & {
+type FeaturePanelContentProps = FeaturePanelPropsBase & {
   imageSrc?: never;
   imageAlt?: never;
   imageClassName?: never;
@@ -65,7 +37,9 @@ type FeaturePanelImageProps = FeaturePanelPropsBase & {
   priority?: boolean;
 };
 
-export type FeaturePanelProps = FeaturePanelColorProps | FeaturePanelImageProps;
+export type FeaturePanelProps =
+  | FeaturePanelContentProps
+  | FeaturePanelImageProps;
 
 const panelSizes = {
   sm: 'lg:h-[28rem]',
@@ -121,99 +95,10 @@ function PanelChrome({ overlayClassName }: PanelChromeProps) {
   ) : null;
 }
 
-function BackgroundStyleLayer({
-  layer,
-  className,
-}: {
-  layer: FeaturePanelBackgroundLayer;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn(
-        'pointer-events-none absolute inset-0',
-        className
-      )}
-    >
-      <Image
-        src={layer.src}
-        alt=""
-        fill
-        className={cn(layer.className)}
-        sizes="100vw"
-      />
-    </div>
-  );
-}
-
-function ColorImageLayer({
-  src,
-  className,
-}: {
-  src: string;
-  className?: string;
-}) {
-  return (
-    <div className="pointer-events-none absolute inset-0">
-      <Image
-        src={src}
-        alt=""
-        fill
-        className={cn('object-cover', className)}
-        sizes="100vw"
-      />
-    </div>
-  );
-}
-
-function hexToRgb(hex: string) {
-  const cleanHex = hex.replace('#', '');
-  const value =
-    cleanHex.length === 3
-      ? cleanHex
-          .split('')
-          .map((digit) => `${digit}${digit}`)
-          .join('')
-      : cleanHex;
-
-  return {
-    r: parseInt(value.slice(0, 2), 16),
-    g: parseInt(value.slice(2, 4), 16),
-    b: parseInt(value.slice(4, 6), 16),
-  };
-}
-
-function brightenHex(hex: string, factor: number) {
-  const { r, g, b } = hexToRgb(hex);
-
-  return `rgb(${Math.min(Math.round(r * factor), 255)}, ${Math.min(
-    Math.round(g * factor),
-    255
-  )}, ${Math.min(Math.round(b * factor), 255)})`;
-}
-
-function getPerceivedLuminance(hex: string) {
-  const { r, g, b } = hexToRgb(hex);
-
-  return Math.round((r * 299 + g * 587 + b * 114) / 1000);
-}
-
 export function FeaturePanel(props: FeaturePanelProps) {
   const isImagePanel = typeof props.imageSrc === 'string';
-  const color = props.color ?? FeaturePanelColor.Navy;
-  const inkColor = props.inkColor ?? FeaturePanelInkColor.Cream;
-  const colorDefinition = FEATURE_PANEL_COLORS[color] as {
-    background: string;
-    imageSrc?: string;
-    imageClassName?: string;
-  };
-  const inkColorDefinition = FEATURE_PANEL_INK_COLORS[inkColor];
-  const backgroundColor = colorDefinition.background;
-  const background = props.background ?? backgroundColor;
-  const accentColor = brightenHex(backgroundColor, 1.9);
-  const isLightBackground = getPerceivedLuminance(backgroundColor) > 140;
-  const backgroundLayer = props.backgroundStyle
-    ? FEATURE_PANEL_BACKGROUND_STYLES[props.backgroundStyle]
+  const backgroundSrc = props.background
+    ? `/assets/shared/bg/card/${props.background}.png`
     : null;
 
   const hasImageSlot = props.image != null;
@@ -244,17 +129,6 @@ export function FeaturePanel(props: FeaturePanelProps) {
         hasImageSlot && panelSizes[sizeKey],
         props.className
       )}
-      data-light-background={isLightBackground ? 'true' : undefined}
-      style={
-        {
-          '--feature-panel-bg': backgroundColor,
-          '--feature-panel-ink': inkColorDefinition.color,
-          '--feature-panel-accent': accentColor,
-          '--feature-panel-u-bg': backgroundColor,
-          '--feature-panel-u-ink': inkColorDefinition.color,
-          '--feature-panel-navy': accentColor,
-        } as CSSProperties
-      }
     >
       {isImagePanel ? (
         <Image
@@ -264,32 +138,15 @@ export function FeaturePanel(props: FeaturePanelProps) {
           priority={props.priority}
           className={cn('object-cover', props.imageClassName)}
         />
-      ) : (
-        <>
-          <div className="absolute inset-0" style={{ background }} />
-          {props.backgroundImageSrc ? (
-            <div className="pointer-events-none absolute inset-0">
-              <Image
-                src={props.backgroundImageSrc}
-                alt={props.backgroundImageAlt ?? ''}
-                fill
-                priority={props.backgroundImagePriority}
-                className={cn(
-                  'object-cover',
-                  props.backgroundImageClassName
-                )}
-                sizes="100vw"
-              />
-            </div>
-          ) : null}
-          {colorDefinition.imageSrc && (
-            <ColorImageLayer
-              src={colorDefinition.imageSrc}
-              className={colorDefinition.imageClassName}
-            />
-          )}
-        </>
-      )}
+      ) : backgroundSrc ? (
+        <Image
+          src={backgroundSrc}
+          alt=""
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+      ) : null}
 
       {props.backgroundContent ? (
         <div
@@ -301,13 +158,6 @@ export function FeaturePanel(props: FeaturePanelProps) {
           {props.backgroundContent}
         </div>
       ) : null}
-
-      {backgroundLayer && (
-        <BackgroundStyleLayer
-          layer={backgroundLayer}
-          className={props.backgroundClassName}
-        />
-      )}
 
       <PanelChrome overlayClassName={props.overlayClassName} />
 

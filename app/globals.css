@@ -8,10 +8,10 @@
 :root {
   /* —— Brand (narrative ## Colors + Components — Primary / Deep / Accent / Neutrals) —— */
   --zonda-blue: #226ffd;
-  --zonda-blue-dark: #0e3c75;
+  --zonda-blue-dark: #064da3;
   --zonda-yellow: #eaea00;
   --zonda-orange: #b1b100;
-  --zonda-dark: #151b2b;
+  --zonda-dark: rgb(2, 7, 77);
 
   /* —— Vitality yellow (frontmatter) —— */
   --vitality-yellow: #eaea00;
