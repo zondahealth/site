@@ -1014,7 +1014,7 @@
       "originTitle": "De dónde venimos",
       "originCopy1": "Zonda nació en San Juan, como resultado de tres generaciones y más de 25 años de experiencia en gestión de salud dentro de una empresa de internación domiciliaria. Desde esa operación real se volvió evidente que faltaba una herramienta que no existía: un sistema capaz de conectar todas las áreas de una organización con múltiples prestadores y amplia cobertura geográfica.",
       "originCopy2": "La implementación de tecnología interoperable podría generar un ahorro de casi el 10% del gasto en salud en América Latina. Esa es la oportunidad que Zonda está construyendo.",
-      "storiesTitle": "Historias de nuestros clientes",
+      "storiesTitle": "Historias de Nuestros Clientes",
       "storiesCta": "Ver casos de uso",
       "pressEyebrow": "Prensa",
       "pressTitle": "En los medios",
@@ -1040,16 +1040,17 @@
     },
     "caseStudies": {
       "cards": [
-        { "title": "Interdom", "description": "Interdom empresa de Internación Domiciliaria, utiliza zonda para digitalizar su operación, trackear pacientes, profesionales y mejorar la eficiencia operativa.", "href": "/casos-de-uso/interdom", "image": "/assets/casos-de-uso/images/interdom.jpg" },
-        { "title": "Detección de fraude", "description": "Cómo usar Zonda para analizar reclamos de pacientes e integrarlo a la operatoria del día a día.", "href": "/casos-de-uso/fraude", "image": "/assets/casos-de-uso/images/fraude.jpeg" }
+        { "brand": "Interdom", "headline": "transforma su operación de internación domiciliaria con Zonda Health.", "href": "/casos-de-uso/interdom", "image": "/assets/casos-de-uso/images/interdom.jpg" },
+        { "brand": "Fraude", "headline": "detecta anomalías en reclamos integrando Zonda a la operatoria diaria.", "href": "/casos-de-uso/fraude", "image": "/assets/casos-de-uso/images/fraude.jpg" }
       ],
       "eyebrow": "Casos reales",
       "featuredLabel": "Caso destacado",
-      "readCase": "Ver caso",
+      "readCase": "Leer caso de estudio",
       "backToCases": "Volver a casos de uso",
       "comingSoon": "Esta página está reservada para la historia completa. El contenido se publicará próximamente.",
       "proofPoints": ["Operación digitalizada", "Datos confiables", "Ejecución medible"],
       "imageAlt": "Casos de uso",
+      "subtitle": "Lee cómo empresas de salud usan Zonda Health para incrementar la productividad, reducir costos y mejorar la satisfacción de pacientes y profesionales de la salud.",
       "title": "Organizaciones de salud que transformaron su operación con Zonda.",
       "ctaTitle": "Ayudá a tu organización a crecer y ser más eficiente.",
       "detail": {
@@ -1059,9 +1060,70 @@
           "body": "Contenido en desarrollo. Próximamente se publicará la historia completa de cómo se implementó detección de fraude en prácticas médicas usando los datos y la inteligencia de Zonda."
         },
         "interdom": {
-          "title": "Interdom",
-          "copy": "Cómo una empresa de internación domiciliaria dejó el papel y transformó su operación con Zonda.",
-          "body": "Contenido en desarrollo. Próximamente se publicará la historia completa de cómo Interdom digitalizó su operación, dejó de perder información y empezó a trackear a su personal en campo con datos confiables."
+          "metaTitle": "Interdom redujo sus costos operativos un 23% | Zonda Health",
+          "metaDescription": "Cómo Interdom Argentina digitalizó su operación de internación domiciliaria con Zonda Health, redujo costos un 23% y procesó más de un millón de registros clínicos.",
+          "eyebrow": "Caso de estudio · Interdom + Zonda",
+          "title": "Interdom redujo sus costos operativos un 23% con Zonda",
+          "intro": "Interdom Argentina coordina atención médica, de enfermería y kinesiología en los hogares de pacientes de múltiples provincias. Con más de 500 profesionales en campo, necesitaba digitalizar una operación logística compleja sin sumar fricción para sus equipos.",
+          "metrics": [
+            { "value": "23%", "label": "Menos costos operativos" },
+            { "value": "30%", "label": "Menos fraude en facturación" },
+            { "value": "+1 M", "label": "Registros clínicos procesados" },
+            { "value": "12", "label": "Integraciones activas" }
+          ],
+          "fleetImageAlt": "Equipo de Interdom junto a su flota de móviles de atención domiciliaria",
+          "fleetImageCaption": "La flota de Interdom integra seguimiento GPS con Zonda para coordinar recorridos y tener visibilidad de la operación en campo en tiempo real.",
+          "challengeTitle": "El desafío: crecer sin perder el control",
+          "challengeCopy": "Coordinar profesionales, recorridos, visitas, registros clínicos, reclamos y facturación requería procesos manuales distribuidos entre distintas herramientas. Esa fragmentación hacía difícil conocer el estado real de la operación, detectar desvíos a tiempo y ampliar la cobertura sin aumentar al mismo ritmo la carga administrativa.",
+          "platformEyebrow": "Una plataforma, dos formas de avanzar",
+          "platformTitle": "Digitalizar hoy. Construir lo que sigue.",
+          "platformCopy": "Interdom encontró en Zonda una base para resolver necesidades inmediatas y, al mismo tiempo, desarrollar capacidades propias. La organización usa las herramientas de gestión incluidas en la plataforma y aprovecha su API para convertir los datos operativos en productos adaptados a su forma de trabajar.",
+          "platformLayers": [
+            {
+              "title": "Herramientas listas para usar",
+              "copy": "Zonda digitaliza agenda, pacientes, prácticas, registros clínicos y facturación con flujos preparados para organizaciones que todavía dependen de procesos manuales."
+            },
+            {
+              "title": "Infraestructura para construir",
+              "copy": "La API y la capacidad de procesamiento de Zonda permiten crear herramientas propias sobre datos ya conectados, sin tener que desarrollar desde cero la infraestructura clínica y operativa."
+            }
+          ],
+          "platformImageAlt": "Monitor operativo de Interdom construido sobre Zonda con mapa de profesionales, vehículos GPS, alertas y pacientes sin asignar",
+          "platformImageCaption": "Sobre la API de Zonda, Interdom construyó un monitor que combina ubicación, especialidades, alertas y asignaciones, además de un sistema automatizado de resolución de reclamos y capacidades de auditoría en cada punto de la organización. Esto simplifica la operatoria para los profesionales de la salud y el equipo administrativo, y brinda a los pacientes mucha más visibilidad sobre su atención.",
+          "testimonial": {
+            "quote": "Lo que más nos sorprendió no fue la tecnología en sí, sino todo lo que pudimos construir sobre ella. Procesos que hacíamos a mano desde siempre, como coordinación, reclamos y asignación de pacientes, de repente los teníamos integrados en un solo lugar. Zonda se convirtió en el sistema nervioso de nuestra operación.",
+            "name": "Gabriel Alonso",
+            "role": "Coordinación General de Operaciones, Interdom Argentina"
+          },
+          "solutionsTitle": "Una operación conectada de punta a punta",
+          "solutions": [
+            {
+              "title": "Sistema de gestión y app móvil para profesionales",
+              "copy": "Cada profesional recibe su agenda, consulta el historial del paciente y registra la atención desde la app de Zonda. La información llega al equipo de coordinación en el momento, sin papel, llamadas ni una segunda carga manual."
+            },
+            {
+              "title": "Control operativo en tiempo real",
+              "copy": "El monitor desarrollado por Interdom sobre Zonda reúne ubicación de profesionales y móviles, estado de las visitas, alertas y pacientes pendientes de asignación. Coordinación puede detectar desvíos y actuar antes de que impacten en la atención."
+            },
+            {
+              "title": "Algoritmos de optimización de recorridos",
+              "copy": "La asignación combina especialidad, disponibilidad y eficiencia del recorrido para seleccionar al profesional adecuado. Los recorridos optimizados reducen traslados y permiten coordinar más visitas con menos intervención administrativa."
+            },
+            {
+              "title": "Integraciones unificadas con financiadores y sistemas externos",
+              "copy": "Doce integraciones conectan financiadores, facturación y herramientas operativas mediante la API de Zonda. Las validaciones que antes eran manuales ahora se ejecutan automáticamente, reduciendo errores, débitos y tiempos de cobro."
+            }
+          ],
+          "resultsTitle": "Resultados visibles desde los primeros tres meses",
+          "resultsCopy": "La combinación de gestión digital, datos conectados y herramientas propias permitió a Interdom reducir un 23% sus costos operativos y un 30% el fraude en facturación. La organización procesó más de un millón de registros clínicos y consolidó 12 integraciones activas sin trasladar la complejidad tecnológica a sus profesionales ni al equipo administrativo.",
+          "nextEyebrow": "Lo que sigue para Interdom",
+          "nextTitle": "Convertir visibilidad en acción",
+          "nextCopy": "Interdom ya no opera a ciegas. Cada visita, recorrido, reclamo, decisión asistencial y movimiento financiero deja una señal conectada. El próximo paso es transformar esa memoria operativa en acción: anticipar desvíos, optimizar recursos, detectar riesgos y acompañar mejor la evolución de cada paciente. Lo que antes se perdía hoy se aprende; lo que hoy se aprende puede convertirse en una operación más inteligente, sostenible y centrada en las personas.",
+          "cta": {
+            "title": "Llevá tu operación al siguiente nivel",
+            "copy": "Hablemos de cómo Zonda puede transformar tu organización.",
+            "button": "Agendar una llamada"
+          }
         }
       }
     },

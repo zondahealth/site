@@ -1040,16 +1040,17 @@
     },
     "caseStudies": {
       "cards": [
-        { "title": "Interdom", "description": "Interdom, a home care company, uses Zonda to digitize its operation, track patients and professionals, and improve operational efficiency.", "href": "/casos-de-uso/interdom", "image": "/assets/casos-de-uso/images/interdom.jpg" },
-        { "title": "Fraud detection", "description": "How to use Zonda to analyze patient claims and integrate that intelligence into day-to-day operations.", "href": "/casos-de-uso/fraude", "image": "/assets/casos-de-uso/images/fraude.jpeg" }
+        { "brand": "Interdom", "headline": "transforms home care operations with Zonda Health.", "href": "/casos-de-uso/interdom", "image": "/assets/casos-de-uso/images/interdom.jpg" },
+        { "brand": "Fraud", "headline": "detects claim anomalies by integrating Zonda into daily operations.", "href": "/casos-de-uso/fraude", "image": "/assets/casos-de-uso/images/fraude.jpg" }
       ],
       "eyebrow": "Real cases",
       "featuredLabel": "Featured case",
-      "readCase": "View case",
+      "readCase": "Read case study",
       "backToCases": "Back to case studies",
       "comingSoon": "This page is reserved for the full story. Content will be published soon.",
       "proofPoints": ["Digitized operations", "Reliable data", "Measurable execution"],
       "imageAlt": "Case studies",
+      "subtitle": "See how healthcare companies use Zonda Health to increase productivity, reduce costs, and improve satisfaction for patients and healthcare professionals.",
       "title": "Healthcare organizations that transformed their operations with Zonda.",
       "ctaTitle": "Help your organization grow and become more efficient.",
       "detail": {
@@ -1059,9 +1060,70 @@
           "body": "Content in progress. The full story of how fraud detection was implemented in medical practices using Zonda data and intelligence will be published soon."
         },
         "interdom": {
-          "title": "Interdom",
-          "copy": "How a home care company left paper behind and transformed its operation with Zonda.",
-          "body": "Content in progress. The full story of how Interdom digitized its operation, stopped losing information and began tracking field staff with reliable data will be published soon."
+          "metaTitle": "Interdom cuts operating costs by 23% | Zonda Health",
+          "metaDescription": "How Interdom Argentina digitized its home care operation with Zonda Health, cut costs by 23%, and processed more than one million clinical records.",
+          "eyebrow": "Case study · Interdom + Zonda",
+          "title": "Interdom cut operating costs by 23% with Zonda",
+          "intro": "Interdom Argentina coordinates medical, nursing, and physical therapy care in patients' homes across multiple provinces. With more than 500 field professionals, it needed to digitize a complex logistics operation without adding friction for its teams.",
+          "metrics": [
+            { "value": "23%", "label": "Lower operating costs" },
+            { "value": "30%", "label": "Less billing fraud" },
+            { "value": "+1M", "label": "Clinical records processed" },
+            { "value": "12", "label": "Active integrations" }
+          ],
+          "fleetImageAlt": "Interdom's team with its fleet of home care vehicles",
+          "fleetImageCaption": "Interdom's fleet integrates GPS tracking with Zonda to coordinate routes and provide real-time visibility into field operations.",
+          "challengeTitle": "The challenge: grow without losing control",
+          "challengeCopy": "Coordinating professionals, routes, visits, clinical records, claims, and billing required manual processes spread across different tools. This fragmentation made it difficult to understand the real state of operations, detect deviations early, and expand coverage without increasing the administrative workload at the same pace.",
+          "platformEyebrow": "One platform, two ways forward",
+          "platformTitle": "Digitize today. Build what comes next.",
+          "platformCopy": "Interdom found in Zonda a foundation for solving immediate needs while developing capabilities of its own. The organization uses the management tools included in the platform and its API to turn operational data into products tailored to the way its teams work.",
+          "platformLayers": [
+            {
+              "title": "Ready-to-use tools",
+              "copy": "Zonda digitizes schedules, patients, procedures, clinical records, and billing with workflows designed for organizations that still depend on manual processes."
+            },
+            {
+              "title": "Infrastructure to build on",
+              "copy": "Zonda's API and processing capabilities make it possible to create custom tools on top of connected data, without rebuilding clinical and operational infrastructure from scratch."
+            }
+          ],
+          "platformImageAlt": "Interdom operations monitor built on Zonda showing a map of professionals, GPS vehicles, alerts, and unassigned patients",
+          "platformImageCaption": "Using Zonda's API, Interdom built a monitor that combines location, specialties, alerts, and assignments, along with an automated claims resolution system and auditing capabilities at every point in the organization. This simplifies operations for healthcare professionals and administrative teams while giving patients much greater visibility into their care.",
+          "testimonial": {
+            "quote": "What surprised us most wasn't the technology itself, but everything we could build on top of it. Processes we had always done by hand, including coordination, claims, and patient assignment, were suddenly integrated in one place. Zonda became the nervous system of our operation.",
+            "name": "Gabriel Alonso",
+            "role": "General Operations Coordination, Interdom Argentina"
+          },
+          "solutionsTitle": "A connected operation from end to end",
+          "solutions": [
+            {
+              "title": "Management system and mobile app for professionals",
+              "copy": "Each professional receives their schedule, reviews the patient's history, and records care from the Zonda app. Information reaches the coordination team as it happens, without paper, phone calls, or a second manual entry."
+            },
+            {
+              "title": "Real-time operational control",
+              "copy": "The monitor Interdom built on Zonda brings together the location of professionals and vehicles, visit status, alerts, and patients awaiting assignment. Coordination can detect deviations and act before they affect care."
+            },
+            {
+              "title": "Route optimization algorithms",
+              "copy": "Assignments combine specialty, availability, and route efficiency to select the right professional. Optimized routes reduce travel and allow more visits to be coordinated with less administrative intervention."
+            },
+            {
+              "title": "Unified integrations with payers and external systems",
+              "copy": "Twelve integrations connect payers, billing, and operational tools through Zonda's API. Validations that were once manual now run automatically, reducing errors, chargebacks, and collection times."
+            }
+          ],
+          "resultsTitle": "Visible results within the first three months",
+          "resultsCopy": "By combining digital management, connected data, and custom tools, Interdom reduced operating costs by 23% and billing fraud by 30%. The organization processed more than one million clinical records and consolidated 12 active integrations without passing technological complexity on to professionals or administrative teams.",
+          "nextEyebrow": "What's next for Interdom",
+          "nextTitle": "Turn visibility into action",
+          "nextCopy": "Interdom no longer operates in the dark. Every visit, route, claim, care decision, and financial movement leaves a connected signal. The next step is to turn that operational memory into action: anticipate deviations, optimize resources, detect risks, and better support each patient's progress. What used to be lost can now be learned from; what is learned today can become a smarter, more sustainable, and more people-centered operation.",
+          "cta": {
+            "title": "Take your operation to the next level",
+            "copy": "Let's talk about how Zonda can transform your organization.",
+            "button": "Schedule a call"
+          }
         }
       }
     },
