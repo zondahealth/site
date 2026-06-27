@@ -15,7 +15,8 @@ export function Hero() {
         <TopographicShaderBackground
           shaderId="drift"
           inkColor="rgba(240, 240, 38, 0.8)"
-          backgroundOpacity={0}
+          bgColor="#064da3"
+          backgroundOpacity={1}
           className="absolute inset-0 h-full w-full touch-none opacity-100"
         />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_36%,rgba(230,255,26,0.07),transparent_24%),radial-gradient(circle_at_50%_75%,rgba(34,111,253,0.1),transparent_32%),linear-gradient(180deg,rgba(3,13,40,0.03)_0%,rgba(3,13,40,0.08)_100%)]" />
