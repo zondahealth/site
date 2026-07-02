@@ -5,6 +5,7 @@ import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { LanguageProvider } from '@/components/LanguageProvider';
+import { VisitTracker } from '@/components/VisitTracker';
 import { getSupportedLocale, localeCookieName } from '@/lib/locale';
 
 const geistSans = Geist({
@@ -48,6 +49,7 @@ export default async function RootLayout({
     >
       <body className="antialiased">
         <LanguageProvider initialLocale={locale}>
+          <VisitTracker />
           <Header />
           {children}
           <Footer />

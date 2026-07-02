@@ -3,11 +3,13 @@ import * as nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
   try {
-    const { src } = await req.json();
+    const { src, path } = await req.json();
 
     if (!src) {
       return NextResponse.json({ success: true });
     }
+
+    const visitedPath = typeof path === 'string' && path.length > 0 ? path : '/';
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -20,12 +22,13 @@ export async function POST(req: Request) {
     await transporter.sendMail({
       from: process.env.MAIL_USER,
       to: process.env.MAIL_USER,
-      subject: `Landing page visit from src: ${src}`,
-      text: `Someone visited the landing page with src="${src}".\n\nURL: zondahealth.com?src=${src}\nTime: ${new Date().toISOString()}`,
+      subject: `Visit from src: ${src}`,
+      text: `Someone visited the site with src="${src}".\n\nPath: ${visitedPath}\nURL: zondahealth.com${visitedPath}\nTime: ${new Date().toISOString()}`,
       html: `
-        <h2>Landing Page Visit</h2>
+        <h2>Site Visit</h2>
         <p><strong>Source:</strong> ${src}</p>
-        <p><strong>URL:</strong> zondahealth.com?src=${src}</p>
+        <p><strong>Path:</strong> ${visitedPath}</p>
+        <p><strong>URL:</strong> zondahealth.com${visitedPath}</p>
         <p><strong>Time:</strong> ${new Date().toISOString()}</p>
       `,
     });
