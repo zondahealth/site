@@ -14,7 +14,7 @@ export function DevelopersHero() {
 
         <TopographicShaderBackground
           shaderId="weave-dense"
-          inkColor="rgba(234, 234, 0, 0.44)"
+          inkColor="rgba(255, 255, 0, 0.32)"
           backgroundOpacity={0}
           lineOpacity={0.9}
           staticFrame={82}
@@ -37,7 +37,7 @@ export function DevelopersHero() {
               {t('site.developers.copy')}
             </p>
             <ExploreButton
-              href="https://zondahealth.readme.io/reference/getpatients"
+              href="https://zondahealth.readme.io/reference/getting-started-with-your-api"
               title={t('site.common.exploreApi')}
             />
           </div>

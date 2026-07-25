@@ -70,7 +70,7 @@ export default function DesarrolladoresPage() {
             </div>
 
             <Button asChild size="lg" className="min-w-48">
-              <Link href="https://zondahealth.readme.io/reference/getpatients">
+              <Link href="https://zondahealth.readme.io/reference/getting-started-with-your-api">
                 {t('site.developers.docs')}
               </Link>
             </Button>
