@@ -549,19 +549,23 @@ export function TopographicShaderBackground({
   className,
   animated = true,
   inkColor,
-  bgColor = DEFAULT_BG,
-  backgroundOpacity = 1,
+  bgColor,
+  backgroundOpacity = 0,
   lineColor,
   lineOpacity = 1,
   staticFrame = 64,
   angle = 0,
 }: TopographicShaderBackgroundProps) {
+  // With no bgColor set, there's no color to paint opaquely — stay transparent
+  // so the host element's own background shows through, regardless of backgroundOpacity.
+  const effectiveBackgroundOpacity = (opacity: number) => (bgColor === undefined ? 0 : opacity);
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const shaderIdRef = useRef(shaderId);
   const animatedRef = useRef(animated);
   const inkColorRef = useRef(resolveColor(inkColor ?? lineColor, DEFAULT_INK));
   const bgColorRef = useRef(resolveColor(bgColor, DEFAULT_BG));
-  const backgroundOpacityRef = useRef(backgroundOpacity);
+  const backgroundOpacityRef = useRef(effectiveBackgroundOpacity(backgroundOpacity));
   const lineOpacityRef = useRef(lineOpacity);
   const staticFrameRef = useRef(staticFrame);
   const angleRef = useRef(angle);
@@ -570,7 +574,7 @@ export function TopographicShaderBackground({
   useEffect(() => { animatedRef.current = animated; }, [animated]);
   useEffect(() => { inkColorRef.current = resolveColor(inkColor ?? lineColor, DEFAULT_INK); }, [inkColor, lineColor]);
   useEffect(() => { bgColorRef.current = resolveColor(bgColor, DEFAULT_BG); }, [bgColor]);
-  useEffect(() => { backgroundOpacityRef.current = backgroundOpacity; }, [backgroundOpacity]);
+  useEffect(() => { backgroundOpacityRef.current = effectiveBackgroundOpacity(backgroundOpacity); }, [backgroundOpacity, bgColor]);
   useEffect(() => { lineOpacityRef.current = lineOpacity; }, [lineOpacity]);
   useEffect(() => { staticFrameRef.current = staticFrame; }, [staticFrame]);
   useEffect(() => { angleRef.current = angle; }, [angle]);
