@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export type ShaderId =
   | 'tide'
@@ -122,7 +122,7 @@ void main(){
   col *= 1.0 - dot(vp, vp) * 0.25;
 
   gl_FragColor = u_backgroundOpacity < 0.999
-    ? vec4(INK, ink)
+    ? vec4(INK * ink, ink)
     : vec4(col, 1.0);
 }`,
   'tide-dense': `
@@ -163,7 +163,7 @@ void main(){
   col *= 1.0 - dot(vp, vp) * 0.25;
 
   gl_FragColor = u_backgroundOpacity < 0.999
-    ? vec4(INK, ink)
+    ? vec4(INK * ink, ink)
     : vec4(col, 1.0);
 }`,
   'low-tide': `
@@ -210,7 +210,7 @@ void main(){
   col *= 1.0 - dot(vp, vp) * 0.25;
 
   gl_FragColor = u_backgroundOpacity < 0.999
-    ? vec4(INK, ink)
+    ? vec4(INK * ink, ink)
     : vec4(col, 1.0);
 }`,
   drift: `
@@ -270,7 +270,7 @@ void main(){
   col += NAVY * exp(-dM * 6.0) * 0.18;
 
   gl_FragColor = u_backgroundOpacity < 0.999
-    ? vec4(INK, ink)
+    ? vec4(INK * ink, ink)
     : vec4(col, 1.0);
 }`,
   weave: `
@@ -321,7 +321,7 @@ void main(){
   vec3 col = mix(NAVY_DEEP, strand, coverage);
 
   gl_FragColor = u_backgroundOpacity < 0.999
-    ? vec4(strand, coverage)
+    ? vec4(strand * coverage, coverage)
     : vec4(col, 1.0);
 }`,
   'weave-dense': `
@@ -355,7 +355,7 @@ void main(){
   vec3 col = mix(NAVY_DEEP, strandCol, coverage);
 
   gl_FragColor = u_backgroundOpacity < 0.999
-    ? vec4(strandCol, coverage)
+    ? vec4(strandCol * coverage, coverage)
     : vec4(col, 1.0);
 }`,
   'weave-mist': `
@@ -397,7 +397,7 @@ void main(){
   vec3 col = mix(NAVY_DEEP, strandCol, coverage);
 
   gl_FragColor = u_backgroundOpacity < 0.999
-    ? vec4(strandCol, coverage)
+    ? vec4(strandCol * coverage, coverage)
     : vec4(col, 1.0);
 }`,
 };
@@ -544,6 +544,45 @@ function getCanvasPoint(canvas: HTMLCanvasElement, event: PointerEvent) {
   ] as const;
 }
 
+function TopographicSvgFallback({
+  className,
+  color,
+  opacity,
+  visible,
+}: {
+  className?: string;
+  color?: string;
+  opacity: number;
+  visible: boolean;
+}) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={className}
+      viewBox="0 0 1440 900"
+      preserveAspectRatio="xMidYMid slice"
+      style={{ color: color ?? DEFAULT_INK, opacity: visible ? 1 : 0 }}
+    >
+      <g fill="none" stroke="currentColor" strokeWidth="2" strokeOpacity={opacity}>
+        <path d="M-40 0C18 74-26 137 31 211S-12 350 47 424 7 561 68 635 23 776 82 900" />
+        <path d="M68 0C126 74 83 137 140 211s-43 139 16 213-40 137 21 211-45 141 14 265" />
+        <path d="M177 0c58 74 14 137 71 211s-43 139 16 213-40 137 21 211-45 141 14 265" />
+        <path d="M286 0c58 74 14 137 71 211s-43 139 16 213-40 137 21 211-45 141 14 265" />
+        <path d="M395 0c58 74 14 137 71 211s-43 139 16 213-40 137 21 211-45 141 14 265" />
+        <path d="M504 0c58 74 14 137 71 211s-43 139 16 213-40 137 21 211-45 141 14 265" />
+        <path d="M613 0c58 74 14 137 71 211s-43 139 16 213-40 137 21 211-45 141 14 265" />
+        <path d="M722 0c58 74 14 137 71 211s-43 139 16 213-40 137 21 211-45 141 14 265" />
+        <path d="M831 0c58 74 14 137 71 211s-43 139 16 213-40 137 21 211-45 141 14 265" />
+        <path d="M940 0c58 74 14 137 71 211s-43 139 16 213-40 137 21 211-45 141 14 265" />
+        <path d="M1049 0c58 74 14 137 71 211s-43 139 16 213-40 137 21 211-45 141 14 265" />
+        <path d="M1158 0c58 74 14 137 71 211s-43 139 16 213-40 137 21 211-45 141 14 265" />
+        <path d="M1267 0c58 74 14 137 71 211s-43 139 16 213-40 137 21 211-45 141 14 265" />
+        <path d="M1376 0c58 74 14 137 71 211s-43 139 16 213-40 137 21 211-45 141 14 265" />
+      </g>
+    </svg>
+  );
+}
+
 export function TopographicShaderBackground({
   shaderId,
   className,
@@ -561,6 +600,7 @@ export function TopographicShaderBackground({
   const effectiveBackgroundOpacity = (opacity: number) => (bgColor === undefined ? 0 : opacity);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [useFallback, setUseFallback] = useState(false);
   const shaderIdRef = useRef(shaderId);
   const animatedRef = useRef(animated);
   const inkColorRef = useRef(resolveColor(inkColor ?? lineColor, DEFAULT_INK));
@@ -588,11 +628,17 @@ export function TopographicShaderBackground({
       antialias: false,
       depth: false,
       powerPreference: 'low-power',
-      premultipliedAlpha: false,
+      // Safari composites transparent WebGL canvases reliably when the shader
+      // emits premultiplied alpha (see the transparent fragment branch above).
+      premultipliedAlpha: true,
       stencil: false,
     });
 
-    if (!gl) return;
+    if (!gl) {
+      setUseFallback(true);
+      return;
+    }
+    setUseFallback(false);
 
     let raf = 0;
     let active = true;
@@ -740,6 +786,8 @@ export function TopographicShaderBackground({
       gl.uniform3fv(loc.u_bg, bgColorRef.current.rgb);
       gl.uniform1f(loc.u_lineOpacity, lineOpacityRef.current * inkColorRef.current.alpha);
       gl.uniform1f(loc.u_backgroundOpacity, backgroundOpacityRef.current);
+      gl.clearColor(0, 0, 0, 0);
+      gl.clear(gl.COLOR_BUFFER_BIT);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
 
       if (isAnimated) {
@@ -767,12 +815,14 @@ export function TopographicShaderBackground({
       program = null;
       activeShaderId = null;
       loc = {};
+      setUseFallback(true);
     };
 
     const onContextRestored = () => {
       if (!active) return;
       needsResize = true;
       hasDrawnStatic = false;
+      setUseFallback(false);
       scheduleFrame();
     };
 
@@ -819,11 +869,20 @@ export function TopographicShaderBackground({
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      aria-hidden="true"
-      className={className}
-    />
+    <>
+      <TopographicSvgFallback
+        className={className}
+        color={typeof inkColor === 'string' ? inkColor : undefined}
+        opacity={lineOpacity}
+        visible={useFallback}
+      />
+      <canvas
+        ref={canvasRef}
+        aria-hidden="true"
+        className={className}
+        style={{ opacity: useFallback ? 0 : undefined }}
+      />
+    </>
   );
 }
 
