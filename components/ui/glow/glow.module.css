@@ -1,0 +1,15 @@
+.hover > [data-glow-layer] {
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+}
+
+.hover:hover > [data-glow-layer],
+.hover:focus-within > [data-glow-layer] {
+  opacity: var(--layer-opacity);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hover > [data-glow-layer] {
+    transition: none;
+  }
+}

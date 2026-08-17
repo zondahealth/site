@@ -1,0 +1,68 @@
+@property --card-border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes card-border-orbit {
+  to {
+    --card-border-angle: 1turn;
+  }
+}
+
+.hoverable {
+  isolation: isolate;
+}
+
+.hoverBorder {
+  position: absolute;
+  z-index: 30;
+  inset: 0;
+  box-sizing: border-box;
+  padding: 4px;
+  border-radius: inherit;
+  content: '';
+  pointer-events: none;
+  opacity: 0;
+  background: conic-gradient(
+    from var(--card-border-angle),
+    var(--orbit-1) 0deg,
+    var(--orbit-2) 58deg,
+    var(--orbit-3) 112deg,
+    var(--orbit-4) 190deg,
+    var(--orbit-5) 270deg,
+    var(--orbit-6) 326deg,
+    var(--orbit-1) 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: opacity 180ms ease-out;
+}
+
+.hoverableDark .hoverBorder {
+  background: conic-gradient(
+    from var(--card-border-angle),
+    #164b9a 0deg,
+    #b49f16 58deg,
+    #286be8 112deg,
+    #0b9ccc 190deg,
+    #087b98 270deg,
+    #164b9a 360deg
+  );
+}
+
+.hoverable:hover .hoverBorder,
+.hoverable:focus-within .hoverBorder {
+  opacity: 1;
+  animation: card-border-orbit 4.8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hoverable:hover .hoverBorder,
+  .hoverable:focus-within .hoverBorder {
+    animation: none;
+  }
+}

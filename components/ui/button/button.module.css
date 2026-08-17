@@ -1,0 +1,38 @@
+@property --button-border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes button-border-orbit {
+  to {
+    --button-border-angle: 1turn;
+  }
+}
+
+.black {
+  border-color: transparent;
+  background-color: transparent;
+  background-image:
+    linear-gradient(112deg, #101827 0%, #171c2a 52%, #101827 100%),
+    conic-gradient(
+      from var(--button-border-angle),
+      var(--orbit-1) 0deg,
+      var(--orbit-2) 58deg,
+      var(--orbit-3) 112deg,
+      var(--orbit-4) 190deg,
+      var(--orbit-5) 270deg,
+      var(--orbit-6) 326deg,
+      var(--orbit-1) 360deg
+    );
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 1px 2px rgba(8, 18, 38, 0.45);
+  animation: button-border-orbit 3.2s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .black {
+    animation: none;
+  }
+}
