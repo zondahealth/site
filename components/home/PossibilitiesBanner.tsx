@@ -12,20 +12,20 @@ const stories = [
   {
     id: "interdom",
     title: "Interdom transforma su organización y se hace más eficiente",
-    href: "#historias",
+    href: "/customer-stories/interdom",
     image: "/assets/home/testimonials/t1.png",
   },
   {
     id: "ams",
     title: "AMS por primera vez tiene control sobre sus finanzas",
-    href: "#historias",
+    href: "/customer-stories",
     image: "/assets/home/testimonials/t2.png",
   },
   {
     id: "pami",
     title:
       "Profesionales no pierden tiempo al interactuar con diferentes obras sociales, caso PAMI",
-    href: "#historias",
+    href: "/customer-stories",
     image: "/assets/home/testimonials/t3.png",
   },
 ] as const;

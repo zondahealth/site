@@ -40,7 +40,7 @@ const columns: readonly (readonly FooterSection[])[] = [
         { label: "Cobertura regional", href: "#recursos" },
         { label: "Blog", href: "#recursos" },
         { label: "Guías de industria", href: "#recursos" },
-        { label: "Casos de éxito", href: "#recursos" },
+        { label: "Casos de éxito", href: "/customer-stories" },
         { label: "Financiamiento inteligente", href: "#recursos" },
       ],
     },

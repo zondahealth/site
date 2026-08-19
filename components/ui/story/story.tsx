@@ -9,7 +9,7 @@ function StoryList({ className, ...props }: React.ComponentProps<'ul'>) {
     <ul
       data-slot="story-list"
       className={cn(
-        'grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3',
+        'grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3',
         className
       )}
       {...props}
@@ -21,13 +21,10 @@ type StoryProps = React.ComponentProps<typeof Link>;
 
 function Story({ className, children, ...props }: StoryProps) {
   return (
-    <li data-slot="story-item" className="row-span-3 grid grid-rows-subgrid">
+    <li data-slot="story-item">
       <Link
         data-slot="story"
-        className={cn(
-          'group row-span-3 grid grid-rows-subgrid outline-none',
-          className
-        )}
+        className={cn('group flex flex-col gap-3 outline-none', className)}
         {...props}
       >
         {children}
@@ -56,7 +53,7 @@ function StoryTitle({ className, ...props }: React.ComponentProps<'h3'>) {
     <h3
       data-slot="story-title"
       className={cn(
-        'mt-5 font-display text-lg font-semibold leading-snug tracking-tight text-foreground sm:text-xl',
+        'font-display text-lg font-semibold leading-snug tracking-tight text-foreground sm:text-xl',
         className
       )}
       {...props}
@@ -69,7 +66,7 @@ function StoryCTA({ className, children, ...props }: React.ComponentProps<'span'
     <span
       data-slot="story-cta"
       className={cn(
-        'mt-4 inline-flex items-center gap-2.5 self-start text-sm font-medium text-foreground',
+        'inline-flex items-center gap-2.5 self-start text-sm font-medium text-foreground',
         className
       )}
       {...props}

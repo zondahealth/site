@@ -8,6 +8,7 @@ type SectionIntroProps = {
   copy?: string;
   inverse?: boolean;
   centered?: boolean;
+  compact?: boolean;
   className?: string;
 };
 
@@ -17,6 +18,7 @@ export function SectionIntro({
   copy,
   inverse = false,
   centered = false,
+  compact = false,
   className,
 }: SectionIntroProps) {
   return (
@@ -24,7 +26,8 @@ export function SectionIntro({
       {eyebrow ? (
         <p
           className={cn(
-            "text-xs font-semibold uppercase tracking-[0.18em]",
+            "font-semibold uppercase tracking-[0.18em]",
+            compact ? "text-[10px]" : "text-xs",
             inverse ? "text-[#77dcff]" : "text-secondary",
           )}
         >
@@ -33,7 +36,10 @@ export function SectionIntro({
       ) : null}
       <h2
         className={cn(
-          "mt-4 font-display text-4xl font-semibold leading-tight tracking-[-0.035em] sm:text-5xl",
+          "font-display font-semibold leading-tight tracking-[-0.035em]",
+          compact
+            ? "mt-3 text-2xl sm:text-3xl"
+            : "mt-4 text-4xl sm:text-5xl",
           inverse ? "text-white" : "text-foreground",
         )}
       >
@@ -42,7 +48,9 @@ export function SectionIntro({
       {copy ? (
         <p
           className={cn(
-            "mt-5 text-base leading-8 sm:text-lg",
+            compact
+              ? "mt-3 text-sm leading-6"
+              : "mt-5 text-base leading-8 sm:text-lg",
             inverse ? "text-white/65" : "text-muted-foreground",
           )}
         >

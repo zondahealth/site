@@ -9,12 +9,13 @@ import { SolutionsBox } from "@/components/layout/SolutionsBox";
 import { Button } from "@/components/ui/button/button";
 
 const navigationItems = [
-  { label: "Desarrolladores", href: "#api" },
+  { label: "Historias", href: "/customer-stories" },
+  { label: "Desarrolladores", href: "/developers" },
   { label: "Recursos", href: "#recursos" },
 ] as const;
 
 const navigationItemClassName =
-  "inline-flex h-9 items-center justify-center gap-1 rounded-full px-2.5 text-[11px] font-medium text-foreground/80 outline-none transition-[background-color,color,box-shadow] duration-200 hover:bg-white/80 hover:text-foreground hover:shadow-[0_1px_8px_rgba(21,27,43,0.08)] focus-visible:ring-2 focus-visible:ring-ring max-[430px]:px-1.5 max-[430px]:text-[9px] sm:px-3.5 sm:text-[13px]";
+  "inline-flex h-9 items-center justify-center gap-1 rounded-full px-2.5 text-[11px] font-medium text-foreground/80 outline-none transition-[background-color,color] duration-200 hover:bg-white/35 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring max-[430px]:px-1.5 max-[430px]:text-[9px] sm:px-3.5 sm:text-[13px]";
 
 export function Navbar() {
   const [solutionsOpen, setSolutionsOpen] = useState(false);
@@ -56,7 +57,7 @@ export function Navbar() {
           aria-label="Navegación principal"
           className="flex w-full items-center justify-between gap-2 rounded-full border border-white/55 bg-white/65 px-2.5 py-2 shadow-[0_8px_30px_rgba(21,27,43,0.09)] backdrop-blur-xl sm:gap-4 sm:px-4"
         >
-          <div className="flex min-w-0 items-center gap-1 sm:gap-3">
+          <div className="flex min-w-0 items-center gap-2 sm:gap-5">
             <Link
               href="/"
               aria-label="Ir al inicio"
@@ -70,7 +71,7 @@ export function Navbar() {
               />
             </Link>
 
-            <ul className="flex min-w-0 items-center sm:gap-1">
+            <ul className="flex min-w-0 items-center gap-1 sm:gap-4">
               <li>
                 <button
                   ref={solutionsButtonRef}
@@ -80,7 +81,7 @@ export function Navbar() {
                   onClick={() => setSolutionsOpen((open) => !open)}
                   className={`${navigationItemClassName} ${
                     solutionsOpen
-                      ? "bg-white text-foreground shadow-[0_1px_8px_rgba(21,27,43,0.08)]"
+                      ? "bg-white/45 text-foreground"
                       : ""
                   }`}
                 >

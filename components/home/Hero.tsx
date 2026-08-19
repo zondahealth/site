@@ -5,25 +5,10 @@ import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { Logo } from "@/components/layout/Logo";
 import Gradient from "@/components/ui/gradient/Gradient";
 
-const HERO_POINTS = [
-  { color: "var(--primary)", x: 0.04, y: 0.5 }, // primary middle left
-  { color: "#236ffd", x: 0.96, y: 0.04 }, // blue top right
-  { color: "#236ffd", x: 0.96, y: 0.9 }, // blue bottom right
-];
-
 const IMAGE_SPOT_RADIUS = 420;
 
 export function Hero() {
   const revealRef = useRef<HTMLImageElement>(null);
-  const [showShader, setShowShader] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    const sync = () => setShowShader(mq.matches);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
-  }, []);
 
   function setImageSpot(x: number, y: number) {
     const el = revealRef.current;
