@@ -1,42 +1,14 @@
-import type { Metadata } from 'next';
-import { cookies } from 'next/headers';
+import { MissingComponentPlaceholder } from "@/components/MissingComponentPlaceholder";
 
-import { ContactForm } from '@/components/ContactForm';
-import { getSupportedLocale, localeCookieName } from '@/lib/locale';
-import enMessages from '@/messages/en.json';
-import esMessages from '@/messages/es.json';
-import {
-  FeaturePanel,
-} from '@/components/panel';
-
-const metadataMessages = {
-  en: enMessages,
-  es: esMessages,
+export const metadata = {
+  title: "Contacto | zonda",
+  description: "Ponete en contacto con zonda.",
 };
 
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = getSupportedLocale(
-    (await cookies()).get(localeCookieName)?.value
-  );
-
-  return {
-    title: metadataMessages[locale].site.contact.metaTitle,
-    description: metadataMessages[locale].site.contact.metaDescription,
-  };
-}
-
-export default function ContactoPage() {
+export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <FeaturePanel
-        imageSrc="/assets/shared/bg/bg-platform.png"
-        imageAlt=""
-        contentClassName="flex h-full flex-col items-center justify-center py-20 md:py-42 lg:py-62 "
-      >
-        <section className="layout-shell rounded-xl">
-          <ContactForm />
-        </section>
-      </FeaturePanel>
-    </div>
+    <main className="bg-background pb-16 pt-24 text-foreground">
+      <MissingComponentPlaceholder name="Contact form" className="min-h-128" />
+    </main>
   );
 }

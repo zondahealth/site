@@ -1,26 +1,22 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import {
-  Activity,
-  ArrowRight,
-  BadgeDollarSign,
-  Bot,
-  Building2,
-  CalendarDays,
-  Check,
-  CircleAlert,
-  Database,
-  FileHeart,
-  HeartPulse,
-  Network,
-  Search,
-  ShieldCheck,
-  Sparkles,
-  Stethoscope,
-  Workflow,
-} from "lucide-react";
+import { ArrowRight, ChevronDown, Zap } from "lucide-react";
 
 import { Button } from "@/components/ui/button/button";
+import {
+  FeatureHero,
+  FeatureHeroContent,
+  FeatureHeroMedia,
+  FeaturePanelBleed,
+} from "@/components/ui/feature-hero/feature-hero";
+import {
+  Story,
+  StoryList,
+  StoryMedia,
+  StoryTitle,
+} from "@/components/ui/story/story";
+import { SectionIntro } from "@/components/use-cases/UseCasePrimitives";
 
 export const metadata: Metadata = {
   title:
@@ -39,649 +35,280 @@ export const metadata: Metadata = {
   ],
 };
 
-const sourceSystems = [
-  { label: "EHR", icon: FileHeart },
-  { label: "Billing", icon: BadgeDollarSign },
-  { label: "Payer platforms", icon: ShieldCheck },
-  { label: "Scheduling", icon: CalendarDays },
-  { label: "Operational data", icon: Database },
-] as const;
-
-const intelligenceAgents = [
-  { label: "Clinical Agent", icon: Stethoscope },
-  { label: "Operational Agent", icon: Activity },
-  { label: "Financial Agent", icon: BadgeDollarSign },
-] as const;
-
-const intelligenceExamples = [
+const benefits = [
   {
-    eyebrow: "Clinical intelligence",
-    question: "Which patients are at risk of treatment interruption?",
-    description:
-      "Connect the signals that reveal when a patient may need proactive support.",
-    inputs: [
-      "Treatment history",
-      "Visits",
-      "Clinical events",
-      "Patient activity",
-    ],
-    outcome: "Identifies patients requiring proactive intervention.",
-    icon: HeartPulse,
-    accent: "border-[#d5cf45]/45 bg-[#ffffec]",
-    iconStyle: "bg-[#f0ef8b] text-[#565400]",
+    title: "Uncover clinical risk across connected data",
+    copy: "Connect treatment history, visits, and clinical events to identify patients who may need proactive support.",
+    href: "#",
+    image: "/assets/fraud/zonda-info.png",
+    imageAlt:
+      "Placeholder visual for clinical intelligence across connected healthcare data",
   },
   {
-    eyebrow: "Operational intelligence",
-    question: "Where are our care operations breaking down?",
-    description:
-      "See how people, capacity, and workflows interact across the care journey.",
-    inputs: [
-      "Schedules",
-      "Provider activity",
-      "Patient journeys",
-      "Operational workflows",
-    ],
-    outcome: "Detects bottlenecks and efficiency opportunities.",
-    icon: Workflow,
-    accent: "border-[#7cd8ca]/45 bg-[#effdf9]",
-    iconStyle: "bg-[#bcefe7] text-[#075b50]",
+    title: "See where care operations break down",
+    copy: "Give operations teams one view of schedules, capacity, and patient journeys to detect bottlenecks earlier.",
+    href: "#",
+    image: "/assets/fraud/search.png",
+    imageAlt:
+      "Placeholder visual for operational intelligence across care workflows",
   },
   {
-    eyebrow: "Financial intelligence",
-    question: "Why did reimbursement decrease this month?",
-    description:
-      "Trace financial outcomes back to care delivery, policy, and process data.",
-    inputs: [
-      "Delivered care",
-      "Authorizations",
-      "Billing and payer rules",
-      "Settlements",
-    ],
-    outcome: "Identifies revenue leakage and financial risks.",
-    icon: BadgeDollarSign,
-    accent: "border-[#8cbcf5]/45 bg-[#f2f7ff]",
-    iconStyle: "bg-[#cfe2ff] text-[#0e3c75]",
+    title: "Trace financial outcomes back to care",
+    copy: "Link delivered care, authorizations, billing, and settlement data to explain reimbursement changes.",
+    href: "#",
+    image: "/assets/fraud/validated.png",
+    imageAlt:
+      "Placeholder visual for financial intelligence across billing and settlement",
   },
 ] as const;
 
-const foundationCapabilities = [
+const faqItems = [
   {
-    title: "Healthcare interoperability",
-    copy: "Connect clinical, operational, and financial systems without replacing them.",
-    icon: Network,
+    question: "What are healthcare intelligence agents?",
+    answer:
+      "They are AI agents that operate on connected clinical, operational, and financial data to answer questions, detect patterns, and support decisions across healthcare workflows.",
   },
   {
-    title: "Data normalization",
-    copy: "Turn incompatible formats into reliable, usable healthcare information.",
-    icon: Database,
+    question: "What data sources can Zonda connect?",
+    answer:
+      "Zonda can connect EHR, billing, payer platforms, scheduling, and other operational systems without replacing them.",
   },
   {
-    title: "Workflow understanding",
-    copy: "Preserve the relationships between patients, providers, care, and operations.",
-    icon: Workflow,
+    question: "How is this different from generic AI tools?",
+    answer:
+      "Generic AI tools work on isolated records. Zonda agents understand the relationships between patients, providers, treatments, operations, and financial processes.",
   },
   {
-    title: "AI reasoning",
-    copy: "Give agents the context to explore questions, detect patterns, and explain outcomes.",
-    icon: Sparkles,
+    question: "Does Zonda require replacing existing software?",
+    answer:
+      "No. Zonda is designed to connect the systems you already operate and add an intelligence layer across them.",
+  },
+  {
+    question: "What kinds of questions can agents answer?",
+    answer:
+      "Teams can explore questions such as which patients are at risk of treatment interruption, where care operations are breaking down, or why reimbursement changed.",
+  },
+  {
+    question: "Can agents work across clinical, operational, and financial data?",
+    answer:
+      "Yes. Zonda creates a shared healthcare context so agents can reason across domains instead of analyzing each system in isolation.",
+  },
+  {
+    question: "How does Zonda give agents healthcare context?",
+    answer:
+      "Zonda normalizes data, preserves workflow relationships, and connects events to the people, processes, and financial activity around them.",
+  },
+  {
+    question: "Do teams need technical skills to use the agents?",
+    answer:
+      "No. Agents can be queried in natural language, so teams can investigate high-value questions without assembling each dataset by hand.",
   },
 ] as const;
-
-function FlowArrow({ label }: { label: string }) {
-  return (
-    <div
-      className="flex items-center justify-center gap-2 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/55 lg:flex-col lg:px-1"
-      aria-hidden="true"
-    >
-      <span className="hidden lg:block">{label}</span>
-      <span className="h-px w-8 bg-gradient-to-r from-white/15 to-accent/80 lg:h-10 lg:w-px lg:bg-gradient-to-b" />
-      <ArrowRight className="size-4 text-accent lg:rotate-90" strokeWidth={1.8} />
-    </div>
-  );
-}
 
 export default function HealthcareIntelligenceAgentsPage() {
   return (
     <main lang="en" className="overflow-hidden bg-background text-foreground">
-      <section className="relative isolate overflow-hidden bg-[#07172d] px-6 pb-20 pt-32 text-white sm:px-10 sm:pb-24 sm:pt-40 lg:px-16 lg:pb-28">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_15%,rgba(34,111,253,0.34),transparent_34%),radial-gradient(circle_at_88%_42%,rgba(31,212,245,0.18),transparent_30%),linear-gradient(145deg,#07172d_0%,#0a2b55_52%,#07172d_100%)]"
+      <FeatureHero>
+        <FeaturePanelBleed
+          src="/assets/fraud/fraud-hero-bleed.png"
+          side="right"
         />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10 opacity-25 [background-image:linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:72px_72px] [mask-image:linear-gradient(to_bottom,black,transparent_82%)]"
-        />
-
-        <div className="mx-auto max-w-7xl">
-          <div className="max-w-4xl">
-            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white/80 backdrop-blur-sm">
-              <Sparkles className="size-3.5 text-accent" aria-hidden="true" />
+        <FeatureHeroContent>
+          <div className="">
+            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.10em] text-foreground">
               Healthcare intelligence agents
             </p>
-            <h1 className="font-display max-w-4xl text-4xl font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-5xl lg:text-7xl">
-              Turn fragmented healthcare data into{" "}
-              <span className="text-accent">actionable intelligence</span> with
-              AI agents.
+            <h1 className="font-display text-5xl font-semibold leading-[1.04] tracking-[-0.045em] text-foreground">
+              Turn fragmented data into actionable intelligence.
             </h1>
-            <p className="mt-7 max-w-3xl text-base leading-8 text-white/75 sm:text-lg lg:text-xl">
-              Healthcare organizations have the data needed to answer critical
-              questions, but it is trapped across disconnected systems. Zonda
-              connects clinical, operational, and financial information to
-              enable AI agents that understand workflows, identify patterns,
-              and deliver real-time intelligence.
+            <p className="mt-2 text-lg leading-7 text-foreground/80">
+              Connect clinical, operational, and financial data so AI agents
+              can understand workflows and deliver real-time intelligence.
             </p>
-            <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-              <Button variant="accent" size="lg" asChild>
+            <div className="mt-4">
+              <Button variant="black" asChild>
                 <Link href="#contacto">
                   Talk to our team
                   <ArrowRight aria-hidden="true" />
                 </Link>
               </Button>
-              <Button
-                variant="inverse"
-                size="lg"
-                className="border border-white/15 bg-white/10 text-white hover:bg-white/15"
-                asChild
-              >
-                <Link href="/#plataforma">Explore Zonda Platform</Link>
-              </Button>
             </div>
           </div>
+        </FeatureHeroContent>
+        <FeatureHeroMedia>
+          <Image
+            src="/assets/tbd/asistant-result.png"
+            alt="Asistente Zonda answering a clinical query and returning 135 matching treatments"
+            width={1080}
+            height={1080}
+            priority
+            sizes="(min-width: 1024px) 80vw, 100vw"
+            className="h-auto w-full max-w-[420px] object-contain mx-auto"
+          />
+        </FeatureHeroMedia>
+      </FeatureHero>
 
-          <figure className="mt-16 overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/[0.06] p-4 shadow-[0_30px_90px_rgba(0,0,0,0.2)] backdrop-blur-sm sm:p-6 lg:mt-20 lg:p-8">
-            <figcaption className="mb-5 flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-5">
-              <span className="text-sm font-semibold text-white">
-                From fragmented systems to better decisions
-              </span>
-              <span className="rounded-full border border-dashed border-white/20 px-3 py-1.5 font-mono text-[10px] text-white/45">
-                Visual placeholder · healthcare-intelligence-flow.png
-              </span>
-            </figcaption>
+      <section className="px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-32">
+        <SectionIntro
+          title="What you need to turn healthcare data into intelligence."
+          className="max-w-4xl text-center mx-auto"
+        />
 
-            <div
-              role="img"
-              aria-label="Disconnected healthcare source systems flow through the Zonda data and intelligence layer into clinical, operational, and financial AI agents that produce insights, alerts, and decisions."
-              className="grid items-stretch gap-3 lg:grid-cols-[1fr_auto_1.05fr_auto_1fr]"
-            >
-              <div className="rounded-2xl border border-white/10 bg-black/10 p-4 sm:p-5">
-                <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/45">
-                  Disconnected systems
-                </p>
-                <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
-                  {sourceSystems.map((system, index) => {
-                    const Icon = system.icon;
-
-                    return (
-                      <div
-                        key={system.label}
-                        className={`flex min-h-11 items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.07] px-3 text-xs font-medium text-white/75 ${
-                          index === sourceSystems.length - 1
-                            ? "col-span-2 lg:col-span-1"
-                            : ""
-                        }`}
-                      >
-                        <Icon
-                          className="size-4 shrink-0 text-white/55"
-                          strokeWidth={1.7}
-                          aria-hidden="true"
-                        />
-                        {system.label}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <FlowArrow label="Connect" />
-
-              <div className="relative flex min-h-64 flex-col justify-between overflow-hidden rounded-2xl border border-accent/45 bg-[#0e3c75] p-5 shadow-[0_0_60px_rgba(31,212,245,0.14)] sm:p-6">
-                <div
-                  aria-hidden="true"
-                  className="absolute -right-20 -top-20 size-56 rounded-full bg-secondary/30 blur-3xl"
+        <StoryList className="mt-14">
+          {benefits.map((benefit) => (
+            <Story key={benefit.title} href={benefit.href}>
+              <StoryMedia>
+                <Image
+                  src={benefit.image}
+                  alt={benefit.imageAlt}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 />
-                <div className="relative">
-                  <span className="flex size-11 items-center justify-center rounded-xl border border-white/10 bg-white/10 text-accent">
-                    <Network className="size-5" strokeWidth={1.7} />
-                  </span>
-                  <p className="mt-8 text-[10px] font-semibold uppercase tracking-[0.16em] text-accent/80">
-                    Zonda
-                  </p>
-                  <p className="mt-2 max-w-[15rem] font-display text-2xl font-semibold leading-tight text-white">
-                    Data &amp; Intelligence Layer
-                  </p>
-                </div>
-                <div className="relative mt-8 flex flex-wrap gap-2">
-                  {[
-                    "Unified data",
-                    "Healthcare context",
-                    "Workflow relationships",
-                  ].map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-white/10 bg-black/10 px-2.5 py-1.5 text-[10px] font-medium text-white/65"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              </StoryMedia>
+              <StoryTitle>{benefit.title}</StoryTitle>
+              <p className="text-sm leading-7 text-muted-foreground">
+                {benefit.copy}
+              </p>
+            </Story>
+          ))}
+        </StoryList>
+      </section>
 
-              <FlowArrow label="Understand" />
+      <section
+        id="how-it-works"
+        className="scroll-mt-24 px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24"
+      >
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+          <SectionIntro
+            compact
+            eyebrow="The missing layer"
+            title="Healthcare data exists. Intelligence does not."
+            copy="Organizations already collect massive amounts of clinical, operational, and financial information. The problem is that this data lives across systems that were never designed to work together."
+            className="max-w-lg"
+          />
 
-              <div className="flex flex-col rounded-2xl border border-white/10 bg-black/10 p-4 sm:p-5">
-                <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/45">
-                  Context-aware agents
-                </p>
-                <div className="flex flex-1 flex-col gap-2">
-                  {intelligenceAgents.map((agent) => {
-                    const Icon = agent.icon;
-
-                    return (
-                      <div
-                        key={agent.label}
-                        className="flex flex-1 items-center gap-3 rounded-xl border border-white/10 bg-white/[0.07] p-3"
-                      >
-                        <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#72dcff]">
-                          <Icon className="size-4" strokeWidth={1.7} />
-                        </span>
-                        <span className="text-xs font-semibold text-white/80">
-                          {agent.label}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-                <div className="mt-3 grid grid-cols-3 gap-1.5">
-                  {["Insights", "Alerts", "Decisions"].map((output) => (
-                    <span
-                      key={output}
-                      className="rounded-lg bg-accent px-1.5 py-2 text-center text-[9px] font-bold uppercase tracking-wide text-accent-foreground"
-                    >
-                      {output}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </figure>
-
-          <p className="mx-auto mt-9 max-w-3xl text-center font-display text-xl font-medium leading-relaxed text-white sm:text-2xl">
-            AI is only as powerful as the healthcare data and context it can
-            access.
-          </p>
+          <Image
+            src="/assets/fraud/timeline-validation.png"
+            alt="Placeholder visual for connecting fragmented healthcare systems into one intelligence layer"
+            width={1000}
+            height={1000}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="h-auto w-full overflow-hidden rounded-[1.5rem] object-cover"
+          />
         </div>
       </section>
 
-      <section className="relative px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-24">
-          <div className="lg:sticky lg:top-32">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-secondary">
-              The missing layer
-            </p>
-            <h2 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-[-0.035em] text-foreground sm:text-5xl">
-              Healthcare data exists. Intelligence does not.
-            </h2>
-          </div>
+      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+          <SectionIntro
+            compact
+            eyebrow="Healthcare-native reasoning"
+            title="AI agents built for healthcare workflows"
+            copy="Zonda agents operate on connected healthcare data. They understand the relationships between patients, providers, treatments, operations, and financial processes—not just individual records."
+            className="max-w-lg lg:order-2"
+          />
 
-          <div className="max-w-2xl">
-            <p className="text-xl leading-9 text-foreground sm:text-2xl">
-              Healthcare organizations already collect massive amounts of
-              clinical, operational, and financial information.
-            </p>
-            <p className="mt-7 text-base leading-8 text-muted-foreground sm:text-lg">
-              The problem is that this data lives across systems that were
-              never designed to work together. A single question often
-              requires teams to manually combine information from different
-              platforms, databases, and workflows.
-            </p>
-
-            <div className="mt-10 grid gap-3 sm:grid-cols-3">
-              {[
-                { label: "Clinical", icon: HeartPulse },
-                { label: "Operational", icon: Building2 },
-                { label: "Financial", icon: BadgeDollarSign },
-              ].map((domain) => {
-                const Icon = domain.icon;
-
-                return (
-                  <div
-                    key={domain.label}
-                    className="rounded-2xl border border-border/80 bg-white p-4 shadow-[0_10px_30px_rgba(14,60,117,0.06)]"
-                  >
-                    <Icon
-                      className="size-5 text-primary"
-                      strokeWidth={1.7}
-                      aria-hidden="true"
-                    />
-                    <p className="mt-4 text-sm font-semibold">
-                      {domain.label} data
-                    </p>
-                    <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                      Rich in signals. Isolated by design.
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="mt-10 flex gap-4 rounded-2xl border border-[#e5df47]/55 bg-[#ffffe7] p-5 sm:p-6">
-              <CircleAlert
-                className="mt-0.5 size-5 shrink-0 text-[#6c6800]"
-                strokeWidth={1.8}
-                aria-hidden="true"
-              />
-              <p className="font-display text-lg font-semibold leading-relaxed text-[#313000]">
-                AI cannot create meaningful value without context.
-              </p>
-            </div>
-          </div>
+          <Image
+            src="/assets/fraud/heath-panel.png"
+            alt="Placeholder visual for AI agents reasoning across healthcare workflows"
+            width={1000}
+            height={1000}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="h-auto w-full overflow-hidden rounded-[1.5rem] object-cover lg:order-1"
+          />
         </div>
       </section>
 
-      <section className="bg-[#f3f7fd] px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-end lg:gap-20">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-secondary">
-                Healthcare-native reasoning
-              </p>
-              <h2 className="mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight tracking-[-0.035em] sm:text-5xl">
-                AI agents built for healthcare workflows
-              </h2>
-            </div>
-            <p className="max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
-              Zonda enables AI agents that operate on top of connected
-              healthcare data. They understand the relationships between
-              patients, providers, treatments, operations, and financial
-              processes—not just individual records.
-            </p>
-          </div>
+      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+          <SectionIntro
+            compact
+            eyebrow="The intelligence foundation"
+            title="From disconnected systems to intelligent operations"
+            copy="Zonda combines interoperability, data normalization, workflow understanding, and AI reasoning so agents can operate with healthcare context at their core."
+            className="max-w-lg"
+          />
 
-          <div className="mt-14 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-            <div className="relative min-h-[28rem] overflow-hidden rounded-[1.75rem] bg-primary p-6 text-white sm:p-9">
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(31,212,245,0.28),transparent_36%),radial-gradient(circle_at_0%_100%,rgba(34,111,253,0.32),transparent_42%)]"
-              />
-              <div className="relative flex h-full flex-col">
-                <div className="flex items-center justify-between gap-4">
-                  <span className="flex size-11 items-center justify-center rounded-xl border border-white/10 bg-white/10 text-accent">
-                    <Bot className="size-5" strokeWidth={1.7} />
-                  </span>
-                  <span className="rounded-full border border-white/10 bg-black/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/60">
-                    Connected context
-                  </span>
-                </div>
-
-                <div className="my-auto py-12 text-center">
-                  <p className="text-sm font-medium text-white/55">
-                    Ask a complex healthcare question
-                  </p>
-                  <p className="mx-auto mt-4 max-w-xl font-display text-2xl font-semibold leading-snug sm:text-4xl">
-                    “What is happening, why is it happening, and where should we
-                    act?”
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-3 gap-2 sm:gap-3">
-                  {[
-                    "Explore questions",
-                    "Detect patterns",
-                    "Uncover insight",
-                  ].map((action) => (
-                    <div
-                      key={action}
-                      className="rounded-xl border border-white/10 bg-white/[0.07] px-2 py-4 text-center text-[10px] font-semibold leading-snug text-white/70 sm:px-4 sm:text-xs"
-                    >
-                      {action}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-              {[
-                {
-                  title: "Understands relationships",
-                  copy: "Connects care events to the people, processes, and financial activity around them.",
-                  icon: Network,
-                },
-                {
-                  title: "Works in natural language",
-                  copy: "Lets teams investigate high-value questions without manually assembling each dataset.",
-                  icon: Search,
-                },
-                {
-                  title: "Supports better decisions",
-                  copy: "Turns cross-system signals into timely insights that teams can investigate and act on.",
-                  icon: Check,
-                },
-              ].map((item, index) => {
-                const Icon = item.icon;
-
-                return (
-                  <article
-                    key={item.title}
-                    className={`rounded-2xl border border-border/80 bg-white p-6 shadow-[0_12px_30px_rgba(14,60,117,0.05)] ${
-                      index === 2 ? "sm:col-span-2 lg:col-span-1" : ""
-                    }`}
-                  >
-                    <span className="flex size-10 items-center justify-center rounded-xl bg-muted text-primary">
-                      <Icon className="size-4.5" strokeWidth={1.8} />
-                    </span>
-                    <h3 className="mt-5 font-display text-lg font-semibold">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                      {item.copy}
-                    </p>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
+          <Image
+            src="/assets/fraud/fraud-risk-score.png"
+            alt="Placeholder visual for the healthcare intelligence foundation"
+            width={1000}
+            height={1000}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="h-auto w-full overflow-hidden rounded-[1.5rem] object-cover"
+          />
         </div>
       </section>
 
       <section className="px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
         <div className="mx-auto max-w-7xl">
-          <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-secondary">
-              Intelligence in action
-            </p>
-            <h2 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-[-0.035em] sm:text-5xl">
-              Examples of AI-powered intelligence
-            </h2>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
-              One connected intelligence layer gives each team a clearer way
-              to investigate the questions that matter to them.
-            </p>
-          </div>
+          <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-start lg:gap-20">
+            <SectionIntro
+              eyebrow="Intelligence in action"
+              title="Ask a complex healthcare question"
+              copy="Give teams one place to explore what is happening, why it is happening, and where they should act—without assembling each dataset by hand."
+              className="max-w-xl"
+            />
 
-          <div className="mt-14 grid gap-6 lg:grid-cols-3">
-            {intelligenceExamples.map((example) => {
-              const Icon = example.icon;
-
-              return (
-                <article
-                  key={example.eyebrow}
-                  className={`flex min-h-[34rem] flex-col rounded-[1.5rem] border p-6 sm:p-7 ${example.accent}`}
-                >
-                  <span
-                    className={`flex size-11 items-center justify-center rounded-xl ${example.iconStyle}`}
-                  >
-                    <Icon className="size-5" strokeWidth={1.7} />
-                  </span>
-                  <p className="mt-7 text-[10px] font-bold uppercase tracking-[0.16em] text-foreground/55">
-                    {example.eyebrow}
-                  </p>
-                  <h3 className="mt-3 font-display text-2xl font-semibold leading-snug tracking-[-0.02em]">
-                    “{example.question}”
-                  </h3>
-                  <p className="mt-4 text-sm leading-6 text-muted-foreground">
-                    {example.description}
-                  </p>
-
-                  <div className="mt-7 border-t border-foreground/10 pt-6">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-foreground/45">
-                      The agent analyzes
-                    </p>
-                    <ul className="mt-4 grid grid-cols-2 gap-x-3 gap-y-3">
-                      {example.inputs.map((input) => (
-                        <li
-                          key={input}
-                          className="flex items-start gap-2 text-xs font-medium leading-5 text-foreground/75"
-                        >
-                          <span className="mt-1 flex size-3.5 shrink-0 items-center justify-center rounded-full bg-white/70">
-                            <Check
-                              className="size-2.5 text-primary"
-                              strokeWidth={2.5}
-                              aria-hidden="true"
-                            />
-                          </span>
-                          {input}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="mt-auto pt-7">
-                    <div className="rounded-xl bg-white/70 p-4 shadow-[0_6px_18px_rgba(14,60,117,0.04)]">
-                      <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-foreground/45">
-                        Outcome
-                      </p>
-                      <p className="mt-2 text-sm font-semibold leading-6">
-                        {example.outcome}
-                      </p>
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
+            <figure className="relative mx-auto w-full max-w-[560px] lg:mx-0 lg:max-w-none">
+              <Image
+                src="/assets/tbd/asistant-question.png"
+                alt="Asistente Zonda analyzing a natural-language clinical query"
+                width={900}
+                height={900}
+                sizes="(min-width: 1024px) 55vw, 100vw"
+                className="h-auto w-full object-contain"
+              />
+            </figure>
           </div>
         </div>
       </section>
 
-      <section className="relative isolate overflow-hidden bg-[#060b14] px-6 py-20 text-white sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-36 -top-36 -z-10 size-[34rem] rounded-full bg-[radial-gradient(circle,rgba(31,212,245,0.22),rgba(34,111,253,0.08)_44%,transparent_70%)] blur-2xl"
-        />
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-24">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#77dcff]">
-                The intelligence foundation
-              </p>
-              <h2 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-[-0.035em] text-white sm:text-5xl">
-                From disconnected systems to intelligent healthcare operations
-              </h2>
-              <p className="mt-6 max-w-xl text-base leading-8 text-white/65 sm:text-lg">
-                Zonda combines the essential infrastructure and healthcare
-                understanding AI needs to operate reliably. Unlike generic AI
-                tools, Zonda agents are built with healthcare context at their
-                core.
-              </p>
-            </div>
+      <section className="px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
+        <div className="mx-auto max-w-5xl">
+          <SectionIntro
+            centered
+            title="Your questions, answered"
+            className="max-w-3xl"
+          />
 
-            <div className="grid gap-px overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/10 sm:grid-cols-2">
-              {foundationCapabilities.map((capability) => {
-                const Icon = capability.icon;
-
-                return (
-                  <article
-                    key={capability.title}
-                    className="min-h-56 bg-[#0b1320] p-6 sm:p-7"
-                  >
-                    <Icon
-                      className="size-5 text-accent"
-                      strokeWidth={1.7}
-                      aria-hidden="true"
-                    />
-                    <h3 className="mt-8 font-display text-lg font-semibold text-white">
-                      {capability.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-6 text-white/55">
-                      {capability.copy}
-                    </p>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="mt-16 grid gap-3 sm:grid-cols-[1fr_auto_1fr_auto_1fr] sm:items-center">
-            {[
-              {
-                number: "01",
-                title: "Connect healthcare",
-                copy: "Unify data across systems.",
-              },
-              {
-                number: "02",
-                title: "Understand healthcare",
-                copy: "Add context and relationships.",
-              },
-              {
-                number: "03",
-                title: "Enable AI to operate",
-                copy: "Turn context into intelligence.",
-              },
-            ].map((step, index) => (
-              <div key={step.number} className="contents">
-                <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-                  <p className="text-[10px] font-bold tracking-[0.14em] text-accent">
-                    {step.number}
-                  </p>
-                  <p className="mt-3 font-display text-lg font-semibold text-white">
-                    {step.title}
-                  </p>
-                  <p className="mt-1 text-xs text-white/50">{step.copy}</p>
-                </div>
-                {index < 2 ? (
-                  <ArrowRight
-                    className="mx-auto size-4 rotate-90 text-white/25 sm:rotate-0"
-                    aria-hidden="true"
-                  />
-                ) : null}
-              </div>
+          <div className="mt-12 divide-y divide-border/80 border-y border-border/80">
+            {faqItems.map((item) => (
+              <details key={item.question} className="group">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-left font-display text-base font-semibold outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-lg [&::-webkit-details-marker]:hidden">
+                  {item.question}
+                  <span className="flex size-8 shrink-0 items-center justify-center rounded-full border border-border bg-white text-primary">
+                    <ChevronDown className="size-4 transition-transform duration-200 group-open:rotate-180" />
+                  </span>
+                </summary>
+                <p className="max-w-3xl pb-6 pr-12 text-sm leading-7 text-muted-foreground sm:text-base">
+                  {item.answer}
+                </p>
+              </details>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="relative px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-[#eff6ff] to-transparent"
-        />
-        <div className="relative mx-auto max-w-5xl text-center">
-          <span className="mx-auto flex size-12 items-center justify-center rounded-2xl bg-primary text-accent shadow-[0_12px_30px_rgba(14,60,117,0.18)]">
-            <Sparkles className="size-5" strokeWidth={1.7} />
+      <section className="px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
+        <div className="mx-auto max-w-5xl text-center">
+          <span className="mx-auto flex size-12 items-center justify-center rounded-2xl border border-border bg-muted text-primary">
+            <Zap className="size-5" strokeWidth={1.7} />
           </span>
-          <h2 className="mx-auto mt-7 max-w-4xl font-display text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl lg:text-6xl">
+          <h2 className="mx-auto mt-7 max-w-4xl font-display text-4xl font-semibold leading-tight tracking-[-0.04em] text-foreground sm:text-5xl lg:text-6xl">
             The foundation for the next generation of healthcare AI
           </h2>
-          <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
-            The future of healthcare will not be driven only by better AI
-            models. It will be driven by organizations that can connect their
-            data, understand their workflows, and enable intelligent systems to
-            act on top of them. Zonda provides the infrastructure layer that
-            makes this possible.
+          <p className="mx-auto mt-7 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
+            Connect your data, understand your workflows, and enable
+            intelligent systems to act on top of them.
           </p>
-          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button variant="black" size="lg" asChild>
-              <Link href="#contacto">
-                Talk to our team
-                <ArrowRight aria-hidden="true" />
-              </Link>
-            </Button>
-            <Button variant="outline" size="lg" asChild>
-              <Link href="/#plataforma">Explore Zonda Platform</Link>
-            </Button>
-          </div>
+          <Button variant="black" size="lg" className="mt-9" asChild>
+            <Link href="#contacto">
+              Talk to our team
+              <ArrowRight aria-hidden="true" />
+            </Link>
+          </Button>
         </div>
       </section>
     </main>

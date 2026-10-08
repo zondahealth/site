@@ -1,28 +1,22 @@
-'use client';
+import { MissingComponentPlaceholder } from "@/components/MissingComponentPlaceholder";
 
-import {
-  IdomHero,
-  IntFlow,
-  IntFeatureOffice,
-  IntFeatureField,
-  IntFeatureAudit,
-  IntStatsBand,
-  IntDemoCTA,
-  IntFAQ,
-} from '@/components/idom';
+const missingComponents = [
+  "IdomHero",
+  "IntFlow",
+  "IntFeatureOffice",
+  "IntFeatureField",
+  "IntFeatureAudit",
+  "IntStatsBand",
+  "IntFAQ",
+  "IntDemoCTA",
+];
 
-export default function InternacionDomiciliariaPage() {
+export default function OperationsPage() {
   return (
-    <div className="pb-16">
-      <IdomHero />
-
-      <IntFlow />
-      <IntFeatureOffice />
-      <IntFeatureField />
-      <IntFeatureAudit />
-      <IntStatsBand />
-      <IntFAQ />
-      <IntDemoCTA />
-    </div>
+    <main className="bg-background pb-16 pt-24 text-foreground">
+      {missingComponents.map((name) => (
+        <MissingComponentPlaceholder key={name} name={name} />
+      ))}
+    </main>
   );
 }

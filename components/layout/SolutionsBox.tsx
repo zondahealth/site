@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Bot, ShieldCheck } from "lucide-react";
+import { Bot, CircleDollarSign, ShieldCheck, Workflow } from "lucide-react";
 
-const useCases = [
+export const useCases = [
   {
     title: "Agentes de inteligencia en salud",
     href: "/use-cases/healthcare-intelligence-agents",
@@ -13,6 +13,16 @@ const useCases = [
     title: "Fraude y prevención de riesgos",
     href: "/use-cases/fraud-risk-prevention",
     icon: ShieldCheck,
+  },
+  {
+    title: "Atención multi-financiador",
+    href: "/casos-de-uso/atencion-multi-financiador",
+    icon: Workflow,
+  },
+  {
+    title: "Ciclo de ingresos",
+    href: "/casos-de-uso/ciclo-de-ingresos",
+    icon: CircleDollarSign,
   },
 ] as const;
 

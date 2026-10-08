@@ -41,7 +41,7 @@ export function Hero() {
         ]}
         softness={0.34}
         grain={0.5}
-        className="min-h-[760px] md:h-[min(100svh,800px)] md:min-h-[600px]"
+        className="min-h-[520px] md:h-[min(100svh,800px)] md:min-h-[600px]"
       >
         <div
           className="pointer-events-none absolute inset-0 overflow-hidden"
@@ -66,9 +66,9 @@ export function Hero() {
             }}
           />
         </div>
-        <div className="relative mx-auto flex min-h-[760px] max-w-7xl flex-col overflow-visible md:h-full md:min-h-0">
+        <div className="relative mx-auto flex min-h-[520px] max-w-6xl flex-col overflow-visible md:h-full md:min-h-0">
           <div
-            className="pointer-events-none relative z-[5] order-2 mt-auto flex w-full shrink-0 justify-center overflow-visible pt-10 sm:pt-12 md:absolute md:inset-y-0 md:left-3/4 md:right-0 md:mt-0 md:block md:w-auto md:pt-0 lg:inset-0"
+            className="pointer-events-none absolute inset-y-0 left-[52%] right-0 z-[5] hidden overflow-visible md:block"
             aria-hidden="true"
           >
             <Image
@@ -77,23 +77,23 @@ export function Hero() {
               width={2356}
               height={1792}
               priority
-              sizes="(min-width: 1280px) 900px, (min-width: 1024px) 820px, (min-width: 768px) 760px, 520px"
-              className="relative h-auto w-[520px] max-w-[calc(100vw-2rem)] opacity-60 md:absolute md:bottom-0 md:left-[-150px] md:w-[760px] md:max-w-none md:opacity-85 lg:left-auto lg:-right-[350px] lg:w-[820px] xl:-right-[260px] xl:w-[900px]"
+              sizes="(min-width: 1024px) 680px, 600px"
+              className="absolute bottom-0 left-[-60px] hidden h-auto w-[600px] max-w-none opacity-85 md:block lg:left-auto lg:-right-[140px] lg:w-[680px]"
             />
           </div>
-          <div className="relative z-10 order-1 flex flex-col items-center px-6 pt-24 text-center sm:px-10 md:absolute md:inset-0 md:h-full md:items-start md:justify-end md:px-10 md:pb-20 md:pt-32 md:text-left lg:px-16 lg:pb-24 xl:pt-40">
+          <div className="relative z-10 flex flex-col items-center px-6 pt-24 pb-16 text-center sm:px-10 md:absolute md:inset-0 md:h-full md:items-start md:justify-end md:px-10 md:pb-20 md:pt-32 md:text-left lg:px-16 lg:pb-24 xl:pt-40">
             <Logo
               variant="full"
               color="white"
               priority
               className="mb-4 h-8 w-auto sm:h-9"
             />
-            <h1 className="font-display max-w-xl text-4xl font-semibold tracking-tight text-white sm:max-w-[32rem] sm:text-5xl md:max-w-[61%] lg:text-6xl xl:max-w-xl">
+            <h1 className="font-display max-w-xl text-4xl font-semibold tracking-tight text-white sm:max-w-[32rem] sm:text-5xl md:max-w-[61%] md:text-[2.5rem] xl:max-w-xl">
               La Infrastructura de
               <br /> Datos de Salud <br />
               para <span className="text-accent">Latinoamérica</span>
             </h1>
-            <p className="mt-4 max-w-md text-base leading-relaxed text-white font-medium sm:text-lg md:max-w-[55%] lg:max-w-[52%] xl:max-w-md">
+            <p className="mt-4 max-w-md text-base leading-relaxed text-white font-medium sm:text-lg md:max-w-[55%] md:text-base lg:max-w-[52%] lg:text-lg xl:max-w-md">
               Conectate con zonda para desarrollar una capa de inteligencia de
               salud unificada sin reemplazar lo que ya existe.
             </p>
