@@ -1,3 +1,4 @@
+import Image from "next/image";
 import * as React from "react";
 
 import { cn } from "@/components/ui/utils";
@@ -5,7 +6,12 @@ import { cn } from "@/components/ui/utils";
 const FEATURE_HERO_GRADIENT =
   "linear-gradient(33deg, var(--Minted-400, #42F0CD) 0%, var(--Sky-400, #51D2FB) 50%, var(--Sky-450, #0DADF2) 100%)";
 
-type FeatureHeroProps = React.ComponentProps<"section">;
+const SOLUTION_HERO_BACKGROUND = "/assets/bg/hero-common-bg.png";
+
+type FeatureHeroProps = React.ComponentProps<"section"> & {
+  /** Public asset used as a full-bleed background. Falls back to the gradient. */
+  backgroundSrc?: string;
+};
 
 type FeaturePanelBleedProps = React.ComponentProps<"div"> & {
   /** Public asset path used as a side-bleed background. */
@@ -51,6 +57,7 @@ function FeatureHero({
   className,
   style,
   children,
+  backgroundSrc,
   ...props
 }: FeatureHeroProps) {
   const childArray = React.Children.toArray(children);
@@ -61,9 +68,23 @@ function FeatureHero({
     <section
       data-slot="feature-hero"
       className={cn("relative isolate overflow-hidden text-foreground", className)}
-      style={{ background: FEATURE_HERO_GRADIENT, ...style }}
+      style={
+        backgroundSrc
+          ? style
+          : { background: FEATURE_HERO_GRADIENT, ...style }
+      }
       {...props}
     >
+      {backgroundSrc ? (
+        <Image
+          src={backgroundSrc}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="pointer-events-none object-cover"
+        />
+      ) : null}
       {bleed}
       <div className="relative z-10 mx-auto grid min-h-[700px] w-full max-w-6xl grid-cols-1 [grid-template-areas:'media'_'content'] lg:grid-cols-2 lg:[grid-template-areas:'content_media']">
         {slots}
@@ -110,6 +131,7 @@ export {
   FeatureHeroMedia,
   FeaturePanelBleed,
   FEATURE_HERO_GRADIENT,
+  SOLUTION_HERO_BACKGROUND,
   type FeatureHeroProps,
   type FeaturePanelBleedProps,
 };

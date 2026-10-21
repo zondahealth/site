@@ -17,6 +17,7 @@ import {
   FeatureHeroContent,
   FeatureHeroMedia,
   FeaturePanelBleed,
+  SOLUTION_HERO_BACKGROUND,
 } from "@/components/ui/feature-hero/feature-hero";
 import {
   Story,
@@ -116,7 +117,7 @@ const faqItems = [
 export default function CicloDeIngresosPage() {
   return (
     <main lang="es" className="overflow-hidden bg-background text-foreground">
-      <FeatureHero>
+      <FeatureHero backgroundSrc={SOLUTION_HERO_BACKGROUND}>
         <FeaturePanelBleed
           src="/assets/fraud/fraud-hero-bleed.png"
           side="right"
