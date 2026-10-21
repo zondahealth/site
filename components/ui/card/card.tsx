@@ -144,9 +144,9 @@ function CardMedia({
     <div
       data-slot="v2-card-media"
       className={cn(
-        "relative mt-auto h-[200px] w-full shrink-0 overflow-hidden rounded-md sm:h-[240px] lg:h-[300px]",
+        "relative mt-auto h-[200px] w-full shrink-0 overflow-hidden rounded-md sm:h-[300px] lg:h-[350px]",
         bleedBottom &&
-          "mt-8 max-h-[200px] min-h-0 self-end overflow-hidden sm:max-h-[240px] lg:max-h-[300px] w-[calc(100%+2*var(--card-pad))] max-w-none -ml-[var(--card-pad)] -mb-[var(--card-pad)] rounded-none",
+          "max-h-[200px] min-h-0 self-end overflow-hidden sm:max-h-[240px] lg:max-h-[400px] w-[calc(100%+2*var(--card-pad))] max-w-none -ml-[var(--card-pad)] -mb-[var(--card-pad)] rounded-none",
         floatOnHover &&
           (bleedBottom
             ? "[&_img]:transition-transform [&_img]:duration-300 [&_img]:ease-out group-hover:[&_img]:-translate-y-2 motion-reduce:[&_img]:transform-none motion-reduce:[&_img]:transition-none"
