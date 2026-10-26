@@ -11,6 +11,7 @@ const SOLUTION_HERO_BACKGROUND = "/assets/bg/hero-common-bg.png";
 type FeatureHeroProps = React.ComponentProps<"section"> & {
   /** Public asset used as a full-bleed background. Falls back to the gradient. */
   backgroundSrc?: string;
+  gridClassName?: string;
 };
 
 type FeaturePanelBleedProps = React.ComponentProps<"div"> & {
@@ -58,6 +59,7 @@ function FeatureHero({
   style,
   children,
   backgroundSrc,
+  gridClassName,
   ...props
 }: FeatureHeroProps) {
   const childArray = React.Children.toArray(children);
@@ -86,7 +88,12 @@ function FeatureHero({
         />
       ) : null}
       {bleed}
-      <div className="relative z-10 mx-auto grid min-h-[700px] w-full max-w-6xl grid-cols-1 [grid-template-areas:'media'_'content'] lg:grid-cols-2 lg:[grid-template-areas:'content_media']">
+      <div
+        className={cn(
+          "relative z-10 mx-auto grid min-h-[700px] w-full max-w-6xl grid-cols-1 [grid-template-areas:'media'_'content'] lg:grid-cols-2 lg:[grid-template-areas:'content_media']",
+          gridClassName,
+        )}
+      >
         {slots}
       </div>
     </section>

@@ -119,54 +119,23 @@ function CardContent({
 }
 
 type CardMediaProps = React.ComponentProps<"div"> & {
-  /** Break out of the card padding. `bottom` sits flush with the sides and bottom edge. */
+  /** `bottom` breaks out of the card padding, flush with the sides and bottom edge. Otherwise the media is centered. */
   bleed?: "bottom";
-  /** Optional decorative layer, kept static behind the media content. */
-  contentBgImage?: string | null;
-  /** Classes for the static background layer (for example, scale or bleed). */
-  contentBgImageClassName?: string;
-  /** Lift the media a little while its card is hovered. */
-  floatOnHover?: boolean;
 };
 
-function CardMedia({
-  className,
-  bleed,
-  contentBgImage = null,
-  contentBgImageClassName,
-  floatOnHover = false,
-  children,
-  ...props
-}: CardMediaProps) {
-  const bleedBottom = bleed === "bottom";
-
+function CardMedia({ className, bleed, ...props }: CardMediaProps) {
   return (
     <div
       data-slot="v2-card-media"
       className={cn(
-        "relative mt-auto h-[200px] w-full shrink-0 overflow-hidden rounded-md sm:h-[300px] lg:h-[350px]",
-        bleedBottom &&
-          "max-h-[200px] min-h-0 self-end overflow-hidden sm:max-h-[240px] lg:max-h-[400px] w-[calc(100%+2*var(--card-pad))] max-w-none -ml-[var(--card-pad)] -mb-[var(--card-pad)] rounded-none",
-        floatOnHover &&
-          (bleedBottom
-            ? "[&_img]:transition-transform [&_img]:duration-300 [&_img]:ease-out group-hover:[&_img]:-translate-y-2 motion-reduce:[&_img]:transform-none motion-reduce:[&_img]:transition-none"
-            : "transition-transform duration-300 ease-out group-hover:-translate-y-2 motion-reduce:transform-none motion-reduce:transition-none"),
+        "relative mt-auto h-[200px] w-full shrink-0 overflow-hidden sm:h-[300px] lg:h-[350px]",
+        bleed === "bottom"
+          ? "max-h-[200px] min-h-0 self-end sm:max-h-[240px] lg:max-h-[400px] w-[calc(100%+2*var(--card-pad))] max-w-none -ml-[var(--card-pad)] -mb-[var(--card-pad)]"
+          : "flex items-center justify-center rounded-md",
         className,
       )}
       {...props}
-    >
-      {contentBgImage && (
-        <div
-          aria-hidden="true"
-          className={cn(
-            "pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat",
-            contentBgImageClassName,
-          )}
-          style={{ backgroundImage: `url(\"${contentBgImage}\")` }}
-        />
-      )}
-      {children}
-    </div>
+    />
   );
 }
 

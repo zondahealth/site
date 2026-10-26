@@ -1,317 +1,269 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, ChevronDown, Zap } from "lucide-react";
+import { BarChart3, Code, Fingerprint, Sparkles } from "lucide-react";
 
-import { Button } from "@/components/ui/button/button";
+import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
+import { Pending } from "@/components/ui/pending/Pending";
 import {
-  FeatureHero,
-  FeatureHeroContent,
-  FeatureHeroMedia,
-  FeaturePanelBleed,
-  SOLUTION_HERO_BACKGROUND,
-} from "@/components/ui/feature-hero/feature-hero";
-import {
-  Story,
-  StoryList,
-  StoryMedia,
-  StoryTitle,
-} from "@/components/ui/story/story";
-import { SectionIntro } from "@/components/use-cases/UseCasePrimitives";
+  BenefitStories,
+  CapabilityGrid,
+  ChecklistSection,
+  FaqList,
+  InlineLink,
+  MetricSlot,
+  SplitFeature,
+  UseCaseHero,
+} from "@/components/use-cases/UseCasePrimitives";
+import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
+
+const title = "Agentes de inteligencia en salud";
+const description =
+  "Conectá datos clínicos, operativos y financieros para que agentes de IA entiendan tus flujos de trabajo y entreguen inteligencia en tiempo real.";
 
 export const metadata: Metadata = {
-  title:
-    "Healthcare AI Agents | Transform Healthcare Data Into Intelligence | Zonda",
-  description:
-    "Zonda enables AI agents for healthcare organizations by connecting fragmented clinical, operational, and financial data to uncover insights, detect patterns, and improve decision-making.",
-  keywords: [
-    "healthcare AI agents",
-    "AI in healthcare operations",
-    "healthcare intelligence platform",
-    "healthcare data interoperability",
-    "healthcare analytics AI",
-    "clinical AI agents",
-    "healthcare automation",
-    "healthcare data infrastructure",
-  ],
+  title,
+  description,
+  alternates: { canonical: "/use-cases/healthcare-intelligence-agents" },
+  openGraph: {
+    title: `${title} | Zonda`,
+    description,
+    url: "/use-cases/healthcare-intelligence-agents",
+  },
 };
 
 const benefits = [
   {
-    title: "Uncover clinical risk across connected data",
-    copy: "Connect treatment history, visits, and clinical events to identify patients who may need proactive support.",
-    href: "#",
-    image: "/assets/fraud/zonda-info.png",
-    imageAlt:
-      "Placeholder visual for clinical intelligence across connected healthcare data",
+    title: "Detectá riesgo clínico en datos conectados",
+    copy: "Conectá historial de tratamiento, visitas y eventos clínicos para identificar pacientes que pueden necesitar apoyo proactivo.",
+    media: (
+      <Image
+        src="/assets/solutions/ai/user-connected.png"
+        alt="Paciente conectada con su medicación, historia clínica, hospital, agenda y signos vitales"
+        fill
+        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+        className="object-cover"
+      />
+    ),
   },
   {
-    title: "See where care operations break down",
-    copy: "Give operations teams one view of schedules, capacity, and patient journeys to detect bottlenecks earlier.",
-    href: "#",
-    image: "/assets/fraud/search.png",
-    imageAlt:
-      "Placeholder visual for operational intelligence across care workflows",
+    title: "Mirá dónde se traba la operación",
+    copy: "Dales a los equipos de operaciones una sola vista de agendas, capacidad y recorridos de pacientes para detectar cuellos de botella antes.",
+    media: (
+      <Image
+        src="/assets/solutions/ai/data-updated.png"
+        alt="Movimientos operativos recién actualizados, con ingresos y egresos de los últimos minutos"
+        fill
+        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+        className="object-cover"
+      />
+    ),
   },
   {
-    title: "Trace financial outcomes back to care",
-    copy: "Link delivered care, authorizations, billing, and settlement data to explain reimbursement changes.",
-    href: "#",
-    image: "/assets/fraud/validated.png",
-    imageAlt:
-      "Placeholder visual for financial intelligence across billing and settlement",
+    title: "Rastreá los resultados financieros hasta la atención",
+    copy: "Vinculá atención brindada, autorizaciones, facturación y liquidación para explicar cambios en los reintegros.",
+    media: (
+      <Image
+        src="/assets/solutions/ai/anomaly.png"
+        alt="Anomalía detectada en un monto de reintegro, marcada como ubicación sospechosa"
+        fill
+        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+        className="object-cover"
+      />
+    ),
   },
-] as const;
+];
+
+const foundation = [
+  { label: "Interoperabilidad", link: "IA normalizada", href: "/use-cases/normalized-ai" },
+  { label: "Identidad", link: "Identidad", href: "/use-cases/identity" },
+  {
+    label: "Transacción de salud",
+    link: "Ciclo de ingresos",
+    href: "/use-cases/revenue-cycle",
+  },
+];
+
+const capabilities = [
+  { title: "IA normalizada", href: "/use-cases/normalized-ai", icon: Sparkles },
+  { title: "Identidad", href: "/use-cases/identity", icon: Fingerprint },
+  { title: "Analítica", href: "/use-cases/analytics", icon: BarChart3 },
+  { title: "API", href: "/developers", icon: Code },
+];
 
 const faqItems = [
   {
-    question: "What are healthcare intelligence agents?",
+    question: "¿Qué son los agentes de inteligencia en salud?",
     answer:
-      "They are AI agents that operate on connected clinical, operational, and financial data to answer questions, detect patterns, and support decisions across healthcare workflows.",
+      "Son agentes de IA que operan sobre datos clínicos, operativos y financieros conectados para responder preguntas, detectar patrones y apoyar decisiones en los flujos de trabajo de salud.",
   },
   {
-    question: "What data sources can Zonda connect?",
+    question: "¿Qué fuentes de datos puede conectar Zonda?",
     answer:
-      "Zonda can connect EHR, billing, payer platforms, scheduling, and other operational systems without replacing them.",
+      "HCE/EHR, facturación, plataformas de financiadores, agendas y otros sistemas operativos, sin reemplazarlos.",
   },
   {
-    question: "How is this different from generic AI tools?",
+    question: "¿En qué se diferencia de herramientas de IA genéricas?",
     answer:
-      "Generic AI tools work on isolated records. Zonda agents understand the relationships between patients, providers, treatments, operations, and financial processes.",
+      "Las herramientas genéricas trabajan sobre registros aislados. Los agentes de Zonda entienden las relaciones entre pacientes, profesionales, tratamientos, operaciones y procesos financieros.",
   },
   {
-    question: "Does Zonda require replacing existing software?",
+    question: "¿Tengo que reemplazar mi software actual?",
     answer:
-      "No. Zonda is designed to connect the systems you already operate and add an intelligence layer across them.",
+      "No. Zonda está pensado para conectar los sistemas que ya operás y sumar una capa de inteligencia por encima.",
   },
   {
-    question: "What kinds of questions can agents answer?",
+    question:
+      "¿Los agentes pueden trabajar entre datos clínicos, operativos y financieros?",
     answer:
-      "Teams can explore questions such as which patients are at risk of treatment interruption, where care operations are breaking down, or why reimbursement changed.",
+      "Sí. Zonda crea un contexto de salud compartido para que los agentes razonen entre dominios en vez de analizar cada sistema por separado.",
   },
   {
-    question: "Can agents work across clinical, operational, and financial data?",
+    question: "¿Cómo les da Zonda contexto de salud a los agentes?",
     answer:
-      "Yes. Zonda creates a shared healthcare context so agents can reason across domains instead of analyzing each system in isolation.",
+      "Normaliza los datos, preserva las relaciones de los flujos de trabajo y conecta los eventos con las personas, los procesos y la actividad financiera que los rodean.",
   },
   {
-    question: "How does Zonda give agents healthcare context?",
-    answer:
-      "Zonda normalizes data, preserves workflow relationships, and connects events to the people, processes, and financial activity around them.",
+    question: "¿Los equipos necesitan conocimientos técnicos?",
+    answer: "No. Los agentes se consultan en lenguaje natural.",
   },
   {
-    question: "Do teams need technical skills to use the agents?",
-    answer:
-      "No. Agents can be queried in natural language, so teams can investigate high-value questions without assembling each dataset by hand.",
+    question: "¿Qué pasa con la privacidad de los datos que usan los agentes?",
+    answer: (
+      <Pending>
+        POLÍTICA DE USO DE DATOS PARA IA A CONFIRMAR: modelos usados, dónde
+        corren, retención
+      </Pending>
+    ),
   },
-] as const;
+];
+
+const splitImageSizes = "(min-width: 1024px) 50vw, 100vw";
 
 export default function HealthcareIntelligenceAgentsPage() {
   return (
-    <main lang="en" className="overflow-hidden bg-background text-foreground">
-      <FeatureHero backgroundSrc={SOLUTION_HERO_BACKGROUND}>
-        <FeaturePanelBleed
-          src="/assets/fraud/fraud-hero-bleed.png"
-          side="right"
-        />
-        <FeatureHeroContent>
-          <div className="">
-            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.10em] text-foreground">
-              Healthcare intelligence agents
-            </p>
-            <h1 className="font-display text-5xl font-semibold leading-[1.04] tracking-[-0.045em] text-foreground">
-              Turn fragmented data into actionable intelligence.
-            </h1>
-            <p className="mt-2 text-lg leading-7 text-foreground/80">
-              Connect clinical, operational, and financial data so AI agents
-              can understand workflows and deliver real-time intelligence.
-            </p>
-            <div className="mt-4">
-              <Button variant="black" asChild>
-                <Link href="#contacto">
-                  Talk to our team
-                  <ArrowRight aria-hidden="true" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </FeatureHeroContent>
-        <FeatureHeroMedia>
-          <Image
-            src="/assets/tbd/asistant-result.png"
-            alt="Asistente Zonda answering a clinical query and returning 135 matching treatments"
-            width={1080}
-            height={1080}
-            priority
-            sizes="(min-width: 1024px) 80vw, 100vw"
-            className="h-auto w-full max-w-[420px] object-contain mx-auto"
-          />
-        </FeatureHeroMedia>
-      </FeatureHero>
-
-      <section className="px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-32">
-        <SectionIntro
-          title="What you need to turn healthcare data into intelligence."
-          className="max-w-4xl text-center mx-auto"
-        />
-
-        <StoryList className="mt-14">
-          {benefits.map((benefit) => (
-            <Story key={benefit.title} href={benefit.href}>
-              <StoryMedia>
-                <Image
-                  src={benefit.image}
-                  alt={benefit.imageAlt}
-                  fill
-                  className="object-cover"
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                />
-              </StoryMedia>
-              <StoryTitle>{benefit.title}</StoryTitle>
-              <p className="text-sm leading-7 text-muted-foreground">
-                {benefit.copy}
-              </p>
-            </Story>
-          ))}
-        </StoryList>
-      </section>
-
-      <section
-        id="how-it-works"
-        className="scroll-mt-24 px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24"
-      >
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <SectionIntro
-            compact
-            eyebrow="The missing layer"
-            title="Healthcare data exists. Intelligence does not."
-            copy="Organizations already collect massive amounts of clinical, operational, and financial information. The problem is that this data lives across systems that were never designed to work together."
-            className="max-w-lg"
-          />
-
-          <Image
-            src="/assets/fraud/timeline-validation.png"
-            alt="Placeholder visual for connecting fragmented healthcare systems into one intelligence layer"
-            width={1000}
-            height={1000}
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="h-auto w-full overflow-hidden rounded-[1.5rem] object-cover"
-          />
-        </div>
-      </section>
-
-      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <SectionIntro
-            compact
-            eyebrow="Healthcare-native reasoning"
-            title="AI agents built for healthcare workflows"
-            copy="Zonda agents operate on connected healthcare data. They understand the relationships between patients, providers, treatments, operations, and financial processes—not just individual records."
-            className="max-w-lg lg:order-2"
-          />
-
-          <Image
-            src="/assets/fraud/heath-panel.png"
-            alt="Placeholder visual for AI agents reasoning across healthcare workflows"
-            width={1000}
-            height={1000}
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="h-auto w-full overflow-hidden rounded-[1.5rem] object-cover lg:order-1"
-          />
-        </div>
-      </section>
-
-      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <SectionIntro
-            compact
-            eyebrow="The intelligence foundation"
-            title="From disconnected systems to intelligent operations"
-            copy="Zonda combines interoperability, data normalization, workflow understanding, and AI reasoning so agents can operate with healthcare context at their core."
-            className="max-w-lg"
-          />
-
-          <Image
-            src="/assets/fraud/fraud-risk-score.png"
-            alt="Placeholder visual for the healthcare intelligence foundation"
-            width={1000}
-            height={1000}
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="h-auto w-full overflow-hidden rounded-[1.5rem] object-cover"
-          />
-        </div>
-      </section>
-
-      <section className="px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-start lg:gap-20">
-            <SectionIntro
-              eyebrow="Intelligence in action"
-              title="Ask a complex healthcare question"
-              copy="Give teams one place to explore what is happening, why it is happening, and where they should act—without assembling each dataset by hand."
-              className="max-w-xl"
+    <main lang="es" className="overflow-hidden bg-background text-foreground">
+      <UseCaseHero
+        eyebrow="Agentes de inteligencia en salud"
+        title="Convertí datos fragmentados en inteligencia accionable"
+        copy={description}
+        primary={{ label: "Hablá con nuestro equipo", href: "/contact" }}
+        media={
+          <div className="flex h-full w-full items-center justify-center px-4 pt-28 pb-8 sm:px-6 sm:pt-32">
+            <Image
+              src="/assets/solutions/ai/hero.png"
+              alt="Asistente Zonda con 124 tratamientos activos, 24 pendientes y pacientes que requieren intervención"
+              width={1316}
+              height={1171}
+              priority
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="h-auto w-auto max-h-[min(560px,100%)] max-w-full object-contain"
             />
-
-            <figure className="relative mx-auto w-full max-w-[560px] lg:mx-0 lg:max-w-none">
-              <Image
-                src="/assets/tbd/asistant-question.png"
-                alt="Asistente Zonda analyzing a natural-language clinical query"
-                width={900}
-                height={900}
-                sizes="(min-width: 1024px) 55vw, 100vw"
-                className="h-auto w-full object-contain"
-              />
-            </figure>
           </div>
-        </div>
-      </section>
+        }
+      />
 
-      <section className="px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-        <div className="mx-auto max-w-5xl">
-          <SectionIntro
-            centered
-            title="Your questions, answered"
-            className="max-w-3xl"
+      <BenefitStories
+        title="Lo que necesitás para convertir datos de salud en inteligencia."
+        items={benefits}
+      />
+
+      <div className="px-6 pb-16 sm:px-10 lg:px-16">
+        <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-2">
+          <MetricSlot
+            label="preguntas respondidas por los agentes"
+            supportText="Métrica a definir"
           />
-
-          <div className="mt-12 divide-y divide-border/80 border-y border-border/80">
-            {faqItems.map((item) => (
-              <details key={item.question} className="group">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-left font-display text-base font-semibold outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-lg [&::-webkit-details-marker]:hidden">
-                  {item.question}
-                  <span className="flex size-8 shrink-0 items-center justify-center rounded-full border border-border bg-white text-primary">
-                    <ChevronDown className="size-4 transition-transform duration-200 group-open:rotate-180" />
-                  </span>
-                </summary>
-                <p className="max-w-3xl pb-6 pr-12 text-sm leading-7 text-muted-foreground sm:text-base">
-                  {item.answer}
-                </p>
-              </details>
-            ))}
-          </div>
+          <MetricSlot
+            label="horas de análisis manual ahorradas"
+            supportText="Métrica a definir"
+          />
         </div>
-      </section>
+      </div>
 
-      <section className="px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-        <div className="mx-auto max-w-5xl text-center">
-          <span className="mx-auto flex size-12 items-center justify-center rounded-2xl border border-border bg-muted text-primary">
-            <Zap className="size-5" strokeWidth={1.7} />
+      <SplitFeature
+        id="como-funciona"
+        eyebrow="La capa que falta"
+        title="Los datos de salud existen. La inteligencia, no."
+        copy="Las organizaciones ya recolectan enormes volúmenes de información clínica, operativa y financiera. El problema es que esos datos viven en sistemas que nunca fueron diseñados para trabajar juntos."
+        media={
+          <Image
+            src="/assets/solutions/ai/dashboard-centra-nube.png"
+            alt="Panel de Médica Salud con ingresos, egresos y categorías como reembolsos, nómina y facturas"
+            width={1254}
+            height={1254}
+            sizes={splitImageSizes}
+            className="h-auto w-full rounded-[1.5rem] object-cover"
+          />
+        }
+      />
+
+      <SplitFeature
+        eyebrow="Razonamiento nativo de salud"
+        title="Agentes de IA construidos para los flujos de la salud"
+        copy="Los agentes de Zonda operan sobre datos de salud conectados. Entienden las relaciones entre pacientes, profesionales, tratamientos, operaciones y procesos financieros, no solo registros sueltos."
+        mediaSide="left"
+        media={
+          // Archivo final sugerido: public/assets/use-cases/agents/feature-2.png
+          <ImagePlaceholder
+            width={1000}
+            height={1000}
+            label="grafo de relaciones paciente ↔ profesional ↔ tratamiento ↔ prestación ↔ liquidación, con el agente…"
+            className="rounded-[1.5rem]"
+          />
+        }
+      />
+
+      <ChecklistSection
+        eyebrow="La base de la inteligencia"
+        title="De sistemas desconectados a operaciones inteligentes"
+        copy="Zonda combina interoperabilidad, normalización de datos, comprensión de flujos de trabajo y razonamiento con IA para que los agentes operen con contexto de salud en su núcleo."
+        items={foundation.map((item) => (
+          <span key={item.label}>
+            <strong className="font-semibold text-foreground">
+              {item.label}
+            </strong>
+            : ver <InlineLink href={item.href}>{item.link}</InlineLink>
           </span>
-          <h2 className="mx-auto mt-7 max-w-4xl font-display text-4xl font-semibold leading-tight tracking-[-0.04em] text-foreground sm:text-5xl lg:text-6xl">
-            The foundation for the next generation of healthcare AI
-          </h2>
-          <p className="mx-auto mt-7 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
-            Connect your data, understand your workflows, and enable
-            intelligent systems to act on top of them.
-          </p>
-          <Button variant="black" size="lg" className="mt-9" asChild>
-            <Link href="#contacto">
-              Talk to our team
-              <ArrowRight aria-hidden="true" />
-            </Link>
-          </Button>
-        </div>
-      </section>
+        ))}
+      />
+
+      <SplitFeature
+        eyebrow="Inteligencia en acción"
+        title="Hacé una pregunta compleja de salud"
+        copy={
+          <>
+            Dales a tus equipos un solo lugar para explorar qué está pasando,
+            por qué está pasando y dónde tienen que actuar, sin armar cada
+            dataset a mano.
+            {/* Nota editorial de la fuente, no se publica: "(tomados del sitio en desarrollo)". */}
+            <span className="mt-3 block">Ejemplos de preguntas:</span>
+          </>
+        }
+        bullets={[
+          "¿Qué pacientes están en riesgo de interrumpir su tratamiento?",
+          "¿Dónde se está trabando la operación asistencial?",
+          "¿Por qué cambió el reintegro?",
+        ]}
+        media={
+          <Image
+            src="/assets/solutions/payments/assistant-window.png"
+            alt="Asistente Zonda respondiendo que encontró 24 tratamientos que requieren seguimiento"
+            width={1254}
+            height={1254}
+            sizes={splitImageSizes}
+            className="h-auto w-full rounded-[1.5rem] object-cover"
+          />
+        }
+      />
+
+      <CapabilityGrid title="Lo que lo hace posible" items={capabilities} />
+
+      <FaqList items={faqItems} />
+
+      <CtaBanner
+        title="Hacele a tus datos las preguntas que importan"
+        buttonText="Hablá con nuestro equipo"
+      />
     </main>
   );
 }

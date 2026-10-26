@@ -2,7 +2,9 @@ import Link from "next/link";
 
 import { Banner } from "@/components/ui/banner/banner";
 import { Button } from "@/components/ui/button/button";
-import Glow, { ORBIT_BORDER_COLORS } from "@/components/ui/glow/Glow";
+import Glow from "@/components/ui/glow/Glow";
+import { ORBIT_BORDER_COLORS } from "@/components/ui/glow/colors";
+import { DOCS_URL } from "@/lib/navigation";
 
 export function ApiBanner() {
   return (
@@ -34,9 +36,19 @@ export function ApiBanner() {
             >
               Construí salud digital sobre una sola plataforma
             </h2>
-            <Button variant="inverse" asChild>
-              <Link href="#api">Ver API</Link>
-            </Button>
+            <p className="-mt-2 text-base leading-7 text-white/70 sm:text-lg">
+              Vos construís la experiencia. Nosotros nos ocupamos de los datos.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Button variant="inverse" asChild>
+                <Link href="/developers">Ver API</Link>
+              </Button>
+              <Button variant="accent" asChild>
+                <a href={DOCS_URL} target="_blank" rel="noopener noreferrer">
+                  Documentación
+                </a>
+              </Button>
+            </div>
           </div>
         </Banner>
       </Glow>

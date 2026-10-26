@@ -3,7 +3,8 @@ import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/components/ui/utils';
-import Glow, { ORBIT_BORDER_COLORS } from '@/components/ui/glow/Glow';
+import Glow from '@/components/ui/glow/Glow';
+import { ORBIT_BORDER_COLORS } from '@/components/ui/glow/colors';
 import styles from './button.module.css';
 
 const buttonVariants = cva(
@@ -11,13 +12,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary:
-          'bg-primary text-primary-foreground shadow-[0_1px_2px_rgba(8,40,97,0.18)] hover:brightness-90',
+        primary: `font-medium ${styles.primary}`,
         black: `border-2 text-[#f8f9ff] ${styles.black}`,
-        accent:
-          'bg-accent text-accent-foreground shadow-[inset_0_1px_0_rgba(255,255,210,0.62)] hover:brightness-[1.04] hover:shadow-[inset_0_1px_0_rgba(255,255,210,0.74),0_0_28px_8px_rgba(234,234,0,0.4)] active:brightness-[0.96]',
-        outline:
-          'border-secondary bg-transparent text-secondary hover:bg-muted',
+        accent: `font-medium ${styles.accent}`,
+        outline: `font-medium ${styles.outline}`,
         ghost: 'bg-transparent text-primary hover:bg-muted',
         inverse: 'bg-card text-primary hover:bg-muted',
       },

@@ -17,9 +17,11 @@
 .hoverBorder {
   position: absolute;
   z-index: 30;
-  inset: 0;
+  /* Reaches the card's border box so its radius lines up with the
+     padding-box clip from overflow: hidden (the card has a 1px border). */
+  inset: -1px;
   box-sizing: border-box;
-  padding: 4px;
+  padding: 5px;
   border-radius: inherit;
   content: '';
   pointer-events: none;
@@ -43,26 +45,24 @@
 }
 
 .hoverableDark .hoverBorder {
-  background: conic-gradient(
-    from var(--card-border-angle),
-    #164b9a 0deg,
-    #b49f16 58deg,
-    #286be8 112deg,
-    #0b9ccc 190deg,
-    #087b98 270deg,
-    #164b9a 360deg
-  );
+  padding: 7px;
+}
+
+.preview .hoverBorder {
+  padding: 8px;
 }
 
 .hoverable:hover .hoverBorder,
-.hoverable:focus-within .hoverBorder {
+.hoverable:focus-within .hoverBorder,
+.preview .hoverBorder {
   opacity: 1;
   animation: card-border-orbit 4.8s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hoverable:hover .hoverBorder,
-  .hoverable:focus-within .hoverBorder {
+  .hoverable:focus-within .hoverBorder,
+  .preview .hoverBorder {
     animation: none;
   }
 }

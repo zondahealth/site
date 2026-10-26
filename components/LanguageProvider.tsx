@@ -11,6 +11,7 @@ import {
 
 import {
   defaultLocale,
+  englishLocaleEnabled,
   isLocale,
   type Locale,
   localeCookieName,
@@ -60,6 +61,11 @@ export function LanguageProvider({
   const [locale, setLocaleState] = useState<Locale>(initialLocale);
 
   useEffect(() => {
+    if (!englishLocaleEnabled) {
+      document.documentElement.lang = defaultLocale;
+      return;
+    }
+
     const storedLocale = window.localStorage.getItem(localeStorageKey);
 
     if (isLocale(storedLocale)) {
@@ -78,6 +84,7 @@ export function LanguageProvider({
         readPath(dictionaries[locale], path) as T,
       t: (path: string) => readString(dictionaries[locale], path),
       setLocale: (nextLocale) => {
+        if (!englishLocaleEnabled && nextLocale !== defaultLocale) return;
         setLocaleState(nextLocale);
         window.localStorage.setItem(localeStorageKey, nextLocale);
         document.cookie = `${localeCookieName}=${nextLocale}; path=/; max-age=31536000; samesite=lax`;

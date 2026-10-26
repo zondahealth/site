@@ -1,3 +1,6 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+
 import { Button } from "@/components/ui/button/button";
 import {
   Card,
@@ -5,6 +8,15 @@ import {
   CardCTA,
   CardTitle,
 } from "@/components/ui/card/card";
+import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
+import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
+import { Pending } from "@/components/ui/pending/Pending";
+import { StoryMedia } from "@/components/ui/story/story";
+
+export const metadata: Metadata = {
+  title: "Demo",
+  robots: { index: false },
+};
 
 const colors = [
   {
@@ -77,6 +89,14 @@ const buttonSizes = ["sm", "default", "lg", "icon"] as const;
 const cardVariants = ["default", "muted", "dark"] as const;
 
 export default function DemoPage() {
+  // DECISIÓN DEMO-1: el design system no se indexa y queda oculto en producción.
+  if (
+    process.env.NODE_ENV === "production" &&
+    process.env.NEXT_PUBLIC_SHOW_DEMO !== "true"
+  ) {
+    notFound();
+  }
+
   return (
     <main className="min-h-screen bg-background px-6 py-12 text-foreground sm:px-10">
       <div className="mx-auto flex max-w-5xl flex-col gap-16">
@@ -207,6 +227,69 @@ export default function DemoPage() {
               </Card>
             ))}
           </div>
+        </section>
+
+        <section className="space-y-6">
+          <div className="space-y-1">
+            <h2 className="font-display text-2xl font-medium tracking-tight">
+              CtaBanner
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              Variants <code>default</code> y <code>dark</code> from{" "}
+              <code>components/ui/cta-banner</code>
+            </p>
+          </div>
+
+          {(["default", "dark"] as const).map((variant) => (
+            <div key={variant} className="space-y-3">
+              <p className="text-sm font-medium text-muted-foreground">
+                {variant}
+              </p>
+              <CtaBanner
+                variant={variant}
+                title="Hacé que cada prestación cuente"
+                subtitle="Conectá atención, validación, facturación, cobro y liquidación."
+                buttonText="Hablá con nuestro equipo"
+              />
+            </div>
+          ))}
+        </section>
+
+        <section className="space-y-6">
+          <div className="space-y-1">
+            <h2 className="font-display text-2xl font-medium tracking-tight">
+              ImagePlaceholder
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              Mantiene la relación de aspecto del asset final y muestra el
+              tamaño junto con la descripción.
+            </p>
+          </div>
+
+          <ImagePlaceholder
+            width={1200}
+            height={1245}
+            label="Hero de caso de uso. Figura principal a la derecha del título, sobre el fondo del hero."
+          />
+
+          <StoryMedia className="max-w-3xl">
+            <ImagePlaceholder
+              fill
+              width={1280}
+              height={720}
+              label="Beneficio. Escena de producto en formato video, dentro de la tarjeta de la historia."
+            />
+          </StoryMedia>
+
+          <ImagePlaceholder
+            width={1000}
+            height={1000}
+            label="Sección dividida. Visual cuadrado junto al texto de la funcionalidad."
+          />
+
+          <p className="text-sm text-muted-foreground">
+            Copy pendiente: <Pending>dato del founder</Pending>
+          </p>
         </section>
       </div>
     </main>

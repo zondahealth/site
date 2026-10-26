@@ -1,8 +1,8 @@
 import { MissingComponentPlaceholder } from "@/components/MissingComponentPlaceholder";
 
 export const metadata = {
-  title: "Política de privacidad | zonda",
-  description: "Política de privacidad de zonda.",
+  title: "Política de privacidad",
+  description: "Política de privacidad de Zonda.",
 };
 
 export default function PrivacyPolicyPage() {

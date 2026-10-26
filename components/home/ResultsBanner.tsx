@@ -6,7 +6,7 @@ const stats = [
   { value: "+30%", label: "Ahorro en costos operativos" },
   { value: "+40%", label: "Reducción en tiempos de espera" },
   { value: "+35%", label: "Reducción en errores médicos" },
-  { value: "+30%", label: "Ahorro en costos operativos" },
+  { value: "+30%", label: "Detección de fraude" },
 ] as const;
 
 export function ResultsBanner() {
@@ -63,6 +63,7 @@ export function ResultsBanner() {
             adaptado a Latinoamérica.
           </p>
 
+          {/* VALIDAR: cifras publicadas en zondahealth.com; confirmar fuente y metodología */}
           <dl className="mt-12 grid w-full grid-cols-2 gap-x-8 gap-y-10 sm:mt-16 lg:gap-x-12 lg:gap-y-14">
             {stats.map((stat, index) => (
               <div

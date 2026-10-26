@@ -1,8 +1,8 @@
 import { MissingComponentPlaceholder } from "@/components/MissingComponentPlaceholder";
 
 export const metadata = {
-  title: "Contacto | zonda",
-  description: "Ponete en contacto con zonda.",
+  title: "Contacto",
+  description: "Ponete en contacto con Zonda.",
 };
 
 export default function ContactPage() {

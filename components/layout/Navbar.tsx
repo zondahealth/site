@@ -5,42 +5,80 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { Logo } from "@/components/layout/Logo";
-import { SolutionsBox, useCases } from "@/components/layout/SolutionsBox";
-import { Button } from "@/components/ui/button/button";
+import { SolutionsBox } from "@/components/layout/SolutionsBox";
 import { useLanguage } from "@/components/LanguageProvider";
-import { supportedLocales } from "@/lib/locale";
-
-const navigationItems = [
-  { label: "Historias", href: "/customer-stories" },
-  { label: "Desarrolladores", href: "/developers" },
-] as const;
+import { Button } from "@/components/ui/button/button";
+import { Pending } from "@/components/ui/pending/Pending";
+import { cn } from "@/components/ui/utils";
+import { englishLocaleEnabled, supportedLocales } from "@/lib/locale";
+import {
+  LOGIN_URL,
+  industryGroups,
+  isLiveRoute,
+  liveOnly,
+  resourceLinks,
+  useCaseGroups,
+  type NavGroup,
+} from "@/lib/navigation";
 
 const navigationItemClassName =
-  "inline-flex h-9 items-center justify-center gap-1 rounded-full px-2.5 text-[11px] font-medium text-foreground/80 outline-none transition-[background-color,color] duration-200 hover:bg-white/35 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring sm:px-3.5 sm:text-[13px]";
+  "inline-flex h-9 items-center justify-center gap-1 whitespace-nowrap rounded-full px-2.5 text-[11px] font-medium text-foreground/80 outline-none transition-[background-color,color] duration-200 hover:bg-white/35 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring sm:px-3.5 sm:text-[13px]";
+
+const solutionTabs: { id: string; label: string; groups: NavGroup[] }[] = [
+  {
+    id: "use-cases",
+    label: "Por caso de uso",
+    groups: useCaseGroups,
+  },
+  {
+    id: "industries",
+    label: "Por sector",
+    groups: industryGroups,
+  },
+];
+
+const showResourcesMenu = isLiveRoute("/resources");
+const resourceMenuItems = liveOnly(resourceLinks);
+const showStoriesLink =
+  !showResourcesMenu && isLiveRoute("/customer-stories");
+const showPricing = isLiveRoute("/pricing");
+const showDevelopers = isLiveRoute("/developers");
 
 export function Navbar() {
   const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileSolutionTab, setMobileSolutionTab] = useState<string | null>(
+    solutionTabs[0]?.id ?? null,
+  );
   const { locale, setLocale } = useLanguage();
   const navigationRef = useRef<HTMLDivElement>(null);
   const solutionsButtonRef = useRef<HTMLButtonElement>(null);
+  const resourcesButtonRef = useRef<HTMLButtonElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (!solutionsOpen && !mobileOpen) return;
+    if (!solutionsOpen && !resourcesOpen && !mobileOpen) return;
 
     function handlePointerDown(event: PointerEvent) {
       if (!navigationRef.current?.contains(event.target as Node)) {
         setSolutionsOpen(false);
+        setResourcesOpen(false);
         setMobileOpen(false);
       }
     }
 
     function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setSolutionsOpen(false);
-        setMobileOpen(false);
-        (mobileOpen ? menuButtonRef : solutionsButtonRef).current?.focus();
+      if (event.key !== "Escape") return;
+      setSolutionsOpen(false);
+      setResourcesOpen(false);
+      setMobileOpen(false);
+      if (mobileOpen) {
+        menuButtonRef.current?.focus();
+      } else if (resourcesOpen) {
+        resourcesButtonRef.current?.focus();
+      } else {
+        solutionsButtonRef.current?.focus();
       }
     }
 
@@ -51,7 +89,7 @@ export function Navbar() {
       document.removeEventListener("pointerdown", handlePointerDown);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [mobileOpen, solutionsOpen]);
+  }, [mobileOpen, resourcesOpen, solutionsOpen]);
 
   useEffect(() => {
     const media = window.matchMedia("(min-width: 768px)");
@@ -61,6 +99,7 @@ export function Navbar() {
         setMobileOpen(false);
       } else {
         setSolutionsOpen(false);
+        setResourcesOpen(false);
       }
     }
 
@@ -70,7 +109,18 @@ export function Navbar() {
 
   function closeMenus() {
     setSolutionsOpen(false);
+    setResourcesOpen(false);
     setMobileOpen(false);
+  }
+
+  function toggleSolutions() {
+    setSolutionsOpen((open) => !open);
+    setResourcesOpen(false);
+  }
+
+  function toggleResources() {
+    setResourcesOpen((open) => !open);
+    setSolutionsOpen(false);
   }
 
   return (
@@ -87,6 +137,7 @@ export function Navbar() {
             <Link
               href="/"
               aria-label="Ir al inicio"
+              onClick={closeMenus}
               className="shrink-0 rounded-full py-0.5 pr-0.5 outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <Logo
@@ -104,7 +155,7 @@ export function Navbar() {
                   type="button"
                   aria-expanded={solutionsOpen}
                   aria-controls="solutions-box"
-                  onClick={() => setSolutionsOpen((open) => !open)}
+                  onClick={toggleSolutions}
                   className={`${navigationItemClassName} ${
                     solutionsOpen ? "bg-white/45 text-foreground" : ""
                   }`}
@@ -120,43 +171,124 @@ export function Navbar() {
                 </button>
               </li>
 
-              {navigationItems.map((item) => (
-                <li key={item.label}>
-                  <Link href={item.href} className={navigationItemClassName}>
-                    {item.label}
+              {showDevelopers ? (
+                <li>
+                  <Link
+                    href="/developers"
+                    onClick={closeMenus}
+                    className={navigationItemClassName}
+                  >
+                    Desarrolladores
                   </Link>
                 </li>
-              ))}
+              ) : null}
+
+              {showPricing ? (
+                <li>
+                  <Link
+                    href="/pricing"
+                    onClick={closeMenus}
+                    className={navigationItemClassName}
+                  >
+                    Precios
+                  </Link>
+                </li>
+              ) : null}
+
+              {showResourcesMenu ? (
+                <li className="relative">
+                  <button
+                    ref={resourcesButtonRef}
+                    type="button"
+                    aria-expanded={resourcesOpen}
+                    aria-controls="resources-menu"
+                    onClick={toggleResources}
+                    className={`${navigationItemClassName} ${
+                      resourcesOpen ? "bg-white/45 text-foreground" : ""
+                    }`}
+                  >
+                    Recursos
+                    <ChevronDown
+                      aria-hidden="true"
+                      className={`size-3.5 opacity-60 transition-transform duration-200 ${
+                        resourcesOpen ? "rotate-180" : ""
+                      }`}
+                      strokeWidth={2}
+                    />
+                  </button>
+                  {resourcesOpen ? (
+                    <div
+                      id="resources-menu"
+                      className="absolute left-0 top-[calc(100%+1.15rem)] min-w-56 rounded-2xl border border-border/80 bg-white p-2 shadow-[0_18px_50px_rgba(20,34,61,0.16)]"
+                    >
+                      <ul>
+                        {resourceMenuItems.map((item) => (
+                          <li key={item.href}>
+                            <Link
+                              href={item.href}
+                              onClick={closeMenus}
+                              className="flex rounded-xl px-3 py-2.5 text-sm font-medium text-foreground/80 outline-none hover:bg-muted/70 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+                            >
+                              {item.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
+                </li>
+              ) : showStoriesLink ? (
+                <li>
+                  <Link
+                    href="/customer-stories"
+                    onClick={closeMenus}
+                    className={navigationItemClassName}
+                  >
+                    Historias
+                  </Link>
+                </li>
+              ) : null}
             </ul>
           </div>
 
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-            <div
-              aria-label="Seleccionar idioma"
-              className="flex items-center text-[10px] font-semibold uppercase sm:text-xs"
+            {englishLocaleEnabled ? (
+              <div
+                aria-label="Seleccionar idioma"
+                className="flex items-center text-[10px] font-semibold uppercase sm:text-xs"
+              >
+                {supportedLocales.map((option, index) => (
+                  <span key={option} className="flex items-center">
+                    <button
+                      type="button"
+                      onClick={() => setLocale(option)}
+                      aria-pressed={locale === option}
+                      className={`rounded-full px-1 py-1 uppercase transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-1.5 ${
+                        locale === option
+                          ? "text-foreground"
+                          : "text-foreground/45 hover:text-foreground"
+                      }`}
+                    >
+                      {option}
+                    </button>
+                    {index < supportedLocales.length - 1 ? (
+                      <span aria-hidden="true" className="text-foreground/35">
+                        |
+                      </span>
+                    ) : null}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+
+            <a
+              href={LOGIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(navigationItemClassName, "hidden md:inline-flex")}
             >
-              {supportedLocales.map((option, index) => (
-                <span key={option} className="flex items-center">
-                  <button
-                    type="button"
-                    onClick={() => setLocale(option)}
-                    aria-pressed={locale === option}
-                    className={`rounded-full px-1 py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-1.5 uppercase ${
-                      locale === option
-                        ? "text-foreground"
-                        : "text-foreground/45 hover:text-foreground"
-                    }`}
-                  >
-                    {option}
-                  </button>
-                  {index < supportedLocales.length - 1 ? (
-                    <span aria-hidden="true" className="text-foreground/35">
-                      |
-                    </span>
-                  ) : null}
-                </span>
-              ))}
-            </div>
+              Iniciar sesión
+            </a>
 
             <Button
               asChild
@@ -164,7 +296,9 @@ export function Navbar() {
               size="sm"
               className="hidden sm:inline-flex"
             >
-              <Link href="#contacto">Contactar</Link>
+              <Link href="/contact" onClick={closeMenus}>
+                Contactar
+              </Link>
             </Button>
 
             <button
@@ -176,6 +310,7 @@ export function Navbar() {
               onClick={() => {
                 setMobileOpen((open) => !open);
                 setSolutionsOpen(false);
+                setResourcesOpen(false);
               }}
               className="inline-flex size-9 items-center justify-center rounded-full text-foreground outline-none transition-colors hover:bg-white/35 focus-visible:ring-2 focus-visible:ring-ring md:hidden"
             >
@@ -204,7 +339,7 @@ export function Navbar() {
                 <button
                   type="button"
                   aria-expanded={solutionsOpen}
-                  onClick={() => setSolutionsOpen((open) => !open)}
+                  onClick={toggleSolutions}
                   className="flex w-full items-center justify-between rounded-xl px-3 py-3 text-left text-sm font-semibold text-foreground outline-none hover:bg-muted/70 focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   Soluciones
@@ -217,38 +352,145 @@ export function Navbar() {
                   />
                 </button>
                 {solutionsOpen ? (
-                  <ul className="mb-1 ml-1 flex flex-col border-l border-border/70 pl-2">
-                    {useCases.map((useCase) => (
-                      <li key={useCase.href}>
+                  <div className="mb-1 ml-1 flex flex-col border-l border-border/70 pl-2">
+                    {solutionTabs.map((tab) => {
+                      const open = mobileSolutionTab === tab.id;
+
+                      return (
+                        <div key={tab.id}>
+                          <button
+                            type="button"
+                            aria-expanded={open}
+                            onClick={() =>
+                              setMobileSolutionTab((current) =>
+                                current === tab.id ? null : tab.id,
+                              )
+                            }
+                            className="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-sm font-medium text-foreground/80 outline-none hover:bg-muted/70 focus-visible:ring-2 focus-visible:ring-ring"
+                          >
+                            {tab.label}
+                            <ChevronDown
+                              aria-hidden="true"
+                              className={`size-3.5 opacity-60 transition-transform duration-200 ${
+                                open ? "rotate-180" : ""
+                              }`}
+                              strokeWidth={2}
+                            />
+                          </button>
+                          {open ? (
+                            <div className="mb-1 ml-2 flex flex-col gap-3 border-l border-border/70 py-1 pl-2">
+                              {tab.groups.map((group) => (
+                                <div key={group.title}>
+                                  <p className="px-3 pt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                                    {group.title}
+                                  </p>
+                                  <ul>
+                                    {group.items.map((item) =>
+                                      isLiveRoute(item.href) ? (
+                                        <li key={item.href}>
+                                          <Link
+                                            href={item.href}
+                                            onClick={closeMenus}
+                                            className="flex rounded-xl px-3 py-2.5 text-sm font-medium text-foreground/80 outline-none hover:bg-muted/70 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+                                          >
+                                            {item.title}
+                                          </Link>
+                                        </li>
+                                      ) : (
+                                        <li
+                                          key={item.href}
+                                          className="flex flex-wrap items-center gap-2 px-3 py-2.5 text-sm font-medium text-foreground/50"
+                                        >
+                                          {item.title}
+                                          <span className="text-[10px]">
+                                            <Pending>Próximamente</Pending>
+                                          </span>
+                                        </li>
+                                      ),
+                                    )}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
+                          ) : null}
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : null}
+              </li>
+
+              {showDevelopers ? (
+                <li>
+                  <Link
+                    href="/developers"
+                    onClick={closeMenus}
+                    className="flex rounded-xl px-3 py-3 text-sm font-semibold text-foreground outline-none hover:bg-muted/70 focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    Desarrolladores
+                  </Link>
+                </li>
+              ) : null}
+
+              {showPricing ? (
+                <li>
+                  <Link
+                    href="/pricing"
+                    onClick={closeMenus}
+                    className="flex rounded-xl px-3 py-3 text-sm font-semibold text-foreground outline-none hover:bg-muted/70 focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    Precios
+                  </Link>
+                </li>
+              ) : null}
+
+              {showResourcesMenu ? (
+                <li>
+                  <p className="px-3 pt-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                    Recursos
+                  </p>
+                  <ul>
+                    {resourceMenuItems.map((item) => (
+                      <li key={item.href}>
                         <Link
-                          href={useCase.href}
+                          href={item.href}
                           onClick={closeMenus}
-                          className="flex rounded-xl px-3 py-2.5 text-sm font-medium text-foreground/80 outline-none hover:bg-muted/70 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+                          className="flex rounded-xl px-3 py-2.5 text-sm font-semibold text-foreground outline-none hover:bg-muted/70 focus-visible:ring-2 focus-visible:ring-ring"
                         >
-                          {useCase.title}
+                          {item.title}
                         </Link>
                       </li>
                     ))}
                   </ul>
-                ) : null}
-              </li>
-
-              {navigationItems.map((item) => (
-                <li key={item.label}>
+                </li>
+              ) : showStoriesLink ? (
+                <li>
                   <Link
-                    href={item.href}
+                    href="/customer-stories"
                     onClick={closeMenus}
                     className="flex rounded-xl px-3 py-3 text-sm font-semibold text-foreground outline-none hover:bg-muted/70 focus-visible:ring-2 focus-visible:ring-ring"
                   >
-                    {item.label}
+                    Historias
                   </Link>
                 </li>
-              ))}
+              ) : null}
+
+              <li>
+                <a
+                  href={LOGIN_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMenus}
+                  className="flex rounded-xl px-3 py-3 text-sm font-semibold text-foreground outline-none hover:bg-muted/70 focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  Iniciar sesión
+                </a>
+              </li>
             </ul>
 
             <div className="border-t border-border/70 p-2 sm:hidden">
               <Button asChild variant="black" size="sm" className="w-full">
-                <Link href="#contacto" onClick={closeMenus}>
+                <Link href="/contact" onClick={closeMenus}>
                   Contactar
                 </Link>
               </Button>

@@ -237,6 +237,15 @@ export function useShaderCanvas(
     let raf = 0;
     let needsDraw = true;
 
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let reduceMotion = motionQuery.matches;
+    const onMotionChange = (event: MediaQueryListEvent) => {
+      reduceMotion = event.matches;
+      needsDraw = true;
+      if (visible && raf === 0) raf = requestAnimationFrame(frame);
+    };
+    motionQuery.addEventListener('change', onMotionChange);
+
     const frame = (now: number) => {
       raf = 0;
       if (!visible) return;
@@ -260,14 +269,15 @@ export function useShaderCanvas(
         }
       }
 
-      if (u.paused && !needsDraw && !sizeDirty) return;
+      const paused = u.paused || reduceMotion;
+      if (paused && !needsDraw && !sizeDirty) return;
 
       if (sizeDirty) applySize();
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
       gl.uniform2f(uRes, lookW, lookH);
-      gl.uniform1f(uTime, u.paused ? (u.frozenAt ?? 0) : (now - start) / 1000);
+      gl.uniform1f(uTime, paused ? (u.frozenAt ?? 0) : (now - start) / 1000);
       gl.uniform3fv(uInk, u.ink);
       gl.uniform3fv(uBg, u.bg);
       gl.uniform1f(uTransp, transparent ? 1 : 0);
@@ -295,6 +305,7 @@ export function useShaderCanvas(
       raf = 0;
       ro.disconnect();
       io.disconnect();
+      motionQuery.removeEventListener('change', onMotionChange);
       gl.deleteProgram(prog); gl.deleteShader(vs); gl.deleteShader(fs); gl.deleteBuffer(buf);
     };
   }, [fragmentSource, transparent, maxDpr, adaptive, maxPixels]);

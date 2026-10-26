@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState, type PointerEvent } from "react";
+import Link from "next/link";
+import { useRef, type PointerEvent } from "react";
 import { Logo } from "@/components/layout/Logo";
+import { Button } from "@/components/ui/button/button";
 import Gradient from "@/components/ui/gradient/Gradient";
 
 const IMAGE_SPOT_RADIUS = 420;
@@ -41,7 +43,7 @@ export function Hero() {
         ]}
         softness={0.34}
         grain={0.5}
-        className="min-h-[520px] md:h-[min(100svh,800px)] md:min-h-[600px]"
+        className="min-h-[520px] md:h-[min(100svh,680px)] md:min-h-[560px]"
       >
         <div
           className="pointer-events-none absolute inset-0 overflow-hidden"
@@ -59,7 +61,7 @@ export function Hero() {
             ref={revealRef}
             src="/assets/home/hero-revealed.png"
             alt=""
-            className="absolute inset-0 h-full w-full object-cover object-left-top opacity-0 transition-opacity duration-500 ease-out"
+            className="absolute inset-0 h-full w-full object-cover object-left-top opacity-0 transition-opacity duration-500 ease-out motion-reduce:transition-none"
             style={{
               WebkitMaskImage: `radial-gradient(circle ${IMAGE_SPOT_RADIUS}px at var(--sx, -999px) var(--sy, -999px), #000 0%, rgba(0,0,0,0.9) 25%, rgba(0,0,0,0.42) 55%, transparent 100%)`,
               maskImage: `radial-gradient(circle ${IMAGE_SPOT_RADIUS}px at var(--sx, -999px) var(--sy, -999px), #000 0%, rgba(0,0,0,0.9) 25%, rgba(0,0,0,0.42) 55%, transparent 100%)`,
@@ -89,14 +91,19 @@ export function Hero() {
               className="mb-4 h-8 w-auto sm:h-9"
             />
             <h1 className="font-display max-w-xl text-4xl font-semibold tracking-tight text-white sm:max-w-[32rem] sm:text-5xl md:max-w-[61%] md:text-[2.5rem] xl:max-w-xl">
-              La Infrastructura de
-              <br /> Datos de Salud <br />
+              La infraestructura de
+              <br /> datos de salud <br />
               para <span className="text-accent">Latinoamérica</span>
             </h1>
             <p className="mt-4 max-w-md text-base leading-relaxed text-white font-medium sm:text-lg md:max-w-[55%] md:text-base lg:max-w-[52%] lg:text-lg xl:max-w-md">
-              Conectate con zonda para desarrollar una capa de inteligencia de
-              salud unificada sin reemplazar lo que ya existe.
+              Conectate con Zonda para desarrollar una capa de inteligencia de
+              salud unificada, sin reemplazar lo que ya existe.
             </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
+              <Button variant="black" asChild>
+                <Link href="/contact">Contactar</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </Gradient>

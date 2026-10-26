@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 
+import { Pending } from "@/components/ui/pending/Pending";
 import {
   Story,
   StoryCTA,
@@ -7,6 +9,7 @@ import {
   StoryMedia,
   StoryTitle,
 } from "@/components/ui/story/story";
+import { isLiveRoute } from "@/lib/navigation";
 
 const stories = [
   {
@@ -18,14 +21,12 @@ const stories = [
   {
     id: "ams",
     title: "AMS por primera vez tiene control sobre sus finanzas",
-    href: "/customer-stories",
     image: "/assets/home/testimonials/t2.png",
   },
   {
     id: "pami",
     title:
       "Profesionales no pierden tiempo al interactuar con diferentes obras sociales, caso PAMI",
-    href: "/customer-stories",
     image: "/assets/home/testimonials/t3.png",
   },
 ] as const;
@@ -44,23 +45,44 @@ export function PossibilitiesBanner() {
           </h2>
         </header>
 
+        {/* DECISIÓN: confirmar autorización de AMS y PAMI para ser nombrados */}
         <StoryList>
-          {stories.map((story) => (
-            <Story key={story.id} href={story.href}>
-              <StoryMedia aria-hidden="true">
-                <Image
-                  src={story.image}
-                  alt=""
-                  fill
-                  className="object-cover"
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                />
-              </StoryMedia>
-              <StoryTitle>{story.title}</StoryTitle>
-              <StoryCTA>Leer la historia</StoryCTA>
-            </Story>
-          ))}
+          {stories.map((story) => {
+            const href =
+              "href" in story && isLiveRoute(story.href) ? story.href : undefined;
+
+            return (
+              <Story key={story.id} href={href}>
+                <StoryMedia aria-hidden="true">
+                  <Image
+                    src={story.image}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  />
+                </StoryMedia>
+                <StoryTitle>{story.title}</StoryTitle>
+                {href ? (
+                  <StoryCTA>Leer la historia</StoryCTA>
+                ) : (
+                  <span className="self-start text-sm">
+                    <Pending>Historia en preparación</Pending>
+                  </span>
+                )}
+              </Story>
+            );
+          })}
         </StoryList>
+
+        {isLiveRoute("/customer-stories") ? (
+          <Link
+            href="/customer-stories"
+            className="mt-10 inline-flex rounded-sm text-sm font-semibold text-secondary underline-offset-4 outline-none hover:underline focus-visible:ring-2 focus-visible:ring-ring sm:text-base"
+          >
+            Ver todas las historias →
+          </Link>
+        ) : null}
       </div>
     </section>
   );

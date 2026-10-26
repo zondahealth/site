@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-import { ContactBanner } from "@/components/home/ContactBanner";
 import { Logo } from "@/components/layout/Logo";
 import { Button } from "@/components/ui/button/button";
 import {
@@ -11,10 +10,17 @@ import {
   FeatureHeroContent,
   FeatureHeroMedia,
 } from "@/components/ui/feature-hero/feature-hero";
-import { SectionIntro } from "@/components/use-cases/UseCasePrimitives";
+import {
+  RelatedLinks,
+  SectionIntro,
+} from "@/components/use-cases/UseCasePrimitives";
+import { isLiveRoute } from "@/lib/navigation";
+import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
+
+const homeHealthHref = "/industries/home-health";
 
 export const metadata: Metadata = {
-  title: "Interdom redujo sus costos operativos un 23% | Zonda",
+  title: "Interdom redujo sus costos operativos un 23%",
   description:
     "Cómo Interdom Argentina digitalizó su operación de internación domiciliaria con Zonda, redujo costos un 23% y procesó más de un millón de registros clínicos.",
 };
@@ -58,7 +64,7 @@ const solutions = [
 
 export default function InterdomPage() {
   return (
-    <main className="overflow-hidden bg-background text-foreground">
+    <main lang="es" className="overflow-hidden bg-background text-foreground">
       <FeatureHero>
         <FeatureHeroContent>
           <p className="mb-2 text-sm font-semibold uppercase tracking-[0.10em] text-foreground">
@@ -73,13 +79,18 @@ export default function InterdomPage() {
             Con más de 500 profesionales en campo, necesitaba digitalizar una
             operación logística compleja sin sumar fricción para sus equipos.
           </p>
-          <div className="mt-6">
+          <div className="mt-6 flex flex-wrap gap-3">
             <Button variant="black" asChild>
-              <Link href="#contacto">
+              <Link href="/contact?origen=interdom">
                 Agendar una llamada
                 <ArrowRight aria-hidden="true" />
               </Link>
             </Button>
+            {isLiveRoute(homeHealthHref) ? (
+              <Button variant="outline" asChild>
+                <Link href={homeHealthHref}>Ver internación domiciliaria</Link>
+              </Button>
+            ) : null}
           </div>
         </FeatureHeroContent>
         <FeatureHeroMedia>
@@ -97,6 +108,7 @@ export default function InterdomPage() {
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
         <div className="mx-auto max-w-5xl">
+          {/* VALIDAR: fuente métricas Interdom — dato publicado en site-new */}
           <dl className="grid divide-y divide-border border-y border-border sm:grid-cols-4 sm:divide-x sm:divide-y-0">
             {metrics.map((metric) => (
               <div
@@ -116,7 +128,7 @@ export default function InterdomPage() {
           <figure className="mt-14 sm:mt-20">
             <div className="overflow-hidden rounded-[1.5rem] bg-muted">
               <Image
-                src="/assets/customer-stories/inderdom-moviles.jpg"
+                src="/assets/customer-stories/interdom-moviles.jpg"
                 alt="Equipo de Interdom junto a su flota de móviles de atención domiciliaria"
                 width={1140}
                 height={660}
@@ -282,7 +294,24 @@ export default function InterdomPage() {
         </div>
       </section>
 
-      <ContactBanner />
+      <RelatedLinks
+        title="Seguí explorando"
+        widthClassName="max-w-5xl"
+        links={[
+          { label: "Internación domiciliaria", href: homeHealthHref },
+          { label: "Operaciones digitales", href: "/use-cases/operations" },
+          {
+            label: "Prevención de fraude y riesgo",
+            href: "/use-cases/fraud-risk-prevention",
+          },
+          { label: "Desarrolladores", href: "/developers" },
+        ]}
+      />
+
+      <CtaBanner
+        title="Construyamos lo que sigue en tu organización."
+        buttonText="Hablemos"
+      />
     </main>
   );
 }

@@ -3,6 +3,10 @@ export const supportedLocales = ["es", "en"] as const;
 export type Locale = (typeof supportedLocales)[number];
 
 export const defaultLocale: Locale = "es";
+
+// DECISIÓN I18N-1: el switch ES/EN queda oculto hasta que existan traducciones.
+export const englishLocaleEnabled =
+  process.env.NEXT_PUBLIC_ENABLE_EN === "true";
 export const localeCookieName = "zonda-locale";
 export const localeStorageKey = "zonda-locale";
 
