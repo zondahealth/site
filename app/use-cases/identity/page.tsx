@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { BadgeCheck, Building2, KeyRound, ShieldCheck } from "lucide-react";
+import { Building2, KeyRound, ShieldCheck } from "lucide-react";
 
-import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
 import { Pending } from "@/components/ui/pending/Pending";
 import {
   BenefitStories,
   CapabilityGrid,
   FaqList,
-  InlineLink,
-  MetricSlot,
-  RelatedLinks,
   SplitFeature,
-  Testimonial,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
 import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
@@ -32,43 +27,46 @@ export const metadata: Metadata = {
   },
 };
 
+const benefitImageSizes =
+  "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
+
 const benefits = [
   {
     title: "Pacientes sin duplicados",
     copy: "El mismo paciente cargado en el hospital, el laboratorio y la obra social se reconoce como uno solo.",
-    // Archivo final sugerido: public/assets/use-cases/identity/benefit-1.png
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Pacientes sin duplicados». Composición: una tarjeta de…"
+      <Image
+        src="/assets/solutions/identity/patient-data-pills-rectangular.png"
+        alt="Perfil único de una paciente conectado a familiares, pagos, turnos, ubicación, estudios y atención médica"
         fill
+        className="object-cover"
+        sizes={benefitImageSizes}
       />
     ),
   },
   {
     title: "Profesionales con perfil propio",
     copy: "Matrícula, especialidades y organizaciones con las que trabaja, en un perfil que lo acompaña.",
-    // Archivo final sugerido: public/assets/use-cases/identity/benefit-2.png
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Profesionales con perfil propio». Composición: una…"
+      <Image
+        src="/assets/solutions/identity/profesional-data.png"
+        alt="Perfil profesional con matrícula 12331 verificada: Juan Dumas, médico clínico, Guatemala 4953"
         fill
+        className="object-cover"
+        sizes={benefitImageSizes}
       />
     ),
   },
   {
     title: "Organizaciones modeladas como son",
     copy: "Holdings, entidades jurídicas, sedes, servicios y equipos, con su jerarquía real.",
-    // Archivo final sugerido: public/assets/use-cases/identity/benefit-3.png
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Organizaciones modeladas como son». Composición: una…"
+      <Image
+        src="/assets/solutions/identity/multiorg.png"
+        alt="Una organización conectada a sus sedes: hospitales, centros de salud, atención domiciliaria y ambulancias"
         fill
+        className="object-cover"
+        sizes={benefitImageSizes}
       />
     ),
   },
@@ -81,11 +79,6 @@ const capabilities = [
     title: "Fraude",
     href: "/use-cases/fraud-risk-prevention",
     icon: ShieldCheck,
-  },
-  {
-    title: "Conexión de prestadores",
-    href: "/use-cases/provider-credentialing",
-    icon: BadgeCheck,
   },
 ];
 
@@ -123,13 +116,6 @@ const faqItems = [
   },
 ];
 
-const relatedLinks = [
-  { label: "Conexión de prestadores", href: "/use-cases/provider-credentialing" },
-  { label: "RRHH", href: "/use-cases/workforce" },
-  { label: "Financiadores", href: "/industries/payers" },
-  { label: "Atención multi-financiador", href: "/use-cases/multi-payer-care" },
-];
-
 export default function IdentityPage() {
   return (
     <main lang="es" className="overflow-hidden bg-background text-foreground">
@@ -160,23 +146,6 @@ export default function IdentityPage() {
         items={benefits}
       />
 
-      <div className="px-6 pb-16 sm:px-10 lg:px-16">
-        <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <MetricSlot
-            label="reducción de registros duplicados"
-            supportText="Métrica a definir"
-          />
-          <MetricSlot
-            label="identidades unificadas"
-            supportText="Métrica a definir"
-          />
-          <MetricSlot
-            label="tiempo de alta de un profesional"
-            supportText="Métrica a definir"
-          />
-        </div>
-      </div>
-
       <SplitFeature
         title="Identidad de pacientes"
         bullets={[
@@ -185,12 +154,13 @@ export default function IdentityPage() {
           "Consentimientos y accesos auditados",
         ]}
         media={
-          // Archivo final sugerido: public/assets/use-cases/identity/feature-1.png
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="tres registros parecidos ('María Eteria', 'M. Etería', 'ETERIA MARIA') fusionándose en un único perfil,…"
-            className="rounded-[1.5rem]"
+          <Image
+            src="/assets/solutions/identity/patient-verified.png"
+            alt="Paciente con identidad verificada junto a su documento nacional de identidad argentino"
+            width={1080}
+            height={1080}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="h-auto w-full rounded-[1.5rem] object-cover"
           />
         }
       />
@@ -201,20 +171,16 @@ export default function IdentityPage() {
         bullets={[
           "Perfil único con matrícula, especialidades y credenciales",
           "Vinculación con múltiples organizaciones y financiadores",
-          <>
-            Base para{" "}
-            <InlineLink href="/use-cases/provider-credentialing">
-              conexión de prestadores
-            </InlineLink>
-          </>,
+          "Base para compartir matrícula y credenciales con cada organización",
         ]}
         media={
-          // Archivo final sugerido: public/assets/use-cases/identity/feature-2.png
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="perfil de profesional con sus organizaciones vinculadas como chips (Clínica Centro, HomeCare Sur,…"
-            className="rounded-[1.5rem]"
+          <Image
+            src="/assets/solutions/identity/doctor-profile.png"
+            alt="Perfil de profesional con matrícula 12331 y datos verificados: Juan Dumas, médico clínico, Guatemala 4953"
+            width={1402}
+            height={1122}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="h-auto w-full rounded-[1.5rem] object-cover"
           />
         }
       />
@@ -223,37 +189,22 @@ export default function IdentityPage() {
         title="Identidad de organizaciones y accesos"
         bullets={[
           "Estructura multi-entidad: holding, entidades, sedes y equipos",
+          "Alta digital de cada miembro del equipo, con legajo, matrícula y alertas de vencimiento",
+          "Disponibilidad y asignaciones por sede, zona y especialidad, con historial de cambios",
           "Permisos granulares por rol y sede, con auditoría de quién hizo qué y cuándo",
           "OAuth 2.0 inbound y outbound para apps propias y de terceros",
         ]}
         media={
-          // Archivo final sugerido: public/assets/use-cases/identity/feature-3.png
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="matriz de permisos (Director Médico, Médico, Enfermería, Administración, Auditor externo × Pacientes,…"
-            className="rounded-[1.5rem]"
+          <Image
+            src="/assets/solutions/identity/staff.png"
+            alt="Gestión de integrantes de una clínica con roles como Director Médico, Médico, Enfermería, Administración y Auditor, y su estado de acceso"
+            width={1254}
+            height={1254}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="h-auto w-full rounded-[1.5rem] object-cover"
           />
         }
       />
-
-      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-5xl">
-          <Testimonial
-            quote={
-              <>
-                “<Pending>TESTIMONIO A DEFINIR</Pending>”
-              </>
-            }
-            name={<Pending>NOMBRE</Pending>}
-            role={
-              <>
-                <Pending>CARGO</Pending>, <Pending>ORGANIZACIÓN</Pending>
-              </>
-            }
-          />
-        </div>
-      </section>
 
       <CapabilityGrid title="Lo que lo hace posible" items={capabilities} />
 
@@ -263,8 +214,6 @@ export default function IdentityPage() {
         title="Empezá por saber quién es quién"
         buttonText="Hablemos"
       />
-
-      <RelatedLinks links={relatedLinks} />
     </main>
   );
 }

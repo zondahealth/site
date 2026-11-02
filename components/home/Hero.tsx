@@ -28,7 +28,7 @@ export function Hero() {
   return (
     <section
       aria-label="Hero"
-      className="relative overflow-x-clip"
+      className="relative overflow-clip"
       onPointerMove={onPointerMove}
     >
       <Gradient
@@ -43,7 +43,7 @@ export function Hero() {
         ]}
         softness={0.34}
         grain={0.5}
-        className="min-h-[520px] md:h-[min(100svh,680px)] md:min-h-[560px]"
+        className="min-h-[640px] sm:min-h-[720px] md:h-[min(100svh,680px)] md:min-h-[560px] lg:h-[min(100svh,960px)] lg:min-h-[800px] xl:h-[min(100svh,1040px)] xl:min-h-[880px]"
       >
         <div
           className="pointer-events-none absolute inset-0 overflow-hidden"
@@ -68,43 +68,40 @@ export function Hero() {
             }}
           />
         </div>
-        <div className="relative mx-auto flex min-h-[520px] max-w-6xl flex-col overflow-visible md:h-full md:min-h-0">
-          <div
-            className="pointer-events-none absolute inset-y-0 left-[52%] right-0 z-[5] hidden overflow-visible md:block"
-            aria-hidden="true"
-          >
-            <Image
-              src="/assets/home/heracles-aurora.png"
-              alt=""
-              width={2356}
-              height={1792}
-              priority
-              sizes="(min-width: 1024px) 680px, 600px"
-              className="absolute bottom-0 left-[-60px] hidden h-auto w-[600px] max-w-none opacity-85 md:block lg:left-auto lg:-right-[140px] lg:w-[680px]"
-            />
-          </div>
-          <div className="relative z-10 flex flex-col items-center px-6 pt-24 pb-16 text-center sm:px-10 md:absolute md:inset-0 md:h-full md:items-start md:justify-end md:px-10 md:pb-20 md:pt-32 md:text-left lg:px-16 lg:pb-24 xl:pt-40">
-            <Logo
-              variant="full"
-              color="white"
-              priority
-              className="mb-4 h-8 w-auto sm:h-9"
-            />
-            <h1 className="font-display max-w-xl text-4xl font-semibold tracking-tight text-white sm:max-w-[32rem] sm:text-5xl md:max-w-[61%] md:text-[2.5rem] xl:max-w-xl">
-              La infraestructura de
-              <br /> datos de salud <br />
-              para <span className="text-accent">Latinoamérica</span>
-            </h1>
-            <p className="mt-4 max-w-md text-base leading-relaxed text-white font-medium sm:text-lg md:max-w-[55%] md:text-base lg:max-w-[52%] lg:text-lg xl:max-w-md">
-              Conectate con Zonda para desarrollar una capa de inteligencia de
-              salud unificada, sin reemplazar lo que ya existe.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
-              <Button variant="black" asChild>
-                <Link href="/contact">Contactar</Link>
-              </Button>
+        <div className="relative z-10 mx-auto h-full min-h-[640px] w-full max-w-[96rem] overflow-visible sm:min-h-[720px]">
+          <div className="relative z-10 flex min-h-[640px] h-full flex-col items-center justify-center px-6 pt-24 pb-16 text-center sm:min-h-[720px] sm:px-10 md:items-start md:px-10 md:py-28 md:text-left lg:px-16 xl:px-20">
+            <div className="flex w-max max-w-full flex-col items-center md:items-start">
+              <Logo
+                variant="full"
+                color="white"
+                priority
+                className="mb-4 h-8 w-auto sm:h-9 lg:mb-6 lg:h-10 xl:h-11"
+              />
+              <h1 className="font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-[4rem] xl:leading-[1.05]">
+                La infraestructura de
+                <br /> datos de salud <br />
+                para <span className="text-accent">Latinoamérica</span>
+              </h1>
+              <p className="mt-4 max-w-md text-base leading-relaxed font-medium text-white sm:text-lg lg:mt-6 lg:max-w-lg lg:text-xl xl:max-w-lg">
+                Conectate con Zonda para desarrollar una capa de inteligencia de
+                salud unificada, sin reemplazar lo que ya existe.
+              </p>
+              <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start lg:mt-10">
+                <Button variant="black" asChild>
+                  <Link href="/contact">Contactar</Link>
+                </Button>
+              </div>
             </div>
           </div>
+          <Image
+            src="/assets/home/hero.png"
+            alt=""
+            width={1378}
+            height={1080}
+            priority
+            sizes="1400px"
+            className="pointer-events-none absolute bottom-0 hidden w-auto max-w-none md:left-[28rem] md:block md:h-[min(620px,calc(100%-6.5rem))] lg:left-[28.8rem] lg:h-[min(740px,calc(100%-7rem))] xl:right-[-8rem] xl:left-auto xl:h-[min(780px,calc(100%-7rem))]"
+          />
         </div>
       </Gradient>
     </section>

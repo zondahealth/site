@@ -63,16 +63,14 @@ export default function Home() {
       <Separator thickness={2} />
       <Gradient
         colors={["#f6fbff", "#fffff1", "#ffffff", "#fffefa", "#f7fcff"]}
-        className="flex flex-col gap-24"
+        className="flex flex-col gap-32 pt-12 sm:gap-40 sm:pt-16 lg:gap-48 lg:pt-20"
       >
         <Products />
-        <PossibilitiesBanner />
-        <div>
-          <AiInfraBanner />
-          <ResultsBanner />
-          <ApiBanner />
-        </div>
+        <AiInfraBanner />
+        <ResultsBanner />
+        <ApiBanner />
         <SectorsBanner />
+        <PossibilitiesBanner />
         <CtaBanner
           title={
             <>

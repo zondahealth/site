@@ -90,7 +90,7 @@ function FeatureHero({
       {bleed}
       <div
         className={cn(
-          "relative z-10 mx-auto grid min-h-[700px] w-full max-w-6xl grid-cols-1 [grid-template-areas:'media'_'content'] lg:grid-cols-2 lg:[grid-template-areas:'content_media']",
+          "relative z-10 mx-auto grid min-h-[650px] w-full max-w-7xl grid-cols-1 [grid-template-areas:'content'_'media'] lg:grid-cols-2 lg:[grid-template-areas:'content_media']",
           gridClassName,
         )}
       >

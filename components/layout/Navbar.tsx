@@ -15,10 +15,9 @@ import {
   LOGIN_URL,
   industryGroups,
   isLiveRoute,
-  liveOnly,
-  resourceLinks,
   useCaseGroups,
   type NavGroup,
+  type NavLink,
 } from "@/lib/navigation";
 
 const navigationItemClassName =
@@ -37,16 +36,44 @@ const solutionTabs: { id: string; label: string; groups: NavGroup[] }[] = [
   },
 ];
 
-const showResourcesMenu = isLiveRoute("/resources");
-const resourceMenuItems = liveOnly(resourceLinks);
+function MobileSolutionLink({
+  item,
+  onNavigate,
+}: {
+  item: NavLink;
+  onNavigate: () => void;
+}) {
+  if (isLiveRoute(item.href)) {
+    return (
+      <li>
+        <Link
+          href={item.href}
+          onClick={onNavigate}
+          className="flex rounded-xl px-3 py-2.5 text-sm font-medium text-foreground/80 outline-none hover:bg-muted/70 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          {item.title}
+        </Link>
+      </li>
+    );
+  }
+
+  return (
+    <li className="flex flex-wrap items-center gap-2 px-3 py-2.5 text-sm font-medium text-foreground/50">
+      {item.title}
+      <span className="text-[10px]">
+        <Pending>Próximamente</Pending>
+      </span>
+    </li>
+  );
+}
+
 const showStoriesLink =
-  !showResourcesMenu && isLiveRoute("/customer-stories");
+  !isLiveRoute("/resources") && isLiveRoute("/customer-stories");
 const showPricing = isLiveRoute("/pricing");
 const showDevelopers = isLiveRoute("/developers");
 
 export function Navbar() {
   const [solutionsOpen, setSolutionsOpen] = useState(false);
-  const [resourcesOpen, setResourcesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSolutionTab, setMobileSolutionTab] = useState<string | null>(
     solutionTabs[0]?.id ?? null,
@@ -54,16 +81,14 @@ export function Navbar() {
   const { locale, setLocale } = useLanguage();
   const navigationRef = useRef<HTMLDivElement>(null);
   const solutionsButtonRef = useRef<HTMLButtonElement>(null);
-  const resourcesButtonRef = useRef<HTMLButtonElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (!solutionsOpen && !resourcesOpen && !mobileOpen) return;
+    if (!solutionsOpen && !mobileOpen) return;
 
     function handlePointerDown(event: PointerEvent) {
       if (!navigationRef.current?.contains(event.target as Node)) {
         setSolutionsOpen(false);
-        setResourcesOpen(false);
         setMobileOpen(false);
       }
     }
@@ -71,12 +96,9 @@ export function Navbar() {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key !== "Escape") return;
       setSolutionsOpen(false);
-      setResourcesOpen(false);
       setMobileOpen(false);
       if (mobileOpen) {
         menuButtonRef.current?.focus();
-      } else if (resourcesOpen) {
-        resourcesButtonRef.current?.focus();
       } else {
         solutionsButtonRef.current?.focus();
       }
@@ -89,7 +111,7 @@ export function Navbar() {
       document.removeEventListener("pointerdown", handlePointerDown);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [mobileOpen, resourcesOpen, solutionsOpen]);
+  }, [mobileOpen, solutionsOpen]);
 
   useEffect(() => {
     const media = window.matchMedia("(min-width: 768px)");
@@ -99,7 +121,6 @@ export function Navbar() {
         setMobileOpen(false);
       } else {
         setSolutionsOpen(false);
-        setResourcesOpen(false);
       }
     }
 
@@ -109,25 +130,18 @@ export function Navbar() {
 
   function closeMenus() {
     setSolutionsOpen(false);
-    setResourcesOpen(false);
     setMobileOpen(false);
   }
 
   function toggleSolutions() {
     setSolutionsOpen((open) => !open);
-    setResourcesOpen(false);
-  }
-
-  function toggleResources() {
-    setResourcesOpen((open) => !open);
-    setSolutionsOpen(false);
   }
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-3 sm:px-6 sm:pt-5">
       <div
         ref={navigationRef}
-        className="pointer-events-auto relative w-full max-w-5xl"
+        className="pointer-events-auto relative w-full max-w-7xl"
       >
         <nav
           aria-label="Navegación principal"
@@ -195,49 +209,7 @@ export function Navbar() {
                 </li>
               ) : null}
 
-              {showResourcesMenu ? (
-                <li className="relative">
-                  <button
-                    ref={resourcesButtonRef}
-                    type="button"
-                    aria-expanded={resourcesOpen}
-                    aria-controls="resources-menu"
-                    onClick={toggleResources}
-                    className={`${navigationItemClassName} ${
-                      resourcesOpen ? "bg-white/45 text-foreground" : ""
-                    }`}
-                  >
-                    Recursos
-                    <ChevronDown
-                      aria-hidden="true"
-                      className={`size-3.5 opacity-60 transition-transform duration-200 ${
-                        resourcesOpen ? "rotate-180" : ""
-                      }`}
-                      strokeWidth={2}
-                    />
-                  </button>
-                  {resourcesOpen ? (
-                    <div
-                      id="resources-menu"
-                      className="absolute left-0 top-[calc(100%+1.15rem)] min-w-56 rounded-2xl border border-border/80 bg-white p-2 shadow-[0_18px_50px_rgba(20,34,61,0.16)]"
-                    >
-                      <ul>
-                        {resourceMenuItems.map((item) => (
-                          <li key={item.href}>
-                            <Link
-                              href={item.href}
-                              onClick={closeMenus}
-                              className="flex rounded-xl px-3 py-2.5 text-sm font-medium text-foreground/80 outline-none hover:bg-muted/70 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
-                            >
-                              {item.title}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : null}
-                </li>
-              ) : showStoriesLink ? (
+              {showStoriesLink ? (
                 <li>
                   <Link
                     href="/customer-stories"
@@ -379,38 +351,36 @@ export function Navbar() {
                           </button>
                           {open ? (
                             <div className="mb-1 ml-2 flex flex-col gap-3 border-l border-border/70 py-1 pl-2">
-                              {tab.groups.map((group) => (
-                                <div key={group.title}>
-                                  <p className="px-3 pt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                                    {group.title}
-                                  </p>
-                                  <ul>
-                                    {group.items.map((item) =>
-                                      isLiveRoute(item.href) ? (
-                                        <li key={item.href}>
-                                          <Link
-                                            href={item.href}
-                                            onClick={closeMenus}
-                                            className="flex rounded-xl px-3 py-2.5 text-sm font-medium text-foreground/80 outline-none hover:bg-muted/70 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
-                                          >
-                                            {item.title}
-                                          </Link>
-                                        </li>
-                                      ) : (
-                                        <li
+                              {tab.id === "use-cases" ? (
+                                <ul>
+                                  {tab.groups.flatMap((group) =>
+                                    group.items.map((item) => (
+                                      <MobileSolutionLink
+                                        key={item.href}
+                                        item={item}
+                                        onNavigate={closeMenus}
+                                      />
+                                    )),
+                                  )}
+                                </ul>
+                              ) : (
+                                tab.groups.map((group) => (
+                                  <div key={group.title}>
+                                    <p className="px-3 pt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                                      {group.title}
+                                    </p>
+                                    <ul>
+                                      {group.items.map((item) => (
+                                        <MobileSolutionLink
                                           key={item.href}
-                                          className="flex flex-wrap items-center gap-2 px-3 py-2.5 text-sm font-medium text-foreground/50"
-                                        >
-                                          {item.title}
-                                          <span className="text-[10px]">
-                                            <Pending>Próximamente</Pending>
-                                          </span>
-                                        </li>
-                                      ),
-                                    )}
-                                  </ul>
-                                </div>
-                              ))}
+                                          item={item}
+                                          onNavigate={closeMenus}
+                                        />
+                                      ))}
+                                    </ul>
+                                  </div>
+                                ))
+                              )}
                             </div>
                           ) : null}
                         </div>
@@ -444,26 +414,7 @@ export function Navbar() {
                 </li>
               ) : null}
 
-              {showResourcesMenu ? (
-                <li>
-                  <p className="px-3 pt-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                    Recursos
-                  </p>
-                  <ul>
-                    {resourceMenuItems.map((item) => (
-                      <li key={item.href}>
-                        <Link
-                          href={item.href}
-                          onClick={closeMenus}
-                          className="flex rounded-xl px-3 py-2.5 text-sm font-semibold text-foreground outline-none hover:bg-muted/70 focus-visible:ring-2 focus-visible:ring-ring"
-                        >
-                          {item.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ) : showStoriesLink ? (
+              {showStoriesLink ? (
                 <li>
                   <Link
                     href="/customer-stories"

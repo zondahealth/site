@@ -1,35 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 
-import { Pending } from "@/components/ui/pending/Pending";
-import {
-  Story,
-  StoryCTA,
-  StoryList,
-  StoryMedia,
-  StoryTitle,
-} from "@/components/ui/story/story";
+import { Testimonials } from "@/components/testimonials/Testimonials";
 import { isLiveRoute } from "@/lib/navigation";
-
-const stories = [
-  {
-    id: "interdom",
-    title: "Interdom transforma su organización y se hace más eficiente",
-    href: "/customer-stories/interdom",
-    image: "/assets/home/testimonials/t1.png",
-  },
-  {
-    id: "ams",
-    title: "AMS por primera vez tiene control sobre sus finanzas",
-    image: "/assets/home/testimonials/t2.png",
-  },
-  {
-    id: "pami",
-    title:
-      "Profesionales no pierden tiempo al interactuar con diferentes obras sociales, caso PAMI",
-    image: "/assets/home/testimonials/t3.png",
-  },
-] as const;
 
 export function PossibilitiesBanner() {
   return (
@@ -46,34 +18,7 @@ export function PossibilitiesBanner() {
         </header>
 
         {/* DECISIÓN: confirmar autorización de AMS y PAMI para ser nombrados */}
-        <StoryList>
-          {stories.map((story) => {
-            const href =
-              "href" in story && isLiveRoute(story.href) ? story.href : undefined;
-
-            return (
-              <Story key={story.id} href={href}>
-                <StoryMedia aria-hidden="true">
-                  <Image
-                    src={story.image}
-                    alt=""
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  />
-                </StoryMedia>
-                <StoryTitle>{story.title}</StoryTitle>
-                {href ? (
-                  <StoryCTA>Leer la historia</StoryCTA>
-                ) : (
-                  <span className="self-start text-sm">
-                    <Pending>Historia en preparación</Pending>
-                  </span>
-                )}
-              </Story>
-            );
-          })}
-        </StoryList>
+        <Testimonials />
 
         {isLiveRoute("/customer-stories") ? (
           <Link

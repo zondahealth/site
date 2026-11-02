@@ -99,7 +99,7 @@ export default function DemoPage() {
 
   return (
     <main className="min-h-screen bg-background px-6 py-12 text-foreground sm:px-10">
-      <div className="mx-auto flex max-w-5xl flex-col gap-16">
+      <div className="mx-auto flex max-w-7xl flex-col gap-16">
         <header className="space-y-2">
           <p className="text-sm font-medium uppercase tracking-[0.16em] text-muted-foreground">
             Design system
@@ -235,12 +235,12 @@ export default function DemoPage() {
               CtaBanner
             </h2>
             <p className="text-sm text-muted-foreground">
-              Variants <code>default</code> y <code>dark</code> from{" "}
-              <code>components/ui/cta-banner</code>
+              Variants <code>default</code>, <code>dark</code> y <code>night</code>{" "}
+              from <code>components/ui/cta-banner</code>
             </p>
           </div>
 
-          {(["default", "dark"] as const).map((variant) => (
+          {(["default", "dark", "night"] as const).map((variant) => (
             <div key={variant} className="space-y-3">
               <p className="text-sm font-medium text-muted-foreground">
                 {variant}

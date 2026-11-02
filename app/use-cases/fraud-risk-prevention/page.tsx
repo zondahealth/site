@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { BadgeCheck, Bot, CircleDollarSign, Fingerprint } from "lucide-react";
+import { Bot, CircleDollarSign, Fingerprint } from "lucide-react";
 
 import {
   BenefitStories,
@@ -98,14 +98,8 @@ const capabilities = [
   {
     title: "Agentes de inteligencia",
     copy: "Investigación en lenguaje natural.",
-    href: "/use-cases/healthcare-intelligence-agents",
+    href: "/use-cases/normalized-ai",
     icon: Bot,
-  },
-  {
-    title: "Conexión de prestadores",
-    copy: "Credenciales verificadas.",
-    href: "/use-cases/provider-credentialing",
-    icon: BadgeCheck,
   },
 ];
 
@@ -159,18 +153,17 @@ export default function FraudRiskPreventionPage() {
         secondary={{ label: "Ver cómo funciona", href: "#como-funciona" }}
         secondaryVariant="inverse"
         mediaClassName="overflow-visible"
-        gridClassName="lg:min-h-[600px]"
         contentClassName="lg:pt-32 lg:pb-20"
         media={
-          <div className="relative h-[300px] w-full sm:h-[440px] lg:h-full">
+          <div className="relative h-[340px] w-full sm:h-[480px] lg:h-full">
             <Image
-              src="/assets/solutions/fraud/hipocrates-fraud.png"
-              alt="Hipócrates verificando identidad, documentación y ubicación de una operación válida"
-              width={1016}
-              height={658}
+              src="/assets/solutions/fraud/hero.png"
+              alt="Hipócrates con linterna y gorra de detective junto a la alerta Anomalía Detectada"
+              width={1369}
+              height={1009}
               priority
-              sizes="(min-width: 1024px) 860px, 640px"
-              className="absolute bottom-0 left-1/2 h-auto w-[440px] max-w-none -translate-x-1/2 sm:w-[640px] lg:w-[760px] lg:-translate-x-[56%] xl:w-[860px]"
+              sizes="(min-width: 1024px) 820px, 90vw"
+              className="absolute bottom-0 left-1/2 h-auto w-full max-w-none -translate-x-1/2 sm:w-[620px] lg:left-auto lg:w-[min(800px,calc(50vw+1rem))] lg:translate-x-0 lg:right-[calc(min(0px,(80rem-100vw)/2)+1rem)]"
             />
           </div>
         }

@@ -51,48 +51,27 @@ function DarkLink({ href, children }: { href: string; children: string }) {
   );
 }
 
+const benefitImageSizes =
+  "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
+
 const benefits = [
   {
     title: "API diseñada para construir",
     copy: "Recursos predecibles, endpoints claros y una integración que se adapta a tu stack. Documentada con OpenAPI, con autenticación estándar y rate limiting inteligente.",
-    // Archivo final sugerido: public/assets/developers/benefit-1.png
-    media: (
-      <ImagePlaceholder
-        tone="dark"
-        width={1280}
-        height={720}
-        label="Ilustración horizontal para la tarjeta «API diseñada para construir». Composición: un editor de código con un endpoint REST…"
-        fill
-      />
-    ),
+    src: "/assets/developers/benefit-1.png",
+    alt: "Dos manos conectan un cable, ilustración de una API lista para integrar",
   },
   {
     title: "Eventos en tiempo real",
     copy: "Mantené tus sistemas sincronizados con eventos que acompañan cada momento del cuidado (webhooks).",
-    // Archivo final sugerido: public/assets/developers/benefit-2.png
-    media: (
-      <ImagePlaceholder
-        tone="dark"
-        width={1280}
-        height={720}
-        label="Ilustración horizontal para la tarjeta «Eventos en tiempo real». Composición: un stream de eventos webhook…"
-        fill
-      />
-    ),
+    src: "/assets/developers/benefit-2.png",
+    alt: "Un cronómetro, ilustración de eventos en tiempo real",
   },
   {
     title: "Seguridad desde el inicio",
     copy: "Personal Access Tokens, OAuth 2.0 inbound/outbound, cifrado en tránsito y en reposo, aislamiento multi-tenant.",
-    // Archivo final sugerido: public/assets/developers/benefit-3.png
-    media: (
-      <ImagePlaceholder
-        tone="dark"
-        width={1280}
-        height={720}
-        label="Ilustración horizontal para la tarjeta «Seguridad desde el inicio». Composición: un token con scopes y un candado…"
-        fill
-      />
-    ),
+    src: "/assets/developers/benefit-3.png",
+    alt: "Un escudo, ilustración de seguridad desde el inicio",
   },
 ];
 
@@ -200,7 +179,23 @@ export default function DevelopersPage() {
 
       <Separator />
 
-      <BenefitStories inverse title="Una base sólida" items={benefits} />
+      <BenefitStories
+        inverse
+        title="Una base sólida"
+        items={benefits.map((item) => ({
+          title: item.title,
+          copy: item.copy,
+          media: (
+            <Image
+              src={item.src}
+              alt={item.alt}
+              fill
+              className="object-cover"
+              sizes={benefitImageSizes}
+            />
+          ),
+        }))}
+      />
 
       <SplitFeature
         inverse
@@ -398,7 +393,7 @@ export default function DevelopersPage() {
       <CtaBanner
         title="Construyamos una mejor experiencia de salud."
         buttonText="Contactar"
-        variant="dark"
+        variant="night"
       />
 
       <RelatedLinks inverse links={relatedLinks} />

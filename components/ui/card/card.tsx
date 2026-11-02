@@ -119,8 +119,12 @@ function CardContent({
 }
 
 type CardMediaProps = React.ComponentProps<"div"> & {
-  /** `bottom` breaks out of the card padding, flush with the sides and bottom edge. Otherwise the media is centered. */
-  bleed?: "bottom";
+  /**
+   * `bottom` breaks out of the card padding, flush with the sides and bottom edge.
+   * `x` breaks out of the horizontal padding so the media reaches both side edges.
+   * Otherwise the media is centered.
+   */
+  bleed?: "bottom" | "x";
 };
 
 function CardMedia({ className, bleed, ...props }: CardMediaProps) {
@@ -131,7 +135,9 @@ function CardMedia({ className, bleed, ...props }: CardMediaProps) {
         "relative mt-auto h-[200px] w-full shrink-0 overflow-hidden sm:h-[300px] lg:h-[350px]",
         bleed === "bottom"
           ? "max-h-[200px] min-h-0 self-end sm:max-h-[240px] lg:max-h-[400px] w-[calc(100%+2*var(--card-pad))] max-w-none -ml-[var(--card-pad)] -mb-[var(--card-pad)]"
-          : "flex items-center justify-center rounded-md",
+          : bleed === "x"
+            ? "h-auto w-[calc(100%+2*var(--card-pad))] max-w-none -mx-[var(--card-pad)] overflow-visible sm:h-auto lg:h-auto"
+            : "flex items-center justify-center rounded-md",
         className,
       )}
       {...props}

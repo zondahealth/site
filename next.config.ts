@@ -47,8 +47,13 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/use-cases/healthcare-intelligence-agents",
+        destination: "/use-cases/normalized-ai",
+        permanent: true,
+      },
+      {
         source: "/products/profesionales",
-        destination: "/use-cases/provider-credentialing",
+        destination: "/use-cases/identity",
         permanent: true,
       },
       // Temporales (307) hasta que exista el destino definitivo; pasar a permanent:true y al destino final cuando la página esté live

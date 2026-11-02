@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 
+import { Testimonials } from "@/components/testimonials/Testimonials";
 import { Banner } from "@/components/ui/banner/banner";
 import { Button } from "@/components/ui/button/button";
 import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
 import { Pending } from "@/components/ui/pending/Pending";
 import {
   Story,
-  StoryCTA,
   StoryList,
   StoryMedia,
   StoryTitle,
@@ -92,35 +91,17 @@ const articles: { title: ReactNode; imageLabel: string }[] = [
   },
 ];
 
-const stories = [
-  {
-    title: "Interdom transforma su organización y se hace más eficiente",
-    copy: "Internación domiciliaria · Más de 500 profesionales en campo · −23% costos operativos · −30% fraude en facturación · 12 integraciones activas.",
-    href: "/customer-stories/interdom",
-    image: "/assets/home/testimonials/t1.png",
-  },
-  {
-    title: "AMS por primera vez tiene control sobre sus finanzas",
-    image: "/assets/home/testimonials/t2.png",
-  },
-  {
-    title:
-      "Profesionales no pierden tiempo al interactuar con diferentes obras sociales, caso PAMI",
-    image: "/assets/home/testimonials/t3.png",
-  },
-];
-
 const topics = [
   { label: "Interoperabilidad", href: "/use-cases/normalized-ai" },
   { label: "Fraude y riesgo", href: "/use-cases/fraud-risk-prevention" },
   { label: "Ciclo de ingresos", href: "/use-cases/revenue-cycle" },
   {
     label: "Agentes de inteligencia",
-    href: "/use-cases/healthcare-intelligence-agents",
+    href: "/use-cases/normalized-ai",
   },
   {
     label: "Identidad y credenciales",
-    href: "/use-cases/provider-credentialing",
+    href: "/use-cases/identity",
   },
   { label: "Sector público", href: "/industries/government-public-sector" },
   { label: "Internación domiciliaria", href: "/industries/home-health" },
@@ -187,40 +168,7 @@ export default function ResourcesPage() {
       <section id="historias" className={`scroll-mt-24 ${sectionClassName}`}>
         <div className="mx-auto max-w-7xl">
           <SectionIntro title="Historias de clientes" />
-          <StoryList className="mt-12">
-            {stories.map((story) => {
-              const href =
-                story.href && isLiveRoute(story.href) ? story.href : undefined;
-
-              return (
-                <Story key={story.title} href={href}>
-                  <StoryMedia aria-hidden="true">
-                    <Image
-                      src={story.image}
-                      alt=""
-                      fill
-                      className="object-cover"
-                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    />
-                  </StoryMedia>
-                  <StoryTitle>{story.title}</StoryTitle>
-                  {story.copy ? (
-                    // VALIDAR: cifras publicadas en /customer-stories/interdom
-                    <p className="text-sm leading-7 text-muted-foreground">
-                      {story.copy}
-                    </p>
-                  ) : null}
-                  {href ? (
-                    <StoryCTA>Leer la historia</StoryCTA>
-                  ) : (
-                    <span className="self-start text-sm">
-                      <Pending>Historia en preparación</Pending>
-                    </span>
-                  )}
-                </Story>
-              );
-            })}
-          </StoryList>
+          <Testimonials className="mt-12" />
           {isLiveRoute("/customer-stories") ? (
             <Link
               href="/customer-stories"
@@ -255,7 +203,7 @@ export default function ResourcesPage() {
       <section className="px-6 py-16 sm:px-10 lg:px-16">
         <Banner
           variant="dark"
-          className="mx-auto flex min-h-[400px] max-w-6xl flex-col p-0 sm:p-0 lg:justify-center"
+          className="mx-auto flex min-h-[400px] max-w-7xl flex-col p-0 sm:p-0 lg:justify-center"
         >
           <div className="relative z-10 max-w-xl p-8 sm:p-12">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#77dcff]">

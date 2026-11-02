@@ -11,22 +11,21 @@ import styles from "./glass-border.module.css";
  * Geometry is taken from a 1254×1254 reference and stored as a fraction of
  * the framed window width, so every layer scales together:
  *
- *   outer ice stroke   5px   → 0.399%
- *   aqua glass band   35px   → 2.791%
- *   saturated inner    2px   → 0.159%
- *   white hairline     1px   → 0.080%
- *   total             43px   → 3.429%   (about 3.5%)
- *   outer radius     125px   → 9.968%
- *   inner radius      85px   → outer radius minus the stroke and the band
+ *   outer ice stroke   4px   → 0.319%
+ *   aqua glass band   26px   → 2.073%
+ *   soft inner         1.5px → 0.120%
+ *   white hairline     0.5px → 0.040%
+ *   total             32px   → 2.552%
+ *   outer radius      96px  → 7.656%
  */
 const REFERENCE = 1254;
 
 const LAYER = {
-  outer: 5 / REFERENCE,
-  band: 35 / REFERENCE,
-  inner: 2 / REFERENCE,
-  hair: 1 / REFERENCE,
-  radius: 125 / REFERENCE,
+  outer: 4 / REFERENCE,
+  band: 26 / REFERENCE,
+  inner: 1.5 / REFERENCE,
+  hair: 0.5 / REFERENCE,
+  radius: 96 / REFERENCE,
 } as const;
 
 const SIDE =
@@ -37,7 +36,7 @@ function px(value: number) {
 }
 
 type GlassBorderProps = ComponentProps<"div"> & {
-  /** Stretch to the parent's width. The border stays 3.5% of that width. */
+  /** Stretch to the parent's width. The border stays proportional to that width. */
   fullWidth?: boolean;
 };
 

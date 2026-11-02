@@ -241,13 +241,13 @@ export default function RevenueCyclePage() {
               evidencia necesaria para resolverla desde una sola vista
               operativa.
             </p>
-            <div className="mx-auto mt-auto w-full max-w-5xl pt-10 sm:pt-14">
+            <div className="mx-auto mt-auto w-full max-w-7xl pt-10 sm:pt-14">
               <Image
                 src="/assets/solutions/payments/policy-config.png"
                 alt="Configuración de una póliza de cobro: si el profesional es kinesiólogo, atiende en hospital, la prestación es rehabilitación y la cobertura es PAMI, el precio por sesión es $18.500"
                 width={1672}
                 height={815}
-                sizes="(min-width: 1280px) 1024px, 100vw"
+                sizes="(min-width: 1280px) 1280px, 100vw"
                 className="block h-auto w-full"
               />
             </div>
@@ -256,7 +256,7 @@ export default function RevenueCyclePage() {
       </section>
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <Testimonial
             compact
             quote="Las validaciones que antes eran manuales ahora se ejecutan automáticamente, reduciendo errores, débitos y tiempos de cobro.”"

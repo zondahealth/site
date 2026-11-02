@@ -10,6 +10,7 @@ import {
   isLiveRoute,
   useCaseGroups,
   type NavGroup,
+  type NavLink,
 } from "@/lib/navigation";
 
 type SolutionsBoxProps = {
@@ -37,6 +38,68 @@ const tabs: SolutionTab[] = [
 
 const iconChipClassName =
   "relative flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[#e2ebf7] bg-[#f5f9ff] text-[#1c3554]";
+
+const itemListClassName =
+  "grid grid-cols-2 content-start gap-x-6 gap-y-4";
+
+function SolutionItem({
+  item,
+  onNavigate,
+}: {
+  item: NavLink;
+  onNavigate?: () => void;
+}) {
+  const Icon = item.icon;
+
+  if (!isLiveRoute(item.href)) {
+    return (
+      <li className="flex min-w-0 items-center gap-3">
+        <span className={`${iconChipClassName} opacity-60`}>
+          {Icon ? (
+            <Icon
+              aria-hidden="true"
+              className="relative size-[18px]"
+              strokeWidth={1.6}
+            />
+          ) : null}
+        </span>
+        <span className="flex min-w-0 flex-col items-start gap-1">
+          <span className="text-[13px] font-medium leading-snug text-[#1a2a3d]/60">
+            {item.title}
+          </span>
+          <span className="text-[10px] leading-none">
+            <Pending>Próximamente</Pending>
+          </span>
+        </span>
+      </li>
+    );
+  }
+
+  return (
+    <li>
+      <Link
+        href={item.href}
+        onClick={onNavigate}
+        className="group flex min-w-0 items-center gap-3 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      >
+        <span
+          className={`${iconChipClassName} transition-colors duration-200 group-hover:border-transparent group-hover:text-white`}
+        >
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 bg-[linear-gradient(135deg,#2f7dff_0%,#8fd0ff_100%)] opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+          />
+          {Icon ? (
+            <Icon className="relative size-[18px]" strokeWidth={1.6} />
+          ) : null}
+        </span>
+        <span className="min-w-0 text-[13px] font-medium leading-snug text-[#1a2a3d]">
+          {item.title}
+        </span>
+      </Link>
+    </li>
+  );
+}
 
 export function SolutionsBox({ onNavigate }: SolutionsBoxProps) {
   const [activeId, setActiveId] = useState(tabs[0]?.id ?? "");
@@ -119,71 +182,36 @@ export function SolutionsBox({ onNavigate }: SolutionsBoxProps) {
           className="flex min-w-0 flex-1 flex-col"
         >
           <div className="grid min-h-0 gap-5 overflow-y-auto overscroll-contain px-7 py-5">
-            {activeTab.groups.map((group) => (
-              <section key={group.title} aria-label={group.title}>
-                <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                  {group.title}
-                </p>
-                <ul className="grid grid-cols-2 content-start gap-x-6 gap-y-4 xl:grid-cols-3">
-                  {group.items.map((item) => {
-                    const Icon = item.icon;
-
-                    if (!isLiveRoute(item.href)) {
-                      return (
-                        <li
-                          key={item.href}
-                          className="flex min-w-0 items-center gap-3"
-                        >
-                          <span className={`${iconChipClassName} opacity-60`}>
-                            {Icon ? (
-                              <Icon
-                                aria-hidden="true"
-                                className="relative size-[18px]"
-                                strokeWidth={1.6}
-                              />
-                            ) : null}
-                          </span>
-                          <span className="flex min-w-0 flex-col items-start gap-1">
-                            <span className="text-[13px] font-medium leading-snug text-[#1a2a3d]/60">
-                              {item.title}
-                            </span>
-                            <span className="text-[10px] leading-none">
-                              <Pending>Próximamente</Pending>
-                            </span>
-                          </span>
-                        </li>
-                      );
-                    }
-
-                    return (
-                      <li key={item.href}>
-                        <Link
-                          href={item.href}
-                          onClick={onNavigate}
-                          className="group flex min-w-0 items-center gap-3 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                        >
-                          <span className={`${iconChipClassName} transition-colors duration-200 group-hover:border-transparent group-hover:text-white`}>
-                            <span
-                              aria-hidden="true"
-                              className="absolute inset-0 bg-[linear-gradient(135deg,#6e98ff_0%,#a9cdff_100%)] opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-                            />
-                            {Icon ? (
-                              <Icon
-                                className="relative size-[18px]"
-                                strokeWidth={1.6}
-                              />
-                            ) : null}
-                          </span>
-                          <span className="min-w-0 text-[13px] font-medium leading-snug text-[#1a2a3d]">
-                            {item.title}
-                          </span>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </section>
-            ))}
+            {activeTab.id === "use-cases" ? (
+              <ul className={itemListClassName}>
+                {activeTab.groups.flatMap((group) =>
+                  group.items.map((item) => (
+                    <SolutionItem
+                      key={item.href}
+                      item={item}
+                      onNavigate={onNavigate}
+                    />
+                  )),
+                )}
+              </ul>
+            ) : (
+              activeTab.groups.map((group) => (
+                <section key={group.title} aria-label={group.title}>
+                  <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                    {group.title}
+                  </p>
+                  <ul className={itemListClassName}>
+                    {group.items.map((item) => (
+                      <SolutionItem
+                        key={item.href}
+                        item={item}
+                        onNavigate={onNavigate}
+                      />
+                    ))}
+                  </ul>
+                </section>
+              ))
+            )}
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
 import { Pending } from "@/components/ui/pending/Pending";
@@ -101,11 +102,52 @@ const relatedLinks = [
   { label: "Ciclo de ingresos", href: "/use-cases/revenue-cycle" },
   {
     label: "Agentes de inteligencia",
-    href: "/use-cases/healthcare-intelligence-agents",
+    href: "/use-cases/normalized-ai",
   },
 ];
 
-const strongClassName = "font-semibold text-foreground";
+function Shot({ label }: { label: string }) {
+  return (
+    <ImagePlaceholder
+      width={1200}
+      height={900}
+      label={label}
+      className="rounded-[1.5rem]"
+    />
+  );
+}
+
+const features = [
+  {
+    title: "Historia clínica unificada",
+    copy: "Entre servicios y sedes.",
+    // Archivo final sugerido: public/assets/sectors/hospital/feature-1.png
+    label:
+      "Ilustración de una historia clínica compartida entre servicios y sedes de un hospital.",
+  },
+  {
+    title: "Alertas clínicas y operativas",
+    copy: "Por ejemplo, tiempo de espera mayor a 30 minutos en una sala.",
+    // Archivo final sugerido: public/assets/sectors/hospital/feature-2.png
+    label:
+      "Ilustración de una alerta de tiempo de espera en un tablero de guardia.",
+  },
+  {
+    title: "Credenciales del staff",
+    copy: "Con conexión de prestadores.",
+    // Archivo final sugerido: public/assets/sectors/hospital/feature-3.png
+    label:
+      "Ilustración de las credenciales del staff conectadas a la red de prestadores.",
+  },
+  {
+    title: "Auditoría y facturación",
+    copy: "Con automatización.",
+    href: "/use-cases/automation",
+    // Archivo final sugerido: public/assets/sectors/hospital/feature-4.png
+    label:
+      "Ilustración de una auditoría y una facturación hospitalaria automatizadas.",
+  },
+];
 
 export default function HospitalsPage() {
   return (
@@ -113,18 +155,23 @@ export default function HospitalsPage() {
       <UseCaseHero
         eyebrow="Hospitales"
         title="Todos los servicios de tu hospital, sobre una misma capa de datos"
-        copy={description}
+        copy={<span className="lg:block lg:max-w-[17rem]">{description}</span>}
         primary={{ label: "Hablemos", href: "/contact" }}
         secondary={{ label: "Ver interoperabilidad", href: "/developers" }}
         secondaryVariant="inverse"
+        mediaClassName="overflow-visible"
         media={
-          // Archivo final sugerido: public/assets/industries/hospitals/hero.png
-          <ImagePlaceholder
-            width={1200}
-            height={1245}
-            label="diagrama del hospital con servicios (guardia, internación, laboratorio, imágenes, facturación) conectados…"
-            className="object-contain max-w-[1200px] mx-auto"
-          />
+          <div className="relative h-[300px] w-full sm:h-[400px] lg:h-full">
+            <Image
+              src="/assets/sectors/hospital/hero.png"
+              alt="Ilustración del edificio de un hospital"
+              width={1774}
+              height={887}
+              priority
+              sizes="(min-width: 1024px) 1200px, 100vw"
+              className="absolute top-1/2 left-1/2 h-auto w-[min(100%,680px)] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain sm:w-[min(100%,820px)] lg:top-[62%] lg:left-0 lg:w-[min(1200px,calc(50vw+11rem))] lg:translate-x-0 lg:-translate-y-1/2"
+            />
+          </div>
         }
       />
 
@@ -152,47 +199,33 @@ export default function HospitalsPage() {
         </div>
       </div>
 
-      <SplitFeature
-        title="Casos de uso clave"
-        bullets={[
-          <>
-            <strong className={strongClassName}>
-              Historia clínica unificada
-            </strong>{" "}
-            entre servicios y sedes
-          </>,
-          <>
-            <strong className={strongClassName}>
-              Alertas clínicas y operativas
-            </strong>{" "}
-            (por ejemplo, tiempo de espera &gt; 30 min en una sala)
-          </>,
-          <>
-            <strong className={strongClassName}>Credenciales del staff</strong>{" "}
-            con{" "}
-            <InlineLink href="/use-cases/provider-credentialing">
-              conexión de prestadores
-            </InlineLink>
-          </>,
-          <>
-            <strong className={strongClassName}>Auditoría y facturación</strong>{" "}
-            con{" "}
-            <InlineLink href="/use-cases/automation">automatización</InlineLink>
-          </>,
-        ]}
-        media={
-          // Archivo final sugerido: public/assets/industries/hospitals/feature-1.png
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="alerta 'Tiempo de espera > 30 min · Sala 4' en un tablero de guardia, como en…"
-            className="rounded-[1.5rem]"
-          />
-        }
-      />
+      {features.map((item, index) => (
+        <SplitFeature
+          key={item.title}
+          title={
+            item.href ? (
+              <InlineLink href={item.href}>{item.title}</InlineLink>
+            ) : (
+              item.title
+            )
+          }
+          copy={
+            item.href ? (
+              <>
+                Con{" "}
+                <InlineLink href={item.href}>automatización</InlineLink>.
+              </>
+            ) : (
+              item.copy
+            )
+          }
+          mediaSide={index % 2 === 1 ? "left" : "right"}
+          media={<Shot label={item.label} />}
+        />
+      ))}
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <Testimonial
             quote={
               <>

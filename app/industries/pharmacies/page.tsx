@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Bot, Cog, Fingerprint, Workflow } from "lucide-react";
 
 import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
@@ -118,7 +119,7 @@ const capabilities = [
   {
     title: "Agentes de inteligencia en salud",
     copy: "Asistentes que se anticipan a cada reposición y le preparan el contexto a tu equipo.",
-    href: "/use-cases/healthcare-intelligence-agents",
+    href: "/use-cases/normalized-ai",
     icon: Bot,
   },
 ];
@@ -160,7 +161,7 @@ const relatedLinks = [
   { label: "Atención multi-financiador", href: "/use-cases/multi-payer-care" },
   {
     label: "Agentes de inteligencia",
-    href: "/use-cases/healthcare-intelligence-agents",
+    href: "/use-cases/normalized-ai",
   },
   { label: "Atención primaria", href: "/industries/primary-care" },
   { label: "Telemedicina", href: "/industries/telehealth" },
@@ -185,14 +186,19 @@ export default function PharmaciesPage() {
         primary={{ label: "Hablemos", href: "/contact" }}
         secondary={{ label: "Ver cómo funciona", href: "#recetas-programadas" }}
         secondaryVariant="inverse"
+        mediaClassName="overflow-visible"
         media={
-          // Archivo final sugerido: public/assets/industries/pharmacies/hero.png
-          <ImagePlaceholder
-            width={1200}
-            height={1245}
-            label="mostrador de farmacia como UI de Zonda: ficha 'Paciente 8F21' con tratamiento crónico, 'Próxima reposición en 3 días', 'Receta programada ✓'…"
-            className="object-contain max-w-[1200px] mx-auto"
-          />
+          <div className="relative h-[340px] w-full sm:h-[440px] lg:h-full">
+            <Image
+              src="/assets/sectors/pharma/hero.png"
+              alt="Higía tomando un frasco del botiquín, con la serpiente de la medicina"
+              width={1398}
+              height={793}
+              priority
+              sizes="(min-width: 1024px) 1180px, 100vw"
+              className="absolute bottom-0 left-1/2 h-auto w-[min(112%,560px)] max-w-none -translate-x-1/2 translate-y-[6%] sm:w-[min(100%,720px)] sm:translate-y-[8%] lg:left-[-9rem] lg:w-[1180px] lg:translate-x-0 lg:translate-y-[14%]"
+            />
+          </div>
         }
       />
 
@@ -395,7 +401,7 @@ export default function PharmaciesPage() {
       />
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <Testimonial
             quote={
               <>

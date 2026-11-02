@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
 import { Pending } from "@/components/ui/pending/Pending";
@@ -7,6 +8,8 @@ import {
   FaqList,
   MetricSlot,
   RelatedLinks,
+  SectionIntro,
+  SplitFeature,
   Testimonial,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
@@ -88,13 +91,35 @@ const faqItems = [
   },
 ];
 
+function Shot({ label }: { label: string }) {
+  return (
+    <ImagePlaceholder
+      width={1200}
+      height={900}
+      label={label}
+      className="rounded-[1.5rem]"
+    />
+  );
+}
+
+const features = [
+  {
+    // Archivo final sugerido: public/assets/sectors/labs/feature-1.png
+    label: "Ilustración pendiente para la primera feature de laboratorios.",
+  },
+  {
+    // Archivo final sugerido: public/assets/sectors/labs/feature-2.png
+    label: "Ilustración pendiente para la segunda feature de laboratorios.",
+  },
+  {
+    // Archivo final sugerido: public/assets/sectors/labs/feature-3.png
+    label: "Ilustración pendiente para la tercera feature de laboratorios.",
+  },
+];
+
 const relatedLinks = [
   { label: "Hospitales", href: "/industries/hospitals" },
   { label: "IA normalizada", href: "/use-cases/normalized-ai" },
-  {
-    label: "Agentes de inteligencia",
-    href: "/use-cases/healthcare-intelligence-agents",
-  },
 ];
 
 export default function LaboratoriesPage() {
@@ -119,14 +144,19 @@ export default function LaboratoriesPage() {
           href: "/developers#modelo-canonico",
         }}
         secondaryVariant="inverse"
+        mediaClassName="overflow-visible"
         media={
-          // Archivo final sugerido: public/assets/industries/laboratories/hero.png
-          <ImagePlaceholder
-            width={1200}
-            height={1245}
-            label="un mensaje HL7v2 de laboratorio saliendo como FHIR Observation hacia un hospital, un médico y un…"
-            className="object-contain max-w-[1200px] mx-auto"
-          />
+          <div className="relative h-[420px] w-full sm:h-[520px] lg:h-full">
+            <Image
+              src="/assets/sectors/labs/higea.png"
+              alt="Higía revisando un resultado de laboratorio en una tablet, con la serpiente de la medicina"
+              width={1005}
+              height={819}
+              priority
+              sizes="(min-width: 1024px) 720px, 90vw"
+              className="absolute bottom-0 left-1/2 h-auto w-[min(118%,520px)] max-w-none -translate-x-1/2 translate-y-[6%] sm:w-[640px] lg:left-[-3.5rem] lg:w-[780px] lg:translate-x-0 lg:translate-y-[12%]"
+            />
+          </div>
         }
       />
 
@@ -148,8 +178,29 @@ export default function LaboratoriesPage() {
         </div>
       </div>
 
+      <section className="px-6 pt-16 sm:px-10 sm:pt-20 lg:px-16 lg:pt-24">
+        <div className="mx-auto max-w-7xl">
+          <SectionIntro
+            title={<Pending>TÍTULO A DEFINIR</Pending>}
+            copy={<Pending>TEXTO A DEFINIR</Pending>}
+            className="max-w-4xl"
+            titleClassName="text-5xl sm:text-6xl"
+          />
+        </div>
+      </section>
+
+      {features.map((item, index) => (
+        <SplitFeature
+          key={item.label}
+          title={<Pending>FEATURE A DEFINIR</Pending>}
+          copy={<Pending>TEXTO A DEFINIR</Pending>}
+          mediaSide={index % 2 === 1 ? "left" : "right"}
+          media={<Shot label={item.label} />}
+        />
+      ))}
+
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <Testimonial
             quote={
               <>

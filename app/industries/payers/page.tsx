@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
 import { Pending } from "@/components/ui/pending/Pending";
 import {
   BenefitStories,
-  ChecklistSection,
   FaqList,
   InlineLink,
   MetricSlot,
   RelatedLinks,
+  SplitFeature,
   Testimonial,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
@@ -52,8 +53,6 @@ const benefits = [
   {
     title: "Una red de prestadores confiable",
     copy: "Credenciales verificadas y alta de prestadores más rápida.",
-    href: "/use-cases/provider-credentialing",
-    cta: "Ver conexión de prestadores",
     // Archivo final sugerido: public/assets/industries/payers/benefit-2.png
     media: (
       <ImagePlaceholder
@@ -81,21 +80,64 @@ const benefits = [
   },
 ];
 
-const keyUseCases = [
-  <>
-    <InlineLink href="/use-cases/multi-payer-care">
-      Atención multi-financiador
-    </InlineLink>
-    : tus reglas aplicadas en el punto de atención
-  </>,
-  <>
-    <InlineLink href="/use-cases/revenue-cycle">Ciclo de ingresos</InlineLink>:
-    respuesta del financiador, débitos y cobro conectados a cada prestación
-  </>,
-  "Auditoría médica y de facturación automatizada",
-  "Integración con prestadores vía API y Connectors",
-  "Tableros de consumo por prestador, región y plan",
-  "Identidad unificada de afiliados",
+function Shot({ label }: { label: string }) {
+  return (
+    <ImagePlaceholder
+      width={1200}
+      height={900}
+      label={label}
+      className="rounded-[1.5rem]"
+    />
+  );
+}
+
+const keyUseCases: {
+  title: string;
+  copy?: string;
+  href?: string;
+  label: string;
+}[] = [
+  {
+    title: "Atención multi-financiador",
+    copy: "Tus reglas aplicadas en el punto de atención.",
+    href: "/use-cases/multi-payer-care",
+    // Archivo final sugerido: public/assets/sectors/payers/use-case-1.png
+    label:
+      "Ilustración de las reglas del financiador aplicadas en el punto de atención.",
+  },
+  {
+    title: "Ciclo de ingresos",
+    copy: "Respuesta del financiador, débitos y cobro conectados a cada prestación.",
+    href: "/use-cases/revenue-cycle",
+    // Archivo final sugerido: public/assets/sectors/payers/use-case-2.png
+    label:
+      "Ilustración de la respuesta del financiador, un débito y el cobro de una prestación.",
+  },
+  {
+    title: "Auditoría médica y de facturación automatizada",
+    // Archivo final sugerido: public/assets/sectors/payers/use-case-3.png
+    label:
+      "Ilustración de una auditoría médica y de facturación resuelta de forma automática.",
+  },
+  {
+    title: "Integración con prestadores",
+    copy: "Vía API y Connectors.",
+    // Archivo final sugerido: public/assets/sectors/payers/use-case-4.png
+    label:
+      "Ilustración de prestadores conectados al financiador por API y Connectors.",
+  },
+  {
+    title: "Tableros de consumo",
+    copy: "Por prestador, región y plan.",
+    // Archivo final sugerido: public/assets/sectors/payers/use-case-5.png
+    label: "Ilustración de un tablero de consumo por prestador, región y plan.",
+  },
+  {
+    title: "Identidad unificada de afiliados",
+    // Archivo final sugerido: public/assets/sectors/payers/use-case-6.png
+    label:
+      "Ilustración de un afiliado con una sola identidad en todas las coberturas.",
+  },
 ];
 
 const faqItems = [
@@ -140,14 +182,19 @@ export default function PayersPage() {
           href: "/use-cases/fraud-risk-prevention",
         }}
         secondaryVariant="inverse"
+        mediaClassName="overflow-visible"
         media={
-          // Archivo final sugerido: public/assets/industries/payers/hero.png
-          <ImagePlaceholder
-            width={1200}
-            height={1245}
-            label="liquidación de un prestador con cada prestación marcada 'verificada' o 'observada', como en…"
-            className="object-contain max-w-[1200px] mx-auto"
-          />
+          <div className="relative h-[340px] w-full sm:h-[460px] lg:h-full">
+            <Image
+              src="/assets/sectors/payers/hero.png"
+              alt="Hipócrates conversando con un grupo de médicos alrededor de una mesa, con la vara de Esculapio de fondo"
+              width={1427}
+              height={1099}
+              priority
+              sizes="(min-width: 1024px) 720px, 90vw"
+              className="absolute bottom-0 left-1/2 h-auto w-[min(100%,560px)] max-w-none -translate-x-1/2 object-contain sm:w-[640px] lg:left-[-2.25rem] lg:w-[720px] lg:translate-x-0"
+            />
+          </div>
         }
       />
 
@@ -173,10 +220,24 @@ export default function PayersPage() {
         </div>
       </div>
 
-      <ChecklistSection title="Casos de uso clave" items={keyUseCases} />
+      {keyUseCases.map((item, index) => (
+        <SplitFeature
+          key={item.title}
+          title={
+            item.href ? (
+              <InlineLink href={item.href}>{item.title}</InlineLink>
+            ) : (
+              item.title
+            )
+          }
+          copy={item.copy}
+          mediaSide={index % 2 === 1 ? "left" : "right"}
+          media={<Shot label={item.label} />}
+        />
+      ))}
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <Testimonial
             quote={
               <>
@@ -195,10 +256,7 @@ export default function PayersPage() {
 
       <FaqList items={faqItems} />
 
-      <CtaBanner
-        title="Auditá antes de pagar"
-        buttonText="Hablemos"
-      />
+      <CtaBanner title="Auditá antes de pagar" buttonText="Hablemos" />
 
       <RelatedLinks links={relatedLinks} />
     </main>

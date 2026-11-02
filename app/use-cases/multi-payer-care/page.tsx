@@ -1,35 +1,20 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import {
-  ArrowRight,
-  Check,
-  CircleAlert,
-  CircleDollarSign,
-  BadgeCheck,
-  Fingerprint,
-  ShieldCheck,
-} from "lucide-react";
+import Image from "next/image";
+import { CircleDollarSign, Fingerprint } from "lucide-react";
 
-import { isLiveRoute } from "@/lib/navigation";
-import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
 import { Pending } from "@/components/ui/pending/Pending";
 import {
   BenefitStories,
   CapabilityGrid,
   FaqList,
-  MetricSlot,
-  ProductVisual,
-  RelatedLinks,
-  SectionIntro,
   SplitFeature,
-  Testimonial,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
 import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
 
 const title = "Atención multi-financiador en salud";
 const description =
-  "Registrá y validá prestaciones de múltiples financiadores desde una única experiencia.";
+  "Conectá tu organización con todos tus financiadores desde un solo lugar. Las reglas y las prestaciones de cada uno quedan en Zonda, también para los profesionales de tu red.";
 
 export const metadata: Metadata = {
   title,
@@ -44,80 +29,52 @@ export const metadata: Metadata = {
 
 const revenueCycleHref = "/use-cases/revenue-cycle";
 
+const benefitImageSizes =
+  "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
+
 const benefits = [
   {
-    title: "Las reglas viven en Zonda, no en la cabeza del profesional",
-    copy: "Cada financiador tiene una lógica diferente. Zonda conoce qué información y validaciones corresponden y presenta únicamente lo necesario.",
-    // Archivo final sugerido: public/assets/use-cases/multi-payer/benefit-1.png
+    title: "Dejá de operar un proceso por financiador",
+    copy: "Cada obra social y prepaga tiene portales, autorizaciones y requisitos propios. Tu organización se conecta una vez y Zonda absorbe esa diferencia.",
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Las reglas viven en Zonda, no en la cabeza del…"
+      <Image
+        src="/assets/solutions/multipayer/connected.png"
+        alt="Financiadores como PAMI, OSDE, Sura, Medicus y Medifé conectados entre sí en una sola red"
         fill
+        className="object-cover"
+        sizes={benefitImageSizes}
       />
     ),
   },
   {
-    title: "Sabé qué necesitás antes de empezar",
-    copy: "Identificá cobertura, autorización y documentación antes de cerrar la atención, no semanas después.",
-    // Archivo final sugerido: public/assets/use-cases/multi-payer/benefit-2.png
+    title: "Las reglas aplican en toda la red",
+    copy: "Sedes, especialidades y profesionales trabajan de la misma manera. Zonda sabe qué cobertura, autorización y documentación pide cada financiador.",
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Sabé qué necesitás antes de empezar». Composición: una…"
+      <Image
+        src="/assets/solutions/multipayer/pami-rule-applied.png"
+        alt="PAMI conectado como financiador en 24 sedes, con una regla de autorización aplicada a 186 profesionales en toda la red"
         fill
+        className="object-cover"
+        sizes={benefitImageSizes}
       />
     ),
   },
   {
-    title: "Detectá lo que falta antes de cerrar",
-    copy: "Validá en origen. Los errores aparecen cuando todavía pueden resolverse, no cuando ya hay un débito.",
-    // Archivo final sugerido: public/assets/use-cases/multi-payer/benefit-3.png
+    title: "Las prestaciones llegan listas para cobrar",
+    copy: "Lo que falta se ve antes de cerrar la atención. La organización no se entera del error cuando ya hay un débito.",
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Detectá lo que falta antes de cerrar». Composición:…"
+      <Image
+        src="/assets/solutions/multipayer/anomaly.png"
+        alt="Anomalía detectada en una prestación de -$22,237.18, categorizada como ubicación sospechosa"
         fill
+        className="object-cover"
+        sizes={benefitImageSizes}
       />
     ),
   },
-];
-
-const checklistFields = [
-  ["Paciente", "Paciente 8F21"],
-  ["Financiador", "OS A"],
-  ["Profesional", "Profesional 472"],
-  ["Prestación", "Práctica 4201"],
-  ["Cobertura", "Válida"],
-  ["Autorización", "Encontrada"],
-];
-
-const appliedRequirements = [
-  "Cobertura válida",
-  "Autorización encontrada",
-  "Documentación requerida",
-  "Prestación habilitada",
-];
-
-const careFlowSteps = [
-  "Identificar cobertura",
-  "Aplicar reglas",
-  "Registrar atención",
-  "Validar requisitos",
-  "Cerrar prestación",
-  "Enviar a ciclo de ingresos",
 ];
 
 const capabilities = [
-  {
-    title: "Conexión de prestadores",
-    copy: "El profesional conecta sus organizaciones y financiadores una sola vez.",
-    href: "/use-cases/provider-credentialing",
-    icon: BadgeCheck,
-  },
   {
     title: "Identidad",
     copy: "Paciente, profesional y cobertura correctos.",
@@ -136,17 +93,18 @@ const faqItems = [
   {
     question: "¿Qué es la atención multi-financiador?",
     answer:
-      "Es la operación de registrar y validar prestaciones cuando un mismo profesional trabaja con múltiples coberturas, cada una con reglas, requisitos y sistemas distintos.",
+      "Es la forma en que una organización opera prestaciones con muchas obras sociales y prepagas desde una sola conexión. Cada financiador mantiene sus reglas y sistemas. Zonda las aplica para toda la red.",
   },
   {
-    question: "¿Cómo identifica Zonda el financiador de cada atención?",
+    question:
+      "¿La organización tiene que integrar cada financiador por separado?",
     answer:
-      "Zonda conecta paciente, práctica y cobertura para aplicar automáticamente las reglas que corresponden a esa prestación.",
+      "No. Se conecta una vez. Sedes y profesionales trabajan sobre esa conexión, sin un circuito administrativo distinto para cada financiador.",
   },
   {
-    question: "¿El profesional tiene que aprender las reglas de cada financiador?",
+    question: "¿Y el profesional?",
     answer:
-      "No. Zonda abstrae esa complejidad y muestra únicamente lo que hay que completar en cada caso.",
+      "Registra la atención una sola vez. Zonda identifica la cobertura y pide solo lo que ese financiador exige.",
   },
   {
     question: "¿Zonda reemplaza los sistemas de cada financiador?",
@@ -156,12 +114,12 @@ const faqItems = [
   {
     question: "¿Qué pasa si falta un requisito?",
     answer:
-      "La prestación queda en borrador hasta completar lo necesario. El profesional ve la excepción en el momento, no después de facturar.",
+      "La prestación queda en borrador hasta completar lo necesario. La organización y el profesional ven la excepción en el momento, no después de facturar.",
   },
   {
-    question: "¿Sirve para una red de prestadores?",
+    question: "¿Sirve para un profesional que trabaja por su cuenta?",
     answer:
-      "Sí. Toda la red puede trabajar de la misma manera mientras Zonda maneja las diferencias entre financiadores.",
+      "Sí. Un clínico también puede conectar los financiadores con los que trabaja y operar de la misma manera, sin depender de la red de una clínica.",
   },
   {
     question: "¿Qué financiadores están soportados hoy?",
@@ -174,269 +132,115 @@ const faqItems = [
   },
 ];
 
-const relatedLinks = [
-  { label: "Ciclo de ingresos", href: revenueCycleHref },
-  { label: "Conexión de prestadores", href: "/use-cases/provider-credentialing" },
-  { label: "Asociaciones médicas", href: "/industries/medical-associations" },
-  { label: "Clínicas y redes", href: "/industries/clinics-provider-networks" },
-];
-
-const splitImageClassName = "rounded-[1.5rem]";
-
-const actionClassName =
-  "rounded-full border border-border bg-white px-4 py-2.5 text-xs font-semibold";
+const splitImageClassName = "h-auto w-full rounded-[1.5rem] object-cover";
+const splitImageSizes = "(min-width: 1024px) 50vw, 100vw";
 
 export default function MultiPayerCarePage() {
   return (
     <main lang="es" className="overflow-hidden bg-background text-foreground">
       <UseCaseHero
+        backgroundSrc="/assets/bg/hero-common-bg.png"
         eyebrow="Atención multi-financiador"
-        title="Una sola forma de trabajar, sin importar el financiador"
+        title="Todos tus financiadores, una sola conexión"
         copy={description}
         primary={{ label: "Hablá con nuestro equipo", href: "/contact" }}
-        secondary={{ label: "Ver cómo funciona", href: "#como-funciona" }}
-        secondaryVariant="inverse"
+        mediaClassName="overflow-visible"
         media={
-          // Archivo final sugerido: public/assets/use-cases/multi-payer/hero.png
-          <ImagePlaceholder
-            width={1200}
-            height={1245}
-            label="tarjeta 'Prestación lista · Financiador identificado · OS A · Estado: Listo · Requisitos aplicados' con…"
-            className="object-contain max-w-[1200px] mx-auto"
-          />
+          <div className="flex h-full w-full items-center justify-center px-2 pt-16 pb-4 sm:pt-20 lg:px-0 lg:pt-24">
+            <Image
+              src="/assets/solutions/multipayer/hero.png"
+              alt="Red de financiadores conectada a Zonda, con Omint, PAMI, OSDE, Sura, Medicus y Medifé"
+              width={1448}
+              height={1086}
+              priority
+              sizes="(min-width: 1024px) 62vw, 100vw"
+              className="h-auto w-full max-w-none lg:w-[88%]"
+            />
+          </div>
         }
       />
 
       <BenefitStories
-        title="Lo que necesitás para operar con múltiples financiadores."
+        title="Lo que tu organización necesita para operar con muchos financiadores."
         items={benefits}
       />
-
-      <div className="px-6 pb-16 sm:px-10 lg:px-16">
-        <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-2">
-          <MetricSlot
-            label="financiadores soportados"
-            supportText="Métrica a definir"
-          />
-          <MetricSlot
-            label="reducción de prestaciones rechazadas"
-            supportText="Métrica a definir"
-          />
-        </div>
-      </div>
 
       <SplitFeature
         id="como-funciona"
         eyebrow="El problema"
-        title="Cada financiador funciona distinto. El profesional no debería tener que hacerlo."
-        copy="Un mismo profesional puede trabajar con múltiples financiadores durante el día. La complejidad administrativa termina trasladándose a quien debería estar concentrado en brindar atención."
+        title="Cada financiador pide algo distinto. Tu organización no debería hablar con cada uno por separado."
+        copy="Una clínica o una red convive con muchas obras sociales y prepagas. Eso hoy significa integraciones, autorizaciones y presentaciones distintas para cada una. La carga se multiplica en administración y también en cada profesional."
         media={
-          // Archivo final sugerido: public/assets/use-cases/multi-payer/feature-1.png
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="línea de tiempo de una atención desde el procedimiento hasta la validación, como en site-new y en…"
+          <Image
+            src="/assets/solutions/multipayer/connected-data.png"
+            alt="Zonda en el centro de una red de datos clínicos: historia clínica, equipo, sedes, vacunas, laboratorio, medicación y estudios"
+            width={1254}
+            height={1254}
+            sizes={splitImageSizes}
             className={splitImageClassName}
           />
         }
       />
 
       <SplitFeature
-        eyebrow="En el punto de atención"
-        title="Registrá la atención una sola vez"
-        copy="El profesional documenta lo ocurrido. Zonda adapta automáticamente la experiencia según paciente, práctica y financiador, sin cambiar de sistema ni duplicar información."
+        eyebrow="Para la organización"
+        title="Conectá los financiadores una sola vez"
+        copy="La organización da de alta sus financiadores en Zonda. A partir de ahí, sedes y profesionales operan sobre esa conexión. Cada financiador conserva sus propios sistemas. Elegibilidad, autorizaciones, nomencladores, documentación, frecuencias y validaciones quedan del lado de Zonda."
         mediaSide="left"
         media={
-          // Archivo final sugerido: public/assets/use-cases/multi-payer/feature-2.png
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="app móvil para registrar una atención y validar requisitos del financiador, como en site-new y en el…"
+          <Image
+            src="/assets/solutions/multipayer/connected-integration-x.png"
+            alt="Profesional rodeado de documentación, medicación, sedes, turnos, vacunas y mensajes, con algunas integraciones sin resolver"
+            width={1254}
+            height={1254}
+            sizes={splitImageSizes}
             className={splitImageClassName}
           />
         }
       />
 
       <SplitFeature
-        eyebrow="Capa de abstracción"
-        title="Una experiencia para el profesional. Todas las reglas por detrás."
-        copy={
-          <>
-            Cada financiador puede mantener sus propios sistemas y procesos.
-            Zonda conecta esa diversidad dentro de una infraestructura común y
-            hace que cada prestación nazca correctamente estructurada.
-            <span className="mt-3 block">
-              Se valida en el punto de atención, según lo que exija cada
-              cobertura: elegibilidad, autorizaciones, nomencladores,
-              documentación, frecuencias y validaciones digitales como tokens o
-              firmas.
-            </span>
-          </>
-        }
+        eyebrow="Para el profesional"
+        title="Quien atiende registra una sola vez"
+        copy="El clínico no entra a un portal distinto por financiador. Documenta la atención y Zonda muestra solo lo que falta para esa cobertura. La conexión ya la hizo la organización. Si trabaja por su cuenta, puede conectar sus financiadores del mismo modo."
         media={
-          // Archivo final sugerido: public/assets/use-cases/multi-payer/feature-3.png
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="varios logos genéricos de financiadores (OS A, OS B, Prepaga C) entrando a una única capa Zonda y saliendo…"
+          <Image
+            src="/assets/solutions/multipayer/doctor-register-vitals.png"
+            alt="La Dra. Ferrari registra signos vitales desde el celular, con PAMI conectado y la factura lista"
+            width={1254}
+            height={1254}
+            sizes={splitImageSizes}
             className={splitImageClassName}
           />
         }
       />
 
-      <section className="px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
+      <section className="px-6 py-10 sm:px-10 sm:py-14 lg:px-16 lg:py-16">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-start lg:gap-20">
-            <SectionIntro
-              eyebrow="Validación en origen"
-              title="Detectá lo que falta antes de cerrar la atención"
-              copy="Zonda identifica el financiador, aplica sus reglas y muestra al profesional únicamente lo que necesita completar. Si falta algo, la prestación queda en borrador."
-              className="max-w-xl"
-            />
-
-            <ProductVisual label="Checklist dinámico · Prestación #4201">
-              <div className="flex flex-wrap items-start justify-between gap-5 border-b border-border/70 pb-6">
-                <div className="flex items-center gap-3">
-                  <span className="flex size-10 items-center justify-center rounded-xl bg-[#d9f5e9] text-[#176344]">
-                    <ShieldCheck
-                      aria-hidden="true"
-                      className="size-4.5"
-                      strokeWidth={1.8}
-                    />
-                  </span>
-                  <div>
-                    <p className="font-display text-lg font-semibold">
-                      Prestación lista
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      Financiador identificado · OS A
-                    </p>
-                  </div>
-                </div>
-                <div className="rounded-xl bg-primary px-4 py-3 text-right text-white">
-                  <p className="text-[9px] font-bold uppercase tracking-wide text-white/50">
-                    Estado
-                  </p>
-                  <p className="mt-1 font-display text-2xl font-semibold text-accent">
-                    Listo
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-6 grid gap-6 xl:grid-cols-[0.8fr_1.2fr]">
-                <dl className="grid grid-cols-2 gap-x-5 gap-y-5 rounded-2xl bg-muted/70 p-5">
-                  {checklistFields.map(([label, value]) => (
-                    <div key={label}>
-                      <dt className="text-[9px] font-bold uppercase tracking-[0.12em] text-muted-foreground">
-                        {label}
-                      </dt>
-                      <dd className="mt-1.5 text-xs font-semibold">{value}</dd>
-                    </div>
-                  ))}
-                </dl>
-
-                <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
-                    Requisitos aplicados
-                  </p>
-                  <ul className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-1">
-                    {appliedRequirements.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-center gap-3 rounded-xl border border-[#85d5c0]/35 bg-[#f3faf7] p-3 text-xs font-semibold"
-                      >
-                        <Check
-                          aria-hidden="true"
-                          className="size-3.5 shrink-0 text-[#176344]"
-                          strokeWidth={2.4}
-                        />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div className="mt-6 overflow-x-auto rounded-2xl border border-border/80 p-4">
-                <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
-                  Flujo de la atención
-                </p>
-                <ol className="flex min-w-[660px] items-start">
-                  {careFlowSteps.map((step, index) => (
-                    <li key={step} className="flex flex-1 items-start">
-                      <div className="flex min-w-0 flex-1 flex-col items-center text-center">
-                        <span
-                          className={`flex size-7 items-center justify-center rounded-full ${
-                            index >= 4
-                              ? "bg-[#fff0dd] text-[#9a5600]"
-                              : "bg-[#d9f5e9] text-[#176344]"
-                          }`}
-                        >
-                          {index >= 4 ? (
-                            <CircleAlert aria-hidden="true" className="size-3.5" />
-                          ) : (
-                            <Check
-                              aria-hidden="true"
-                              className="size-3.5"
-                              strokeWidth={2.4}
-                            />
-                          )}
-                        </span>
-                        <span className="mt-2 text-[9px] font-semibold text-muted-foreground">
-                          {step}
-                        </span>
-                      </div>
-                      {index < careFlowSteps.length - 1 ? (
-                        <span
-                          aria-hidden="true"
-                          className="mt-3.5 h-px flex-1 bg-border"
-                        />
-                      ) : null}
-                    </li>
-                  ))}
-                </ol>
-              </div>
-
-              {/* Acciones ilustrativas: solo "Ver ciclo de ingresos" es navegable. */}
-              <div className="mt-6 flex flex-wrap gap-2">
-                <span className="rounded-full bg-primary px-4 py-2.5 text-xs font-semibold text-white">
-                  Cerrar atención
-                </span>
-                <span className="rounded-full border border-[#e8b63c]/40 bg-[#fffaf0] px-4 py-2.5 text-xs font-semibold text-[#8b620b]">
-                  Completar requisito
-                </span>
-                <span className={actionClassName}>Guardar borrador</span>
-                {isLiveRoute(revenueCycleHref) ? (
-                  <Link
-                    href={revenueCycleHref}
-                    className={`${actionClassName} inline-flex items-center gap-2 outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring`}
-                  >
-                    Ver ciclo de ingresos
-                    <ArrowRight aria-hidden="true" className="size-3" />
-                  </Link>
-                ) : null}
-              </div>
-            </ProductVisual>
+          <div className="relative flex min-h-[640px] flex-col overflow-hidden rounded-[1.75rem] bg-[#071a3a] px-6 pt-14 text-center sm:px-12 sm:pt-16 lg:min-h-[760px] lg:px-16 lg:pt-20">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
+              Validación en origen
+            </p>
+            <h2 className="mx-auto mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-5xl">
+              La red ve lo que falta antes de cerrar
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
+              Cuando un profesional registra una prestación, Zonda identifica el
+              financiador de la organización, aplica sus reglas y deja la
+              atención en borrador si falta un requisito. Administración ve el
+              mismo estado.
+            </p>
+            <div className="mx-auto mt-auto w-full max-w-7xl pt-10 sm:pt-14">
+              <Image
+                src="/assets/solutions/multipayer/dashboard-multifinanciador.png"
+                alt="Vista de la prestación #4201 con cobertura identificada, reglas aplicadas, atención registrada y requisitos validados antes de cerrar y enviar al ciclo de ingresos"
+                width={1668}
+                height={943}
+                sizes="(min-width: 1280px) 1280px, 100vw"
+                className="block h-auto w-full"
+              />
+            </div>
           </div>
-        </div>
-      </section>
-
-      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-5xl">
-          {/* Candidato: historia "Profesionales no pierden tiempo al interactuar con diferentes obras sociales, caso PAMI" (título presente en site-new, sin contenido ni datos todavía; confirmar si PAMI autoriza ser nombrado como caso). */}
-          <Testimonial
-            quote={
-              <>
-                “<Pending>TESTIMONIO A DEFINIR</Pending>”
-              </>
-            }
-            name={<Pending>NOMBRE</Pending>}
-            role={
-              <>
-                <Pending>CARGO</Pending>, <Pending>ORGANIZACIÓN</Pending>
-              </>
-            }
-          />
         </div>
       </section>
 
@@ -445,12 +249,10 @@ export default function MultiPayerCarePage() {
       <FaqList items={faqItems} />
 
       <CtaBanner
-        title="Los profesionales no deberían aprender cómo funciona cada financiador"
-        subtitle="Zonda convierte múltiples reglas en una sola experiencia y deja cada prestación lista para el resto del ciclo."
+        variant="night"
+        title="Un solo proceso para todos tus financiadores"
         buttonText="Hablá con nuestro equipo"
       />
-
-      <RelatedLinks links={relatedLinks} />
     </main>
   );
 }

@@ -21,7 +21,7 @@
      padding-box clip from overflow: hidden (the card has a 1px border). */
   inset: -1px;
   box-sizing: border-box;
-  padding: 5px;
+  padding: var(--card-hover-border, 5px);
   border-radius: inherit;
   content: '';
   pointer-events: none;

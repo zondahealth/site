@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
+import Glow from "@/components/ui/glow/Glow";
+import { ORBIT_BORDER_COLORS } from "@/components/ui/glow/colors";
 import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
 import { Pending } from "@/components/ui/pending/Pending";
 import {
@@ -131,14 +134,28 @@ export default function OperationsPage() {
         primary={{ label: "Hablemos", href: "/contact" }}
         secondary={{ label: "Ver cómo funciona", href: "#como-funciona" }}
         secondaryVariant="inverse"
+        mediaClassName="overflow-visible"
         media={
-          // Archivo final sugerido: public/assets/use-cases/operations/hero.png
-          <ImagePlaceholder
-            width={1200}
-            height={1245}
-            label="un escritorio con planillas, carpetas y un teléfono transformándose en una pantalla de Zonda con la agenda…"
-            className="object-contain max-w-[1200px] mx-auto"
-          />
+          <div className="flex h-full w-full items-center justify-center px-4 pt-20 pb-6 sm:px-6 sm:pt-24">
+            <Glow
+              className="w-full max-w-[640px]"
+              colors={ORBIT_BORDER_COLORS}
+              radius={40}
+              spread={14}
+              blur={22}
+              opacity={0.35}
+            >
+              <Image
+                src="/assets/solutions/ops/hero.png"
+                alt="Profesional con la ficha del paciente, sus equipos de trabajo y los tratamientos recibidos en Zonda"
+                width={1402}
+                height={1122}
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="h-auto w-full object-contain"
+              />
+            </Glow>
+          </div>
         }
       />
 
@@ -227,7 +244,7 @@ export default function OperationsPage() {
       />
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <Testimonial
             quote="Lo que más nos sorprendió no fue la tecnología en sí, sino todo lo que pudimos construir sobre ella.”"
             name="Gabriel Alonso"

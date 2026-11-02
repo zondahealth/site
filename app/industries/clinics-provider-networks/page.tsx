@@ -4,11 +4,11 @@ import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceho
 import { Pending } from "@/components/ui/pending/Pending";
 import {
   BenefitStories,
-  ChecklistSection,
   FaqList,
   InlineLink,
   MetricSlot,
   RelatedLinks,
+  SplitFeature,
   Testimonial,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
@@ -75,25 +75,54 @@ const benefits = [
   },
 ];
 
-const keyUseCases = [
-  <>
-    <InlineLink href="/use-cases/analytics">Analítica</InlineLink> consolidada
-    por holding, entidad y sede
-  </>,
-  <>
-    <InlineLink href="/use-cases/identity">Identidad</InlineLink> y permisos
-    granulares
-  </>,
-  <>
-    <InlineLink href="/use-cases/provider-credentialing">
-      Conexión de prestadores
-    </InlineLink>{" "}
-    para profesionales que rotan entre sedes
-  </>,
-  <>
-    <InlineLink href="/use-cases/automation">Automatización</InlineLink> de
-    liquidación
-  </>,
+function Shot({ label }: { label: string }) {
+  return (
+    <ImagePlaceholder
+      width={1200}
+      height={900}
+      label={label}
+      className="rounded-[1.5rem]"
+    />
+  );
+}
+
+const features: {
+  title: string;
+  copy: string;
+  href?: string;
+  label: string;
+}[] = [
+  {
+    title: "Analítica consolidada",
+    copy: "Por holding, entidad y sede.",
+    href: "/use-cases/analytics",
+    // Archivo final sugerido: public/assets/industries/clinics-provider-networks/feature-1.png
+    label:
+      "Ilustración de un tablero consolidado por holding, entidad y sede.",
+  },
+  {
+    title: "Identidad y permisos granulares",
+    copy: "Permisos granulares.",
+    href: "/use-cases/identity",
+    // Archivo final sugerido: public/assets/industries/clinics-provider-networks/feature-2.png
+    label:
+      "Ilustración de una identidad con permisos distintos por sede.",
+  },
+  {
+    title: "Conexión de prestadores",
+    copy: "Para profesionales que rotan entre sedes.",
+    // Archivo final sugerido: public/assets/industries/clinics-provider-networks/feature-3.png
+    label:
+      "Ilustración de un profesional conectado a más de una sede de la red.",
+  },
+  {
+    title: "Automatización de liquidación",
+    copy: "La liquidación de la red, automatizada.",
+    href: "/use-cases/automation",
+    // Archivo final sugerido: public/assets/industries/clinics-provider-networks/feature-4.png
+    label:
+      "Ilustración de una liquidación de la red resuelta de forma automática.",
+  },
 ];
 
 const faqItems = [
@@ -159,10 +188,24 @@ export default function ClinicsProviderNetworksPage() {
         </div>
       </div>
 
-      <ChecklistSection title="Casos de uso clave" items={keyUseCases} />
+      {features.map((item, index) => (
+        <SplitFeature
+          key={item.title}
+          title={
+            item.href ? (
+              <InlineLink href={item.href}>{item.title}</InlineLink>
+            ) : (
+              item.title
+            )
+          }
+          copy={item.copy}
+          mediaSide={index % 2 === 1 ? "left" : "right"}
+          media={<Shot label={item.label} />}
+        />
+      ))}
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <Testimonial
             quote={
               <>

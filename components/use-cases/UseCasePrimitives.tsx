@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from "react";
 import Link from "next/link";
-import { ArrowRight, Check, ChevronDown, type LucideIcon } from "lucide-react";
+import { Check, ChevronDown, type LucideIcon } from "lucide-react";
 
 import { isLiveRoute } from "@/lib/navigation";
 import { Button } from "@/components/ui/button/button";
@@ -29,6 +29,7 @@ type SectionIntroProps = {
   centered?: boolean;
   compact?: boolean;
   className?: string;
+  titleClassName?: string;
 };
 
 export function SectionIntro({
@@ -39,6 +40,7 @@ export function SectionIntro({
   centered = false,
   compact = false,
   className,
+  titleClassName,
 }: SectionIntroProps) {
   return (
     <header className={cn(centered && "mx-auto text-center", className)}>
@@ -58,6 +60,7 @@ export function SectionIntro({
           "font-display font-semibold leading-tight tracking-[-0.035em]",
           compact ? "mt-3 text-2xl sm:text-3xl" : "mt-4 text-4xl sm:text-5xl",
           inverse ? "text-white" : "text-foreground",
+          titleClassName,
         )}
       >
         {title}
@@ -294,6 +297,7 @@ export function SplitFeature({
   title,
   copy,
   bullets,
+  bulletIcons,
   media,
   mediaSide = "right",
   id,
@@ -304,6 +308,7 @@ export function SplitFeature({
   title: ReactNode;
   copy?: ReactNode;
   bullets?: ReactNode[];
+  bulletIcons?: LucideIcon[];
   media: ReactNode;
   mediaSide?: "left" | "right";
   id?: string;
@@ -332,25 +337,29 @@ export function SplitFeature({
           />
           {bullets && bullets.length > 0 ? (
             <ul className="mt-6 grid max-w-lg gap-3">
-              {bullets.map((bullet, index) => (
-                <li
-                  key={index}
-                  className={cn(
-                    "flex items-start gap-2.5 text-sm leading-6",
-                    inverse ? "text-white/80" : "text-foreground/80",
-                  )}
-                >
-                  <Check
-                    aria-hidden="true"
+              {bullets.map((bullet, index) => {
+                const Icon = bulletIcons?.[index] ?? Check;
+
+                return (
+                  <li
+                    key={index}
                     className={cn(
-                      "mt-0.5 size-4 shrink-0",
-                      inverse ? "text-[#eaea00]" : "text-secondary",
+                      "flex items-center gap-2.5 text-sm leading-6",
+                      inverse ? "text-white/80" : "text-foreground/80",
                     )}
-                    strokeWidth={2.4}
-                  />
-                  <span>{bullet}</span>
-                </li>
-              ))}
+                  >
+                    <Icon
+                      aria-hidden="true"
+                      className={cn(
+                        "size-4 shrink-0",
+                        inverse ? "text-[#eaea00]" : "text-secondary",
+                      )}
+                      strokeWidth={2.4}
+                    />
+                    <span>{bullet}</span>
+                  </li>
+                );
+              })}
             </ul>
           ) : null}
           {children}
@@ -524,16 +533,19 @@ export function CapabilityGrid({
 
 export function FaqList({
   title = "Tus preguntas, respondidas",
+  copy,
   items,
   inverse = false,
 }: {
   title?: string;
+  copy?: ReactNode;
   items: {
     question: string;
     answer: ReactNode;
     /** Plain-text answer for JSON-LD when `answer` is rich content without placeholders. */
     jsonLdAnswer?: string;
     jsonLd?: boolean;
+    open?: boolean;
   }[];
   inverse?: boolean;
 }) {
@@ -561,11 +573,12 @@ export function FaqList({
 
   return (
     <section className="px-6 py-20 sm:px-10 sm:py-28 lg:px-16 lg:py-36">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-7xl">
         <SectionIntro
           centered
           inverse={inverse}
           title={title}
+          copy={copy}
           className="max-w-3xl"
         />
 
@@ -578,7 +591,7 @@ export function FaqList({
           )}
         >
           {items.map((item) => (
-            <details key={item.question} className="group">
+            <details key={item.question} className="group" open={item.open}>
               <summary
                 className={cn(
                   "flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-left font-display text-base font-semibold outline-none focus-visible:ring-2 sm:text-lg [&::-webkit-details-marker]:hidden",
@@ -701,7 +714,7 @@ export function UseCaseHero({
   gridClassName,
   contentClassName,
 }: {
-  eyebrow: ReactNode;
+  eyebrow?: ReactNode;
   title: ReactNode;
   copy: ReactNode;
   primary: CtaLink;
@@ -729,14 +742,16 @@ export function UseCaseHero({
       {bleedSrc ? <FeaturePanelBleed src={bleedSrc} side="right" /> : null}
       <FeatureHeroContent className={contentClassName}>
         <div>
-          <p
-            className={cn(
-              "mb-2 text-sm font-semibold uppercase tracking-[0.10em]",
-              inverse ? "text-[#eaea00]" : "text-foreground",
-            )}
-          >
-            {eyebrow}
-          </p>
+          {eyebrow ? (
+            <p
+              className={cn(
+                "mb-2 text-sm font-semibold uppercase tracking-[0.10em]",
+                inverse ? "text-[#eaea00]" : "text-foreground",
+              )}
+            >
+              {eyebrow}
+            </p>
+          ) : null}
           <h1
             className={cn(
               "font-display text-5xl font-semibold leading-[1.04] tracking-[-0.045em]",
@@ -757,10 +772,7 @@ export function UseCaseHero({
             <div className="mt-4 flex flex-wrap gap-3">
               {primaryHref ? (
                 <Button variant="black" asChild>
-                  <CtaAnchor href={primaryHref}>
-                    {primary.label}
-                    <ArrowRight aria-hidden="true" />
-                  </CtaAnchor>
+                  <CtaAnchor href={primaryHref}>{primary.label}</CtaAnchor>
                 </Button>
               ) : null}
               {secondary && secondaryHref ? (

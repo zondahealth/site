@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import { testimonials } from "@/components/testimonials/stories";
 import { Pending } from "@/components/ui/pending/Pending";
 import {
   Story,
@@ -20,33 +21,6 @@ export const metadata: Metadata = {
   description,
 };
 
-const stories: {
-  id: string;
-  title: string;
-  image: string;
-  href?: string;
-  summary?: string;
-}[] = [
-  {
-    id: "interdom",
-    title: "Interdom transforma su organización y se hace más eficiente",
-    href: "/customer-stories/interdom",
-    summary: "Internación domiciliaria · −23% costos operativos",
-    image: "/assets/home/testimonials/t1.png",
-  },
-  {
-    id: "ams",
-    title: "AMS por primera vez tiene control sobre sus finanzas",
-    image: "/assets/home/testimonials/t2.png",
-  },
-  {
-    id: "pami",
-    title:
-      "Profesionales no pierden tiempo al interactuar con diferentes obras sociales, caso PAMI",
-    image: "/assets/home/testimonials/t3.png",
-  },
-];
-
 export default function CustomerStoriesPage() {
   return (
     <main lang="es" className="min-h-screen bg-background text-foreground">
@@ -62,7 +36,7 @@ export default function CustomerStoriesPage() {
           </header>
 
           <StoryList>
-            {stories.map((story) => {
+            {testimonials.map((story) => {
               const href =
                 story.href && isLiveRoute(story.href) ? story.href : undefined;
 

@@ -4,7 +4,6 @@ import { Fingerprint, ShieldCheck, Sparkles, Users } from "lucide-react";
 
 import { useCases } from "@/lib/navigation";
 import { Pending } from "@/components/ui/pending/Pending";
-import { GlassBorder } from "@/components/ui/glass-border/GlassBorder";
 import {
   BenefitStories,
   CapabilityGrid,
@@ -41,8 +40,8 @@ const benefits = [
     copy: "Clínica, operación y facturación cruzadas sobre el mismo modelo de datos.",
     media: (
       <Image
-        src="/assets/solutions/analitics/health-panel.png"
-        alt="Panel de salud con pacientes, procedimientos y tratamientos según el estado clínico"
+        src="/assets/solutions/analitics/search.png"
+        alt="Búsqueda de pacientes con tratamiento activo y procedimiento programado"
         fill
         className="object-cover"
         sizes={benefitImageSizes}
@@ -132,7 +131,7 @@ const relatedLinks = [
   { label: "Clínicas y redes", href: "/industries/clinics-provider-networks" },
   {
     label: "Agentes de inteligencia en salud",
-    href: "/use-cases/healthcare-intelligence-agents",
+    href: "/use-cases/normalized-ai",
   },
 ];
 
@@ -146,19 +145,18 @@ export default function AnalyticsPage() {
         primary={{ label: "Hablemos", href: "/contact" }}
         secondary={{ label: "Ver la API", href: "/developers" }}
         secondaryVariant="inverse"
+        mediaClassName="overflow-visible"
         media={
-          <div className="flex h-full w-full items-center justify-center px-4 pt-20 pb-6 sm:px-6 sm:pt-24">
-            <GlassBorder fullWidth>
-              <Image
-                src="/assets/solutions/analitics/hero.png"
-                alt="Tablero de Médica Salud con ingresos y egresos en vivo y la evolución de los últimos 12 meses"
-                width={1206}
-                height={1164}
-                priority
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="h-auto w-full"
-              />
-            </GlassBorder>
+          <div className="flex h-full w-full items-end justify-center px-4 pt-28 sm:px-6 sm:pt-32 lg:justify-start lg:px-0">
+            <Image
+              src="/assets/solutions/analitics/hero.png"
+              alt="Tablero de Médica Salud con ingresos y egresos en vivo y la evolución de los últimos 12 meses"
+              width={1668}
+              height={943}
+              priority
+              sizes="(min-width: 1024px) 70vw, 100vw"
+              className="h-auto w-full max-w-none lg:w-[1000px] lg:shrink-0"
+            />
           </div>
         }
       />
@@ -190,10 +188,10 @@ export default function AnalyticsPage() {
         ]}
         media={
           <Image
-            src="/assets/solutions/analitics/search.png"
-            alt="Búsqueda de pacientes con tratamiento activo y procedimiento programado"
-            width={1672}
-            height={941}
+            src="/assets/solutions/analitics/health-panel.png"
+            alt="Panel de salud con pacientes, procedimientos y tratamientos según el estado clínico"
+            width={1254}
+            height={1254}
             sizes={splitImageSizes}
             className={splitImageClassName}
           />
@@ -240,7 +238,7 @@ export default function AnalyticsPage() {
       />
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <Testimonial
             quote={
               <>

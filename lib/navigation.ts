@@ -1,9 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import {
-  BadgeCheck,
   BarChart3,
-  Bot,
-  Briefcase,
   Building2,
   CircleDollarSign,
   ClipboardList,
@@ -50,20 +47,12 @@ export const useCaseGroups: NavGroup[] = [
     title: "Inteligencia y datos",
     items: [
       {
-        title: "Agentes de inteligencia en salud",
-        href: "/use-cases/healthcare-intelligence-agents",
-        status: "live",
-        icon: Bot,
-        description:
-          "Agentes de IA que razonan sobre datos clínicos, operativos y financieros conectados.",
-      },
-      {
-        title: "IA normalizada",
+        title: "IA y agentes",
         href: "/use-cases/normalized-ai",
         status: "live",
         icon: Sparkles,
         description:
-          "De notas a datos clínicos estructurados y codificados (LOINC, ICD-10), listos para IA.",
+          "Datos clínicos codificados (LOINC, ICD-10) y agentes que razonan sobre clínica, operación y finanzas.",
       },
       {
         title: "Analítica",
@@ -92,7 +81,7 @@ export const useCaseGroups: NavGroup[] = [
         status: "live",
         icon: Workflow,
         description:
-          "Una sola forma de registrar y validar prestaciones, sin importar el financiador.",
+          "Tu organización se conecta una vez y opera con todos sus financiadores.",
       },
       {
         title: "Ciclo de ingresos",
@@ -122,22 +111,6 @@ export const useCaseGroups: NavGroup[] = [
         icon: Fingerprint,
         description:
           "Un registro único para cada paciente, profesional y organización.",
-      },
-      {
-        title: "Conexión de prestadores",
-        href: "/use-cases/provider-credentialing",
-        status: "live",
-        icon: BadgeCheck,
-        description:
-          "El profesional carga sus credenciales una vez y quedan conectadas en todas sus organizaciones.",
-      },
-      {
-        title: "Recursos humanos",
-        href: "/use-cases/workforce",
-        status: "live",
-        icon: Briefcase,
-        description:
-          "Legajos, matrículas, disponibilidad, liquidación y productividad de equipos de salud.",
       },
     ],
   },

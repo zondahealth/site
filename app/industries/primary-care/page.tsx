@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 import { LOGIN_URL } from "@/lib/navigation";
 import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
@@ -8,6 +9,7 @@ import {
   FaqList,
   MetricSlot,
   RelatedLinks,
+  SectionIntro,
   SplitFeature,
   Testimonial,
   UseCaseHero,
@@ -100,6 +102,32 @@ const relatedLinks = [
   { label: "Atención multi-financiador", href: "/use-cases/multi-payer-care" },
 ];
 
+function Shot({ label }: { label: string }) {
+  return (
+    <ImagePlaceholder
+      width={1200}
+      height={900}
+      label={label}
+      className="rounded-[1.5rem]"
+    />
+  );
+}
+
+const features = [
+  {
+    // Archivo final sugerido: public/assets/sectors/primary/feature-1.png
+    label: "Ilustración pendiente para la primera feature de atención primaria.",
+  },
+  {
+    // Archivo final sugerido: public/assets/sectors/primary/feature-2.png
+    label: "Ilustración pendiente para la segunda feature de atención primaria.",
+  },
+  {
+    // Archivo final sugerido: public/assets/sectors/primary/feature-3.png
+    label: "Ilustración pendiente para la tercera feature de atención primaria.",
+  },
+];
+
 const strongClassName = "font-semibold text-foreground";
 
 export default function PrimaryCarePage() {
@@ -113,14 +141,19 @@ export default function PrimaryCarePage() {
         // DECISIÓN NAV-2: confirmar URL de la app; si no se confirma, apuntar a /contact.
         secondary={{ label: "Crear mi perfil profesional", href: LOGIN_URL }}
         secondaryVariant="inverse"
+        mediaClassName="overflow-visible"
         media={
-          // Archivo final sugerido: public/assets/industries/primary-care/hero.png
-          <ImagePlaceholder
-            width={1200}
-            height={1245}
-            label="vista del médico de cabecera con su lista de pacientes y alertas de 'control pendiente', como en…"
-            className="object-contain max-w-[1200px] mx-auto"
-          />
+          <div className="relative h-[300px] w-full sm:h-[400px] lg:h-full">
+            <Image
+              src="/assets/sectors/primary/salita.png"
+              alt="Ilustración de un centro de salud de atención primaria"
+              width={1774}
+              height={887}
+              priority
+              sizes="(min-width: 1024px) 1200px, 100vw"
+              className="absolute top-1/2 left-1/2 h-auto w-[min(100%,680px)] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain sm:w-[min(100%,820px)] lg:top-[62%] lg:left-0 lg:w-[min(1200px,calc(50vw+11rem))] lg:translate-x-0 lg:-translate-y-1/2"
+            />
+          </div>
         }
       />
 
@@ -141,6 +174,27 @@ export default function PrimaryCarePage() {
           />
         </div>
       </div>
+
+      <section className="px-6 pt-16 sm:px-10 sm:pt-20 lg:px-16 lg:pt-24">
+        <div className="mx-auto max-w-7xl">
+          <SectionIntro
+            title={<Pending>TÍTULO A DEFINIR</Pending>}
+            copy={<Pending>TEXTO A DEFINIR</Pending>}
+            className="max-w-4xl"
+            titleClassName="text-5xl sm:text-6xl"
+          />
+        </div>
+      </section>
+
+      {features.map((item, index) => (
+        <SplitFeature
+          key={item.label}
+          title={<Pending>FEATURE A DEFINIR</Pending>}
+          copy={<Pending>TEXTO A DEFINIR</Pending>}
+          mediaSide={index % 2 === 1 ? "left" : "right"}
+          media={<Shot label={item.label} />}
+        />
+      ))}
 
       <SplitFeature
         title="Para quién"
@@ -168,7 +222,7 @@ export default function PrimaryCarePage() {
       />
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <Testimonial
             quote={
               <>

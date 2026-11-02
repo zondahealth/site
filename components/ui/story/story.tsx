@@ -19,14 +19,21 @@ function StoryList({ className, ...props }: React.ComponentProps<'ul'>) {
 
 type StoryProps = Omit<React.ComponentProps<typeof Link>, "href"> & {
   href?: React.ComponentProps<typeof Link>["href"];
+  itemClassName?: string;
 };
 
-function Story({ className, children, href, ...props }: StoryProps) {
+function Story({
+  className,
+  itemClassName,
+  children,
+  href,
+  ...props
+}: StoryProps) {
   const classes = cn("group flex flex-col gap-3 outline-none", className);
 
   if (href == null || href === "" || href === "#") {
     return (
-      <li data-slot="story-item">
+      <li data-slot="story-item" className={itemClassName}>
         <article data-slot="story" className={classes}>
           {children}
         </article>
@@ -35,7 +42,7 @@ function Story({ className, children, href, ...props }: StoryProps) {
   }
 
   return (
-    <li data-slot="story-item">
+    <li data-slot="story-item" className={itemClassName}>
       <Link data-slot="story" href={href} className={classes} {...props}>
         {children}
       </Link>

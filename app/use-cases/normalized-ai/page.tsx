@@ -1,25 +1,26 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { BarChart3, Cpu, Database, Shuffle } from "lucide-react";
+import {
+  CircleDollarSign,
+  FileSearch,
+  FlaskConical,
+  HeartPulse,
+  Stethoscope,
+  Users,
+  Workflow,
+} from "lucide-react";
 
 import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
-import { Pending } from "@/components/ui/pending/Pending";
 import {
   BenefitStories,
-  CapabilityGrid,
-  FaqList,
-  MetricSlot,
-  RelatedLinks,
   SplitFeature,
-  StatSlot,
-  Testimonial,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
 import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
 
 const title = "IA normalizada: datos clínicos listos para usar";
 const description =
-  "Zonda convierte texto libre, PDFs, CSV, HL7, FHIR y XML en un modelo canónico normalizado y codificado, listo para que lo use cualquier sistema o modelo de IA.";
+  "Zonda entiende cualquier formato de datos, lo interpreta, lo protege y lo transforma en información lista para usar, como quieras y donde quieras.";
 
 export const metadata: Metadata = {
   title,
@@ -35,223 +36,165 @@ export const metadata: Metadata = {
 const benefitImageSizes =
   "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
 
-const benefits = [
+const agentBenefits = [
   {
-    title: "Cualquier input",
-    copy: "Texto plano, PDFs, CSVs, HL7, FHIR, XML: sin plantillas fijas.",
+    title: "Conversá con tus datos sobre el riesgo clínico",
+    copy: "Conectá historial de tratamiento, visitas y eventos clínicos para identificar pacientes que pueden necesitar apoyo proactivo.",
     media: (
       <Image
-        src="/assets/solutions/normalization/formats.png"
-        alt="Texto plano, PDF, CSV, HL7, FHIR y XML aceptados como entrada"
+        src="/assets/solutions/ai/benefit-1.png"
+        alt="Ilustración de dos manos armando un rompecabezas, datos clínicos conectados"
         fill
-        className="object-cover"
         sizes={benefitImageSizes}
+        className="object-cover"
       />
     ),
   },
   {
-    title: "Un modelo canónico",
-    copy: "Estructurado, normalizado y con terminología estándar.",
+    title: "De notas a datos clínicos listos para usar",
+    copy: "Zonda entiende las notas de los clínicos y las transforma en datos estructurados listos para analizar, sin agregar overhead a los médicos y reduciendo la energía que tienen que dedicarle a eso.",
     media: (
       <Image
-        src="/assets/solutions/normalization/record.png"
-        alt="Registro de salud estructurado con diagnósticos ICD-10 y observaciones LOINC"
+        src="/assets/solutions/ai/benefit-2.png"
+        alt="Ilustración de notas en papel que pasan a una notebook, de notas a datos listos para usar"
         fill
-        className="object-cover"
         sizes={benefitImageSizes}
+        className="object-cover"
       />
     ),
   },
   {
-    title: "Nada se pierde",
-    copy: "Información clínica, social y operacional.",
+    title: "Zonda entiende cualquier tipo de dato",
+    copy: "Consume PDFs, texto, audio, FHIR, HL7, CSV y XML como llegan, sin plantillas fijas, y los deja listos para usar.",
     media: (
       <Image
-        src="/assets/solutions/normalization/patient-data.png"
-        alt="Ficha del paciente con datos clínicos, sociales y operacionales"
+        src="/assets/solutions/ai/benefit-3.png"
+        alt="Ilustración de piezas sueltas que se unen en un rompecabezas, cualquier tipo de dato"
         fill
-        className="object-cover"
         sizes={benefitImageSizes}
+        className="object-cover"
       />
     ),
   },
 ];
 
-const capabilities = [
-  { title: "Procesamiento AI", icon: Cpu },
-  { title: "Modelo canónico", icon: Database },
-  { title: "Output flexible", icon: Shuffle },
-  { title: "Analítica", href: "/use-cases/analytics", icon: BarChart3 },
-];
-
-const faqItems = [
-  {
-    question: "¿Qué significa \"IA normalizada\"?",
-    answer:
-      "Que los datos clínicos llegan a la IA ya estructurados, deduplicados y codificados con estándares (LOINC, ICD-10), en vez de crudos y fragmentados.",
-  },
-  {
-    question: "¿Puedo usar mis propios modelos?",
-    answer:
-      "Sí. Zonda te da los datos normalizados vía API; vos elegís qué modelo usar.",
-  },
-  {
-    question: "¿Qué pasa con los datos sensibles?",
-    answer: (
-      <>
-        La plataforma cifra en tránsito y en reposo, con permisos granulares y
-        aislamiento multi-tenant.{" "}
-        <Pending>POLÍTICA DE USO DE DATOS PARA IA A CONFIRMAR</Pending>
-      </>
-    ),
-  },
-];
-
-const relatedLinks = [
-  { label: "Analítica", href: "/use-cases/analytics" },
-  { label: "Segmentación poblacional", href: "/use-cases/population-segmentation" },
-  { label: "Laboratorios", href: "/industries/laboratories" },
-  {
-    label: "Agentes de inteligencia en salud",
-    href: "/use-cases/healthcare-intelligence-agents",
-  },
-];
-
-const splitImageClassName = "rounded-[1.5rem]";
+const splitImageClassName = "h-auto w-full rounded-[1.5rem] object-cover";
+const splitImageSizes = "(min-width: 1024px) 50vw, 100vw";
 
 export default function NormalizedAiPage() {
   return (
     <main lang="es" className="overflow-hidden bg-background text-foreground">
       <UseCaseHero
-        eyebrow="IA normalizada"
-        title="La IA en salud es tan buena como sus datos. Nosotros los ordenamos."
+        title="Convertí datos fragmentados en inteligencia accionable"
         copy={description}
-        primary={{ label: "Hablemos", href: "/contact" }}
+        primary={{ label: "Hablá con nuestro equipo", href: "/contact" }}
         secondary={{
           label: "Ver el modelo de datos",
           href: "/developers#modelo-canonico",
         }}
         secondaryVariant="inverse"
+        mediaClassName="overflow-visible"
         media={
-          // Archivo final sugerido: public/assets/use-cases/normalized-ai/hero.png
-          <ImagePlaceholder
-            width={1200}
-            height={1245}
-            label="un PDF escaneado de un análisis de laboratorio transformándose línea por línea en un JSON con códigos…"
-            className="object-contain max-w-[1200px] mx-auto"
-          />
+          <div className="flex h-full w-full items-end justify-center px-4 pt-28 sm:px-6 sm:pt-32 lg:justify-start lg:px-0">
+            <Image
+              src="/assets/solutions/ai/hero.png"
+              alt="Tablero de prestaciones por estado, con el agente pidiendo las prestaciones de PAMI pendientes de facturación"
+              width={1512}
+              height={772}
+              priority
+              sizes="(min-width: 1024px) 70vw, 100vw"
+              className="h-auto w-full max-w-none lg:w-[1000px] lg:shrink-0"
+            />
+          </div>
         }
       />
 
-      {/* Bajada de la sección sin publicar: la fuente solo trae una nota editorial (mensajes de site-new: "De notas a datos clínicos listos para usar" y "De datos fragmentados a información segura que la IA puede usar"; en el footer figura como "Datos listos para IA"). */}
       <BenefitStories
-        title="De notas a datos clínicos listos para usar."
-        items={benefits}
+        title="Lo que necesitás para convertir datos de salud en inteligencia."
+        copy="Los agentes operan sobre datos de salud conectados. Entienden las relaciones entre pacientes, profesionales, tratamientos, operaciones y procesos financieros, no solo registros sueltos."
+        items={agentBenefits}
       />
 
-      <div className="px-6 pb-16 sm:px-10 lg:px-16">
-        <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-2">
-          <MetricSlot
-            label="precisión de codificación"
-            supportText="Métrica a definir"
-          />
-          {/* VALIDAR: registros clínicos procesados en el caso Interdom (dato publicado — validar) */}
-          <StatSlot
-            value="+1 M"
-            label="registros clínicos procesados en el caso Interdom"
-          />
-        </div>
-      </div>
-
       <SplitFeature
-        title="Normalización con estándares universales"
-        bullets={[
-          <>
-            <strong className="font-semibold text-foreground">LOINC:</strong>{" "}
-            mapeo semántico de observaciones y resultados de laboratorio
-          </>,
-          <>
-            <strong className="font-semibold text-foreground">ICD-10:</strong>{" "}
-            codificación de diagnósticos a partir de texto clínico libre con NLP
-          </>,
-          "Mapeo automático de esquemas legacy",
-        ]}
+        eyebrow="La capa que falta"
+        title="Los datos de salud existen. La inteligencia, no."
+        copy="Las organizaciones ya recolectan enormes volúmenes de información clínica, operativa y financiera. El problema es que esos datos viven en sistemas que nunca fueron diseñados para trabajar juntos."
         media={
-          // Archivo final sugerido: public/assets/use-cases/normalized-ai/feature-1.png
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="tabla de 'término propietario → código estándar' (ej. 'GLUC AYUNAS' → LOINC [CÓDIGO]), como en…"
+          <Image
+            src="/assets/solutions/ai/dashboard-centra-nube.png"
+            alt="Panel de Médica Salud con ingresos, egresos y categorías como reembolsos, nómina y facturas"
+            width={1254}
+            height={1254}
+            sizes={splitImageSizes}
             className={splitImageClassName}
           />
         }
       />
 
       <SplitFeature
-        title="Registros clínicos superinteligentes"
+        eyebrow="Inteligencia en acción"
+        title="Hacé una pregunta compleja de salud"
         mediaSide="left"
+        copy="Dales a tus equipos un solo lugar para explorar qué está pasando, por qué está pasando y dónde tienen que actuar, sin armar cada dataset a mano."
+        bulletIcons={[HeartPulse, Workflow, CircleDollarSign]}
         bullets={[
-          "Dictado por voz con transcripción al instante",
-          "Resumen estructurado por IA (SOAP, evolución)",
-          "Búsqueda semántica en toda la historia",
+          "¿Qué pacientes están en riesgo de interrumpir su tratamiento?",
+          "¿Dónde se está trabando la operación asistencial?",
+          "¿Por qué cambió el reintegro?",
         ]}
         media={
-          // Archivo final sugerido: public/assets/use-cases/normalized-ai/feature-2.png
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="app móvil con una evolución dictada y estructurada en Subjetivo / Objetivo / Plan, como en…"
+          <Image
+            src="/assets/solutions/payments/assistant-window.png"
+            alt="Asistente Zonda respondiendo que encontró 24 tratamientos que requieren seguimiento"
+            width={1254}
+            height={1254}
+            sizes={splitImageSizes}
             className={splitImageClassName}
           />
         }
       />
 
       <SplitFeature
-        title="Una base confiable para tus propios modelos"
+        id="como-funciona"
+        eyebrow="Cómo funciona"
+        title="Cualquier documento se vuelve un registro médico"
+        copy="Zonda recibe lo que ya tenés —un PDF, una nota o un texto— y lo transforma en información ordenada, asociada al paciente y lista para consultar."
+        bulletIcons={[FlaskConical, Stethoscope, FileSearch, Users]}
         bullets={[
-          "Datos consistentes entre fuentes y en el tiempo",
-          "Trazabilidad del origen de cada dato",
-          "Acceso vía API para entrenar, evaluar o alimentar agentes y modelos",
+          "Conoce LOINC, así los resultados de laboratorio se entienden en cualquier lado.",
+          "Conoce ICD-10, así un diagnóstico escrito en texto queda ordenado.",
+          "Cada dato muestra de qué documento salió, para revisarlo y corregirlo.",
+          "La decisión clínica sigue en el equipo.",
         ]}
         media={
-          // Archivo final sugerido: public/assets/use-cases/normalized-ai/feature-3.png
           <ImagePlaceholder
             width={1000}
             height={1000}
-            label="diagrama 'Zonda → tu modelo de IA → predicción de riesgo', como en plaid.com/ en 'The AI infrastructure…"
-            className={splitImageClassName}
+            label="un PDF o una nota clínica que se convierte en la ficha del paciente: resultados, signos y conceptos, cada uno con el documento de origen"
+            className="rounded-[1.5rem]"
           />
         }
       />
 
-      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-5xl">
-          <Testimonial
-            quote={
-              <>
-                “<Pending>TESTIMONIO A DEFINIR</Pending>”
-              </>
-            }
-            name={<Pending>NOMBRE</Pending>}
-            role={
-              <>
-                <Pending>CARGO</Pending>, <Pending>ORGANIZACIÓN</Pending>
-              </>
-            }
+      <SplitFeature
+        title="Resúmenes mensuales y anuales"
+        copy="Zonda resume cómo evolucionó el paciente mes a mes y a lo largo del año, para que familiares y clínicos vean qué cambió y cómo sigue el cuidado, sin recorrer cada registro."
+        mediaSide="left"
+        media={
+          <ImagePlaceholder
+            width={1000}
+            height={1000}
+            label="grilla de snapshots mensuales de un año y, al abrir un período, la evolución del paciente vinculada a los registros de origen; al lado, la síntesis anual"
+            className="rounded-[1.5rem]"
           />
-        </div>
-      </section>
-
-      <CapabilityGrid title="Lo que lo hace posible" items={capabilities} />
-
-      <FaqList items={faqItems} />
+        }
+      />
 
       <CtaBanner
-        title="Dale a tu IA los datos que se merece"
-        buttonText="Hablemos"
+        variant="night"
+        title="Hacele a tus datos las preguntas que importan"
+        buttonText="Hablá con nuestro equipo"
       />
-
-      <RelatedLinks links={relatedLinks} />
     </main>
   );
 }

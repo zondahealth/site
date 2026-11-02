@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ClipboardList, Plug, Sparkles, Webhook } from "lucide-react";
 
 import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
@@ -127,16 +128,19 @@ export default function AutomationPage() {
         title="Lo que hoy hacés a mano, que se haga solo"
         copy={description}
         primary={{ label: "Hablemos", href: "/contact" }}
-        secondary={{ label: "Ver webhooks y API", href: "/developers" }}
-        secondaryVariant="inverse"
+        mediaClassName="overflow-visible"
         media={
-          // Archivo final sugerido: public/assets/use-cases/automation/hero.png
-          <ImagePlaceholder
-            width={1200}
-            height={1245}
-            label="flujo animado 'Visita registrada → Prestación validada → Liquidación generada → Enviada al financiador'…"
-            className="object-contain max-w-[1200px] mx-auto"
-          />
+          <div className="relative h-[440px] w-full sm:h-[520px] lg:h-full">
+            <Image
+              src="/assets/solutions/automation/hero.png"
+              alt="Médico con estetoscopio junto a un brazo robótico que automatiza una tarea"
+              width={1378}
+              height={981}
+              priority
+              sizes="(min-width: 1024px) 70vw, 100vw"
+              className="absolute bottom-0 left-1/2 h-auto w-[115%] max-w-none -translate-x-1/2 translate-y-[4%] sm:w-[122%] lg:w-[882px] lg:-translate-x-[calc(50%-2.25rem)] lg:translate-y-[2%]"
+            />
+          </div>
         }
       />
 
@@ -224,7 +228,7 @@ export default function AutomationPage() {
       />
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <Testimonial
             quote="Procesos que hacíamos a mano desde siempre, como coordinación, reclamos y asignación de pacientes, de repente los teníamos integrados en un solo lugar.”"
             name="Gabriel Alonso"

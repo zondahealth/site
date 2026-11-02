@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-
 import { Logo } from "@/components/layout/Logo";
 import { Button } from "@/components/ui/button/button";
 import {
@@ -81,10 +79,7 @@ export default function InterdomPage() {
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button variant="black" asChild>
-              <Link href="/contact?origen=interdom">
-                Agendar una llamada
-                <ArrowRight aria-hidden="true" />
-              </Link>
+              <Link href="/contact?origen=interdom">Agendar una llamada</Link>
             </Button>
             {isLiveRoute(homeHealthHref) ? (
               <Button variant="outline" asChild>
@@ -107,7 +102,7 @@ export default function InterdomPage() {
       </FeatureHero>
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           {/* VALIDAR: fuente métricas Interdom — dato publicado en site-new */}
           <dl className="grid divide-y divide-border border-y border-border sm:grid-cols-4 sm:divide-x sm:divide-y-0">
             {metrics.map((metric) => (
@@ -146,7 +141,7 @@ export default function InterdomPage() {
       </section>
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <SectionIntro
             compact
             title="El desafío: crecer sin perder el control"
@@ -157,7 +152,7 @@ export default function InterdomPage() {
       </section>
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <SectionIntro
             compact
             eyebrow="Una plataforma, dos formas de avanzar"
@@ -195,7 +190,7 @@ export default function InterdomPage() {
       </section>
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <SectionIntro
             compact
             title="Una operación conectada de punta a punta"
@@ -229,7 +224,7 @@ export default function InterdomPage() {
       </section>
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <SectionIntro
             compact
             title="Resultados visibles desde los primeros tres meses"
@@ -283,7 +278,7 @@ export default function InterdomPage() {
       </section>
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <SectionIntro
             compact
             eyebrow="Lo que sigue para Interdom"
@@ -296,7 +291,7 @@ export default function InterdomPage() {
 
       <RelatedLinks
         title="Seguí explorando"
-        widthClassName="max-w-5xl"
+        widthClassName="max-w-7xl"
         links={[
           { label: "Internación domiciliaria", href: homeHealthHref },
           { label: "Operaciones digitales", href: "/use-cases/operations" },

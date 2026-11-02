@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
 import { Pending } from "@/components/ui/pending/Pending";
 import {
   BenefitStories,
-  ChecklistSection,
   FaqList,
   InlineLink,
   MetricSlot,
   RelatedLinks,
+  SplitFeature,
   Testimonial,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
@@ -48,8 +49,6 @@ const benefits = [
   {
     title: "Una carga, todos los financiadores",
     copy: "Los socios registran sus prestaciones una vez y llegan a cada financiador.",
-    href: "/use-cases/provider-credentialing",
-    cta: "Ver conexión de prestadores",
     // Archivo final sugerido: public/assets/industries/medical-associations/benefit-2.png
     media: (
       <ImagePlaceholder
@@ -77,27 +76,69 @@ const benefits = [
   },
 ];
 
-const keyUseCases = [
-  <>
-    <InlineLink href="/use-cases/multi-payer-care">
-      Atención multi-financiador
-    </InlineLink>{" "}
-    para socios que trabajan con varias coberturas
-  </>,
-  <>
-    <InlineLink href="/use-cases/revenue-cycle">Ciclo de ingresos</InlineLink>{" "}
-    de la prestación a la liquidación al socio
-  </>,
-  "Credencialización y re-credencialización de socios",
-  "Facturación centralizada a obras sociales y prepagas",
-  <>
-    Detección de desvíos en prestaciones (
-    <InlineLink href="/use-cases/fraud-risk-prevention">fraude</InlineLink>)
-  </>,
-  <>
-    Herramientas para socios que todavía trabajan en papel (
-    <InlineLink href="/use-cases/operations">operaciones digitales</InlineLink>)
-  </>,
+function Shot({ label }: { label: string }) {
+  return (
+    <ImagePlaceholder
+      width={1200}
+      height={900}
+      label={label}
+      className="rounded-[1.5rem]"
+    />
+  );
+}
+
+const keyUseCases: {
+  title: string;
+  copy: string;
+  href?: string;
+  label: string;
+}[] = [
+  {
+    title: "Atención multi-financiador",
+    copy: "Para socios que trabajan con varias coberturas.",
+    href: "/use-cases/multi-payer-care",
+    // Archivo final sugerido: public/assets/sectors/asos/use-case-1.png
+    label:
+      "Ilustración de varias coberturas conectadas a un mismo socio de la asociación.",
+  },
+  {
+    title: "Ciclo de ingresos",
+    copy: "De la prestación a la liquidación al socio.",
+    href: "/use-cases/revenue-cycle",
+    // Archivo final sugerido: public/assets/sectors/asos/use-case-2.png
+    label:
+      "Ilustración del recorrido de una prestación hasta la liquidación al socio.",
+  },
+  {
+    title: "Credencialización y re-credencialización",
+    copy: "De cada socio de la asociación.",
+    // Archivo final sugerido: public/assets/sectors/asos/use-case-3.png
+    label:
+      "Ilustración de una credencial profesional verificada, con fecha de vencimiento.",
+  },
+  {
+    title: "Facturación centralizada",
+    copy: "A obras sociales y prepagas.",
+    // Archivo final sugerido: public/assets/sectors/asos/use-case-4.png
+    label:
+      "Ilustración de facturas de varios financiadores reunidas en un solo flujo.",
+  },
+  {
+    title: "Detección de desvíos en prestaciones",
+    copy: "El circuito de fraude, aplicado a las prestaciones.",
+    href: "/use-cases/fraud-risk-prevention",
+    // Archivo final sugerido: public/assets/sectors/asos/use-case-5.png
+    label:
+      "Ilustración de una prestación marcada como desvío dentro de un lote de facturación.",
+  },
+  {
+    title: "Operaciones digitales",
+    copy: "Herramientas para socios que todavía trabajan en papel.",
+    href: "/use-cases/operations",
+    // Archivo final sugerido: public/assets/sectors/asos/use-case-6.png
+    label:
+      "Ilustración de una planilla en papel que pasa a un registro digital en el celular.",
+  },
 ];
 
 const faqItems = [
@@ -117,7 +158,6 @@ const faqItems = [
 ];
 
 const relatedLinks = [
-  { label: "Conexión de prestadores", href: "/use-cases/provider-credentialing" },
   { label: "Financiadores", href: "/industries/payers" },
   { label: "Atención primaria", href: "/industries/primary-care" },
 ];
@@ -130,19 +170,19 @@ export default function MedicalAssociationsPage() {
         title="Tus socios, sus credenciales y sus prestaciones, conectados"
         copy={description}
         primary={{ label: "Hablemos", href: "/contact" }}
-        secondary={{
-          label: "Ver conexión de prestadores",
-          href: "/use-cases/provider-credentialing",
-        }}
-        secondaryVariant="inverse"
+        mediaClassName="overflow-visible"
         media={
-          // Archivo final sugerido: public/assets/industries/medical-associations/hero.png
-          <ImagePlaceholder
-            width={1200}
-            height={1245}
-            label="padrón de socios con estado de matrícula y prestaciones del mes por financiador, como en…"
-            className="object-contain max-w-[1200px] mx-auto"
-          />
+          <div className="relative h-[420px] w-full sm:h-[520px] lg:h-full">
+            <Image
+              src="/assets/sectors/asos/hero.png"
+              alt="Hipócrates conversando con un grupo de médicos alrededor de una mesa, con la vara de Esculapio de fondo"
+              width={1871}
+              height={882}
+              priority
+              sizes="(min-width: 1024px) 1680px, 100vw"
+              className="absolute top-1/2 left-1/2 h-auto w-[min(130.24%,722px)] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain object-left sm:w-[min(103.84%,950px)] lg:top-auto lg:bottom-0 lg:left-[-1rem] lg:h-[75.68%] lg:w-auto lg:translate-x-0 lg:translate-y-[2%]"
+            />
+          </div>
         }
       />
 
@@ -164,10 +204,24 @@ export default function MedicalAssociationsPage() {
         </div>
       </div>
 
-      <ChecklistSection title="Casos de uso clave" items={keyUseCases} />
+      {keyUseCases.map((item, index) => (
+        <SplitFeature
+          key={item.title}
+          title={
+            item.href ? (
+              <InlineLink href={item.href}>{item.title}</InlineLink>
+            ) : (
+              item.title
+            )
+          }
+          copy={item.copy}
+          mediaSide={index % 2 === 1 ? "left" : "right"}
+          media={<Shot label={item.label} />}
+        />
+      ))}
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <Testimonial
             quote={
               <>

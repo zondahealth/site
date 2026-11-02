@@ -1,25 +1,27 @@
 import type { ComponentProps, ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-
 import { isLiveRoute } from "@/lib/navigation";
 import { Button } from "@/components/ui/button/button";
 import Glow from "@/components/ui/glow/Glow";
 import { ORBIT_BORDER_COLORS } from "@/components/ui/glow/colors";
 import { cn } from "@/components/ui/utils";
 
-type CtaBannerVariant = "default" | "dark";
+type CtaBannerVariant = "default" | "dark" | "night";
 
 const PANEL_BACKGROUNDS: Record<CtaBannerVariant, string> = {
-  default: "/assets/bg/hero-common-bg.png",
+  default: "/assets/bg/bg-blured-nebula.png",
   dark: "/assets/bg/bg-clouds-black.png",
+  night: "/assets/bg/bg-night-nebula.png",
 };
 
 const PANEL_FALLBACK_COLORS: Record<CtaBannerVariant, string> = {
   default: "bg-[#5cc8f5]",
   dark: "bg-[#04060c]",
+  night: "bg-[#0b1f4d]",
 };
+
+const LIGHT_TEXT_VARIANTS = new Set<CtaBannerVariant>(["dark", "night"]);
 
 type CtaBannerProps = {
   title: ReactNode;
@@ -51,13 +53,13 @@ export function CtaBanner({
   buttonHref = "/contact",
   variant = "default",
 }: CtaBannerProps) {
-  const dark = variant === "dark";
+  const lightText = LIGHT_TEXT_VARIANTS.has(variant);
   const primaryHref = buttonText ? destination(buttonHref) : undefined;
 
   return (
     <section className="px-6 pt-8 pb-24 sm:px-10 sm:pt-10 sm:pb-32 lg:px-16 lg:pt-12 lg:pb-40">
       <Glow
-        className="mx-auto w-full max-w-6xl bg-transparent"
+        className="mx-auto w-full max-w-7xl bg-transparent"
         colors={ORBIT_BORDER_COLORS}
         radius={16}
         spread={4}
@@ -66,7 +68,7 @@ export function CtaBanner({
       >
         <div
           className={cn(
-            "relative isolate flex min-h-[420px] w-full flex-col items-center justify-center overflow-hidden rounded-lg px-8 py-20 text-center sm:min-h-[480px] sm:px-12 lg:px-16",
+            "relative isolate flex min-h-[630px] w-full flex-col items-center justify-center overflow-hidden rounded-lg px-8 py-20 text-center sm:min-h-[720px] sm:px-12 lg:px-16",
             PANEL_FALLBACK_COLORS[variant],
           )}
         >
@@ -75,13 +77,16 @@ export function CtaBanner({
             alt=""
             aria-hidden="true"
             fill
-            sizes="(min-width: 1152px) 1152px, 100vw"
-            className="-z-10 scale-110 object-cover blur-md"
+            sizes="(min-width: 1280px) 1280px, 100vw"
+            className={cn(
+              "-z-10 object-cover",
+              variant === "default" ? undefined : "scale-110 blur-md",
+            )}
           />
           <h2
             className={cn(
               "mx-auto max-w-4xl font-display text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl lg:text-6xl",
-              dark ? "text-white" : "text-foreground",
+              lightText ? "text-white" : "text-foreground",
             )}
           >
             {title}
@@ -90,7 +95,7 @@ export function CtaBanner({
             <p
               className={cn(
                 "mx-auto mt-7 max-w-2xl text-base leading-8 sm:text-lg",
-                dark ? "text-white/70" : "text-foreground/75",
+                lightText ? "text-white/70" : "text-foreground/75",
               )}
             >
               {subtitle}
@@ -99,10 +104,7 @@ export function CtaBanner({
           {primaryHref ? (
             <div className="mt-9 flex justify-center">
               <Button variant="black" size="lg" asChild>
-                <CtaAnchor href={primaryHref}>
-                  {buttonText}
-                  <ArrowRight aria-hidden="true" />
-                </CtaAnchor>
+                <CtaAnchor href={primaryHref}>{buttonText}</CtaAnchor>
               </Button>
             </div>
           ) : null}
