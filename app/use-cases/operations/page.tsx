@@ -4,16 +4,11 @@ import Image from "next/image";
 import Glow from "@/components/ui/glow/Glow";
 import { ORBIT_BORDER_COLORS } from "@/components/ui/glow/colors";
 import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
-import { Pending } from "@/components/ui/pending/Pending";
 import {
   BenefitStories,
-  ChecklistSection,
   FaqList,
   InlineLink,
-  MetricSlot,
-  RelatedLinks,
   SplitFeature,
-  StatSlot,
   Testimonial,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
@@ -23,7 +18,7 @@ import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
 
 const title = "Operaciones digitales para organizaciones de salud";
 const description =
-  "Si tu organización todavía trabaja con planillas, papel y llamados, Zonda te da agenda, pacientes, visitas, registros clínicos y facturación listos para usar desde el primer día.";
+  "Una plataforma para que profesionales, equipos y organizaciones gestionen la atención, la operación y los ingresos en un mismo flujo.";
 
 export const metadata: Metadata = {
   title,
@@ -38,101 +33,101 @@ export const metadata: Metadata = {
 
 const benefits = [
   {
-    title: "Operativo desde el primer día",
-    copy: "Sin instalar nada: funciona en el navegador y en la app móvil.",
-    // Archivo final sugerido: public/assets/use-cases/operations/benefit-1.png
+    title: "Para quienes atienden",
+    copy: "Agenda, pacientes y registros clínicos para trabajar en consultorio, en campo o entre ambos, sin volver a cargar la misma información.",
     media: (
       <ImagePlaceholder
         width={1280}
         height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Operativo desde el primer día». Composición: una…"
+        label="Profesional con agenda, historial del paciente y registro clínico en un mismo flujo."
         fill
       />
     ),
   },
   {
-    title: "Pensado para el campo",
-    copy: "La app guarda todo sin conexión y sincroniza cuando vuelve la señal.",
-    // Archivo final sugerido: public/assets/use-cases/operations/benefit-2.png
+    title: "Para quienes coordinan",
+    copy: "Una vista compartida de agendas, equipos, permisos, estados y alertas para que la operación no dependa de llamadas ni planillas.",
     media: (
       <ImagePlaceholder
         width={1280}
         height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Pensado para el campo». Composición: una tarjeta de UI…"
+        label="Equipo de coordinación con agendas, estados y alertas operativas."
         fill
       />
     ),
   },
   {
-    title: "Infraestructura para crecer",
-    copy: "Cuando estés listo, construí herramientas propias sobre la API.",
-    // Archivo final sugerido: public/assets/use-cases/operations/benefit-3.png
+    title: "Para quienes necesitan conectarse",
+    copy: "Conectá financiadores y sistemas actuales, o construí herramientas propias sobre la infraestructura y la API de Zonda.",
     media: (
       <ImagePlaceholder
         width={1280}
         height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Infraestructura para crecer». Composición: una tarjeta…"
+        label="Zonda conectando sistemas actuales, financiadores y herramientas propias."
         fill
       />
     ),
-  },
-];
-
-const steps = [
-  {
-    title: "Cargamos lo que ya tenés:",
-    copy: "planillas, Excel/CSV o carga manual.",
-  },
-  {
-    title: "Tu equipo empieza a usar Zonda:",
-    copy: "agenda, visitas y registros desde la app.",
-  },
-  {
-    title: "La información llega sola:",
-    copy: "a coordinación, auditoría y facturación, sin segunda carga.",
   },
 ];
 
 const faqItems = [
   {
-    question: "¿Necesito instalar algo?",
+    question: "¿Zonda es para profesionales o para organizaciones?",
     answer:
-      "No. Zonda funciona en el navegador y en la app móvil; solo necesitás internet, incluso desde el celular.",
+      "Para ambos. Los profesionales tienen herramientas para atender y registrar; las organizaciones, para coordinar agendas, equipos, permisos, validaciones y el ciclo de pagos.",
   },
   {
-    question: "¿Puedo migrar mis datos desde planillas u otro sistema?",
+    question: "¿Sirve tanto en consultorio como para atención en campo?",
     answer:
-      "Sí. Zonda ingesta Excel/CSV, PDFs y carga manual, además de sistemas como HL7 o FHIR.",
+      "Sí. El profesional puede consultar su agenda, acceder al contexto del paciente y completar el registro desde donde brinda la atención. La organización conserva visibilidad del estado de cada caso.",
   },
   {
-    question: "¿Funciona sin internet?",
+    question: "¿La organización puede operar con varios financiadores?",
     answer:
-      "Sí. La app guarda lo que hace el profesional y lo sube cuando vuelve la señal.",
+      "Sí. Zonda concentra en un solo flujo las validaciones, autorizaciones, prácticas, documentación, facturación y respuestas de cada financiador.",
   },
   {
-    question: "¿Cuánto tarda en estar operativo?",
-    answer: <Pending>PLAZO A DEFINIR</Pending>,
+    question: "¿Tenemos que reemplazar nuestro sistema actual?",
+    answer:
+      "No necesariamente. Zonda puede complementar tus sistemas actuales y conectarse por API, conectores o intercambio de archivos. También puede ser la capa operativa principal cuando necesitás un flujo unificado.",
   },
-];
-
-const relatedLinks = [
-  { label: "Automatización", href: "/use-cases/automation" },
-  { label: "Internación domiciliaria", href: "/industries/home-health" },
-  { label: "Atención primaria", href: "/industries/primary-care" },
-  { label: "Asociaciones médicas", href: "/industries/medical-associations" },
+  {
+    question: "¿Podemos desarrollar herramientas propias?",
+    answer:
+      "Sí. La API de Zonda permite que los equipos de tecnología construyan experiencias, automatizaciones y tableros propios sobre los mismos datos clínicos y operativos que usa la plataforma.",
+  },
 ];
 
 const splitImageClassName = "rounded-[1.5rem]";
+
+function FeatureDetails({
+  items,
+}: {
+  items: { title: string; copy: string }[];
+}) {
+  return (
+    <dl className="mt-8 grid max-w-lg gap-6">
+      {items.map((item) => (
+        <div key={item.title}>
+          <dt className="text-sm font-semibold text-foreground">{item.title}</dt>
+          <dd className="mt-1 text-sm leading-6 text-muted-foreground">
+            {item.copy}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
 
 export default function OperationsPage() {
   return (
     <main lang="es" className="overflow-hidden bg-background text-foreground">
       <UseCaseHero
-        eyebrow="Operaciones para organizaciones no digitalizadas"
-        title="Digitalizá sin reemplazar lo que ya funciona"
+        eyebrow="Operaciones conectadas"
+        title="Una operación de salud, conectada de punta a punta"
         copy={description}
-        primary={{ label: "Hablemos", href: "/contact" }}
-        secondary={{ label: "Ver cómo funciona", href: "#como-funciona" }}
+        primary={{ label: "Hablá con nuestro equipo", href: "/contact" }}
+        secondary={{ label: "Explorar la plataforma", href: "#profesionales" }}
         secondaryVariant="inverse"
         mediaClassName="overflow-visible"
         media={
@@ -159,89 +154,96 @@ export default function OperationsPage() {
         }
       />
 
-      <BenefitStories title="Herramientas listas para usar." items={benefits} />
-
-      <div className="px-6 pb-16 sm:px-10 lg:px-16">
-        <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-2">
-          <MetricSlot
-            label="tiempo de implementación"
-            supportText="Métrica a definir"
-          />
-          {/* VALIDAR: menos costos operativos en el caso Interdom (dato publicado — validar) */}
-          <StatSlot
-            value="23%"
-            label="menos costos operativos en el caso Interdom"
-          />
-        </div>
-      </div>
-
-      <SplitFeature
-        id="como-funciona"
-        title="Cómo funciona"
-        bullets={steps.map((step) => (
-          <span key={step.title}>
-            <strong className="font-semibold text-foreground">
-              {step.title}
-            </strong>{" "}
-            {step.copy}
-          </span>
-        ))}
-        media={
-          // Archivo final sugerido: public/assets/use-cases/operations/feature-1.png
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="tres pasos ilustrados con mini-capturas, como en plaid.com/ (bloques de pasos numerados)"
-            className={splitImageClassName}
-          />
-        }
+      <BenefitStories
+        title="Una base común para toda la atención."
+        copy="Zonda conecta el trabajo de quien atiende con las decisiones de quien coordina, valida y cobra. Cada equipo usa las herramientas que necesita, sobre la misma información."
+        items={benefits}
       />
 
       <SplitFeature
-        title="Agenda, pacientes y registros clínicos"
+        id="profesionales"
+        title="Atendé con el contexto del paciente siempre a mano"
+        copy="Para profesionales que trabajan en consultorio, en domicilio o en campo. Zonda reúne la agenda, el historial y el estado de cada paciente para que la atención avance sin tareas administrativas repetidas."
+        media={<ImagePlaceholder width={1000} height={1000} label="Profesional con agenda, resumen del paciente y registro clínico estructurado." className={splitImageClassName} />}
+      >
+        <FeatureDetails
+          items={[
+            { title: "Registrá como hablás", copy: "Cargá evoluciones y observaciones en lenguaje natural; Zonda las estructura para que el equipo pueda usarlas." },
+            { title: "Consultá el contexto", copy: "El recorrido del paciente, sus tratamientos, pendientes y alertas antes y después de cada atención." },
+            { title: "Actualizá el estado", copy: "Una visita, práctica o seguimiento queda visible para coordinación en tiempo real." },
+          ]}
+        />
+      </SplitFeature>
+
+      <SplitFeature
+        title="Coordiná la operación sin perseguir la información"
+        copy="Convertí la atención diaria en una operación visible y gestionable. Los responsables pueden organizar personas y recursos, mientras cada profesional recibe solo lo que necesita para trabajar."
         mediaSide="left"
-        bullets={[
-          "Calendario semanal y lista del día",
-          "Recordatorios automáticos por WhatsApp",
-          "Dictado por voz y resumen estructurado por IA",
-        ]}
-        media={
-          // Archivo final sugerido: public/assets/use-cases/operations/feature-2.png
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="app con la agenda del jueves (3 turnos) y una evolución dictada, como en…"
-            className={splitImageClassName}
-          />
-        }
-      />
+        media={<ImagePlaceholder width={1000} height={1000} label="Organización coordinando una agenda, equipos y alertas de atención." className={splitImageClassName} />}
+      >
+        <FeatureDetails
+          items={[
+            { title: "Organizá el día", copy: "Agendas, disponibilidad, asignaciones y cobertura de equipos desde un mismo lugar." },
+            { title: "Definí cómo trabaja cada equipo", copy: "Roles, sedes y permisos para que cada persona vea y haga lo que le corresponde." },
+            { title: "Intervení a tiempo", copy: "Estados, demoras y alertas operativas para anticiparte a los problemas." },
+          ]}
+        />
+      </SplitFeature>
 
       <SplitFeature
-        title="De la oficina al domicilio"
-        bullets={[
-          "Asignación de visitas con la mejor ruta",
-          "Registro en domicilio con ubicación y firma del paciente",
-          "Control en tiempo real desde la oficina",
-        ]}
-        media={
-          // Archivo final sugerido: public/assets/use-cases/operations/feature-3.png
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="flujo 'Asignación → Aviso → Visita → Control' en cuatro pantallas, como en plaid.com/use-cases/ (secuencia…"
-            className={splitImageClassName}
-          />
-        }
-      />
+        title="Un solo flujo para tratamientos, prácticas y cobros"
+        copy="La relación con financiadores no debería crear un circuito manual por cada cobertura. Zonda conecta la atención con las reglas y respuestas necesarias para que la prestación llegue preparada al cobro."
+        media={<ImagePlaceholder width={1000} height={1000} label="Flujo de validación, autorización, prestación, facturación y cobro por financiador." className={splitImageClassName} />}
+      >
+        <FeatureDetails
+          items={[
+            { title: "Validá antes de avanzar", copy: "Cobertura, autorizaciones y condiciones de cada tratamiento o práctica." },
+            { title: "Aplicá las reglas correctas", copy: "Documentación, frecuencia y nomenclador según cada financiador." },
+            { title: "Seguí cada ingreso", copy: "Cada prestación, desde su realización hasta la facturación, el cobro y la liquidación." },
+          ]}
+        />
+      </SplitFeature>
 
-      <ChecklistSection
-        title="Facturación y auditoría el mismo día"
-        items={[
-          "Prestaciones registradas listas para facturar",
-          "Reportes por financiador",
-          "Auditoría completa antes de que cierre el día",
-        ]}
-      />
+      <SplitFeature
+        title="Sumá Zonda a tu operación actual o construí sobre ella"
+        copy="No hace falta empezar de cero. Zonda puede complementar los sistemas que tu organización ya usa o convertirse en la capa que unifica los nuevos procesos."
+        mediaSide="left"
+        media={<ImagePlaceholder width={1000} height={1000} label="Diagrama de Zonda conectando sistemas clínicos, equipos, financiadores y herramientas propias por API." className={splitImageClassName} />}
+      >
+        <FeatureDetails
+          items={[
+            { title: "Conectá lo que ya existe", copy: "HCE, ERP, facturación, sistemas de financiadores y otras fuentes de datos." },
+            { title: "Elegí el intercambio adecuado", copy: "API, conectores, eventos o archivos, según el proceso que necesites resolver." },
+            { title: "Construí sobre la plataforma", copy: "Productos internos, automatizaciones y tableros propios sobre la API de Zonda." },
+          ]}
+        />
+      </SplitFeature>
+
+      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+          <div className="max-w-xl">
+            <h2 className="font-display text-3xl font-semibold leading-tight tracking-[-0.035em] text-foreground sm:text-5xl">De la atención al ingreso, sin perder el hilo</h2>
+            <p className="mt-5 text-base leading-8 text-muted-foreground sm:text-lg">Una prestación conserva su contexto clínico y operativo a medida que avanza por la organización.</p>
+          </div>
+          <ol className="border-l border-border/80">
+            <li className="relative pb-8 pl-8">
+              <span className="absolute -left-[0.45rem] top-0 flex size-4 items-center justify-center rounded-full bg-secondary ring-4 ring-background" />
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-secondary">Atención</p>
+              <p className="mt-2 text-base leading-7 text-foreground/80">La atención registrada queda disponible para coordinación, auditoría y facturación sin una segunda carga.</p>
+            </li>
+            <li className="relative py-8 pl-8">
+              <span className="absolute -left-[0.45rem] top-8 flex size-4 items-center justify-center rounded-full bg-secondary ring-4 ring-background" />
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-secondary">Control</p>
+              <p className="mt-2 text-base leading-7 text-foreground/80">Las excepciones y pendientes se detectan antes de convertirse en demoras, débitos o trabajo manual.</p>
+            </li>
+            <li className="relative pt-8 pl-8">
+              <span className="absolute -left-[0.45rem] top-8 flex size-4 items-center justify-center rounded-full bg-secondary ring-4 ring-background" />
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-secondary">Gestión</p>
+              <p className="mt-2 text-base leading-7 text-foreground/80">La organización puede medir el estado de la operación y el ciclo de pagos con información actualizada.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
         <div className="mx-auto max-w-7xl">
@@ -264,11 +266,9 @@ export default function OperationsPage() {
       <FaqList items={faqItems} />
 
       <CtaBanner
-        title="Pasá del papel a la operación conectada"
-        buttonText="Hablemos"
+        title="Convertí procesos aislados en una operación conectada"
+        buttonText="Hablá con nuestro equipo"
       />
-
-      <RelatedLinks links={relatedLinks} />
     </main>
   );
 }

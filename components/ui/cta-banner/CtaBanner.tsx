@@ -7,21 +7,17 @@ import Glow from "@/components/ui/glow/Glow";
 import { ORBIT_BORDER_COLORS } from "@/components/ui/glow/colors";
 import { cn } from "@/components/ui/utils";
 
-type CtaBannerVariant = "default" | "dark" | "night";
+type CtaBannerVariant = "default" | "dark";
 
 const PANEL_BACKGROUNDS: Record<CtaBannerVariant, string> = {
   default: "/assets/bg/bg-blured-nebula.png",
   dark: "/assets/bg/bg-clouds-black.png",
-  night: "/assets/bg/bg-night-nebula.png",
 };
 
 const PANEL_FALLBACK_COLORS: Record<CtaBannerVariant, string> = {
   default: "bg-[#5cc8f5]",
   dark: "bg-[#04060c]",
-  night: "bg-[#0b1f4d]",
 };
-
-const LIGHT_TEXT_VARIANTS = new Set<CtaBannerVariant>(["dark", "night"]);
 
 type CtaBannerProps = {
   title: ReactNode;
@@ -53,7 +49,7 @@ export function CtaBanner({
   buttonHref = "/contact",
   variant = "default",
 }: CtaBannerProps) {
-  const lightText = LIGHT_TEXT_VARIANTS.has(variant);
+  const lightText = variant === "dark";
   const primaryHref = buttonText ? destination(buttonHref) : undefined;
 
   return (
@@ -83,10 +79,22 @@ export function CtaBanner({
               variant === "default" ? undefined : "scale-110 blur-md",
             )}
           />
+          {/* Soft halo behind the copy so it doesn't blend into the background */}
+          <div
+            aria-hidden="true"
+            className={cn(
+              "pointer-events-none absolute inset-0 -z-10",
+              lightText
+                ? "bg-[radial-gradient(ellipse_60%_55%_at_50%_42%,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0.2)_45%,transparent_75%)]"
+                : "bg-[radial-gradient(ellipse_60%_55%_at_50%_42%,rgba(255,255,255,0.75)_0%,rgba(255,255,255,0.4)_45%,transparent_75%)]",
+            )}
+          />
           <h2
             className={cn(
               "mx-auto max-w-4xl font-display text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl lg:text-6xl",
-              lightText ? "text-white" : "text-foreground",
+              lightText
+                ? "text-white [text-shadow:0_0_32px_rgba(0,0,0,0.45)]"
+                : "text-foreground [text-shadow:0_0_32px_rgba(255,255,255,0.8)]",
             )}
           >
             {title}
@@ -95,7 +103,9 @@ export function CtaBanner({
             <p
               className={cn(
                 "mx-auto mt-7 max-w-2xl text-base leading-8 sm:text-lg",
-                lightText ? "text-white/70" : "text-foreground/75",
+                lightText
+                  ? "text-white/80 [text-shadow:0_0_20px_rgba(0,0,0,0.5)]"
+                  : "text-foreground/90 [text-shadow:0_0_20px_rgba(255,255,255,0.9)]",
               )}
             >
               {subtitle}

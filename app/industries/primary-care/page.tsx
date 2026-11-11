@@ -3,22 +3,19 @@ import Image from "next/image";
 
 import { LOGIN_URL } from "@/lib/navigation";
 import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
-import { Pending } from "@/components/ui/pending/Pending";
 import {
   BenefitStories,
   FaqList,
-  MetricSlot,
-  RelatedLinks,
   SectionIntro,
   SplitFeature,
-  Testimonial,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
+import { IndustryProducts } from "@/components/industries/IndustryProducts";
 import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
 
 const title = "Atención primaria";
 const description =
-  "Agenda inteligente, pre-consulta, registros clínicos con IA y segmentación de tu población a cargo, para que la atención primaria sea realmente preventiva.";
+  "Pasá de papel, llamados y registros dispersos a una operación digital desde el primer día: agenda, pacientes, consultas, equipos y seguimiento en un solo lugar.";
 
 export const metadata: Metadata = {
   title,
@@ -95,13 +92,6 @@ const faqItems = [
   },
 ];
 
-const relatedLinks = [
-  { label: "Sector público", href: "/industries/government-public-sector" },
-  { label: "Asociaciones médicas", href: "/industries/medical-associations" },
-  { label: "Operaciones digitales", href: "/use-cases/operations" },
-  { label: "Atención multi-financiador", href: "/use-cases/multi-payer-care" },
-];
-
 function Shot({ label }: { label: string }) {
   return (
     <ImagePlaceholder
@@ -115,27 +105,32 @@ function Shot({ label }: { label: string }) {
 
 const features = [
   {
-    // Archivo final sugerido: public/assets/sectors/primary/feature-1.png
-    label: "Ilustración pendiente para la primera feature de atención primaria.",
+    title: "Ordená la atención de todos los días",
+    copy: "Zonda reúne las tareas que hoy viven entre una agenda, una libreta y los mensajes del equipo para que el día pueda gestionarse desde una sola plataforma.",
+    label: "Agenda de atención primaria con turnos, profesionales y estados de pacientes del día.",
   },
   {
-    // Archivo final sugerido: public/assets/sectors/primary/feature-2.png
-    label: "Ilustración pendiente para la segunda feature de atención primaria.",
+    title: "La historia clínica se construye mientras se atiende",
+    copy: "El profesional puede dejar una evolución en lenguaje natural y Zonda la convierte en información que el equipo puede encontrar y usar después.",
+    label: "Perfil de paciente de atención primaria con evolución clínica estructurada, antecedentes y próximos controles.",
   },
   {
-    // Archivo final sugerido: public/assets/sectors/primary/feature-3.png
-    label: "Ilustración pendiente para la tercera feature de atención primaria.",
+    title: "La prevención empieza cuando la población deja de ser una lista",
+    copy: "Una vez que la información de cada consulta queda conectada, el centro puede ver a quién le falta un control y dónde conviene intervenir primero.",
+    label: "Panel de salud poblacional con pacientes sin control, cohortes de riesgo y acciones de seguimiento.",
   },
 ];
 
-const strongClassName = "font-semibold text-foreground";
+function FeatureDetails({ items }: { items: { title: string; copy: string }[] }) {
+  return <dl className="mt-8 grid max-w-lg gap-6">{items.map((item) => <div key={item.title}><dt className="text-sm font-semibold text-foreground">{item.title}</dt><dd className="mt-1 text-sm leading-6 text-muted-foreground">{item.copy}</dd></div>)}</dl>;
+}
 
 export default function PrimaryCarePage() {
   return (
     <main lang="es" className="overflow-hidden bg-background text-foreground">
       <UseCaseHero
         eyebrow="Atención primaria"
-        title="Seguí a cada paciente, no solo cada consulta"
+        title="Una atención primaria digital, desde el primer día"
         copy={description}
         primary={{ label: "Hablemos", href: "/contact" }}
         // DECISIÓN NAV-2: confirmar URL de la app; si no se confirma, apuntar a /contact.
@@ -158,28 +153,16 @@ export default function PrimaryCarePage() {
       />
 
       <BenefitStories
-        title="Lo que Zonda hace por la atención primaria."
+        title="Todo lo necesario para que la información no se pierda."
+        copy="Zonda ordena el día, conserva el contexto clínico y convierte cada atención en una oportunidad de seguimiento."
         items={benefits}
       />
-
-      <div className="px-6 pb-16 sm:px-10 lg:px-16">
-        <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-2">
-          <MetricSlot
-            label="reducción de ausentismo a turnos"
-            supportText="Métrica a definir"
-          />
-          <MetricSlot
-            label="pacientes con seguimiento activo"
-            supportText="Métrica a definir"
-          />
-        </div>
-      </div>
 
       <section className="px-6 pt-16 sm:px-10 sm:pt-20 lg:px-16 lg:pt-24">
         <div className="mx-auto max-w-7xl">
           <SectionIntro
-            title={<Pending>TÍTULO A DEFINIR</Pending>}
-            copy={<Pending>TEXTO A DEFINIR</Pending>}
+            title="Del papel a una operación que el equipo puede compartir"
+            copy="Empezá por digitalizar la agenda y el registro. Después, la misma información permite coordinar equipos, seguir pacientes y sostener procesos preventivos."
             className="max-w-4xl"
             titleClassName="text-5xl sm:text-6xl"
           />
@@ -189,68 +172,57 @@ export default function PrimaryCarePage() {
       {features.map((item, index) => (
         <SplitFeature
           key={item.label}
-          title={<Pending>FEATURE A DEFINIR</Pending>}
-          copy={<Pending>TEXTO A DEFINIR</Pending>}
+          title={item.title}
+          copy={item.copy}
           mediaSide={index % 2 === 1 ? "left" : "right"}
           media={<Shot label={item.label} />}
-        />
+        >
+          <FeatureDetails items={[
+            { title: "Agenda y pacientes", copy: "Turnos, disponibilidad y contexto del paciente antes de la consulta." },
+            { title: "Equipo coordinado", copy: "Cada consulta, derivación o pendiente queda visible para quienes tienen que actuar." },
+            { title: "Información reutilizable", copy: "Lo registrado sirve para la próxima atención, el seguimiento y la prevención." },
+          ]} />
+        </SplitFeature>
       ))}
 
       <SplitFeature
-        title="Para quién"
-        bullets={[
-          <>
-            <strong className={strongClassName}>Centros de salud y CAPS</strong>{" "}
-            (públicos o privados)
-          </>,
-          <strong className={strongClassName}>
-            Consultorios y médicos de cabecera
-          </strong>,
-          <strong className={strongClassName}>
-            Programas de medicina familiar y crónicos
-          </strong>,
-        ]}
+        title="Una misma base para distintas formas de atención primaria"
+        copy="Desde un consultorio hasta un CAPS o programa de crónicos, Zonda se adapta a la escala de cada equipo."
         media={
           // Archivo final sugerido: public/assets/industries/primary-care/feature-1.png
           <ImagePlaceholder
             width={1000}
             height={1000}
-            label="tres tarjetas con el perfil de cada tipo de organización, como en…"
+            label="Centros de salud, consultorios y programas de medicina familiar conectados a la misma operación digital."
             className="rounded-[1.5rem]"
           />
         }
-      />
-
-      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-7xl">
-          <Testimonial
-            quote={
-              <>
-                “
-                <Pending>
-                  TESTIMONIO A DEFINIR — médico/a de atención primaria
-                </Pending>
-                ”
-              </>
-            }
-            name={<Pending>NOMBRE</Pending>}
-            role={
-              <>
-                <Pending>ESPECIALIDAD</Pending>, <Pending>CENTRO</Pending>
-              </>
-            }
-          />
-        </div>
-      </section>
+      >
+        <FeatureDetails items={[
+          { title: "Centros de salud y CAPS", copy: "Para equipos, consultorios y pacientes que necesitan una vista común." },
+          { title: "Consultorios y médicos de cabecera", copy: "Para ordenar el día, registrar mejor y dar continuidad a cada persona atendida." },
+          { title: "Medicina familiar y crónicos", copy: "Para seguir poblaciones y sostener planes de cuidado en el tiempo." },
+        ]} />
+      </SplitFeature>
 
       <FaqList items={faqItems} />
 
-      <CtaBanner
-        title="Más atención, menos administración"
-        buttonText="Hablemos"
+      <IndustryProducts
+        title="Del registro del día al seguimiento de la población."
+        subtitle="Operación digital, automatización, agentes y segmentación para el equipo de atención."
+        keys={[
+          "operations",
+          "automation",
+          "normalized-ai",
+          "population-segmentation",
+        ]}
       />
 
-      <RelatedLinks links={relatedLinks} />
+      <CtaBanner
+        title="Empezá a digitalizar la atención que ya brindás"
+        subtitle="Ordená la operación cotidiana hoy y construí una base para prevenir, coordinar y crecer mañana."
+        buttonText="Hablá con nuestro equipo"
+      />
     </main>
   );
 }

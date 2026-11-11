@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
 
 import { Hero } from "@/components/home/Hero";
-import { Products } from "@/components/home/Products";
 import { AiInfraBanner } from "@/components/home/AiInfraBanner";
-import { ResultsBanner } from "@/components/home/ResultsBanner";
 import { ApiBanner } from "@/components/home/ApiBanner";
-import { PossibilitiesBanner } from "@/components/home/PossibilitiesBanner";
-import { SectorsBanner } from "@/components/home/SectorsBanner";
+import { AudiencePaths } from "@/components/home/AudiencePaths";
+import { PlatformFlow } from "@/components/home/PlatformFlow";
+import { Testimonials } from "@/components/testimonials/Testimonials";
 import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
 import Gradient from "@/components/ui/gradient/Gradient";
-import { Separator } from "@/components/ui/separator/Separator";
 
 const title =
   "Zonda Health · La infraestructura de datos de salud para Latinoamérica";
@@ -60,27 +58,26 @@ export default function Home() {
         }}
       />
       <Hero />
-      <Separator thickness={2} />
       <Gradient
         colors={["#f6fbff", "#fffff1", "#ffffff", "#fffefa", "#f7fcff"]}
-        className="flex flex-col gap-32 pt-12 sm:gap-40 sm:pt-16 lg:gap-48 lg:pt-20"
+        className="flex flex-col gap-40 pt-24 sm:gap-48 sm:pt-28 lg:gap-56 lg:pt-36"
       >
-        <Products />
+        <PlatformFlow />
+        <section aria-labelledby="testimonials-title" className="px-6 sm:px-10 lg:px-16">
+          <div className="mx-auto max-w-7xl">
+            <h2 id="testimonials-title" className="font-display text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              Organizaciones que ya trabajan con Zonda
+            </h2>
+            <Testimonials className="mt-12" />
+          </div>
+        </section>
         <AiInfraBanner />
-        <ResultsBanner />
+        <AudiencePaths />
         <ApiBanner />
-        <SectorsBanner />
-        <PossibilitiesBanner />
         <CtaBanner
-          title={
-            <>
-              Datos que fluyen,
-              <br />
-              salud que funciona
-            </>
-          }
-          subtitle="Contanos qué querés construir o qué parte de tu operación querés ordenar."
-          buttonText="Contactate"
+          title={<>Datos que fluyen. Salud que funciona.</>}
+          subtitle="Contanos con qué sistemas trabaja tu organización y te mostramos cómo se vería tu operación sobre Zonda."
+          buttonText="Agendar una demo"
         />
       </Gradient>
     </main>

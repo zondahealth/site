@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { BarChart3, Fingerprint, Sparkles, Workflow } from "lucide-react";
 
 import {
   BenefitStories,
-  CapabilityGrid,
-  FaqList,
-  InlineLink,
-  MetricSlot,
   SplitFeature,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
@@ -15,7 +10,7 @@ import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
 
 const title = "Segmentación poblacional en salud";
 const description =
-  "Agrupá pacientes y afiliados por riesgo, condición, territorio y cobertura con datos clínicos y operativos reales, no con estimaciones.";
+  "Entendé y priorizá a pacientes y afiliados por riesgo, condición, territorio o cobertura, sobre datos clínicos y operativos que se actualizan con la población.";
 
 export const metadata: Metadata = {
   title,
@@ -34,7 +29,7 @@ const benefitImageSizes =
 const benefits = [
   {
     title: "Una sola foto de toda tu población",
-    copy: "Zonda une historias clínicas, turnos, encuestas, laboratorios y padrones en un perfil por paciente, con identidad unificada.",
+    copy: "Zonda une historias clínicas, turnos, laboratorios, encuestas y padrones en un perfil por paciente, con identidad unificada.",
     media: (
       <Image
         src="/assets/solutions/segmentation/unified-patient.png"
@@ -47,7 +42,7 @@ const benefits = [
   },
   {
     title: "Segmentos que se actualizan solos",
-    copy: "Definí criterios una vez (edad, diagnóstico ICD-10, resultados LOINC, última consulta, zona) y los segmentos se recalculan con cada dato nuevo.",
+    copy: "Definí criterios una vez —edad, diagnóstico, resultados, última consulta o zona— y cada segmento se recalcula cuando cambia la información.",
     media: (
       <Image
         src="/assets/solutions/segmentation/dynamic-segments.png"
@@ -60,7 +55,7 @@ const benefits = [
   },
   {
     title: "Del segmento a la acción",
-    copy: "Dispará campañas, turnos, visitas o seguimientos para cada grupo desde la misma plataforma o vía API.",
+    copy: "Convertí un grupo priorizado en campañas, turnos, visitas o seguimientos desde la plataforma o vía API.",
     media: (
       <Image
         src="/assets/solutions/segmentation/segmentation-action.png"
@@ -73,72 +68,32 @@ const benefits = [
   },
 ];
 
-const capabilities = [
-  {
-    title: "Identidad",
-    copy: "Un paciente, un registro.",
-    href: "/use-cases/identity",
-    icon: Fingerprint,
-  },
-  {
-    title: "IA normalizada",
-    copy: "Diagnósticos y resultados codificados.",
-    href: "/use-cases/normalized-ai",
-    icon: Sparkles,
-  },
-  {
-    title: "Analítica",
-    copy: "Seguimiento de cada segmento en el tiempo.",
-    href: "/use-cases/analytics",
-    icon: BarChart3,
-  },
-  {
-    title: "Automatización",
-    copy: "Acciones disparadas por segmento.",
-    href: "/use-cases/automation",
-    icon: Workflow,
-  },
-];
-
-const faqItems = [
-  {
-    question: "¿Qué es la segmentación poblacional en salud?",
-    answer:
-      "Es agrupar a una población según características clínicas, demográficas, territoriales o de cobertura para priorizar acciones preventivas y asignar recursos donde más impacto tienen.",
-  },
-  {
-    question: "¿Necesito tener todos mis datos digitalizados?",
-    answer:
-      "No. Zonda ingesta desde PDFs, planillas y carga manual además de sistemas como HL7 o FHIR.",
-  },
-  {
-    question: "¿Se puede usar para programas de salud pública?",
-    answer: (
-      <>
-        Sí. Ver{" "}
-        <InlineLink href="/industries/government-public-sector">
-          Sector público
-        </InlineLink>
-        .
-      </>
-    ),
-    jsonLdAnswer: "Sí. Ver Sector público.",
-  },
-  {
-    question: "¿Quién puede ver cada segmento?",
-    answer:
-      "Los permisos son granulares por rol y sede, y cada acceso queda auditado.",
-  },
-];
-
 const splitImageClassName = "h-auto w-full rounded-[1.5rem] object-cover";
 const splitImageSizes = "(min-width: 1024px) 50vw, 100vw";
+
+function FeatureDetails({
+  items,
+}: {
+  items: { title: string; copy: string }[];
+}) {
+  return (
+    <dl className="mt-8 grid max-w-lg gap-6">
+      {items.map((item) => (
+        <div key={item.title}>
+          <dt className="text-sm font-semibold text-foreground">{item.title}</dt>
+          <dd className="mt-1 text-sm leading-6 text-muted-foreground">
+            {item.copy}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
 
 export default function PopulationSegmentationPage() {
   return (
     <main lang="es" className="overflow-hidden bg-background text-foreground">
       <UseCaseHero
-        eyebrow="Segmentación poblacional"
         title="Conocé a tu población antes de que llegue a la guardia"
         copy={description}
         primary={{ label: "Hablemos", href: "/contact" }}
@@ -188,30 +143,13 @@ export default function PopulationSegmentationPage() {
 
       <BenefitStories
         title="Lo que necesitás para planificar mejor."
+        copy="Pasá de una lista de afiliados a una lectura viva de la población: quién necesita seguimiento, dónde están las brechas y qué intervención puede hacer una diferencia."
         items={benefits}
       />
 
-      <div className="px-6 pb-16 sm:px-10 lg:px-16">
-        <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-2">
-          <MetricSlot
-            label="pacientes segmentados"
-            supportText="Métrica a definir"
-          />
-          <MetricSlot
-            label="reducción de internaciones evitables"
-            supportText="Métrica a definir"
-          />
-        </div>
-      </div>
-
       <SplitFeature
         title="Segmentá con datos que ya tenés"
-        copy="Los datos de tu población ya existen, pero están repartidos en sistemas que no se hablan. Zonda los normaliza en un modelo canónico para que puedas cruzarlos."
-        bullets={[
-          "Ingesta desde EHR, laboratorios, padrones de financiadores, encuestas y planillas",
-          "Codificación automática de diagnósticos (ICD-10) y resultados (LOINC)",
-          "Deduplicación de pacientes entre fuentes",
-        ]}
+        copy="Los datos de tu población ya existen, pero están repartidos en sistemas que no se hablan. Zonda los conecta y los normaliza para que puedas cruzarlos con confianza."
         media={
           <Image
             src="/assets/solutions/segmentation/unified-patient.png"
@@ -222,17 +160,20 @@ export default function PopulationSegmentationPage() {
             className={splitImageClassName}
           />
         }
-      />
+      >
+        <FeatureDetails
+          items={[
+            { title: "Incorporá cada fuente", copy: "Historias clínicas, laboratorios, padrones de financiadores, encuestas y planillas." },
+            { title: "Hablá un idioma común", copy: "Diagnósticos, resultados y prestaciones normalizados para poder compararlos y combinarlos." },
+            { title: "Reconocé a cada persona", copy: "Deduplicación e identidad unificada aunque un paciente aparezca en distintas fuentes." },
+          ]}
+        />
+      </SplitFeature>
 
       <SplitFeature
-        title="Explorá tu población"
-        copy="Recorré tus datos con un agente. Preguntá por riesgo, condición, territorio o cobertura y llegá al perfil de cada paciente."
+        title="Encontrá las cohortes que necesitan atención"
+        copy="Explorá la población por riesgo, condición, territorio o cobertura. Empezá con una pregunta amplia y llegá hasta cada paciente que explica el resultado."
         mediaSide="left"
-        bullets={[
-          "Consultas en lenguaje natural sobre la población completa",
-          "El agente cruza historias clínicas, turnos, laboratorios y padrones",
-          "De una pregunta al segmento o al paciente que la responde",
-        ]}
         media={
           <Image
             src="/assets/solutions/segmentation/health-panel.png"
@@ -243,15 +184,19 @@ export default function PopulationSegmentationPage() {
             className={splitImageClassName}
           />
         }
-      />
+      >
+        <FeatureDetails
+          items={[
+            { title: "Preguntá en lenguaje natural", copy: "Por ejemplo: pacientes con diabetes sin consulta reciente en una zona determinada." },
+            { title: "Cruzá lo clínico y lo operativo", copy: "Historias clínicas, turnos, laboratorios y padrones responden como una misma población." },
+            { title: "Llegá al detalle", copy: "De una tendencia o segmento al perfil de las personas que lo componen." },
+          ]}
+        />
+      </SplitFeature>
 
       <SplitFeature
         title="Activá cada segmento"
-        bullets={[
-          "Envío de recordatorios y encuestas pre-consulta (por ejemplo, por WhatsApp)",
-          "Asignación de visitas domiciliarias o turnos prioritarios",
-          "Exportación a FHIR, CSV o vía webhook a tus propios sistemas",
-        ]}
+        copy="Un segmento sirve cuando pone en marcha una acción concreta. Zonda permite llevar la priorización a los equipos, los pacientes y los sistemas que ya usás."
         media={
           <Image
             src="/assets/solutions/segmentation/segment-flow.png"
@@ -262,15 +207,19 @@ export default function PopulationSegmentationPage() {
             className={splitImageClassName}
           />
         }
-      />
-
-      <CapabilityGrid title="Lo que lo hace posible" items={capabilities} />
-
-      <FaqList items={faqItems} />
+      >
+        <FeatureDetails
+          items={[
+            { title: "Acompañá a cada grupo", copy: "Recordatorios, encuestas preconsulta y campañas adaptadas a la necesidad detectada." },
+            { title: "Priorizá la capacidad disponible", copy: "Turnos prioritarios, visitas domiciliarias o seguimientos para quienes más los necesitan." },
+            { title: "Conectá tus propios flujos", copy: "Exportá a FHIR, CSV o webhook para activar herramientas y procesos existentes." },
+          ]}
+        />
+      </SplitFeature>
 
       <CtaBanner
-        title="Empezá a ver a tu población completa"
-        buttonText="Hablemos"
+        title="Convertí datos poblacionales en acciones de cuidado"
+        buttonText="Hablá con nuestro equipo"
       />
     </main>
   );

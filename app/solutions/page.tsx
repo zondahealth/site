@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 import {
   industryGroups,
@@ -15,12 +14,10 @@ import {
   CardContent,
   CardTitle,
 } from "@/components/ui/card/card";
-import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
 import { Pending } from "@/components/ui/pending/Pending";
 import {
   FaqList,
   SectionIntro,
-  Testimonial,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
 import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
@@ -32,21 +29,6 @@ export const metadata: Metadata = {
   title: "Soluciones",
   description,
 };
-
-const steps = [
-  {
-    verb: "Conectá",
-    copy: "tus fuentes: Zonda Connectors, APIs REST o DataDrop (HL7, FHIR, CSV y formatos arbitrarios).",
-  },
-  {
-    verb: "Normalizá",
-    copy: "todo en un modelo canónico, con identidad unificada y cada prestación como una transacción trazable.",
-  },
-  {
-    verb: "Activá",
-    copy: "soluciones listas para usar, agentes de inteligencia o tus propias herramientas sobre la API.",
-  },
-];
 
 const faqItems = [
   {
@@ -79,8 +61,6 @@ const faqItems = [
     ),
   },
 ];
-
-const storyHref = "/customer-stories/interdom";
 
 function SolutionCard({ item }: { item: NavLink }) {
   const Icon = item.icon;
@@ -167,14 +147,6 @@ export default function SolutionsPage() {
         primary={{ label: "Contactar", href: "/contact" }}
         secondary={{ label: "Ver la documentación", href: "/developers" }}
         secondaryVariant="inverse"
-        media={
-          // Archivo final sugerido: public/assets/solutions/hero.png
-          <ImagePlaceholder
-            width={1200}
-            height={1245}
-            label="Diagrama isométrico en tres capas apiladas: abajo las fuentes (HCE, laboratorio, financiador, planilla…"
-          />
-        }
       />
 
       <section
@@ -194,67 +166,6 @@ export default function SolutionsPage() {
         <div className="mx-auto max-w-7xl">
           <SectionIntro title="Por sector" />
           <SolutionGroups groups={industryGroups} />
-        </div>
-      </section>
-
-      <section className="px-6 py-20 sm:px-10 sm:py-28 lg:px-16">
-        <div className="mx-auto max-w-7xl">
-          <SectionIntro title="Cómo funciona" />
-          <ol className="mt-12 grid gap-8 lg:grid-cols-3">
-            {steps.map((step, index) => (
-              <li
-                key={step.verb}
-                className="rounded-2xl border border-border/80 bg-white p-6 sm:p-8"
-              >
-                <span
-                  aria-hidden="true"
-                  className="font-display text-5xl font-semibold tracking-[-0.04em] text-primary/25"
-                >
-                  {index + 1}
-                </span>
-                <p className="mt-6 text-base leading-7 text-foreground/80">
-                  <strong className="font-semibold text-foreground">
-                    {step.verb}
-                  </strong>{" "}
-                  {step.copy}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-7xl">
-          <Testimonial
-            quote="Zonda se convirtió en el sistema nervioso de nuestra operación.”"
-            name="Gabriel Alonso"
-            role="Coordinación General de Operaciones, Interdom Argentina"
-          />
-          {isLiveRoute(storyHref) ? (
-            <Link
-              href={storyHref}
-              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary underline-offset-4 outline-none hover:underline focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              Leer la historia
-              <ArrowRight aria-hidden="true" className="size-4" />
-            </Link>
-          ) : (
-            <p className="mt-6 text-sm font-medium">Leer la historia</p>
-          )}
-
-          {/* Archivo final sugerido: public/assets/solutions/logo-cliente-N.png (provisto por el cliente, no generar) */}
-          <ul className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-3">
-            {[1, 2, 3].map((n) => (
-              <li key={n}>
-                <ImagePlaceholder
-                  width={308}
-                  height={103}
-                  label="Logo de cliente ⟦A DEFINIR⟧ en escala de grises, fondo transparente."
-                />
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 

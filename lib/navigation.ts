@@ -10,7 +10,7 @@ import {
   Hospital,
   House,
   Landmark,
-  Network,
+  Newspaper,
   Pill,
   ShieldCheck,
   Sparkles,
@@ -183,12 +183,6 @@ export const industryGroups: NavGroup[] = [
         icon: Building2,
       },
       {
-        title: "Clínicas y redes de prestadores",
-        href: "/industries/clinics-provider-networks",
-        status: "live",
-        icon: Network,
-      },
-      {
         title: "Laboratorios y diagnóstico",
         href: "/industries/laboratories",
         status: "live",
@@ -213,21 +207,38 @@ export const pages: NavLink[] = [
   { title: "Recursos", href: "/resources", status: "live" },
   { title: "Historias de clientes", href: "/customer-stories", status: "live" },
   { title: "Interdom", href: "/customer-stories/interdom", status: "live" },
+  { title: "AMS", href: "/customer-stories/ams", status: "live" },
+  {
+    title: "PAMI",
+    href: "/customer-stories/pami",
+    status: "live",
+  },
   { title: "Nosotros", href: "/company", status: "soon" },
   { title: "Contacto", href: "/contact", status: "live" },
   { title: "Política de privacidad", href: "/privacy-policy", status: "live" },
 ];
 
 export const resourceLinks: NavLink[] = [
-  pages.find((page) => page.href === "/customer-stories"),
-  pages.find((page) => page.href === "/resources"),
-].filter((page): page is NavLink => Boolean(page));
+  {
+    title: "Historias de clientes",
+    href: "/customer-stories",
+    status: "live",
+    icon: Users,
+  },
+  {
+    title: "Zonda en las noticias",
+    href: "/news",
+    status: "live",
+    icon: Newspaper,
+  },
+];
 
 /** Flat list of every use case. Render with `liveOnly` so soon routes stay hidden. */
 export const useCases: NavLink[] = useCaseGroups.flatMap((group) => group.items);
 
 const all = [
   ...pages,
+  ...resourceLinks,
   ...useCaseGroups.flatMap((group) => group.items),
   ...industryGroups.flatMap((group) => group.items),
 ];
@@ -283,7 +294,10 @@ export function getFooterColumns(): FooterColumn[] {
     {
       title: "Recursos",
       links: [
-        { label: "Historias de clientes", href: "/customer-stories" },
+        ...resourceLinks.map((item) => ({
+          label: item.title,
+          href: item.href,
+        })),
         { label: "Recursos", href: "/resources" },
         { label: "Precios", href: "/pricing" },
       ],

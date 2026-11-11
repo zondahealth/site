@@ -6,29 +6,44 @@ import { Button } from "@/components/ui/button/button";
 
 export function AiInfraBanner() {
   return (
-    <section aria-label="Infraestructura de IA" className="mx-4 sm:mx-10">
+    <section aria-labelledby="ai-title" className="mx-4 sm:mx-10">
       <Banner
         variant="dark"
-        className="
-          isolate mx-auto flex w-full max-w-7xl flex-col items-center justify-start gap-2
-          border-transparent bg-[#022a4c] px-6 pt-12 pb-0 text-center
-          sm:px-10 sm:pt-14 sm:pb-0
-          md:px-12 md:pt-16 md:pb-0
-          lg:min-h-[900px] lg:items-start lg:justify-center lg:gap-8 lg:px-16 lg:py-20 lg:text-left
-        "
+        className="mx-auto w-full max-w-7xl border-transparent bg-[#022a4c] px-6 pt-14 pb-[24rem] text-primary-foreground sm:px-10 sm:pt-16 sm:pb-[28rem] md:px-12 md:pb-[34rem] lg:min-h-[520px] lg:px-16 lg:py-20"
+        style={{
+          backgroundImage:
+            "linear-gradient(122deg, #021c33 0%, #022a4c 48%, #043a66 100%)",
+        }}
       >
-        <div className="relative z-10 flex w-full max-w-sm flex-col items-center gap-6 sm:max-w-md sm:gap-8 md:max-w-lg lg:max-w-[520px] lg:items-start xl:max-w-[560px]">
-          <h2 className="font-display text-4xl font-medium leading-[1.08] text-primary-foreground lg:text-5xl xl:text-6xl">
-            De datos fragmentados a información segura que la IA puede usar.
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-3/4 lg:hidden"
+          style={{
+            background:
+              "radial-gradient(ellipse 80% 90% at 50% 100%, rgba(27,96,160,0.55) 0%, rgba(13,72,128,0.28) 42%, transparent 70%)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 hidden lg:block"
+          style={{
+            background:
+              "radial-gradient(ellipse 72% 86% at 100% 118%, rgba(27,96,160,0.55) 0%, rgba(13,72,128,0.28) 42%, transparent 70%)",
+          }}
+        />
+        <div className="relative z-10 mx-auto flex max-w-xl flex-col items-center gap-6 text-center lg:mx-0 lg:max-w-[26.4rem] lg:items-start lg:py-4 lg:text-left xl:max-w-lg">
+          <h2
+            id="ai-title"
+            className="font-display text-4xl font-medium leading-[1.08] text-primary-foreground lg:text-5xl"
+          >
+            Datos de salud, tratados como datos de salud.
           </h2>
-          <p className="text-lg leading-7 text-primary-foreground/75 sm:text-xl lg:text-2xl lg:leading-8">
-            Traé los datos como estén. Zonda los deja listos para que la IA
-            haga el resto.
+          <p className="text-lg leading-7 text-primary-foreground/75 sm:text-xl">
+            Zonda deja los datos de tu organización listos para que la IA
+            pueda usarlos.
           </p>
           <Button variant="black" asChild>
-            <Link href="/use-cases/normalized-ai">
-              Explorar agentes de inteligencia
-            </Link>
+            <Link href="/use-cases/normalized-ai">Ver IA sobre datos de salud</Link>
           </Button>
         </div>
         <Image
@@ -36,8 +51,8 @@ export function AiInfraBanner() {
           alt=""
           width={1416}
           height={989}
-          sizes="(min-width: 1024px) 920px, 80vw"
-          className="pointer-events-none relative z-0 -mb-8 mt-2 h-auto w-[108%] max-w-none select-none sm:-mb-12 sm:mt-4 sm:w-[92%] sm:max-w-[540px] md:-mb-16 md:mt-6 md:w-[82%] md:max-w-[680px] lg:absolute lg:top-0 lg:bottom-auto lg:left-[24rem] lg:m-0 lg:h-full lg:w-auto lg:max-w-none lg:translate-none xl:left-[26rem]"
+          sizes="(min-width: 1280px) 700px, (min-width: 1024px) 68vw, 92vw"
+          className="pointer-events-none absolute -bottom-6 left-1/2 h-[380px] w-auto max-w-none -translate-x-1/2 select-none sm:-bottom-8 sm:h-[440px] md:h-[540px] lg:-right-6 lg:-bottom-14 lg:left-auto lg:h-auto lg:w-[64%] lg:max-w-[40rem] lg:translate-x-0 xl:-right-10 xl:-bottom-20 xl:h-auto xl:w-[62%] xl:max-w-none"
         />
       </Banner>
     </section>

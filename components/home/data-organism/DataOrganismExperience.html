@@ -1,0 +1,740 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Organismo de Datos</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: escenario WebGL fijo y apaisado; el relato vive abajo a la izquierda,
+     los parámetros abajo a la derecha, y el centro queda libre para el núcleo. */
+  :root {
+    color-scheme: light;
+    --paper: #fcfcff;                       /* fondo claro de marca */
+    --deep: #0e3c75;                        /* azul profundo */
+    --electric: #0e3c75;                    /* una única familia: azul profundo */
+    --volt: #0e3c75;                        /* sin color de acento ajeno */
+    --deep-dim: rgba(14, 60, 117, 0.58);
+    --line: rgba(14, 60, 117, 0.16);
+    --panel: rgba(252, 252, 255, 0.9);
+    --display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  html { background: var(--paper); }
+  body { background: var(--paper); color: var(--deep); font-family: var(--mono); }
+
+  .journey { position: relative; height: 100vh; height: 100svh; }
+  .stage {
+    position: relative; height: 100%;
+    overflow: hidden; background: var(--paper);
+  }
+  .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+  .hud {
+    position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding-block: 28px;
+    padding-left: max(24px, env(safe-area-inset-left, 0px));
+    padding-right: max(24px, env(safe-area-inset-right, 0px));
+  }
+  .hud-top, .hud-bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
+  .hud-top { align-items: flex-start; }
+  .embedded-controls { padding: 16px; justify-content: flex-end; }
+  .embedded-controls .hud-top, .embedded-controls .story, .embedded-controls .meter { display: none; }
+  .embedded-controls .hud-bottom { justify-content: flex-end; }
+  .label {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--deep-dim);
+    font-variant-numeric: tabular-nums;
+  }
+  .label b { color: var(--electric); font-weight: 500; }
+
+  .story { position: relative; min-width: 0; flex: 1; max-width: 36rem; min-height: 7rem; }
+  .story-line { position: absolute; left: 0; bottom: 0; will-change: opacity, transform; }
+  .story-line h2 {
+    margin: 0; font-family: var(--display); font-weight: 500;
+    font-size: clamp(1.7rem, 3.6vw, 3rem); line-height: 1.05; letter-spacing: -0.025em;
+    text-wrap: balance; color: var(--deep);
+  }
+  .story-line h2 em { /* subrayado de marcador en amarillo: acento sin perder contraste */
+    font-style: normal;
+    background: linear-gradient(transparent 62%, var(--volt) 62%, var(--volt) 92%, transparent 92%);
+  }
+
+  .meter { display: flex; align-items: center; gap: 12px; }
+  .meter-track { width: clamp(72px, 14vw, 160px); height: 1px; background: var(--line); position: relative; }
+  .meter-fill { position: absolute; inset: -0.5px 0; background: var(--electric); transform-origin: left center; transform: scaleX(0); }
+
+  .tuner { pointer-events: auto; position: relative; font-size: 11px; }
+  .tuner summary {
+    list-style: none; cursor: pointer; user-select: none;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--deep-dim);
+    padding: 8px 12px; border: 1px solid var(--line); border-radius: 2px; background: var(--panel);
+  }
+  .tuner summary::-webkit-details-marker { display: none; }
+  .tuner summary:hover, .tuner[open] summary { color: var(--deep); border-color: var(--electric); }
+  .tuner summary:focus-visible, .tuner input:focus-visible { outline: 2px solid var(--electric); outline-offset: 3px; }
+  .tuner-body {
+    position: absolute; right: 0; bottom: calc(100% + 10px); width: min(280px, calc(100vw - 48px));
+    background: var(--panel); border: 1px solid var(--line); border-radius: 2px;
+    padding: 16px; display: grid; gap: 14px;
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  }
+  .field { display: grid; gap: 6px; }
+  .field-head { display: flex; justify-content: space-between; color: var(--deep-dim); letter-spacing: 0.08em; }
+  .field-head output { color: var(--deep); font-variant-numeric: tabular-nums; }
+  .field input[type="range"] { width: 100%; accent-color: var(--electric); margin: 0; }
+
+  .fallback { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: var(--deep-dim); padding: 24px; z-index: 3; }
+
+  @media (max-width: 640px) {
+    .hud { padding-block: 20px; }
+    .hud-bottom { flex-direction: column; align-items: stretch; gap: 16px; }
+    .hud-bottom .side { display: flex; justify-content: space-between; align-items: center; }
+    .story { min-height: 5.5rem; }
+  }
+</style>
+
+<section class="journey" id="journey">
+  <div class="stage" id="stage">
+    <div class="hud">
+      <div class="hud-top">
+        <span class="label" id="stateLabel"><b>01</b> &nbsp;Cuatro silos</span>
+      </div>
+      <div class="hud-bottom">
+        <div class="story">
+          <div class="story-line" id="lineA">
+            <h2>Datos dispersos en sistemas <em>aislados.</em></h2>
+          </div>
+          <div class="story-line" id="lineB" style="opacity:0">
+            <h2>Cuatro silos se vuelven <em>un solo organismo.</em></h2>
+          </div>
+        </div>
+        <div class="side">
+          <div class="meter">
+            <span class="label" id="pct">000</span>
+            <div class="meter-track"><div class="meter-fill" id="fill"></div></div>
+          </div>
+          <details class="tuner" id="tuner" style="margin-top:14px">
+            <summary>Parámetros</summary>
+            <div class="tuner-body">
+              <div class="field">
+                <div class="field-head"><label for="p-count">Partículas</label><output id="o-count"></output></div>
+                <input id="p-count" type="range" min="20000" max="200000" step="5000">
+              </div>
+              <div class="field">
+                <div class="field-head"><label for="p-size">Tamaño</label><output id="o-size"></output></div>
+                <input id="p-size" type="range" min="0.5" max="2.5" step="0.05">
+              </div>
+              <div class="field">
+                <div class="field-head"><label for="p-disp">Dispersión</label><output id="o-disp"></output></div>
+                <input id="p-disp" type="range" min="0.2" max="2.5" step="0.05">
+              </div>
+              <div class="field">
+                <div class="field-head"><label for="p-speed">Velocidad</label><output id="o-speed"></output></div>
+                <input id="p-speed" type="range" min="0" max="3" step="0.05">
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ==========================================================================
+   DataOrganism — componente reutilizable
+   --------------------------------------------------------------------------
+   const organism = new DataOrganism(container, { count: 100000, ... });
+   organism.setProgress(0..1);      // 0 = dispersos, 1 = red unificada (reversible)
+   organism.setOptions({ speed: 2 });
+   organism.dispose();              // libera geometría, material, contexto y listeners
+
+   Estado 0: cuatro silos 3D separados sobre un campo denso de partículas.
+   Estado 1: todas las partículas, incluso el campo y los cuatro silos,
+   convergen en una única esfera orgánica central. No hay líneas ni filamentos.
+   Todo se calcula en el vertex shader como función pura de (uTime, uProgress).
+   ========================================================================== */
+(function (global) {
+  'use strict';
+
+  var DEFAULTS = {
+    count: 100000,
+    colors: ['#082851', '#b8d8ff'],   // azul noche a azul estrella, sin salir de la familia de marca
+    accent: '#0e3c75',
+    background: '#fcfcff',
+    size: 0.6,
+    dispersion: 1.0,
+    connectionIntensity: 0,           // se conserva por compatibilidad; no se dibujan conexiones
+    speed: 1.0,
+    maxPixelRatio: 2,
+    interactive: true
+  };
+
+  var LAYOUTS = {
+    wide: {
+      centers: [[-5.0, 1.05, -0.75], [-1.7, -1.1, 0.8], [1.7, 1.1, -0.8], [5.0, -1.05, 0.7]],
+      halfW: 6.8, halfH: 2.95
+    },
+    tall: {
+      centers: [[-1.25, 3.35, 0.0], [1.3, 2.3, 0.4], [-1.3, -2.3, -0.4], [1.25, -3.35, 0.2]],
+      halfW: 2.6, halfH: 4.6
+    }
+  };
+  // Los silos también son nubes abiertas, no bloques compactos.
+  var RADII = [1.38, 1.26, 1.3, 1.34];
+  // Una envolvente grande y porosa: debe leerse como universo de partículas, no masa sólida.
+  var CORE_R = 2.35, NODE_SCALE = 0.4, CORE = 4, DUST = 5;
+  // 4 filamentos nodo→núcleo y 2 nodo↔nodo
+  var EDGES = [[0, 4], [1, 4], [2, 4], [3, 4], [0, 1], [2, 3]];
+  var BENDS = [[0.2, 0.5], [-0.16, -0.4], [-0.16, 0.4], [0.2, -0.5], [-0.3, 0.3], [-0.3, -0.3]];
+
+  var VERT = [
+    'uniform float uTime;',
+    'uniform float uProgress;',
+    'uniform float uSize;',
+    'uniform float uPixelRatio;',
+    'uniform float uScale;',
+    'uniform float uNear;',
+    'uniform float uFar;',
+    'uniform float uDispersion;',
+    'uniform float uNeck;',
+    'uniform float uNodeScale;',
+    'uniform vec3 uAccent;',
+    'uniform vec3 uCenters[6];',
+    'uniform float uSpin[6];',
+    'uniform vec3 uP0[6];',
+    'uniform vec3 uP1[6];',
+    'uniform vec3 uP2[6];',
+    'uniform vec2 uFlare[6];',
+    'uniform float uToCore[6];',
+    'attribute vec4 aMeta;',    // x: centro, y: rol, z: t inicial, w: velocidad con signo
+    'attribute vec4 aSeed;',
+    'attribute vec4 aTarget;',  // xyz: destino en el núcleo u offset radial del filamento; w: filamento
+    'attribute vec3 aColor;',
+    'attribute vec2 aLook;',    // x: tamaño, y: opacidad
+    'varying vec3 vColor;',
+    'varying float vAlpha;',
+    'varying float vKind;',
+    'vec3 spinY(vec3 v, float a) { float c = cos(a); float s = sin(a); return vec3(c * v.x - s * v.z, v.y, s * v.x + c * v.z); }',
+    'float ease(float p) { return p * p * p * (p * (p * 6.0 - 15.0) + 10.0); }',
+    // Dos pulsos cortos y separados: un latido, no una oscilación constante.
+    'float heartbeat(float t) {',
+    '  float first = pow(max(0.0, sin(t * 1.35)), 11.0);',
+    '  float second = 0.28 * pow(max(0.0, sin(t * 1.35 - 0.66)), 13.0);',
+    '  return first + second;',
+    '}',
+    'void main() {',
+    '  int ci = int(aMeta.x + 0.5);',
+    '  float role = aMeta.y;',
+    '  vec3 drift = vec3(',
+    '    sin(uTime * 0.6 * (0.5 + aSeed.x) + aSeed.y * 6.2832),',
+    '    cos(uTime * 0.5 * (0.5 + aSeed.z) + aSeed.x * 6.2832),',
+    '    sin(uTime * 0.4 * (0.5 + aSeed.y) + aSeed.w * 6.2832));',
+    '  vec3 local = spinY(position * (0.82 + 0.18 * uDispersion), uTime * uSpin[ci]);',
+    '  local += drift * 0.05 * uDispersion;',
+    '  local *= 1.0 + 0.03 * sin(uTime * 0.35 + float(ci) * 1.7);',
+    // Al final no queda ningún silo: cada partícula termina en la esfera central.
+    '  vec3 pos = uCenters[ci] + local;',
+    '  float alpha = 1.0; float boost = 0.0; float sizeMul = 1.0; float kind = 0.0;',
+    '  if (role < 1.5 || (role > 2.5 && role < 3.5)) {',
+    // Los cuatro silos y la nube ambiente viajan hacia el organismo central.
+    '    vec3 tl = spinY(aTarget.xyz, uTime * uSpin[4]) + drift * 0.035 * uDispersion;',
+    '    tl *= 1.0 + 0.035 * sin(uTime * 0.5 + aSeed.x * 3.0);',
+    // El latido aparece solamente cuando el organismo ya se consolidó.
+    '    float finalBeat = heartbeat(uTime) * smoothstep(0.72, 0.96, uProgress);',
+    '    tl *= 1.0 + 0.035 * finalBeat;',
+    '    vec3 tp = uCenters[4] + tl;',
+    // La convergencia queda completa en el estado de llegada visual (75%).
+    '    float p = ease(clamp((uProgress - (0.02 + aSeed.w * 0.28)) / 0.45, 0.0, 1.0));',
+    '    vec3 dir = tp - pos;',
+    '    vec3 side = normalize(vec3(-dir.y, dir.x, 0.0) + vec3(0.0, 0.0001, 0.0));',
+    '    vec3 arc = (side * (aSeed.x - 0.5) * 1.6 + vec3(0.0, 0.0, aSeed.y - 0.5)) * sin(3.14159 * p) * 0.7 * uDispersion;',
+    '    pos = mix(pos, tp, p) + arc;',
+    // Al terminar, las partículas se achican y transparentan apenas para conservar aire entre ellas.
+    '    sizeMul *= mix(1.0, 0.62, smoothstep(0.62, 1.0, uProgress));',
+    '  } else if (role > 5.5) {',
+    // Flujo continuo desde todos los lados: se curva en una órbita breve antes de entrar.
+    '    float flow = fract(aMeta.z + uTime * aMeta.w);',
+    '    vec3 intake = uCenters[4] + spinY(aTarget.xyz, uTime * uSpin[4]);',
+    '    float intakeP = ease(flow);',
+    '    vec3 entry = position;',
+    '    vec3 axis = normalize(intake - entry);',
+    '    vec3 ref = abs(axis.y) < 0.86 ? vec3(0.0, 1.0, 0.0) : vec3(1.0, 0.0, 0.0);',
+    '    vec3 loopA = normalize(cross(axis, ref));',
+    '    vec3 loopB = normalize(cross(axis, loopA));',
+    '    float loopAngle = flow * 6.28318 + aSeed.x * 6.28318;',
+    '    float loopRadius = sin(3.14159 * flow) * (0.22 + 0.88 * smoothstep(0.18, 0.82, flow));',
+    '    vec3 loop = (loopA * cos(loopAngle) + loopB * sin(loopAngle)) * loopRadius;',
+    '    pos = mix(entry, intake, intakeP) + loop;',
+    '    alpha *= smoothstep(0.0, 0.10, flow) * smoothstep(1.0, 0.84, flow) * smoothstep(0.35, 0.70, uProgress);',
+    '    sizeMul *= mix(0.78, 1.18, intakeP);',
+    '  } else if ((role > 1.5 && role < 2.5) || role > 4.5) {',
+    // Filamento: la partícula recorre una curva de Bézier entre dos sistemas.
+    '    int bi = int(aTarget.w + 0.5);',
+    '    float fixedNode = step(4.5, role);',
+    '    float t = fract(aMeta.z + uTime * aMeta.w);',
+    '    vec3 a = uP0[bi]; vec3 b = uP1[bi]; vec3 c = uP2[bi];',
+    '    float it = 1.0 - t;',
+    '    vec3 bp = it * it * a + 2.0 * it * t * b + t * t * c;',
+    '    float e = abs(2.0 * t - 1.0);',
+    '    float rad = mix(uNeck, mix(uFlare[bi].x, uFlare[bi].y, t), pow(e, 2.6));',
+    '    float strand = floor(aSeed.z * 3.0) - 1.0;',   // tres hebras por filamento
+    '    vec3 braid = vec3(0.0, strand, strand * 0.7) * sin(3.14159 * t) * 0.17;',
+    '    vec3 wob = vec3(',
+    '      sin(t * 9.0 - uTime * 0.9 + strand * 2.1),',
+    '      cos(t * 7.0 - uTime * 0.7 + strand * 1.3),',
+    '      sin(t * 8.0 + uTime * 0.8 + strand)) * 0.045;',
+    '    bp += (aTarget.xyz * rad + braid + wob * (1.0 - 0.6 * e)) * (1.0 - fixedNode);',
+    // Nodo→núcleo: el filamento crece hacia el centro. Nodo↔nodo: crece desde ambos extremos.
+    '    float delay = mix((1.0 - e) * 0.5, 0.08 + t * 0.46, uToCore[bi]) + aSeed.w * 0.1;',
+    '    float p = ease(clamp((uProgress - delay) / 0.38, 0.0, 1.0));',
+    '    if (fixedNode > 0.5) {',
+    '      pos = bp; sizeMul = p; kind = 1.0;',
+    '    } else {',
+    '      vec3 swirl = cross(normalize(c - a), aTarget.xyz);',
+    '      pos = mix(pos, bp, p) + swirl * sin(3.14159 * p) * 0.5 * uDispersion;',
+    '      float endFade = smoothstep(0.0, 0.05, t) * smoothstep(1.0, 0.95, t);',
+    '      alpha = mix(1.0, endFade, p);',
+    '      float pulse = pow(0.5 + 0.5 * sin(6.2832 * (t * 2.0 - uTime * 0.2 * sign(aMeta.w)) + float(bi) * 1.3), 12.0);',
+    '      boost = pulse * p;',
+    '    }',
+    '  } else if (role > 3.5 && role < 4.5) {',
+    // Marcador de nodo en el centro de cada sistema.
+    '    pos = uCenters[ci]; sizeMul = smoothstep(0.5, 0.95, uProgress); kind = 1.0;',
+    '  }',
+    '  vec4 mv = modelViewMatrix * vec4(pos, 1.0);',
+    '  gl_Position = projectionMatrix * mv;',
+    '  float tw = 0.8 + 0.2 * sin(uTime * (1.0 + aSeed.x * 2.0) + aSeed.y * 40.0);',
+    '  float depth = smoothstep(uFar, uNear, -mv.z);',
+    '  float s = aLook.x * uSize * uPixelRatio * sizeMul * (1.0 + boost * 1.3) * uScale / max(0.1, -mv.z);',
+    '  float al = alpha * aLook.y * mix(0.3, 1.0, depth);',
+    // El interior se vuelve más liviano al final: la lectura es un aro, no una masa maciza.
+    '  float hollow = 1.0;',
+    '  if (role < 1.5) hollow = mix(0.14, 1.0, smoothstep(0.55, 1.35, length(aTarget.xyz)));',
+    '  al *= mix(1.0, hollow, smoothstep(0.54, 0.76, uProgress));',
+    '  float finalAir = mix(1.0, 0.52, smoothstep(0.62, 1.0, uProgress));',
+    // El polvo ambiental sigue visible cuando la esfera ya se formó.
+    '  if (role > 2.5 && role < 3.5) finalAir = 1.0;',
+    '  al *= finalAir;',
+    '  al = mix(al * tw, 1.0, max(kind, boost));',
+    '  if (s < 1.25) { al *= s / 1.25; s = 1.25; }',
+    '  gl_PointSize = s;',
+    '  vColor = aColor;',
+    '  vAlpha = al;',
+    '  vKind = kind;',
+    '}'
+  ].join('\n');
+
+  var FRAG = [
+    'uniform vec3 uAccent;',
+    'uniform vec3 uRing;',
+    'varying vec3 vColor;',
+    'varying float vAlpha;',
+    'varying float vKind;',
+    'void main() {',
+    '  float d = length(gl_PointCoord - 0.5) * 2.0;',
+    '  if (d > 1.0) discard;',
+    '  float disc = smoothstep(1.0, 0.72, d);',
+    '  vec3 col = vColor;',
+    '  if (vKind > 0.5) col = mix(uAccent, uRing, smoothstep(0.58, 0.68, d));', // nodo: disco amarillo con aro azul
+    '  gl_FragColor = vec4(col, disc * vAlpha);',
+    '}'
+  ].join('\n');
+
+  function mulberry32(seed) {
+    return function () {
+      seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+      var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function randDir(rnd) {
+    var z = rnd() * 2 - 1, a = rnd() * 6.283185, s = Math.sqrt(1 - z * z);
+    return [s * Math.cos(a), z, s * Math.sin(a)];
+  }
+
+  function DataOrganism(container, options) {
+    if (!global.THREE) throw new Error('DataOrganism requiere THREE');
+    var THREE = global.THREE;
+    this.THREE = THREE;
+    this.container = container;
+    this.opts = Object.assign({}, DEFAULTS, options || {});
+    this.progress = 0;
+    this.time = 0;
+    this.pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+    this._disposed = false;
+
+    this.renderer = new THREE.WebGLRenderer({ antialias: false, alpha: !!this.opts.transparent, powerPreference: 'high-performance' });
+    this.renderer.setClearColor(new THREE.Color(this.opts.background), this.opts.transparent ? 0 : 1);
+    container.appendChild(this.renderer.domElement);
+
+    this.scene = new THREE.Scene();
+    this.camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
+    this.group = new THREE.Group();
+    this.scene.add(this.group);
+
+    var v3 = function () { return new THREE.Vector3(); };
+    var six = function (fn) { var a = []; for (var i = 0; i < 6; i++) a.push(fn(i)); return a; };
+    var endR = function (idx) { return idx === CORE ? CORE_R * 0.42 : RADII[idx] * NODE_SCALE * 0.6; };
+    this.uniforms = {
+      uTime: { value: 0 }, uProgress: { value: 0 },
+      uSize: { value: 1 }, uPixelRatio: { value: 1 }, uScale: { value: 10 },
+      uNear: { value: 6 }, uFar: { value: 14 },
+      uDispersion: { value: this.opts.dispersion }, uNeck: { value: 0.035 }, uNodeScale: { value: NODE_SCALE },
+      uAccent: { value: new THREE.Color(this.opts.accent) },
+      uRing: { value: new THREE.Color(this.opts.colors[0]) },
+      uCenters: { value: six(v3) },
+      uSpin: { value: [0.05, -0.065, 0.045, -0.08, 0.07, 0.0] },
+      uP0: { value: six(v3) }, uP1: { value: six(v3) }, uP2: { value: six(v3) },
+      uFlare: { value: six(function (e) { return new THREE.Vector2(endR(EDGES[e][0]), endR(EDGES[e][1])); }) },
+      uToCore: { value: six(function (e) { return EDGES[e][1] === CORE ? 1 : 0; }) }
+    };
+    this.material = new THREE.ShaderMaterial({
+      uniforms: this.uniforms, vertexShader: VERT, fragmentShader: FRAG,
+      transparent: true, depthWrite: false, depthTest: false, blending: THREE.NormalBlending
+    });
+
+    this.layout = LAYOUTS.wide;
+    this._build();
+
+    var self = this;
+    this._onPointer = function (ev) {
+      var r = container.getBoundingClientRect();
+      self.pointer.tx = ((ev.clientX - r.left) / Math.max(1, r.width)) * 2 - 1;
+      self.pointer.ty = ((ev.clientY - r.top) / Math.max(1, r.height)) * 2 - 1;
+    };
+    if (this.opts.interactive) global.addEventListener('pointermove', this._onPointer, { passive: true });
+
+    this._resize = this._resize.bind(this);
+    if (global.ResizeObserver) { this._ro = new ResizeObserver(this._resize); this._ro.observe(container); }
+    else global.addEventListener('resize', this._resize);
+    this._resize();
+
+    this._last = performance.now();
+    this._tick = this._tick.bind(this);
+    this._raf = requestAnimationFrame(this._tick);
+  }
+
+  DataOrganism.prototype._build = function () {
+    var THREE = this.THREE, o = this.opts;
+    if (this.points) { this.group.remove(this.points); this.geometry.dispose(); }
+
+    var rnd = mulberry32(20261111);
+    var N = Math.max(1000, Math.floor(o.count));
+    var pos = new Float32Array(N * 3), meta = new Float32Array(N * 4), seed = new Float32Array(N * 4);
+    var tgt = new Float32Array(N * 4), col = new Float32Array(N * 3), look = new Float32Array(N * 2);
+    var cA = new THREE.Color(o.colors[0]), cB = new THREE.Color(o.colors[o.colors.length - 1]);
+    var bias = [0.35, 0.6, 0.45, 0.7]; // cada nube tira más al azul profundo o al eléctrico
+
+    var shapes = [];
+    for (var c = 0; c < 5; c++) {
+      var lobes = [];
+      for (var l = 0; l < 3; l++) {
+        var ld = randDir(rnd);
+        lobes.push({ x: ld[0] * 0.72, y: ld[1] * 0.6, z: ld[2] * 0.72, r: 0.3 + rnd() * 0.22 });
+      }
+      shapes.push({ ph: [rnd() * 6.28, rnd() * 6.28, rnd() * 6.28, rnd() * 6.28],
+                    sq: [0.92 + rnd() * 0.2, 0.84 + rnd() * 0.2, 0.9 + rnd() * 0.2], lobes: lobes });
+    }
+    function wobble(d, sh, amt) {
+      return 1 + amt * (Math.sin(d[0] * 2.3 + sh.ph[0]) * Math.sin(d[1] * 1.9 + sh.ph[1])
+        + 0.6 * Math.sin(d[2] * 2.7 + sh.ph[2]) + 0.35 * Math.sin((d[0] + d[1]) * 4.1 + sh.ph[3]));
+    }
+
+    // Nube compartida: suficiente para unir visualmente los silos, sin crear líneas.
+    var markers = [];
+    var nMark = 0;
+    var nDust = Math.floor(N * 0.14);
+    var nIntake = Math.floor(N * 0.18);
+    var rest = N - nDust - nMark - nIntake;
+    var nFil = 0;
+    var nCore = Math.floor(rest * 0.52);
+    var centers = LAYOUTS.wide.centers, lens = [], lenSum = 0;
+    var mistCenters = [[-3.7, 0.5, -0.6], [-1.25, -0.85, 0.2], [0.0, 0.0, 0.0], [1.25, 0.85, -0.3], [3.7, -0.5, 0.55]];
+    for (var e = 0; e < 6; e++) {
+      var A = centers[EDGES[e][0]], B = EDGES[e][1] === CORE ? [0, 0, 0] : centers[EDGES[e][1]];
+      var len = Math.hypot(A[0] - B[0], A[1] - B[1], A[2] - B[2]) * (EDGES[e][1] === CORE ? 1 : 0.55);
+      lens.push(len); lenSum += len;
+    }
+    var vol = RADII.map(function (r) { return r * r * r; }), totalV = vol.reduce(function (s, v) { return s + v; }, 0);
+    function pickCluster() { var pr = rnd() * totalV, k = 0; while (k < 3 && pr > vol[k]) { pr -= vol[k]; k++; } return k; }
+
+    for (var i = 0; i < N; i++) {
+      var i3 = i * 3, i4 = i * 4, ci = 0, role = 0, alpha, size, home = true;
+      seed[i4] = rnd(); seed[i4 + 1] = rnd(); seed[i4 + 2] = rnd(); seed[i4 + 3] = rnd();
+
+      if (i < nMark) {
+        var mk = markers[i]; role = mk.role; ci = mk.ci; size = mk.size; alpha = 1; home = false;
+        if (role === 5) { tgt[i4 + 3] = mk.bi; meta[i4 + 2] = mk.t; meta[i4 + 3] = 0; seed[i4 + 3] = 0.5; }
+      } else if (i < nMark + nDust) {
+        ci = DUST; role = 3; home = false;
+        // Quinta nube: dispersa en todo el componente, con algunas zonas de niebla más pobladas.
+        if (rnd() < 0.64) {
+          var mist = mistCenters[Math.floor(rnd() * mistCenters.length)], md = randDir(rnd);
+          var mr = 0.45 + Math.pow(rnd(), 0.58) * 2.15;
+          pos[i3] = mist[0] + md[0] * mr;
+          pos[i3 + 1] = mist[1] + md[1] * mr;
+          pos[i3 + 2] = mist[2] + md[2] * mr;
+        } else {
+          pos[i3] = (rnd() * 2 - 1) * 8.8;
+          pos[i3 + 1] = (rnd() * 2 - 1) * 3.9;
+          pos[i3 + 2] = (rnd() * 2 - 1) * 4.6;
+        }
+        alpha = 0.075 + rnd() * 0.17;
+        size = 0.58 + rnd() * 1.08;
+      } else if (i < nMark + nDust + nIntake) {
+        // Partículas de ingesta: nacen sobre las seis caras del universo y se cierran en la esfera.
+        ci = DUST; role = 6; home = false;
+        var intakeFace = Math.floor(rnd() * 6), intakeSide = intakeFace % 2 ? 1 : -1, intakeDir = randDir(rnd);
+        var spreadA = rnd() * 2 - 1, spreadB = rnd() * 2 - 1, reach = 7.4 + rnd() * 3.8;
+        if (intakeFace < 2) {
+          pos[i3] = intakeSide * reach; pos[i3 + 1] = spreadA * 3.7; pos[i3 + 2] = spreadB * 3.5;
+        } else if (intakeFace < 4) {
+          pos[i3] = spreadA * 7.4; pos[i3 + 1] = intakeSide * (4.4 + rnd() * 2.2); pos[i3 + 2] = spreadB * 3.5;
+        } else {
+          pos[i3] = spreadA * 7.4; pos[i3 + 1] = spreadB * 3.7; pos[i3 + 2] = intakeSide * reach;
+        }
+        tgt[i4] = intakeDir[0] * (1.55 + rnd() * 0.65);
+        tgt[i4 + 1] = intakeDir[1] * (1.55 + rnd() * 0.65);
+        tgt[i4 + 2] = intakeDir[2] * (1.55 + rnd() * 0.65);
+        meta[i4 + 2] = rnd(); meta[i4 + 3] = 0.055 + rnd() * 0.075;
+        alpha = 0.18 + rnd() * 0.58;
+        size = 0.6 + Math.pow(rnd(), 2.8) * 1.8;
+      } else if (i < nMark + nDust + nIntake + nFil) {
+        role = 2;
+        var pick = rnd() * lenSum, bi = 0;
+        while (bi < 5 && pick > lens[bi]) { pick -= lens[bi]; bi++; }
+        var t0 = rnd(), toCore = EDGES[bi][1] === CORE;
+        ci = toCore ? EDGES[bi][0] : EDGES[bi][t0 < 0.5 ? 0 : 1];
+        var od = randDir(rnd), or = Math.pow(rnd(), 0.75);
+        tgt[i4] = od[0] * or; tgt[i4 + 1] = od[1] * or; tgt[i4 + 2] = od[2] * or; tgt[i4 + 3] = bi;
+        meta[i4 + 2] = t0;
+        // Hacia el núcleo fluye la mayoría; una parte vuelve: intercambio, no solo ingesta.
+        var sgn = toCore ? (rnd() < 0.72 ? 1 : -1) : (rnd() < 0.5 ? 1 : -1);
+        meta[i4 + 3] = sgn * (0.03 + rnd() * 0.055);
+      } else if (i < nMark + nDust + nIntake + nFil + nCore) {
+        role = 1; ci = pickCluster();
+      } else {
+        role = 0; ci = pickCluster();
+      }
+
+      if (home) {
+        var sh = shapes[ci], R = RADII[ci], d = randDir(rnd), x, y, z, mode = rnd();
+        if (mode < 0.14) {
+          var lb = sh.lobes[Math.floor(rnd() * 3)], lr = lb.r * Math.pow(rnd(), 0.5);
+          x = (lb.x + d[0] * lr) * R; y = (lb.y + d[1] * lr) * R; z = (lb.z + d[2] * lr) * R;
+        } else {
+          // Como la esfera final, cada silo vive sobre una envolvente con aire en el centro.
+          var rr = mode < 0.87 ? 0.68 + Math.pow(rnd(), 0.38) * 0.32 : 0.20 + Math.pow(rnd(), 0.62) * 0.46;
+          rr *= R * wobble(d, sh, 0.2);
+          x = d[0] * rr * sh.sq[0]; y = d[1] * rr * sh.sq[1]; z = d[2] * rr * sh.sq[2];
+        }
+        pos[i3] = x; pos[i3 + 1] = y; pos[i3 + 2] = z;
+        alpha = 0.32 + Math.pow(rnd(), 1.4) * 0.48;
+        size = 0.28 + Math.pow(rnd(), 3.4) * 2.55;
+      }
+      // Los silos y la capa global convergen en una esfera con halo, sin anillos añadidos.
+      if (role < 1.5 || role === 3) {
+        var td = randDir(rnd), tsh = shapes[4];
+        // Casi todo vive en la cáscara exterior: un aro redondo, profundo y poco masivo al centro.
+        var shell = role === 3 ? 0.78 + Math.pow(rnd(), 0.42) * 0.32 : (rnd() < 0.94 ? 0.84 + Math.pow(rnd(), 0.38) * 0.16 : 0.15 + Math.pow(rnd(), 0.62) * 0.40);
+        var tr = (role === 3 ? CORE_R * 1.5 : CORE_R) * wobble(td, tsh, 0.06) * shell;
+        tgt[i4] = td[0] * tr; tgt[i4 + 1] = td[1] * tr * 0.94; tgt[i4 + 2] = td[2] * tr;
+      }
+      meta[i4] = ci; meta[i4 + 1] = role;
+      look[i * 2] = size; look[i * 2 + 1] = alpha;
+
+      var m = Math.min(1, Math.max(0, (ci < 4 ? bias[ci] : 0.5) + (rnd() - 0.5) * 0.9));
+      if (rnd() < 0.055) m = 0.82 + rnd() * 0.18; // destellos escasos, como estrellas
+      col[i3] = cA.r + (cB.r - cA.r) * m;
+      col[i3 + 1] = cA.g + (cB.g - cA.g) * m;
+      col[i3 + 2] = cA.b + (cB.b - cA.b) * m;
+    }
+
+    var g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    g.setAttribute('aMeta', new THREE.BufferAttribute(meta, 4));
+    g.setAttribute('aSeed', new THREE.BufferAttribute(seed, 4));
+    g.setAttribute('aTarget', new THREE.BufferAttribute(tgt, 4));
+    g.setAttribute('aColor', new THREE.BufferAttribute(col, 3));
+    g.setAttribute('aLook', new THREE.BufferAttribute(look, 2));
+    this.geometry = g;
+    this.points = new THREE.Points(g, this.material);
+    this.points.frustumCulled = false;
+    this.group.add(this.points);
+  };
+
+  DataOrganism.prototype._resize = function () {
+    if (this._disposed) return;
+    var w = Math.max(1, this.container.clientWidth), h = Math.max(1, this.container.clientHeight);
+    var pr = Math.min(global.devicePixelRatio || 1, this.opts.maxPixelRatio);
+    this.renderer.setPixelRatio(pr);
+    this.renderer.setSize(w, h, false);
+    var aspect = w / h;
+    this.layout = aspect < 0.95 ? LAYOUTS.tall : LAYOUTS.wide;
+    this.camera.aspect = aspect;
+    var th = Math.tan((this.camera.fov * Math.PI / 180) / 2);
+    this.baseZ = Math.max(this.layout.halfH / th, this.layout.halfW / (th * aspect));
+    this.camera.updateProjectionMatrix();
+    this.uniforms.uPixelRatio.value = pr;
+    this._sizeK = Math.min(1.15, Math.max(0.62, Math.min(w, h) / 820));
+  };
+
+  DataOrganism.prototype._updateStructure = function () {
+    var U = this.uniforms, C = this.layout.centers, t = this.time, p = this.progress;
+    var pull = 1 - 0.1 * p; // al unificarse, los nodos se acercan apenas al núcleo
+    for (var i = 0; i < 4; i++) {
+      U.uCenters.value[i].set(
+        C[i][0] * pull + Math.sin(t * 0.21 + i * 1.9) * 0.08,
+        C[i][1] * pull + Math.cos(t * 0.17 + i * 2.3) * 0.1,
+        C[i][2] + Math.sin(t * 0.13 + i) * 0.12);
+    }
+    U.uCenters.value[CORE].set(Math.sin(t * 0.11) * 0.05, Math.cos(t * 0.14) * 0.06, 0);
+    for (var e = 0; e < 6; e++) {
+      var a = U.uCenters.value[EDGES[e][0]], b = U.uCenters.value[EDGES[e][1]];
+      var dx = b.x - a.x, dy = b.y - a.y, len = Math.hypot(dx, dy) || 1;
+      var sway = 1 + 0.22 * Math.sin(t * 0.3 + e * 1.7);
+      U.uP0.value[e].copy(a); U.uP2.value[e].copy(b);
+      U.uP1.value[e].set(
+        (a.x + b.x) / 2 + (-dy / len) * len * BENDS[e][0] * sway,
+        (a.y + b.y) / 2 + (dx / len) * len * BENDS[e][0] * sway,
+        (a.z + b.z) / 2 + BENDS[e][1] * sway);
+    }
+  };
+
+  DataOrganism.prototype._tick = function (now) {
+    if (this._disposed) return;
+    this._raf = requestAnimationFrame(this._tick);
+    var dt = Math.min(0.05, (now - this._last) / 1000); this._last = now;
+    this.time += dt * this.opts.speed;
+    var U = this.uniforms, p = this.progress, P = this.pointer;
+    P.x += (P.tx - P.x) * 0.04; P.y += (P.ty - P.y) * 0.04;
+
+    this._updateStructure();
+    U.uTime.value = this.time;
+    U.uProgress.value = p;
+    U.uDispersion.value = this.opts.dispersion;
+    U.uSize.value = this.opts.size * 1.9 * this._sizeK;
+
+    var z = this.baseZ * (1 - 0.05 * p) / Math.max(0.4, this.opts.zoom || 1);
+    this.camera.position.set(P.x * 0.4, -P.y * 0.25, z);
+    this.camera.lookAt(0, 0, 0);
+    U.uScale.value = z; U.uNear.value = z - 3.2; U.uFar.value = z + 4.0;
+    this.group.rotation.y = Math.sin(this.time * 0.08) * 0.07 + (p - 0.5) * 0.16 + P.x * 0.04;
+    this.group.rotation.x = Math.sin(this.time * 0.06 + 1.0) * 0.03 + P.y * 0.03;
+
+    this.renderer.render(this.scene, this.camera);
+  };
+
+  DataOrganism.prototype.setProgress = function (v) { this.progress = Math.min(1, Math.max(0, v)); };
+
+  DataOrganism.prototype.setOptions = function (patch) {
+    var rebuild = ('count' in patch && patch.count !== this.opts.count) ||
+                  ('connectionIntensity' in patch && patch.connectionIntensity !== this.opts.connectionIntensity) ||
+                  ('colors' in patch) || ('accent' in patch);
+    Object.assign(this.opts, patch);
+    if ('background' in patch) this.renderer.setClearColor(new this.THREE.Color(patch.background), 1);
+    if ('accent' in patch) this.uniforms.uAccent.value.set(patch.accent);
+    if ('colors' in patch) this.uniforms.uRing.value.set(patch.colors[0]);
+    if (rebuild) this._build();
+  };
+
+  DataOrganism.prototype.dispose = function () {
+    if (this._disposed) return;
+    this._disposed = true;
+    cancelAnimationFrame(this._raf);
+    global.removeEventListener('pointermove', this._onPointer);
+    if (this._ro) this._ro.disconnect(); else global.removeEventListener('resize', this._resize);
+    this.group.remove(this.points);
+    this.geometry.dispose();
+    this.material.dispose();
+    this.renderer.dispose();
+    if (this.renderer.forceContextLoss) this.renderer.forceContextLoss();
+    var el = this.renderer.domElement;
+    if (el.parentNode) el.parentNode.removeChild(el);
+  };
+
+  global.DataOrganism = DataOrganism;
+})(window);
+
+/* ========================================================================== 
+   Uso fijo: el organismo se mantiene en su estado final y sólo conserva
+   movimiento ambiental. No registra ni modifica el scroll de la página.
+   ========================================================================== */
+(function () {
+  'use strict';
+  var stage = document.getElementById('stage');
+  var $ = function (id) { return document.getElementById(id); };
+  var params = new URLSearchParams(window.location.search);
+  var embedded = params.has('embedded');
+  var embeddedZoom = parseFloat(params.get('zoom'));
+  var accentTheme = params.get('theme') === 'accent';
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var opts = {
+    count: 170000, size: 0.8, dispersion: 0.20, connectionIntensity: 0,
+    speed: reduce ? 0.35 : 1.15, background: accentTheme ? '#05070a' : '#fcfcff',
+    colors: accentTheme ? ['#a6a900', '#fff6a5'] : ['#0755d6', '#8ac5ff'],
+    accent: accentTheme ? '#eaea00' : '#0a63e8',
+    transparent: embedded, zoom: embedded && !isNaN(embeddedZoom) ? embeddedZoom : 1,
+    interactive: !embedded
+  };
+
+  var organism;
+  try { organism = new DataOrganism(stage, opts); }
+  catch (err) {
+    var f = document.createElement('p'); f.className = 'fallback';
+    f.textContent = 'Este navegador no pudo iniciar WebGL, así que la animación no se puede mostrar.';
+    stage.appendChild(f); return;
+  }
+
+  // El estado visual que gustó a 75% es el estado fijo del componente.
+  var FINAL_VISUAL_PROGRESS = 0.75;
+  function smooth(a, b, x) { var t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); }
+  function render(raw) {
+    var p = Math.min(1, raw);
+    organism.setProgress(p * FINAL_VISUAL_PROGRESS);
+    var a = 1 - smooth(0.12, 0.4, p), b = smooth(0.62, 0.9, p);
+    $('lineA').style.opacity = a; $('lineA').style.transform = 'translateY(' + ((1 - a) * -14) + 'px)';
+    $('lineB').style.opacity = b; $('lineB').style.transform = 'translateY(' + ((1 - b) * 14) + 'px)';
+    $('fill').style.transform = 'scaleX(' + p + ')';
+    $('pct').textContent = ('00' + Math.round(p * 100)).slice(-3);
+    $('stateLabel').innerHTML = p < 0.5 ? '<b>01</b> &nbsp;Cuatro silos' : '<b>02</b> &nbsp;Un solo organismo';
+  }
+
+  function bindControls() {
+    var fields = [
+      ['p-count', 'o-count', 'count', function (v) { return Math.round(v / 1000) + 'k'; }, true],
+      ['p-size', 'o-size', 'size', function (v) { return v.toFixed(2) + '×'; }, false],
+      ['p-disp', 'o-disp', 'dispersion', function (v) { return v.toFixed(2); }, false],
+      ['p-speed', 'o-speed', 'speed', function (v) { return v.toFixed(2) + '×'; }, false]
+    ];
+    fields.forEach(function (f) {
+      var input = $(f[0]), out = $(f[1]);
+      input.value = opts[f[2]]; out.textContent = f[3](+input.value);
+      input.addEventListener('input', function () {
+        out.textContent = f[3](+input.value);
+        if (!f[4]) { var p = {}; p[f[2]] = +input.value; organism.setOptions(p); }
+      });
+      if (f[4]) input.addEventListener('change', function () { var p = {}; p[f[2]] = +input.value; organism.setOptions(p); });
+    });
+  }
+
+  if (embedded) {
+    document.documentElement.style.background = 'transparent';
+    document.body.style.background = 'transparent';
+    stage.style.background = 'transparent';
+    document.querySelector('.hud').classList.add('embedded-controls');
+    bindControls();
+    render(1);
+    return;
+  }
+
+  render(1);
+
+  bindControls();
+
+  window.addEventListener('pagehide', function () { organism.dispose(); });
+})();
+</script>
+
+</body></html>

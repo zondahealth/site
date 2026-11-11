@@ -1,18 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ClipboardList, Plug, Sparkles, Webhook } from "lucide-react";
 
 import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
-import { Pending } from "@/components/ui/pending/Pending";
 import {
   BenefitStories,
-  CapabilityGrid,
   FaqList,
   InlineLink,
-  MetricSlot,
-  RelatedLinks,
   SplitFeature,
-  StatSlot,
   Testimonial,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
@@ -20,7 +14,7 @@ import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
 
 const title = "Automatización para organizaciones de salud";
 const description =
-  "Validaciones con financiadores, conciliaciones, reclamos, asignaciones y reportes que se ejecutan automáticamente sobre datos ya conectados.";
+  "Zonda conecta datos, decisiones y acciones para que la operación avance en el momento indicado, sin depender de mover información entre planillas y sistemas.";
 
 export const metadata: Metadata = {
   title,
@@ -35,58 +29,43 @@ export const metadata: Metadata = {
 
 const benefits = [
   {
-    title: "Validaciones automáticas",
-    copy: "Lo que antes se chequeaba a mano contra el financiador se valida en el momento, reduciendo errores y débitos.",
+    title: "Datos que llegan listos para operar",
+    copy: "Información de sistemas, financiadores, profesionales y organizaciones ordenada alrededor de pacientes, prestaciones, coberturas y equipos.",
     // Archivo final sugerido: public/assets/use-cases/automation/benefit-1.png
     media: (
       <ImagePlaceholder
         width={1280}
         height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Validaciones automáticas». Composición: una tarjeta de…"
+        label="Datos de atención, cobertura y operación conectados alrededor de una prestación."
         fill
       />
     ),
   },
   {
-    title: "Flujos que reaccionan a eventos",
-    copy: "Cada visita, resultado o reclamo puede disparar la siguiente acción vía webhook.",
+    title: "Decisiones que no esperan una revisión manual",
+    copy: "Cuando cambia una visita, llega un resultado, se aprueba una cobertura o falta información, el flujo adecuado puede continuar con contexto.",
     // Archivo final sugerido: public/assets/use-cases/automation/benefit-2.png
     media: (
       <ImagePlaceholder
         width={1280}
         height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Flujos que reaccionan a eventos». Composición: una…"
+        label="Evento clínico u operativo que activa una decisión y la siguiente acción."
         fill
       />
     ),
   },
   {
-    title: "Sin desarrollo desde cero",
-    copy: "Usá flujos listos o construí los tuyos sobre la API de Zonda.",
+    title: "Procesos que se conectan entre sí",
+    copy: "Validar, solicitar lo pendiente, asignar, notificar y actualizar estados puede formar parte de un mismo recorrido.",
     // Archivo final sugerido: public/assets/use-cases/automation/benefit-3.png
     media: (
       <ImagePlaceholder
         width={1280}
         height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Sin desarrollo desde cero». Composición: una tarjeta…"
+        label="Secuencia conectada de validación, asignación, comunicación y actualización de estado."
         fill
       />
     ),
-  },
-];
-
-const capabilities = [
-  { title: "Webhooks", icon: Webhook },
-  { title: "Zonda Connectors", icon: Plug },
-  {
-    title: "IA normalizada",
-    href: "/use-cases/normalized-ai",
-    icon: Sparkles,
-  },
-  {
-    title: "Operaciones digitales",
-    href: "/use-cases/operations",
-    icon: ClipboardList,
   },
 ];
 
@@ -94,31 +73,43 @@ const faqItems = [
   {
     question: "¿Qué procesos puedo automatizar?",
     answer:
-      "Validaciones con financiadores, liquidación, conciliación, reclamos, asignación de visitas, recordatorios y reportes, entre otros.",
+      "Cualquier proceso que dependa de información conectada y reglas claras: validaciones, asignaciones, comunicaciones, conciliaciones, reclamos, presentaciones, reportes y seguimiento de excepciones.",
   },
   {
     question: "¿Necesito un equipo técnico?",
     answer:
-      "No para los flujos incluidos. Si querés construir los tuyos, tenés API, webhooks y SDKs.",
+      "No necesariamente para empezar. Zonda puede acompañar flujos listos para operar. Un equipo técnico permite además integrar sistemas propios y construir automatizaciones sobre la API.",
   },
   {
-    question: "¿Se conecta con mi sistema de facturación?",
-    answer: (
-      <>
-        Zonda se integra vía Connectors, API REST o DataDrop.{" "}
-        <Pending>LISTA DE SISTEMAS SOPORTADOS A DEFINIR</Pending>
-      </>
-    ),
+    question: "¿Se conecta con mis sistemas actuales?",
+    answer:
+      "Sí. Zonda se conecta con sistemas clínicos, administrativos y financieros existentes, incorpora sus datos a un modelo común y habilita acciones mediante API, conectores y eventos.",
+  },
+  {
+    question: "¿Qué pasa cuando un caso no cumple una regla?",
+    answer:
+      "El flujo puede detenerse, pedir información, derivar el caso al equipo indicado o ejecutar una alternativa configurada. La excepción conserva el contexto necesario para resolverla.",
   },
 ];
 
-const relatedLinks = [
-  { label: "Operaciones digitales", href: "/use-cases/operations" },
-  { label: "Fraude", href: "/use-cases/fraud-risk-prevention" },
-  { label: "Internación domiciliaria", href: "/industries/home-health" },
-  { label: "Ciclo de ingresos", href: "/use-cases/revenue-cycle" },
-  { label: "Atención multi-financiador", href: "/use-cases/multi-payer-care" },
-];
+function FeatureDetails({
+  items,
+}: {
+  items: { title: string; copy: string }[];
+}) {
+  return (
+    <dl className="mt-8 grid max-w-lg gap-6">
+      {items.map((item) => (
+        <div key={item.title}>
+          <dt className="text-sm font-semibold text-foreground">{item.title}</dt>
+          <dd className="mt-1 text-sm leading-6 text-muted-foreground">
+            {item.copy}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
 
 export default function AutomationPage() {
   return (
@@ -146,86 +137,98 @@ export default function AutomationPage() {
 
       <BenefitStories
         title="Menos administración. Más atención."
+        copy="Zonda no automatiza tareas aisladas: convierte información dispersa en una operación capaz de actuar, con personas interviniendo donde hace falta criterio."
         items={benefits}
       />
 
-      <div className="px-6 pb-16 sm:px-10 lg:px-16">
-        <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-2">
-          {/* VALIDAR: tareas administrativas liberadas para profesionales (dato publicado en zondahealth.com/empresa — validar) */}
-          <StatSlot
-            value="−30%"
-            label="tareas administrativas liberadas para profesionales"
-          />
-          <MetricSlot
-            label="validaciones automatizadas por mes"
-            supportText="Métrica a definir"
-          />
-        </div>
-      </div>
-
       <SplitFeature
-        title="Facturación y liquidación sin segunda carga"
-        copy={
-          <>
-            Para el flujo completo de la prestación al cobro, ver{" "}
-            <InlineLink href="/use-cases/revenue-cycle">
-              Ciclo de ingresos
-            </InlineLink>
-            .
-          </>
-        }
-        bullets={[
-          "Liquidación y conciliación automática por financiador",
-          "Reportes por obra social en tiempo real",
-          "Comprobantes listos para presentar y auditar",
-        ]}
+        title="Construí sobre una operación ya conectada"
+        copy="No hace falta empezar de cero. La API de Zonda permite incorporar datos y acciones de tus sistemas actuales a una capa común, con identidades, permisos y trazabilidad consistentes."
         media={
           // Archivo final sugerido: public/assets/use-cases/automation/feature-1.png
           <ImagePlaceholder
             width={1000}
             height={1000}
-            label="registro de visita que se convierte en una línea de liquidación con estado 'Match con prescripción', como…"
+            label="Sistemas clínicos, administrativos y financieros conectados a pacientes, profesionales, coberturas y prestaciones."
             className="rounded-[1.5rem]"
           />
         }
-      />
+      >
+        <FeatureDetails
+          items={[
+            { title: "Conectá tus sistemas", copy: "Incorporá datos y acciones de las herramientas que ya forman parte de tu operación." },
+            { title: "Usá información normalizada", copy: "Pacientes, profesionales, organizaciones, catálogos y prestaciones relacionados en entidades reutilizables." },
+            { title: "Convertí eventos en acciones", copy: "Una visita confirmada, un dato incompleto, una autorización o un pago pueden disparar la respuesta adecuada." },
+          ]}
+        />
+      </SplitFeature>
 
       <SplitFeature
-        title="Reclamos y asignaciones automáticas"
+        title="Operación con financiadores que sigue el mismo hilo"
         mediaSide="left"
-        bullets={[
-          "Resolución automatizada de reclamos con reglas configurables",
-          "Asignación de profesionales según especialidad, disponibilidad y recorrido",
-          "Reasignación rápida ante urgencias",
-        ]}
+        copy="Las validaciones, presentaciones, respuestas, conciliaciones y reclamos pueden seguir reglas consistentes y mantener su vínculo con la prestación original."
         media={
           // Archivo final sugerido: public/assets/use-cases/automation/feature-2.png
           <ImagePlaceholder
             width={1000}
             height={1000}
-            label="tablero de asignaciones con profesionales en un mapa y una visita reasignándose sola, como en…"
+            label="Prestación conectada a validación, presentación, respuesta del financiador, conciliación y reclamo."
             className="rounded-[1.5rem]"
           />
         }
-      />
+      >
+        <FeatureDetails
+          items={[
+            { title: "Controles antes de avanzar", copy: "Verificaciones y requisitos aplicados cuando todavía es posible corregir información." },
+            { title: "Respuestas y reclamos con contexto", copy: "Cada diferencia conserva el vínculo con la prestación y la regla que la originó." },
+            { title: "Trazabilidad hasta el pago", copy: "La operación financiera se puede recorrer desde la atención hasta el ingreso." },
+          ]}
+        />
+      </SplitFeature>
 
       <SplitFeature
-        title="Comunicación con pacientes en piloto automático"
-        bullets={[
-          "Recordatorios y cambios de turno por WhatsApp",
-          "Encuestas pre-consulta configurables",
-          "Seguimiento post-consulta disparado por evento",
-        ]}
+        title="Coordinación de la atención que encuentra el siguiente paso"
+        copy="Las reglas operativas pueden ayudar a encontrar qué hacer según especialidad, disponibilidad, cobertura, ubicación o prioridad, sin perder el contexto de cada caso."
         media={
           // Archivo final sugerido: public/assets/use-cases/automation/feature-3.png
           <ImagePlaceholder
             width={1000}
             height={1000}
-            label="conversación de WhatsApp con recordatorio de turno y confirmación del paciente, como en plaid.com/…"
+            label="Visita que se asigna, se confirma y se reasigna según disponibilidad, ubicación y prioridad."
             className="rounded-[1.5rem]"
           />
         }
-      />
+      >
+        <FeatureDetails
+          items={[
+            { title: "Asigná y reasigná", copy: "Profesionales según especialidad, disponibilidad, ubicación y condiciones de la atención." },
+            { title: "Seguí los casos que lo requieren", copy: "Los cambios y excepciones llegan al equipo indicado para que pueda intervenir a tiempo." },
+            { title: "Coordiná entre equipos", copy: "Instituciones, profesionales y equipos internos pueden trabajar sobre el mismo estado del caso." },
+          ]}
+        />
+      </SplitFeature>
+
+      <SplitFeature
+        title="Comunicación y reportes que acompañan el proceso"
+        mediaSide="left"
+        copy="Las comunicaciones y los reportes responden a lo que está ocurriendo en la operación, no a que alguien recuerde actualizar una lista o enviar un mensaje."
+        media={
+          <ImagePlaceholder
+            width={1000}
+            height={1000}
+            label="Evento de atención que activa una comunicación, actualiza un tablero y deja trazabilidad del resultado."
+            className="rounded-[1.5rem]"
+          />
+        }
+      >
+        <FeatureDetails
+          items={[
+            { title: "Comunicaciones a tiempo", copy: "Recordatorios, confirmaciones, solicitudes de información y seguimiento posterior según el estado del proceso." },
+            { title: "Visibilidad sin fin de mes", copy: "Actividad, ingresos y excepciones disponibles por financiador, equipo o período mientras la operación ocurre." },
+            { title: "Información lista para decidir", copy: "Segmentos y reportes que permiten detectar casos específicos y actuar antes." },
+          ]}
+        />
+      </SplitFeature>
 
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
         <div className="mx-auto max-w-7xl">
@@ -245,16 +248,13 @@ export default function AutomationPage() {
         </div>
       </section>
 
-      <CapabilityGrid title="Lo que lo hace posible" items={capabilities} />
-
       <FaqList items={faqItems} />
 
       <CtaBanner
-        title="Liberá a tu equipo del trabajo repetitivo"
-        buttonText="Hablemos"
+        title="Tu operación, con el nivel de autonomía que necesitás"
+        subtitle="Empezá conectando un proceso, usá flujos ya resueltos o construí reglas y experiencias propias sobre la API de Zonda."
+        buttonText="Hablá con nuestro equipo"
       />
-
-      <RelatedLinks links={relatedLinks} />
     </main>
   );
 }

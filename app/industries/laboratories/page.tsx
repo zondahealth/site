@@ -2,24 +2,20 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
-import { Pending } from "@/components/ui/pending/Pending";
 import {
   BenefitStories,
-  FaqList,
-  MetricSlot,
-  RelatedLinks,
   SectionIntro,
   SplitFeature,
-  Testimonial,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
+import { IndustryProducts } from "@/components/industries/IndustryProducts";
 import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
 
 // SECTOR SUGERIDO: no listado por el founder; validar. Publicado en la navegación a pedido del equipo antes de esa aprobación.
 
 const title = "Laboratorios y diagnóstico";
 const description =
-  "Publicá resultados normalizados con LOINC que cualquier hospital, médico o financiador puede consumir, en el formato que necesite.";
+  "Procesá resultados, vinculalos al paciente correcto y mantené trazabilidad desde que una muestra ingresa hasta que el resultado llega a quien tiene que actuar.";
 
 export const metadata: Metadata = {
   title,
@@ -32,12 +28,10 @@ export const metadata: Metadata = {
   },
 };
 
-const showEditorialBadge = process.env.NODE_ENV !== "production";
-
 const benefits = [
   {
-    title: "Normalización LOINC",
-    copy: "Mapeo semántico de tu terminología propietaria a códigos universales.",
+    title: "Resultados que se entienden fuera del laboratorio",
+    copy: "Terminología propia y resultados normalizados para que hospitales, profesionales y financiadores los puedan usar con contexto.",
     href: "/use-cases/normalized-ai",
     cta: "Ver IA normalizada",
     // Archivo final sugerido: public/assets/industries/laboratories/benefit-1.png
@@ -51,8 +45,8 @@ const benefits = [
     ),
   },
   {
-    title: "Un input, muchos outputs",
-    copy: "JSON, FHIR, CSV o HL7 según cada cliente.",
+    title: "Un resultado, todas las salidas necesarias",
+    copy: "Cada destinatario puede recibir la información en el formato y el canal que necesita, sin reconstruirla a mano.",
     // Archivo final sugerido: public/assets/industries/laboratories/benefit-2.png
     media: (
       <ImagePlaceholder
@@ -64,8 +58,8 @@ const benefits = [
     ),
   },
   {
-    title: "Identidad del paciente",
-    copy: "Resultados asociados al paciente correcto entre instituciones.",
+    title: "Cada resultado llega al paciente correcto",
+    copy: "La identidad unificada ayuda a vincular estudios entre instituciones y evitar que un resultado valioso se pierda o se duplique.",
     href: "/use-cases/identity",
     cta: "Ver identidad",
     // Archivo final sugerido: public/assets/industries/laboratories/benefit-3.png
@@ -77,17 +71,6 @@ const benefits = [
         fill
       />
     ),
-  },
-];
-
-const faqItems = [
-  {
-    question: "¿Qué formatos de salida soportan?",
-    answer: "JSON, FHIR, CSV, HL7 o esquemas custom.",
-  },
-  {
-    question: "¿Tengo que cambiar mi LIS?",
-    answer: "No. Zonda se integra vía HL7v2, FHIR, API REST o DataDrop.",
   },
 ];
 
@@ -104,46 +87,49 @@ function Shot({ label }: { label: string }) {
 
 const features = [
   {
-    // Archivo final sugerido: public/assets/sectors/labs/feature-1.png
-    label: "Ilustración pendiente para la primera feature de laboratorios.",
+    title: "Cada resultado conserva su recorrido",
+    copy: "Una muestra no debería desaparecer en el camino entre la recepción, el procesamiento, la validación y la entrega. Zonda conecta cada evento para que el laboratorio pueda entender qué entró, qué se procesó y qué salió.",
+    details: [
+      { title: "Ingreso identificable", copy: "Muestras, órdenes, paciente, origen y momento de recepción vinculados desde el comienzo." },
+      { title: "Estado durante el proceso", copy: "Información visible sobre el recorrido del resultado y los puntos que requieren intervención." },
+      { title: "Salida trazable", copy: "Cada informe conserva el vínculo con el estudio, la persona y el canal por el que fue entregado." },
+    ],
+    label: "Línea de tiempo de una muestra desde su ingreso, procesamiento y validación hasta la entrega del resultado.",
   },
   {
-    // Archivo final sugerido: public/assets/sectors/labs/feature-2.png
-    label: "Ilustración pendiente para la segunda feature de laboratorios.",
+    title: "Los resultados se integran a la historia del paciente",
+    copy: "El valor de un resultado crece cuando llega con la identidad, el contexto y la codificación que permiten usarlo en la siguiente decisión clínica.",
+    details: [
+      { title: "Identidad que conecta instituciones", copy: "Resultados asociados al paciente correcto aunque la atención ocurra en distintas organizaciones." },
+      { title: "Datos clínicos comparables", copy: "LOINC y otros estándares para que un resultado pueda leerse junto a antecedentes, tratamientos y estudios previos." },
+      { title: "Historia que no se fragmenta", copy: "El profesional recibe el resultado dentro del contexto de la persona, no como un archivo aislado." },
+    ],
+    label: "Perfil de paciente con resultados de laboratorio normalizados, estudios previos y contexto clínico.",
   },
   {
-    // Archivo final sugerido: public/assets/sectors/labs/feature-3.png
-    label: "Ilustración pendiente para la tercera feature de laboratorios.",
+    title: "Las alertas llegan cuando un resultado necesita atención",
+    copy: "No todos los resultados requieren el mismo recorrido. Zonda puede hacer visible una anomalía, un valor crítico o una demora y conservar el contexto para que el equipo adecuado responda a tiempo.",
+    details: [
+      { title: "Señales clínicas y operativas", copy: "Valores críticos, resultados pendientes o desvíos de tiempos que necesitan seguimiento." },
+      { title: "Contexto para responder", copy: "Paciente, estudio, profesional y evento de origen disponibles junto a cada alerta." },
+      { title: "Información lista para compartir", copy: "FHIR, HL7, CSV, API u otros formatos según el hospital, profesional o sistema que la recibe." },
+    ],
+    label: "Alerta de resultado crítico con paciente, estudio, estado de comunicación y trazabilidad de entrega.",
   },
 ];
 
-const relatedLinks = [
-  { label: "Hospitales", href: "/industries/hospitals" },
-  { label: "IA normalizada", href: "/use-cases/normalized-ai" },
-];
+function FeatureDetails({ items }: { items: { title: string; copy: string }[] }) {
+  return <dl className="mt-8 grid max-w-lg gap-6">{items.map((item) => <div key={item.title}><dt className="text-sm font-semibold text-foreground">{item.title}</dt><dd className="mt-1 text-sm leading-6 text-muted-foreground">{item.copy}</dd></div>)}</dl>;
+}
 
 export default function LaboratoriesPage() {
   return (
     <main lang="es" className="overflow-hidden bg-background text-foreground">
       <UseCaseHero
-        eyebrow={
-          <>
-            Laboratorios y diagnóstico
-            {showEditorialBadge ? (
-              <span className="ml-2 inline-block normal-case tracking-normal">
-                <Pending>Sector sugerido · validar</Pending>
-              </span>
-            ) : null}
-          </>
-        }
-        title="Tus resultados, entendidos por todo el sistema"
+        eyebrow="Laboratorios y diagnóstico"
+        title="Cada resultado, conectado a quien necesita usarlo"
         copy={description}
         primary={{ label: "Hablemos", href: "/contact" }}
-        secondary={{
-          label: "Ver el modelo canónico",
-          href: "/developers#modelo-canonico",
-        }}
-        secondaryVariant="inverse"
         mediaClassName="overflow-visible"
         media={
           <div className="relative h-[420px] w-full sm:h-[520px] lg:h-full">
@@ -161,28 +147,16 @@ export default function LaboratoriesPage() {
       />
 
       <BenefitStories
-        title="Lo que Zonda hace por laboratorios."
+        title="Resultados que no se pierden al salir del laboratorio."
+        copy="Zonda conserva el vínculo entre muestra, resultado, paciente y destinatario para que la información llegue completa, se pueda rastrear y habilite la siguiente decisión."
         items={benefits}
       />
-
-      <div className="px-6 pb-16 sm:px-10 lg:px-16">
-        <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-2">
-          <MetricSlot
-            label="resultados normalizados por mes"
-            supportText="Métrica a definir"
-          />
-          <MetricSlot
-            label="integraciones activas"
-            supportText="Métrica a definir"
-          />
-        </div>
-      </div>
 
       <section className="px-6 pt-16 sm:px-10 sm:pt-20 lg:px-16 lg:pt-24">
         <div className="mx-auto max-w-7xl">
           <SectionIntro
-            title={<Pending>TÍTULO A DEFINIR</Pending>}
-            copy={<Pending>TEXTO A DEFINIR</Pending>}
+            title="Del ingreso de una muestra a una decisión con contexto"
+            copy="El laboratorio puede ser una fuente de información crítica para todo el sistema de salud. Cuando los resultados se procesan, normalizan y distribuyen sobre una misma capa, cada salida queda lista para usar y cada paso puede verificarse."
             className="max-w-4xl"
             titleClassName="text-5xl sm:text-6xl"
           />
@@ -192,39 +166,26 @@ export default function LaboratoriesPage() {
       {features.map((item, index) => (
         <SplitFeature
           key={item.label}
-          title={<Pending>FEATURE A DEFINIR</Pending>}
-          copy={<Pending>TEXTO A DEFINIR</Pending>}
+          title={item.title}
+          copy={item.copy}
           mediaSide={index % 2 === 1 ? "left" : "right"}
           media={<Shot label={item.label} />}
-        />
+        >
+          <FeatureDetails items={item.details} />
+        </SplitFeature>
       ))}
 
-      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-7xl">
-          <Testimonial
-            quote={
-              <>
-                “<Pending>TESTIMONIO A DEFINIR</Pending>”
-              </>
-            }
-            name={<Pending>NOMBRE</Pending>}
-            role={
-              <>
-                <Pending>CARGO</Pending>, <Pending>LABORATORIO</Pending>
-              </>
-            }
-          />
-        </div>
-      </section>
-
-      <FaqList items={faqItems} />
-
-      <CtaBanner
-        title="Hacé que tus resultados hablen el mismo idioma"
-        buttonText="Hablemos"
+      <IndustryProducts
+        title="Del resultado al paciente correcto, y a quien tiene que actuar."
+        subtitle="Normalización, identidad, analítica y automatización sobre cada estudio."
+        keys={["normalized-ai", "identity", "analytics", "automation"]}
       />
 
-      <RelatedLinks links={relatedLinks} />
+      <CtaBanner
+        title="Hacé que cada resultado llegue más lejos"
+        subtitle="Procesá, vinculá, alertá y distribuí resultados sin perder el registro de lo que entra ni de lo que sale."
+        buttonText="Hablá con nuestro equipo"
+      />
     </main>
   );
 }

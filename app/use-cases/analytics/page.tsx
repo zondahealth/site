@@ -3,22 +3,18 @@ import Image from "next/image";
 import { Fingerprint, ShieldCheck, Sparkles, Users } from "lucide-react";
 
 import { useCases } from "@/lib/navigation";
-import { Pending } from "@/components/ui/pending/Pending";
 import {
   BenefitStories,
   CapabilityGrid,
   FaqList,
-  MetricSlot,
-  RelatedLinks,
   SplitFeature,
-  Testimonial,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
 import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
 
 const title = "Analítica de salud";
 const description =
-  "Dashboards que se adaptan a lo que necesitás ver, alertas en tiempo real cuando algo se sale de rango y reportes por región, unidad o profesional.";
+  "Conectá datos clínicos, operativos y financieros en una misma vista. Entendé cada indicador desde su origen hasta la decisión que habilita.";
 
 export const metadata: Metadata = {
   title,
@@ -36,8 +32,8 @@ const benefitImageSizes =
 
 const benefits = [
   {
-    title: "Todo en un solo tablero",
-    copy: "Clínica, operación y facturación cruzadas sobre el mismo modelo de datos.",
+    title: "Una vista para toda la organización",
+    copy: "Clínica, operación, facturación e integraciones sobre el mismo modelo de datos, sin consolidaciones manuales.",
     media: (
       <Image
         src="/assets/solutions/analitics/search.png"
@@ -49,8 +45,8 @@ const benefits = [
     ),
   },
   {
-    title: "Alertas que llegan a tiempo",
-    copy: "Umbrales configurables y detección automática de outliers.",
+    title: "Alertas con contexto para actuar",
+    copy: "Detectá desvíos y tendencias antes de que se conviertan en un problema, con la información necesaria para entender qué pasó.",
     media: (
       <Image
         src="/assets/solutions/analitics/desvio.png"
@@ -62,8 +58,8 @@ const benefits = [
     ),
   },
   {
-    title: "Reportes listos para compartir",
-    copy: "Exportables a PDF, Excel o FHIR, y compartibles con stakeholders sin romper el compliance.",
+    title: "Datos listos para cada destinatario",
+    copy: "Compartí y exportá información para dirección, equipos operativos, financiadores o tus propias herramientas de BI.",
     media: (
       <Image
         src="/assets/solutions/analitics/formats.png"
@@ -78,6 +74,25 @@ const benefits = [
 
 const splitImageClassName = "h-auto w-full rounded-[1.5rem] object-cover";
 const splitImageSizes = "(min-width: 1024px) 50vw, 100vw";
+
+function FeatureDetails({
+  items,
+}: {
+  items: { title: string; copy: string }[];
+}) {
+  return (
+    <dl className="mt-8 grid max-w-lg gap-6">
+      {items.map((item) => (
+        <div key={item.title}>
+          <dt className="text-sm font-semibold text-foreground">{item.title}</dt>
+          <dd className="mt-1 text-sm leading-6 text-muted-foreground">
+            {item.copy}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
 
 function useCaseDescription(href: string) {
   return useCases.find((item) => item.href === href)?.description ?? "";
@@ -115,23 +130,13 @@ const faqItems = [
   },
   {
     question: "¿Qué tan actualizados están los datos?",
-    answer: (
-      <>
-        Las alertas y dashboards trabajan sobre datos en tiempo real a medida
-        que se ingestan.{" "}
-        <Pending>DETALLE TÉCNICO A CONFIRMAR: latencia por tipo de fuente</Pending>
-      </>
-    ),
+    answer:
+      "Los tableros y las alertas se actualizan a medida que Zonda recibe y procesa información. La frecuencia final depende de cómo esté conectada cada fuente.",
   },
-];
-
-const relatedLinks = [
-  { label: "Fraude", href: "/use-cases/fraud-risk-prevention" },
-  { label: "Hospitales", href: "/industries/hospitals" },
-  { label: "Clínicas y redes", href: "/industries/clinics-provider-networks" },
   {
-    label: "Agentes de inteligencia en salud",
-    href: "/use-cases/normalized-ai",
+    question: "¿Puedo saber de dónde sale un indicador?",
+    answer:
+      "Sí. Cada métrica puede recorrerse hacia atrás hasta las transacciones, eventos y fuentes que la componen. Así podés validar un resultado y entender qué cambió.",
   },
 ];
 
@@ -139,8 +144,7 @@ export default function AnalyticsPage() {
   return (
     <main lang="es" className="overflow-hidden bg-background text-foreground">
       <UseCaseHero
-        eyebrow="Analítica"
-        title="Visibilidad total de tu operación de salud. Cero puntos ciegos."
+        title="Entendé toda tu operación de salud, de punta a punta"
         copy={description}
         primary={{ label: "Hablemos", href: "/contact" }}
         secondary={{ label: "Ver la API", href: "/developers" }}
@@ -163,29 +167,13 @@ export default function AnalyticsPage() {
 
       <BenefitStories
         title="Lo que necesitás para decidir con datos."
+        copy="Una capa analítica que no separa lo clínico de lo operativo ni lo financiero. Podés explorar lo que pasa, detectar desvíos y volver siempre al dato que lo explica."
         items={benefits}
       />
 
-      <div className="px-6 pb-16 sm:px-10 lg:px-16">
-        <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-2">
-          <MetricSlot
-            label="horas de reporting ahorradas por mes"
-            supportText="Métrica a definir"
-          />
-          <MetricSlot
-            label="indicadores monitoreados en tiempo real"
-            supportText="Métrica a definir"
-          />
-        </div>
-      </div>
-
       <SplitFeature
-        title="Dashboards que se adaptan a tu organización"
-        bullets={[
-          "Vistas por holding, entidad jurídica, sede, servicio o profesional",
-          "Indicadores clínicos, operativos y financieros en el mismo lugar",
-          "Filtros por período, financiador y especialidad",
-        ]}
+        title="Una lectura de la operación para cada nivel de decisión"
+        copy="Dirección, coordinación y equipos de atención pueden trabajar sobre la misma información, con el nivel de detalle que necesitan para decidir y actuar."
         media={
           <Image
             src="/assets/solutions/analitics/health-panel.png"
@@ -196,16 +184,20 @@ export default function AnalyticsPage() {
             className={splitImageClassName}
           />
         }
-      />
+      >
+        <FeatureDetails
+          items={[
+            { title: "De la red al detalle", copy: "Vistas por holding, entidad jurídica, sede, servicio, profesional o paciente." },
+            { title: "Todos los datos, una misma lectura", copy: "Indicadores clínicos, operativos y financieros conectados en el mismo tablero." },
+            { title: "El contexto justo", copy: "Filtrá por período, financiador, especialidad, territorio o cualquier dimensión relevante." },
+          ]}
+        />
+      </SplitFeature>
 
       <SplitFeature
-        title="Detectá patrones y anomalías"
+        title="Detectá lo que cambió antes de que se vuelva urgente"
         mediaSide="left"
-        bullets={[
-          "Alertas en tiempo real (tiempos de espera, picos de consultas, desvíos de facturación)",
-          "Identificación automática de tendencias en datos clínicos",
-          "Historial de cada alerta y su resolución",
-        ]}
+        copy="Las alertas no deberían ser solo una señal roja. Zonda ayuda a identificar el desvío, entender a quién afecta y seguir qué se hizo para resolverlo."
         media={
           <Image
             src="/assets/solutions/analitics/anomaly.png"
@@ -216,15 +208,19 @@ export default function AnalyticsPage() {
             className={splitImageClassName}
           />
         }
-      />
+      >
+        <FeatureDetails
+          items={[
+            { title: "Señales operativas", copy: "Tiempos de espera, picos de consultas, capacidad o desvíos de facturación que salen de rango." },
+            { title: "Patrones que no se ven en una planilla", copy: "Tendencias clínicas y operativas detectadas al cruzar múltiples fuentes y períodos." },
+            { title: "Seguimiento de cada excepción", copy: "Historial de la alerta, su contexto y las acciones tomadas para resolverla." },
+          ]}
+        />
+      </SplitFeature>
 
       <SplitFeature
-        title="Observabilidad de tus datos e integraciones"
-        bullets={[
-          "Volumen de transacciones y performance de cada integración activa",
-          "Calidad de datos por fuente",
-          "Acceso a los datos vía API para tu propio BI",
-        ]}
+        title="Cada número se puede seguir hasta su origen"
+        copy="La analítica es confiable cuando el camino del dato también es visible. Zonda permite observar cómo entra la información, cómo se transforma y dónde impacta."
         media={
           <Image
             src="/assets/solutions/analitics/mismatch.png"
@@ -235,36 +231,27 @@ export default function AnalyticsPage() {
             className={splitImageClassName}
           />
         }
+      >
+        <FeatureDetails
+          items={[
+            { title: "Integraciones bajo observación", copy: "Volumen de transacciones, estado y performance de cada conexión activa." },
+            { title: "Calidad por fuente", copy: "Identificá campos incompletos, inconsistencias y cambios en los datos antes de que afecten un reporte." },
+            { title: "Trazabilidad hasta el evento", copy: "Desde un indicador podés volver a las transacciones, eventos y fuentes que explican ese resultado." },
+          ]}
+        />
+      </SplitFeature>
+
+      <CapabilityGrid
+        title="Una capa de datos que habilita más decisiones"
+        items={capabilities}
       />
-
-      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-7xl">
-          <Testimonial
-            quote={
-              <>
-                “<Pending>TESTIMONIO A DEFINIR</Pending>”
-              </>
-            }
-            name={<Pending>NOMBRE</Pending>}
-            role={
-              <>
-                <Pending>CARGO</Pending>, <Pending>ORGANIZACIÓN</Pending>
-              </>
-            }
-          />
-        </div>
-      </section>
-
-      <CapabilityGrid title="Lo que lo hace posible" items={capabilities} />
 
       <FaqList items={faqItems} />
 
       <CtaBanner
-        title="Dejá de operar a ciegas"
-        buttonText="Hablemos"
+        title="Convertí información dispersa en decisiones trazables"
+        buttonText="Hablá con nuestro equipo"
       />
-
-      <RelatedLinks links={relatedLinks} />
     </main>
   );
 }

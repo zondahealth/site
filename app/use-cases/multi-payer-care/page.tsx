@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { CircleDollarSign, Fingerprint } from "lucide-react";
 
 import { Pending } from "@/components/ui/pending/Pending";
 import {
   BenefitStories,
-  CapabilityGrid,
   FaqList,
   SplitFeature,
   UseCaseHero,
@@ -26,8 +24,6 @@ export const metadata: Metadata = {
     url: "/use-cases/multi-payer-care",
   },
 };
-
-const revenueCycleHref = "/use-cases/revenue-cycle";
 
 const benefitImageSizes =
   "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
@@ -71,21 +67,6 @@ const benefits = [
         sizes={benefitImageSizes}
       />
     ),
-  },
-];
-
-const capabilities = [
-  {
-    title: "Identidad",
-    copy: "Paciente, profesional y cobertura correctos.",
-    href: "/use-cases/identity",
-    icon: Fingerprint,
-  },
-  {
-    title: "Ciclo de ingresos",
-    copy: "La prestación sigue hacia facturación, cobro y liquidación.",
-    href: revenueCycleHref,
-    icon: CircleDollarSign,
   },
 ];
 
@@ -244,12 +225,9 @@ export default function MultiPayerCarePage() {
         </div>
       </section>
 
-      <CapabilityGrid title="Lo que lo hace posible" items={capabilities} />
-
       <FaqList items={faqItems} />
 
       <CtaBanner
-        variant="night"
         title="Un solo proceso para todos tus financiadores"
         buttonText="Hablá con nuestro equipo"
       />

@@ -719,7 +719,7 @@ export function UseCaseHero({
   copy: ReactNode;
   primary: CtaLink;
   secondary?: CtaLink;
-  media: ReactNode;
+  media?: ReactNode;
   /** Optional side-bleed image rendered on the right of the hero. */
   bleedSrc?: string | null;
   secondaryVariant?: "outline" | "inverse";
@@ -732,16 +732,22 @@ export function UseCaseHero({
 }) {
   const primaryHref = destination(primary.href);
   const secondaryHref = destination(secondary?.href);
+  const centered = media == null;
 
   return (
     <FeatureHero
       backgroundSrc={backgroundSrc}
       className={inverse ? "text-white" : undefined}
-      gridClassName={gridClassName}
+      gridClassName={cn(
+        centered && "lg:grid-cols-1 lg:[grid-template-areas:'content']",
+        gridClassName,
+      )}
     >
       {bleedSrc ? <FeaturePanelBleed src={bleedSrc} side="right" /> : null}
-      <FeatureHeroContent className={contentClassName}>
-        <div>
+      <FeatureHeroContent
+        className={cn(centered && "items-center text-center", contentClassName)}
+      >
+        <div className={cn(centered && "w-full max-w-3xl")}>
           {eyebrow ? (
             <p
               className={cn(
@@ -769,7 +775,12 @@ export function UseCaseHero({
             {copy}
           </p>
           {primaryHref || secondaryHref ? (
-            <div className="mt-4 flex flex-wrap gap-3">
+            <div
+              className={cn(
+                "mt-4 flex flex-wrap gap-3",
+                centered && "justify-center",
+              )}
+            >
               {primaryHref ? (
                 <Button variant="black" asChild>
                   <CtaAnchor href={primaryHref}>{primary.label}</CtaAnchor>
@@ -784,7 +795,9 @@ export function UseCaseHero({
           ) : null}
         </div>
       </FeatureHeroContent>
-      <FeatureHeroMedia className={mediaClassName}>{media}</FeatureHeroMedia>
+      {media != null ? (
+        <FeatureHeroMedia className={mediaClassName}>{media}</FeatureHeroMedia>
+      ) : null}
     </FeatureHero>
   );
 }

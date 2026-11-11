@@ -66,7 +66,7 @@ const nextConfig: NextConfig = {
         source: "/products/organizaciones",
         destination: "/solutions",
         permanent: false,
-      }, // final: /industries/clinics-provider-networks
+      },
       { source: "/empresa", destination: "/", permanent: false }, // final: /company
     ];
   },

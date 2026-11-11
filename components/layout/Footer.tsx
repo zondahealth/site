@@ -12,7 +12,7 @@ function FooterAnchor({
   children: ReactNode;
 }) {
   const className =
-    "text-sm text-white/70 transition-colors hover:text-white";
+    "inline-flex text-sm leading-snug text-white/55 transition-colors duration-150 hover:text-white focus-visible:text-white";
 
   if (/^https?:/.test(href)) {
     return (
@@ -46,20 +46,15 @@ export function Footer() {
   const columns = getFooterColumns();
 
   return (
-    <footer className="relative overflow-hidden bg-[#060b14] text-white">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-16 -top-24 h-72 w-[28rem] rounded-full bg-[radial-gradient(circle_at_center,rgba(45,212,191,0.28),rgba(34,111,253,0.12)_42%,transparent_70%)] blur-2xl"
-      />
-
-      <div className="relative mx-auto max-w-7xl px-6 pb-10 pt-16 sm:px-10 lg:px-16 lg:pt-20">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-4 lg:grid-cols-5">
-          <div className="col-span-2 md:col-span-4 lg:col-span-1">
+    <footer className="bg-[#0b0d12] text-white">
+      <div className="mx-auto max-w-7xl px-6 py-14 sm:px-10 sm:py-16 lg:px-16 lg:py-20">
+        <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[1.4fr_repeat(5,minmax(0,1fr))]">
+          <div className="lg:pr-8">
             <Link
               href="/"
               className="inline-flex rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              <Logo variant="full" inverted className="h-8 w-auto" />
+              <Logo variant="full" inverted className="h-7 w-auto" />
             </Link>
           </div>
 
@@ -70,7 +65,7 @@ export function Footer() {
             >
               <h2
                 id={`footer-${column.title.toLowerCase().replace(/\s+/g, "-")}`}
-                className="mb-4 text-sm font-semibold text-white"
+                className="mb-4 text-sm font-medium text-white/90"
               >
                 {column.title}
               </h2>
@@ -85,17 +80,23 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-16 flex flex-col gap-5 border-t border-white/10 pt-8 sm:mt-20">
-          <div className="flex flex-col gap-3 text-sm text-white/70 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-2">
+        <div className="mt-16 flex flex-col gap-4 border-t border-white/10 pt-6 sm:mt-20 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-2 text-sm text-white/45 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-5 sm:gap-y-2">
             <a
               href="mailto:support@zondahealth.com"
-              className="transition-colors hover:text-white"
+              className="transition-colors hover:text-white focus-visible:text-white"
             >
               support@zondahealth.com
             </a>
             <p>San Juan, Argentina</p>
             <p>© {new Date().getFullYear()} Zonda Health</p>
           </div>
+          <Link
+            href="/contact"
+            className="w-fit text-sm text-white/55 transition-colors hover:text-white focus-visible:text-white"
+          >
+            Contacto
+          </Link>
         </div>
       </div>
     </footer>

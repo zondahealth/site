@@ -1,17 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import {
-  CircleDollarSign,
-  FileSearch,
-  FlaskConical,
-  HeartPulse,
-  Stethoscope,
-  Users,
-  Workflow,
-} from "lucide-react";
-
-import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
-import {
   BenefitStories,
   SplitFeature,
   UseCaseHero,
@@ -20,7 +9,7 @@ import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
 
 const title = "IA normalizada: datos clínicos listos para usar";
 const description =
-  "Zonda entiende cualquier formato de datos, lo interpreta, lo protege y lo transforma en información lista para usar, como quieras y donde quieras.";
+  "Zonda conecta, interpreta y normaliza datos clínicos, operativos y financieros para que tus equipos puedan usarlos con contexto.";
 
 export const metadata: Metadata = {
   title,
@@ -38,8 +27,8 @@ const benefitImageSizes =
 
 const agentBenefits = [
   {
-    title: "Conversá con tus datos sobre el riesgo clínico",
-    copy: "Conectá historial de tratamiento, visitas y eventos clínicos para identificar pacientes que pueden necesitar apoyo proactivo.",
+    title: "Detectá pacientes que necesitan seguimiento",
+    copy: "Conectá historial de tratamiento, visitas y eventos clínicos para identificar pacientes que pueden necesitar apoyo antes de interrumpir su atención.",
     media: (
       <Image
         src="/assets/solutions/ai/benefit-1.png"
@@ -51,8 +40,8 @@ const agentBenefits = [
     ),
   },
   {
-    title: "De notas a datos clínicos listos para usar",
-    copy: "Zonda entiende las notas de los clínicos y las transforma en datos estructurados listos para analizar, sin agregar overhead a los médicos y reduciendo la energía que tienen que dedicarle a eso.",
+    title: "De notas a información clínica estructurada",
+    copy: "Zonda interpreta las notas de los clínicos y las transforma en información lista para usar, sin sumar tareas administrativas a la atención.",
     media: (
       <Image
         src="/assets/solutions/ai/benefit-2.png"
@@ -64,8 +53,8 @@ const agentBenefits = [
     ),
   },
   {
-    title: "Zonda entiende cualquier tipo de dato",
-    copy: "Consume PDFs, texto, audio, FHIR, HL7, CSV y XML como llegan, sin plantillas fijas, y los deja listos para usar.",
+    title: "Unificá cualquier fuente de datos",
+    copy: "PDFs, texto, audio, FHIR, HL7, CSV y XML entran como llegan y quedan disponibles en un modelo común.",
     media: (
       <Image
         src="/assets/solutions/ai/benefit-3.png"
@@ -80,6 +69,25 @@ const agentBenefits = [
 
 const splitImageClassName = "h-auto w-full rounded-[1.5rem] object-cover";
 const splitImageSizes = "(min-width: 1024px) 50vw, 100vw";
+
+function FeatureDetails({
+  items,
+}: {
+  items: { title: string; copy: string }[];
+}) {
+  return (
+    <dl className="mt-8 grid max-w-lg gap-6">
+      {items.map((item) => (
+        <div key={item.title}>
+          <dt className="text-sm font-semibold text-foreground">{item.title}</dt>
+          <dd className="mt-1 text-sm leading-6 text-muted-foreground">
+            {item.copy}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
 
 export default function NormalizedAiPage() {
   return (
@@ -116,7 +124,6 @@ export default function NormalizedAiPage() {
       />
 
       <SplitFeature
-        eyebrow="La capa que falta"
         title="Los datos de salud existen. La inteligencia, no."
         copy="Las organizaciones ya recolectan enormes volúmenes de información clínica, operativa y financiera. El problema es que esos datos viven en sistemas que nunca fueron diseñados para trabajar juntos."
         media={
@@ -129,19 +136,20 @@ export default function NormalizedAiPage() {
             className={splitImageClassName}
           />
         }
-      />
+      >
+        <FeatureDetails
+          items={[
+            { title: "Conectá las fuentes", copy: "Incorporá datos clínicos, operativos y financieros aunque vengan de sistemas y formatos distintos." },
+            { title: "Entendé las relaciones", copy: "Paciente, profesional, tratamiento, prestación y pago dejan de ser registros aislados." },
+            { title: "Usá un modelo común", copy: "La información queda preparada para análisis, automatizaciones y nuevas experiencias." },
+          ]}
+        />
+      </SplitFeature>
 
       <SplitFeature
-        eyebrow="Inteligencia en acción"
         title="Hacé una pregunta compleja de salud"
         mediaSide="left"
         copy="Dales a tus equipos un solo lugar para explorar qué está pasando, por qué está pasando y dónde tienen que actuar, sin armar cada dataset a mano."
-        bulletIcons={[HeartPulse, Workflow, CircleDollarSign]}
-        bullets={[
-          "¿Qué pacientes están en riesgo de interrumpir su tratamiento?",
-          "¿Dónde se está trabando la operación asistencial?",
-          "¿Por qué cambió el reintegro?",
-        ]}
         media={
           <Image
             src="/assets/solutions/payments/assistant-window.png"
@@ -152,46 +160,41 @@ export default function NormalizedAiPage() {
             className={splitImageClassName}
           />
         }
-      />
+      >
+        <FeatureDetails
+          items={[
+            { title: "Riesgo clínico", copy: "¿Qué pacientes pueden interrumpir su tratamiento y necesitan seguimiento?" },
+            { title: "Operación asistencial", copy: "¿Dónde se está trabando la atención y qué equipo tiene que intervenir?" },
+            { title: "Ciclo de ingresos", copy: "¿Por qué cambió un reintegro o qué prestaciones siguen pendientes?" },
+          ]}
+        />
+      </SplitFeature>
 
       <SplitFeature
         id="como-funciona"
-        eyebrow="Cómo funciona"
-        title="Cualquier documento se vuelve un registro médico"
-        copy="Zonda recibe lo que ya tenés —un PDF, una nota o un texto— y lo transforma en información ordenada, asociada al paciente y lista para consultar."
-        bulletIcons={[FlaskConical, Stethoscope, FileSearch, Users]}
-        bullets={[
-          "Conoce LOINC, así los resultados de laboratorio se entienden en cualquier lado.",
-          "Conoce ICD-10, así un diagnóstico escrito en texto queda ordenado.",
-          "Cada dato muestra de qué documento salió, para revisarlo y corregirlo.",
-          "La decisión clínica sigue en el equipo.",
-        ]}
+        title="Cada paciente, con un perfil listo para usar"
+        copy="Zonda reúne la información relevante de cada paciente en un perfil actualizado, para que el profesional pueda decidir sin recorrer una historia clínica fragmentada."
         media={
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="un PDF o una nota clínica que se convierte en la ficha del paciente: resultados, signos y conceptos, cada uno con el documento de origen"
-            className="rounded-[1.5rem]"
+          <Image
+            src="/assets/solutions/ai/patient-profile.png"
+            alt="Perfil de salud de una paciente: resumen clínico, alergias, medicación, condiciones y datos de contacto"
+            width={1254}
+            height={1254}
+            sizes={splitImageSizes}
+            className={splitImageClassName}
           />
         }
-      />
-
-      <SplitFeature
-        title="Resúmenes mensuales y anuales"
-        copy="Zonda resume cómo evolucionó el paciente mes a mes y a lo largo del año, para que familiares y clínicos vean qué cambió y cómo sigue el cuidado, sin recorrer cada registro."
-        mediaSide="left"
-        media={
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="grilla de snapshots mensuales de un año y, al abrir un período, la evolución del paciente vinculada a los registros de origen; al lado, la síntesis anual"
-            className="rounded-[1.5rem]"
-          />
-        }
-      />
+      >
+        <FeatureDetails
+          items={[
+            { title: "Lo clínicamente relevante", copy: "Medicaciones, alergias, signos vitales, condiciones y alertas en un mismo perfil." },
+            { title: "Un resumen para atender", copy: "El contexto que necesitás para el consultorio, asociado a cada paciente." },
+            { title: "Información al día", copy: "Snapshots periódicos para entender cómo está cada persona en este momento." },
+          ]}
+        />
+      </SplitFeature>
 
       <CtaBanner
-        variant="night"
         title="Hacele a tus datos las preguntas que importan"
         buttonText="Hablá con nuestro equipo"
       />

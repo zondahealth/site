@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { BarChart3, Cog, ShieldCheck, Workflow } from "lucide-react";
 
 import {
   BenefitStories,
-  CapabilityGrid,
   FaqList,
   InlineLink,
-  MetricSlot,
   SplitFeature,
   Testimonial,
   UseCaseHero,
@@ -16,7 +13,7 @@ import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
 
 const title = "Ciclo de ingresos en salud";
 const description =
-  "Conectá atención, validación, facturación, cobro y liquidación en un único flujo.";
+  "Cuando la información clínica, operativa y financiera permanece conectada, cobrar deja de depender de perseguir datos entre sistemas.";
 
 export const metadata: Metadata = {
   title,
@@ -29,12 +26,10 @@ export const metadata: Metadata = {
   },
 };
 
-const multiPayerHref = "/use-cases/multi-payer-care";
-
 const benefits = [
   {
-    title: "Reducí débitos evitables",
-    copy: "Validá cada prestación contra las reglas del financiador antes de presentarla, no cuando el débito ya fue aplicado.",
+    title: "Menos sorpresas cuando ya es tarde",
+    copy: "Las señales que merecen atención se hacen visibles mientras todavía es posible resolverlas con contexto.",
     media: (
       <Image
         src="/assets/solutions/payments/doctor-connected.png"
@@ -46,8 +41,8 @@ const benefits = [
     ),
   },
   {
-    title: "Eliminá la carga repetitiva",
-    copy: "Conectá los datos que ya existen y automatizá los procesos que hoy requieren carga manual entre sistemas.",
+    title: "Una operación que no pide volver a cargar lo mismo",
+    copy: "Los datos generados en la atención, la agenda y las coberturas siguen su recorrido sin trasladarlos entre sistemas.",
     media: (
       <Image
         src="/assets/solutions/payments/updated.png"
@@ -59,8 +54,8 @@ const benefits = [
     ),
   },
   {
-    title: "Sabé dónde está cada ingreso",
-    copy: "Seguí qué fue realizado, facturado, presentado, aprobado, debitado, cobrado y liquidado.",
+    title: "Claridad sobre cada importe",
+    copy: "Detrás de cada monto queda visible una prestación, una decisión, una respuesta y un destino.",
     media: (
       <Image
         src="/assets/solutions/payments/settled.png"
@@ -71,23 +66,6 @@ const benefits = [
       />
     ),
   },
-];
-
-const capabilities = [
-  {
-    title: "Atención multi-financiador",
-    copy: "Prestaciones que nacen bien registradas.",
-    href: multiPayerHref,
-    icon: Workflow,
-  },
-  {
-    title: "Fraude y riesgo",
-    copy: "Señales pre-pago.",
-    href: "/use-cases/fraud-risk-prevention",
-    icon: ShieldCheck,
-  },
-  { title: "Automatización", href: "/use-cases/automation", icon: Cog },
-  { title: "Analítica", href: "/use-cases/analytics", icon: BarChart3 },
 ];
 
 const faqItems = [
@@ -128,12 +106,30 @@ const faqItems = [
   },
 ];
 
+function FeatureDetails({
+  items,
+}: {
+  items: { title: string; copy: string }[];
+}) {
+  return (
+    <dl className="mt-8 grid max-w-lg gap-6">
+      {items.map((item) => (
+        <div key={item.title}>
+          <dt className="text-sm font-semibold text-foreground">{item.title}</dt>
+          <dd className="mt-1 text-sm leading-6 text-muted-foreground">
+            {item.copy}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
 export default function RevenueCyclePage() {
   return (
     <main lang="es" className="overflow-hidden bg-background text-foreground">
       <UseCaseHero
-        eyebrow="Ciclo de ingresos"
-        title="De cada prestación realizada a cada ingreso cobrado"
+        title="Cada atención, encaminada hasta su resultado"
         copy={description}
         primary={{ label: "Hablá con nuestro equipo", href: "/contact" }}
         media={
@@ -152,32 +148,15 @@ export default function RevenueCyclePage() {
       />
 
       <BenefitStories
-        title="Lo que necesitás para que cada prestación cuente."
+        title="Una atención que llega preparada al siguiente paso"
+        copy="La visita no termina al cerrar la agenda. Su contexto —quién atendió, dónde, bajo qué cobertura y con qué respaldo— sigue disponible para que el resto del proceso pueda avanzar sin reconstruirlo."
         items={benefits}
       />
 
-      <div className="px-6 pb-16 sm:px-10 lg:px-16">
-        <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <MetricSlot
-            label="reducción de débitos"
-            supportText="Métrica a definir"
-          />
-          <MetricSlot
-            label="días menos de cobro"
-            supportText="Métrica a definir"
-          />
-          <MetricSlot
-            label="prestaciones automatizadas sin intervención"
-            supportText="Métrica a definir"
-          />
-        </div>
-      </div>
-
       <SplitFeature
         id="como-funciona"
-        eyebrow="Transacción de origen"
-        title="Todo empieza con una prestación bien registrada"
-        copy="Cada prestación genera una transacción que conecta paciente, profesional, financiador, práctica y documentación. Zonda estructura esa información desde el origen y la mantiene durante todo el ciclo."
+        title="La información conserva su contexto"
+        copy="Cada prestación se vuelve parte de un registro vivo: paciente, profesional, financiador, práctica y evidencia permanecen relacionados durante todo el recorrido. Así, lo financiero puede entender lo asistencial sin pedir explicaciones de nuevo."
         media={
           <Image
             src="/assets/solutions/payments/connected-professional.png"
@@ -188,12 +167,19 @@ export default function RevenueCyclePage() {
             className="h-auto w-full rounded-[1.5rem] object-cover"
           />
         }
-      />
+      >
+        <FeatureDetails
+          items={[
+            { title: "Una prestación con identidad", copy: "Paciente, profesional, práctica, cobertura y documentación vinculados desde el momento de atención." },
+            { title: "El recorrido no se corta", copy: "La información sigue disponible para coordinación, auditoría, facturación y liquidación." },
+            { title: "El contexto acompaña la decisión", copy: "Cada equipo puede entender qué pasó sin reconstruir la historia entre planillas y mensajes." },
+          ]}
+        />
+      </SplitFeature>
 
       <SplitFeature
-        eyebrow="Inteligencia pre-facturación"
-        title="Detectá problemas antes de facturar"
-        copy="Las reglas que determinan si una prestación puede cobrarse no deberían vivir en planillas. Zonda las aplica —nomenclador, cobertura, autorización, documentación, frecuencia y presentación— y detiene las inconsistencias antes de que lleguen a facturación."
+        title="La confianza se construye antes"
+        copy="Las reglas de cada financiador forman parte de la operación, no de una checklist paralela. Cuando algo necesita revisión, aparece con el motivo y el contexto para resolverlo antes de que se convierta en una diferencia posterior."
         mediaSide="left"
         media={
           <Image
@@ -205,12 +191,19 @@ export default function RevenueCyclePage() {
             className="h-auto w-full rounded-[1.5rem] object-cover"
           />
         }
-      />
+      >
+        <FeatureDetails
+          items={[
+            { title: "Cobertura y autorización visibles", copy: "La prestación se contrasta con las condiciones que aplican a esa persona y ese financiador." },
+            { title: "Reglas dentro del flujo", copy: "Nomenclador, documentación, frecuencia y presentación se aplican sin trasladarlas a una planilla aparte." },
+            { title: "Lo habitual avanza; lo excepcional encuentra contexto", copy: "La operación no debería detenerse por cada excepción. Zonda deja que el flujo continúe donde hay certeza y concentra la intervención humana donde realmente aporta valor." },
+          ]}
+        />
+      </SplitFeature>
 
       <SplitFeature
-        eyebrow="Flujo del ingreso"
-        title="Seguí la plata, no las planillas"
-        copy="La presentación no es el final. Zonda mantiene conectada cada prestación con la respuesta del financiador, los débitos, el cobro y la liquidación correspondiente, incluida la liquidación a profesionales."
+        title="El ingreso sigue siendo entendible después de facturar"
+        copy="Presentar no cierra la historia. Zonda mantiene visible qué ocurrió con cada prestación y permite entender el recorrido completo hasta su resolución y liquidación."
         media={
           <Image
             src="/assets/solutions/payments/dashboard-payment.png"
@@ -221,7 +214,15 @@ export default function RevenueCyclePage() {
             className="h-auto w-full rounded-[1.5rem] object-cover"
           />
         }
-      />
+      >
+        <FeatureDetails
+          items={[
+            { title: "Seguimiento de punta a punta", copy: "Realización, facturación, presentación, respuesta, débito, cobro y liquidación en el mismo recorrido." },
+            { title: "Respuestas con contexto", copy: "Cada devolución o diferencia conserva el vínculo con la prestación que la originó." },
+            { title: "Liquidaciones entendibles", copy: "La información que explica un ingreso también permite determinar qué corresponde liquidar." },
+          ]}
+        />
+      </SplitFeature>
 
       <section className="px-6 py-10 sm:px-10 sm:py-14 lg:px-16 lg:py-16">
         <div className="mx-auto max-w-7xl">
@@ -234,12 +235,13 @@ export default function RevenueCyclePage() {
               className="pointer-events-none -z-10 object-cover"
             />
             <h2 className="mx-auto max-w-3xl font-display text-4xl font-semibold leading-tight tracking-[-0.04em] text-foreground sm:text-5xl">
-              Automatizá lo normal. Intervení en lo excepcional.
+              Las reglas de tu operación, centralizadas en un solo lugar.
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-foreground/75 sm:text-lg">
-              Entendé la prestación, el motivo por el que se detuvo y la
-              evidencia necesaria para resolverla desde una sola vista
-              operativa.
+              Cada organización puede definir convenios, reglas de facturación
+              y criterios de liquidación para sus prestadores. Zonda los
+              mantiene conectados a la operación para que cada prestación se
+              procese según las condiciones que le corresponden.
             </p>
             <div className="mx-auto mt-auto w-full max-w-7xl pt-10 sm:pt-14">
               <Image
@@ -270,13 +272,11 @@ export default function RevenueCyclePage() {
         </div>
       </section>
 
-      <CapabilityGrid title="Lo que lo hace posible" items={capabilities} />
-
       <FaqList items={faqItems} />
 
       <CtaBanner
-        title="Hacé que cada prestación cuente"
-        subtitle="Conectá atención, validación, facturación, cobro y liquidación. Automatizá lo normal e intervení solo en lo excepcional."
+        title="Cada atención puede llegar más lejos"
+        subtitle="Conectá atención, validación, facturación, cobro y liquidación en un recorrido que conserva el contexto de principio a fin."
         buttonText="Hablá con nuestro equipo"
       />
     </main>

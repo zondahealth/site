@@ -2,263 +2,41 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
-import { Pending } from "@/components/ui/pending/Pending";
-import {
-  BenefitStories,
-  FaqList,
-  InlineLink,
-  MetricSlot,
-  RelatedLinks,
-  SplitFeature,
-  Testimonial,
-  UseCaseHero,
-} from "@/components/use-cases/UseCasePrimitives";
+import { BenefitStories, FaqList, SplitFeature, UseCaseHero } from "@/components/use-cases/UseCasePrimitives";
+import { IndustryProducts } from "@/components/industries/IndustryProducts";
 import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
 
-// SECTOR SUGERIDO: no listado por el founder; validar. Publicado en la navegación a pedido del equipo antes de esa aprobación.
-
 const title = "Financiadores (obras sociales, prepagas y aseguradoras)";
-const description =
-  "Validá prestaciones en origen, conectá tu red de prestadores y conocé a tu población afiliada con datos clínicos normalizados.";
-
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/industries/payers" },
-  openGraph: {
-    title: `${title} | Zonda`,
-    description,
-    url: "/industries/payers",
-  },
-};
-
-const showEditorialBadge = process.env.NODE_ENV !== "production";
+const description = "Una capa común para conocer a los afiliados, conectar a la red de prestadores y seguir cada práctica con contexto clínico, operativo y financiero.";
+export const metadata: Metadata = { title, description, alternates: { canonical: "/industries/payers" }, openGraph: { title: `${title} | Zonda`, description, url: "/industries/payers" } };
 
 const benefits = [
-  {
-    title: "Reducir fraude y prestaciones indebidas",
-    copy: "Prestaciones verificadas con ubicación, horario, firma y match con prescripción.",
-    href: "/use-cases/fraud-risk-prevention",
-    cta: "Ver fraude",
-    // Archivo final sugerido: public/assets/industries/payers/benefit-1.png
-    media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Reducir fraude y prestaciones indebidas». Composición:…"
-        fill
-      />
-    ),
-  },
-  {
-    title: "Una red de prestadores confiable",
-    copy: "Credenciales verificadas y alta de prestadores más rápida.",
-    // Archivo final sugerido: public/assets/industries/payers/benefit-2.png
-    media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Una red de prestadores confiable». Composición: una…"
-        fill
-      />
-    ),
-  },
-  {
-    title: "Gestión de riesgo poblacional",
-    copy: "Segmentá afiliados para programas de crónicos y prevención.",
-    href: "/use-cases/population-segmentation",
-    cta: "Ver segmentación",
-    // Archivo final sugerido: public/assets/industries/payers/benefit-3.png
-    media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Gestión de riesgo poblacional». Composición: una…"
-        fill
-      />
-    ),
-  },
+  { title: "Una población que se puede conocer", copy: "Perfiles, antecedentes, coberturas y actividad reunidos para entender a cada afiliado más allá de una transacción.", href: "/use-cases/population-segmentation", cta: "Ver segmentación", media: <ImagePlaceholder width={1280} height={720} label="Perfil de afiliado con cobertura, antecedentes, prácticas y señales de riesgo." fill /> },
+  { title: "Una red de prestadores con contexto", copy: "Hospitales, clínicas y médicos particulares conectados a credenciales, prácticas y desempeño.", href: "/use-cases/identity", cta: "Ver identidad", media: <ImagePlaceholder width={1280} height={720} label="Red de hospitales y profesionales conectados a credenciales y actividad." fill /> },
+  { title: "Cada práctica, visible de punta a punta", copy: "Autorización, atención, documentación, facturación y pago vinculados para decidir antes y no después.", href: "/use-cases/fraud-risk-prevention", cta: "Ver fraude", media: <ImagePlaceholder width={1280} height={720} label="Práctica de salud trazable desde autorización hasta facturación y pago." fill /> },
 ];
 
-function Shot({ label }: { label: string }) {
-  return (
-    <ImagePlaceholder
-      width={1200}
-      height={900}
-      label={label}
-      className="rounded-[1.5rem]"
-    />
-  );
-}
-
-const keyUseCases: {
-  title: string;
-  copy?: string;
-  href?: string;
-  label: string;
-}[] = [
-  {
-    title: "Atención multi-financiador",
-    copy: "Tus reglas aplicadas en el punto de atención.",
-    href: "/use-cases/multi-payer-care",
-    // Archivo final sugerido: public/assets/sectors/payers/use-case-1.png
-    label:
-      "Ilustración de las reglas del financiador aplicadas en el punto de atención.",
-  },
-  {
-    title: "Ciclo de ingresos",
-    copy: "Respuesta del financiador, débitos y cobro conectados a cada prestación.",
-    href: "/use-cases/revenue-cycle",
-    // Archivo final sugerido: public/assets/sectors/payers/use-case-2.png
-    label:
-      "Ilustración de la respuesta del financiador, un débito y el cobro de una prestación.",
-  },
-  {
-    title: "Auditoría médica y de facturación automatizada",
-    // Archivo final sugerido: public/assets/sectors/payers/use-case-3.png
-    label:
-      "Ilustración de una auditoría médica y de facturación resuelta de forma automática.",
-  },
-  {
-    title: "Integración con prestadores",
-    copy: "Vía API y Connectors.",
-    // Archivo final sugerido: public/assets/sectors/payers/use-case-4.png
-    label:
-      "Ilustración de prestadores conectados al financiador por API y Connectors.",
-  },
-  {
-    title: "Tableros de consumo",
-    copy: "Por prestador, región y plan.",
-    // Archivo final sugerido: public/assets/sectors/payers/use-case-5.png
-    label: "Ilustración de un tablero de consumo por prestador, región y plan.",
-  },
-  {
-    title: "Identidad unificada de afiliados",
-    // Archivo final sugerido: public/assets/sectors/payers/use-case-6.png
-    label:
-      "Ilustración de un afiliado con una sola identidad en todas las coberturas.",
-  },
+const features = [
+  { title: "Pedí y recibí información con el contexto del afiliado", copy: "La relación con el paciente no tiene por qué empezar de cero en cada atención. Zonda permite reunir y compartir información relevante entre los sistemas y organizaciones que participan en su cuidado.", details: [["Perfil longitudinal", "Historial clínico, coberturas, prácticas y eventos relevantes reunidos alrededor de cada afiliado."], ["Información entre organizaciones", "Intercambio de datos e historial clínico cuando intervienen prestadores u otros financiadores."], ["Acceso con propósito", "Permisos y trazabilidad para saber qué información se consultó, compartió o actualizó."]], label: "Perfil longitudinal de un afiliado con historial, cobertura y datos compartidos entre organizaciones." },
+  { title: "La red de prestadores deja de ser una caja negra", copy: "Desde hospitales hasta profesionales particulares, cada integrante de la red puede conectarse a las reglas, la información y los procesos que necesita el financiador.", details: [["Una red que refleja la realidad", "Hospitales, clínicas, servicios y profesionales vinculados a sus credenciales, especialidades y relaciones."], ["Reglas en el punto de atención", "Cobertura, autorizaciones y condiciones disponibles cuando se registra una práctica."], ["Desempeño que se puede entender", "Actividad, prácticas y respuestas visibles por prestador, región, plan o especialidad."]], label: "Red de prestadores con hospitales, clínicas y médicos conectados a reglas, credenciales y actividad." },
+  { title: "Cada práctica conserva la evidencia que la explica", copy: "Cuando todos los eventos permanecen vinculados, el financiador puede validar, auditar y resolver excepciones con información concreta, no con reconstrucciones manuales.", details: [["Validación antes de avanzar", "Autorización, cobertura, documentación y condiciones de la práctica dentro del mismo flujo."], ["Riesgo investigable", "Inconsistencias y señales de fraude con la evidencia y los eventos que las explican."], ["Del servicio al pago", "La práctica se puede seguir desde la atención hasta la respuesta, el débito, el cobro y la liquidación."]], label: "Práctica de salud con autorización, evidencia clínica, factura, respuesta y pago conectados." },
+  { title: "Las decisiones se apoyan en señales concretas", copy: "La información de afiliados, prestadores y prácticas se vuelve útil cuando permite detectar riesgos, priorizar programas y actuar antes de que el costo o el problema crezcan.", details: [["Alertas con contexto", "Desvíos de consumo, actividad o atención que muestran dónde actuar y por qué."], ["Segmentación para prevenir", "Cohortes por condición, riesgo, territorio o cobertura para diseñar intervenciones concretas."], ["Analítica trazable", "Cada indicador puede recorrerse hasta las transacciones, eventos y fuentes que lo componen."]], label: "Tablero de financiador con alertas, segmentación de afiliados y análisis por prestador, región y plan." },
 ];
 
 const faqItems = [
-  {
-    question: "¿Mis prestadores tienen que usar Zonda?",
-    answer:
-      "No necesariamente: podés recibir datos vía integración. Los que usan la app aportan además verificación en origen.",
-  },
-  {
-    question: "¿Se integra con mi sistema de autorizaciones?",
-    answer: <Pending>ALCANCE A CONFIRMAR</Pending>,
-  },
+  { question: "¿Los prestadores tienen que usar Zonda?", answer: "No necesariamente. La información puede llegar mediante integraciones; quienes usan la plataforma pueden además operar sobre reglas y procesos compartidos." },
+  { question: "¿Puede conectarse con otros financiadores?", answer: "Zonda permite integrar e intercambiar información entre las organizaciones que participan en la atención, conservando el contexto y la trazabilidad de cada dato." },
+  { question: "¿Cómo ayuda a la toma de decisiones?", answer: "Conecta perfiles, prácticas, prestadores y resultados en una misma capa para habilitar alertas, segmentación y analítica trazable." },
+  { question: "¿Reemplaza los sistemas actuales?", answer: "No. Complementa los sistemas de autorizaciones, gestión y pagos existentes para conectar datos y procesos que hoy están dispersos." },
 ];
 
-const relatedLinks = [
-  { label: "Fraude", href: "/use-cases/fraud-risk-prevention" },
-  { label: "Internación domiciliaria", href: "/industries/home-health" },
-  { label: "Asociaciones médicas", href: "/industries/medical-associations" },
-  { label: "Atención multi-financiador", href: "/use-cases/multi-payer-care" },
-  { label: "Ciclo de ingresos", href: "/use-cases/revenue-cycle" },
-];
+function Details({ items }: { items: string[][] }) { return <dl className="mt-8 grid max-w-lg gap-6">{items.map(([title, copy]) => <div key={title}><dt className="text-sm font-semibold text-foreground">{title}</dt><dd className="mt-1 text-sm leading-6 text-muted-foreground">{copy}</dd></div>)}</dl>; }
 
-export default function PayersPage() {
-  return (
-    <main lang="es" className="overflow-hidden bg-background text-foreground">
-      <UseCaseHero
-        eyebrow={
-          <>
-            Financiadores (obras sociales, prepagas y aseguradoras)
-            {showEditorialBadge ? (
-              <span className="ml-2 inline-block normal-case tracking-normal">
-                <Pending>Sector sugerido · validar</Pending>
-              </span>
-            ) : null}
-          </>
-        }
-        title="Pagá por la atención que realmente ocurrió"
-        copy={description}
-        primary={{ label: "Hablemos", href: "/contact" }}
-        secondary={{
-          label: "Ver fraude",
-          href: "/use-cases/fraud-risk-prevention",
-        }}
-        secondaryVariant="inverse"
-        mediaClassName="overflow-visible"
-        media={
-          <div className="relative h-[340px] w-full sm:h-[460px] lg:h-full">
-            <Image
-              src="/assets/sectors/payers/hero.png"
-              alt="Hipócrates conversando con un grupo de médicos alrededor de una mesa, con la vara de Esculapio de fondo"
-              width={1427}
-              height={1099}
-              priority
-              sizes="(min-width: 1024px) 720px, 90vw"
-              className="absolute bottom-0 left-1/2 h-auto w-[min(100%,560px)] max-w-none -translate-x-1/2 object-contain sm:w-[640px] lg:left-[-2.25rem] lg:w-[720px] lg:translate-x-0"
-            />
-          </div>
-        }
-      />
-
-      <BenefitStories
-        title="Lo que Zonda hace por los financiadores."
-        items={benefits}
-      />
-
-      <div className="px-6 pb-16 sm:px-10 lg:px-16">
-        <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <MetricSlot
-            label="reducción de prestaciones observadas"
-            supportText="Métrica a definir"
-          />
-          <MetricSlot
-            label="días menos en auditoría"
-            supportText="Métrica a definir"
-          />
-          <MetricSlot
-            label="prestadores conectados"
-            supportText="Métrica a definir"
-          />
-        </div>
-      </div>
-
-      {keyUseCases.map((item, index) => (
-        <SplitFeature
-          key={item.title}
-          title={
-            item.href ? (
-              <InlineLink href={item.href}>{item.title}</InlineLink>
-            ) : (
-              item.title
-            )
-          }
-          copy={item.copy}
-          mediaSide={index % 2 === 1 ? "left" : "right"}
-          media={<Shot label={item.label} />}
-        />
-      ))}
-
-      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
-        <div className="mx-auto max-w-7xl">
-          <Testimonial
-            quote={
-              <>
-                “<Pending>TESTIMONIO A DEFINIR — financiador</Pending>”
-              </>
-            }
-            name={<Pending>NOMBRE</Pending>}
-            role={
-              <>
-                <Pending>CARGO</Pending>, <Pending>ORGANIZACIÓN</Pending>
-              </>
-            }
-          />
-        </div>
-      </section>
-
-      <FaqList items={faqItems} />
-
-      <CtaBanner title="Auditá antes de pagar" buttonText="Hablemos" />
-
-      <RelatedLinks links={relatedLinks} />
-    </main>
-  );
-}
+export default function PayersPage() { return <main lang="es" className="overflow-hidden bg-background text-foreground">
+  <UseCaseHero eyebrow="Financiadores (obras sociales, prepagas y aseguradoras)" title="Conocé la atención que reciben tus afiliados, de punta a punta" copy={description} primary={{ label: "Hablemos", href: "/contact" }} secondary={{ label: "Ver analítica", href: "/use-cases/analytics" }} secondaryVariant="inverse" mediaClassName="overflow-visible" media={<div className="relative h-[340px] w-full sm:h-[460px] lg:h-full"><Image src="/assets/sectors/payers/hero.png" alt="Grupo de médicos y organizaciones de salud conectados" width={1427} height={1099} priority sizes="(min-width: 1024px) 720px, 90vw" className="absolute bottom-0 left-1/2 h-auto w-[min(100%,560px)] max-w-none -translate-x-1/2 object-contain sm:w-[640px] lg:left-[-2.25rem] lg:w-[720px] lg:translate-x-0" /></div>} />
+  <BenefitStories title="Una red conectada permite tomar mejores decisiones." copy="Zonda une afiliados, prestadores, prácticas y resultados para que el financiador pueda gestionar la atención, no sólo revisar pagos." items={benefits} />
+  {features.map((feature, index) => <SplitFeature key={feature.title} title={feature.title} copy={feature.copy} mediaSide={index % 2 ? "left" : "right"} media={<ImagePlaceholder width={1200} height={900} label={feature.label} className="rounded-[1.5rem]" />}><Details items={feature.details} /></SplitFeature>)}
+  <FaqList items={faqItems} />
+  <IndustryProducts title="Cada práctica, con el contexto para decidir." subtitle="Riesgo, población, analítica e identidad sobre afiliados y prestadores." keys={["fraud-risk-prevention", "population-segmentation", "analytics", "identity"]} />
+  <CtaBanner title="Convertí la información de tu red en capacidad de decisión" subtitle="Afiliados, prestadores, prácticas y alertas sobre una misma base trazable." buttonText="Hablá con nuestro equipo" />
+</main>; }

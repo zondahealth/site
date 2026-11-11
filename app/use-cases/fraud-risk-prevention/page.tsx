@@ -1,21 +1,17 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Bot, CircleDollarSign, Fingerprint } from "lucide-react";
 
 import {
   BenefitStories,
-  CapabilityGrid,
   FaqList,
-  MetricSlot,
   SplitFeature,
-  StatSlot,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
 import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
 
 const title = "Fraude y prevención de riesgos en salud";
 const description =
-  "Conectá datos de salud para detectar fraude y riesgo antes del pago.";
+  "Conectá cada evento clínico, operativo y financiero para detectar inconsistencias antes de que se conviertan en pérdida.";
 
 export const metadata: Metadata = {
   title,
@@ -40,7 +36,7 @@ const benefitImageSizes =
 const benefits = [
   {
     title: "Mirá lo que los sistemas desconectados no ven",
-    copy: "Conectá datos operativos, clínicos y financieros para detectar inconsistencias que son invisibles cuando cada sistema se analiza por separado.",
+    copy: "Relacioná datos operativos, clínicos y financieros para detectar inconsistencias que no aparecen cuando cada sistema se analiza por separado.",
     media: (
       <Image
         src="/assets/solutions/fraud/zonda-floating-pills.png"
@@ -53,7 +49,7 @@ const benefits = [
   },
   {
     title: "Investigá con todo el contexto",
-    copy: "Dale al equipo de auditoría una sola vista de la transacción, las señales detrás de la alerta y la evidencia necesaria para decidir.",
+    copy: "Dale al equipo de auditoría una vista única de la transacción, las señales detrás de la alerta y la evidencia para decidir.",
     media: (
       <Image
         src="/assets/solutions/fraud/search.png"
@@ -66,7 +62,7 @@ const benefits = [
   },
   {
     title: "Concentrá los controles donde el riesgo es mayor",
-    copy: "Evaluá las transacciones de forma continua y sumá validaciones solo cuando las señales de riesgo lo justifican.",
+    copy: "Evaluá las transacciones de forma continua y reservá los controles adicionales para los casos que realmente lo justifican.",
     media: (
       <Image
         src="/assets/solutions/fraud/anomaly.png"
@@ -82,32 +78,30 @@ const benefits = [
 const splitImageClassName = "h-auto w-full rounded-[1.5rem] object-cover";
 const splitImageSizes = "(min-width: 1024px) 50vw, 100vw";
 
-const capabilities = [
-  {
-    title: "Identidad",
-    copy: "Saber quién atendió a quién.",
-    href: "/use-cases/identity",
-    icon: Fingerprint,
-  },
-  {
-    title: "Ciclo de ingresos",
-    copy: "Autorización, facturación y liquidación sobre la misma transacción.",
-    href: "/use-cases/revenue-cycle",
-    icon: CircleDollarSign,
-  },
-  {
-    title: "Agentes de inteligencia",
-    copy: "Investigación en lenguaje natural.",
-    href: "/use-cases/normalized-ai",
-    icon: Bot,
-  },
-];
+function FeatureDetails({
+  items,
+}: {
+  items: { title: string; copy: string }[];
+}) {
+  return (
+    <dl className="mt-8 grid max-w-lg gap-6">
+      {items.map((item) => (
+        <div key={item.title}>
+          <dt className="text-sm font-semibold text-foreground">{item.title}</dt>
+          <dd className="mt-1 text-sm leading-6 text-muted-foreground">
+            {item.copy}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
 
 const faqItems = [
   {
     question: "¿Qué es la prevención de fraude en salud?",
     answer:
-      "Es el proceso de detectar y prevenir actividad inapropiada antes de que genere pérdidas financieras u operativas.",
+      "Es la capacidad de detectar inconsistencias, comportamientos atípicos y riesgos operativos antes de que generen pérdidas financieras o afecten la atención.",
   },
   {
     question: "¿Qué tipos de fraude puede detectar Zonda?",
@@ -146,7 +140,6 @@ export default function FraudRiskPreventionPage() {
   return (
     <main lang="es" className="overflow-hidden bg-background text-foreground">
       <UseCaseHero
-        eyebrow="Fraude y prevención de riesgos"
         title="Detectá el fraude antes de que se convierta en pérdida"
         copy={description}
         primary={{ label: "Hablá con nuestro equipo", href: "/contact" }}
@@ -171,27 +164,12 @@ export default function FraudRiskPreventionPage() {
 
       <BenefitStories
         title="Lo que necesitás para adelantarte al fraude en salud."
+        copy="Zonda conecta la evidencia que explica una prestación para que los equipos puedan prevenir pérdidas sin sumar fricción a cada transacción legítima."
         items={benefits}
       />
 
-      <div className="px-6 pb-16 sm:px-10 lg:px-16">
-        {/* Nota de implementación: el home de site-new reemplazó "+30% Detección de fraude" (sitio actual) por un duplicado de "+30% Ahorro en costos operativos". Confirmar cuál es la cifra correcta. */}
-        <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-2">
-          {/* VALIDAR: menos fraude en facturación en el caso Interdom (dato publicado — validar) */}
-          <StatSlot
-            value="30%"
-            label="menos fraude en facturación en el caso Interdom"
-          />
-          <MetricSlot
-            label="transacciones evaluadas por mes"
-            supportText="Métrica a definir"
-          />
-        </div>
-      </div>
-
       <SplitFeature
         id="como-funciona"
-        eyebrow="La capa de transacciones"
         title="Conectá cada paso de la transacción de salud"
         copy="El fraude y el riesgo operativo suelen aparecer en los huecos entre sistemas. Zonda crea una sola vista de qué se autorizó, qué pasó, qué se documentó, qué se facturó y qué se pagó finalmente."
         media={
@@ -204,18 +182,19 @@ export default function FraudRiskPreventionPage() {
             className={splitImageClassName}
           />
         }
-      />
+      >
+        <FeatureDetails
+          items={[
+            { title: "Una transacción, un recorrido", copy: "Autorización, atención, documentación, facturación, cobro y liquidación vinculados a la misma prestación." },
+            { title: "El contexto se conserva", copy: "Cada evento mantiene su origen, momento y relación con pacientes, profesionales y financiadores." },
+            { title: "La evidencia no se pierde", copy: "Podés recorrer una alerta hasta los hechos que la explican, sin reconciliar sistemas a mano." },
+          ]}
+        />
+      </SplitFeature>
 
       <SplitFeature
-        eyebrow="Señales"
         title="Detectá riesgo a partir de múltiples señales"
         copy="Evaluá la integridad de la transacción desde la autorización hasta la liquidación y sumá contexto de comportamiento para ver patrones que ningún sistema individual puede revelar."
-        bullets={[
-          "Presencia verificada por geofence y horario",
-          "Firma digital del paciente",
-          "Match entre prestaciones registradas y prescripción",
-          "Desvíos de facturación por sede, profesional y financiador",
-        ]}
         mediaSide="left"
         media={
           <Image
@@ -227,10 +206,17 @@ export default function FraudRiskPreventionPage() {
             className={splitImageClassName}
           />
         }
-      />
+      >
+        <FeatureDetails
+          items={[
+            { title: "Verificá cómo se realizó", copy: "Presencia, horario, ubicación y firma digital cuando corresponda al proceso." },
+            { title: "Contrastá lo documentado", copy: "Prestaciones, prescripciones, autorizaciones y documentación clínica en el mismo contexto." },
+            { title: "Reconocé patrones", copy: "Desvíos de actividad y facturación por sede, profesional, práctica o financiador." },
+          ]}
+        />
+      </SplitFeature>
 
       <SplitFeature
-        eyebrow="Riesgo explicable"
         title="Convertí señales en riesgo accionable"
         copy="Una anomalía aislada no significa necesariamente fraude. Zonda combina señales y contexto para construir una evaluación de riesgo explicable para cada transacción: cada puntaje muestra los factores que lo explican."
         media={
@@ -243,7 +229,15 @@ export default function FraudRiskPreventionPage() {
             className={splitImageClassName}
           />
         }
-      />
+      >
+        <FeatureDetails
+          items={[
+            { title: "Separá señal de decisión", copy: "Una anomalía inicia una revisión; el contexto determina si realmente requiere intervención." },
+            { title: "Entendé cada puntaje", copy: "Cada evaluación muestra los factores que elevaron o redujeron el nivel de riesgo." },
+            { title: "Llevá cada caso al equipo correcto", copy: "Priorizá la revisión de los casos con mayor impacto y dejá fluir el resto de la operación." },
+          ]}
+        />
+      </SplitFeature>
 
       <section className="px-6 py-10 sm:px-10 sm:py-14 lg:px-16 lg:py-16">
         <div className="mx-auto max-w-7xl">
@@ -255,10 +249,7 @@ export default function FraudRiskPreventionPage() {
               sizes="(min-width: 1280px) 1280px, 100vw"
               className="pointer-events-none -z-10 object-cover"
             />
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-foreground/60">
-              Resolver
-            </p>
-            <h2 className="mx-auto mt-4 max-w-3xl font-display text-4xl font-semibold leading-tight tracking-[-0.04em] text-foreground sm:text-5xl">
+            <h2 className="mx-auto max-w-3xl font-display text-4xl font-semibold leading-tight tracking-[-0.04em] text-foreground sm:text-5xl">
               Investigá con todo el contexto
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-foreground/75 sm:text-lg">
@@ -278,8 +269,6 @@ export default function FraudRiskPreventionPage() {
           </div>
         </div>
       </section>
-
-      <CapabilityGrid title="Lo que lo hace posible" items={capabilities} />
 
       <FaqList items={faqItems} />
 

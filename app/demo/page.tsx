@@ -235,12 +235,12 @@ export default function DemoPage() {
               CtaBanner
             </h2>
             <p className="text-sm text-muted-foreground">
-              Variants <code>default</code>, <code>dark</code> y <code>night</code>{" "}
-              from <code>components/ui/cta-banner</code>
+              Variants <code>default</code> y <code>dark</code> from{" "}
+              <code>components/ui/cta-banner</code>
             </p>
           </div>
 
-          {(["default", "dark", "night"] as const).map((variant) => (
+          {(["default", "dark"] as const).map((variant) => (
             <div key={variant} className="space-y-3">
               <p className="text-sm font-medium text-muted-foreground">
                 {variant}

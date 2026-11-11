@@ -20,14 +20,17 @@ export const testimonials: readonly Testimonial[] = [
   },
   {
     id: "ams",
-    title: "AMS por primera vez tiene control sobre sus finanzas",
+    title: "AMS por primera vez tiene control de sus operaciones",
+    href: "/customer-stories/ams",
+    summary: "Caso de estudio · Operaciones conectadas",
     image: "/assets/home/testimonials/t2.png",
     tags: ["revenue-cycle"],
   },
   {
     id: "pami",
-    title:
-      "Profesionales no pierden tiempo al interactuar con diferentes obras sociales, caso PAMI",
+    title: "Profesionales de la salud no se detienen con fallas de PAMI",
+    href: "/customer-stories/pami",
+    summary: "Caso de estudio · Continuidad operativa",
     image: "/assets/home/testimonials/t3.png",
     tags: ["multi-payer-care", "government-public-sector"],
   },

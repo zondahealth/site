@@ -1,16 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import {
-  FileBarChart,
-  FileCheck,
-  MessagesSquare,
-  ShieldCheck,
-  Users,
-  type LucideIcon,
-} from "lucide-react";
 
+import { IndustryProducts } from "@/components/industries/IndustryProducts";
 import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
-import { Card, CardContent, CardCTA, CardTitle } from "@/components/ui/card/card";
 import {
   BenefitStories,
   SectionIntro,
@@ -34,7 +26,9 @@ export const metadata: Metadata = {
   },
 };
 
-const strongClassName = "font-semibold text-foreground";
+function FeatureDetails({ items }: { items: string[][] }) {
+  return <dl className="mt-8 grid max-w-lg gap-6">{items.map(([title, copy]) => <div key={title}><dt className="text-sm font-semibold text-foreground">{title}</dt><dd className="mt-1 text-sm leading-6 text-muted-foreground">{copy}</dd></div>)}</dl>;
+}
 
 function Shot({ label }: { label: string }) {
   return (
@@ -71,44 +65,6 @@ const proposal = [
   },
 ];
 
-const agents: {
-  title: string;
-  copy: string;
-  href: string;
-  icon: LucideIcon;
-}[] = [
-  {
-    title: "Auditoría",
-    copy: "Revisa prestaciones y deriva las excepciones.",
-    href: "/use-cases/fraud-risk-prevention",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Autorizaciones",
-    copy: "Analiza antecedentes, cobertura y reglas.",
-    href: "/use-cases/multi-payer-care",
-    icon: FileCheck,
-  },
-  {
-    title: "Gestión",
-    copy: "Responde preguntas sobre la jurisdicción.",
-    href: "/use-cases/normalized-ai",
-    icon: MessagesSquare,
-  },
-  {
-    title: "Salud poblacional",
-    copy: "Prioriza pacientes que requieren intervención.",
-    href: "/use-cases/population-segmentation",
-    icon: Users,
-  },
-  {
-    title: "Reportes",
-    copy: "Genera informes y señala desvíos.",
-    href: "/use-cases/analytics",
-    icon: FileBarChart,
-  },
-];
-
 export default function GovernmentPublicSectorPage() {
   return (
     <main lang="es" className="overflow-hidden bg-background text-foreground">
@@ -126,7 +82,7 @@ export default function GovernmentPublicSectorPage() {
               height={972}
               priority
               sizes="(min-width: 1024px) 90vw, 100vw"
-              className="absolute bottom-0 left-1/2 h-auto w-[min(980px,145%)] max-w-none -translate-x-1/2 translate-y-[12%] sm:w-[min(1120px,130%)] md:h-[112%] md:w-auto lg:left-[-6rem] lg:h-auto lg:w-[min(1240px,82vw)] lg:translate-x-0"
+              className="absolute bottom-0 left-1/2 h-auto w-[min(784px,116%)] max-w-none -translate-x-1/2 translate-y-[12%] sm:w-[min(896px,104%)] md:h-[90%] md:w-auto lg:left-[-6rem] lg:h-auto lg:w-[min(992px,65.6vw)] lg:translate-x-0"
             />
           </div>
         }
@@ -165,67 +121,32 @@ export default function GovernmentPublicSectorPage() {
         id="red-interoperable"
         title="Conectamos la información sanitaria sin reemplazar lo que ya funciona."
         copy="Hospitales, CAPS, laboratorios, farmacias y obras sociales se suman a la misma red. Cada integración agrega información."
-        bullets={[
-          "Interoperabilidad HL7 FHIR",
-          "Identidad única del paciente",
-          "Normalización clínica y APIs",
-          "Una historia longitudinal, disponible para los actores de la red",
-        ]}
         media={
           // Archivo final sugerido: public/assets/industries/government-public-sector/red.png
           <Shot label="Hospitales, CAPS, laboratorios, farmacias y obras sociales conectados a un nodo central Zonda, con una historia clínica unificada." />
         }
-      />
+      ><FeatureDetails items={[["Interoperabilidad", "HL7, FHIR, APIs y otras fuentes conectadas a una misma red."], ["Una identidad para cada paciente", "La información de una persona se relaciona aunque provenga de distintos efectores."], ["Historia longitudinal", "El contexto clínico queda disponible para los actores autorizados de la red."]]} /></SplitFeature>
 
       <SplitFeature
         id="digitalizacion"
         title="Donde todavía no hay tecnología, Zonda la provee."
         copy="Digitalizamos donde hace falta e integramos desde el primer día."
         mediaSide="left"
-        bullets={[
-          <>
-            <strong className={strongClassName}>CAPS y efectores.</strong>{" "}
-            Historia clínica, admisión, turnos, prestaciones, farmacia,
-            enfermería y app profesional.
-          </>,
-          <>
-            <strong className={strongClassName}>Derivaciones trazables.</strong>{" "}
-            Solicitud, documentación, priorización, seguimiento y
-            contrarreferencia al equipo de origen.
-          </>,
-        ]}
         media={
           // Archivo final sugerido: public/assets/industries/government-public-sector/digitalizacion.png
           <Shot label="Historia clínica de un CAPS junto a una derivación con prioridad, asignación y contrarreferencia." />
         }
-      />
+      ><FeatureDetails items={[["CAPS y efectores", "Historia clínica, admisión, turnos, prestaciones, farmacia, enfermería y app profesional."], ["Derivaciones trazables", "Solicitud, documentación, priorización, seguimiento y contrarreferencia al equipo de origen."]]} /></SplitFeature>
 
       <SplitFeature
         id="centro-de-comando"
         title="Saber qué está pasando. Antes de tener que preguntar."
-        bullets={[
-          <>
-            <strong className={strongClassName}>Operación.</strong> Demanda,
-            ocupación, turnos, producción y derivaciones.
-          </>,
-          <>
-            <strong className={strongClassName}>Recursos.</strong> Gasto,
-            medicamentos, prestaciones y recupero.
-          </>,
-          <>
-            <strong className={strongClassName}>Población.</strong> Crónicos,
-            riesgo, territorio y utilización de servicios.
-          </>,
-          <>
-            <strong className={strongClassName}>Alertas.</strong> Desvíos,
-            saturación, anomalías y tendencias.
-          </>,
-        ]}
         media={
           // Archivo final sugerido: public/assets/industries/government-public-sector/comando.png
           <Shot label="Centro de comando de una red sanitaria: demanda, ocupación, gasto en medicamentos, población y una alerta de saturación." />
         }
       >
+        <FeatureDetails items={[["Operación", "Demanda, ocupación, turnos, producción y derivaciones."], ["Recursos", "Gasto, medicamentos, prestaciones y recupero."], ["Población y alertas", "Crónicos, riesgo, territorio, saturación y anomalías."]]} />
         <blockquote className="mt-8 max-w-lg border-l-2 border-secondary pl-4">
           <p className="font-display text-lg font-medium leading-snug tracking-[-0.02em]">
             “¿Qué hospitales aumentaron más su gasto en medicamentos este
@@ -242,25 +163,12 @@ export default function GovernmentPublicSectorPage() {
         title="Controlar prestaciones. Recuperar recursos."
         copy="Un primer circuito permite medir el retorno antes de escalar."
         mediaSide="left"
-        bullets={[
-          <>
-            <strong className={strongClassName}>Sector público prestador.</strong>{" "}
-            Detectar cobertura recuperable, documentar, facturar y seguir el
-            cobro.
-          </>,
-          <>
-            <strong className={strongClassName}>
-              Financiadores y obras sociales.
-            </strong>{" "}
-            Validar con reglas, detectar duplicados y priorizar la auditoría
-            humana.
-          </>,
-        ]}
         media={
           // Archivo final sugerido: public/assets/industries/government-public-sector/auditoria.png
           <Shot label="Circuito de recupero: una prestación detectada, su documentación, la factura y el seguimiento del cobro." />
         }
       >
+        <FeatureDetails items={[["Sector público prestador", "Detectar cobertura recuperable, documentar, facturar y seguir el cobro."], ["Financiadores y obras sociales", "Validar con reglas, detectar duplicados y priorizar la auditoría humana."]]} />
         <p className="mt-8 font-display text-5xl font-semibold tracking-[-0.04em] text-primary">
           −60%
         </p>
@@ -277,17 +185,12 @@ export default function GovernmentPublicSectorPage() {
         id="salud-poblacional"
         title="Pasar de atender episodios a gestionar poblaciones."
         copy="Ejemplo con diabetes: de los pacientes identificados al seguimiento de resultados."
-        bullets={[
-          "Pacientes identificados y controles pendientes",
-          "Laboratorios fuera de rango",
-          "Riesgo y prioridad de atención",
-          "Contacto del equipo y medición de resultados",
-        ]}
         media={
           // Archivo final sugerido: public/assets/industries/government-public-sector/poblacion.png
           <Shot label="Cohorte de diabetes con controles pendientes, un laboratorio fuera de rango y la prioridad de atención." />
         }
       >
+        <FeatureDetails items={[["Pacientes y controles", "Pacientes identificados y controles pendientes."], ["Riesgo y prioridad", "Laboratorios fuera de rango y prioridad de atención."], ["Seguimiento", "Contacto del equipo y medición de resultados."]]} />
         <p className="mt-6 max-w-lg text-sm leading-6 text-muted-foreground">
           El mismo circuito aplica a hipertensión, enfermedad cardiovascular,
           EPOC, materno-infantil y adultos mayores.
@@ -299,71 +202,22 @@ export default function GovernmentPublicSectorPage() {
         title="Afiliados, prestadores y prestaciones sobre la misma red."
         copy="Una red transaccional trazable para toda la relación prestacional."
         mediaSide="left"
-        bullets={[
-          <>
-            <strong className={strongClassName}>Afiliados.</strong> Padrón,
-            elegibilidad y cobertura.
-          </>,
-          <>
-            <strong className={strongClassName}>Prestadores.</strong> Registro,
-            cartilla y convenios.
-          </>,
-          <>
-            <strong className={strongClassName}>Autorizaciones.</strong>{" "}
-            Prácticas, internaciones, medicamentos y alto costo.
-          </>,
-          <>
-            <strong className={strongClassName}>Auditoría y gasto.</strong>{" "}
-            Reglas, débitos, costo por afiliado y cohortes de alto costo.
-          </>,
-        ]}
         media={
           // Archivo final sugerido: public/assets/industries/government-public-sector/obra-social.png
           <Shot label="Vista de una obra social provincial: padrón de afiliados, cartilla de prestadores, una autorización y el costo por patología." />
         }
-      />
+      ><FeatureDetails items={[["Afiliados", "Padrón, elegibilidad y cobertura."], ["Prestadores", "Registro, cartilla y convenios."], ["Autorizaciones", "Prácticas, internaciones, medicamentos y alto costo."], ["Auditoría y gasto", "Reglas, débitos, costo por afiliado y cohortes de alto costo."]]} /></SplitFeature>
 
-      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-        <div className="mx-auto max-w-7xl">
-          <SectionIntro
-            title="Una vez conectados los datos, la inteligencia puede trabajar."
-            copy="Agentes con contexto de la red y revisión humana en las decisiones sensibles."
-            className="max-w-3xl"
-          />
-          <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-6">
-            {agents.map((agent, index) => {
-              const Icon = agent.icon;
-              return (
-                <li
-                  key={agent.title}
-                  className={`flex lg:col-span-2 ${index === 3 ? "lg:col-start-2" : ""}`}
-                >
-                  <Card
-                    variant="muted"
-                    hoverable
-                    href={agent.href}
-                    aria-label={agent.title}
-                    className="w-full"
-                  >
-                    <Icon
-                      aria-hidden="true"
-                      className="size-5 text-primary"
-                      strokeWidth={1.75}
-                    />
-                    <CardTitle className="mt-5">{agent.title}</CardTitle>
-                    <CardContent>{agent.copy}</CardContent>
-                    <CardCTA
-                      aria-hidden="true"
-                      tabIndex={-1}
-                      className="pointer-events-none"
-                    />
-                  </Card>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </section>
+      <IndustryProducts
+        title="Una vez conectados los datos, la inteligencia puede trabajar."
+        subtitle="Agentes con contexto de la red y revisión humana en las decisiones sensibles."
+        keys={[
+          "fraud-risk-prevention",
+          "multi-payer-care",
+          "normalized-ai",
+          "population-segmentation",
+        ]}
+      />
 
       <CtaBanner
         title="Empezá por un problema concreto."
