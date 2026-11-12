@@ -17,7 +17,7 @@ const buttonVariants = cva(
         accent: `font-medium ${styles.accent}`,
         outline: `font-medium ${styles.outline}`,
         ghost: 'bg-transparent text-primary hover:bg-muted',
-        inverse: 'bg-card text-primary hover:bg-muted',
+        inverse: `border-2 ${styles.inverse}`,
       },
       size: {
         sm: 'h-9 px-4 text-sm',
@@ -40,7 +40,7 @@ type ButtonProps = React.ComponentProps<'button'> &
 
 function Button({ className, variant, size, asChild = false, ...props }: ButtonProps) {
   const Comp = asChild ? Slot : 'button';
-  const isOrbit = variant === 'black';
+  const isOrbit = variant === 'black' || variant === 'inverse';
 
   const button = (
     <Comp

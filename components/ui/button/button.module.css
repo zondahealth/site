@@ -10,9 +10,16 @@
   }
 }
 
-.black {
+.black,
+.inverse {
   border-color: transparent;
   background-color: transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: button-border-orbit 3.2s linear infinite;
+}
+
+.black {
   background-image:
     linear-gradient(112deg, #101827 0%, #171c2a 52%, #101827 100%),
     conic-gradient(
@@ -25,14 +32,33 @@
       var(--orbit-6) 326deg,
       var(--orbit-1) 360deg
     );
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
   box-shadow: 0 1px 2px rgba(8, 18, 38, 0.45);
-  animation: button-border-orbit 3.2s linear infinite;
+}
+
+.inverse {
+  color: #151b2b;
+  background-image:
+    linear-gradient(#ffffff, #ffffff),
+    conic-gradient(
+      from var(--button-border-angle),
+      var(--orbit-1) 0deg,
+      var(--orbit-2) 58deg,
+      var(--orbit-3) 112deg,
+      var(--orbit-4) 190deg,
+      var(--orbit-5) 270deg,
+      var(--orbit-6) 326deg,
+      var(--orbit-1) 360deg
+    );
+  box-shadow: 0 1px 2px rgba(8, 18, 38, 0.12);
 }
 
 .primary {
   color: var(--primary);
+  /* The 1px transparent border is outside the padding box. With the default
+     background-origin (padding-box) the gradient tiles into that border and
+     the opposite stop shows up as a hairline — blue on the left, cyan on the right. */
+  background-repeat: no-repeat;
+  background-origin: border-box;
   background-image: linear-gradient(
     100deg,
     var(--orbit-5) 0%,
@@ -52,35 +78,37 @@
 }
 
 .outline {
-  --outline-fill: var(--card);
-  border: 2px solid transparent;
-  color: var(--foreground);
-  background:
-    linear-gradient(var(--outline-fill), var(--outline-fill)) padding-box,
-    linear-gradient(90deg, #5a2a8f 0%, #3a3486 45%, var(--primary) 100%) border-box;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  background-color: transparent;
 }
 
 .outline:hover {
-  --outline-fill: color-mix(in srgb, var(--primary) 6%, var(--card));
+  background-color: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.outline:active {
+  background-color: color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
 .accent {
   color: var(--accent-foreground);
-  background-color: color-mix(in srgb, var(--accent) 62%, #8a8640);
-  box-shadow: 0 1px 2px rgba(40, 36, 0, 0.16);
+  background-color: var(--accent);
+  box-shadow: 0 1px 2px rgba(50, 50, 0, 0.18);
 }
 
 .accent:hover {
-  filter: brightness(1.04);
-  box-shadow: 0 2px 8px rgba(90, 84, 20, 0.2);
+  background-color: color-mix(in srgb, var(--accent) 90%, #151b2b);
+  box-shadow: 0 2px 8px rgba(50, 50, 0, 0.22);
 }
 
 .accent:active {
-  filter: brightness(0.97);
+  background-color: color-mix(in srgb, var(--accent) 82%, #151b2b);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .black {
+  .black,
+  .inverse {
     animation: none;
   }
 }
