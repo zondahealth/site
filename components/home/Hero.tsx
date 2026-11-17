@@ -159,16 +159,6 @@ export function Hero() {
               </div>
             </div>
           </div>
-          <Image
-            src="/assets/home/hero.png"
-            alt=""
-            width={1378}
-            height={1080}
-            priority
-            sizes="1400px"
-            data-hero-asset=""
-            className="pointer-events-none absolute bottom-0 hidden w-auto max-w-none md:left-[28rem] md:block md:h-[min(620px,calc(100%-6.5rem))] lg:left-[28.8rem] lg:h-[min(740px,calc(100%-7rem))] xl:right-[-8rem] xl:left-auto xl:h-[min(780px,calc(100%-7rem))]"
-          />
         </div>
       </div>
     </section>
