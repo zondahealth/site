@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 import { LOGIN_URL } from "@/lib/navigation";
-import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
 import {
   BenefitStories,
   FaqList,
+  FeatureShot,
   SectionIntro,
   SplitFeature,
   UseCaseHero,
@@ -28,19 +28,22 @@ export const metadata: Metadata = {
   },
 };
 
+const benefitImageSizes =
+  "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
+
 const benefits = [
   {
     title: "Pacientes informados",
     copy: "Recordatorios por WhatsApp y encuestas pre-consulta configurables.",
     href: "/use-cases/automation",
     cta: "Ver automatización",
-    // Archivo final sugerido: public/assets/industries/primary-care/benefit-1.png
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Pacientes informados». Composición: una tarjeta de UI…"
+      <Image
+        src="/assets/industries/primary-care/benefit-1.png"
+        alt="Ilustración de pacientes informados con recordatorios y encuestas pre-consulta."
         fill
+        className="object-cover"
+        sizes={benefitImageSizes}
       />
     ),
   },
@@ -49,13 +52,13 @@ const benefits = [
     copy: "Dictado por voz y resumen estructurado (SOAP).",
     href: "/use-cases/normalized-ai",
     cta: "Ver IA normalizada",
-    // Archivo final sugerido: public/assets/industries/primary-care/benefit-2.png
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Menos tiempo administrativo». Composición: una tarjeta…"
+      <Image
+        src="/assets/industries/primary-care/benefit-2.png"
+        alt="Ilustración de dictado por voz y resumen clínico estructurado."
         fill
+        className="object-cover"
+        sizes={benefitImageSizes}
       />
     ),
   },
@@ -64,13 +67,13 @@ const benefits = [
     copy: "Detectá pacientes sin control o con riesgo creciente.",
     href: "/use-cases/population-segmentation",
     cta: "Ver segmentación",
-    // Archivo final sugerido: public/assets/industries/primary-care/benefit-3.png
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Ilustración horizontal de producto para la tarjeta «Prevención basada en datos». Composición: una tarjeta…"
+      <Image
+        src="/assets/industries/primary-care/benefit-3.png"
+        alt="Ilustración de prevención basada en datos y segmentación de pacientes."
         fill
+        className="object-cover"
+        sizes={benefitImageSizes}
       />
     ),
   },
@@ -92,37 +95,46 @@ const faqItems = [
   },
 ];
 
-function Shot({ label }: { label: string }) {
-  return (
-    <ImagePlaceholder
-      width={1200}
-      height={900}
-      label={label}
-      className="rounded-[1.5rem]"
-    />
-  );
-}
-
 const features = [
   {
     title: "Ordená la atención de todos los días",
     copy: "Zonda reúne las tareas que hoy viven entre una agenda, una libreta y los mensajes del equipo para que el día pueda gestionarse desde una sola plataforma.",
-    label: "Agenda de atención primaria con turnos, profesionales y estados de pacientes del día.",
+    label:
+      "Agenda de atención primaria con turnos, profesionales y estados de pacientes del día.",
   },
   {
     title: "La historia clínica se construye mientras se atiende",
     copy: "El profesional puede dejar una evolución en lenguaje natural y Zonda la convierte en información que el equipo puede encontrar y usar después.",
-    label: "Perfil de paciente de atención primaria con evolución clínica estructurada, antecedentes y próximos controles.",
+    label:
+      "Perfil de paciente de atención primaria con evolución clínica estructurada, antecedentes y próximos controles.",
   },
   {
     title: "La prevención empieza cuando la población deja de ser una lista",
     copy: "Una vez que la información de cada consulta queda conectada, el centro puede ver a quién le falta un control y dónde conviene intervenir primero.",
-    label: "Panel de salud poblacional con pacientes sin control, cohortes de riesgo y acciones de seguimiento.",
+    label:
+      "Panel de salud poblacional con pacientes sin control, cohortes de riesgo y acciones de seguimiento.",
   },
 ];
 
-function FeatureDetails({ items }: { items: { title: string; copy: string }[] }) {
-  return <dl className="mt-8 grid max-w-lg gap-6">{items.map((item) => <div key={item.title}><dt className="text-sm font-semibold text-foreground">{item.title}</dt><dd className="mt-1 text-sm leading-6 text-muted-foreground">{item.copy}</dd></div>)}</dl>;
+function FeatureDetails({
+  items,
+}: {
+  items: { title: string; copy: string }[];
+}) {
+  return (
+    <dl className="mt-8 grid max-w-lg gap-6">
+      {items.map((item) => (
+        <div key={item.title}>
+          <dt className="text-sm font-semibold text-foreground">
+            {item.title}
+          </dt>
+          <dd className="mt-1 text-sm leading-6 text-muted-foreground">
+            {item.copy}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
 }
 
 export default function PrimaryCarePage() {
@@ -140,7 +152,7 @@ export default function PrimaryCarePage() {
         media={
           <div className="relative h-[300px] w-full sm:h-[400px] lg:h-full">
             <Image
-              src="/assets/sectors/primary/salita.png"
+              src="/assets/industries/primary-care/salita.png"
               alt="Ilustración de un centro de salud de atención primaria"
               width={1774}
               height={887}
@@ -175,13 +187,29 @@ export default function PrimaryCarePage() {
           title={item.title}
           copy={item.copy}
           mediaSide={index % 2 === 1 ? "left" : "right"}
-          media={<Shot label={item.label} />}
+          media={
+            <FeatureShot
+              src={`/assets/industries/primary-care/feature-${index + 1}.png`}
+              alt={item.label}
+            />
+          }
         >
-          <FeatureDetails items={[
-            { title: "Agenda y pacientes", copy: "Turnos, disponibilidad y contexto del paciente antes de la consulta." },
-            { title: "Equipo coordinado", copy: "Cada consulta, derivación o pendiente queda visible para quienes tienen que actuar." },
-            { title: "Información reutilizable", copy: "Lo registrado sirve para la próxima atención, el seguimiento y la prevención." },
-          ]} />
+          <FeatureDetails
+            items={[
+              {
+                title: "Agenda y pacientes",
+                copy: "Turnos, disponibilidad y contexto del paciente antes de la consulta.",
+              },
+              {
+                title: "Equipo coordinado",
+                copy: "Cada consulta, derivación o pendiente queda visible para quienes tienen que actuar.",
+              },
+              {
+                title: "Información reutilizable",
+                copy: "Lo registrado sirve para la próxima atención, el seguimiento y la prevención.",
+              },
+            ]}
+          />
         </SplitFeature>
       ))}
 
@@ -189,20 +217,28 @@ export default function PrimaryCarePage() {
         title="Una misma base para distintas formas de atención primaria"
         copy="Desde un consultorio hasta un CAPS o programa de crónicos, Zonda se adapta a la escala de cada equipo."
         media={
-          // Archivo final sugerido: public/assets/industries/primary-care/feature-1.png
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="Centros de salud, consultorios y programas de medicina familiar conectados a la misma operación digital."
-            className="rounded-[1.5rem]"
+          <FeatureShot
+            src="/assets/industries/primary-care/feature-4.png"
+            alt="Centros de salud, consultorios y programas de medicina familiar conectados a la misma operación digital."
           />
         }
       >
-        <FeatureDetails items={[
-          { title: "Centros de salud y CAPS", copy: "Para equipos, consultorios y pacientes que necesitan una vista común." },
-          { title: "Consultorios y médicos de cabecera", copy: "Para ordenar el día, registrar mejor y dar continuidad a cada persona atendida." },
-          { title: "Medicina familiar y crónicos", copy: "Para seguir poblaciones y sostener planes de cuidado en el tiempo." },
-        ]} />
+        <FeatureDetails
+          items={[
+            {
+              title: "Centros de salud y CAPS",
+              copy: "Para equipos, consultorios y pacientes que necesitan una vista común.",
+            },
+            {
+              title: "Consultorios y médicos de cabecera",
+              copy: "Para ordenar el día, registrar mejor y dar continuidad a cada persona atendida.",
+            },
+            {
+              title: "Medicina familiar y crónicos",
+              copy: "Para seguir poblaciones y sostener planes de cuidado en el tiempo.",
+            },
+          ]}
+        />
       </SplitFeature>
 
       <FaqList items={faqItems} />

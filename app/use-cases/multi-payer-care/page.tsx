@@ -5,6 +5,7 @@ import { Pending } from "@/components/ui/pending/Pending";
 import {
   BenefitStories,
   FaqList,
+  FeatureShot,
   SplitFeature,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
@@ -34,7 +35,7 @@ const benefits = [
     copy: "Cada obra social y prepaga tiene portales, autorizaciones y requisitos propios. Tu organización se conecta una vez y Zonda absorbe esa diferencia.",
     media: (
       <Image
-        src="/assets/solutions/multipayer/connected.png"
+        src="/assets/solutions/multipayer/benefit-1.png"
         alt="Financiadores como PAMI, OSDE, Sura, Medicus y Medifé conectados entre sí en una sola red"
         fill
         className="object-cover"
@@ -47,7 +48,7 @@ const benefits = [
     copy: "Sedes, especialidades y profesionales trabajan de la misma manera. Zonda sabe qué cobertura, autorización y documentación pide cada financiador.",
     media: (
       <Image
-        src="/assets/solutions/multipayer/pami-rule-applied.png"
+        src="/assets/solutions/multipayer/benefit-2.png"
         alt="PAMI conectado como financiador en 24 sedes, con una regla de autorización aplicada a 186 profesionales en toda la red"
         fill
         className="object-cover"
@@ -60,7 +61,7 @@ const benefits = [
     copy: "Lo que falta se ve antes de cerrar la atención. La organización no se entera del error cuando ya hay un débito.",
     media: (
       <Image
-        src="/assets/solutions/multipayer/anomaly.png"
+        src="/assets/solutions/multipayer/benefit-3.png"
         alt="Anomalía detectada en una prestación de -$22,237.18, categorizada como ubicación sospechosa"
         fill
         className="object-cover"
@@ -113,9 +114,6 @@ const faqItems = [
   },
 ];
 
-const splitImageClassName = "h-auto w-full rounded-[1.5rem] object-cover";
-const splitImageSizes = "(min-width: 1024px) 50vw, 100vw";
-
 export default function MultiPayerCarePage() {
   return (
     <main lang="es" className="overflow-hidden bg-background text-foreground">
@@ -152,13 +150,9 @@ export default function MultiPayerCarePage() {
         title="Cada financiador pide algo distinto. Tu organización no debería hablar con cada uno por separado."
         copy="Una clínica o una red convive con muchas obras sociales y prepagas. Eso hoy significa integraciones, autorizaciones y presentaciones distintas para cada una. La carga se multiplica en administración y también en cada profesional."
         media={
-          <Image
-            src="/assets/solutions/multipayer/connected-data.png"
+          <FeatureShot
+            src="/assets/solutions/multipayer/feature-1.png"
             alt="Zonda en el centro de una red de datos clínicos: historia clínica, equipo, sedes, vacunas, laboratorio, medicación y estudios"
-            width={1254}
-            height={1254}
-            sizes={splitImageSizes}
-            className={splitImageClassName}
           />
         }
       />
@@ -169,13 +163,9 @@ export default function MultiPayerCarePage() {
         copy="La organización da de alta sus financiadores en Zonda. A partir de ahí, sedes y profesionales operan sobre esa conexión. Cada financiador conserva sus propios sistemas. Elegibilidad, autorizaciones, nomencladores, documentación, frecuencias y validaciones quedan del lado de Zonda."
         mediaSide="left"
         media={
-          <Image
-            src="/assets/solutions/multipayer/connected-integration-x.png"
+          <FeatureShot
+            src="/assets/solutions/multipayer/feature-2.png"
             alt="Profesional rodeado de documentación, medicación, sedes, turnos, vacunas y mensajes, con algunas integraciones sin resolver"
-            width={1254}
-            height={1254}
-            sizes={splitImageSizes}
-            className={splitImageClassName}
           />
         }
       />
@@ -185,13 +175,9 @@ export default function MultiPayerCarePage() {
         title="Quien atiende registra una sola vez"
         copy="El clínico no entra a un portal distinto por financiador. Documenta la atención y Zonda muestra solo lo que falta para esa cobertura. La conexión ya la hizo la organización. Si trabaja por su cuenta, puede conectar sus financiadores del mismo modo."
         media={
-          <Image
-            src="/assets/solutions/multipayer/doctor-register-vitals.png"
+          <FeatureShot
+            src="/assets/solutions/multipayer/feature-3.png"
             alt="La Dra. Ferrari registra signos vitales desde el celular, con PAMI conectado y la factura lista"
-            width={1254}
-            height={1254}
-            sizes={splitImageSizes}
-            className={splitImageClassName}
           />
         }
       />

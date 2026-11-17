@@ -7,6 +7,7 @@ import {
   BenefitStories,
   CapabilityGrid,
   FaqList,
+  FeatureShot,
   SplitFeature,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
@@ -36,7 +37,7 @@ const benefits = [
     copy: "Clínica, operación, facturación e integraciones sobre el mismo modelo de datos, sin consolidaciones manuales.",
     media: (
       <Image
-        src="/assets/solutions/analitics/search.png"
+        src="/assets/solutions/analitics/benefit-1.png"
         alt="Búsqueda de pacientes con tratamiento activo y procedimiento programado"
         fill
         className="object-cover"
@@ -49,7 +50,7 @@ const benefits = [
     copy: "Detectá desvíos y tendencias antes de que se conviertan en un problema, con la información necesaria para entender qué pasó.",
     media: (
       <Image
-        src="/assets/solutions/analitics/desvio.png"
+        src="/assets/solutions/analitics/benefit-2.png"
         alt="Comparación entre un hospital en el rango esperado y una sala con desvío"
         fill
         className="object-cover"
@@ -62,7 +63,7 @@ const benefits = [
     copy: "Compartí y exportá información para dirección, equipos operativos, financiadores o tus propias herramientas de BI.",
     media: (
       <Image
-        src="/assets/solutions/analitics/formats.png"
+        src="/assets/solutions/analitics/benefit-3.png"
         alt="Salidas en texto plano, PDF, CSV, HL7, FHIR y XML"
         fill
         className="object-cover"
@@ -71,9 +72,6 @@ const benefits = [
     ),
   },
 ];
-
-const splitImageClassName = "h-auto w-full rounded-[1.5rem] object-cover";
-const splitImageSizes = "(min-width: 1024px) 50vw, 100vw";
 
 function FeatureDetails({
   items,
@@ -84,7 +82,9 @@ function FeatureDetails({
     <dl className="mt-8 grid max-w-lg gap-6">
       {items.map((item) => (
         <div key={item.title}>
-          <dt className="text-sm font-semibold text-foreground">{item.title}</dt>
+          <dt className="text-sm font-semibold text-foreground">
+            {item.title}
+          </dt>
           <dd className="mt-1 text-sm leading-6 text-muted-foreground">
             {item.copy}
           </dd>
@@ -175,21 +175,26 @@ export default function AnalyticsPage() {
         title="Una lectura de la operación para cada nivel de decisión"
         copy="Dirección, coordinación y equipos de atención pueden trabajar sobre la misma información, con el nivel de detalle que necesitan para decidir y actuar."
         media={
-          <Image
-            src="/assets/solutions/analitics/health-panel.png"
+          <FeatureShot
+            src="/assets/solutions/analitics/feature-1.png"
             alt="Panel de salud con pacientes, procedimientos y tratamientos según el estado clínico"
-            width={1254}
-            height={1254}
-            sizes={splitImageSizes}
-            className={splitImageClassName}
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "De la red al detalle", copy: "Vistas por holding, entidad jurídica, sede, servicio, profesional o paciente." },
-            { title: "Todos los datos, una misma lectura", copy: "Indicadores clínicos, operativos y financieros conectados en el mismo tablero." },
-            { title: "El contexto justo", copy: "Filtrá por período, financiador, especialidad, territorio o cualquier dimensión relevante." },
+            {
+              title: "De la red al detalle",
+              copy: "Vistas por holding, entidad jurídica, sede, servicio, profesional o paciente.",
+            },
+            {
+              title: "Todos los datos, una misma lectura",
+              copy: "Indicadores clínicos, operativos y financieros conectados en el mismo tablero.",
+            },
+            {
+              title: "El contexto justo",
+              copy: "Filtrá por período, financiador, especialidad, territorio o cualquier dimensión relevante.",
+            },
           ]}
         />
       </SplitFeature>
@@ -199,21 +204,26 @@ export default function AnalyticsPage() {
         mediaSide="left"
         copy="Las alertas no deberían ser solo una señal roja. Zonda ayuda a identificar el desvío, entender a quién afecta y seguir qué se hizo para resolverlo."
         media={
-          <Image
-            src="/assets/solutions/analitics/anomaly.png"
+          <FeatureShot
+            src="/assets/solutions/analitics/feature-2.png"
             alt="Anomalía detectada por un monto y una ubicación sospechosa"
-            width={1503}
-            height={1047}
-            sizes={splitImageSizes}
-            className={splitImageClassName}
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Señales operativas", copy: "Tiempos de espera, picos de consultas, capacidad o desvíos de facturación que salen de rango." },
-            { title: "Patrones que no se ven en una planilla", copy: "Tendencias clínicas y operativas detectadas al cruzar múltiples fuentes y períodos." },
-            { title: "Seguimiento de cada excepción", copy: "Historial de la alerta, su contexto y las acciones tomadas para resolverla." },
+            {
+              title: "Señales operativas",
+              copy: "Tiempos de espera, picos de consultas, capacidad o desvíos de facturación que salen de rango.",
+            },
+            {
+              title: "Patrones que no se ven en una planilla",
+              copy: "Tendencias clínicas y operativas detectadas al cruzar múltiples fuentes y períodos.",
+            },
+            {
+              title: "Seguimiento de cada excepción",
+              copy: "Historial de la alerta, su contexto y las acciones tomadas para resolverla.",
+            },
           ]}
         />
       </SplitFeature>
@@ -222,21 +232,26 @@ export default function AnalyticsPage() {
         title="Cada número se puede seguir hasta su origen"
         copy="La analítica es confiable cuando el camino del dato también es visible. Zonda permite observar cómo entra la información, cómo se transforma y dónde impacta."
         media={
-          <Image
-            src="/assets/solutions/analitics/mismatch.png"
+          <FeatureShot
+            src="/assets/solutions/analitics/feature-3.png"
             alt="Profesional conectado a documentación, medicación, agenda, institución y prácticas, con dos fuentes desconectadas"
-            width={1254}
-            height={1254}
-            sizes={splitImageSizes}
-            className={splitImageClassName}
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Integraciones bajo observación", copy: "Volumen de transacciones, estado y performance de cada conexión activa." },
-            { title: "Calidad por fuente", copy: "Identificá campos incompletos, inconsistencias y cambios en los datos antes de que afecten un reporte." },
-            { title: "Trazabilidad hasta el evento", copy: "Desde un indicador podés volver a las transacciones, eventos y fuentes que explican ese resultado." },
+            {
+              title: "Integraciones bajo observación",
+              copy: "Volumen de transacciones, estado y performance de cada conexión activa.",
+            },
+            {
+              title: "Calidad por fuente",
+              copy: "Identificá campos incompletos, inconsistencias y cambios en los datos antes de que afecten un reporte.",
+            },
+            {
+              title: "Trazabilidad hasta el evento",
+              copy: "Desde un indicador podés volver a las transacciones, eventos y fuentes que explican ese resultado.",
+            },
           ]}
         />
       </SplitFeature>

@@ -6,6 +6,7 @@ import {
   BenefitStories,
   CapabilityGrid,
   FaqList,
+  FeatureShot,
   SplitFeature,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
@@ -35,7 +36,7 @@ const benefits = [
     copy: "El mismo paciente registrado en un hospital, laboratorio y financiador se reconoce como una sola persona.",
     media: (
       <Image
-        src="/assets/solutions/identity/patient-data-pills-rectangular.png"
+        src="/assets/solutions/identity/benefit-1.png"
         alt="Perfil único de una paciente conectado a familiares, pagos, turnos, ubicación, estudios y atención médica"
         fill
         className="object-cover"
@@ -48,7 +49,7 @@ const benefits = [
     copy: "Matrícula, especialidades y vínculos de trabajo en un perfil que acompaña al profesional entre organizaciones.",
     media: (
       <Image
-        src="/assets/solutions/identity/profesional-data.png"
+        src="/assets/solutions/identity/benefit-2.png"
         alt="Perfil profesional con matrícula 12331 verificada: Juan Dumas, médico clínico, Guatemala 4953"
         fill
         className="object-cover"
@@ -61,7 +62,7 @@ const benefits = [
     copy: "Holdings, entidades jurídicas, sedes, servicios y equipos representados con su jerarquía real.",
     media: (
       <Image
-        src="/assets/solutions/identity/multiorg.png"
+        src="/assets/solutions/identity/benefit-3.png"
         alt="Una organización conectada a sus sedes: hospitales, centros de salud, atención domiciliaria y ambulancias"
         fill
         className="object-cover"
@@ -90,7 +91,9 @@ function FeatureDetails({
     <dl className="mt-8 grid max-w-lg gap-6">
       {items.map((item) => (
         <div key={item.title}>
-          <dt className="text-sm font-semibold text-foreground">{item.title}</dt>
+          <dt className="text-sm font-semibold text-foreground">
+            {item.title}
+          </dt>
           <dd className="mt-1 text-sm leading-6 text-muted-foreground">
             {item.copy}
           </dd>
@@ -152,21 +155,26 @@ export default function IdentityPage() {
         title="Identidad de pacientes"
         copy="Una atención segura empieza por saber que la información pertenece a la persona correcta, aunque haya pasado por varios sistemas y momentos de atención."
         media={
-          <Image
-            src="/assets/solutions/identity/patient-verified.png"
+          <FeatureShot
+            src="/assets/solutions/identity/feature-1.png"
             alt="Paciente con identidad verificada junto a su documento nacional de identidad argentino"
-            width={1080}
-            height={1080}
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="h-auto w-full rounded-[1.5rem] object-cover"
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Relacioná identidades entre fuentes", copy: "Documento, datos demográficos y cobertura para reconocer a la misma persona." },
-            { title: "Conservá una historia longitudinal", copy: "La información clínica y operativa se acumula sobre un único registro de paciente." },
-            { title: "Auditá cada acceso", copy: "Consentimientos y accesos vinculados al paciente para saber quién consultó o modificó información." },
+            {
+              title: "Relacioná identidades entre fuentes",
+              copy: "Documento, datos demográficos y cobertura para reconocer a la misma persona.",
+            },
+            {
+              title: "Conservá una historia longitudinal",
+              copy: "La información clínica y operativa se acumula sobre un único registro de paciente.",
+            },
+            {
+              title: "Auditá cada acceso",
+              copy: "Consentimientos y accesos vinculados al paciente para saber quién consultó o modificó información.",
+            },
           ]}
         />
       </SplitFeature>
@@ -176,21 +184,26 @@ export default function IdentityPage() {
         mediaSide="left"
         copy="El perfil profesional no debería reconstruirse en cada alta. Zonda conserva las credenciales y los vínculos que permiten a cada organización operar con confianza."
         media={
-          <Image
-            src="/assets/solutions/identity/doctor-profile.png"
+          <FeatureShot
+            src="/assets/solutions/identity/feature-2.png"
             alt="Perfil de profesional con matrícula 12331 y datos verificados: Juan Dumas, médico clínico, Guatemala 4953"
-            width={1402}
-            height={1122}
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="h-auto w-full rounded-[1.5rem] object-cover"
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Un perfil profesional completo", copy: "Matrícula, especialidades y credenciales reunidas en una misma identidad." },
-            { title: "Vínculos que reflejan la realidad", copy: "Un profesional puede trabajar con múltiples organizaciones y financiadores sin perder su contexto." },
-            { title: "Altas más simples", copy: "Cada organización puede usar la identidad existente como base para habilitar y gestionar su relación laboral." },
+            {
+              title: "Un perfil profesional completo",
+              copy: "Matrícula, especialidades y credenciales reunidas en una misma identidad.",
+            },
+            {
+              title: "Vínculos que reflejan la realidad",
+              copy: "Un profesional puede trabajar con múltiples organizaciones y financiadores sin perder su contexto.",
+            },
+            {
+              title: "Altas más simples",
+              copy: "Cada organización puede usar la identidad existente como base para habilitar y gestionar su relación laboral.",
+            },
           ]}
         />
       </SplitFeature>
@@ -199,23 +212,34 @@ export default function IdentityPage() {
         title="Identidad de organizaciones y accesos"
         copy="La estructura de una organización define quién puede hacer qué, dónde y sobre qué información. Zonda la modela para que los permisos acompañen la operación real."
         media={
-          <Image
-            src="/assets/solutions/identity/staff.png"
+          <FeatureShot
+            src="/assets/solutions/identity/feature-3.png"
             alt="Gestión de integrantes de una clínica con roles como Director Médico, Médico, Enfermería, Administración y Auditor, y su estado de acceso"
-            width={1254}
-            height={1254}
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="h-auto w-full rounded-[1.5rem] object-cover"
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Modelá tu estructura real", copy: "Holding, entidades, sedes, servicios y equipos en una misma jerarquía." },
-            { title: "Gestioná cada alta", copy: "Legajo, matrícula y alertas de vencimiento para cada integrante del equipo." },
-            { title: "Asigná con contexto", copy: "Disponibilidad y asignaciones por sede, zona y especialidad, con historial de cambios." },
-            { title: "Definí permisos precisos", copy: "Accesos por rol y sede, con auditoría de quién hizo qué y cuándo." },
-            { title: "Conectá aplicaciones", copy: "OAuth 2.0 para herramientas propias y de terceros que necesitan operar de forma segura." },
+            {
+              title: "Modelá tu estructura real",
+              copy: "Holding, entidades, sedes, servicios y equipos en una misma jerarquía.",
+            },
+            {
+              title: "Gestioná cada alta",
+              copy: "Legajo, matrícula y alertas de vencimiento para cada integrante del equipo.",
+            },
+            {
+              title: "Asigná con contexto",
+              copy: "Disponibilidad y asignaciones por sede, zona y especialidad, con historial de cambios.",
+            },
+            {
+              title: "Definí permisos precisos",
+              copy: "Accesos por rol y sede, con auditoría de quién hizo qué y cuándo.",
+            },
+            {
+              title: "Conectá aplicaciones",
+              copy: "OAuth 2.0 para herramientas propias y de terceros que necesitan operar de forma segura.",
+            },
           ]}
         />
       </SplitFeature>

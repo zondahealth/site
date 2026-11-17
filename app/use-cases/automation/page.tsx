@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
-import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
 import {
   BenefitStories,
   FaqList,
+  FeatureShot,
   InlineLink,
   SplitFeature,
   Testimonial,
@@ -27,43 +27,46 @@ export const metadata: Metadata = {
   },
 };
 
+const benefitImageSizes =
+  "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
+
 const benefits = [
   {
     title: "Datos que llegan listos para operar",
     copy: "Información de sistemas, financiadores, profesionales y organizaciones ordenada alrededor de pacientes, prestaciones, coberturas y equipos.",
-    // Archivo final sugerido: public/assets/use-cases/automation/benefit-1.png
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Datos de atención, cobertura y operación conectados alrededor de una prestación."
+      <Image
+        src="/assets/solutions/automation/benefit-1.png"
+        alt="Datos de atención, cobertura y operación conectados alrededor de una prestación."
         fill
+        sizes={benefitImageSizes}
+        className="object-cover"
       />
     ),
   },
   {
     title: "Decisiones que no esperan una revisión manual",
     copy: "Cuando cambia una visita, llega un resultado, se aprueba una cobertura o falta información, el flujo adecuado puede continuar con contexto.",
-    // Archivo final sugerido: public/assets/use-cases/automation/benefit-2.png
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Evento clínico u operativo que activa una decisión y la siguiente acción."
+      <Image
+        src="/assets/solutions/automation/benefit-2.png"
+        alt="Evento clínico u operativo que activa una decisión y la siguiente acción."
         fill
+        sizes={benefitImageSizes}
+        className="object-cover"
       />
     ),
   },
   {
     title: "Procesos que se conectan entre sí",
     copy: "Validar, solicitar lo pendiente, asignar, notificar y actualizar estados puede formar parte de un mismo recorrido.",
-    // Archivo final sugerido: public/assets/use-cases/automation/benefit-3.png
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Secuencia conectada de validación, asignación, comunicación y actualización de estado."
+      <Image
+        src="/assets/solutions/automation/benefit-3.png"
+        alt="Secuencia conectada de validación, asignación, comunicación y actualización de estado."
         fill
+        sizes={benefitImageSizes}
+        className="object-cover"
       />
     ),
   },
@@ -101,7 +104,9 @@ function FeatureDetails({
     <dl className="mt-8 grid max-w-lg gap-6">
       {items.map((item) => (
         <div key={item.title}>
-          <dt className="text-sm font-semibold text-foreground">{item.title}</dt>
+          <dt className="text-sm font-semibold text-foreground">
+            {item.title}
+          </dt>
           <dd className="mt-1 text-sm leading-6 text-muted-foreground">
             {item.copy}
           </dd>
@@ -145,20 +150,26 @@ export default function AutomationPage() {
         title="Construí sobre una operación ya conectada"
         copy="No hace falta empezar de cero. La API de Zonda permite incorporar datos y acciones de tus sistemas actuales a una capa común, con identidades, permisos y trazabilidad consistentes."
         media={
-          // Archivo final sugerido: public/assets/use-cases/automation/feature-1.png
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="Sistemas clínicos, administrativos y financieros conectados a pacientes, profesionales, coberturas y prestaciones."
-            className="rounded-[1.5rem]"
+          <FeatureShot
+            src="/assets/solutions/automation/feature-1.png"
+            alt="Sistemas clínicos, administrativos y financieros conectados a pacientes, profesionales, coberturas y prestaciones."
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Conectá tus sistemas", copy: "Incorporá datos y acciones de las herramientas que ya forman parte de tu operación." },
-            { title: "Usá información normalizada", copy: "Pacientes, profesionales, organizaciones, catálogos y prestaciones relacionados en entidades reutilizables." },
-            { title: "Convertí eventos en acciones", copy: "Una visita confirmada, un dato incompleto, una autorización o un pago pueden disparar la respuesta adecuada." },
+            {
+              title: "Conectá tus sistemas",
+              copy: "Incorporá datos y acciones de las herramientas que ya forman parte de tu operación.",
+            },
+            {
+              title: "Usá información normalizada",
+              copy: "Pacientes, profesionales, organizaciones, catálogos y prestaciones relacionados en entidades reutilizables.",
+            },
+            {
+              title: "Convertí eventos en acciones",
+              copy: "Una visita confirmada, un dato incompleto, una autorización o un pago pueden disparar la respuesta adecuada.",
+            },
           ]}
         />
       </SplitFeature>
@@ -168,20 +179,26 @@ export default function AutomationPage() {
         mediaSide="left"
         copy="Las validaciones, presentaciones, respuestas, conciliaciones y reclamos pueden seguir reglas consistentes y mantener su vínculo con la prestación original."
         media={
-          // Archivo final sugerido: public/assets/use-cases/automation/feature-2.png
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="Prestación conectada a validación, presentación, respuesta del financiador, conciliación y reclamo."
-            className="rounded-[1.5rem]"
+          <FeatureShot
+            src="/assets/solutions/automation/feature-2.png"
+            alt="Prestación conectada a validación, presentación, respuesta del financiador, conciliación y reclamo."
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Controles antes de avanzar", copy: "Verificaciones y requisitos aplicados cuando todavía es posible corregir información." },
-            { title: "Respuestas y reclamos con contexto", copy: "Cada diferencia conserva el vínculo con la prestación y la regla que la originó." },
-            { title: "Trazabilidad hasta el pago", copy: "La operación financiera se puede recorrer desde la atención hasta el ingreso." },
+            {
+              title: "Controles antes de avanzar",
+              copy: "Verificaciones y requisitos aplicados cuando todavía es posible corregir información.",
+            },
+            {
+              title: "Respuestas y reclamos con contexto",
+              copy: "Cada diferencia conserva el vínculo con la prestación y la regla que la originó.",
+            },
+            {
+              title: "Trazabilidad hasta el pago",
+              copy: "La operación financiera se puede recorrer desde la atención hasta el ingreso.",
+            },
           ]}
         />
       </SplitFeature>
@@ -190,20 +207,26 @@ export default function AutomationPage() {
         title="Coordinación de la atención que encuentra el siguiente paso"
         copy="Las reglas operativas pueden ayudar a encontrar qué hacer según especialidad, disponibilidad, cobertura, ubicación o prioridad, sin perder el contexto de cada caso."
         media={
-          // Archivo final sugerido: public/assets/use-cases/automation/feature-3.png
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="Visita que se asigna, se confirma y se reasigna según disponibilidad, ubicación y prioridad."
-            className="rounded-[1.5rem]"
+          <FeatureShot
+            src="/assets/solutions/automation/feature-3.png"
+            alt="Visita que se asigna, se confirma y se reasigna según disponibilidad, ubicación y prioridad."
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Asigná y reasigná", copy: "Profesionales según especialidad, disponibilidad, ubicación y condiciones de la atención." },
-            { title: "Seguí los casos que lo requieren", copy: "Los cambios y excepciones llegan al equipo indicado para que pueda intervenir a tiempo." },
-            { title: "Coordiná entre equipos", copy: "Instituciones, profesionales y equipos internos pueden trabajar sobre el mismo estado del caso." },
+            {
+              title: "Asigná y reasigná",
+              copy: "Profesionales según especialidad, disponibilidad, ubicación y condiciones de la atención.",
+            },
+            {
+              title: "Seguí los casos que lo requieren",
+              copy: "Los cambios y excepciones llegan al equipo indicado para que pueda intervenir a tiempo.",
+            },
+            {
+              title: "Coordiná entre equipos",
+              copy: "Instituciones, profesionales y equipos internos pueden trabajar sobre el mismo estado del caso.",
+            },
           ]}
         />
       </SplitFeature>
@@ -213,19 +236,26 @@ export default function AutomationPage() {
         mediaSide="left"
         copy="Las comunicaciones y los reportes responden a lo que está ocurriendo en la operación, no a que alguien recuerde actualizar una lista o enviar un mensaje."
         media={
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="Evento de atención que activa una comunicación, actualiza un tablero y deja trazabilidad del resultado."
-            className="rounded-[1.5rem]"
+          <FeatureShot
+            src="/assets/solutions/automation/feature-4.png"
+            alt="Evento de atención que activa una comunicación, actualiza un tablero y deja trazabilidad del resultado."
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Comunicaciones a tiempo", copy: "Recordatorios, confirmaciones, solicitudes de información y seguimiento posterior según el estado del proceso." },
-            { title: "Visibilidad sin fin de mes", copy: "Actividad, ingresos y excepciones disponibles por financiador, equipo o período mientras la operación ocurre." },
-            { title: "Información lista para decidir", copy: "Segmentos y reportes que permiten detectar casos específicos y actuar antes." },
+            {
+              title: "Comunicaciones a tiempo",
+              copy: "Recordatorios, confirmaciones, solicitudes de información y seguimiento posterior según el estado del proceso.",
+            },
+            {
+              title: "Visibilidad sin fin de mes",
+              copy: "Actividad, ingresos y excepciones disponibles por financiador, equipo o período mientras la operación ocurre.",
+            },
+            {
+              title: "Información lista para decidir",
+              copy: "Segmentos y reportes que permiten detectar casos específicos y actuar antes.",
+            },
           ]}
         />
       </SplitFeature>

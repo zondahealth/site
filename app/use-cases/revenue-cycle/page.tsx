@@ -4,6 +4,7 @@ import Image from "next/image";
 import {
   BenefitStories,
   FaqList,
+  FeatureShot,
   InlineLink,
   SplitFeature,
   Testimonial,
@@ -32,7 +33,7 @@ const benefits = [
     copy: "Las señales que merecen atención se hacen visibles mientras todavía es posible resolverlas con contexto.",
     media: (
       <Image
-        src="/assets/solutions/payments/doctor-connected.png"
+        src="/assets/solutions/payments/benefit-1.png"
         alt="Profesional conectado a documentación, medicación y prácticas, con señales que no pasan la validación"
         fill
         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
@@ -45,7 +46,7 @@ const benefits = [
     copy: "Los datos generados en la atención, la agenda y las coberturas siguen su recorrido sin trasladarlos entre sistemas.",
     media: (
       <Image
-        src="/assets/solutions/payments/updated.png"
+        src="/assets/solutions/payments/benefit-2.png"
         alt="Movimientos de ingreso y egreso actualizados automáticamente en los últimos minutos"
         fill
         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
@@ -58,7 +59,7 @@ const benefits = [
     copy: "Detrás de cada monto queda visible una prestación, una decisión, una respuesta y un destino.",
     media: (
       <Image
-        src="/assets/solutions/payments/settled.png"
+        src="/assets/solutions/payments/benefit-3.png"
         alt="Sesión liquidada de Juan Dumas por $12.003, con el número de cuenta confirmado"
         fill
         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
@@ -115,7 +116,9 @@ function FeatureDetails({
     <dl className="mt-8 grid max-w-lg gap-6">
       {items.map((item) => (
         <div key={item.title}>
-          <dt className="text-sm font-semibold text-foreground">{item.title}</dt>
+          <dt className="text-sm font-semibold text-foreground">
+            {item.title}
+          </dt>
           <dd className="mt-1 text-sm leading-6 text-muted-foreground">
             {item.copy}
           </dd>
@@ -158,21 +161,26 @@ export default function RevenueCyclePage() {
         title="La información conserva su contexto"
         copy="Cada prestación se vuelve parte de un registro vivo: paciente, profesional, financiador, práctica y evidencia permanecen relacionados durante todo el recorrido. Así, lo financiero puede entender lo asistencial sin pedir explicaciones de nuevo."
         media={
-          <Image
-            src="/assets/solutions/payments/connected-professional.png"
+          <FeatureShot
+            src="/assets/solutions/payments/feature-1.png"
             alt="Profesional en el centro de un flujo conectado con documentación, medicación, institución, agenda, prácticas y mensajes"
-            width={1254}
-            height={1254}
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="h-auto w-full rounded-[1.5rem] object-cover"
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Una prestación con identidad", copy: "Paciente, profesional, práctica, cobertura y documentación vinculados desde el momento de atención." },
-            { title: "El recorrido no se corta", copy: "La información sigue disponible para coordinación, auditoría, facturación y liquidación." },
-            { title: "El contexto acompaña la decisión", copy: "Cada equipo puede entender qué pasó sin reconstruir la historia entre planillas y mensajes." },
+            {
+              title: "Una prestación con identidad",
+              copy: "Paciente, profesional, práctica, cobertura y documentación vinculados desde el momento de atención.",
+            },
+            {
+              title: "El recorrido no se corta",
+              copy: "La información sigue disponible para coordinación, auditoría, facturación y liquidación.",
+            },
+            {
+              title: "El contexto acompaña la decisión",
+              copy: "Cada equipo puede entender qué pasó sin reconstruir la historia entre planillas y mensajes.",
+            },
           ]}
         />
       </SplitFeature>
@@ -182,21 +190,26 @@ export default function RevenueCyclePage() {
         copy="Las reglas de cada financiador forman parte de la operación, no de una checklist paralela. Cuando algo necesita revisión, aparece con el motivo y el contexto para resolverlo antes de que se convierta en una diferencia posterior."
         mediaSide="left"
         media={
-          <Image
-            src="/assets/solutions/payments/session-authorized.png"
+          <FeatureShot
+            src="/assets/solutions/payments/feature-2.png"
             alt="Póliza de Médica Salud con cobertura verificada, autorización aprobada y servicio autorizado"
-            width={1254}
-            height={1254}
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="h-auto w-full rounded-[1.5rem] object-cover"
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Cobertura y autorización visibles", copy: "La prestación se contrasta con las condiciones que aplican a esa persona y ese financiador." },
-            { title: "Reglas dentro del flujo", copy: "Nomenclador, documentación, frecuencia y presentación se aplican sin trasladarlas a una planilla aparte." },
-            { title: "Lo habitual avanza; lo excepcional encuentra contexto", copy: "La operación no debería detenerse por cada excepción. Zonda deja que el flujo continúe donde hay certeza y concentra la intervención humana donde realmente aporta valor." },
+            {
+              title: "Cobertura y autorización visibles",
+              copy: "La prestación se contrasta con las condiciones que aplican a esa persona y ese financiador.",
+            },
+            {
+              title: "Reglas dentro del flujo",
+              copy: "Nomenclador, documentación, frecuencia y presentación se aplican sin trasladarlas a una planilla aparte.",
+            },
+            {
+              title: "Lo habitual avanza; lo excepcional encuentra contexto",
+              copy: "La operación no debería detenerse por cada excepción. Zonda deja que el flujo continúe donde hay certeza y concentra la intervención humana donde realmente aporta valor.",
+            },
           ]}
         />
       </SplitFeature>
@@ -205,21 +218,26 @@ export default function RevenueCyclePage() {
         title="El ingreso sigue siendo entendible después de facturar"
         copy="Presentar no cierra la historia. Zonda mantiene visible qué ocurrió con cada prestación y permite entender el recorrido completo hasta su resolución y liquidación."
         media={
-          <Image
-            src="/assets/solutions/payments/dashboard-payment.png"
+          <FeatureShot
+            src="/assets/solutions/payments/feature-3.png"
             alt="Panel de Médica Salud con ingresos, egresos y categorías como reembolsos, nómina y facturas"
-            width={1254}
-            height={1254}
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="h-auto w-full rounded-[1.5rem] object-cover"
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Seguimiento de punta a punta", copy: "Realización, facturación, presentación, respuesta, débito, cobro y liquidación en el mismo recorrido." },
-            { title: "Respuestas con contexto", copy: "Cada devolución o diferencia conserva el vínculo con la prestación que la originó." },
-            { title: "Liquidaciones entendibles", copy: "La información que explica un ingreso también permite determinar qué corresponde liquidar." },
+            {
+              title: "Seguimiento de punta a punta",
+              copy: "Realización, facturación, presentación, respuesta, débito, cobro y liquidación en el mismo recorrido.",
+            },
+            {
+              title: "Respuestas con contexto",
+              copy: "Cada devolución o diferencia conserva el vínculo con la prestación que la originó.",
+            },
+            {
+              title: "Liquidaciones entendibles",
+              copy: "La información que explica un ingreso también permite determinar qué corresponde liquidar.",
+            },
           ]}
         />
       </SplitFeature>
@@ -238,10 +256,10 @@ export default function RevenueCyclePage() {
               Las reglas de tu operación, centralizadas en un solo lugar.
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-foreground/75 sm:text-lg">
-              Cada organización puede definir convenios, reglas de facturación
-              y criterios de liquidación para sus prestadores. Zonda los
-              mantiene conectados a la operación para que cada prestación se
-              procese según las condiciones que le corresponden.
+              Cada organización puede definir convenios, reglas de facturación y
+              criterios de liquidación para sus prestadores. Zonda los mantiene
+              conectados a la operación para que cada prestación se procese
+              según las condiciones que le corresponden.
             </p>
             <div className="mx-auto mt-auto w-full max-w-7xl pt-10 sm:pt-14">
               <Image

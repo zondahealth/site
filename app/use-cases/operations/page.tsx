@@ -3,10 +3,10 @@ import Image from "next/image";
 
 import Glow from "@/components/ui/glow/Glow";
 import { ORBIT_BORDER_COLORS } from "@/components/ui/glow/colors";
-import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
 import {
   BenefitStories,
   FaqList,
+  FeatureShot,
   InlineLink,
   SplitFeature,
   Testimonial,
@@ -31,16 +31,20 @@ export const metadata: Metadata = {
   },
 };
 
+const benefitImageSizes =
+  "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
+
 const benefits = [
   {
     title: "Para quienes atienden",
     copy: "Agenda, pacientes y registros clínicos para trabajar en consultorio, en campo o entre ambos, sin volver a cargar la misma información.",
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Profesional con agenda, historial del paciente y registro clínico en un mismo flujo."
+      <Image
+        src="/assets/solutions/ops/benefit-1.png"
+        alt="Profesional con agenda, historial del paciente y registro clínico en un mismo flujo."
         fill
+        sizes={benefitImageSizes}
+        className="object-cover"
       />
     ),
   },
@@ -48,11 +52,12 @@ const benefits = [
     title: "Para quienes coordinan",
     copy: "Una vista compartida de agendas, equipos, permisos, estados y alertas para que la operación no dependa de llamadas ni planillas.",
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Equipo de coordinación con agendas, estados y alertas operativas."
+      <Image
+        src="/assets/solutions/ops/benefit-2.png"
+        alt="Equipo de coordinación con agendas, estados y alertas operativas."
         fill
+        sizes={benefitImageSizes}
+        className="object-cover"
       />
     ),
   },
@@ -60,11 +65,12 @@ const benefits = [
     title: "Para quienes necesitan conectarse",
     copy: "Conectá financiadores y sistemas actuales, o construí herramientas propias sobre la infraestructura y la API de Zonda.",
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Zonda conectando sistemas actuales, financiadores y herramientas propias."
+      <Image
+        src="/assets/solutions/ops/benefit-3.png"
+        alt="Zonda conectando sistemas actuales, financiadores y herramientas propias."
         fill
+        sizes={benefitImageSizes}
+        className="object-cover"
       />
     ),
   },
@@ -98,8 +104,6 @@ const faqItems = [
   },
 ];
 
-const splitImageClassName = "rounded-[1.5rem]";
-
 function FeatureDetails({
   items,
 }: {
@@ -109,7 +113,9 @@ function FeatureDetails({
     <dl className="mt-8 grid max-w-lg gap-6">
       {items.map((item) => (
         <div key={item.title}>
-          <dt className="text-sm font-semibold text-foreground">{item.title}</dt>
+          <dt className="text-sm font-semibold text-foreground">
+            {item.title}
+          </dt>
           <dd className="mt-1 text-sm leading-6 text-muted-foreground">
             {item.copy}
           </dd>
@@ -164,13 +170,27 @@ export default function OperationsPage() {
         id="profesionales"
         title="Atendé con el contexto del paciente siempre a mano"
         copy="Para profesionales que trabajan en consultorio, en domicilio o en campo. Zonda reúne la agenda, el historial y el estado de cada paciente para que la atención avance sin tareas administrativas repetidas."
-        media={<ImagePlaceholder width={1000} height={1000} label="Profesional con agenda, resumen del paciente y registro clínico estructurado." className={splitImageClassName} />}
+        media={
+          <FeatureShot
+            src="/assets/solutions/ops/feature-1.png"
+            alt="Profesional con agenda, resumen del paciente y registro clínico estructurado."
+          />
+        }
       >
         <FeatureDetails
           items={[
-            { title: "Registrá como hablás", copy: "Cargá evoluciones y observaciones en lenguaje natural; Zonda las estructura para que el equipo pueda usarlas." },
-            { title: "Consultá el contexto", copy: "El recorrido del paciente, sus tratamientos, pendientes y alertas antes y después de cada atención." },
-            { title: "Actualizá el estado", copy: "Una visita, práctica o seguimiento queda visible para coordinación en tiempo real." },
+            {
+              title: "Registrá como hablás",
+              copy: "Cargá evoluciones y observaciones en lenguaje natural; Zonda las estructura para que el equipo pueda usarlas.",
+            },
+            {
+              title: "Consultá el contexto",
+              copy: "El recorrido del paciente, sus tratamientos, pendientes y alertas antes y después de cada atención.",
+            },
+            {
+              title: "Actualizá el estado",
+              copy: "Una visita, práctica o seguimiento queda visible para coordinación en tiempo real.",
+            },
           ]}
         />
       </SplitFeature>
@@ -179,13 +199,27 @@ export default function OperationsPage() {
         title="Coordiná la operación sin perseguir la información"
         copy="Convertí la atención diaria en una operación visible y gestionable. Los responsables pueden organizar personas y recursos, mientras cada profesional recibe solo lo que necesita para trabajar."
         mediaSide="left"
-        media={<ImagePlaceholder width={1000} height={1000} label="Organización coordinando una agenda, equipos y alertas de atención." className={splitImageClassName} />}
+        media={
+          <FeatureShot
+            src="/assets/solutions/ops/feature-2.png"
+            alt="Organización coordinando una agenda, equipos y alertas de atención."
+          />
+        }
       >
         <FeatureDetails
           items={[
-            { title: "Organizá el día", copy: "Agendas, disponibilidad, asignaciones y cobertura de equipos desde un mismo lugar." },
-            { title: "Definí cómo trabaja cada equipo", copy: "Roles, sedes y permisos para que cada persona vea y haga lo que le corresponde." },
-            { title: "Intervení a tiempo", copy: "Estados, demoras y alertas operativas para anticiparte a los problemas." },
+            {
+              title: "Organizá el día",
+              copy: "Agendas, disponibilidad, asignaciones y cobertura de equipos desde un mismo lugar.",
+            },
+            {
+              title: "Definí cómo trabaja cada equipo",
+              copy: "Roles, sedes y permisos para que cada persona vea y haga lo que le corresponde.",
+            },
+            {
+              title: "Intervení a tiempo",
+              copy: "Estados, demoras y alertas operativas para anticiparte a los problemas.",
+            },
           ]}
         />
       </SplitFeature>
@@ -193,13 +227,27 @@ export default function OperationsPage() {
       <SplitFeature
         title="Un solo flujo para tratamientos, prácticas y cobros"
         copy="La relación con financiadores no debería crear un circuito manual por cada cobertura. Zonda conecta la atención con las reglas y respuestas necesarias para que la prestación llegue preparada al cobro."
-        media={<ImagePlaceholder width={1000} height={1000} label="Flujo de validación, autorización, prestación, facturación y cobro por financiador." className={splitImageClassName} />}
+        media={
+          <FeatureShot
+            src="/assets/solutions/ops/feature-3.png"
+            alt="Flujo de validación, autorización, prestación, facturación y cobro por financiador."
+          />
+        }
       >
         <FeatureDetails
           items={[
-            { title: "Validá antes de avanzar", copy: "Cobertura, autorizaciones y condiciones de cada tratamiento o práctica." },
-            { title: "Aplicá las reglas correctas", copy: "Documentación, frecuencia y nomenclador según cada financiador." },
-            { title: "Seguí cada ingreso", copy: "Cada prestación, desde su realización hasta la facturación, el cobro y la liquidación." },
+            {
+              title: "Validá antes de avanzar",
+              copy: "Cobertura, autorizaciones y condiciones de cada tratamiento o práctica.",
+            },
+            {
+              title: "Aplicá las reglas correctas",
+              copy: "Documentación, frecuencia y nomenclador según cada financiador.",
+            },
+            {
+              title: "Seguí cada ingreso",
+              copy: "Cada prestación, desde su realización hasta la facturación, el cobro y la liquidación.",
+            },
           ]}
         />
       </SplitFeature>
@@ -208,13 +256,27 @@ export default function OperationsPage() {
         title="Sumá Zonda a tu operación actual o construí sobre ella"
         copy="No hace falta empezar de cero. Zonda puede complementar los sistemas que tu organización ya usa o convertirse en la capa que unifica los nuevos procesos."
         mediaSide="left"
-        media={<ImagePlaceholder width={1000} height={1000} label="Diagrama de Zonda conectando sistemas clínicos, equipos, financiadores y herramientas propias por API." className={splitImageClassName} />}
+        media={
+          <FeatureShot
+            src="/assets/solutions/ops/feature-4.png"
+            alt="Diagrama de Zonda conectando sistemas clínicos, equipos, financiadores y herramientas propias por API."
+          />
+        }
       >
         <FeatureDetails
           items={[
-            { title: "Conectá lo que ya existe", copy: "HCE, ERP, facturación, sistemas de financiadores y otras fuentes de datos." },
-            { title: "Elegí el intercambio adecuado", copy: "API, conectores, eventos o archivos, según el proceso que necesites resolver." },
-            { title: "Construí sobre la plataforma", copy: "Productos internos, automatizaciones y tableros propios sobre la API de Zonda." },
+            {
+              title: "Conectá lo que ya existe",
+              copy: "HCE, ERP, facturación, sistemas de financiadores y otras fuentes de datos.",
+            },
+            {
+              title: "Elegí el intercambio adecuado",
+              copy: "API, conectores, eventos o archivos, según el proceso que necesites resolver.",
+            },
+            {
+              title: "Construí sobre la plataforma",
+              copy: "Productos internos, automatizaciones y tableros propios sobre la API de Zonda.",
+            },
           ]}
         />
       </SplitFeature>
@@ -222,24 +284,44 @@ export default function OperationsPage() {
       <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
           <div className="max-w-xl">
-            <h2 className="font-display text-3xl font-semibold leading-tight tracking-[-0.035em] text-foreground sm:text-5xl">De la atención al ingreso, sin perder el hilo</h2>
-            <p className="mt-5 text-base leading-8 text-muted-foreground sm:text-lg">Una prestación conserva su contexto clínico y operativo a medida que avanza por la organización.</p>
+            <h2 className="font-display text-3xl font-semibold leading-tight tracking-[-0.035em] text-foreground sm:text-5xl">
+              De la atención al ingreso, sin perder el hilo
+            </h2>
+            <p className="mt-5 text-base leading-8 text-muted-foreground sm:text-lg">
+              Una prestación conserva su contexto clínico y operativo a medida
+              que avanza por la organización.
+            </p>
           </div>
           <ol className="border-l border-border/80">
             <li className="relative pb-8 pl-8">
               <span className="absolute -left-[0.45rem] top-0 flex size-4 items-center justify-center rounded-full bg-secondary ring-4 ring-background" />
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-secondary">Atención</p>
-              <p className="mt-2 text-base leading-7 text-foreground/80">La atención registrada queda disponible para coordinación, auditoría y facturación sin una segunda carga.</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-secondary">
+                Atención
+              </p>
+              <p className="mt-2 text-base leading-7 text-foreground/80">
+                La atención registrada queda disponible para coordinación,
+                auditoría y facturación sin una segunda carga.
+              </p>
             </li>
             <li className="relative py-8 pl-8">
               <span className="absolute -left-[0.45rem] top-8 flex size-4 items-center justify-center rounded-full bg-secondary ring-4 ring-background" />
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-secondary">Control</p>
-              <p className="mt-2 text-base leading-7 text-foreground/80">Las excepciones y pendientes se detectan antes de convertirse en demoras, débitos o trabajo manual.</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-secondary">
+                Control
+              </p>
+              <p className="mt-2 text-base leading-7 text-foreground/80">
+                Las excepciones y pendientes se detectan antes de convertirse en
+                demoras, débitos o trabajo manual.
+              </p>
             </li>
             <li className="relative pt-8 pl-8">
               <span className="absolute -left-[0.45rem] top-8 flex size-4 items-center justify-center rounded-full bg-secondary ring-4 ring-background" />
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-secondary">Gestión</p>
-              <p className="mt-2 text-base leading-7 text-foreground/80">La organización puede medir el estado de la operación y el ciclo de pagos con información actualizada.</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-secondary">
+                Gestión
+              </p>
+              <p className="mt-2 text-base leading-7 text-foreground/80">
+                La organización puede medir el estado de la operación y el ciclo
+                de pagos con información actualizada.
+              </p>
             </li>
           </ol>
         </div>

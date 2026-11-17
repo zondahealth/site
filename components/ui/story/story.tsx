@@ -1,16 +1,16 @@
-import * as React from 'react';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import * as React from "react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-import { cn } from '@/components/ui/utils';
+import { cn } from "@/components/ui/utils";
 
-function StoryList({ className, ...props }: React.ComponentProps<'ul'>) {
+function StoryList({ className, ...props }: React.ComponentProps<"ul">) {
   return (
     <ul
       data-slot="story-list"
       className={cn(
-        'grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3',
-        className
+        "grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3",
+        className,
       )}
       {...props}
     />
@@ -50,41 +50,45 @@ function Story({
   );
 }
 
-function StoryMedia({ className, ...props }: React.ComponentProps<'div'>) {
+function StoryMedia({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="story-media"
       className={cn(
-        'relative aspect-video w-full overflow-hidden rounded-2xl bg-muted transition-[filter] duration-300',
-        'group-hover:brightness-[0.97]',
-        'group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-background',
-        className
+        "relative aspect-video w-full overflow-hidden rounded-2xl bg-muted",
+        "[&_img]:origin-center [&_img]:will-change-transform [&_img]:transition-transform [&_img]:duration-500 [&_img]:ease-out group-hover:[&_img]:scale-[1.04]",
+        "group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-background",
+        className,
       )}
       {...props}
     />
   );
 }
 
-function StoryTitle({ className, ...props }: React.ComponentProps<'h3'>) {
+function StoryTitle({ className, ...props }: React.ComponentProps<"h3">) {
   return (
     <h3
       data-slot="story-title"
       className={cn(
-        'font-display text-lg font-semibold leading-snug tracking-tight text-foreground sm:text-xl',
-        className
+        "font-display text-lg font-semibold leading-snug tracking-tight text-foreground sm:text-xl",
+        className,
       )}
       {...props}
     />
   );
 }
 
-function StoryCTA({ className, children, ...props }: React.ComponentProps<'span'>) {
+function StoryCTA({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"span">) {
   return (
     <span
       data-slot="story-cta"
       className={cn(
-        'inline-flex items-center gap-2.5 self-start text-sm font-medium text-foreground',
-        className
+        "inline-flex items-center gap-2.5 self-start text-sm font-medium text-foreground",
+        className,
       )}
       {...props}
     >

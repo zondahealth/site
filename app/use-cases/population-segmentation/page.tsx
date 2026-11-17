@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import {
   BenefitStories,
+  FeatureShot,
   SplitFeature,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
@@ -32,7 +33,7 @@ const benefits = [
     copy: "Zonda une historias clínicas, turnos, laboratorios, encuestas y padrones en un perfil por paciente, con identidad unificada.",
     media: (
       <Image
-        src="/assets/solutions/segmentation/unified-patient.png"
+        src="/assets/solutions/segmentation/benefit-1.png"
         alt="Perfil unificado de una paciente conectado a medicación, historia clínica, hospital, turnos, vacunas y signos vitales"
         fill
         className="object-cover"
@@ -45,7 +46,7 @@ const benefits = [
     copy: "Definí criterios una vez —edad, diagnóstico, resultados, última consulta o zona— y cada segmento se recalcula cuando cambia la información.",
     media: (
       <Image
-        src="/assets/solutions/segmentation/dynamic-segments.png"
+        src="/assets/solutions/segmentation/benefit-2.png"
         alt="Segmento dinámico con criterios de edad, diabetes ICD-10 E11 y sin consulta en más de 180 días, con 1.284 pacientes"
         fill
         className="object-cover"
@@ -58,7 +59,7 @@ const benefits = [
     copy: "Convertí un grupo priorizado en campañas, turnos, visitas o seguimientos desde la plataforma o vía API.",
     media: (
       <Image
-        src="/assets/solutions/segmentation/segmentation-action.png"
+        src="/assets/solutions/segmentation/benefit-3.png"
         alt="El segmento de pacientes de alto riesgo dispara campaña enviada, turnos programados y seguimiento iniciado"
         fill
         className="object-cover"
@@ -67,9 +68,6 @@ const benefits = [
     ),
   },
 ];
-
-const splitImageClassName = "h-auto w-full rounded-[1.5rem] object-cover";
-const splitImageSizes = "(min-width: 1024px) 50vw, 100vw";
 
 function FeatureDetails({
   items,
@@ -80,7 +78,9 @@ function FeatureDetails({
     <dl className="mt-8 grid max-w-lg gap-6">
       {items.map((item) => (
         <div key={item.title}>
-          <dt className="text-sm font-semibold text-foreground">{item.title}</dt>
+          <dt className="text-sm font-semibold text-foreground">
+            {item.title}
+          </dt>
           <dd className="mt-1 text-sm leading-6 text-muted-foreground">
             {item.copy}
           </dd>
@@ -151,21 +151,26 @@ export default function PopulationSegmentationPage() {
         title="Segmentá con datos que ya tenés"
         copy="Los datos de tu población ya existen, pero están repartidos en sistemas que no se hablan. Zonda los conecta y los normaliza para que puedas cruzarlos con confianza."
         media={
-          <Image
-            src="/assets/solutions/segmentation/unified-patient.png"
+          <FeatureShot
+            src="/assets/solutions/segmentation/feature-1.png"
             alt="Paciente unificada conectada a medicación, historia clínica, hospital, turnos, vacunas y signos vitales"
-            width={1497}
-            height={1051}
-            sizes={splitImageSizes}
-            className={splitImageClassName}
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Incorporá cada fuente", copy: "Historias clínicas, laboratorios, padrones de financiadores, encuestas y planillas." },
-            { title: "Hablá un idioma común", copy: "Diagnósticos, resultados y prestaciones normalizados para poder compararlos y combinarlos." },
-            { title: "Reconocé a cada persona", copy: "Deduplicación e identidad unificada aunque un paciente aparezca en distintas fuentes." },
+            {
+              title: "Incorporá cada fuente",
+              copy: "Historias clínicas, laboratorios, padrones de financiadores, encuestas y planillas.",
+            },
+            {
+              title: "Hablá un idioma común",
+              copy: "Diagnósticos, resultados y prestaciones normalizados para poder compararlos y combinarlos.",
+            },
+            {
+              title: "Reconocé a cada persona",
+              copy: "Deduplicación e identidad unificada aunque un paciente aparezca en distintas fuentes.",
+            },
           ]}
         />
       </SplitFeature>
@@ -175,21 +180,26 @@ export default function PopulationSegmentationPage() {
         copy="Explorá la población por riesgo, condición, territorio o cobertura. Empezá con una pregunta amplia y llegá hasta cada paciente que explica el resultado."
         mediaSide="left"
         media={
-          <Image
-            src="/assets/solutions/segmentation/health-panel.png"
+          <FeatureShot
+            src="/assets/solutions/segmentation/feature-2.png"
             alt="Panel de salud con 248 pacientes, 1.320 procedimientos y la evolución del estado clínico"
-            width={1254}
-            height={1254}
-            sizes={splitImageSizes}
-            className={splitImageClassName}
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Preguntá en lenguaje natural", copy: "Por ejemplo: pacientes con diabetes sin consulta reciente en una zona determinada." },
-            { title: "Cruzá lo clínico y lo operativo", copy: "Historias clínicas, turnos, laboratorios y padrones responden como una misma población." },
-            { title: "Llegá al detalle", copy: "De una tendencia o segmento al perfil de las personas que lo componen." },
+            {
+              title: "Preguntá en lenguaje natural",
+              copy: "Por ejemplo: pacientes con diabetes sin consulta reciente en una zona determinada.",
+            },
+            {
+              title: "Cruzá lo clínico y lo operativo",
+              copy: "Historias clínicas, turnos, laboratorios y padrones responden como una misma población.",
+            },
+            {
+              title: "Llegá al detalle",
+              copy: "De una tendencia o segmento al perfil de las personas que lo componen.",
+            },
           ]}
         />
       </SplitFeature>
@@ -198,21 +208,26 @@ export default function PopulationSegmentationPage() {
         title="Activá cada segmento"
         copy="Un segmento sirve cuando pone en marcha una acción concreta. Zonda permite llevar la priorización a los equipos, los pacientes y los sistemas que ya usás."
         media={
-          <Image
-            src="/assets/solutions/segmentation/segment-flow.png"
+          <FeatureShot
+            src="/assets/solutions/segmentation/feature-3.png"
             alt="Segmento de riesgo cardiovascular con recordatorio enviado, campaña de prevención incluida y flujo completado"
-            width={1254}
-            height={1254}
-            sizes={splitImageSizes}
-            className={splitImageClassName}
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Acompañá a cada grupo", copy: "Recordatorios, encuestas preconsulta y campañas adaptadas a la necesidad detectada." },
-            { title: "Priorizá la capacidad disponible", copy: "Turnos prioritarios, visitas domiciliarias o seguimientos para quienes más los necesitan." },
-            { title: "Conectá tus propios flujos", copy: "Exportá a FHIR, CSV o webhook para activar herramientas y procesos existentes." },
+            {
+              title: "Acompañá a cada grupo",
+              copy: "Recordatorios, encuestas preconsulta y campañas adaptadas a la necesidad detectada.",
+            },
+            {
+              title: "Priorizá la capacidad disponible",
+              copy: "Turnos prioritarios, visitas domiciliarias o seguimientos para quienes más los necesitan.",
+            },
+            {
+              title: "Conectá tus propios flujos",
+              copy: "Exportá a FHIR, CSV o webhook para activar herramientas y procesos existentes.",
+            },
           ]}
         />
       </SplitFeature>

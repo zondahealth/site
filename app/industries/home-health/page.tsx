@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
-import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
 import {
   BenefitStories,
+  FeatureShot,
   SectionIntro,
   SplitFeature,
   UseCaseHero,
@@ -36,19 +36,19 @@ const benefits = [
   {
     title: "El día, en una sola pantalla",
     copy: "Visitas, rutas y profesionales se asignan juntos. Sin planillas, sin llamados y sin duplicar el trabajo.",
-    src: "/assets/sectors/idom/benefit-1.png",
+    src: "/assets/industries/home-health/benefit-1.png",
     alt: "Ilustración de una notebook, el día de visitas en una sola pantalla",
   },
   {
     title: "De la visita al cobro",
     copy: "Lo que se registra en el domicilio sigue en el mismo flujo: validación, facturación y cobro. Sin volver a cargar nada.",
-    src: "/assets/sectors/idom/benefit-2.png",
+    src: "/assets/industries/home-health/benefit-2.png",
     alt: "Ilustración de una mano con billetes, de la visita al cobro",
   },
   {
     title: "Cada visita, lista para auditar",
     copy: "Ubicación, horario y prestaciones quedan registrados al instante, antes de presentarlos a la obra social.",
-    src: "/assets/sectors/idom/benefit-3.png",
+    src: "/assets/industries/home-health/benefit-3.png",
     alt: "Ilustración de una lupa sobre un ojo, cada visita lista para auditar",
   },
 ];
@@ -92,7 +92,9 @@ function FeatureDetails({
     <dl className="mt-8 grid max-w-lg gap-6">
       {items.map((item) => (
         <div key={item.title}>
-          <dt className="text-sm font-semibold text-foreground">{item.title}</dt>
+          <dt className="text-sm font-semibold text-foreground">
+            {item.title}
+          </dt>
           <dd className="mt-1 text-sm leading-6 text-muted-foreground">
             {item.copy}
           </dd>
@@ -116,7 +118,7 @@ export default function HomeHealthPage() {
         media={
           <div className="relative h-[340px] w-full sm:h-[460px] lg:h-full">
             <Image
-              src="/assets/sectors/idom/hero.png"
+              src="/assets/industries/home-health/hero.png"
               alt="Ilustración de una ambulancia y una camioneta de internación domiciliaria"
               width={1619}
               height={972}
@@ -188,19 +190,26 @@ export default function HomeHealthPage() {
         title="Organizá todas las visitas del día desde una sola pantalla."
         copy="Asigná profesionales según zona, disponibilidad y especialidad. Si alguien se enferma o surge una urgencia, reasigná en un click. Todo queda registrado."
         media={
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="Panel de coordinación para asignar visitas, rutas y profesionales durante el día."
-            className="rounded-[1.5rem]"
+          <FeatureShot
+            src="/assets/industries/home-health/feature-1.png"
+            alt="Panel de coordinación para asignar visitas, rutas y profesionales durante el día."
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "El día, a la vista", copy: "Vista de mapa o lista para organizar las visitas, rutas y equipos." },
-            { title: "Reasignación ante urgencias", copy: "Si cambia el día, las visitas pueden pasar rápido al profesional indicado." },
-            { title: "Capacidad en tiempo real", copy: "Sabé cuánto trabajo tiene cada profesional antes de asignar la próxima visita." },
+            {
+              title: "El día, a la vista",
+              copy: "Vista de mapa o lista para organizar las visitas, rutas y equipos.",
+            },
+            {
+              title: "Reasignación ante urgencias",
+              copy: "Si cambia el día, las visitas pueden pasar rápido al profesional indicado.",
+            },
+            {
+              title: "Capacidad en tiempo real",
+              copy: "Sabé cuánto trabajo tiene cada profesional antes de asignar la próxima visita.",
+            },
           ]}
         />
       </SplitFeature>
@@ -210,19 +219,26 @@ export default function HomeHealthPage() {
         copy="Recibe la visita asignada, sigue la mejor ruta, registra lo que hizo hablándole al teléfono y obtiene la firma del paciente. Todo desde la app, incluso sin internet."
         mediaSide="left"
         media={
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="Aplicación móvil del profesional con la visita, datos del paciente, ubicación, prestaciones y firma."
-            className="rounded-[1.5rem]"
+          <FeatureShot
+            src="/assets/industries/home-health/feature-2.png"
+            alt="Aplicación móvil del profesional con la visita, datos del paciente, ubicación, prestaciones y firma."
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Sin conexión, sin interrupciones", copy: "La app funciona sin internet y sincroniza la información cuando vuelve la señal." },
-            { title: "Registro en lenguaje natural", copy: "El profesional dicta la evolución por voz y Zonda la organiza." },
-            { title: "Presencia confirmada", copy: "La ubicación permite confirmar la llegada y el momento de la atención." },
+            {
+              title: "Sin conexión, sin interrupciones",
+              copy: "La app funciona sin internet y sincroniza la información cuando vuelve la señal.",
+            },
+            {
+              title: "Registro en lenguaje natural",
+              copy: "El profesional dicta la evolución por voz y Zonda la organiza.",
+            },
+            {
+              title: "Presencia confirmada",
+              copy: "La ubicación permite confirmar la llegada y el momento de la atención.",
+            },
           ]}
         />
       </SplitFeature>
@@ -231,19 +247,26 @@ export default function HomeHealthPage() {
         title="Auditoría lista antes de que cierre el día."
         copy="Sabé exactamente qué se hizo, dónde y cuándo. Si algo no coincide, te enterás enseguida, antes de que se convierta en un problema con la obra social."
         media={
-          <ImagePlaceholder
-            width={1000}
-            height={1000}
-            label="Línea de tiempo auditable de una visita con ubicación, horario, prestaciones, firma y estado de presentación."
-            className="rounded-[1.5rem]"
+          <FeatureShot
+            src="/assets/industries/home-health/feature-3.png"
+            alt="Línea de tiempo auditable de una visita con ubicación, horario, prestaciones, firma y estado de presentación."
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Registro verificable", copy: "Ubicación, horario y detalle de la visita quedan registrados automáticamente." },
-            { title: "Prestaciones confirmadas", copy: "Lo realizado en el domicilio queda asociado a la visita y a la documentación correspondiente." },
-            { title: "Información lista para presentar", copy: "El reporte queda disponible para facturar y auditar antes del cierre del día." },
+            {
+              title: "Registro verificable",
+              copy: "Ubicación, horario y detalle de la visita quedan registrados automáticamente.",
+            },
+            {
+              title: "Prestaciones confirmadas",
+              copy: "Lo realizado en el domicilio queda asociado a la visita y a la documentación correspondiente.",
+            },
+            {
+              title: "Información lista para presentar",
+              copy: "El reporte queda disponible para facturar y auditar antes del cierre del día.",
+            },
           ]}
         />
       </SplitFeature>

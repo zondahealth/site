@@ -1,4 +1,5 @@
 import type { ComponentProps, ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Check, ChevronDown, type LucideIcon } from "lucide-react";
 
@@ -20,6 +21,36 @@ import {
   StoryTitle,
 } from "@/components/ui/story/story";
 import { cn } from "@/components/ui/utils";
+
+const FEATURE_IMAGE_SIZES = "(min-width: 1024px) 50vw, 100vw";
+
+/** Square media for SplitFeature sections across industries and use-cases. */
+export function FeatureShot({
+  src,
+  alt,
+  className,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "relative aspect-square w-full overflow-hidden rounded-[1.5rem]",
+        className,
+      )}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className="object-cover"
+        sizes={FEATURE_IMAGE_SIZES}
+      />
+    </div>
+  );
+}
 
 type SectionIntroProps = {
   eyebrow?: string;

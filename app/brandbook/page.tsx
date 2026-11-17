@@ -1189,7 +1189,7 @@ export default function BrandbookPage() {
               </figure>
               <figure className="relative min-h-64 overflow-hidden rounded-lg border border-border bg-muted">
                 <Image
-                  src="/assets/sectors/gov/rosada.png"
+                  src="/assets/industries/government-public-sector/rosada.png"
                   alt="Grabado de la fachada de la Casa Rosada."
                   width={1274}
                   height={972}

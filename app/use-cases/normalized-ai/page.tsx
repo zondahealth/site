@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import {
   BenefitStories,
+  FeatureShot,
   SplitFeature,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
@@ -67,9 +68,6 @@ const agentBenefits = [
   },
 ];
 
-const splitImageClassName = "h-auto w-full rounded-[1.5rem] object-cover";
-const splitImageSizes = "(min-width: 1024px) 50vw, 100vw";
-
 function FeatureDetails({
   items,
 }: {
@@ -79,7 +77,9 @@ function FeatureDetails({
     <dl className="mt-8 grid max-w-lg gap-6">
       {items.map((item) => (
         <div key={item.title}>
-          <dt className="text-sm font-semibold text-foreground">{item.title}</dt>
+          <dt className="text-sm font-semibold text-foreground">
+            {item.title}
+          </dt>
           <dd className="mt-1 text-sm leading-6 text-muted-foreground">
             {item.copy}
           </dd>
@@ -127,21 +127,26 @@ export default function NormalizedAiPage() {
         title="Los datos de salud existen. La inteligencia, no."
         copy="Las organizaciones ya recolectan enormes volúmenes de información clínica, operativa y financiera. El problema es que esos datos viven en sistemas que nunca fueron diseñados para trabajar juntos."
         media={
-          <Image
-            src="/assets/solutions/ai/dashboard-centra-nube.png"
+          <FeatureShot
+            src="/assets/solutions/ai/feature-1.png"
             alt="Panel de Médica Salud con ingresos, egresos y categorías como reembolsos, nómina y facturas"
-            width={1254}
-            height={1254}
-            sizes={splitImageSizes}
-            className={splitImageClassName}
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Conectá las fuentes", copy: "Incorporá datos clínicos, operativos y financieros aunque vengan de sistemas y formatos distintos." },
-            { title: "Entendé las relaciones", copy: "Paciente, profesional, tratamiento, prestación y pago dejan de ser registros aislados." },
-            { title: "Usá un modelo común", copy: "La información queda preparada para análisis, automatizaciones y nuevas experiencias." },
+            {
+              title: "Conectá las fuentes",
+              copy: "Incorporá datos clínicos, operativos y financieros aunque vengan de sistemas y formatos distintos.",
+            },
+            {
+              title: "Entendé las relaciones",
+              copy: "Paciente, profesional, tratamiento, prestación y pago dejan de ser registros aislados.",
+            },
+            {
+              title: "Usá un modelo común",
+              copy: "La información queda preparada para análisis, automatizaciones y nuevas experiencias.",
+            },
           ]}
         />
       </SplitFeature>
@@ -151,21 +156,26 @@ export default function NormalizedAiPage() {
         mediaSide="left"
         copy="Dales a tus equipos un solo lugar para explorar qué está pasando, por qué está pasando y dónde tienen que actuar, sin armar cada dataset a mano."
         media={
-          <Image
-            src="/assets/solutions/payments/assistant-window.png"
+          <FeatureShot
+            src="/assets/solutions/ai/feature-2.png"
             alt="Asistente Zonda respondiendo que encontró 24 tratamientos que requieren seguimiento"
-            width={1254}
-            height={1254}
-            sizes={splitImageSizes}
-            className={splitImageClassName}
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Riesgo clínico", copy: "¿Qué pacientes pueden interrumpir su tratamiento y necesitan seguimiento?" },
-            { title: "Operación asistencial", copy: "¿Dónde se está trabando la atención y qué equipo tiene que intervenir?" },
-            { title: "Ciclo de ingresos", copy: "¿Por qué cambió un reintegro o qué prestaciones siguen pendientes?" },
+            {
+              title: "Riesgo clínico",
+              copy: "¿Qué pacientes pueden interrumpir su tratamiento y necesitan seguimiento?",
+            },
+            {
+              title: "Operación asistencial",
+              copy: "¿Dónde se está trabando la atención y qué equipo tiene que intervenir?",
+            },
+            {
+              title: "Ciclo de ingresos",
+              copy: "¿Por qué cambió un reintegro o qué prestaciones siguen pendientes?",
+            },
           ]}
         />
       </SplitFeature>
@@ -175,21 +185,26 @@ export default function NormalizedAiPage() {
         title="Cada paciente, con un perfil listo para usar"
         copy="Zonda reúne la información relevante de cada paciente en un perfil actualizado, para que el profesional pueda decidir sin recorrer una historia clínica fragmentada."
         media={
-          <Image
-            src="/assets/solutions/ai/patient-profile.png"
+          <FeatureShot
+            src="/assets/solutions/ai/feature-3.png"
             alt="Perfil de salud de una paciente: resumen clínico, alergias, medicación, condiciones y datos de contacto"
-            width={1254}
-            height={1254}
-            sizes={splitImageSizes}
-            className={splitImageClassName}
           />
         }
       >
         <FeatureDetails
           items={[
-            { title: "Lo clínicamente relevante", copy: "Medicaciones, alergias, signos vitales, condiciones y alertas en un mismo perfil." },
-            { title: "Un resumen para atender", copy: "El contexto que necesitás para el consultorio, asociado a cada paciente." },
-            { title: "Información al día", copy: "Snapshots periódicos para entender cómo está cada persona en este momento." },
+            {
+              title: "Lo clínicamente relevante",
+              copy: "Medicaciones, alergias, signos vitales, condiciones y alertas en un mismo perfil.",
+            },
+            {
+              title: "Un resumen para atender",
+              copy: "El contexto que necesitás para el consultorio, asociado a cada paciente.",
+            },
+            {
+              title: "Información al día",
+              copy: "Snapshots periódicos para entender cómo está cada persona en este momento.",
+            },
           ]}
         />
       </SplitFeature>

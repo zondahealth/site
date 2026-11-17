@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
-import { ImagePlaceholder } from "@/components/ui/image-placeholder/ImagePlaceholder";
 import {
   BenefitStories,
   FaqList,
+  FeatureShot,
   SplitFeature,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
@@ -26,19 +26,22 @@ export const metadata: Metadata = {
   },
 };
 
+const benefitImageSizes =
+  "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
+
 const benefits = [
   {
     title: "Interoperabilidad que sirve a la operación",
     copy: "HIS, LIS, RIS, ERP, facturación y sistemas externos conectados sin obligar a reemplazar cada herramienta.",
     href: "/use-cases/normalized-ai",
     cta: "Ver IA normalizada",
-    // Archivo final sugerido: public/assets/industries/hospitals/benefit-1.png
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Sistemas hospitalarios y fuentes externas conectados a una capa común de datos."
+      <Image
+        src="/assets/industries/hospitals/benefit-1.png"
+        alt="Sistemas hospitalarios y fuentes externas conectados a una capa común de datos."
         fill
+        className="object-cover"
+        sizes={benefitImageSizes}
       />
     ),
   },
@@ -47,13 +50,13 @@ const benefits = [
     copy: "Notas, resultados, medicaciones y prestaciones disponibles en un perfil longitudinal, aunque provengan de distintos servicios.",
     href: "/use-cases/identity",
     cta: "Ver identidad",
-    // Archivo final sugerido: public/assets/industries/hospitals/benefit-2.png
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Historia clínica hospitalaria que reúne notas, estudios, tratamientos y prestaciones."
+      <Image
+        src="/assets/industries/hospitals/benefit-2.png"
+        alt="Historia clínica hospitalaria que reúne notas, estudios, tratamientos y prestaciones."
         fill
+        className="object-cover"
+        sizes={benefitImageSizes}
       />
     ),
   },
@@ -62,13 +65,13 @@ const benefits = [
     copy: "Tiempos, ocupación, actividad, ingresos y excepciones conectados con los eventos que los originan.",
     href: "/use-cases/analytics",
     cta: "Ver analítica",
-    // Archivo final sugerido: public/assets/industries/hospitals/benefit-3.png
     media: (
-      <ImagePlaceholder
-        width={1280}
-        height={720}
-        label="Tablero hospitalario que conecta actividad clínica, operación, ingresos y alertas."
+      <Image
+        src="/assets/industries/hospitals/benefit-3.png"
+        alt="Tablero hospitalario que conecta actividad clínica, operación, ingresos y alertas."
         fill
+        className="object-cover"
+        sizes={benefitImageSizes}
       />
     ),
   },
@@ -82,8 +85,7 @@ const faqItems = [
   },
   {
     question: "¿Qué estándares soporta?",
-    answer:
-      "FHIR R4, HL7v2, CSV, API REST; normalización LOINC e ICD-10.",
+    answer: "FHIR R4, HL7v2, CSV, API REST; normalización LOINC e ICD-10.",
   },
   {
     question: "¿Qué sistemas puede conectar un hospital?",
@@ -102,20 +104,10 @@ const faqItems = [
   },
 ];
 
-function Shot({ label }: { label: string }) {
-  return (
-    <ImagePlaceholder
-      width={1200}
-      height={900}
-      label={label}
-      className="rounded-[1.5rem]"
-    />
-  );
-}
-
 const features = [
   {
-    title: "Todos los sistemas siguen hablando, pero dejan de trabajar aislados",
+    title:
+      "Todos los sistemas siguen hablando, pero dejan de trabajar aislados",
     copy: "Un hospital no necesita una herramienta más: necesita que las que ya usa compartan contexto. Zonda conecta los datos de origen y los organiza alrededor de pacientes, profesionales, prestaciones y organizaciones.",
     details: [
       {
@@ -131,9 +123,8 @@ const features = [
         copy: "Zonda complementa los procesos actuales y habilita nuevos flujos donde hoy hay información fragmentada.",
       },
     ],
-    // Archivo final sugerido: public/assets/sectors/hospital/feature-1.png
-    label:
-      "Sistemas hospitalarios, laboratorios, farmacia, facturación y financiadores conectados a un modelo común.",
+    src: "/assets/industries/hospitals/feature-1.png",
+    alt: "Sistemas hospitalarios, laboratorios, farmacia, facturación y financiadores conectados a un modelo común.",
   },
   {
     title: "El registro clínico deja de ser texto perdido",
@@ -152,12 +143,12 @@ const features = [
         copy: "El equipo que recibe al paciente accede al contexto relevante sin reconstruir su historia desde cero.",
       },
     ],
-    // Archivo final sugerido: public/assets/sectors/hospital/feature-2.png
-    label:
-      "Perfil clínico hospitalario que reúne evoluciones, estudios, medicaciones y alertas del paciente.",
+    src: "/assets/industries/hospitals/feature-2.png",
+    alt: "Perfil clínico hospitalario que reúne evoluciones, estudios, medicaciones y alertas del paciente.",
   },
   {
-    title: "La operación hospitalaria se vuelve visible antes de que haya que preguntar",
+    title:
+      "La operación hospitalaria se vuelve visible antes de que haya que preguntar",
     copy: "Los datos clínicos, operativos y financieros pueden leerse juntos para entender qué está pasando en guardia, internación, consultorios y servicios de apoyo.",
     details: [
       {
@@ -173,12 +164,12 @@ const features = [
         copy: "Desde un indicador hasta las transacciones y fuentes que lo componen, sin depender de una planilla paralela.",
       },
     ],
-    // Archivo final sugerido: public/assets/sectors/hospital/feature-3.png
-    label:
-      "Tablero hospitalario de actividad, ocupación, tiempos de atención e ingresos con alertas explicables.",
+    src: "/assets/industries/hospitals/feature-3.png",
+    alt: "Tablero hospitalario de actividad, ocupación, tiempos de atención e ingresos con alertas explicables.",
   },
   {
-    title: "Cada prestación puede verificarse antes de convertirse en una diferencia",
+    title:
+      "Cada prestación puede verificarse antes de convertirse en una diferencia",
     copy: "Cuando autorización, atención, documentación, facturación y pago conservan su vínculo, los equipos pueden prevenir errores, débitos y situaciones de riesgo con evidencia en lugar de intuición.",
     details: [
       {
@@ -194,9 +185,8 @@ const features = [
         copy: "Cada importe conserva el recorrido que lo explica, desde la atención hasta el cobro y la liquidación.",
       },
     ],
-    // Archivo final sugerido: public/assets/sectors/hospital/feature-4.png
-    label:
-      "Recorrido de una prestación hospitalaria desde la autorización y atención hasta la facturación, cobro y auditoría.",
+    src: "/assets/industries/hospitals/feature-4.png",
+    alt: "Recorrido de una prestación hospitalaria desde la autorización y atención hasta la facturación, cobro y auditoría.",
   },
   {
     title: "Identidades, equipos y permisos que reflejan el hospital real",
@@ -215,9 +205,8 @@ const features = [
         copy: "Permisos por rol, servicio y sede con auditoría de quién vio o modificó información.",
       },
     ],
-    // Archivo final sugerido: public/assets/sectors/hospital/feature-5.png
-    label:
-      "Estructura hospitalaria con servicios, profesionales, roles y permisos conectados a información clínica y operativa.",
+    src: "/assets/industries/hospitals/feature-5.png",
+    alt: "Estructura hospitalaria con servicios, profesionales, roles y permisos conectados a información clínica y operativa.",
   },
 ];
 
@@ -230,7 +219,9 @@ function FeatureDetails({
     <dl className="mt-8 grid max-w-lg gap-6">
       {items.map((item) => (
         <div key={item.title}>
-          <dt className="text-sm font-semibold text-foreground">{item.title}</dt>
+          <dt className="text-sm font-semibold text-foreground">
+            {item.title}
+          </dt>
           <dd className="mt-1 text-sm leading-6 text-muted-foreground">
             {item.copy}
           </dd>
@@ -254,7 +245,7 @@ export default function HospitalsPage() {
         media={
           <div className="relative h-[300px] w-full sm:h-[400px] lg:h-full">
             <Image
-              src="/assets/sectors/hospital/hero.png"
+              src="/assets/industries/hospitals/hero.png"
               alt="Ilustración del edificio de un hospital"
               width={1774}
               height={887}
@@ -278,7 +269,7 @@ export default function HospitalsPage() {
           title={item.title}
           copy={item.copy}
           mediaSide={index % 2 === 1 ? "left" : "right"}
-          media={<Shot label={item.label} />}
+          media={<FeatureShot src={item.src} alt={item.alt} />}
         >
           <FeatureDetails items={item.details} />
         </SplitFeature>
@@ -289,7 +280,12 @@ export default function HospitalsPage() {
       <IndustryProducts
         title="Decisiones clínicas, operativas y financieras sobre la misma base."
         subtitle="Identidad, analítica, agentes y control de riesgo para lo que ya registra el hospital."
-        keys={["identity", "analytics", "normalized-ai", "fraud-risk-prevention"]}
+        keys={[
+          "identity",
+          "analytics",
+          "normalized-ai",
+          "fraud-risk-prevention",
+        ]}
       />
 
       <CtaBanner
