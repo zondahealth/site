@@ -33,8 +33,8 @@ const benefits = [
   {
     title: "Interoperabilidad que sirve a la operación",
     copy: "HIS, LIS, RIS, ERP, facturación y sistemas externos conectados sin obligar a reemplazar cada herramienta.",
-    href: "/use-cases/normalized-ai",
-    cta: "Ver IA normalizada",
+    href: "/use-cases/ai-agents",
+    cta: "Ver agentes de IA",
     media: (
       <Image
         src="/assets/industries/hospitals/benefit-1.png"
@@ -239,8 +239,6 @@ export default function HospitalsPage() {
         title="Un hospital conectado puede atender, operar y decidir mejor"
         copy={<span className="lg:block lg:max-w-[19rem]">{description}</span>}
         primary={{ label: "Hablemos", href: "/contact" }}
-        secondary={{ label: "Ver interoperabilidad", href: "/developers" }}
-        secondaryVariant="inverse"
         mediaClassName="overflow-visible"
         media={
           <div className="relative h-[300px] w-full sm:h-[400px] lg:h-full">
@@ -283,7 +281,7 @@ export default function HospitalsPage() {
         keys={[
           "identity",
           "analytics",
-          "normalized-ai",
+          "ai-agents",
           "fraud-risk-prevention",
         ]}
       />

@@ -29,7 +29,7 @@ export default function ContactPage() {
           <div
             data-slot="contact-hero-illustration"
             aria-hidden="true"
-            className="relative h-[240px] w-full max-w-3xl sm:h-[300px] lg:h-[360px]"
+            className="relative h-[120px] w-full max-w-3xl sm:h-[150px] lg:h-[180px]"
           />
 
           <header className="max-w-3xl text-center">
@@ -50,7 +50,10 @@ export default function ContactPage() {
             blur={20}
             opacity={0.55}
           >
-            <div className="rounded-[32px] p-1.5" style={{ background: orbitBorder }}>
+            <div
+              className="rounded-[32px] p-1.5"
+              style={{ background: orbitBorder }}
+            >
               <div className="rounded-[26px] bg-card p-6 text-foreground shadow-[0_30px_80px_rgba(4,18,48,0.2)] sm:p-10 lg:p-12">
                 <ContactForm />
               </div>

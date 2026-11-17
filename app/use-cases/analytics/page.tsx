@@ -100,8 +100,8 @@ function useCaseDescription(href: string) {
 
 const capabilities = [
   {
-    title: "IA normalizada",
-    href: "/use-cases/normalized-ai",
+    title: "Agentes de IA",
+    href: "/use-cases/ai-agents",
     icon: Sparkles,
   },
   { title: "Identidad", href: "/use-cases/identity", icon: Fingerprint },
@@ -147,8 +147,6 @@ export default function AnalyticsPage() {
         title="Entendé toda tu operación de salud, de punta a punta"
         copy={description}
         primary={{ label: "Hablemos", href: "/contact" }}
-        secondary={{ label: "Ver la API", href: "/developers" }}
-        secondaryVariant="inverse"
         mediaClassName="overflow-visible"
         media={
           <div className="flex h-full w-full items-end justify-center px-4 pt-28 sm:px-6 sm:pt-32 lg:justify-start lg:px-0">

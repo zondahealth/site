@@ -306,7 +306,7 @@ export default function GovernmentPublicSectorPage() {
         keys={[
           "fraud-risk-prevention",
           "multi-payer-care",
-          "normalized-ai",
+          "ai-agents",
           "population-segmentation",
         ]}
       />

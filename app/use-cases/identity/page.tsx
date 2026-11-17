@@ -128,8 +128,6 @@ export default function IdentityPage() {
         title="Una identidad confiable para cada paciente, profesional y organización"
         copy={description}
         primary={{ label: "Hablemos", href: "/contact" }}
-        secondary={{ label: "Ver la API", href: "/developers" }}
-        secondaryVariant="inverse"
         media={
           <div className="flex h-full w-full items-center justify-center px-4 pt-20 pb-6 sm:px-6 sm:pt-24">
             <Image

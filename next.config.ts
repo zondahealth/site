@@ -33,7 +33,14 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/desarrolladores",
-        destination: "/developers",
+        destination:
+          "https://zondahealth.readme.io",
+        permanent: true,
+      },
+      {
+        source: "/developers",
+        destination:
+          "https://zondahealth.readme.io",
         permanent: true,
       },
       {
@@ -43,12 +50,17 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/products/interoperabilidad",
-        destination: "/use-cases/normalized-ai",
+        destination: "/use-cases/ai-agents",
         permanent: true,
       },
       {
         source: "/use-cases/healthcare-intelligence-agents",
-        destination: "/use-cases/normalized-ai",
+        destination: "/use-cases/ai-agents",
+        permanent: true,
+      },
+      {
+        source: "/use-cases/normalized-ai",
+        destination: "/use-cases/ai-agents",
         permanent: true,
       },
       {

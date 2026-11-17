@@ -58,6 +58,39 @@ export default function Home() {
         }}
       />
       <Hero />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `(function(){
+  var imgs=document.querySelectorAll("[data-hero-asset]");
+  var pending=[];
+  for(var i=0;i<imgs.length;i++){
+    if(imgs[i].complete) continue;
+    if(getComputedStyle(imgs[i]).display==="none") continue;
+    pending.push(imgs[i]);
+  }
+  if(!pending.length) return;
+  if(!document.getElementById("hero-loading-veil")){
+    var veil=document.createElement("div");
+    veil.id="hero-loading-veil";
+    veil.setAttribute("aria-hidden","true");
+    document.body.appendChild(veil);
+  }
+  function hide(){
+    var node=document.getElementById("hero-loading-veil");
+    if(node) node.remove();
+  }
+  function settled(img){
+    var loaded=img.complete?Promise.resolve():new Promise(function(resolve){
+      img.addEventListener("load",function(){resolve();},{once:true});
+      img.addEventListener("error",function(){resolve();},{once:true});
+    });
+    return loaded.then(function(){return img.decode?img.decode().catch(function(){}):null;});
+  }
+  Promise.all(pending.map(settled)).then(hide);
+  setTimeout(hide,12000);
+})();`,
+        }}
+      />
       <Gradient
         colors={["#f6fbff", "#fffff1", "#ffffff", "#fffefa", "#f7fcff"]}
         className="flex flex-col gap-40 pt-24 sm:gap-48 sm:pt-28 lg:gap-56 lg:pt-36"

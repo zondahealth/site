@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Check } from "lucide-react";
 
 import { Pending } from "@/components/ui/pending/Pending";
 import {
@@ -28,6 +29,47 @@ export const metadata: Metadata = {
 
 const benefitImageSizes =
   "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
+
+const readyChecks = [
+  "Paciente elegible",
+  "Autorización válida",
+  "Práctica cubierta",
+  "Documentación completa",
+];
+
+function ReadyPrestacionVisual() {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center p-6">
+      <Image
+        src="/assets/bg/bg-card-blue.png"
+        alt=""
+        fill
+        sizes={benefitImageSizes}
+        className="object-cover"
+      />
+      <div className="relative w-full max-w-[18rem] rounded-2xl bg-white/90 p-5 shadow-lg backdrop-blur">
+        <ul className="grid gap-2.5">
+          {readyChecks.map((item) => (
+            <li
+              key={item}
+              className="flex items-center gap-2.5 text-sm text-foreground"
+            >
+              <Check
+                aria-hidden="true"
+                className="size-4 shrink-0 text-secondary"
+                strokeWidth={2.6}
+              />
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 rounded-full bg-secondary/10 px-3 py-1.5 text-center text-sm font-semibold text-foreground">
+          Prestación lista para cobrar
+        </p>
+      </div>
+    </div>
+  );
+}
 
 const benefits = [
   {
@@ -59,15 +101,7 @@ const benefits = [
   {
     title: "Las prestaciones llegan listas para cobrar",
     copy: "Lo que falta se ve antes de cerrar la atención. La organización no se entera del error cuando ya hay un débito.",
-    media: (
-      <Image
-        src="/assets/solutions/multipayer/benefit-3.png"
-        alt="Anomalía detectada en una prestación de -$22,237.18, categorizada como ubicación sospechosa"
-        fill
-        className="object-cover"
-        sizes={benefitImageSizes}
-      />
-    ),
+    media: <ReadyPrestacionVisual />,
   },
 ];
 
@@ -151,8 +185,8 @@ export default function MultiPayerCarePage() {
         copy="Una clínica o una red convive con muchas obras sociales y prepagas. Eso hoy significa integraciones, autorizaciones y presentaciones distintas para cada una. La carga se multiplica en administración y también en cada profesional."
         media={
           <FeatureShot
-            src="/assets/solutions/multipayer/feature-1.png"
-            alt="Zonda en el centro de una red de datos clínicos: historia clínica, equipo, sedes, vacunas, laboratorio, medicación y estudios"
+            src="/assets/solutions/multipayer/feature-2.png"
+            alt="Profesional rodeado de documentación, medicación, sedes, turnos, vacunas y mensajes, con algunas integraciones sin resolver"
           />
         }
       />
@@ -164,8 +198,8 @@ export default function MultiPayerCarePage() {
         mediaSide="left"
         media={
           <FeatureShot
-            src="/assets/solutions/multipayer/feature-2.png"
-            alt="Profesional rodeado de documentación, medicación, sedes, turnos, vacunas y mensajes, con algunas integraciones sin resolver"
+            src="/assets/solutions/multipayer/feature-1.png"
+            alt="Zonda en el centro de una red de datos clínicos: historia clínica, equipo, sedes, vacunas, laboratorio, medicación y estudios"
           />
         }
       />

@@ -133,8 +133,6 @@ export default function OperationsPage() {
         title="Una operación de salud, conectada de punta a punta"
         copy={description}
         primary={{ label: "Hablá con nuestro equipo", href: "/contact" }}
-        secondary={{ label: "Explorar la plataforma", href: "#profesionales" }}
-        secondaryVariant="inverse"
         mediaClassName="overflow-visible"
         media={
           <div className="flex h-full w-full items-center justify-center px-4 pt-20 pb-6 sm:px-6 sm:pt-24">

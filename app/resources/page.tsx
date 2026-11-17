@@ -15,7 +15,7 @@ import {
   StoryTitle,
 } from "@/components/ui/story/story";
 import { SectionIntro } from "@/components/use-cases/UseCasePrimitives";
-import { isLiveRoute } from "@/lib/navigation";
+import { DEVELOPERS_URL, isLiveRoute } from "@/lib/navigation";
 import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
 
 export const metadata: Metadata = {
@@ -92,12 +92,12 @@ const articles: { title: ReactNode; imageLabel: string }[] = [
 ];
 
 const topics = [
-  { label: "Interoperabilidad", href: "/use-cases/normalized-ai" },
+  { label: "Interoperabilidad", href: "/use-cases/ai-agents" },
   { label: "Fraude y riesgo", href: "/use-cases/fraud-risk-prevention" },
   { label: "Ciclo de ingresos", href: "/use-cases/revenue-cycle" },
   {
     label: "Agentes de inteligencia",
-    href: "/use-cases/normalized-ai",
+    href: "/use-cases/ai-agents",
   },
   {
     label: "Identidad y credenciales",
@@ -251,15 +251,13 @@ export default function ResourcesPage() {
             title="Para desarrolladores"
             copy="Documentación, quickstart y referencia de la API."
           />
-          {isLiveRoute("/developers") ? (
-            <Link
-              href="/developers"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-foreground underline-offset-4 outline-none hover:underline focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              Ir a Desarrolladores
-              <ArrowRight aria-hidden="true" className="size-4" />
-            </Link>
-          ) : null}
+          <Link
+            href={DEVELOPERS_URL}
+            className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-foreground underline-offset-4 outline-none hover:underline focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            Ir a Desarrolladores
+            <ArrowRight aria-hidden="true" className="size-4" />
+          </Link>
         </div>
       </section>
 

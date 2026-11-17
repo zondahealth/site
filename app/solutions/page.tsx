@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import {
+  DOCS_URL,
   industryGroups,
   isLiveRoute,
   useCaseGroups,
@@ -47,16 +48,12 @@ const faqItems = [
       <>
         Sí. Todo lo que hace la plataforma está disponible vía API y eventos
         en tiempo real.{" "}
-        {isLiveRoute("/developers") ? (
-          <Link
-            href="/developers"
-            className="font-medium text-primary underline-offset-4 hover:underline"
-          >
-            Ver desarrolladores
-          </Link>
-        ) : (
-          "Ver desarrolladores"
-        )}
+        <Link
+          href={DOCS_URL}
+          className="font-medium text-primary underline-offset-4 hover:underline"
+        >
+          Ver desarrolladores
+        </Link>
       </>
     ),
   },
@@ -145,8 +142,6 @@ export default function SolutionsPage() {
         title="Una plataforma. Todo el sistema de salud conectado."
         copy="Elegí por lo que querés resolver o por el tipo de organización que sos. Todas las soluciones corren sobre la misma capa de datos: identidad unificada, modelo canónico, transacción de salud conectada e integraciones con lo que ya usás."
         primary={{ label: "Contactar", href: "/contact" }}
-        secondary={{ label: "Ver la documentación", href: "/developers" }}
-        secondaryVariant="inverse"
       />
 
       <section

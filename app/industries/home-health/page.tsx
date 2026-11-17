@@ -27,8 +27,6 @@ export const metadata: Metadata = {
   },
 };
 
-const interdomHref = "/customer-stories/interdom";
-
 const benefitImageSizes =
   "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
 
@@ -112,8 +110,6 @@ export default function HomeHealthPage() {
         title="Todo tu equipo conectado, desde la oficina hasta el domicilio"
         copy={description}
         primary={{ label: "Hablemos", href: "/contact" }}
-        secondary={{ label: "Leer el caso Interdom", href: interdomHref }}
-        secondaryVariant="inverse"
         mediaClassName="overflow-visible"
         media={
           <div className="relative h-[340px] w-full sm:h-[460px] lg:h-full">

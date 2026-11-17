@@ -39,6 +39,8 @@ export type NavGroup = {
 
 export const LOGIN_URL = "https://azul.zondahealth.com"; // DECISIÓN NAV-2: confirmar URL de la app
 
+export const DEVELOPERS_URL = "https://zondahealth.readme.io";
+
 export const DOCS_URL =
   "https://zondahealth.readme.io/reference/getting-started-with-your-api";
 
@@ -47,12 +49,12 @@ export const useCaseGroups: NavGroup[] = [
     title: "Inteligencia y datos",
     items: [
       {
-        title: "IA y agentes",
-        href: "/use-cases/normalized-ai",
+        title: "Agentes de IA",
+        href: "/use-cases/ai-agents",
         status: "live",
         icon: Sparkles,
         description:
-          "Datos clínicos codificados (LOINC, ICD-10) y agentes que razonan sobre clínica, operación y finanzas.",
+          "Agentes que responden en lenguaje natural sobre datos clínicos, operativos y financieros conectados.",
       },
       {
         title: "Analítica",
@@ -202,7 +204,6 @@ export const industryGroups: NavGroup[] = [
 export const pages: NavLink[] = [
   { title: "Inicio", href: "/", status: "live" },
   { title: "Soluciones", href: "/solutions", status: "live" },
-  { title: "Desarrolladores", href: "/developers", status: "live" },
   { title: "Precios", href: "/pricing", status: "soon" },
   { title: "Recursos", href: "/resources", status: "live" },
   { title: "Historias de clientes", href: "/customer-stories", status: "live" },
@@ -286,9 +287,8 @@ export function getFooterColumns(): FooterColumn[] {
     {
       title: "Desarrolladores",
       links: [
-        { label: "Documentación", href: DOCS_URL },
+        { label: "Documentación", href: DEVELOPERS_URL },
         { label: "Referencia de la API", href: DOCS_URL },
-        { label: "Desarrolladores", href: "/developers" },
       ],
     },
     {

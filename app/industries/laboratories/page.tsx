@@ -35,8 +35,8 @@ const benefits = [
   {
     title: "Resultados que se entienden fuera del laboratorio",
     copy: "Terminología propia y resultados normalizados para que hospitales, profesionales y financiadores los puedan usar con contexto.",
-    href: "/use-cases/normalized-ai",
-    cta: "Ver IA normalizada",
+    href: "/use-cases/ai-agents",
+    cta: "Ver agentes de IA",
     media: (
       <Image
         src="/assets/industries/laboratories/benefit-1.png"
@@ -222,7 +222,7 @@ export default function LaboratoriesPage() {
       <IndustryProducts
         title="Del resultado al paciente correcto, y a quien tiene que actuar."
         subtitle="Normalización, identidad, analítica y automatización sobre cada estudio."
-        keys={["normalized-ai", "identity", "analytics", "automation"]}
+        keys={["ai-agents", "identity", "analytics", "automation"]}
       />
 
       <CtaBanner

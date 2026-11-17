@@ -1,18 +1,30 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import {
+  Activity,
+  BadgeCheck,
+  FileCheck2,
+  Receipt,
+  ShieldCheck,
+  Wallet,
+  type LucideIcon,
+} from "lucide-react";
 
 import {
   BenefitStories,
+  CapabilityGrid,
+  ChecklistSection,
   FaqList,
   FeatureShot,
   SplitFeature,
+  SectionIntro,
   UseCaseHero,
 } from "@/components/use-cases/UseCasePrimitives";
 import { CtaBanner } from "@/components/ui/cta-banner/CtaBanner";
 
 const title = "Fraude y prevención de riesgos en salud";
 const description =
-  "Conectá cada evento clínico, operativo y financiero para detectar inconsistencias antes de que se conviertan en pérdida.";
+  "Zonda conecta autorización, prestación, información clínica, facturación y liquidación para evaluar cada transacción de salud y detectar actividad sospechosa antes de que se convierta en pérdida.";
 
 export const metadata: Metadata = {
   title,
@@ -36,7 +48,7 @@ const benefitImageSizes =
 
 const benefits = [
   {
-    title: "Mirá lo que los sistemas desconectados no ven",
+    title: "Mirá lo que los sistemas aislados no ven",
     copy: "Relacioná datos operativos, clínicos y financieros para detectar inconsistencias que no aparecen cuando cada sistema se analiza por separado.",
     media: (
       <Image
@@ -49,8 +61,8 @@ const benefits = [
     ),
   },
   {
-    title: "Investigá con todo el contexto",
-    copy: "Dale al equipo de auditoría una vista única de la transacción, las señales detrás de la alerta y la evidencia para decidir.",
+    title: "Detectá patrones, no solo anomalías",
+    copy: "Conectá la actividad de toda la red para encontrar relaciones entre profesionales, pacientes y prestadores que una transacción aislada no muestra.",
     media: (
       <Image
         src="/assets/solutions/fraud/benefit-2.png"
@@ -62,8 +74,8 @@ const benefits = [
     ),
   },
   {
-    title: "Concentrá los controles donde el riesgo es mayor",
-    copy: "Evaluá las transacciones de forma continua y reservá los controles adicionales para los casos que realmente lo justifican.",
+    title: "El control se adapta al nivel de riesgo",
+    copy: "Las transacciones normales siguen con mínima fricción y los controles adicionales aparecen solo cuando las señales lo justifican.",
     media: (
       <Image
         src="/assets/solutions/fraud/benefit-3.png"
@@ -96,6 +108,71 @@ function FeatureDetails({
     </dl>
   );
 }
+
+const integrityChecks: { title: string; copy: string; icon: LucideIcon }[] = [
+  {
+    title: "Integridad de la autorización",
+    copy: "Prestaciones fuera del período autorizado, por encima de la frecuencia aprobada, fuera del plan terapéutico o sin una autorización válida.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Integridad de la prestación",
+    copy: "Si la prestación pudo ocurrir según horario, ubicación, duración y actividad del profesional: duplicadas, visitas superpuestas, recorridos imposibles y volúmenes anormales.",
+    icon: BadgeCheck,
+  },
+  {
+    title: "Integridad clínica",
+    copy: "Documentación faltante, inconsistencias entre el registro clínico y la prestación, y patrones atípicos de documentación.",
+    icon: FileCheck2,
+  },
+  {
+    title: "Integridad de la facturación",
+    copy: "Lo autorizado y realizado frente a lo facturado: facturación duplicada, prácticas sin respaldo, cantidades incorrectas y diferencias entre registros operativos y financieros.",
+    icon: Receipt,
+  },
+  {
+    title: "Integridad de la liquidación",
+    copy: "Pagos y liquidaciones a profesionales que corresponden a transacciones válidas y a las reglas contractuales aplicables.",
+    icon: Wallet,
+  },
+  {
+    title: "Inteligencia de comportamiento",
+    copy: "Patrones históricos de profesionales, prestadores, pacientes y organizaciones para detectar lo que los controles estáticos no identifican.",
+    icon: Activity,
+  },
+];
+
+const networkPatterns = [
+  "Profesionales con volúmenes de actividad anormales.",
+  "Actividad sospechosa repetida sobre los mismos pacientes.",
+  "Dispositivos o ubicaciones compartidas.",
+  "Concentraciones atípicas de facturación.",
+  "Comportamiento coordinado entre prestadores.",
+  "Patrones geográficos o temporales imposibles en utilización o facturación.",
+];
+
+const learningLoop = [
+  {
+    step: "Señal de riesgo",
+    copy: "Una combinación de señales marca la transacción para revisión.",
+  },
+  {
+    step: "Investigación",
+    copy: "El equipo analiza el caso con la evidencia y el contexto completos.",
+  },
+  {
+    step: "Resultado",
+    copy: "Anomalías confirmadas, falsos positivos y patrones nuevos quedan registrados.",
+  },
+  {
+    step: "Nueva regla",
+    copy: "Lo aprendido ajusta los controles existentes o se convierte en una regla nueva.",
+  },
+  {
+    step: "Mejor detección",
+    copy: "El modelo de riesgo evoluciona con cada caso, en lugar de depender de controles estáticos.",
+  },
+];
 
 const faqItems = [
   {
@@ -143,8 +220,6 @@ export default function FraudRiskPreventionPage() {
         title="Detectá el fraude antes de que se convierta en pérdida"
         copy={description}
         primary={{ label: "Hablá con nuestro equipo", href: "/contact" }}
-        secondary={{ label: "Ver cómo funciona", href: "#como-funciona" }}
-        secondaryVariant="inverse"
         mediaClassName="overflow-visible"
         contentClassName="lg:pt-32 lg:pb-20"
         media={
@@ -163,15 +238,15 @@ export default function FraudRiskPreventionPage() {
       />
 
       <BenefitStories
-        title="Lo que necesitás para adelantarte al fraude en salud."
-        copy="Zonda conecta la evidencia que explica una prestación para que los equipos puedan prevenir pérdidas sin sumar fricción a cada transacción legítima."
+        title="El fraude en salud rara vez aparece en un único dato."
+        copy="Una prestación puede parecer válida, la visita estar registrada y la autorización existir. El riesgo aparece cuando esos eventos se conectan."
         items={benefits}
       />
 
       <SplitFeature
         id="como-funciona"
         title="Conectá cada paso de la transacción de salud"
-        copy="El fraude y el riesgo operativo suelen aparecer en los huecos entre sistemas. Zonda crea una sola vista de qué se autorizó, qué pasó, qué se documentó, qué se facturó y qué se pagó finalmente."
+        copy="El fraude y el riesgo operativo suelen aparecer en los huecos entre sistemas. Zonda crea una sola vista de qué se autorizó, qué ocurrió y qué se pagó finalmente. Cuando esos eventos no coinciden, la inconsistencia se convierte en una señal de riesgo."
         media={
           <FeatureShot
             src="/assets/solutions/fraud/feature-1.png"
@@ -183,7 +258,7 @@ export default function FraudRiskPreventionPage() {
           items={[
             {
               title: "Una transacción, un recorrido",
-              copy: "Autorización, atención, documentación, facturación, cobro y liquidación vinculados a la misma prestación.",
+              copy: "Autorización, prestación, evidencia clínica, facturación y liquidación vinculadas a la misma transacción.",
             },
             {
               title: "El contexto se conserva",
@@ -197,9 +272,44 @@ export default function FraudRiskPreventionPage() {
         />
       </SplitFeature>
 
+      <CapabilityGrid
+        title="Detectá riesgo en cada etapa de la transacción"
+        copy="Zonda analiza múltiples señales en conjunto para entender el contexto detrás de cada transacción, desde la autorización hasta la liquidación."
+        columns={3}
+        items={integrityChecks}
+      />
+
       <SplitFeature
-        title="Detectá riesgo a partir de múltiples señales"
-        copy="Evaluá la integridad de la transacción desde la autorización hasta la liquidación y sumá contexto de comportamiento para ver patrones que ningún sistema individual puede revelar."
+        title="Convertí señales en riesgo accionable"
+        copy="Una anomalía aislada no significa necesariamente fraude. Una pequeña diferencia de ubicación puede representar poco riesgo; combinada con una prestación no autorizada, actividad superpuesta y evidencia clínica inconsistente, el escenario es otro. Zonda combina las señales en una evaluación explicable y ayuda a definir qué hacer a continuación."
+        media={
+          <FeatureShot
+            src="/assets/solutions/fraud/feature-3.png"
+            alt="Score de riesgo 32 de un médico clínico con ubicación no reconocida, matrícula no verificada y actividad alta, con mayor riesgo de fraude que el 89% de los clínicos"
+          />
+        }
+      >
+        <FeatureDetails
+          items={[
+            {
+              title: "Riesgo bajo",
+              copy: "La transacción continúa sin generar fricción innecesaria.",
+            },
+            {
+              title: "Riesgo medio",
+              copy: "Se solicita validación o evidencia adicional.",
+            },
+            {
+              title: "Riesgo alto",
+              copy: "La transacción se prioriza para investigación antes del pago o la liquidación.",
+            },
+          ]}
+        />
+      </SplitFeature>
+
+      <SplitFeature
+        title="Enfocá a los equipos en las transacciones que importan"
+        copy="Las organizaciones de salud procesan miles o millones de transacciones, y auditarlas una por una no escala. Zonda analiza la actividad de forma continua y prioriza los casos de mayor riesgo para que la auditoría concentre su tiempo donde genera más impacto."
         mediaSide="left"
         media={
           <FeatureShot
@@ -211,44 +321,12 @@ export default function FraudRiskPreventionPage() {
         <FeatureDetails
           items={[
             {
-              title: "Verificá cómo se realizó",
-              copy: "Presencia, horario, ubicación y firma digital cuando corresponda al proceso.",
-            },
-            {
-              title: "Contrastá lo documentado",
-              copy: "Prestaciones, prescripciones, autorizaciones y documentación clínica en el mismo contexto.",
-            },
-            {
-              title: "Reconocé patrones",
-              copy: "Desvíos de actividad y facturación por sede, profesional, práctica o financiador.",
-            },
-          ]}
-        />
-      </SplitFeature>
-
-      <SplitFeature
-        title="Convertí señales en riesgo accionable"
-        copy="Una anomalía aislada no significa necesariamente fraude. Zonda combina señales y contexto para construir una evaluación de riesgo explicable para cada transacción: cada puntaje muestra los factores que lo explican."
-        media={
-          <FeatureShot
-            src="/assets/solutions/fraud/feature-3.png"
-            alt="Score de riesgo 32 de un médico clínico con ubicación no reconocida, matrícula no verificada y actividad alta, con mayor riesgo de fraude que el 89% de los clínicos"
-          />
-        }
-      >
-        <FeatureDetails
-          items={[
-            {
-              title: "Separá señal de decisión",
-              copy: "Una anomalía inicia una revisión; el contexto determina si realmente requiere intervención.",
+              title: "En lugar de preguntarse “¿qué deberíamos auditar?”",
+              copy: "Los equipos parten de “¿por qué esta transacción presenta riesgo y qué deberíamos hacer?”.",
             },
             {
               title: "Entendé cada puntaje",
               copy: "Cada evaluación muestra los factores que elevaron o redujeron el nivel de riesgo.",
-            },
-            {
-              title: "Llevá cada caso al equipo correcto",
-              copy: "Priorizá la revisión de los casos con mayor impacto y dejá fluir el resto de la operación.",
             },
           ]}
         />
@@ -256,9 +334,9 @@ export default function FraudRiskPreventionPage() {
 
       <section className="px-6 py-10 sm:px-10 sm:py-14 lg:px-16 lg:py-16">
         <div className="mx-auto max-w-7xl">
-          <div className="relative isolate flex min-h-[640px] flex-col overflow-hidden rounded-[1.75rem] bg-[#1f8fd6] px-6 pt-14 text-center sm:px-12 sm:pt-16 lg:min-h-[760px] lg:px-16 lg:pt-20">
+          <div className="relative isolate flex min-h-[640px] flex-col overflow-hidden rounded-[1.75rem] px-6 pt-14 text-center sm:px-12 sm:pt-16 lg:min-h-[760px] lg:px-16 lg:pt-20">
             <Image
-              src="/assets/bg/bg-clouds-default.png"
+              src="/assets/bg/hero-common-bg.png"
               alt=""
               fill
               sizes="(min-width: 1280px) 1280px, 100vw"
@@ -268,8 +346,12 @@ export default function FraudRiskPreventionPage() {
               Investigá con todo el contexto
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-foreground/75 sm:text-lg">
-              Entendé la transacción, el motivo por el que fue marcada y la
-              evidencia que la respalda desde una sola vista operativa.
+              Cada transacción marcada se rastrea hasta las señales que
+              generaron la alerta: autorización, prestación programada,
+              evidencia de ejecución, registro clínico, facturación y
+              liquidación, junto con el paciente, el profesional, horario,
+              ubicación, montos, historial e investigaciones anteriores. Sin
+              reconstruir el caso a mano desde sistemas desconectados.
             </p>
             <div className="mx-auto mt-auto w-full max-w-4xl pt-10 sm:pt-14">
               <Image
@@ -285,11 +367,51 @@ export default function FraudRiskPreventionPage() {
         </div>
       </section>
 
+      <ChecklistSection
+        title="Detectá patrones, no solamente anomalías individuales"
+        copy="El fraude no siempre es visible en una transacción aislada. Al conectar la actividad de toda la red, Zonda identifica relaciones que los sistemas aislados no pueden ver."
+        items={networkPatterns}
+      />
+
+      <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
+          <SectionIntro
+            title="Convertí cada investigación en un mejor control"
+            copy="Cada investigación genera información nueva. Con el tiempo, la auditoría pasa de controles estáticos a un modelo de riesgo que evoluciona continuamente."
+            className="max-w-xl"
+          />
+          <ol className="border-l border-border/80">
+            {learningLoop.map((item, index) => (
+              <li
+                key={item.step}
+                className={
+                  index === learningLoop.length - 1
+                    ? "relative pt-8 pl-8"
+                    : index === 0
+                      ? "relative pb-8 pl-8"
+                      : "relative py-8 pl-8"
+                }
+              >
+                <span
+                  className={`absolute -left-[0.45rem] flex size-4 items-center justify-center rounded-full bg-secondary ring-4 ring-background ${index === 0 ? "top-0" : "top-8"}`}
+                />
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-secondary">
+                  {item.step}
+                </p>
+                <p className="mt-2 text-base leading-7 text-foreground/80">
+                  {item.copy}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       <FaqList items={faqItems} />
 
       <CtaBanner
-        title="¿Listo para ver el riesgo que se te estaba escapando?"
-        subtitle="Conectá las transacciones de salud, detectá inconsistencias antes y enfocá a tus equipos en los casos que importan."
+        title="De la auditoría retrospectiva a la prevención continua"
+        subtitle="Conectá los datos. Detectá las señales. Entendé el riesgo. Investigá las excepciones. Prevení la pérdida."
         buttonText="Hablá con nuestro equipo"
       />
     </main>

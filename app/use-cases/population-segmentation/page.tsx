@@ -97,8 +97,6 @@ export default function PopulationSegmentationPage() {
         title="Conocé a tu población antes de que llegue a la guardia"
         copy={description}
         primary={{ label: "Hablemos", href: "/contact" }}
-        secondary={{ label: "Ver la API", href: "/developers" }}
-        secondaryVariant="inverse"
         mediaClassName="overflow-visible"
         media={
           <div className="flex w-full items-center justify-center px-[8.4%] pt-16 pb-6 sm:pt-20 lg:pt-24 lg:pb-10">

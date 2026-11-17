@@ -5,6 +5,7 @@ import { Banner } from "@/components/ui/banner/banner";
 import { Button } from "@/components/ui/button/button";
 import Glow from "@/components/ui/glow/Glow";
 import { ORBIT_BORDER_COLORS } from "@/components/ui/glow/colors";
+import { DOCS_URL } from "@/lib/navigation";
 const screenshotAlt =
   "Editor con GET /v2/patients/{id}/timeline en TypeScript y la respuesta JSON de una alerta de interacción medicamentosa.";
 
@@ -30,7 +31,7 @@ export function ApiBanner() {
             </p>
             <div className="mt-2 flex flex-wrap justify-center gap-3">
               <Button variant="black" asChild>
-                <Link href="/developers">Ver API</Link>
+                <Link href={DOCS_URL}>Ver API</Link>
               </Button>
             </div>
           </div>

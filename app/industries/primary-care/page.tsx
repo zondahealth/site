@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
-import { LOGIN_URL } from "@/lib/navigation";
 import {
   BenefitStories,
   FaqList,
@@ -50,8 +49,8 @@ const benefits = [
   {
     title: "Menos tiempo administrativo",
     copy: "Dictado por voz y resumen estructurado (SOAP).",
-    href: "/use-cases/normalized-ai",
-    cta: "Ver IA normalizada",
+    href: "/use-cases/ai-agents",
+    cta: "Ver agentes de IA",
     media: (
       <Image
         src="/assets/industries/primary-care/benefit-2.png"
@@ -146,8 +145,6 @@ export default function PrimaryCarePage() {
         copy={description}
         primary={{ label: "Hablemos", href: "/contact" }}
         // DECISIÓN NAV-2: confirmar URL de la app; si no se confirma, apuntar a /contact.
-        secondary={{ label: "Crear mi perfil profesional", href: LOGIN_URL }}
-        secondaryVariant="inverse"
         mediaClassName="overflow-visible"
         media={
           <div className="relative h-[300px] w-full sm:h-[400px] lg:h-full">
@@ -249,7 +246,7 @@ export default function PrimaryCarePage() {
         keys={[
           "operations",
           "automation",
-          "normalized-ai",
+          "ai-agents",
           "population-segmentation",
         ]}
       />

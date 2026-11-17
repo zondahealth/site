@@ -205,8 +205,6 @@ export default function PayersPage() {
         title="Conocé la atención que reciben tus afiliados, de punta a punta"
         copy={description}
         primary={{ label: "Hablemos", href: "/contact" }}
-        secondary={{ label: "Ver analítica", href: "/use-cases/analytics" }}
-        secondaryVariant="inverse"
         mediaClassName="overflow-visible"
         media={
           <div className="relative h-[340px] w-full sm:h-[460px] lg:h-full">

@@ -496,11 +496,17 @@ export function Testimonial({
 }
 
 export function CapabilityGrid({
+  id,
   title,
+  copy,
   items,
   inverse = false,
+  columns = 4,
+  className,
 }: {
-  title?: string;
+  id?: string;
+  title?: ReactNode;
+  copy?: ReactNode;
   items: {
     title: string;
     copy?: string;
@@ -508,16 +514,30 @@ export function CapabilityGrid({
     icon: LucideIcon;
   }[];
   inverse?: boolean;
+  columns?: 3 | 4;
+  className?: string;
 }) {
   return (
-    <section className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+    <section
+      id={id}
+      className={cn(
+        "px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24",
+        className,
+      )}
+    >
       <div className="mx-auto max-w-7xl">
         {title ? (
-          <SectionIntro inverse={inverse} title={title} className="max-w-3xl" />
+          <SectionIntro
+            inverse={inverse}
+            title={title}
+            copy={copy}
+            className="max-w-3xl"
+          />
         ) : null}
         <div
           className={cn(
-            "grid gap-5 sm:grid-cols-2 lg:grid-cols-4",
+            "grid gap-5 sm:grid-cols-2",
+            columns === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4",
             title && "mt-12",
           )}
         >
@@ -744,6 +764,7 @@ export function UseCaseHero({
   mediaClassName,
   gridClassName,
   contentClassName,
+  children,
 }: {
   eyebrow?: ReactNode;
   title: ReactNode;
@@ -760,6 +781,8 @@ export function UseCaseHero({
   mediaClassName?: string;
   gridClassName?: string;
   contentClassName?: string;
+  /** Rendered below the hero copy, full content width. */
+  children?: ReactNode;
 }) {
   const primaryHref = destination(primary.href);
   const secondaryHref = destination(secondary?.href);
@@ -825,6 +848,7 @@ export function UseCaseHero({
             </div>
           ) : null}
         </div>
+        {children}
       </FeatureHeroContent>
       {media != null ? (
         <FeatureHeroMedia className={mediaClassName}>{media}</FeatureHeroMedia>

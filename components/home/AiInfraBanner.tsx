@@ -43,7 +43,7 @@ export function AiInfraBanner() {
             pueda usarlos.
           </p>
           <Button variant="black" asChild>
-            <Link href="/use-cases/normalized-ai">Ver IA sobre datos de salud</Link>
+            <Link href="/use-cases/ai-agents">Ver IA sobre datos de salud</Link>
           </Button>
         </div>
         <Image

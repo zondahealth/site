@@ -11,7 +11,7 @@ import { SectionIntro } from "@/components/use-cases/UseCasePrimitives";
 import { cn } from "@/components/ui/utils";
 
 export const industryProductKeys = [
-  "normalized-ai",
+  "ai-agents",
   "analytics",
   "population-segmentation",
   "multi-payer-care",

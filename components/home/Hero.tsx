@@ -2,15 +2,91 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, type PointerEvent } from "react";
+import { useLayoutEffect, useRef, useState, type PointerEvent } from "react";
 import { Logo } from "@/components/layout/Logo";
 import { Button } from "@/components/ui/button/button";
-import Gradient from "@/components/ui/gradient/Gradient";
 
 const IMAGE_SPOT_RADIUS = 420;
+const HERO_VEIL_ID = "hero-loading-veil";
+
+function pendingHeroAssets(root: ParentNode) {
+  return [...root.querySelectorAll<HTMLImageElement>("[data-hero-asset]")].filter(
+    (img) => !img.complete && getComputedStyle(img).display !== "none",
+  );
+}
+
+function showHeroVeil() {
+  if (document.getElementById(HERO_VEIL_ID)) return;
+  const veil = document.createElement("div");
+  veil.id = HERO_VEIL_ID;
+  veil.setAttribute("aria-hidden", "true");
+  document.body.appendChild(veil);
+}
+
+function hideHeroVeil() {
+  document.getElementById(HERO_VEIL_ID)?.remove();
+}
 
 export function Hero() {
   const revealRef = useRef<HTMLImageElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [ready, setReady] = useState(false);
+
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const pending = pendingHeroAssets(section);
+    if (pending.length === 0) {
+      hideHeroVeil();
+      setReady(true);
+      return;
+    }
+
+    showHeroVeil();
+    let left = pending.length;
+    let cancelled = false;
+    const cleanups: Array<() => void> = [];
+    const done = () => {
+      left -= 1;
+      if (cancelled || left > 0) return;
+      Promise.all(
+        pending.map((img) => img.decode?.().catch(() => undefined)),
+      ).then(() => {
+        if (!cancelled) setReady(true);
+      });
+    };
+    pending.forEach((img) => {
+      let settled = false;
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        done();
+      };
+      img.addEventListener("load", finish);
+      img.addEventListener("error", finish);
+      cleanups.push(() => {
+        img.removeEventListener("load", finish);
+        img.removeEventListener("error", finish);
+      });
+      if (img.complete) finish();
+    });
+    const timeout = window.setTimeout(() => {
+      if (!cancelled) setReady(true);
+    }, 12000);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeout);
+      cleanups.forEach((cleanup) => cleanup());
+      hideHeroVeil();
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!ready) return;
+    hideHeroVeil();
+  }, [ready]);
 
   function setImageSpot(x: number, y: number) {
     const el = revealRef.current;
@@ -27,24 +103,13 @@ export function Hero() {
 
   return (
     <section
+      ref={sectionRef}
       aria-label="Hero"
+      aria-busy={!ready}
       className="relative overflow-clip"
       onPointerMove={onPointerMove}
     >
-      <Gradient
-        points={[
-          { color: "#2a13c8", x: 0.02, y: 0.52 },
-          { color: "var(--primary)", x: 0.3, y: 0.9 },
-          { color: "#1a6cf5", x: 0.14, y: 0.16 },
-          { color: "#18d8f0", x: 0.4, y: 0.24 },
-          { color: "#1f7bf8", x: 0.62, y: 0.6 },
-          { color: "#1fd4f5", x: 0.96, y: 0.66 },
-          { color: "var(--primary)", x: 0.6, y: 0.04 },
-        ]}
-        softness={0.34}
-        grain={0.5}
-        className="min-h-[640px] sm:min-h-[720px] md:h-[min(100svh,680px)] md:min-h-[560px] lg:h-[min(100svh,960px)] lg:min-h-[800px] xl:h-[min(100svh,1040px)] xl:min-h-[880px]"
-      >
+      <div className="relative isolate bg-background min-h-[640px] sm:min-h-[720px] md:h-[min(100svh,680px)] md:min-h-[560px] lg:h-[min(100svh,960px)] lg:min-h-[800px] xl:h-[min(100svh,1040px)] xl:min-h-[880px]">
         <div
           className="pointer-events-none absolute inset-0 overflow-hidden"
           aria-hidden="true"
@@ -55,6 +120,7 @@ export function Hero() {
             fill
             priority
             sizes="100vw"
+            data-hero-asset=""
             className="object-cover object-center"
           />
           <img
@@ -100,10 +166,11 @@ export function Hero() {
             height={1080}
             priority
             sizes="1400px"
+            data-hero-asset=""
             className="pointer-events-none absolute bottom-0 hidden w-auto max-w-none md:left-[28rem] md:block md:h-[min(620px,calc(100%-6.5rem))] lg:left-[28.8rem] lg:h-[min(740px,calc(100%-7rem))] xl:right-[-8rem] xl:left-auto xl:h-[min(780px,calc(100%-7rem))]"
           />
         </div>
-      </Gradient>
+      </div>
     </section>
   );
 }

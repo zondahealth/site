@@ -12,6 +12,7 @@ import { Pending } from "@/components/ui/pending/Pending";
 import { cn } from "@/components/ui/utils";
 import { englishLocaleEnabled, supportedLocales } from "@/lib/locale";
 import {
+  DEVELOPERS_URL,
   LOGIN_URL,
   industryGroups,
   isLiveRoute,
@@ -69,7 +70,6 @@ function MobileSolutionLink({
 }
 
 const showPricing = isLiveRoute("/pricing");
-const showDevelopers = isLiveRoute("/developers");
 
 function ResourceLink({
   item,
@@ -288,17 +288,17 @@ export function Navbar() {
                 </button>
               </li>
 
-              {showDevelopers ? (
-                <li>
-                  <Link
-                    href="/developers"
-                    onClick={closeMenus}
-                    className={navigationItemClassName}
-                  >
-                    Desarrolladores
-                  </Link>
-                </li>
-              ) : null}
+              <li>
+                <a
+                  href={DEVELOPERS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMenus}
+                  className={navigationItemClassName}
+                >
+                  Desarrolladores
+                </a>
+              </li>
 
               <li>
                 <button
@@ -521,17 +521,17 @@ export function Navbar() {
                 ) : null}
               </li>
 
-              {showDevelopers ? (
-                <li>
-                  <Link
-                    href="/developers"
-                    onClick={closeMenus}
-                    className="flex rounded-xl px-3 py-3 text-sm font-semibold text-foreground outline-none hover:bg-muted/70 focus-visible:ring-2 focus-visible:ring-ring"
-                  >
-                    Desarrolladores
-                  </Link>
-                </li>
-              ) : null}
+              <li>
+                <a
+                  href={DEVELOPERS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMenus}
+                  className="flex rounded-xl px-3 py-3 text-sm font-semibold text-foreground outline-none hover:bg-muted/70 focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  Desarrolladores
+                </a>
+              </li>
 
               <li>
                 <button
