@@ -25,6 +25,7 @@
     "@types/nodemailer": "^8.0.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "leva": "^0.10.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

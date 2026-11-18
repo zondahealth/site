@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLayoutEffect, useRef, useState, type PointerEvent } from "react";
+import { HeroNetworkLayer } from "@/components/home/HeroNetworkLayer";
 import { Logo } from "@/components/layout/Logo";
 import { Button } from "@/components/ui/button/button";
 
@@ -109,9 +110,9 @@ export function Hero() {
       className="relative overflow-clip"
       onPointerMove={onPointerMove}
     >
-      <div className="relative isolate bg-background min-h-[640px] sm:min-h-[720px] md:h-[min(100svh,680px)] md:min-h-[560px] lg:h-[min(100svh,960px)] lg:min-h-[800px] xl:h-[min(100svh,1040px)] xl:min-h-[880px]">
+      <div className="relative isolate overflow-hidden bg-background min-h-[640px] sm:min-h-[720px] md:h-[min(100svh,680px)] md:min-h-[560px] lg:h-[min(100svh,960px)] lg:min-h-[800px] xl:h-[min(100svh,1040px)] xl:min-h-[880px]">
         <div
-          className="pointer-events-none absolute inset-0 overflow-hidden"
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
           aria-hidden="true"
         >
           <Image
@@ -134,6 +135,7 @@ export function Hero() {
             }}
           />
         </div>
+        <HeroNetworkLayer />
         <div className="relative z-10 mx-auto h-full min-h-[640px] w-full max-w-[96rem] overflow-visible sm:min-h-[720px]">
           <div className="relative z-10 flex min-h-[640px] h-full flex-col items-center justify-center px-6 pt-24 pb-16 text-center sm:min-h-[720px] sm:px-10 md:items-start md:px-10 md:py-28 md:text-left lg:px-16 xl:px-20">
             <div className="flex w-max max-w-full flex-col items-center md:items-start">
