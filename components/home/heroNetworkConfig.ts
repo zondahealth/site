@@ -1,26 +1,28 @@
-import type { NetworkShaderProps } from "@/components/NetworkShader";
+import type { ParticleWorldProps } from "@/components/ParticleWorld";
 
 export const heroNetworkShaderProps = {
-  nodeColor: "#FFFFFF",
-  lineColor: "#FFFFFF",
-  pulseColor: "#E6F03C",
+  dustColor: "#FFFFFF",
+  clusterColor: "#FFFFFF",
+  streamColor: "#E6F03C",
   accentColor: "#E6F03C",
   accentRatio: 0.12,
-  lineOpacity: 0.4,
+  atmosphereColor: "#FFFFFF",
+  atmosphereIntensity: 0.4,
+  stars: 0.15,
   intensity: 1,
-  glowIntensity: 0,
-  vanishingX: 0.72,
-  horizon: 0.88,
-  fadeLeft: [0.2, 0.6] as [number, number],
-  fadeMin: 0.12,
+  dustAmount: 0.85,
   density: 1,
   speed: 1,
+  vanishingX: 0.72,
+  horizon: 0.86,
+  fadeLeft: [0.2, 0.6] as [number, number],
+  fadeMin: 0.12,
   growSeconds: 8,
-} satisfies NetworkShaderProps;
+} satisfies ParticleWorldProps;
 
 export function heroNetworkShaderPropsForViewport(
   isMobile: boolean,
-): NetworkShaderProps {
+): ParticleWorldProps {
   if (!isMobile) return heroNetworkShaderProps;
   return {
     ...heroNetworkShaderProps,

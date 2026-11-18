@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { Leva, useControls } from "leva";
-import NetworkShader from "@/components/NetworkShader";
+import ParticleWorld from "@/components/ParticleWorld";
 import {
   heroNetworkShaderProps,
   heroNetworkShaderPropsForViewport,
@@ -16,17 +16,11 @@ export default function HeroNetworkShaderDev({
   isMobile: boolean;
 }) {
   const initial = heroNetworkShaderPropsForViewport(isMobile);
-  const [controls, set] = useControls("Network", () => ({
-    nodeColor: heroNetworkShaderProps.nodeColor,
-    lineColor: heroNetworkShaderProps.lineColor,
-    pulseColor: heroNetworkShaderProps.pulseColor,
+  const [controls, set] = useControls("Particle", () => ({
+    dustColor: heroNetworkShaderProps.dustColor,
+    clusterColor: heroNetworkShaderProps.clusterColor,
+    streamColor: heroNetworkShaderProps.streamColor,
     accentColor: heroNetworkShaderProps.accentColor,
-    lineOpacity: {
-      value: heroNetworkShaderProps.lineOpacity,
-      min: 0,
-      max: 1,
-      step: 0.01,
-    },
     intensity: {
       value: initial.intensity ?? heroNetworkShaderProps.intensity,
       min: 0,
@@ -37,6 +31,18 @@ export default function HeroNetworkShaderDev({
       value: initial.density ?? heroNetworkShaderProps.density,
       min: 0.1,
       max: 2.5,
+      step: 0.01,
+    },
+    dustAmount: {
+      value: heroNetworkShaderProps.dustAmount,
+      min: 0,
+      max: 2,
+      step: 0.01,
+    },
+    atmosphereIntensity: {
+      value: heroNetworkShaderProps.atmosphereIntensity,
+      min: 0,
+      max: 2,
       step: 0.01,
     },
     speed: {
@@ -89,17 +95,18 @@ export default function HeroNetworkShaderDev({
   return (
     <>
       <Leva
-        titleBar={{ title: "Network shader", drag: true, filter: true }}
+        titleBar={{ title: "Particle world", drag: true, filter: true }}
       />
-      <NetworkShader
+      <ParticleWorld
         {...heroNetworkShaderProps}
-        nodeColor={controls.nodeColor}
-        lineColor={controls.lineColor}
-        pulseColor={controls.pulseColor}
+        dustColor={controls.dustColor}
+        clusterColor={controls.clusterColor}
+        streamColor={controls.streamColor}
         accentColor={controls.accentColor}
-        lineOpacity={controls.lineOpacity}
         intensity={controls.intensity}
         density={controls.density}
+        dustAmount={controls.dustAmount}
+        atmosphereIntensity={controls.atmosphereIntensity}
         speed={controls.speed}
         vanishingX={controls.vanishingX}
         horizon={controls.horizon}

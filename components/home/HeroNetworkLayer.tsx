@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { heroNetworkShaderPropsForViewport } from "@/components/home/heroNetworkConfig";
 
-const NetworkShader = dynamic(() => import("@/components/NetworkShader"), {
+const ParticleWorld = dynamic(() => import("@/components/ParticleWorld"), {
   ssr: false,
 });
 
@@ -38,7 +38,7 @@ export function HeroNetworkLayer() {
   }
 
   return (
-    <NetworkShader
+    <ParticleWorld
       {...heroNetworkShaderPropsForViewport(isMobile)}
       style={{ zIndex: 1 }}
     />
