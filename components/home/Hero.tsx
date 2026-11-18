@@ -116,7 +116,7 @@ export function Hero() {
           aria-hidden="true"
         >
           <Image
-            src="/assets/home/hero-bg.png"
+            src="/assets/home/hero-nebula.jpg"
             alt=""
             fill
             priority
@@ -126,7 +126,7 @@ export function Hero() {
           />
           <img
             ref={revealRef}
-            src="/assets/home/hero-revealed.png"
+            src="/assets/home/hero-nebula.jpg"
             alt=""
             className="absolute inset-0 h-full w-full object-cover object-left-top opacity-0 transition-opacity duration-500 ease-out motion-reduce:transition-none"
             style={{
