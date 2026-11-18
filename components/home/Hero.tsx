@@ -126,7 +126,7 @@ export function Hero() {
           />
           <img
             ref={revealRef}
-            src="/assets/home/hero-nebula.jpg"
+            src="/assets/home/hero-revealed.png"
             alt=""
             className="absolute inset-0 h-full w-full object-cover object-left-top opacity-0 transition-opacity duration-500 ease-out motion-reduce:transition-none"
             style={{
